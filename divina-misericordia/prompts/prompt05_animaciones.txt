@@ -1,0 +1,17 @@
+Actúa como experto en rendimiento frontend.
+
+OBJETIVO
+Optimizar animaciones CSS.
+
+TAREAS
+- revisar keyframes
+- optimizar transitions
+- priorizar transform y opacity
+
+PROHIBIDO
+- no eliminar animaciones importantes
+
+RESPUESTA
+
+ARCHIVOS MODIFICADOS
+ANIMACIONES OPTIMIZADAS

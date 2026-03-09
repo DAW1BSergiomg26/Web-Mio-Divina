@@ -1,0 +1,15 @@
+Actúa como experto en rendimiento web.
+
+OBJETIVO
+Optimizar Core Web Vitals (LCP, FID, CLS).
+
+TAREAS
+- Analizar tiempos de carga de elementos principales
+- Optimizar imágenes (formatos, lazy-loading)
+- Optimizar CSS y JavaScript críticos
+- Mejorar renderizado de hero y secciones visuales
+
+RESPUESTA
+MEJORAS REALIZADAS
+PUNTOS CRÍTICOS
+SUGERENCIAS FUTURAS

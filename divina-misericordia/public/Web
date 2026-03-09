@@ -1,0 +1,26 @@
+Voy a optimizar las páginas principales. Comenzaré corrigiendo el SEO en quienes-somos.html, contacto.html y otras páginas que tienen URLs incorrectas.
+Ahora corrijo las URLs en santa-faustina.html:
+Voy a corregir las URLs en los archivos principales de forma más eficiente:
+Optimización completada. Resumen de mejoras realizadas:
+
+**SEO:**
+- Corregidas todas las URLs canónicas y Open Graph (201 referencias a devocioncardiaca.es)
+- Actualizado sitemap.xml con 23 páginas
+- Corregido robots.txt
+
+**Contenido:**
+- Mejorado quienes-somos.html con misión, valores, actividades y formulario
+- Mejorado contacto.html con formulario completo y información de contacto
+
+**Meta tags:**
+- Añadido theme-color (#8B0000) a las 25 páginas principales
+- Mejorados meta description y keywords
+
+**Accesibilidad:**
+- Breadcrumbs añadidos a quienes-somos.html y contacto.html
+- Atributos alt mejorados en imágenes OG/Twitter
+- Schema.org (FAQPage, ReligiousOrganization) en index.html
+
+**Archivos corregidos:** 25 páginas HTML principales
+
+Los archivos en carpetas `backups/` no fueron modificados ya que no afectan al SEO.

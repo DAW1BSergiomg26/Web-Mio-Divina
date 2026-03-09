@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Divina Misericordia — Jesús, en Ti confío</title>
+  <meta name="description" content="Portal de la Divina Misericordia: coronilla, novena, oraciones, lecturas y la llama del amor de Dios para el mundo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+  <style>
+    /* ═══════════════════════════════════════════════
+       VARIABLES Y RESET
+    ═══════════════════════════════════════════════ */
+    :root {
+      --gold:        #c8960c;
+      --gold-light:  #f0c040;
+      --gold-pale:   #fdf3d0;
+      --crimson:     #8b1a1a;
+      --crimson-light:#c0392b;
+      --blue-deep:   #0a1628;
+      --blue-mid:    #0d2348;
+      --blue-royal:  #1a3a6e;
+      --blue-sky:    #1e5799;
+      --white-pure:  #ffffff;
+      --white-warm:  #faf7f0;
+      --white-pearl: #f5f0e8;
+      --ray-red:     rgba(180, 30, 30, 0.7);
+      --ray-white:   rgba(255, 245, 220, 0.8);
+      --shadow-gold: 0 0 40px rgba(200,150,12,0.4);
+      --shadow-deep: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'EB Garamond', Georgia, serif;
+      background: var(--blue-deep);
+      color: var(--white-warm);
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* ═══════════════════════════════════════════════
+       CURSOR PERSONALIZADO (CRUZ)
+    ═══════════════════════════════════════════════ */
+    body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Crect x='11' y='0' width='2' height='24' fill='%23c8960c'/%3E%3Crect x='0' y='9' width='24' height='2' fill='%23c8960c'/%3E%3C/svg%3E") 12 12, crosshair; }
+
+    /* ═══════════════════════════════════════════════
+       FONDO ANIMADO — RAYOS DE MISERICORDIA
+    ═══════════════════════════════════════════════ */
+    .divine-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 50% 20%, #1a3a6e 0%, #0d2348 40%, #0a1628 100%);
+    }
+
+    .ray {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform-origin: bottom center;
+      opacity: 0;
+      animation: rayPulse 8s ease-in-out infinite;
+    }
+
+    .ray-red {
+      width: 3px;
+      height: 70vh;
+      background: linear-gradient(to top, transparent, var(--ray-red));
+      filter: blur(2px);
+    }
+
+    .ray-white {
+      width: 4px;
+      height: 65vh;
+      background: linear-gradient(to top, transparent, var(--ray-white));
+      filter: blur(3px);
+    }
+
+    @keyframes rayPulse {
+      0%, 100% { opacity: 0; transform: translateX(-50%) scaleY(0.8); }
+      50% { opacity: 1; transform: translateX(-50%) scaleY(1); }
+    }
+
+    .ray:nth-child(1)  { transform: translateX(-50%) rotate(-28deg); animation-delay: 0s; }
+    .ray:nth-child(2)  { transform: translateX(-50%) rotate(-22deg); animation-delay: 0.3s; }
+    .ray:nth-child(3)  { transform: translateX(-50%) rotate(-16deg); animation-delay: 0.6s; }
+    .ray:nth-child(4)  { transform: translateX(-50%) rotate(-10deg); animation-delay: 0.9s; }
+    .ray:nth-child(5)  { transform: translateX(-50%) rotate(-4deg);  animation-delay: 1.2s; }
+    .ray:nth-child(6)  { transform: translateX(-50%) rotate(4deg);   animation-delay: 1.5s; }
+    .ray:nth-child(7)  { transform: translateX(-50%) rotate(10deg);  animation-delay: 1.8s; }
+    .ray:nth-child(8)  { transform: translateX(-50%) rotate(16deg);  animation-delay: 2.1s; }
+    .ray:nth-child(9)  { transform: translateX(-50%) rotate(22deg);  animation-delay: 2.4s; }
+    .ray:nth-child(10) { transform: translateX(-50%) rotate(28deg);  animation-delay: 2.7s; }
+
+    /* Estrellas */
+    .stars {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 20% 30%, rgba(255,245,210,0.8), transparent),
+        radial-gradient(1px 1px at 40% 70%, rgba(255,245,210,0.6), transparent),
+        radial-gradient(2px 2px at 60% 20%, rgba(255,245,210,0.9), transparent),
+        radial-gradient(1px 1px at 80% 50%, rgba(255,245,210,0.7), transparent),
+        radial-gradient(1px 1px at 15% 85%, rgba(255,245,210,0.5), transparent),
+        radial-gradient(2px 2px at 90% 15%, rgba(255,245,210,0.8), transparent),
+        radial-gradient(1px 1px at 55% 60%, rgba(255,245,210,0.6), transparent),
+        radial-gradient(1px 1px at 75% 80%, rgba(255,245,210,0.5), transparent);
+      animation: twinkle 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes twinkle {
+      0%   { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    /* ═══════════════════════════════════════════════
+       CONTENIDO PRINCIPAL
+    ═══════════════════════════════════════════════ */
+    .content {
+      position: relative;
+      z-index: 10;
+    }
+
+    /* ═══════════════════════════════════════════════
+       HEADER / NAV
+    ═══════════════════════════════════════════════ */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to bottom, rgba(10,22,40,0.95), transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(200,150,12,0.2);
+      transition: all 0.4s ease;
+    }
+
+    header.scrolled {
+      background: rgba(10,22,40,0.98);
+      border-bottom-color: rgba(200,150,12,0.5);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+    }
+
+    .logo {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.1rem;
+      color: var(--gold-light);
+      text-shadow: 0 0 20px rgba(200,150,12,0.5);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--white-warm); font-weight: 400; }
+
+    nav {
+      display: flex;
+      gap: 0.2rem;
+      align-items: center;
+    }
+
+    nav a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(250,247,240,0.7);
+      text-decoration: none;
+      padding: 0.5rem 0.8rem;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    nav a:hover {
+      color: var(--gold-light);
+      border-color: rgba(200,150,12,0.3);
+      background: rgba(200,150,12,0.08);
+      text-shadow: 0 0 15px rgba(200,150,12,0.5);
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold), #a07010) !important;
+      color: var(--blue-deep) !important;
+      font-weight: 700 !important;
+      border: none !important;
+      padding: 0.5rem 1.2rem !important;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(200,150,12,0.5) !important;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold)) !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background: var(--gold-light);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ═══════════════════════════════════════════════
+       HERO SECTION
+    ═══════════════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+    }
+
+    .hero-halo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(200,150,12,0.08) 0%, transparent 70%);
+      animation: haloBreath 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes haloBreath {
+      0%, 100% { transform: translate(-50%, -55%) scale(1); opacity: 0.5; }
+      50% { transform: translate(-50%, -55%) scale(1.1); opacity: 1; }
+    }
+
+    .hero-badge {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(200,150,12,0.4);
+      padding: 0.4rem 1.5rem;
+      border-radius: 100px;
+      margin-bottom: 2rem;
+      animation: fadeInDown 1s ease 0.3s both;
+      background: rgba(200,150,12,0.05);
+    }
+
+    .hero-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      line-height: 1.1;
+      font-weight: 900;
+      margin-bottom: 1rem;
+      animation: fadeInDown 1s ease 0.6s both;
+    }
+
+    .hero-title .line1 {
+      display: block;
+      background: linear-gradient(135deg, var(--white-warm) 0%, var(--gold-pale) 50%, var(--gold-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: none;
+      filter: drop-shadow(0 0 30px rgba(200,150,12,0.3));
+    }
+
+    .hero-title .line2 {
+      display: block;
+      font-size: 0.55em;
+      font-family: 'Cinzel', serif;
+      font-weight: 400;
+      color: rgba(250,247,240,0.6);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+    }
+
+    .hero-verse {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: var(--gold-pale);
+      max-width: 600px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      animation: fadeInDown 1s ease 0.9s both;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .hero-verse cite {
+      display: block;
+      font-size: 0.75em;
+      color: var(--gold);
+      margin-top: 0.5rem;
+      font-style: normal;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeInUp 1s ease 1.2s both;
+    }
+
+    .btn-primary {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--blue-deep);
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 3px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(200,150,12,0.4), var(--shadow-deep);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 35px rgba(200,150,12,0.6), var(--shadow-deep);
+    }
+
+    .btn-primary:hover::before { opacity: 1; }
+
+    .btn-outline {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--gold-light);
+      background: transparent;
+      border: 1px solid rgba(200,150,12,0.5);
+      padding: 1rem 2.5rem;
+      border-radius: 3px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline:hover {
+      background: rgba(200,150,12,0.1);
+      border-color: var(--gold);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 20px rgba(200,150,12,0.2);
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: fadeInUp 1s ease 2s both, bounce 2s ease-in-out 3s infinite;
+      color: rgba(200,150,12,0.6);
+      font-size: 0.7rem;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.2em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    .scroll-indicator::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollLine 1.5s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0%, 100% { opacity: 0; transform: scaleY(0) translateY(-20px); }
+      50% { opacity: 1; transform: scaleY(1) translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-8px); }
+    }
+
+    /* ═══════════════════════════════════════════════
+       SEPARADOR SAGRADO
+    ═══════════════════════════════════════════════ */
+    .divine-separator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 2rem 0;
+      opacity: 0.6;
+    }
+
+    .divine-separator::before,
+    .divine-separator::after {
+      content: '';
+      flex: 1;
+      max-width: 200px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+    }
+
+    .divine-separator .cross {
+      font-size: 1.5rem;
+      color: var(--gold);
+      filter: drop-shadow(0 0 8px rgba(200,150,12,0.5));
+    }
+
+    /* ═══════════════════════════════════════════════
+       SECCIÓN — LEMA PRINCIPAL
+    ═══════════════════════════════════════════════ */
+    .section-lema {
+      padding: 5rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .lema-quote {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: transparent;
+      background: linear-gradient(135deg, var(--gold-pale), var(--gold-light), var(--gold));
+      -webkit-background-clip: text;
+      background-clip: text;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.5;
+      filter: drop-shadow(0 0 20px rgba(200,150,12,0.3));
+    }
+
+    /* ═══════════════════════════════════════════════
+       SECCIÓN — NAVEGACIÓN PRINCIPAL (CARDS)
+    ═══════════════════════════════════════════════ */
+    .section-nav {
+      padding: 4rem 2rem 6rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-heading {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      text-align: center;
+      color: var(--white-warm);
+      margin-bottom: 3.5rem;
+      font-weight: 400;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(26,58,110,0.4), rgba(10,22,40,0.6));
+      border: 1px solid rgba(200,150,12,0.15);
+      border-radius: 4px;
+      padding: 2.5rem 2rem;
+      text-decoration: none;
+      color: var(--white-warm);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(200,150,12,0.08), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(200,150,12,0.4);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 30px rgba(200,150,12,0.1);
+    }
+
+    .card:hover::before { transform: scaleX(1); }
+    .card:hover::after  { opacity: 1; }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1.2rem;
+      display: block;
+      filter: drop-shadow(0 0 10px rgba(200,150,12,0.3));
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover .card-icon { transform: scale(1.15) rotate(-3deg); }
+
+    .card-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.05em;
+    }
+
+    .card-text {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: rgba(250,247,240,0.7);
+    }
+
+    .card-arrow {
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-transform: uppercase;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-arrow { transform: translateX(5px); }
+
+    /* ═══════════════════════════════════════════════
+       SECCIÓN — ORACIÓN DESTACADA
+    ═══════════════════════════════════════════════ */
+    .section-prayer {
+      padding: 6rem 2rem;
+      background: linear-gradient(180deg, transparent, rgba(13,35,72,0.5), transparent);
+      text-align: center;
+      position: relative;
+    }
+
+    .section-prayer::before {
+      content: '✦';
+      position: absolute;
+      top: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5rem;
+      color: var(--gold);
+      filter: drop-shadow(0 0 15px rgba(200,150,12,0.6));
+      animation: goldPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes goldPulse {
+      0%, 100% { filter: drop-shadow(0 0 10px rgba(200,150,12,0.4)); }
+      50% { filter: drop-shadow(0 0 25px rgba(200,150,12,0.9)); }
+    }
+
+    .prayer-container {
+      max-width: 750px;
+      margin: 0 auto;
+      background: linear-gradient(145deg, rgba(26,58,110,0.3), rgba(10,22,40,0.5));
+      border: 1px solid rgba(200,150,12,0.2);
+      border-radius: 6px;
+      padding: 3.5rem 3rem;
+      backdrop-filter: blur(15px);
+      position: relative;
+    }
+
+    .prayer-container::before,
+    .prayer-container::after {
+      content: '✦';
+      position: absolute;
+      font-size: 1.2rem;
+      color: var(--gold);
+      opacity: 0.5;
+    }
+
+    .prayer-container::before { top: 1.5rem; left: 1.5rem; }
+    .prayer-container::after  { bottom: 1.5rem; right: 1.5rem; }
+
+    .prayer-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .prayer-text {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.15rem;
+      line-height: 2;
+      color: var(--white-warm);
+      font-style: italic;
+    }
+
+    .prayer-strong {
+      font-style: normal;
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+
+    /* ═══════════════════════════════════════════════
+       SECCIÓN — SANTOS Y PAPAS
+    ═══════════════════════════════════════════════ */
+    .section-saints {
+      padding: 5rem 2rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .saints-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .saint-card {
+      background: linear-gradient(145deg, rgba(13,35,72,0.5), rgba(10,22,40,0.7));
+      border: 1px solid rgba(200,150,12,0.12);
+      border-radius: 4px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      text-decoration: none;
+      color: var(--white-warm);
+      transition: all 0.3s ease;
+    }
+
+    .saint-card:hover {
+      border-color: rgba(200,150,12,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      background: linear-gradient(145deg, rgba(26,58,110,0.5), rgba(10,22,40,0.8));
+    }
+
+    .saint-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .saint-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      margin-bottom: 0.4rem;
+    }
+
+    .saint-role {
+      font-size: 0.8rem;
+      color: rgba(250,247,240,0.5);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════
+       SECCIÓN — CONTADOR DE TIEMPO
+    ═══════════════════════════════════════════════ */
+    .section-hora {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .hora-box {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(145deg, rgba(139,26,26,0.3), rgba(10,22,40,0.6));
+      border: 1px solid rgba(200,150,12,0.3);
+      border-radius: 6px;
+      padding: 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hora-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(139,26,26,0.15), transparent);
+    }
+
+    .hora-time {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--gold-light);
+      filter: drop-shadow(0 0 20px rgba(200,150,12,0.5));
+      letter-spacing: 0.1em;
+    }
+
+    .hora-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 0.8rem;
+    }
+
+    .hora-subtitle {
+      font-family: 'EB Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: rgba(250,247,240,0.6);
+      margin-top: 0.5rem;
+    }
+
+    /* ═══════════════════════════════════════════════
+       SECCIÓN — NOVENA / CORONILLA
+    ═══════════════════════════════════════════════ */
+    .section-devotion {
+      padding: 5rem 2rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    .devotion-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .devotion-card {
+      background: linear-gradient(145deg, rgba(26,58,110,0.35), rgba(10,22,40,0.6));
+      border: 1px solid rgba(200,150,12,0.2);
+      border-radius: 4px;
+      padding: 3rem 2.5rem;
+      text-decoration: none;
+      color: var(--white-warm);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .devotion-card:hover {
+      border-color: rgba(200,150,12,0.5);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .devotion-number {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 5rem;
+      color: rgba(200,150,12,0.1);
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      line-height: 1;
+      transition: all 0.4s;
+    }
+
+    .devotion-card:hover .devotion-number {
+      color: rgba(200,150,12,0.2);
+      transform: scale(1.1);
+    }
+
+    .devotion-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .devotion-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.4rem;
+      color: var(--white-warm);
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .devotion-text {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: rgba(250,247,240,0.65);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ═══════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════ */
+    footer {
+      background: rgba(5,10,20,0.9);
+      border-top: 1px solid rgba(200,150,12,0.2);
+      padding: 4rem 2rem 2rem;
+      text-align: center;
+    }
+
+    .footer-cross {
+      font-size: 3rem;
+      color: var(--gold);
+      filter: drop-shadow(0 0 20px rgba(200,150,12,0.4));
+      margin-bottom: 1.5rem;
+      display: block;
+      animation: goldPulse 4s ease-in-out infinite;
+    }
+
+    .footer-motto {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.2rem;
+      color: var(--gold-light);
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .footer-links a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: rgba(250,247,240,0.5);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-bottom {
+      font-size: 0.8rem;
+      color: rgba(250,247,240,0.3);
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(200,150,12,0.1);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════
+       ANIMACIONES DE ENTRADA
+    ═══════════════════════════════════════════════ */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ═══════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      header { padding: 1rem 1.5rem; }
+      nav { display: none; }
+      nav.open { display: flex; flex-direction: column; position: fixed; top: 70px; inset-inline: 0; background: rgba(10,22,40,0.98); padding: 1.5rem; border-bottom: 1px solid rgba(200,150,12,0.3); }
+      .hamburger { display: flex; }
+      .devotion-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .prayer-container { padding: 2.5rem 1.5rem; }
+      .hora-box { padding: 2rem 2.5rem; }
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════════════════════════
+       BARRA DE PROGRESO CORONILLA
+    ═══════════════════════════════════════════════ */
+    .prayer-progress {
+      height: 2px;
+      background: rgba(200,150,12,0.2);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 200;
+      transition: width 0.1s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de progreso de scroll -->
+  <div class="prayer-progress" id="scrollProgress"></div>
+
+  <!-- ─── FONDO ANIMADO ─────────────────────────── -->
+  <div class="divine-bg" aria-hidden="true">
+    <div class="stars"></div>
+    <!-- Rayos rojos y blancos (Divina Misericordia) -->
+    <div class="ray ray-red"  style="animation-delay:0s"></div>
+    <div class="ray ray-white" style="animation-delay:0.4s"></div>
+    <div class="ray ray-red"  style="animation-delay:0.8s; transform:translateX(-50%) rotate(-15deg)"></div>
+    <div class="ray ray-white" style="animation-delay:1.2s; transform:translateX(-50%) rotate(15deg)"></div>
+    <div class="ray ray-red"  style="animation-delay:1.6s; transform:translateX(-50%) rotate(-25deg)"></div>
+    <div class="ray ray-white" style="animation-delay:2s; transform:translateX(-50%) rotate(25deg)"></div>
+    <div class="ray ray-red"  style="animation-delay:2.4s; transform:translateX(-50%) rotate(-8deg)"></div>
+    <div class="ray ray-white" style="animation-delay:2.8s; transform:translateX(-50%) rotate(8deg)"></div>
+    <div class="ray ray-red"  style="animation-delay:3.2s; transform:translateX(-50%) rotate(-35deg)"></div>
+    <div class="ray ray-white" style="animation-delay:3.6s; transform:translateX(-50%) rotate(35deg)"></div>
+  </div>
+
+  <!-- ─── CONTENIDO ────────────────────────────── -->
+  <div class="content">
+
+    <!-- HEADER -->
+    <header id="mainHeader">
+      <a href="index.html" class="logo">Divina<span> Misericordia</span></a>
+      <nav id="mainNav">
+        <a href="coronilla.html">Coronilla</a>
+        <a href="novena.html">Novena</a>
+        <a href="oraciones.html">Oraciones</a>
+        <a href="lecturas-recomendadas.html">Lecturas</a>
+        <a href="santa-faustina.html">Sta. Faustina</a>
+        <a href="galeria.html">Galería</a>
+        <a href="hora-de-la-misericordia.html" class="nav-cta">Hora de la Misericordia</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menú" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-halo" aria-hidden="true"></div>
+
+      <div class="hero-badge">✦ Portal de la Divina Misericordia ✦</div>
+
+      <h1 class="hero-title">
+        <span class="line1">Divina Misericordia</span>
+        <span class="line2">Jesús, en Ti confío</span>
+      </h1>
+
+      <blockquote class="hero-verse">
+        "Que la humanidad entera conozca Tu insondable misericordia.
+        Es un signo para los últimos tiempos."
+        <cite>— Diario de Santa Faustina Kowalska, 848</cite>
+      </blockquote>
+
+      <div class="hero-cta-group">
+        <a href="coronilla.html" class="btn-primary">✝ Rezar la Coronilla</a>
+        <a href="introduccion.html" class="btn-outline">Conocer más →</a>
+      </div>
+
+      <div class="scroll-indicator" aria-hidden="true">Descubre</div>
+    </section>
+
+    <!-- LEMA -->
+    <section class="section-lema reveal">
+      <div class="divine-separator"><span class="cross">✦</span></div>
+      <p class="lema-quote">"Jesús, en Ti confío"</p>
+      <div class="divine-separator"><span class="cross">✦</span></div>
+    </section>
+
+    <!-- HORA DE LA MISERICORDIA -->
+    <section class="section-hora reveal">
+      <div class="hora-box">
+        <div class="hora-time" id="clock">15:00</div>
+        <div class="hora-label">La Hora Presente</div>
+        <p class="hora-subtitle">"La hora de la misericordia — reza la coronilla ahora"</p>
+        <br>
+        <a href="hora-de-la-misericordia.html" class="btn-primary" style="font-size:0.75rem;padding:0.7rem 1.8rem;">
+          ✦ Ver la Hora de la Misericordia
+        </a>
+      </div>
+    </section>
+
+    <!-- NAVEGACIÓN PRINCIPAL — CARDS -->
+    <section class="section-nav">
+      <p class="section-title reveal">Caminos de Gracia</p>
+      <h2 class="section-heading reveal">Explora el Portal Sagrado</h2>
+
+      <div class="cards-grid">
+        <a href="coronilla.html" class="card reveal">
+          <span class="card-icon">📿</span>
+          <h3 class="card-title">Coronilla de la Divina Misericordia</h3>
+          <p class="card-text">La oración revelada a Santa Faustina. Reza con nosotros esta poderosa cadena de misericordia que desciende sobre el mundo.</p>
+          <span class="card-arrow">Rezar ahora →</span>
+        </a>
+
+        <a href="novena.html" class="card reveal">
+          <span class="card-icon">🕯️</span>
+          <h3 class="card-title">Novena de la Divina Misericordia</h3>
+          <p class="card-text">Nueve días de oración íntima con el Señor Jesús. Cada día ofrece una intención especial para el mundo.</p>
+          <span class="card-arrow">Comenzar →</span>
+        </a>
+
+        <a href="santa-faustina.html" class="card reveal">
+          <span class="card-icon">✨</span>
+          <h3 class="card-title">Santa Faustina Kowalska</h3>
+          <p class="card-text">Secretaria de la Divina Misericordia. Su vida, su diario, sus visiones y el mensaje que transformó la espiritualidad del siglo XX.</p>
+          <span class="card-arrow">Conocer su historia →</span>
+        </a>
+
+        <a href="oraciones.html" class="card reveal">
+          <span class="card-icon">🙏</span>
+          <h3 class="card-title">Oraciones de la Misericordia</h3>
+          <p class="card-text">Colección completa de oraciones, jaculatorias y plegarias a la Divina Misericordia para cada momento del día.</p>
+          <span class="card-arrow">Rezar →</span>
+        </a>
+
+        <a href="lecturas-recomendadas.html" class="card reveal">
+          <span class="card-icon">📖</span>
+          <h3 class="card-title">Lecturas Recomendadas</h3>
+          <p class="card-text">Textos del Diario de Santa Faustina, documentos pontificios y libros espirituales para profundizar tu fe.</p>
+          <span class="card-arrow">Leer →</span>
+        </a>
+
+        <a href="via-crucis.html" class="card reveal">
+          <span class="card-icon">✝</span>
+          <h3 class="card-title">Vía Crucis</h3>
+          <p class="card-text">Recorre el camino de la Cruz junto a Jesús. Meditaciones profundas sobre cada estación del Via Crucis.</p>
+          <span class="card-arrow">Caminar →</span>
+        </a>
+
+        <a href="obras-de-misericordia.html" class="card reveal">
+          <span class="card-icon">❤️</span>
+          <h3 class="card-title">Obras de Misericordia</h3>
+          <p class="card-text">Las catorce obras corporales y espirituales. Cómo vivir la misericordia en lo cotidiano y transformar el mundo.</p>
+          <span class="card-arrow">Descubrir →</span>
+        </a>
+
+        <a href="espacio-jovenes.html" class="card reveal">
+          <span class="card-icon">🌟</span>
+          <h3 class="card-title">Espacio Jóvenes</h3>
+          <p class="card-text">Fe viva para las nuevas generaciones. Testimonios, reflexiones y recursos para jóvenes que quieren encontrar a Dios.</p>
+          <span class="card-arrow">Explorar →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ORACIÓN DESTACADA -->
+    <section class="section-prayer reveal">
+      <div class="prayer-container">
+        <p class="prayer-label">✦ Coronilla de la Divina Misericordia ✦</p>
+        <p class="prayer-text">
+          <span class="prayer-strong">Padre Eterno,</span> te ofrezco el Cuerpo, la Sangre, el Alma y la Divinidad<br>
+          de Tu amadísimo Hijo, Nuestro Señor Jesucristo,<br>
+          en expiación de nuestros pecados y los del mundo entero.<br><br>
+          <span class="prayer-strong">Por Su dolorosa Pasión,</span><br>
+          ten misericordia de nosotros y del mundo entero.
+        </p>
+      </div>
+    </section>
+
+    <!-- SANTOS Y PAPAS -->
+    <section class="section-saints">
+      <p class="section-title reveal">Intercesores Celestiales</p>
+      <h2 class="section-heading reveal">Santos y Pontífices de la Misericordia</h2>
+
+      <div class="saints-grid">
+        <a href="santa-faustina.html" class="saint-card reveal">
+          <span class="saint-icon">🌹</span>
+          <p class="saint-name">Santa Faustina Kowalska</p>
+          <p class="saint-role">Apóstol de la Misericordia</p>
+        </a>
+        <a href="ss-juan-pablo-ii.html" class="saint-card reveal">
+          <span class="saint-icon">🕊️</span>
+          <p class="saint-name">San Juan Pablo II</p>
+          <p class="saint-role">Papa de la Misericordia</p>
+        </a>
+        <a href="ss-benedicto-xvi.html" class="saint-card reveal">
+          <span class="saint-icon">✝</span>
+          <p class="saint-name">Benedicto XVI</p>
+          <p class="saint-role">Pontífice Emérito</p>
+        </a>
+        <a href="ss-francisco.html" class="saint-card reveal">
+          <span class="saint-icon">🌿</span>
+          <p class="saint-name">Papa Francisco</p>
+          <p class="saint-role">El Papa de los Pobres</p>
+        </a>
+        <a href="ss-leon-xiv.html" class="saint-card reveal">
+          <span class="saint-icon">⚜️</span>
+          <p class="saint-name">Papa León XIV</p>
+          <p class="saint-role">Pontífice</p>
+        </a>
+        <a href="maria.html" class="saint-card reveal">
+          <span class="saint-icon">💙</span>
+          <p class="saint-name">Virgen María</p>
+          <p class="saint-role">Madre de la Misericordia</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- DEVOCIÓN DESTACADA -->
+    <section class="section-devotion">
+      <div class="devotion-grid reveal">
+        <a href="novena.html" class="devotion-card">
+          <span class="devotion-number">9</span>
+          <p class="devotion-tag">✦ Devoción</p>
+          <h3 class="devotion-title">Novena de la Divina Misericordia</h3>
+          <p class="devotion-text">Nueve días antes de la Fiesta de la Misericordia, el propio Jesús pidió a Santa Faustina rezar esta novena. Comienza hoy.</p>
+          <span class="card-arrow">Comenzar la Novena →</span>
+        </a>
+
+        <a href="consagracion.html" class="devotion-card">
+          <span class="devotion-number">✦</span>
+          <p class="devotion-tag">✦ Consagración</p>
+          <h3 class="devotion-title">Consagración a la Divina Misericordia</h3>
+          <p class="devotion-text">Entrégate totalmente a la Divina Misericordia. Una consagración que transforma el corazón y lo abre a la gracia infinita de Dios.</p>
+          <span class="card-arrow">Consagrarme →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- DIVIDER FINAL -->
+    <div class="divine-separator reveal" style="max-width:600px;margin:0 auto 4rem;">
+      <span class="cross">✦</span>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <span class="footer-cross">✝</span>
+      <p class="footer-motto">Jesús, en Ti confío</p>
+      <p style="font-size:0.85rem;color:rgba(250,247,240,0.4);margin-top:0.5rem;font-style:italic;">
+        "La misericordia de Dios es mayor que cualquier pecado del mundo"
+      </p>
+
+      <div class="footer-links">
+        <a href="index.html">Inicio</a>
+        <a href="introduccion.html">Introducción</a>
+        <a href="coronilla.html">Coronilla</a>
+        <a href="novena.html">Novena</a>
+        <a href="oraciones.html">Oraciones</a>
+        <a href="via-crucis.html">Vía Crucis</a>
+        <a href="lecturas-recomendadas.html">Lecturas</a>
+        <a href="obras-de-misericordia.html">Obras</a>
+        <a href="santa-faustina.html">Santa Faustina</a>
+        <a href="testimonios.html">Testimonios</a>
+        <a href="galeria.html">Galería</a>
+        <a href="lugares-de-culto.html">Lugares</a>
+        <a href="espacio-jovenes.html">Jóvenes</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="quienes-somos.html">Quiénes somos</a>
+      </div>
+
+      <p class="footer-bottom">
+        © 2026 — Portal de la Divina Misericordia<br>
+        Hecho con fe y código, para la gloria de Dios
+      </p>
+    </footer>
+
+  </div><!-- /content -->
+
+  <!-- ─── JAVASCRIPT ────────────────────────────── -->
+  <script>
+    // ── Barra de progreso de scroll ──────────────
+    const scrollBar = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      scrollBar.style.width = pct + '%';
+      scrollBar.style.background = `linear-gradient(to right, #c8960c, #f0c040 ${pct}%, transparent)`;
+    });
+
+    // ── Header sticky ────────────────────────────
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    // ── Reloj en tiempo real ──────────────────────
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      const clockEl = document.getElementById('clock');
+      if (clockEl) clockEl.textContent = `${h}:${m}:${s}`;
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // ── Animaciones de entrada (Intersection Observer) ──
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // ── Menú hamburger ───────────────────────────
+    function toggleMenu() {
+      const nav = document.getElementById('mainNav');
+      const btn = document.getElementById('hamburger');
+      nav.classList.toggle('open');
+      btn.classList.toggle('open');
+    }
+
+    // ── Cerrar menú al hacer click en enlace ─────
+    document.querySelectorAll('#mainNav a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.getElementById('mainNav').classList.remove('open');
+      });
+    });
+
+    // ── Efecto de partículas doradas al hacer click ──
+    document.addEventListener('click', (e) => {
+      for (let i = 0; i < 6; i++) {
+        const spark = document.createElement('div');
+        spark.style.cssText = `
+          position: fixed; pointer-events: none; z-index: 9999;
+          left: ${e.clientX}px; top: ${e.clientY}px;
+          width: 4px; height: 4px; border-radius: 50%;
+          background: #f0c040; box-shadow: 0 0 6px #f0c040;
+          animation: spark 0.6s ease-out forwards;
+          transform-origin: center;
+        `;
+        document.body.appendChild(spark);
+        const angle = (i / 6) * Math.PI * 2;
+        const dist = 30 + Math.random() * 30;
+        spark.animate([
+          { transform: 'translate(-50%,-50%) scale(1)', opacity: 1 },
+          { transform: `translate(calc(-50% + ${Math.cos(angle)*dist}px), calc(-50% + ${Math.sin(angle)*dist}px)) scale(0)`, opacity: 0 }
+        ], { duration: 600, easing: 'ease-out', fill: 'forwards' });
+        setTimeout(() => spark.remove(), 700);
+      }
+    });
+
+    // ── Destacar la Hora de la Misericordia (15:00) ──
+    function checkHourOfMercy() {
+      const now = new Date();
+      if (now.getHours() === 15 && now.getMinutes() === 0) {
+        document.querySelector('.hora-box').style.boxShadow = '0 0 60px rgba(200,150,12,0.8)';
+        document.querySelector('.hora-box').style.borderColor = 'var(--gold)';
+      }
+    }
+    setInterval(checkHourOfMercy, 30000);
+    checkHourOfMercy();
+  </script>
+
+</body>
+</html>

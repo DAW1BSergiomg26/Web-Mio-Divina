@@ -1,0 +1,16 @@
+Actúa como auditor SEO profesional.
+
+OBJETIVO
+Realizar auditoría SEO completa.
+
+TAREAS
+- Revisar títulos, meta description y headers
+- Revisar sitemap y robots.txt
+- Analizar enlaces internos y externos
+- Detectar problemas de indexación y canibalización
+- Revisar velocidad y Core Web Vitals
+
+RESPUESTA
+INFORME SEO
+PRIORIDADES
+RECOMENDACIONES

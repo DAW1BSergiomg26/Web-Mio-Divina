@@ -1,0 +1,15 @@
+Actúa como especialista SEO on-page.
+
+OBJETIVO
+Generar estrategia de enlaces internos.
+
+TAREAS
+- Revisar todas las páginas
+- Sugerir enlaces internos relevantes
+- Optimizar anchor text
+- Mantener jerarquía lógica del sitio
+
+RESPUESTA
+LISTA DE ENLACES INTERNOS
+ARCHIVOS MODIFICADOS
+SUGERENCIAS FUTURAS

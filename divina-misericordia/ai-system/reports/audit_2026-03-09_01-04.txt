@@ -1,0 +1,172 @@
+[0m
+> build · big-pickle
+[0m
+[0m✱ [0mGlob "public/**/*"[90m 38 matches[0m
+[0m→ [0mRead public/index.html
+[0m→ [0mRead public/css/styles.css
+[0m→ [0mRead public/js/main.js
+[0m→ [0mRead public/contacto.html
+[0m→ [0mRead public/quienes-somos.html
+[0m→ [0mRead public/robots.txt
+[0m→ [0mRead public/sitemap.xml
+[0m✱ [0mGrep "href="https?://"[90m 132 matches[0m
+[0m✱ [0mGrep "class=\""[90m 1403 matches[0m
+[0m✱ [0mGrep "^\.[a-z]"[90m 63 matches[0m
+[0m✱ [0mGrep "console\.log"[90m 2 matches[0m
+[0m✱ [0mGrep "<form"[90m 25 matches[0m
+[0m✱ [0mGrep "loading="[90m 29 matches[0m
+[0m✱ [0mGrep "target=\"_blank\""[90m 28 matches[0m
+[0m✱ [0mGrep "localhost:3001"[90m 149 matches[0m
+[0m✱ [0mGrep "<!--.*-->"[90m 205 matches[0m
+# AUDITORÍA WEB COMPLETA - Asociación Apóstoles de la Divina Misericordia
+
+---
+
+## 1. HTML - ESTRUCTURA Y ACCESIBILIDAD
+
+### PROBLEMAS ENCONTRADOS:
+
+| Archivo | Severidad | Problema | Solución |
+|---------|-----------|---------|----------|
+| **Todos los HTML** | CRÍTICO | URLs canonicales usan `https://tu-dominio.com/` (placeholder) | Reemplazar con dominio real: `https://devocioncardiaca.es/` |
+| **Todos los HTML** | CRÍTICO | Meta OG URLs usan `http://localhost:3001/` (desarrollo) | Cambiar a `https://devocioncardiaca.es/` |
+| **Todos los HTML** | CRÍTICO | Schema.org URLs usan localhost | Cambiar a dominio real |
+| **contacto.html:97** | IMPORTANTE | Formulario sin `action` funcional (usa `action="/"`) | Implementar procesamiento real o usar servicio |
+| **index.html:261** | IMPORTANTE | Formulario búsqueda sin validación | Añadir `required` al input |
+
+**Código a corregir (ejemplo - todos los HTML):**
+```html
+<!-- Cambiar en TODOS los HTML -->
+<link rel="canonical" href="https://devocioncardiaca.es/">
+<meta property="og:url" content="https://devocioncardiaca.es/">
+```
+
+---
+
+## 2. CSS - ERRORES Y PERFORMANCE
+
+### PROBLEMAS ENCONTRADOS:
+
+| Archivo | Severidad | Problema | Solución |
+|---------|-----------|---------|----------|
+| **styles.css:166** | MENOR | `.titulo-principal` no se usa en HTML | Eliminar clase o usar |
+| **styles.css:13** | MENOR | Comentario con encoding (`b�sico`) | Corregir a "básico" |
+| **styles.css:68** | MENOR | Comentario encoding (`men�`) | Corregir a "menú" |
+| **styles.css:165** | MENOR | Comentario encoding (`T�tulo`) | Corregir a "Título" |
+| **styles.css:379** | MENOR | Comentario encoding (`m�s`) | Corregir a "más" |
+| **styles.css:467** | MENOR | Comentario encoding (`men� lateral`) | Corregir |
+| **styles.css:685** | MENOR | `box-shadow` con muchos valores puede afectar render | Considerar simplificar |
+| **styles.css:71** | MENOR | `#menu-wplook-main-menu` no existe | Eliminar selector |
+
+**Clases CSS sin usar detectadas:**
+- `.titulo-principal`
+- `.drop-shadow`  
+- `.lifted`
+- `.post-inner-oscuro` (no coincide con `.panel-interior-oscuro`)
+- `.post-1`
+- `.post-header`
+- `#menu-wplook-main-menu`
+
+---
+
+## 3. JAVASCRIPT - ERRORES Y CÓDIGO INUTILIZADO
+
+### PROBLEMAS ENCONTRADOS:
+
+| Archivo | Severidad | Problema | Solución |
+|---------|-----------|---------|----------|
+| **main.js** | MENOR | No hay console.log olvidados en cliente | OK |
+| **main.js:133** | MENOR | `btnTop` referenced but element no existe en HTML | Verificar si se usa |
+| **main.min.js** | IMPORTANTE | Versión minificada no actualizada | Regenerar desde main.js |
+
+**Funciones definidas pero no usadas:**
+- Ninguna crítica encontrada - código bien estructurado
+
+---
+
+## 4. SEO TÉCNICO
+
+### PROBLEMAS ENCONTRADOS:
+
+| Archivo | Severidad | Problema | Solución |
+|---------|-----------|---------|----------|
+| **robots.txt** | CRÍTICO | Usa `tu-dominio.com` placeholder | Cambiar a `devocioncardiaca.es` |
+| **sitemap.xml** | CRÍTICO | URLs con `tu-dominio.com` y falta `introduccion.html` | Actualizar dominio y añadir página |
+| **Todos los HTML** | IMPORTANTE | `generator` meta usa "Sitio web personal" | Cambiar a herramienta real si aplica |
+| **index.html** | IMPORTANTE | Schema SearchAction apunta a `/buscar` (no existe) | Crear página o eliminar |
+
+**Correcciones SEO:**
+```xml
+<!-- sitemap.xml - actualizar a: -->
+<url>
+  <loc>https://devocioncardiaca.es/</loc>
+  <lastmod>2026-03-09</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>1.0</priority>
+</url>
+```
+
+---
+
+## 5. PERFORMANCE
+
+### PROBLEMAS ENCONTRADOS:
+
+| Archivo | Severidad | Problema | Solución |
+|---------|-----------|---------|----------|
+| **Todos los HTML** | IMPORTANTE | Google Fonts cargan de forma bloqueante | Añadir `media="print" onload="this.media='screen'"` |
+| **index.html:183** | IMPORTANTE | Logo con `loading="eager"` en todas las páginas | Usar `loading="lazy"` excepto above-the-fold |
+| **CSS en línea** | MENOR | Estilos `<style>` repetidos en index.html y quienes-somos.html | Mover a CSS externo |
+| **img/logo_divina_misericordia.jpg** | IMPORTANTE | Imagen no optimizada (formato, tamaño) | Convertir a WebP, comprimir |
+
+**Optimización de fuentes:**
+```html
+<!-- Cambiar de: -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200;400&display=swap">
+
+<!-- A: -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200;400&display=swap" rel="stylesheet">
+```
+
+---
+
+## 6. SEGURIDAD
+
+### PROBLEMAS ENCONTRADOS:
+
+| Archivo | Severidad | Problema | Solución |
+|---------|-----------|---------|----------|
+| **Todos los HTML** | CRÍTICO | Todos los enlaces externos tienen `rel="noopener"` | **CORRECTO** ✅ |
+| **Formularios** | IMPORTANTE | Sin protección CSRF | Añadir token si se implementa backend |
+| **http:// enlaces** | IMPORTANTE | Algunos enlaces usan HTTP (no seguros) | Cambiar a HTTPS |
+
+---
+
+## RESUMEN EJECUTIVO
+
+### PUNTUACIÓN: **58/100**
+
+| Categoría | Puntuación | Estado |
+|-----------|-------------|--------|
+| HTML/Accesibilidad | 55/100 | ⚠️ Mejorable |
+| CSS | 75/100 | ✅ Aceptable |
+| JavaScript | 85/100 | ✅ Bueno |
+| SEO Técnico | 40/100 | ❌ Crítico |
+| Performance | 55/100 | ⚠️ Mejorable |
+| Seguridad | 80/100 | ✅ Bueno |
+
+### ACCIONES PRIORITARIAS (CRÍTICAS):
+
+1. **Reemplazar placeholders** - Cambiar `tu-dominio.com` y `localhost:3001` por dominio real
+2. **Actualizar sitemap.xml** - Corregir URLs y añadir páginas faltantes
+3. **Optimizar imágenes** - Convertir logo a WebP
+4. **Corregir formulario contacto** - Implementar destino real o eliminar
+
+### FORTALEZAS:
+- ✅ Accesibilidad bien implementada (skip-link, ARIA, roles semánticos)
+- ✅ Enlaces externos seguros (rel="noopener")
+- ✅ Responsive design completo
+- ✅ Código JavaScript limpio sin errores
+- ✅ Schema.org bien implementado

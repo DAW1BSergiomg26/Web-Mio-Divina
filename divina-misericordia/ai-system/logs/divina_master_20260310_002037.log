@@ -1,0 +1,46 @@
+[00:20:41] 🔷 Ejecutando transformar_web.py...
+
+═════════════════════════════════════════════════════════════════
+  ✨ TRANSFORMADOR MAESTRO — DIVINA MISERICORDIA
+  📁 Carpeta: /mnt/c/Users/astur/Desktop/Web Mio Divina/divina-misericordia/public
+═════════════════════════════════════════════════════════════════
+
+  📋 Archivos encontrados: 25
+
+  💾 Backup en: /mnt/c/Users/astur/Desktop/Web Mio Divina/divina-misericordia/public/backups/backup_20260310_002041
+
+  ✅  *.html                                     (23.4 KB)
+  ✅  consagracion.html                          (23.7 KB)
+  ✅  contacto.html                              (23.4 KB)
+  ✅  coronilla.html                             (23.7 KB)
+  ✅  enlaces.html                               (23.6 KB)
+  ✅  espacio-jovenes.html                       (23.6 KB)
+  ✅  galeria.html                               (23.7 KB)
+  ✅  hora-de-la-misericordia.html               (24.3 KB)
+  ✅  introduccion.html                          (23.7 KB)
+  ✅  lecturas-recomendadas.html                 (23.7 KB)
+  ✅  los-rayos.html                             (23.7 KB)
+  ✅  lugares-de-culto.html                      (23.6 KB)
+  ✅  maria.html                                 (23.6 KB)
+  ✅  noticias.html                              (23.7 KB)
+  ✅  novena.html                                (23.8 KB)
+  ✅  obras-de-misericordia.html                 (23.6 KB)
+  ✅  oraciones.html                             (23.7 KB)
+  ✅  quienes-somos.html                         (23.8 KB)
+  ✅  santa-faustina.html                        (23.8 KB)
+  ✅  ss-benedicto-xvi.html                      (23.6 KB)
+  ✅  ss-francisco.html                          (23.8 KB)
+  ✅  ss-juan-pablo-ii.html                      (23.8 KB)
+  ✅  ss-leon-xiv.html                           (23.6 KB)
+  ✅  testimonios.html                           (23.6 KB)
+  ✅  via-crucis.html                            (23.9 KB)
+
+═════════════════════════════════════════════════════════════════
+  ✨ Transformadas: 25 páginas
+  💾 Backups en:   backups/
+
+  🌐 Abre index.html en tu navegador para ver el resultado.
+═════════════════════════════════════════════════════════════════
+
+[00:20:42] ✅ Transformación web completada
+[00:29:38] 🔷 Ejecutando: Pipeline Contenido

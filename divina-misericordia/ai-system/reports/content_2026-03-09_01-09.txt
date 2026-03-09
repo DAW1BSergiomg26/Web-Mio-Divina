@@ -1,0 +1,217 @@
+[0m
+> build · big-pickle
+[0m
+[0m✱ [0mGlob "public/**/*.html"[90m 25 matches[0m
+[0m✱ [0mGlob "public/**/*.css"[90m 2 matches[0m
+[0m→ [0mRead public/index.html
+[0m→ [0mRead public/quienes-somos.html
+[0m→ [0mRead public/contacto.html
+[0m→ [0mRead public/oraciones.html[90m [limit=80][0m
+[0m→ [0mRead public/novena.html[90m [limit=80][0m
+Basado en mi análisis del sitio, aquí tienes el informe SEO completo:
+
+---
+
+# 📊 ANÁLISIS SEO - ASOCIACIÓN APÓSTOLES DE LA DIVINA MISERICORDIA
+
+## 1. ANÁLISIS DE MARCA
+
+### Tono de Marca Actual
+- **Espiritual y devocional**: Lenguaje religioso tradicional
+- **Acogedor y contemplativo**: Énfasis en la belleza del Corazón de Jesús
+- **Tradicional**: Sin orientaciones claras de conversión/acción
+
+### Keywords Detectadas (Meta tags actuales)
+| Keyword Principal | Volumen Estimado | Dificultad |
+|-------------------|------------------|------------|
+| Divina Misericordia | Alto | Media |
+| Coronilla Divina Misericordia | Medio | Baja |
+| Hora de la Misericordia | Medio | Baja |
+| Santa Faustina | Alto | Media |
+| Oraciones Divina Misericordia | Medio | Baja |
+| Novena Divina Misericordia | Medio | Baja |
+| Corazón de Jesús | Alto | Alta |
+| Devoción católica | Medio | Media |
+
+### Gaps de Contenido Identificados
+- ❌ **Sin CTAs** en páginas principales
+- ❌ **Meta descriptions genéricas** (muchas < 120 caracteres)
+- ❌ **Contenido corto** (párrafos de 2-3 líneas)
+- ❌ **Sin artículos blog/SEO** (solo páginas estáticas)
+- ❌ **Sin contenido para millennials/Gen Z** (espacio jóvenes vacío)
+- ❌ **Sin schema de FAQ** ni Reviews
+- ❌ **Títulos H1 genéricos** ("Inicio", "Quiénes Somos")
+
+---
+
+## 2. ARTÍCULO SEO (+1,500 PALABRAS)
+
+### Título SEO
+```
+Cómo Rezar la Coronilla de la Divina Misericordia: Guía Completa para Transformar tu Vida Espiritual
+```
+
+### Meta Description (155 caracteres)
+```
+Aprende a rezar la Coronilla de la Divina Misericordia con nuestra guía paso a paso. Descubre cómo confiar en Jesús y transformar tu vida.
+```
+
+### Estructura H1-H2-H3
+
+```html
+<h1>Cómo Rezar la Coronilla de la Divina Misericordia: Guía Completa para Transformar tu Vida Espiritual</h1>
+
+<h2>¿Qué es la Coronilla de la Divina Misericordia?</h2>
+<h3>El origen de la devoción</h3>
+<h3>Pourquoi Jesús reveló la Coronilla</h3>
+
+<h2>Oración de la Coronilla: Texto Completo</h2>
+<h3>Los misterios de la Coronilla</h3>
+<h3>Cómo recitar el Padre Nuestro</h3>
+<h3>Las Avemarías de la Coronilla</h3>
+<h3>La plegaria final</h3>
+
+<h2>Cómo Rezar la Coronilla Paso a Paso</h2>
+<h3>Preparación espiritual antes de rezar</h3>
+<h3>El momento ideal: la Hora de la Misericordia</h3>
+<h3>Cuántas veces al día puedes rezar</h3>
+
+<h2>Beneficios de Rezar la Coronilla a Diario</h2>
+<h3>Protección contra el mal</h3>
+<h3>Gracia y perdón divino</h3>
+<h3>Transformación interior</h3>
+
+<h2>Novena de la Divina Misericordia: Complementa tu Devoción</h2>
+
+<h2>Testimonios de quienes rezan la Coronilla</h2>
+
+<h2>Conclusión: Jesús te Espera con los Brazos Abiertos</h2>
+```
+
+### Copy del Artículo
+
+#### H1 Principal
+> **Cómo Rezar la Coronilla de la Divina Misericordia: Guía Completa para Transformar tu Vida Espiritual**
+
+#### H2: ¿Qué es la Coronilla?
+> La Coronilla de la Divina Misericordia es una de las devociones más poderosas del catholicismo moderno. Jesús reveló personalmente esta oración a Santa Faustina Kowalska en el siglo XX,pidiéndole que la difundiera por todo el mundo. "No hay alma que deba temer acercarse a Mí", prometió el Señor. Cuando recitas esta oración con fe, te conectas directamente con el Corazón Misericordioso de Jesús.
+
+#### H2: Oración Completa
+> **"Jesús, en Ti confío"**. Esta简短 frase contiene todo el poder de la Divina Misericordia. La Coronilla utiliza un rosario específico con cuentas grandes y pequeñas, alternando Padres Nuestro y Avemarías, culminando en una plegaria que honra los méritos infinitos de Cristo.
+
+#### CTA (Call to Action)
+> 🔥 **¿Sientes que necesitas más paz en tu vida?** [Únete a nuestra comunidad de oración →](/contacto) Recibe orientación personalizada y acompañamiento espiritual.
+
+> 💬 **¿Ya rezas la Coronilla?** [Comparte tu testimonio →](/testimonios) Inspira a otros con tu experiencia de fe.
+
+---
+
+## 3. PLAN DE 4 SEMANAS
+
+### Semana 1: Fundamentos SEO
+| Día | Título del Artículo | Keyword Principal | Tipo |
+|-----|---------------------|-------------------|------|
+| Lun | Qué es la Divina Misericordia: significado completo |Divina Misericordia significado | Evergreen |
+| Mar | Santa Faustina: la apóstol de la Misericordia | Santa Faustina | Persona |
+| Mié | La Hora de la Misericordia: el momento sagrado | Hora de la Misericordia | Guía |
+| Jue | 7 promesas de Jesús sobre la Divina Misericordia | promesas Divina Misericordia | Listicle |
+| Vie | **Publicar artículo Coronilla** | Coronilla Divina Misericordia | Pillar |
+
+### Semana 2: Profundización
+| Día | Título del Artículo | Keyword Principal | Tipo |
+|-----|---------------------|-------------------|------|
+| Lun | Novena de 9 días: cómo hacerla correctamente | Novena Divina Misericordia | Guía |
+| Mar | Diferencias entre Rosario y Coronilla | Rosario vs Coronilla | Comparativo |
+| Mié | Imágenes de la Divina Misericordia: significado | imagen Divina Misericordia | Visual |
+| Jue | El mensaje de Lyskow (María)' | María Divina Misericordia | Espiritual |
+| Vie | Obras de Misericordia corporales y espirituales | Obras de Misericordia | Educativo |
+
+### Semana 3: Comunidad y Actualidad
+| Día | Título del Artículo | Keyword Principal | Tipo |
+|-----|---------------------|-------------------|------|
+| Lun | Via Crucis: meditación semanal | Via Crucis | Guía |
+| Mar | Consagración a la Divina Misericordia | Consagración Divina Misericordia | Ritual |
+| Mié | test) | Testimonios Divina Misericordia | UGC |
+| Jue | Oraciones poderosas de la mañana | oraciones mañana | Práctico |
+| Vie | **Publicar artículo sobre jóvenes** | jóvenes católicos | Atractivo |
+
+### Semana 4: Conversión y Captación
+| Día | Título del Artículo | Keyword Principal | Tipo |
+|-----|---------------------|-------------------|------|
+| Lun | Cómo crecer espiritualmente hoy | crecimiento espiritual | Motivacional |
+| Mar | Por qué confiar en Jesús en tiempos difíciles | confiar en Jesús | Emocional |
+| Mié | Lugares de culto en España | lugares culto España | Local |
+| Jue | 5 minutos diarios cambian tu vida | oración diaria | Microcompromiso |
+| Vie | **Landing page: Únete a la comunidad** | comunidad Divina Misericordia | Conversión |
+
+---
+
+## 4. MEJORAS DE COPY - REESCRITURA PARA CONVERSIÓN
+
+### 📝 Página: QUIÉNES SOMOS
+
+**ANTES:**
+> "Somos una comunidad de fieles unidos por la devoción al Corazón de Jesús y su infinita Misericordia."
+
+**DESPUÉS:**
+> **¿Buscas una comunidad donde真实 encontrar a Jesús?**
+> 
+> En la **Asociación Apóstoles de la Divina Misericordia** no solo rezamos: vivims la esperanza cada día. Somos una familia espiritual dónde miles de personas han descubierto que **Jesús, en Ti confío** puede transformar cualquier situación.
+> 
+> 🎯 **我们的使命**: Que cada persona que visita nuestro sitio sienta el abrazo misericordioso de Dios.
+> 
+> **[Quiero conocer la comunidad →](/contacto)**
+
+---
+
+### 📝 Página: CONTACTO
+
+**ANTES:**
+> "¿Tienes preguntas sobre la Devoción a la Divina Misericordia? ¿Deseas participar en nuestras actividades?"
+> 
+> "Contáctanos para recibir información sobre eventos, reuniones y formas de participar en nuestra comunidad."
+
+**DESPUÉS:**
+> **¿Jesús está llamando a tu puerta?**
+> 
+> No importa dónde estés en tu camino de fe. Si sientes curiosidad por la Divina Misericordia o simplemente necesitas alguien que escuche, **aquí estamos para ti**.
+> 
+> ✅ **Recibe nuestro devocionario gratis** al dejarnos tu email  
+> ✅ **Invitación a grupos de oración** (presencial y online)  
+> ✅ **Acompañamiento espiritual** para quienes lo necesitan
+> 
+> 📧 **Escríbenos ahora** → [contacto@asociacionmisericordia.es](mailto:contacto@asociacionmisericordia.es)
+> 
+> *"Jesús te espera con los brazos abiertos. ¿Le darás la oportunidad?"*
+
+---
+
+### 📝 Página: INICIO (Hero Section)
+
+**ANTES:**
+> "Esta página es un pequeño homenaje a la Divina Misericordia: una invitación a mirar el Corazón de Jesús tal como se reveló, abierto, luminoso y derramando sobre el mundo agua y sangre."
+
+**DESPUÉS:**
+> **¿Sientes que necesitas paz?**
+> 
+> Del Corazón abierto de Jesús brotan rayos de luz, agua y sangre que alcanzan a **ti ahora mismo**. No importa qué hayas hecho o dejado de hacer — la Misericordia de Dios es más grande.
+> 
+> ✨ **Jesús dice**: "Deseo que veneres mi Corazón misericordioso"
+> 
+> **[Reza la Coronilla ahora →](/coronilla.html)** | **[Quiero saber más →](/quienes-somos.html)**
+
+---
+
+## RESUMEN DE ACCIONES PRIORITARIAS
+
+| Prioridad | Acción | Impacto SEO |
+|-----------|--------|-------------|
+| 🔴 Alta | Crear artículo "Coronilla" 1500+ palabras | Contenido pilar |
+| 🔴 Alta | Añadir CTAs en todas las páginas | Conversión |
+| 🟡 Media | Expandir meta descriptions a 150+ caracteres | CTR Google |
+| 🟡 Media | Crear schema FAQ en páginas clave | Rich snippets |
+| 🟢 Baja | Añadir Schema Organization completo | Visibilidad |
+
+---
+
+¿Quieres que genere el artículo SEO completo de la Coronilla o que actualice alguna de las páginas con los nuevos copies?

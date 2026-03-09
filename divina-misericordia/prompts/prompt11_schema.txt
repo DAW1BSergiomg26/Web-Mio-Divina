@@ -1,0 +1,18 @@
+Actúa como especialista SEO técnico.
+
+OBJETIVO
+Generar datos estructurados Schema.org para todas las páginas.
+
+TAREAS
+- Analizar contenido de cada página
+- Crear JSON-LD para:
+  - Organization
+  - WebSite
+  - BreadcrumbList
+  - Article/BlogPost donde aplique
+- Validar sintaxis para Google Search Console
+
+RESPUESTA
+ARCHIVOS MODIFICADOS
+JSON-LD GENERADOS
+PROBLEMAS DETECTADOS
