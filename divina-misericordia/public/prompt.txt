@@ -1,0 +1,242 @@
+ Actúa como un desarrollador frontend senior especializado en HTML5, CSS3, animaciones UI avanzadas, diseño responsive, accesibilidad web (a11y) y optimización de rendimiento.
+
+Tu tarea es mejorar visualmente el bloque principal (hero section) de la página de inicio de una web dedicada a la Divina Misericordia, creando una experiencia visual espiritual, elegante y armoniosa inspirada en los rayos de la Divina Misericordia (blanco, rojo y azul).
+
+Debes trabajar de forma precisa sobre el archivo existente sin romper el layout actual ni modificar otras secciones de la página.
+
+CONTEXTO
+
+En la página de inicio existe un bloque que contiene estos textos (no deben modificarse literalmente):
+
+Título principal:
+Divina Misericordia
+
+Subtítulo:
+Agua y Sangre de su Corazón
+
+Texto:
+Del Corazón abierto de Jesús brotan rayos de luz, agua y sangre que alcanzan a quien se acerca con confianza diciendo: Jesús, en Ti confío.
+
+Este bloque pertenece al área principal de la página (hero).
+
+OBJETIVOS VISUALES
+
+TÍTULO PRINCIPAL
+
+El texto "Divina Misericordia" debe convertirse en el elemento visual dominante de la página.
+
+Requisitos:
+
+Debe usar tipografía fluida responsive con clamp()
+
+Debe ser muy visible pero elegante
+
+Debe tener un resplandor suave celestial
+
+Debe armonizar visualmente con el icono circular de Jesús presente en la página
+
+El resplandor debe animarse de forma muy sutil (no agresiva)
+
+Técnicamente:
+
+usar text-shadow
+
+usar keyframes para animación suave de brillo
+
+mantener contraste accesible
+
+SUBTÍTULO
+
+El texto "Agua y Sangre de su Corazón" debe representar simbólicamente el latido del corazón misericordioso.
+
+Requisitos:
+
+animación de latido tipo heartbeat
+
+ligera variación de escala con transform: scale()
+
+brillo rojo y blanco suave
+
+animación continua pero elegante
+
+La animación debe ser espiritual y calmada, no exagerada.
+
+TEXTO PRINCIPAL
+
+El párrafo principal debe tener un efecto de interacción progresivo.
+
+Cuando el usuario acerque el cursor al bloque:
+
+el texto cambia suavemente de color
+
+aparece un brillo leve
+
+los tonos deben inspirarse en los rayos de la Divina Misericordia:
+blanco
+rojo
+azul
+
+El cambio debe hacerse mediante transition suaves.
+
+FRASE ESPECIAL
+
+La frase:
+
+Jesús, en Ti confío.
+
+Debe tener un tratamiento visual especial.
+
+Cuando el usuario haga hover sobre el bloque hero:
+
+la frase se vuelve de color oro brillante
+
+aparece un resplandor luminoso
+
+se activa una animación de brillo tipo latido
+
+Técnicamente:
+
+usar text-shadow
+
+animación con keyframes
+
+transición suave
+
+ligera escala opcional
+
+Debe verse espiritual, no exagerado.
+
+TAREA 1 — LOCALIZAR BLOQUE
+
+Abrir el archivo:
+
+public/index.html
+
+Localizar el bloque que contiene los textos:
+
+Divina Misericordia
+Agua y Sangre de su Corazón
+Del Corazón abierto de Jesús...
+
+Encerrar ese bloque dentro de la siguiente sección semántica:
+
+<section class="hero-misericordia" aria-labelledby="hero-divina-misericordia-titulo">
+
+TAREA 2 — ESTRUCTURA HTML FINAL
+
+La estructura final debe quedar así:
+
+<section class="hero-misericordia" aria-labelledby="hero-divina-misericordia-titulo"> <div class="hero-misericordia-inner"> <h1 id="hero-divina-misericordia-titulo" class="hero-title-divina"> Divina Misericordia </h1> <h2 class="hero-subtitle-agua"> Agua y Sangre de su Corazón </h2> <p class="hero-text-rayos">
+
+Del Corazón abierto de Jesús brotan rayos de luz, agua y sangre que alcanzan a quien se acerca con confianza diciendo:
+
+<span class="hero-confio"><strong>Jesús, en Ti confío.</strong></span>
+
+</p> </div> </section>
+
+Importante:
+
+no modificar el texto
+
+mantener la semántica HTML
+
+mantener accesibilidad con aria-labelledby
+
+TAREA 3 — ESTILOS CSS
+
+Añadir estilos CSS en el archivo global de estilos o en un bloque style si es necesario.
+
+Implementar:
+
+resplandor animado del título
+
+latido del subtítulo
+
+hover progresivo del texto
+
+efecto dorado de la frase final
+
+contenedor centrado responsive
+
+Usar:
+
+text-shadow
+keyframes
+transform
+transition
+clamp()
+max-width
+
+Las animaciones deben ser suaves y elegantes.
+
+TAREA 4 — RESPONSIVE DESIGN
+
+El bloque debe verse correctamente en:
+
+móvil
+
+tablet
+
+escritorio
+
+Requisitos:
+
+tipografías fluidas con clamp()
+
+contenedor centrado con max-width
+
+padding adaptable
+
+evitar tamaños fijos exagerados en px
+
+TAREA 5 — ACCESIBILIDAD Y RENDIMIENTO
+
+Asegurar:
+
+buen contraste de texto
+
+animaciones suaves que no afecten la legibilidad
+
+no usar JavaScript innecesario
+
+no duplicar estilos existentes
+
+no interferir con otros componentes de la página
+
+RESTRICCIONES IMPORTANTES
+
+No modificar:
+
+el texto literal
+
+otras secciones de la página
+
+estilos globales no relacionados
+
+Evitar:
+
+romper el layout
+
+duplicar CSS
+
+usar JavaScript innecesario
+
+RESULTADO ESPERADO
+
+Al finalizar debes mostrar:
+
+El HTML final del bloque hero
+
+El CSS necesario para los efectos y animaciones
+
+Confirmación de que:
+
+el bloque está envuelto en hero-misericordia
+
+el diseño es responsive
+
+las animaciones funcionan correctamente
+
+no hay conflictos de CSS, al final, respóndeme solo con: 
+- La lista de archivos que has creado o modificado.
+- Un breve resumen de los cambios principales por archivo.

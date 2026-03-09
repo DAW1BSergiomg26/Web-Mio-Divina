@@ -1,0 +1,14 @@
+# Robots.txt para Asociación Apóstoles de la Divina Misericordia
+
+User-agent: *
+Allow: /
+
+# ---------------------------------------------------------------
+# Bloqueos futuros - Descomenta y modifica según necesidades
+# ---------------------------------------------------------------
+# User-agent: *
+# Disallow: /ruta-privada/
+# Disallow: /admin/
+# Disallow: /carpeta-interna/
+
+Sitemap: https://devocioncardiaca.es/sitemap.xml

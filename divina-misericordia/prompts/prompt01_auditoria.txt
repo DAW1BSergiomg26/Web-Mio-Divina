@@ -1,0 +1,27 @@
+Actúa como arquitecto frontend senior.
+
+OBJETIVO
+Auditar todo el frontend en /public sin modificar archivos.
+
+TAREAS
+- Analizar HTML
+- Analizar CSS
+- Detectar errores HTML
+- Detectar CSS duplicado
+- Detectar CSS no utilizado
+- Detectar problemas responsive
+- Detectar problemas accesibilidad
+- Detectar problemas SEO básicos
+
+NO MODIFICAR ARCHIVOS.
+
+RESPUESTA
+
+ARCHIVOS ANALIZADOS
+PROBLEMAS HTML
+PROBLEMAS CSS
+PROBLEMAS RESPONSIVE
+PROBLEMAS ACCESIBILIDAD
+PROBLEMAS RENDIMIENTO
+MEJORAS SEO
+TOP PRIORIDADES

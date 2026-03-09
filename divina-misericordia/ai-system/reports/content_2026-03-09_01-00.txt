@@ -1,0 +1,272 @@
+[0m
+> build · big-pickle
+[0m
+[0m✱ [0mGlob "public/**/*.css"[90m 2 matches[0m
+[0m✱ [0mGlob "public/**/*.html"[90m 25 matches[0m
+[0m→ [0mRead public/index.html
+[0m→ [0mRead public/quienes-somos.html
+[0m→ [0mRead public/contacto.html
+# ANÁLISIS SEO COMPLETO - Asociación Apóstoles de la Divina Misericordia
+
+---
+
+## 1. ANÁLISIS
+
+### **TONO DE MARCA ACTUAL**
+
+- **Voz**: Devocional, contemplativa, espiritual
+- **Temperamento**: Acogedora, pausada, reflexiva
+- **Valor principal**: Esperanza y misericordia divina
+- **Público objetivo**: Fieles católicos, devotos de la Divina Misericordia, personas en búsqueda espiritual
+- **Diferenciador**: Fuerte énfasis en la experiencia contemplativa y el mensaje de confianza en Jesús
+
+### **KEYWORDS DETECTADAS**
+
+| Keyword Principal | Keyword Secundarias | Volumen Estimado |
+|-------------------|---------------------|------------------|
+| Divina Misericordia | Corazón de Jesús | Medio |
+| Santa Faustina | Coronilla Divina Misericordia | Alto |
+| Hora de la Misericordia | Oraciones Divina Misericordia | Medio |
+| Coronilla a la Divina Misericordia | Devoción católica | Medio |
+| Jesús en ti confío | Novena Divina Misericordia | Alto |
+
+### **GAPS DE CONTENIDO IDENTIFICADOS**
+
+1. **Ausencia de artículos tipo blog** - Solo páginas estáticas devocionales
+2. **Falta de testimonios extensos** - Solo mención, no contenido desarrollado
+3. **Sin sección de recursos descargables** (PDFs de oraciones, guías)
+4. **Meta descriptions genéricas** - No optimizadas para CTR
+5. **Sin contenido para jóvenes** desarrollado - Solo página vacía
+6. **Ausencia de FAQ** - Oportunidad de posicionamiento
+7. **Sin contenido evergreen** sobre el significado de la misericordia
+8. **CTA prácticamente inexistentes** - No hay llamadas a la acción claras
+
+---
+
+## 2. ARTÍCULO SEO PRINCIPAL (+1.500 palabras)
+
+### **TÍTULO SEO**
+
+**"Divina Misericordia: El Mensaje de Esperanza que Transformará tu Fe | Guía Completa 2026"**
+
+### **META DESCRIPTION**
+
+"Descubre el mensaje transformador de la Divina Misericordia de Jesús. Aprende a rezar la Coronilla, la Hora de la Misericordia y encuentra esperanza genuina. ¡Jesús te espera con los brazos abiertos: Jesús, en Ti confío!"
+
+### **ESTRUCTURA H1-H2-H3**
+
+---
+
+# Divina Misericordia: El Mensaje de Esperanza que Transformará tu Fe
+
+## ¿Qué es la Divina Misericordia?
+
+### El origen divino del mensaje
+
+En 1931, en Polonia, Jesús se appeared a una joven monja llamada Santa Faustina Kowalska con un mensaje que cambiaría la historia de la devoción católica: **su misericordia es infinita y está disponible para todos**. El Corazón de Jesús, representado con rayos de luz roja y blanca, simboliza el agua y la sangre que brotan para lavar nuestros pecados y fortalecernos en la debilidad.
+
+> *"No teman acercarse a Mí, porque quiero estar cerca de ustedes. Mi misericordia es más grande que todos sus pecados."* — Jesús a Santa Faustina
+
+La devoción a la Divina Misericordia se ha extendido por todo el mundo, tocando los corazones de millones de fieles que buscan una relación más profunda con Dios. En España, cada vez más comunidades descubren este camino de esperanza.
+
+## La Coronilla de la Divina Misericordia
+
+### Cómo rezarla paso a paso
+
+La Coronilla es una de las devociones más poderosas de la Iglesia Católica. Se ora utilizando un Rosario específico y se recita:
+
+**En el Padre Nuestro (por cada década):**
+- Ruega por nosotros, Padre santo, Dios de poder y misericordia, concédenos tu misericordia
+
+**En el Avemaría:**
+- Ruega por nosotros, Madre de Dios, Gloria de tu Hijo, concédenos su misericordia
+
+**En el Gloria:**
+- Santo Dios, Dios fuerte, Dios inmortal, ten misericordia de nosotros y del mundo entero
+
+La práctica tradicional indica rezar la Coronilla a las **3 de la tarde** — la Hora de la Misericordia — cuando Jesús expiró en la cruz.
+
+## La Hora de la Misericordia
+
+### El momento más sagrado del día
+
+A las **3 de la tarde**, en el momento exacto en que Cristo entregaba su vida por la humanidad, se abre una ventana de gracia especial. Las animas que buscan esta hora experimentan una conexión única con el sacrificio redentor.
+
+**Devociones recomendadas en la Hora de la Misericordia:**
+
+- Rezar la Coronilla completa
+- Meditar en los Siete Dolores de María
+- Hacer ofrecimiento de los propios sufrimientos
+- Renovar el acto de confiar en la misericordia divina
+
+## Santa Faustina: La Apóstol de la Misericordia
+
+### Su legado espiritual
+
+**Santa María Faustina Kowalska** (1905-1938) fue una religiosa polaca whose diario espiritual, *"Mi Alma en Cristo"*, documenta las apariciones y mensajes de Jesús. Canonizada en 2000 por San Juan Pablo II, su mensaje resonó globalmente:
+
+- La fiesta de la Divina Misericordia (primer domingo después de Pascua)
+- La imagen del Corazón de Jesús Misericordioso
+- La Coronilla como devoción universal
+- El llamado a la confianza radical en Dios
+
+## El Poder de Decir "Jesús, en Ti Confío"
+
+### Una oración que lo cambia todo
+
+Estas cuatro palabras contienen una potencia espiritual extraordinaria. No son solo una fórmula devocional: representan una entrega total del alma a la voluntad divina.
+
+**Cuándo rezarla:**
+
+- Al despertar y al acostarse
+- En momentos de prueba o dificultad
+- Antes de decisiones importantes
+- Por la mañana en familia
+- En comunidad durante la Eucaristía
+
+## Cómo Integrar la Devoción a la Divina Misericordia en tu Vida Diaria
+
+### Prácticas sugeridas
+
+1. **Comienza tu día con la imagen**: Ten una imagen del Corazón de Misericordioso en tu habitación
+2. **Establece un horario fijo**: Elige un momento diario para rezar
+3. **Únete a una comunidad**: Busca grupos de oración locales
+4. **Lee el Diario de Santa Faustina**: Meditation diaria transforma
+5. **Practica la misericordia**: Sé misericordioso con los demás como deseas que Dios lo sea contigo
+
+## Únete a la Comunidad de la Divina Misericordia
+
+### ¿Buscas profundizar tu fe?
+
+La **Asociación Apóstoles de la Divina Misericordia** te abre las puertas a un camino de esperanza, renovación espiritual y comunidad. No importa dónde estés en tu caminar faith — lo importante es dar el primer paso.
+
+**¿Listo para experimentar la misericordia de Dios?**
+
+👉 **[Contáctanos hoy](/contacto.html)** para descubrir cómo puedes participar en nuestras actividades, recibir recursos espirituals y unirte a una comunidad que te acompañará en tu viaje de fe.
+
+> *"Dondequiera que vayas, lleva contigo la luz de la Divina Misericordia."* — Santa Faustina
+
+---
+
+### **CTA DEL ARTÍCULO**
+
+**Primario:** "Contáctanos para recibir la guía gratuita de la Coronilla"
+**Secundario:** "Únete a nuestro grupo de oración"
+**Terciario:** "Suscríbete a nuestras meditaciones semanales"
+
+---
+
+## 3. PLAN DE CONTENIDO 4 SEMANAS
+
+### **CALENDARIO EDITORIAL**
+
+| Semana | Fecha | Título SEO | Keyword Principal | Keyword Secundarias | Formato |
+|--------|-------|------------|-------------------|---------------------|---------|
+| **1** | Semana 1 | "Cómo Rezar la Coronilla de la Divina Misericordia: Guía Paso a Paso" | Coronilla Divina Misericordia | Cómo rezar coronilla, oración corona cristi | Tutorial + PDF |
+| **2** | Semana 2 | "Santa Faustina: La Voz de la Misericordia en el Siglo XX" | Santa Faustina | Apóstol Misericordia, diario Faustina | Biografía optimizada |
+| **3** | Semana 3 | "Hora de la Misericordia: El Momento Sagrado a las 3 de la Tarde" | Hora de la Misericordia | oración 3pm, misericordia Jesús | Guía devocional |
+| **4** | Semana 4 | "Jesús en Ti Confío: El Significado Profundo de la Oración" | Jesús en ti confío | confiar en Dios, esperanza fe | Artículo inspirational |
+
+### **DETALLE DE CADA PIEZA**
+
+**Semana 1 - Coronilla:**
+- Keyword objetivo: "Coronilla de la Divina Misericordia"
+- Intención de búsqueda: Tutorial/cómo hacer
+- CTA: Descargar guía PDF + Únete a grupo de WhatsApp
+
+**Semana 2 - Santa Faustina:**
+- Keyword objetivo: "Santa Faustina"
+- Intención de búsqueda: Información/biografía
+- CTA: Leer su diario + Visitar tumba en Łódź
+
+**Semana 3 - Hora de la Misericordia:**
+- Keyword objetivo: "Hora de la Misericordia"
+- Intención de búsqueda: Qué es/cómo participar
+- CTA: Configurar alarma 3pm + App de devociones
+
+**Semana 4 - Jesús en Ti Confío:**
+- Keyword objetivo: "Jesús en ti confío"
+- Intención de búsqueda: Significado/espirirtualidad
+- CTA: Compartir testimonio + Unirse a comunidad
+
+---
+
+## 4. MEJORAS DE COPY - TEXTOS OPTIMIZADOS PARA CONVERSIÓN
+
+### **A) PÁGINA DE INICIO - Hero Section**
+
+#### **ANTES (Actual):**
+> "Esta página es un pequeño homenaje a la Divina Misericordia: una invitación a mirar el Corazón de Jesús tal como se reveló, abierto, luminoso y derramando sobre el mundo agua y sangre."
+
+#### **DESPUÉS (Optimizado):**
+> **¿Buscas paz interior y una conexión más profunda con Dios?**
+> 
+> Has llegado al lugar correcto. Aquí encontrarás el mensaje transformador de la Divina Misericordia: un llamado directo del Corazón de Jesús a confiar en Él sin reservas.
+> 
+> **Jesús te espera con los brazos abiertos. ¿Le responderás?**
+> 
+> [💒 Descubre la Coronilla] [📖 Conoce nuestra Historia]
+
+---
+
+### **B) PÁGINA QUIÉNES SOMOS**
+
+#### **ANTES (Actual):**
+> "Somos una comunidad de fieles unidos por la devoción al Corazón de Jesús y su infinita Misericordia. Nuestro objetivo es difundir el mensaje de la Divina Misericordia y acompañar a todos aquellos que buscan un encuentro profundo con el amor de Dios."
+
+#### **DESPUÉS (Optimizado):**
+> **Una comunidad nació del amor**
+> 
+> En la **Asociación Apóstoles de la Divina Misericordia**, somos más que una organización: somos una familia espiritual comprometida con un propósito: compartir la esperanza que solo Jesús puede dar.
+> 
+> **Lo que nos mueve:**
+> 
+> ✨ **Diffundir** el mensaje de esperanza que Jesús confió a Santa Faustina
+> ✨ **Acompañar** a todo aquel que busca un encuentro real con Dios
+> ✨ **Conectar** soulsdispuestas a vivir la misericordia en su vida diaria
+> 
+> **¿Sientes el llamado de la misericordia?**
+> 
+> [🤝 Únete a Nuestra Comunidad] [📞 Hablemos]
+
+---
+
+### **C) PÁGINA DE CONTACTO**
+
+#### **ANTES (Actual):**
+> "¿Tienes preguntas sobre la Devoción a la Divina Misericordia? ¿Deseas participar en nuestras actividades? Contáctanos para recibir información sobre eventos, reuniones y formas de participar en nuestra comunidad."
+
+#### **DESPUÉS (Optimizado):**
+> **Jesús te está esperando. Nosotros te acompañamos.**
+> 
+> Ya sea que busques respuestas, comunidad o simplemente un espacio de paz, **estamos aquí para ti**.
+> 
+> **¿Qué necesitas hoy?**
+> 
+> 🔹 **Información** sobre la Coronilla y la Hora de la Misericordia  
+> 🔹 **Participar** en nuestras reuniones y grupos de oración  
+> 🔹 **Compartircon nosotros** tu testimonio de fe  
+> 🔹 **Acercarte** a una comunidad que ora por ti  
+> 
+> **No esperes más. El primer paso siempre es el más difícil. Nosotros te ayudamos.**
+> 
+> 📧 **Escríbenos ahora** y te responderemos personalmente
+> 
+> *"Jesús, en Ti confío."* — Tu viaje espiritual comienza aquí.
+
+---
+
+### **RESUMEN DE MEJORAS APLICADAS**
+
+| Elemento | Cambio Implementado |
+|----------|---------------------|
+| **Preguntas retóricas** | Introducidas para generar identificación |
+| **Beneficio claro** | "Paz interior", "encuentro con Dios" |
+| **CTA acción clara** | Botones con verbos específicos |
+| **Emoción + Razón** | Combina feel con información |
+| **Urgencia sutil** | "No esperes más", "El primer paso" |
+| **Segmentación** | Diferentes opciones según necesidad |
+
+---
+
+**Nota:** Para implementar estos cambios, necesito que me indiques qué archivos deseas que modifique exactamente o si prefieres que prepare los nuevos contenidos en archivos separados.
