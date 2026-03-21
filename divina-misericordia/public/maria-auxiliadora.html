@@ -3,109 +3,259 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>María Auxiliadora - Madre y Ayuda de los Cristianos | Novena y Oración</title>
-<meta name="description" content="María Auxiliadora, la Virgen María como madre y ayuda de los cristianos. Novena, oración y devoción mariana. San Juan Bosco y la devoción a María Auxiliadora.">
-<meta name="keywords" content="María Auxiliadora, Virgen María, oración maría auxiliadora, novena maría auxiliadora, madre dioses, ayuda cristianos, devoción mariana, san juan bosco">
+<title>María Auxiliadora - Madre y Ayuda de los Cristianos | Divina Misericordia</title>
+<meta name="description" content="María Auxiliadora, la Virgen María como madre y ayuda de los cristianos. Historia, oraciones, novena, devoción salesiana y recursos verificados.">
 <meta name="author" content="Asociación Apóstoles de la Divina Misericordia">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#003366">
 <link rel="canonical" href="https://misericordiadejesus.es/maria-auxiliadora.html">
 <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://misericordiadejesus.es/maria-auxiliadora.html">
-<meta property="og:title" content="María Auxiliadora — Madre y Ayuda de los Cristianos">
-<meta property="og:description" content="María Auxiliadora, la Virgen María como madre y ayuda de los cristianos.">
-<meta property="og:site_name" content="Divina Misericordia">
-<meta property="og:locale" content="es_ES">
-<meta property="og:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="María Auxiliadora - Madre y Ayuda de los Cristianos">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="María Auxiliadora — Madre y Ayuda de los Cristianos">
-<meta name="twitter:description" content="María Auxiliadora, la Virgen María como madre y ayuda de los cristianos.">
-<meta name="twitter:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.jpg">
-<meta name="twitter:site" content="@divinamisericordia">
-<meta name="twitter:creator" content="@divinamisericordia">
-<meta property="article:published_time" content="2024-04-01">
-<meta property="article:author" content="https://misericordiadejesus.es/quienes-somos.html">
-<meta property="article:section" content="Santos">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
 <style>
 :root {
-    --celestial: #6fa8dc;
-    --celestial-light: #a9c7e8;
-    --celestial-dark: #3d7ab8;
-    --celestial-glow: rgba(111,168,220,0.5);
+    /* AZUL MARIANO */
+    --azul-abismo: #001233;
+    --azul-mariano: #003366;
+    --azul-profundo: #003080;
+    --azul-marine: #0047AB;
+    --azul-mar: #0055AA;
+    --celeste-marian: #7FB3D5;
+    --celeste-light: #AED6F1;
+    
+    /* BLANCO MARIANO */
+    --blanco-puro: #FFFFFF;
+    --blanco-nieve: #F8F8FF;
+    --blanco-perla: #FAFAFA;
+    
+    /* ORO MARIANO */
     --gold: #d4af37;
     --gold-light: #f4e2a1;
-    --blue-deep: #050d1a;
-    --blue-mid: #0a1628;
+    --gold-dark: #b8960c;
+    --gold-glow: rgba(212,175,55,0.7);
+    
+    /* PLATA */
+    --plata: #C0C0C0;
+    --plata-light: #E8E8E8;
+    
+    /* ROSA MARIANO */
+    --rosa-marian: #FFB6C1;
+    --rosa-light: #FFC0CB;
+    
     --white: #faf7f0;
-    --text-main: rgba(250,247,240,0.9);
-    --text-muted: rgba(250,247,240,0.7);
-    --border-celestial: rgba(111,168,220,0.3);
-    --glass-bg: rgba(255,255,255,0.03);
-    --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+    --cream: #FDFBF5;
+    
+    --text-main: rgba(255,255,255,0.9);
+    --text-muted: rgba(255,255,255,0.7);
+    --border-gold: rgba(212,175,55,0.3);
+    --border-mariano: rgba(0,80,160,0.4);
+    --transition: 0.4s cubic-bezier(0.4,0,0.2,1);
 }
+
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body {
-    background:var(--blue-deep); color:var(--white);
+    background: var(--azul-abismo);
+    color: var(--text-main);
     font-family:'EB Garamond',Georgia,serif;
     line-height:1.85; overflow-x:hidden;
+    cursor:none;
 }
+
 .bg { 
     position:fixed; inset:0; 
-    background: radial-gradient(ellipse at 50% 20%,#1a3a6e 0%,#0a1628 45%,#050d1a 100%); 
+    background: linear-gradient(135deg, #001233 0%, #003366 20%, #003366 40%, #7FB3D5 50%, #003366 60%, #003080 80%, #001233 100%);
+    background-size: 400% 400%;
+    animation: bgShift 20s ease infinite;
     z-index:-2; 
 }
-#divine-canvas { position:fixed; inset:0; z-index:-1; opacity:0.7; }
+@keyframes bgShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.sacred-rays {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300vmax;
+    height: 300vmax;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.12;
+}
+.ray {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 70%;
+    transform-origin: bottom center;
+}
+.ray::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(to top, 
+        rgba(212,175,55,1) 0%,
+        rgba(255,255,255,0.8) 30%,
+        rgba(0,80,160,0.6) 50%,
+        rgba(127,179,211,0.4) 70%,
+        transparent 100%);
+    animation: rayPulse 4s ease-in-out infinite;
+}
+.ray:nth-child(1) { transform: translateY(-100%) rotate(0deg); animation-delay: 0s; }
+.ray:nth-child(2) { transform: translateY(-100%) rotate(20deg); animation-delay: 0.2s; }
+.ray:nth-child(3) { transform: translateY(-100%) rotate(40deg); animation-delay: 0.4s; }
+.ray:nth-child(4) { transform: translateY(-100%) rotate(60deg); animation-delay: 0.6s; }
+.ray:nth-child(5) { transform: translateY(-100%) rotate(80deg); animation-delay: 0.8s; }
+.ray:nth-child(6) { transform: translateY(-100%) rotate(100deg); animation-delay: 1s; }
+.ray:nth-child(7) { transform: translateY(-100%) rotate(120deg); animation-delay: 1.2s; }
+.ray:nth-child(8) { transform: translateY(-100%) rotate(140deg); animation-delay: 1.4s; }
+.ray:nth-child(9) { transform: translateY(-100%) rotate(160deg); animation-delay: 1.6s; }
+.ray:nth-child(10) { transform: translateY(-100%) rotate(180deg); animation-delay: 1.8s; }
+.ray:nth-child(11) { transform: translateY(-100%) rotate(200deg); animation-delay: 2s; }
+.ray:nth-child(12) { transform: translateY(-100%) rotate(220deg); animation-delay: 2.2s; }
+.ray:nth-child(13) { transform: translateY(-100%) rotate(240deg); animation-delay: 2.4s; }
+.ray:nth-child(14) { transform: translateY(-100%) rotate(260deg); animation-delay: 2.6s; }
+.ray:nth-child(15) { transform: translateY(-100%) rotate(280deg); animation-delay: 2.8s; }
+.ray:nth-child(16) { transform: translateY(-100%) rotate(300deg); animation-delay: 3s; }
+.ray:nth-child(17) { transform: translateY(-100%) rotate(320deg); animation-delay: 3.2s; }
+.ray:nth-child(18) { transform: translateY(-100%) rotate(340deg); animation-delay: 3.4s; }
+
+@keyframes rayPulse {
+    0%, 100% { opacity: 0.3; height: 60%; }
+    25% { opacity: 1; height: 100%; }
+    50% { opacity: 0.5; height: 80%; }
+    75% { opacity: 0.9; height: 95%; }
+}
+
+.particles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+.particle {
+    position: absolute;
+    width: 4px; height: 4px;
+    background: var(--celeste-marian);
+    border-radius: 50%;
+    animation: floatParticle 20s linear infinite;
+    box-shadow: 0 0 8px rgba(127,179,211,0.8), 0 0 15px rgba(212,175,55,0.5);
+}
+.particle:nth-child(odd) { background: var(--gold); box-shadow: 0 0 8px rgba(212,175,55,0.8); }
+.particle:nth-child(3n) { background: var(--blanco-puro); box-shadow: 0 0 6px rgba(255,255,255,0.6); }
+.particle:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 22s; }
+.particle:nth-child(2) { left: 10%; animation-delay: 2s; animation-duration: 26s; width: 3px; height: 3px; }
+.particle:nth-child(3) { left: 15%; animation-delay: 4s; animation-duration: 24s; }
+.particle:nth-child(4) { left: 20%; animation-delay: 1s; animation-duration: 28s; width: 5px; height: 5px; }
+.particle:nth-child(5) { left: 25%; animation-delay: 3s; animation-duration: 20s; }
+.particle:nth-child(6) { left: 30%; animation-delay: 5s; animation-duration: 27s; width: 3px; height: 3px; }
+.particle:nth-child(7) { left: 35%; animation-delay: 0.5s; animation-duration: 23s; }
+.particle:nth-child(8) { left: 40%; animation-delay: 2.5s; animation-duration: 25s; width: 5px; height: 5px; }
+.particle:nth-child(9) { left: 45%; animation-delay: 4.5s; animation-duration: 21s; }
+.particle:nth-child(10) { left: 50%; animation-delay: 1.5s; animation-duration: 29s; width: 3px; height: 3px; }
+.particle:nth-child(11) { left: 55%; animation-delay: 3.5s; animation-duration: 22s; }
+.particle:nth-child(12) { left: 60%; animation-delay: 0s; animation-duration: 24s; width: 5px; height: 5px; }
+.particle:nth-child(13) { left: 65%; animation-delay: 2s; animation-duration: 20s; }
+.particle:nth-child(14) { left: 70%; animation-delay: 4s; animation-duration: 26s; width: 3px; height: 3px; }
+.particle:nth-child(15) { left: 75%; animation-delay: 1s; animation-duration: 23s; }
+.particle:nth-child(16) { left: 80%; animation-delay: 3s; animation-duration: 27s; width: 5px; height: 5px; }
+.particle:nth-child(17) { left: 85%; animation-delay: 5s; animation-duration: 21s; }
+.particle:nth-child(18) { left: 90%; animation-delay: 2.5s; animation-duration: 25s; width: 3px; height: 3px; }
+.particle:nth-child(19) { left: 95%; animation-delay: 0.5s; animation-duration: 22s; }
+.particle:nth-child(20) { left: 3%; animation-delay: 4.5s; animation-duration: 30s; width: 5px; height: 5px; }
+
+@keyframes floatParticle {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    5% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+}
+
+#divine-canvas { position:fixed; inset:0; z-index:-1; opacity:0.4; }
+
+.progress-bar {
+    position:fixed; top:0; left:0; height:2px; width:0;
+    background:linear-gradient(to right, var(--azul-mariano), var(--celeste-marian), var(--gold), var(--blanco-puro));
+    z-index:1100; transition:width 0.1s linear;
+    box-shadow:0 0 10px rgba(127,179,211,0.7);
+}
 
 header {
     position:fixed; width:100%;
     display:flex; justify-content:space-between; align-items:center;
-    padding: 160px 30px;
-    background:rgba(0,0,0,0.88);
-    backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
-    z-index:1000; border-bottom:1px solid var(--border-celestial);
+    padding:10px 30px;
+    background:rgba(0,0,0,0.92);
+    backdrop-filter:blur(24px);
+    z-index:1000; border-bottom:1px solid var(--border-gold);
     transition:padding var(--transition);
 }
-header.scrolled { padding:6px 30px; background:rgba(0,0,0,0.96); }
+header.scrolled { padding:6px 30px; background:rgba(0,18,51,0.98); }
 
 .logo {
     font-family:'Cinzel Decorative',serif;
-    font-size:1.25rem; color:var(--celestial-light);
+    font-size:1.25rem; color:var(--gold-light);
     text-decoration:none; display:flex; align-items:center; gap:12px;
 }
 .logo:hover { opacity:0.85; }
-.logo img { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--border-celestial); }
+.logo img { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--border-gold); }
 .logo span { color:var(--white); }
 
 nav { display:flex; gap:4px; flex-wrap:wrap; justify-content:center; align-items:center; }
 nav a {
-    color:var(--celestial); text-decoration:none;
-    font-family:'Cinzel',serif; font-size:0.85rem; letter-spacing:1px;
-    padding:8px 12px; border-radius:6px;
+    color:var(--gold); text-decoration:none;
+    font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:1px;
+    padding:8px 10px; border-radius:6px;
     transition:all var(--transition); position:relative; white-space:nowrap;
 }
 nav a::after {
     content:''; position:absolute; bottom:4px; left:50%;
     transform:translateX(-50%) scaleX(0);
-    width:60%; height:1px; background:var(--celestial);
+    width:60%; height:1px; background:var(--gold);
     transition:transform var(--transition);
 }
-nav a:hover::after, nav a.active::after { transform:translateX(-50%) scaleX(1); }
-nav a:hover, nav a.active {
-    color:var(--celestial-light);
-    background:rgba(111,168,220,0.12);
-    text-shadow:0 0 18px var(--celestial-glow);
+nav a:hover::after, nav a.activo::after { transform:translateX(-50%) scaleX(1); }
+nav a:hover, nav a.activo {
+    color:var(--gold-light);
+    background:rgba(212,175,55,0.15);
+    text-shadow:0 0 18px var(--gold-glow);
 }
-nav a.active { background:rgba(111,168,220,0.18); box-shadow:0 0 20px rgba(111,168,220,0.15); }
+
+nav a.maria-btn {
+    color: #fff;
+    background: linear-gradient(135deg, var(--azul-mariano), var(--celeste-marian), var(--gold));
+    border: 2px solid var(--gold);
+    padding: 10px 18px;
+    font-weight: 700;
+    animation: mariaGlow 2s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(0,80,160,0.6), 0 0 40px rgba(212,175,55,0.3);
+}
+@keyframes mariaGlow {
+    0%, 100% { 
+        box-shadow: 0 0 20px rgba(0,80,160,0.6), 0 0 40px rgba(212,175,55,0.3), 0 0 60px rgba(127,179,211,0.4);
+        border-color: var(--celeste-marian);
+    }
+    50% { 
+        box-shadow: 0 0 30px rgba(127,179,211,0.8), 0 0 60px rgba(212,175,55,0.6), 0 0 90px rgba(255,255,255,0.4);
+        border-color: var(--blanco-puro);
+    }
+}
+nav a.maria-btn:hover {
+    background: linear-gradient(135deg, var(--celeste-marian), var(--azul-mariano), var(--gold));
+    color: var(--white);
+    transform: scale(1.05);
+}
 
 .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:10px; z-index:1100; }
-.hamburger span { width:26px; height:2px; background:var(--celestial); border-radius:2px; transition:all var(--transition); display:block; }
+.hamburger span { width:26px; height:2px; background:var(--gold); border-radius:2px; transition:all var(--transition); display:block; }
 .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
 .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
@@ -115,568 +265,782 @@ nav a.active { background:rgba(111,168,220,0.18); box-shadow:0 0 20px rgba(111,1
     nav {
         position:fixed; top:0; right:-100%;
         width:min(320px,80vw); height:100dvh;
-        background:rgba(5,13,26,0.97);
-        backdrop-filter:blur(30px); -webkit-backdrop-filter:blur(30px);
+        background:rgba(0,18,51,0.98);
+        backdrop-filter:blur(30px);
         flex-direction:column; align-items:flex-start; justify-content:flex-start;
         padding:90px 30px 30px; gap:6px;
         transition:right 0.4s cubic-bezier(0.4,0,0.2,1);
-        border-left:1px solid var(--border-celestial);
-        overflow-y:auto;
+        border-left:1px solid var(--border-gold); overflow-y:auto;
     }
     nav.active { right:0; }
     nav a { font-size:1rem; width:100%; padding:12px 16px; border-radius:8px; }
     nav a::after { display:none; }
 }
 
-main { max-width:900px; margin:0 auto; position:relative; z-index:1; padding-top: 180px; }
+.main-content { max-width:1000px; margin:0 auto; position: relative; z-index: 2; padding: 180px 20px 80px; }
 
-.page-title {
-    font-family:'Cinzel Decorative',serif;
-    font-size:clamp(2rem,6vw,3rem);
-    color:var(--celestial-light);
-    text-align:center;
-    margin-bottom:30px;
-    text-shadow:0 0 30px var(--celestial-glow);
-    animation: titleGlow 3s ease-in-out infinite;
- margin-top: 20px; }
+.reveal { opacity:0; transform:translateY(30px); transition:all 0.8s cubic-bezier(0.4,0,0.2,1); }
+.reveal.visible { opacity:1; transform:translateY(0); }
 
-@keyframes titleGlow {
-    0%, 100% { 
-        text-shadow: 0 0 20px var(--celestial-glow), 0 0 40px rgba(111,168,220,0.3);
-        transform: scale(1);
-    }
-    50% { 
-        text-shadow: 0 0 40px var(--celestial), 0 0 60px rgba(111,168,220,0.5), 0 0 80px rgba(111,168,220,0.3);
-        transform: scale(1.02);
-    }
+.hero { background: linear-gradient(to bottom, rgba(127,179,211,0.85) 0%, rgba(0,80,160,0.7) 40%, rgba(0,51,102,0.95) 100%); min-height: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; border-radius: 16px; margin-bottom: 40px; border: 2px solid var(--celeste-marian); box-shadow: 0 0 40px rgba(127,179,211,0.3), 0 0 80px rgba(212,175,55,0.2); padding: 60px 20px 40px; }
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: conic-gradient(from 0deg, transparent, rgba(127,179,211,0.15), transparent, rgba(212,175,55,0.15), transparent, rgba(255,255,255,0.1), transparent);
+    animation: heroRotate 15s linear infinite;
 }
-
-.page-subtitle {
-    font-family:'Great Vibes',cursive;
-    font-size:1.4rem; color:var(--white);
-    text-align:center; margin-bottom:40px;
-    opacity:0.9;
+@keyframes heroRotate {
+    from { transform:rotate(0deg); }
+    to { transform:rotate(360deg); }
 }
-
-.seccion {
-    background:var(--glass-bg);
-    border:1px solid var(--border-celestial);
-    border-radius:16px;
-    padding:30px;
-    margin-bottom:30px;
-    backdrop-filter:blur(10px);
-    transition:all var(--transition);
+.hero-content { position: relative; z-index: 1; }
+.hero-icon { 
+    font-size: 40px; margin-bottom: 10px; 
+    animation: iconShimmer 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(127,179,211,0.8));
 }
-.seccion:hover {
-    border-color:var(--celestial);
-    box-shadow:0 0 30px rgba(111,168,220,0.15);
+@keyframes iconShimmer {
+    0%,100% { filter: drop-shadow(0 0 15px rgba(127,179,211,0.6)); transform: scale(1); }
+    33% { filter: drop-shadow(0 0 20px rgba(212,175,55,0.8)); transform: scale(1.05); }
+    66% { filter: drop-shadow(0 0 25px rgba(255,255,255,1)); transform: scale(1.1); }
+    100% { filter: drop-shadow(0 0 15px rgba(127,179,211,0.6)); transform: scale(1); }
 }
+.hero h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    background: linear-gradient(90deg, 
+        #FFFFFF 0%,      /* Blanco */
+        #003366 20%,     /* Azul Mariano */
+        #FFFFFF 40%,     /* Blanco */
+        #d4af37 60%,     /* Oro */
+        #FFFFFF 80%,     /* Blanco */
+        #7FB3D5 100%     /* Celeste Mariano */
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleShimmer 4s linear infinite;
+    filter: drop-shadow(0 0 15px rgba(127,179,211,0.6)) 
+            drop-shadow(0 0 30px rgba(212,175,55,0.4))
+            drop-shadow(0 0 45px rgba(255,255,255,0.3));
+    margin-bottom: 10px;
+}
+@keyframes titleShimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+.hero h1 span { 
+    background: linear-gradient(90deg, 
+        #d4af37 0%,      /* Oro */
+        #FFFFFF 33%,     /* Blanco */
+        #003366 66%,     /* Azul Mariano */
+        #7FB3D5 100%     /* Celeste */
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: spanShimmer 3s linear infinite;
+}
+@keyframes spanShimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: -200% 50%; }
+}
+.hero .tagline {
+    font-family: 'EB Garamond', serif; font-style: italic;
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem); 
+    color: var(--text-main);
+    max-width: 550px; margin: 0 auto 20px;
+}
+.hero-stats {
+    display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
+}
+.hero-stat { text-align: center; }
+.hero-stat .num { 
+    font-family: 'Cinzel', serif; font-size: 1.3rem; 
+    color: var(--gold); font-weight: 700; display: block; 
+}
+.hero-stat .lab { font-size: 0.65rem; letter-spacing: 0.05em; color: var(--text-muted); text-transform: uppercase; }
 
+.section { margin-bottom: 60px; scroll-margin-top: 80px; }
+.section-header {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--celeste-marian);
+    padding-bottom: 16px;
+}
+.section-icon { font-size: 2.5rem; flex-shrink: 0; }
 .section-title {
-    font-family:'Cinzel',serif;
-    font-size:1.4rem;
-    color:var(--celestial-light);
-    margin-bottom:20px;
-    text-align:center;
-    border-bottom:1px solid var(--border-celestial);
-    padding-bottom:10px;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    color: var(--celeste-light); font-weight: 700;
+}
+.section-subtitle { font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-top: 4px; }
+
+.card {
+    background: linear-gradient(145deg, rgba(0,80,160,0.2), rgba(0,18,51,0.8));
+    border: 1px solid rgba(127,179,211,0.3);
+    border-left: 4px solid var(--celeste-marian);
+    border-radius: 4px 12px 12px 4px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    transition: all var(--transition);
+}
+.card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4), 0 0 30px rgba(127,179,211,0.1);
+}
+.card h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-light); font-size: 1rem;
+    letter-spacing: 0.05em; margin-bottom: 12px;
+}
+.card p { color: var(--text-main); font-size: 1.05rem; line-height: 1.85; }
+.card.gold-border { border-left-color: var(--gold); }
+.card.highlight {
+    background: linear-gradient(135deg, rgba(0,80,160,0.4), rgba(0,18,51,0.8));
+    border: 1px solid var(--border-gold);
+    border-left: 4px solid var(--gold);
 }
 
-.oracion-box {
-    background:rgba(111,168,220,0.08);
-    border:1px solid var(--border-celestial);
-    border-radius:12px;
-    padding:25px;
-    margin-bottom:20px;
+.info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 16px; margin: 20px 0; }
+.info-box {
+    background: linear-gradient(145deg, rgba(127,179,211,0.15), rgba(0,18,51,0.6));
+    border: 1px solid rgba(127,179,211,0.25);
+    border-radius: 12px;
+    padding: 22px 18px; text-align: center;
+    transition: all var(--transition);
+}
+.info-box:hover { 
+    transform: translateY(-4px); 
+    box-shadow: 0 10px 30px rgba(127,179,211,0.25);
+    border-color: var(--celeste-marian);
+}
+.info-box .icon-big { font-size: 2.5rem; margin-bottom: 10px; }
+.info-box strong { 
+    font-family: 'Cinzel', serif; font-size: 0.9rem; 
+    color: var(--celeste-light); display: block; margin-bottom: 8px; 
+}
+.info-box p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+.timeline { position: relative; padding-left: 36px; margin: 20px 0; }
+.timeline::before {
+    content: ''; position: absolute; left: 12px; top: 8px; bottom: 8px;
+    width: 2px; background: linear-gradient(to bottom, var(--celeste-marian), var(--gold), var(--celeste-light));
+}
+.t-item { position: relative; margin-bottom: 28px; }
+.t-item::before {
+    content: ''; position: absolute; left: -30px; top: 6px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--gold); border: 3px solid var(--azul-abismo);
+    box-shadow: 0 0 10px rgba(212,175,55,0.7);
+}
+.t-year {
+    font-family: 'Cinzel', serif; font-size: 0.95rem; font-weight: 700;
+    color: var(--celeste-light); letter-spacing: 0.08em; margin-bottom: 6px;
+}
+.t-text { font-size: 1rem; color: var(--text-main); line-height: 1.75; }
+
+.prayer-block {
+    background: linear-gradient(145deg, var(--azul-mariano) 0%, rgba(127,179,211,0.4) 50%, #002855 100%);
+    border-radius: 16px;
+    padding: 40px;
+    margin: 24px 0;
+    border: 1px solid rgba(212,175,55,0.3);
+    position: relative; overflow: hidden;
+}
+.prayer-block::before {
+    content: '+ + +'; position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+    color: rgba(212,175,55,0.4); font-size: 0.8rem; letter-spacing: 12px;
+}
+.prayer-block h3 {
+    font-family: 'Cinzel', serif; color: var(--gold);
+    text-align: center; font-size: 1rem; letter-spacing: 0.1em;
+    margin: 24px 0 20px;
+}
+.prayer-block p {
+    font-family: 'EB Garamond', serif; font-style: italic;
+    font-size: 1.05rem; line-height: 2; text-align: justify;
+    color: rgba(244,232,192,0.9);
+}
+.prayer-block .jac {
+    text-align: center; font-size: 1.2rem; color: var(--white);
+    font-family: 'Cinzel', serif; letter-spacing: 0.05em; margin: 16px 0 10px;
+}
+.prayer-block .note { 
+    text-align: center; font-size: 0.85rem; font-style: normal; 
+    opacity: 0.6; margin-top: 10px; 
 }
 
-.oracion-box h3 {
-    font-family:'Cinzel',serif;
-    color:var(--celestial-light);
-    font-size:1.2rem;
-    margin-bottom:15px;
-    text-align:center;
+blockquote {
+    border-left: 4px solid var(--gold);
+    margin: 24px 0; padding: 20px 28px;
+    background: rgba(212,175,55,0.05);
+    border-radius: 0 10px 10px 0;
+    font-family: 'EB Garamond', serif; font-style: italic;
+    font-size: 1.15rem; color: var(--text-main);
+}
+blockquote cite {
+    display: block; margin-top: 12px; font-size: 0.85rem;
+    font-style: normal; color: var(--gold);
+    font-family: 'Cinzel', serif; letter-spacing: 0.06em;
 }
 
-.oracion-texto {
-    font-size:1.1rem;
-    line-height:1.9;
-    color:var(--text-main);
-    text-align:center;
+.notice { 
+    background: rgba(212,175,55,0.07); 
+    border: 1px solid rgba(212,175,55,0.3); 
+    border-radius: 8px; padding: 13px 20px; 
+    font-size: 0.9rem; color: var(--text-main); margin: 16px 0; 
 }
 
-.oracion-destacada {
-    background:linear-gradient(135deg,rgba(111,168,220,0.15),rgba(61,122,184,0.15));
-    border-color:var(--celestial);
+.banner {
+    background: linear-gradient(135deg, var(--azul-mariano), var(--celeste-marian));
+    border-radius: 14px; padding: 30px 34px;
+    color: var(--white); text-align: center; margin: 28px 0;
+    border: 1px solid rgba(212,175,55,0.25);
+    box-shadow: 0 0 30px rgba(127,179,211,0.3);
+}
+.banner h3 { font-family: 'Cinzel', serif; color: var(--gold); font-size: 1rem; margin-bottom: 12px; letter-spacing: 0.08em; }
+.banner p { font-size: 0.95rem; opacity: 0.85; max-width: 650px; margin: 0 auto; }
+.banner a { color: var(--celeste-light); text-decoration: none; display: block; margin-top: 8px; }
+.banner a:hover { text-decoration: underline; }
+
+.separator-wrap {
+    width:100%; margin:3rem auto;
+    display:flex; align-items:center; justify-content:center;
+}
+.separator-cruz {
+    display:flex; align-items:center; justify-content:center;
+    gap:0; width:100%; max-width:500px;
+}
+.separator-linea {
+    flex:1; height:1px;
+    background:linear-gradient(to right, transparent, var(--celeste-marian));
+}
+.separator-linea.right { background:linear-gradient(to left, transparent, var(--gold)); }
+.separator-cruz-svg {
+    flex-shrink:0; width:70px; height:70px;
+    animation:cruzBreath 3.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(212,175,55,0.7));
+}
+@keyframes cruzBreath {
+    0%,100% { filter:drop-shadow(0 0 15px rgba(212,175,55,0.7)); transform:scale(1); }
+    50% { filter:drop-shadow(0 0 30px rgba(127,179,211,1)) drop-shadow(0 0 50px rgba(212,175,55,0.5)); transform:scale(1.08); }
 }
 
-.cita-biblica {
-    background:linear-gradient(135deg,rgba(111,168,220,0.1),rgba(61,122,184,0.1));
-    border-left:4px solid var(--celestial);
-    padding:20px 25px;
-    margin:30px 0;
-    border-radius:0 12px 12px 0;
+.footer-menu {
+    background: linear-gradient(145deg, rgba(0,51,102,0.9), rgba(0,80,160,0.4));
+    border: 1px solid var(--border-gold);
+    border-radius: 20px; padding: 35px; margin: 40px auto;
+    backdrop-filter: blur(10px);
 }
-.cita-biblica p {
-    font-family:'EB Garamond',serif;
-    font-size:1.15rem;
-    font-style:italic;
-    color:var(--white);
-    text-align:center;
+.footer-menu-title {
+    font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--gold-light);
+    text-align: center; margin-bottom: 25px; letter-spacing: 3px; text-transform: uppercase;
 }
-.cita-biblica .referencia {
-    display:block;
-    margin-top:10px;
-    font-size:0.9rem;
-    color:var(--celestial-light);
-    text-align:center;
+.footer-menu-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.footer-menu-links a {
+    color: var(--text-muted); text-decoration: none; font-size: 0.85rem;
+    padding: 10px 18px; border: 1px solid rgba(127,179,211,0.2); border-radius: 25px;
+    transition: all var(--transition); font-family: 'EB Garamond', serif;
 }
-
-.nota-especial {
-    background:rgba(212,175,55,0.1);
-    border:1px solid rgba(212,175,55,0.3);
-    border-radius:12px;
-    padding:20px;
-    margin-top:30px;
-}
-.nota-especial p {
-    text-align:center;
-    color:var(--gold-light);
-    font-size:1rem;
+.footer-menu-links a:hover {
+    background: rgba(127,179,211,0.15); border-color: var(--celeste-marian);
+    color: var(--celeste-light); transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(127,179,211,0.2);
 }
 
-footer {
-    text-align:center;
-    padding:40px 20px;
-    background:rgba(0,0,0,0.5);
-    border-top:1px solid var(--border-celestial);
+.golden-divine-line {
+    width: 100%; max-width: 1000px; height: 5px;
+    margin: 0 auto 50px; position: relative;
+    background: linear-gradient(90deg, 
+        transparent 0%, var(--celeste-marian) 10%, var(--blanco-puro) 30%, 
+        var(--gold) 50%, var(--blanco-puro) 70%, var(--celeste-marian) 90%, transparent 100%);
+    border-radius: 3px;
+    box-shadow: 0 0 20px rgba(127,179,211,0.5), 0 0 40px rgba(212,175,55,0.3);
+    animation: lineGlow 2.5s ease-in-out infinite;
 }
-footer .cross {
-    font-size:2rem; color:var(--celestial);
-    text-shadow:0 0 20px var(--celestial-glow);
-    margin-bottom:10px;
-}
-footer .tagline {
-    font-family:'Great Vibes',cursive;
-    font-size:1.3rem; color:var(--celestial-light);
-    margin-bottom:8px;
-}
-footer p {
-    color:var(--text-muted);
-    font-size:0.9rem;
+@keyframes lineGlow {
+    0%,100% { filter: brightness(1); }
+    50% { filter: brightness(1.3); }
 }
 
-@media (max-width:600px) {
-    main { padding: 140px 15px 40px; }
-    .seccion { padding:20px 15px; }
-    .oracion-box { padding:15px; }
+footer.main-footer {
+    background: linear-gradient(to bottom, rgba(0,18,51,0.9), rgba(0,80,160,0.5));
+    padding: 40px 20px; text-align: center;
+    border-top: 2px solid var(--celeste-marian);
+    display: flex; flex-direction: column; align-items: center;
 }
+footer.main-footer .cross-glow {
+    font-size: 3rem; color: var(--celeste-marian);
+    text-shadow: 0 0 30px rgba(127,179,211,0.8), 0 0 60px rgba(212,175,55,0.4);
+    margin-bottom: 15px; animation: crossPulse 2.5s ease-in-out infinite;
+}
+@keyframes crossPulse {
+    0%,100% { text-shadow: 0 0 30px rgba(127,179,211,0.8), 0 0 60px rgba(212,175,55,0.4); transform: scale(1); }
+    50% { text-shadow: 0 0 50px rgba(255,255,255,1), 0 0 100px rgba(127,179,211,0.6), 0 0 150px rgba(212,175,55,0.5); transform: scale(1.1); }
+}
+footer.main-footer p { color: var(--text-muted); margin: 5px 0; font-size: 0.95rem; }
+footer.main-footer .tagline { color: var(--celeste-light); font-family: 'Cinzel', serif; font-size: 1.05rem; letter-spacing: 2px; }
 
-/* Cursor cruz profesional con efecto rayos */
-.cursor-cruz {
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    width: 38px;
-    height: 38px;
-    transition: transform 0.15s ease, filter 0.25s ease;
-    transform: translate(-50%, -50%);
-    mix-blend-mode: screen;
-}
-.cursor-cruz svg {
-    width: 100%;
-    height: 100%;
-}
-.cursor-cruz .cruz-normal {
-    transition: opacity 0.2s ease;
-}
-.cursor-cruz .cruz-rayos {
-    opacity: 0;
-    transition: opacity 0.25s ease;
-}
-.cursor-cruz.hover {
-    transform: translate(-50%, -50%) scale(1.6);
-    filter: drop-shadow(0 0 12px rgba(255,80,80,0.9)) drop-shadow(0 0 24px rgba(255,40,40,0.7)) drop-shadow(0 0 36px rgba(80,120,255,0.6));
-}
-.cursor-cruz.hover .cruz-normal {
-    opacity: 0;
-}
-.cursor-cruz.hover .cruz-rayos {
-    opacity: 1;
-}
-
-
-/* Scroll buttons profesionales con brillo */
 .scroll-btn {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.6);
-    border: 2px solid var(--gold);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    animation: scrollPulse 2s ease-in-out infinite;
-    transition: all 0.3s ease;
-    position: fixed;
-    z-index: 1000;
+    width: 52px; height: 52px; border-radius: 50%;
+    background: rgba(0,0,0,0.7); border: 2px solid var(--celeste-marian);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; animation: scrollPulse 2s ease-in-out infinite;
+    transition: all 0.3s ease; position: fixed; z-index: 1000;
     backdrop-filter: blur(8px);
 }
 .scroll-btn:hover {
-    background: rgba(212,175,55,0.35);
-    box-shadow: 0 0 25px rgba(212,175,55,0.8), 0 0 50px rgba(212,175,55,0.4), 0 0 70px rgba(212,175,55,0.2);
+    background: rgba(127,179,211,0.3);
+    box-shadow: 0 0 30px rgba(127,179,211,0.8), 0 0 60px rgba(212,175,55,0.4);
     transform: scale(1.1);
 }
-.scroll-btn svg {
-    width: 24px;
-    height: 24px;
-    stroke: var(--gold);
-    stroke-width: 2.5;
-    fill: none;
-    filter: drop-shadow(0 0 4px rgba(212,175,55,0.8));
-    transition: transform 0.2s ease;
-}
-.scroll-btn:hover svg {
-    transform: scale(1.15);
-    stroke: #fff5c0;
-    filter: drop-shadow(0 0 8px rgba(255,245,192,0.9));
-}
+.scroll-btn svg { width: 24px; height: 24px; stroke: var(--celeste-marian); stroke-width: 2.5; fill: none; }
 .scroll-up { top: 120px; right: 20px; }
 .scroll-down { bottom: 30px; right: 20px; }
 @keyframes scrollPulse {
-    0%, 100% { box-shadow: 0 0 15px rgba(212,175,55,0.5), 0 0 30px rgba(212,175,55,0.2); }
-    50% { box-shadow: 0 0 25px rgba(212,175,55,0.8), 0 0 50px rgba(212,175,55,0.4), 0 0 70px rgba(212,175,55,0.2); }
+    0%,100% { box-shadow: 0 0 20px rgba(127,179,211,0.5), 0 0 40px rgba(212,175,55,0.2); }
+    50% { box-shadow: 0 0 35px rgba(127,179,211,0.8), 0 0 70px rgba(212,175,55,0.4); }
 }
 
-/* BORDE DORADO RESPLANDECIENTE - DIVINO - TITILANTE */
-.sacred-glow-border {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  border: 3px solid transparent;
-  border-radius: 16px;
-  background: linear-gradient(45deg, #d4af37, #f4e2a1, #d4af37, #b8960c, #f4e2a1) border-box;
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) padding-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  animation: sacredPulse 3.2s ease-in-out infinite;
-  box-shadow: 
-    0 0 15px 4px rgba(212,175,55,0.7),
-    0 0 35px 8px rgba(244,226,161,0.5),
-    inset 0 0 25px rgba(212,175,55,0.4);
+.cursor-cruz {
+    position: fixed; pointer-events: none; z-index: 9999;
+    width: 36px; height: 36px; transform: translate(-50%, -50%);
+}
+.cursor-cruz svg {
+    width: 100%; height: 100%;
+    filter: drop-shadow(0 0 8px rgba(212,175,55,0.9)) drop-shadow(0 0 16px rgba(127,179,211,0.6));
+}
+.cursor-cruz.hover { transform: translate(-50%, -50%) scale(1.4); }
+.cursor-cruz.hover svg {
+    filter: drop-shadow(0 0 12px rgba(255,255,255,1)) drop-shadow(0 0 24px rgba(212,175,55,0.9)) drop-shadow(0 0 40px rgba(127,179,211,0.5));
 }
 
-@keyframes sacredPulse {
-  0%, 100% {
-    opacity: 0.65;
-    box-shadow: 
-      0 0 15px 4px rgba(212,175,55,0.7),
-      0 0 35px 8px rgba(244,226,161,0.5),
-      inset 0 0 25px rgba(212,175,55,0.4);
-  }
-  50% {
-    opacity: 1;
-    box-shadow: 
-      0 0 35px 12px rgba(212,175,55,1),
-      0 0 70px 20px rgba(244,226,161,0.8),
-      inset 0 0 45px rgba(212,175,55,0.7);
-  }
-}
-
-.sacred-footer {
-  position: relative;
-  overflow: hidden;
-  border-top: 3px solid transparent;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(10,20,40,0.8));
-}
-
-.sacred-footer::before {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border: 3px solid transparent;
-  border-radius: 0 0 16px 16px;
-  background: linear-gradient(90deg, #b8960c, #d4af37, #f4e2a1, #d4af37, #b8960c) border-box;
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) padding-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  animation: sacredPulse 4s ease-in-out infinite;
-  pointer-events: none;
+@media (max-width: 768px) {
+    .hero { padding: 80px 15px 40px; }
+    .hero-icon { font-size: 30px; margin-bottom: 8px; }
+    .hero h1 { font-size: clamp(1.3rem, 4vw, 2rem); }
+    .hero .tagline { font-size: 0.85rem; margin-bottom: 15px; }
+    .hero-stats { gap: 12px; }
+    .hero-stat .num { font-size: 1.1rem; }
+    .hero-stat .lab { font-size: 0.6rem; }
+    .prayer-block { padding: 28px 20px; }
+    .info-grid { grid-template-columns: 1fr 1fr; }
+    .scroll-up { top: 100px; right: 15px; }
+    .scroll-down { bottom: 20px; right: 15px; }
 }
 </style>
 </head>
 
-<!-- Schema.org BreadcrumbList -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://misericordiadejesus.es/"},
-    {"@type": "ListItem", "position": 2, "name": "Devociones", "item": "https://misericordiadejesus.es/otras-devociones.html"},
-    {"@type": "ListItem", "position": 3, "name": "María Auxiliadora", "item": "https://misericordiadejesus.es/maria-auxiliadora.html"}
-  ]
-}
-</script>
 <body>
-<div class="cursor-cruz" id="cursor">
-  <svg class="cruz-normal" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="cruzGold" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#fff5c0"/>
-        <stop offset="50%" stop-color="#d4af37"/>
-        <stop offset="100%" stop-color="#8a7000"/>
-      </linearGradient>
-      <filter id="glowGold"><feGaussianBlur stdDeviation="2" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    </defs>
-    <rect x="18" y="4" width="4" height="32" rx="2" fill="url(#cruzGold)" filter="url(#glowGold)"/>
-    <rect x="6" y="14" width="28" height="4" rx="2" fill="url(#cruzGold)" filter="url(#glowGold)"/>
-    <circle cx="20" cy="10" r="2" fill="#fff5c0" filter="url(#glowGold)"/>
-  </svg>
-  <svg class="cruz-rayos" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="cruzRojo" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#ff6666"/>
-        <stop offset="50%" stop-color="#cc0000"/>
-        <stop offset="100%" stop-color="#880000"/>
-      </linearGradient>
-      <linearGradient id="cruzAzul" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#6699ff"/>
-        <stop offset="50%" stop-color="#0044cc"/>
-        <stop offset="100%" stop-color="#002266"/>
-      </linearGradient>
-      <filter id="glowRayos"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    </defs>
-    <rect x="18" y="4" width="4" height="32" rx="2" fill="url(#cruzRojo)" filter="url(#glowRayos)"/>
-    <rect x="6" y="14" width="28" height="4" rx="2" fill="url(#cruzAzul)" filter="url(#glowRayos)"/>
-    <circle cx="20" cy="10" r="2.5" fill="#ff8888" filter="url(#glowRayos)"/>
-    <circle cx="20" cy="30" r="2" fill="#88bbff" filter="url(#glowRayos)"/>
-  </svg>
+
+<!-- Rayos de Luz -->
+<div class="sacred-rays">
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div>
+</div>
+
+<!-- Partículas -->
+<div class="particles">
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
 </div>
 
 <div class="bg"></div>
 <canvas id="divine-canvas"></canvas>
+<div class="progress-bar" id="progressBar"></div>
 
-<header>
+<!-- Cursor Cruz -->
+<div class="cursor-cruz" id="cursor">
+    <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="cruzMaria" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF"/>
+                <stop offset="30%" stop-color="#7FB3D5"/>
+                <stop offset="50%" stop-color="#d4af37"/>
+                <stop offset="70%" stop-color="#7FB3D5"/>
+                <stop offset="100%" stop-color="#003366"/>
+            </linearGradient>
+            <filter id="glowMaria">
+                <feGaussianBlur stdDeviation="2" result="blur1"/>
+                <feGaussianBlur stdDeviation="4" result="blur2"/>
+                <feMerge>
+                    <feMergeNode in="blur2"/>
+                    <feMergeNode in="blur1"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+        <rect x="17" y="2" width="6" height="36" rx="2" fill="url(#cruzMaria)" filter="url(#glowMaria)"/>
+        <rect x="4" y="12" width="32" height="6" rx="2" fill="url(#cruzMaria)" filter="url(#glowMaria)"/>
+        <circle cx="20" cy="7" r="3.5" fill="#FFFFFF" filter="url(#glowMaria)"/>
+    </svg>
+</div>
+
+<!-- Header -->
+<header id="mainHeader">
     <a href="index.html" class="logo">
-        <img src="img/logo_divina_misericordia.jpg" alt="Logo" onerror="this.style.display='none'" loading="lazy">
-        <span>Divina Misericordia</span>
+        <img src="img/logo_divina_misericordia.jpg" alt="Logo" loading="lazy">
+        Divina<span>Misericordia</span>
     </a>
-    <div class="hamburger" onclick="document.getElementById('mainNav').classList.toggle('active')">
+    <nav id="mainNav">
+        <a href="index.html">Inicio</a>
+        <a href="quienes-somos.html">Quiénes Somos</a>
+        <a href="introduccion.html">Introducción</a>
+        <a href="santa-faustina.html">Santa Faustina</a>
+        <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
+        <a href="coronilla.html">Coronilla</a>
+        <a href="novena.html">Novena</a>
+        <a href="via-crucis.html">Vía Crucis</a>
+        <a href="oraciones.html">Oraciones</a>
+        <a href="santo-rosario.html">El Santo Rosario</a>
+        <a href="maria.html">María</a>
+        <a href="obras-de-misericordia.html">Obras de Misericordia</a>
+        <a href="consagracion.html">Consagración</a>
+        <a href="lugares-de-culto.html">Lugares de Culto</a>
+        <a href="musica-sacra.html">Música Sacra</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="enlaces.html">Enlaces</a>
+        <a href="la-santina.html" class="santina-btn">La Santina</a>
+        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+        <a href="virgen-lujan.html">Virgen de Luján</a>
+        <a href="maria-auxiliadora.html" class="maria-btn">María Auxiliadora</a>
+        <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
         <span></span><span></span><span></span>
-    </div>
-      <nav id="mainNav">
-    <a href="index.html">Inicio</a>
-    <a href="quienes-somos.html">Quiénes Somos</a>
-    <a href="introduccion.html">Introducción</a>
-    <a href="santa-faustina.html">Santa Faustina</a>
-    <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
-    <a href="coronilla.html">Coronilla</a>
-    <a href="novena.html">Novena</a>
-    <a href="via-crucis.html">Vía Crucis</a>
-    <a href="oraciones.html">Oraciones</a>
-    <a href="santo-rosario.html">El Santo Rosario</a>
-    <a href="maria.html">María</a>
-    <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
-    <a href="lugares-de-culto.html">Lugares de Culto</a>
-    <a href="musica-sacra.html">Música Sacra</a>
-    <a href="noticias.html">Noticias</a>
-    <a href="enlaces.html">Enlaces</a>
-    
-    <a href="la-santina.html" class="santina-btn">La Santina</a>
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
-    <a href="virgen-lujan.html" class="lujan-btn">Virgen de Luján</a>
-    <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones ✦</a>
-    <a href="contacto.html">Contacto</a>
-    
-  </nav>
+    </button>
 </header>
 
-<main>
-    <h1 class="page-title">📿 María Auxiliadora 🕊️</h1>
-    <p class="page-subtitle">Virgen María, Madre de Dios, auxilia a tus hijos</p>
+<!-- Main Content -->
+<main class="main-content">
 
-    <div class="seccion">
-        <h2 class="section-title">Oración a María Auxiliadora</h2>
-        
-        <div class="oracion-box oracion-destacada">
-            <p class="oracion-texto">
-                🔥Virgen María, Madre de Dios,<br>
-                consciente de mi pobreza espiritual<br>
-                me arrodillo a tus pies…❤️
-            </p>
-        </div>
-
-        <div class="oracion-box">
-            <p class="oracion-texto">
-                💥Y ante nuestro Padre Dios, que todo lo puede,<br>
-                te ofrezco mi corazón, con todos sus sentimientos,<br>
-                a ti te lo consagro y quiero que sea siempre<br>
-                tuyo y de tu hijo Jesús.🤍
-            </p>
-        </div>
-
-        <div class="oracion-box">
-            <p class="oracion-texto">
-                🔥Acepta esta humilde ofrenda<br>
-                tú que siempre has sido la auxiliadora de los cristianos.💙
-            </p>
-        </div>
-
-        <div class="oracion-box">
-            <p class="oracion-texto">
-                💥Oh María, refugio de los que sufren,<br>
-                consuelo de los tristes,<br>
-                ten compasión de mí en esta difícil<br>
-                situación en la que me encuentro.🌹
-            </p>
-        </div>
-
-        <div class="oracion-box">
-            <p class="oracion-texto">
-                🔥Reina del cielo, en tus manos pongo mi necesidad.<br>
-                Sé que en los casos desesperados se manifiesta<br>
-                más tu misericordia y tu poder.💐
-            </p>
-        </div>
-
-        <div class="oracion-box">
-            <p class="oracion-texto">
-                💥Ayúdame en lo que te pido,<br>
-                si así lo quiere Dios.🌹
-            </p>
-        </div>
-
-        <div class="oracion-box oracion-destacada">
-            <p class="oracion-texto" style="font-weight:bold; font-size:1.3rem; color:var(--gold-light);">
-                🔥Amén🔥
-            </p>
+    <!-- HERO -->
+    <div class="hero reveal">
+        <div class="hero-content">
+            <div class="hero-icon">+</div>
+            <h1>María <span>Auxiliadora</span></h1>
+            <p class="tagline">Madre de Dios — Auxilio de los Cristianos — Reina del Rosario</p>
+            <div class="hero-stats">
+                <div class="hero-stat"><span class="num">1815</span><span class="lab">Aparición en Turín</span></div>
+                <div class="hero-stat"><span class="num">24 May</span><span class="lab">Festividad</span></div>
+                <div class="hero-stat"><span class="num">Salesiana</span><span class="lab">Devoción</span></div>
+                <div class="hero-stat"><span class="num">Don Bosco</span><span class="lab">Fundador</span></div>
+            </div>
         </div>
     </div>
 
-    <div class="seccion">
-        <h2 class="section-title">👑 Oración a María Auxiliadora 🕊️</h2>
-        
-        <div class="oracion-box oracion-destacada">
-            <p class="oracion-texto">
-                📿Oh María auxiliadora, madre y auxiliadora de la Iglesia,<br>
-                inspiradora y maestra de nuestro Instituto,<br>
-                tú que compartes la gloria de Cristo resucitado,<br>
-                continúa con tu materna intersección,<br>
-                cooperando para nuestra salvación.<br>
-                Ocúpate de nosotros que peregrinamos<br>
-                en medio de los peligros y dificultades,<br>
-                y ayúdanos a llevar con generosa entrega<br>
-                el peso y el gozo de nuestra misión apostólica.💐
-            </p>
+    <!-- HISTORIA -->
+    <section class="section" id="historia">
+        <div class="section-header">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Historia — María Auxiliadora</h2>
+                <p class="section-subtitle">Fuentes: Salesianos de Don Bosco, Vatican.va, ACI Prensa</p>
+            </div>
         </div>
 
-        <div class="oracion-box">
-            <p class="oracion-texto">
-                🌹Oh Clemente, oh piadosa, oh dulce y siempre Virgen María,<br>
-                ruga por nosotros, Santa Madre de Dios,<br>
-                para que seamos dignos de alcanzar<br>
-                las promesas de nuestro Señor Jesucristo.📿
-            </p>
+        <div class="card gold-border">
+            <h3>+ MARIA AUXILIADORA — HISTORIA</h3>
+            <p>El título de <strong>María Auxiliadora</strong> tiene raíces antiguas en la tradición cristiana. La devoción moderna fue propagada por <strong>San Juan Bosco</strong> (1815-1888), quien fundó la Congregación Salesiana en Turín, Italia.</p>
         </div>
 
-        <div class="oracion-box oracion-destacada">
-            <p class="oracion-texto" style="font-weight:bold; font-size:1.3rem; color:var(--gold-light);">
-                🔥Amén🔥
-            </p>
+        <div class="info-grid">
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Origen del Título</strong>
+                <p>El nombre aparece en la Liturgia de las Horas desde el siglo VIII. Fue adoptado por San Juan Bosco como protectora de su obra.</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>San Juan Bosco</strong>
+                <p>Fundador de los Salesianos y devoto de María Auxiliadora. La eligió como patrona de su congregación en 1869.</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Basílica en Turín</strong>
+                <p>En 1868 comenzó la construcción del santuario dedicado a María Auxiliadora en Turín-Valdocco.</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Santo Domingo Savio</strong>
+                <p>Discípulo de Don Bosco que bajo la guía de María Auxiliadora alcanzó la santidad.</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Devoción Universal</strong>
+                <p>La devoción a María Auxiliadora se extendió por todo el mundo. Es patrona de los jóvenes y de los educadores.</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>24 de Mayo</strong>
+                <p>Fiesta litúrgica de María Auxiliadora. Jornada de oración y celebración salesiana en todo el mundo.</p>
+            </div>
+        </div>
+
+        <div class="timeline">
+            <div class="t-item">
+                <div class="t-year">Siglo VIII — Orígenes</div>
+                <div class="t-text">El título <strong>María Auxiliadora</strong> (拉丁: <em>Auxilium Christianorum</em>) aparece en el himno <em>Ave Maris Stella</em> y en la Liturgia de las Horas desde el siglo VIII.</div>
+            </div>
+            <div class="t-item">
+                <div class="t-year">16 Junio 1869 — Patrona</div>
+                <div class="t-text"><strong>San Juan Bosco</strong> proclama a María Auxiliadora como patrona especial de la Congregación Salesiana. La devoción se intensifica en Turín-Valdocco.</div>
+            </div>
+            <div class="t-item">
+                <div class="t-year">9 Mayo 1913 — Benedicto XV</div>
+                <div class="t-text>El Papa <strong>Benedicto XV</strong> extiende la fiesta de María Auxiliadora a toda la Iglesia universal con grado de <em>Fiesta</em>.</div>
+            </div>
+            <div class="t-item">
+                <div class="t-year">24 Mayo 1955 — Pío XII</div>
+                <div class="t-text"><strong>Pío XII</strong> consagra a María Auxiliadora el mundo salesiano y confirma su celebración el 24 de mayo.</div>
+            </div>
+        </div>
+
+        <blockquote>
+            «María Auxiliadora es la madre que Don Bosco nos dio. Ella es nuestra madre, nuestra patrona, nuestra vida y esperanza.»
+            <cite>— San Juan Bosco</cite>
+        </blockquote>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="goldGradMaria" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#FFFFFF"/>
+                        <stop offset="50%" stop-color="#d4af37"/>
+                        <stop offset="100%" stop-color="#003366"/>
+                    </linearGradient>
+                    <filter id="cruzGlow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                </defs>
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGradMaria)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGradMaria)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#FFFFFF" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
         </div>
     </div>
 
-    <div class="cita-biblica">
-        <p>"María cooperó de forma всемерных en la obra de la salvación."</p>
-        <span class="referencia">Lc 1, 38-48</span>
+    <!-- ORACIONES -->
+    <section class="section" id="oraciones">
+        <div class="section-header">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Oraciones a María Auxiliadora</h2>
+                <p class="section-subtitle">Fuentes: Salesianos, Catholic.net</p>
+            </div>
+        </div>
+
+        <div class="prayer-block">
+            <h3>+ ORACIÓN A MARÍA AUXILIADORA +</h3>
+            <p>Oh María Auxiliadora, Madre de Dios y Madre nuestra, tú que has sido siempre el refugio y la ayuda de los cristianos, te pido que intercedas por nosotros ante tu Hijo Jesús. Concédanos la gracia de seguir el camino de la fe, la esperanza y la caridad. Amén.</p>
+            <p class="jac">Santa María, Madre de Dios,<br>ruega por nosotros pecadores.</p>
+        </div>
+
+        <div class="prayer-block">
+            <h3>+ ORACIÓN DE SAN JUAN BOSCO +</h3>
+            <p>Santísima Virgen María, Auxiliadora de los cristianos, tú que has protegido tan Gloriosamente a los hijos de Don Bosco en todas sus necesidades, te suplicamos que no abandones nunca a esta nuestra Congregación. Amén.</p>
+        </div>
+
+        <div class="notice">
+            <strong>Nota:</strong> Esta oración puede rezarse en cualquier momento, especialmente cuando necesitas la ayuda maternal de la Virgen María. Se recomienda invocarla con fe y devoción.
+        </div>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGradMaria)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGradMaria)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#FFFFFF" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
     </div>
 
-    <div class="nota-especial">
-        <p>Esta oración puede rezarse en cualquier momento, especialmente cuando necesitas la ayuda maternal de la Virgen María. Se recomienda invocarla con fe y devoción.</p>
-    </div>
+    <!-- SANTO DOMINGO SAVIO -->
+    <section class="section" id="domingo-savio">
+        <div class="section-header">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Santo Domingo Savio</h2>
+                <p class="section-subtitle">Discípulo de San Juan Bosco</p>
+            </div>
+        </div>
+
+        <div class="card highlight">
+            <h3>+ DOMINGO SAVIO — BAJO LA PROTECCIÓN DE MARÍA +</h3>
+            <p><strong>Santo Domingo Savio</strong> (1842-1857) fue un joven italiano que, bajo la guía de San Juan Bosco, desarrolló una profunda devoción a María Auxiliadora. A los 14 años escribió su famous "Regla" espiritual y murió santamente en 1857.</p>
+        </div>
+
+        <div class="banner">
+            <h3>+ SOY AMIGO DE MARÍA +</h3>
+            <p>Domingo Savio quiso grabar en la piedra del oratorio: <em>"Yo seré un amigo de María"</em>. Esta frase resume su devoción mariana y su deseo de santidad.</p>
+        </div>
+
+        <blockquote>
+            «No me contentaré con.medios ordinarios para ser santo. Quiero hacer el bien siempre y a todos.»
+            <cite>— Santo Domingo Savio</cite>
+        </blockquote>
+    </section>
 
 </main>
 
-<footer>
-    <div class="cross">✝</div>
-    <p class="tagline">Jesús, En Vos Confío</p>
-    <p>© 2026 — Portal de la Divina Misericordia</p>
+<!-- Footer Menu -->
+<div class="footer-menu">
+    <h3 class="footer-menu-title">Recursos Espirituales</h3>
+    <div class="footer-menu-links">
+        <a href="coronilla.html">Coronilla</a>
+        <a href="novena.html">Novena</a>
+        <a href="oraciones.html">Oraciones</a>
+        <a href="via-crucis.html">Vía Crucis</a>
+        <a href="santo-rosario.html">Santo Rosario</a>
+        <a href="la-santina.html">La Santina</a>
+        <a href="virgen-caacupe.html">Virgen Caacupé</a>
+        <a href="contacto.html">Contacto</a>
+    </div>
+</div>
+
+<footer class="main-footer">
+    <div class="cross-glow">+</div>
+    <p class="tagline">María Auxiliadora — Auxilio de los Cristianos</p>
+    <p>Santa María, Madre de Dios, ruega por nosotros pecadores.</p>
 </footer>
 
+<div class="golden-divine-line"></div>
+
+<button class="scroll-btn scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Subir">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+<button class="scroll-btn scroll-down" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})" aria-label="Bajar">
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+
 <script>
-window.addEventListener('scroll',()=>{
-    document.querySelector('header').classList.toggle('scrolled',window.scrollY>50);
+// Cursor divino
+const cursor = document.getElementById('cursor');
+let mouseX = 0, mouseY = 0;
+let cursorX = 0, cursorY = 0;
+
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
 });
-</script>
-<script>
-(function(){
-    const canvas=document.getElementById('divine-canvas');
-    const ctx=canvas.getContext('2d');
-    let w,h,particles=[],time=0;
-    function resize(){
-        w=canvas.width=window.innerWidth;
-        h=canvas.height=window.innerHeight;
+
+function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.15;
+    cursorY += (mouseY - cursorY) * 0.15;
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+document.querySelectorAll('a, button, .btn').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+
+// Progress bar
+const progressBar = document.getElementById('progressBar');
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrollPercent + '%';
+});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// Header scroll effect
+const header = document.getElementById('mainHeader');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
     }
-    function createParticles(){
-        particles=[];
-        for(let i=0;i<60;i++){
-            particles.push({
-                x:Math.random()*w,y:Math.random()*h,
-                r:Math.random()*2+0.5,
-                vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3,
-                alpha:Math.random()*0.5+0.2
-            });
+});
+
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const nav = document.getElementById('mainNav');
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    nav.classList.toggle('active');
+});
+
+// Particles background
+(function(){
+    const canvas = document.getElementById('divine-canvas');
+    const ctx = canvas.getContext('2d');
+    let w, h, particles = [];
+    
+    function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+    }
+    
+    class Particle {
+        constructor() { this.reset(); }
+        reset() {
+            this.x = Math.random() * w;
+            this.y = Math.random() * h;
+            this.size = Math.random() * 2 + 0.8;
+            this.speedX = (Math.random() - 0.5) * 0.3;
+            this.speedY = (Math.random() - 0.5) * 0.3 - 0.08;
+            this.opacity = Math.random() * 0.5 + 0.2;
+            this.color = Math.random() > 0.5 ? '127,179,211' : (Math.random() > 0.5 ? '212,175,55' : '255,255,255');
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x < 0 || this.x > w || this.y < 0 || this.y > h) this.reset();
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${this.color},${this.opacity})`;
+            ctx.fill();
         }
     }
-    function draw(){
-        ctx.clearRect(0,0,w,h);
-        time+=0.01;
-        particles.forEach(p=>{
-            p.x+=p.vx;p.y+=p.vy;
-            if(p.x<0)p.x=w;if(p.x>w)p.x=0;
-            if(p.y<0)p.y=h;if(p.y>h)p.y=0;
-            ctx.beginPath();
-            ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-            ctx.fillStyle=`rgba(111,168,220,${p.alpha*Math.sin(time+p.x*0.01)})`;
-            ctx.fill();
-        });
-        requestAnimationFrame(draw);
+    
+    resize();
+    for (let i = 0; i < 80; i++) particles.push(new Particle());
+    
+    function animate() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animate);
     }
-    window.addEventListener('resize',()=>{resize();createParticles();});
-    resize();createParticles();draw();
-})();
-</script>
-
-<!-- Cursor Script -->
-<script>
-(function(){
-  const cursor = document.getElementById('cursor');
-  if(!cursor) return;
-  document.addEventListener('mousemove', e => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-  });
-  document.addEventListener('mouseover', e => {
-    cursor.classList.toggle('hover', !!e.target.closest('a,button,[onclick],.btn,.scroll-btn'));
-  });
-})();
-</script>
-
-
-<script>
-(function(){
-  var hdr = document.getElementById('mainHeader');
-  if(!hdr) return;
-  window.addEventListener('scroll', function(){
-    hdr.classList.toggle('scrolled', window.scrollY > 60);
-  });
+    
+    window.addEventListener('resize', resize);
+    animate();
 })();
 </script>
 
