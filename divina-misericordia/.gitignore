@@ -1,0 +1,6 @@
+# Datos del CMS (no subir a GitHub)
+data/
+
+# Archivos JSON específicos para web
+!public/manifest.json
+*.json

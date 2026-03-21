@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>San José Dormido - Contemplación del Sueño de San José | Divina Misericordia</title>
+<meta name="description" content="Devoción a San José Dormido. La oración del Papa Francisco y la historia de este sagrado sueño. Contemplación del sueño de San José, esposo de María.">
+<meta name="keywords" content="San Jose Dormido, Jose durmiendo, oración Jose dormido, sueño jose, papa francisco oracion, contemplación Jose, patrono iglesia">
+<meta name="author" content="Asociación Apóstoles de la Divina Misericordia">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<link rel="canonical" href="https://misericordiadejesus.es/san-jose-dormido.html">
+<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://misericordiadejesus.es/san-jose-dormido.html">
+<meta property="og:title" content="San José Dormido — Contemplación del Sueño de San José">
+<meta property="og:description" content="Devoción a San José Dormido. La oración del Papa Francisco y la historia de este sagrado sueño.">
+<meta property="og:site_name" content="Divina Misericordia">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="San José Dormido - Contemplación del Sueño">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="San José Dormido — Contemplación del Sueño de San José">
+<meta name="twitter:description" content="Devoción a San José Dormido. La oración del Papa Francisco.">
+<meta name="twitter:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.jpg">
+<meta name="twitter:site" content="@divinamisericordia">
+<meta name="twitter:creator" content="@divinamisericordia">
+<meta property="article:published_time" content="2024-04-01">
+<meta property="article:author" content="https://misericordiadejesus.es/quienes-somos.html">
+<meta property="article:section" content="Santos">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+    --celestial: #6fa8dc;
+    --celestial-light: #a9c7e8;
+    --celestial-dark: #3d7ab8;
+    --celestial-glow: rgba(111,168,220,0.5);
+    --gold: #d4af37;
+    --gold-light: #f4e2a1;
+    --blue-deep: #050d1a;
+    --blue-mid: #0a1628;
+    --white: #faf7f0;
+    --text-main: rgba(250,247,240,0.9);
+    --text-muted: rgba(250,247,240,0.7);
+    --border-celestial: rgba(111,168,220,0.3);
+    --glass-bg: rgba(255,255,255,0.03);
+    --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+    background:var(--blue-deep); color:var(--white);
+    font-family:'EB Garamond',Georgia,serif;
+    line-height:1.85; overflow-x:hidden;
+}
+.bg { 
+    position:fixed; inset:0; 
+    background: radial-gradient(ellipse at 50% 20%,#1a3a6e 0%,#0a1628 45%,#050d1a 100%); 
+    z-index:-2; 
+}
+#divine-canvas { position:fixed; inset:0; z-index:-1; opacity:0.7; }
+
+header {
+    position:fixed; width:100%;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:10px 30px;
+    background:rgba(0,0,0,0.88);
+    backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
+    z-index:1000; border-bottom:1px solid var(--border-celestial);
+    transition:padding var(--transition);
+}
+header.scrolled { padding:6px 30px; background:rgba(0,0,0,0.96); }
+
+.logo {
+    font-family:'Cinzel Decorative',serif;
+    font-size:1.25rem; color:var(--celestial-light);
+    text-decoration:none; display:flex; align-items:center; gap:12px;
+}
+.logo:hover { opacity:0.85; }
+.logo img { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--border-celestial); }
+.logo span { color:var(--white); }
+
+nav { display:flex; gap:4px; flex-wrap:wrap; justify-content:center; align-items:center; }
+nav a {
+    color:var(--celestial); text-decoration:none;
+    font-family:'Cinzel',serif; font-size:0.85rem; letter-spacing:1px;
+    padding:8px 12px; border-radius:6px;
+    transition:all var(--transition); position:relative; white-space:nowrap;
+}
+nav a::after {
+    content:''; position:absolute; bottom:4px; left:50%;
+    transform:translateX(-50%) scaleX(0);
+    width:60%; height:1px; background:var(--celestial);
+    transition:transform var(--transition);
+}
+nav a:hover::after, nav a.active::after { transform:translateX(-50%) scaleX(1); }
+nav a:hover, nav a.active {
+    color:var(--celestial-light);
+    background:rgba(111,168,220,0.15);
+    text-shadow:0 0 18px var(--celestial-glow);
+}
+nav a.active { background:rgba(111,168,220,0.2); box-shadow:0 0 20px rgba(111,168,220,0.2); }
+
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:10px; z-index:1100; }
+.hamburger span { width:26px; height:2px; background:var(--celestial); border-radius:2px; transition:all 0.3s; display:block; }
+.hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+.hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+@media (max-width:900px) {
+    .hamburger { display:flex; }
+    nav {
+        position:fixed; top:0; right:-100%;
+        width:min(320px,80vw); height:100dvh;
+        background:rgba(5,13,26,0.97);
+        backdrop-filter:blur(30px); -webkit-backdrop-filter:blur(30px);
+        flex-direction:column; align-items:flex-start; justify-content:flex-start;
+        padding:90px 30px 30px; gap:6px;
+        transition:right 0.4s cubic-bezier(0.4,0,0.2,1);
+        border-left:1px solid var(--border-celestial);
+        overflow-y:auto;
+    }
+    nav.active { right:0; }
+    nav a { font-size:1rem; width:100%; padding:12px 16px; border-radius:8px; }
+    nav a::after { display:none; }
+}
+
+.main-content { max-width: 900px; margin: 0 auto; padding: 180px 20px 80px; }
+
+.page-header { text-align: center; margin-bottom: 50px; background: linear-gradient(135deg, rgba(111,168,220,0.1) 0%, rgba(10,22,40,0.8) 100%); border-radius: 20px; border: 1px solid var(--border-celestial); position: relative; overflow: hidden; padding-top: 180px; }
+.page-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(111,168,220,0.15) 0%, transparent 50%);
+    animation: celestialGlow 4s ease-in-out infinite;
+}
+@keyframes celestialGlow {
+    0%,100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+.page-title {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: clamp(2rem,8vw,3.5rem);
+    color: var(--celestial-light);
+    text-shadow: 0 0 30px var(--celestial-glow), 0 0 60px rgba(111,168,220,0.3);
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+    animation: titleGlow 3s ease-in-out infinite;
+ margin-top: 20px; }
+@keyframes titleGlow {
+    0%, 100% { 
+        text-shadow: 0 0 20px var(--celestial-glow), 0 0 40px rgba(111,168,220,0.3);
+        transform: scale(1);
+    }
+    50% { 
+        text-shadow: 0 0 40px var(--celestial), 0 0 60px rgba(111,168,220,0.5), 0 0 80px rgba(111,168,220,0.3);
+        transform: scale(1.02);
+    }
+}
+.page-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 1px;
+}
+
+.historia-box {
+    background: var(--glass-bg);
+    border: 1px solid rgba(111,168,220,0.15);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+.historia-box h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: var(--celestial-light);
+    margin-bottom: 20px;
+    text-align: center;
+}
+.historia-box p {
+    font-size: 1.05rem;
+    color: var(--text-main);
+    line-height: 1.9;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+.historia-box p:last-child {
+    margin-bottom: 0;
+}
+
+.oracion-box {
+    background: var(--glass-bg);
+    border: 1px solid rgba(111,168,220,0.15);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+.oracion-box h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    color: var(--celestial-light);
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 0 0 15px var(--celestial-glow);
+}
+.oracion-texto {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    line-height: 2;
+    text-align: justify;
+}
+.oracion-texto:last-child {
+    margin-bottom: 0;
+}
+.oracion-destacada {
+    background: linear-gradient(135deg, rgba(111,168,220,0.15) 0%, rgba(169,199,232,0.08) 100%);
+    border: 2px solid var(--celestial);
+}
+.oracion-destacada .oracion-texto {
+    text-align: center;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--celestial-light);
+}
+
+.cita-box {
+    text-align: center;
+    padding: 25px;
+    margin: 30px 0;
+    background: rgba(111,168,220,0.05);
+    border-left: 4px solid var(--celestial);
+    border-radius: 0 8px 8px 0;
+}
+.cita-box p {
+    font-family: 'Cinzel', serif;
+    font-size: 1.15rem;
+    color: var(--celestial-light);
+    font-style: italic;
+    line-height: 1.8;
+}
+
+footer {
+    background: rgba(0,0,0,0.6);
+    padding: 30px 20px;
+    text-align: center;
+    border-top: 1px solid var(--border-celestial);
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+footer p {
+    color: rgba(250,247,240,0.7);
+    margin: 8px 0;
+    text-align: center;
+}
+footer .cross {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    color: var(--celestial);
+    text-shadow: 0 0 20px var(--celestial-glow), 0 0 40px rgba(111,168,220,0.4);
+    margin-bottom: 15px;
+    animation: crossPulse 2s ease-in-out infinite;
+}
+@keyframes crossPulse {
+    0%,100% { text-shadow: 0 0 20px var(--celestial-glow); transform: scale(1); }
+    50% { text-shadow: 0 0 40px var(--celestial-glow), 0 0 60px rgba(111,168,220,0.3); transform: scale(1.08); }
+}
+footer .tagline {
+    color: var(--celestial-light);
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+}
+
+.scroll-up, .scroll-down {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.5);
+    border: 2px solid var(--celestial);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    animation: arrowPulse 1.5s ease-in-out infinite;
+    transition: 0.3s;
+    z-index: 1000;
+}
+.scroll-up { top: 120px; right: 20px; }
+.scroll-down { bottom: 40px; right: 20px; }
+.scroll-up:hover, .scroll-down:hover {
+    background: rgba(111,168,220,0.3);
+    box-shadow: 0 0 20px rgba(111,168,220,0.5);
+}
+.scroll-up::before, .scroll-down::before {
+    content: '';
+    width: 18px;
+    height: 18px;
+    border-right: 3px solid var(--celestial);
+    border-bottom: 3px solid var(--celestial);
+}
+.scroll-up::before { transform: rotate(-135deg); margin-top: 4px; }
+.scroll-down::before { transform: rotate(45deg); margin-top: -4px; }
+@keyframes arrowPulse {
+    0%,100% { box-shadow: 0 0 15px var(--celestial-glow); }
+    50% { box-shadow: 0 0 30px var(--celestial-glow); }
+}
+
+@media (max-width: 600px) {
+    .page-title { font-size: 2rem;  margin-top: 20px; }
+    .scroll-up { top: 100px; right: 16px; }
+    .scroll-down { bottom: 24px; right: 16px; }
+    .oracion-box { padding: 20px; }
+    .oracion-destacada .oracion-texto { font-size: 1.05rem; }
+}
+
+/* Cursor cruz profesional con efecto rayos */
+.cursor-cruz {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    width: 38px;
+    height: 38px;
+    transition: transform 0.15s ease, filter 0.25s ease;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+}
+.cursor-cruz svg {
+    width: 100%;
+    height: 100%;
+}
+.cursor-cruz .cruz-normal {
+    transition: opacity 0.2s ease;
+}
+.cursor-cruz .cruz-rayos {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+.cursor-cruz.hover {
+    transform: translate(-50%, -50%) scale(1.6);
+    filter: drop-shadow(0 0 12px rgba(255,80,80,0.9)) drop-shadow(0 0 24px rgba(255,40,40,0.7)) drop-shadow(0 0 36px rgba(80,120,255,0.6));
+}
+.cursor-cruz.hover .cruz-normal {
+    opacity: 0;
+}
+.cursor-cruz.hover .cruz-rayos {
+    opacity: 1;
+}
+
+
+/* Scroll buttons profesionales con brillo */
+.scroll-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.6);
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    animation: scrollPulse 2s ease-in-out infinite;
+    transition: all 0.3s ease;
+    position: fixed;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+}
+.scroll-btn:hover {
+    background: rgba(212,175,55,0.35);
+    box-shadow: 0 0 25px rgba(212,175,55,0.8), 0 0 50px rgba(212,175,55,0.4), 0 0 70px rgba(212,175,55,0.2);
+    transform: scale(1.1);
+}
+.scroll-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--gold);
+    stroke-width: 2.5;
+    fill: none;
+    filter: drop-shadow(0 0 4px rgba(212,175,55,0.8));
+    transition: transform 0.2s ease;
+}
+.scroll-btn:hover svg {
+    transform: scale(1.15);
+    stroke: #fff5c0;
+    filter: drop-shadow(0 0 8px rgba(255,245,192,0.9));
+}
+.scroll-up { top: 120px; right: 20px; }
+.scroll-down { bottom: 30px; right: 20px; }
+@keyframes scrollPulse {
+    0%, 100% { box-shadow: 0 0 15px rgba(212,175,55,0.5), 0 0 30px rgba(212,175,55,0.2); }
+    50% { box-shadow: 0 0 25px rgba(212,175,55,0.8), 0 0 50px rgba(212,175,55,0.4), 0 0 70px rgba(212,175,55,0.2); }
+}
+
+/* BORDE DORADO RESPLANDECIENTE - DIVINO - TITILANTE */
+.sacred-glow-border {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 3px solid transparent;
+  border-radius: 16px;
+  background: linear-gradient(45deg, #d4af37, #f4e2a1, #d4af37, #b8960c, #f4e2a1) border-box;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) padding-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: sacredPulse 3.2s ease-in-out infinite;
+  box-shadow: 
+    0 0 15px 4px rgba(212,175,55,0.7),
+    0 0 35px 8px rgba(244,226,161,0.5),
+    inset 0 0 25px rgba(212,175,55,0.4);
+}
+
+@keyframes sacredPulse {
+  0%, 100% {
+    opacity: 0.65;
+    box-shadow: 
+      0 0 15px 4px rgba(212,175,55,0.7),
+      0 0 35px 8px rgba(244,226,161,0.5),
+      inset 0 0 25px rgba(212,175,55,0.4);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 
+      0 0 35px 12px rgba(212,175,55,1),
+      0 0 70px 20px rgba(244,226,161,0.8),
+      inset 0 0 45px rgba(212,175,55,0.7);
+  }
+}
+
+.sacred-footer {
+  position: relative;
+  overflow: hidden;
+  border-top: 3px solid transparent;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(10,20,40,0.8));
+}
+
+.sacred-footer::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border: 3px solid transparent;
+  border-radius: 0 0 16px 16px;
+  background: linear-gradient(90deg, #b8960c, #d4af37, #f4e2a1, #d4af37, #b8960c) border-box;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) padding-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: sacredPulse 4s ease-in-out infinite;
+  pointer-events: none;
+}
+</style>
+</head>
+
+<!-- Schema.org BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://misericordiadejesus.es/"},
+    {"@type": "ListItem", "position": 2, "name": "Devociones", "item": "https://misericordiadejesus.es/otras-devociones.html"},
+    {"@type": "ListItem", "position": 3, "name": "San José Dormido", "item": "https://misericordiadejesus.es/san-jose-dormido.html"}
+  ]
+}
+</script>
+<body>
+<div class="cursor-cruz" id="cursor">
+  <svg class="cruz-normal" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="cruzGold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fff5c0"/>
+        <stop offset="50%" stop-color="#d4af37"/>
+        <stop offset="100%" stop-color="#8a7000"/>
+      </linearGradient>
+      <filter id="glowGold"><feGaussianBlur stdDeviation="2" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <rect x="18" y="4" width="4" height="32" rx="2" fill="url(#cruzGold)" filter="url(#glowGold)"/>
+    <rect x="6" y="14" width="28" height="4" rx="2" fill="url(#cruzGold)" filter="url(#glowGold)"/>
+    <circle cx="20" cy="10" r="2" fill="#fff5c0" filter="url(#glowGold)"/>
+  </svg>
+  <svg class="cruz-rayos" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="cruzRojo" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ff6666"/>
+        <stop offset="50%" stop-color="#cc0000"/>
+        <stop offset="100%" stop-color="#880000"/>
+      </linearGradient>
+      <linearGradient id="cruzAzul" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#6699ff"/>
+        <stop offset="50%" stop-color="#0044cc"/>
+        <stop offset="100%" stop-color="#002266"/>
+      </linearGradient>
+      <filter id="glowRayos"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <rect x="18" y="4" width="4" height="32" rx="2" fill="url(#cruzRojo)" filter="url(#glowRayos)"/>
+    <rect x="6" y="14" width="28" height="4" rx="2" fill="url(#cruzAzul)" filter="url(#glowRayos)"/>
+    <circle cx="20" cy="10" r="2.5" fill="#ff8888" filter="url(#glowRayos)"/>
+    <circle cx="20" cy="30" r="2" fill="#88bbff" filter="url(#glowRayos)"/>
+  </svg>
+</div>
+
+
+<div class="bg"></div>
+<canvas id="divine-canvas"></canvas>
+
+<header>
+    <a href="index.html" class="logo">
+        <img src="img/logo_divina_misericordia.jpg" alt="Logo Divina Misericordia" loading="lazy">
+        Divina<span>Misericordia</span>
+    </a>
+      <nav id="mainNav">
+    <a href="index.html">Inicio</a>
+    <a href="quienes-somos.html">Quiénes Somos</a>
+    <a href="introduccion.html">Introducción</a>
+    <a href="santa-faustina.html">Santa Faustina</a>
+    <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
+    <a href="coronilla.html">Coronilla</a>
+    <a href="novena.html">Novena</a>
+    <a href="via-crucis.html">Vía Crucis</a>
+    <a href="oraciones.html">Oraciones</a>
+    <a href="santo-rosario.html">El Santo Rosario</a>
+    <a href="maria.html">María</a>
+    <a href="obras-de-misericordia.html">Obras de Misericordia</a>
+    <a href="consagracion.html">Consagración</a>
+    <a href="lugares-de-culto.html">Lugares de Culto</a>
+    <a href="musica-sacra.html">Música Sacra</a>
+    <a href="noticias.html">Noticias</a>
+    <a href="enlaces.html">Enlaces</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="la-santina.html" class="santina-btn">La Santina</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-lujan.html" class="lujan-btn">Virgen de Luján</a>
+    <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones ✦</a>
+  </nav>
+    <div class="hamburger" onclick="document.getElementById('mainNav').classList.toggle('active')">
+        <span></span><span></span><span></span>
+    </div>
+</header>
+
+<main class="main-content">
+
+    <div class="page-header">
+        <h1 class="page-title">San José Dormido</h1>
+        <p class="page-subtitle">La devoción del Papa Francisco al padre guardián de Jesús</p>
+    </div>
+
+    <div class="historia-box">
+        <h2>La Devoción del Papa Francisco</h2>
+        <p>La estatua de San José Dormido, o también San José Durmiente, tiene un significado muy importante para el Papa Francisco. Cuando en 1953, con solo 17 años, recibió la Llamada del Señor, Jorge Mario Bergoglio entró a la iglesia de San José de Buenos Aires, ciudad de la cual luego fue Arzobispo.</p>
+        
+        <p>Su devoción hacia el padre putativo de Jesús se remarcó el día 19 de marzo de 2013, solo seis días después de su elección como Obispo de Roma y Pastor de la Iglesia universal, cuando, inaugurando su Pontificado, centró su sermón sobre el rol de guardián de San José.</p>
+    </div>
+
+    <div class="historia-box">
+        <h2>El Sueño de San José</h2>
+        <p>Gracias a la Sagrada Biblia, sabemos hoy cuánto ha sido fundamental el sueño para San José. Durante el sueño un Ángel le dijo de tomar en matrimonio a María, así como en sus sueños el mismo Ángel le avisó de la inminente Matanza de los Inocentes ordenada por Herodes.</p>
+        
+        <p>Esta aparición que tuvo en sueño le permitió huir a Egipto y guardar la vida de su hijo Jesús. El Santo es un padre misericordioso, que ayuda a los necesitados. Así como él, el ser humano tiene que despertar de su propio sueño, una vez haya escuchado la Palabra de Dios, levantarse y actuar para su vida.</p>
+    </div>
+
+    <div class="cita-box">
+        <p>"El Papa Francisco tiene en su oficina en la Domus Sanctae Marthae dos estatuas que representan al Santo. Una de estas es una estatua que acompaña al Pontífice desde siempre, desde cuando era rector del Colegio Máximo de San Miguel."</p>
+    </div>
+
+    <div class="historia-box">
+        <h2>Curiosidades Sobre San José Dormido y el Papa Francisco</h2>
+        <p>El Papa Francisco tiene en su oficina en la Domus Sanctae Marthae dos estatuas que representan al Santo. Una de estas merece particular atención: se trata de una estatua que acompaña al Pontífice desde siempre, desde cuando era rector del Colegio Máximo de San Miguel.</p>
+        
+        <p>Esta estatua retrata San José durmiente, una figura insólita para los europeos pero muy difundida entre los fieles sudamericanos. El Papa Francisco, muchas veces, contó de su costumbre de poner por debajo de la estatua del San José Dormido unas notitas con las peticiones de gracia y las oraciones de los fieles, buscando invitar al Santo a "consultarlo con la almohada".</p>
+        
+        <p>El Pontífice mismo declaró en 2015 querer particularmente San José, ya que es un hombre fuerte y silencioso, el hombre de los sueños, que protege y ayuda a cualquier persona que lo necesita, también cuando duerme.</p>
+    </div>
+
+    <div class="oracion-box oracion-destacada">
+        <h3>Oración a San José Dormido</h3>
+        <p class="oracion-texto">Oh San José, cuya protección es tan grande, tan fuerte y tan inmediata ante el trono de Dios, a ti confío todas mis intenciones y deseos. Ayúdame, San José, con tu poderosa intercesión, a obtener todas las bendiciones espirituales por intercesión de tu Hijo adoptivo, Jesucristo Nuestro Señor, de modo que, al confiarme, aquí en la tierra, a tu poder celestial, Te tribute mi agradecimiento y homenaje.</p>
+        
+        <p class="oracion-texto" style="margin-top: 20px;">Oh San José, yo nunca me canso de contemplarte con Jesús adormecido en tus brazos. No me atrevo a acercarme cuando Él descansa junto a tu corazón. Abrázale en mi nombre, besa por mí su delicado rostro y pídele que me devuelva ese beso cuando yo exhale mi último suspiro.</p>
+        
+        <p class="oracion-texto" style="margin-top: 20px;">¡San José, patrono de las almas que parten, ruega por mí!</p>
+        
+        <p class="oracion-texto" style="margin-top: 20px; text-align: center; font-weight: bold;">Amén.</p>
+    </div>
+
+    <div class="oracion-box">
+        <h3>Oración a San José para los Tiempos Difíciles</h3>
+        <p class="oracion-texto">Oh San José, eres un hombre muy favorecido por el Altísimo. El ángel del Señor se te apareció en sueños, mientras dormías, para advertirte y guiarte en el cuidado de la Sagrada Familia. Eras silencioso y fuerte, un protector leal y valiente.</p>
+        
+        <p class="oracion-texto" style="margin-top: 20px;">Querido San José, mientras descansas en el Señor, confiado en su poder y bondad absolutos, mírame. Por favor, toma mi necesidad en tu corazón, sueña con ella y preséntasela a tu Hijo. Ayúdame entonces, buen San José, a escuchar la voz de Dios, a levantarme y actuar con amor.</p>
+        
+        <p class="oracion-texto" style="margin-top: 20px;">Alabo y agradezco a Dios con alegría. San José, te amo.</p>
+        
+        <p class="oracion-texto" style="margin-top: 20px; text-align: center; font-weight: bold;">Amén.</p>
+    </div>
+
+    <div class="historia-box">
+        <h2>Así fue como el Papa Francisco hizo famosa la imagen de San José dormido</h2>
+        <p>La mayoría de los íconos y estatuas de santos suelen ser rígidos. Por lo general, se hacen bustos o imágenes de pie, con las manos cruzadas o sosteniendo algún elemento importante o con un rostro que podría mostrar una sonrisa leve y reflejar una mirada serena.</p>
+        
+        <p>Sin embargo, hace seis años durante el viaje apostólico del Papa Francisco a Filipinas, el Santo Padre dio unas palabras que popularizaron un ícono más realista de los santos: la estatua de San José dormido.</p>
+    </div>
+
+    <div class="cita-box">
+        <p>"Me gusta mucho San José. Es un hombre fuerte de silencio. En mi escritorio tengo una imagen de San José durmiendo. Incluso cuando duerme, cuida de la Iglesia. ¡Sí! Sabemos que puede hacer eso"</p>
+        <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-muted);">— Papa Francisco, 16 de enero de 2015</p>
+    </div>
+
+    <div class="historia-box">
+        <p>"Entonces, cuando tengo un problema, una dificultad, escribo una pequeña nota y la pongo debajo de San José para que pueda soñar con eso. En otras palabras, le digo: ¡Ora por este problema!"</p>
+        <p style="margin-top: 15px; font-weight: bold; color: var(--celestial-light);">— Papa Francisco</p>
+    </div>
+
+    <div class="historia-box">
+        <h2>Los Cuatro Sueños de San José</h2>
+        <p>La imagen surge inspirada en el Evangelio de San Mateo, donde se dice que San José tuvo la experiencia de recibir mensajes de Dios en cuatro sueños distintos.</p>
+        
+        <p>En el primer sueño, un ángel le dice que continúe con su plan de casarse con María, a pesar de que la encontraron embarazada.</p>
+        
+        <p>El segundo ocurrió tras el nacimiento de Jesús, cuando un ángel le advierte en sueños a San José que huya con su familia a Egipto.</p>
+        
+        <p>El tercero se da cuando está en Egipto, allí un ángel le dice que regrese a Israel.</p>
+        
+        <p>Y finalmente, en otro sueño le ordena que vaya a Galilea en lugar de Judea.</p>
+    </div>
+
+    <div class="cita-box">
+        <p>"Esos preciosos momentos de reposo, de descansar con el Señor en oración, son momentos que quizás desean prolongar. Pero como San José, una vez que hemos escuchado la voz de Dios, debemos levantarnos de nuestro sueño; debemos levantarnos y actuar"</p>
+        <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-muted);">— Papa Francisco</p>
+    </div>
+
+    <div class="historia-box">
+        <h2>El Amor de los Fieles por San José Dormido</h2>
+        <p>Después de este discurso, la popularidad de las estatuas de San José dormido se extendió tanto que en junio de 2015, el diario Catholic San Francisco informó que los íconos del santo dormido estaban "volando de los estantes" en Filipinas y que los viajeros que los compraban se los llevaban a Estados Unidos.</p>
+        
+        <p>Un grupo de fieles relataron qué los motivó a adquirir la estatua de San José dormido y expresaron por qué la aman tanto.</p>
+        
+        <p>Muchos señalan que les gustaba la estatua porque les recordaba los pasajes de la Biblia sobre los sueños de San José y la huida de la Sagrada Familia a Egipto.</p>
+        
+        <p>La imagen "te recuerda que San José era humano y también se cansó. Esto me hace apreciar aún más el trabajo que hizo por María y Jesús. Es una posición vulnerable, pero es genial que sea aquí cuando Dios eligió hablar con él", dijeron.</p>
+    </div>
+
+    <div class="historia-box">
+        <h2>El Año de San José</h2>
+        <p>El 8 de diciembre de 2020, el Papa Francisco convocó el Año de San José y publicó la Carta apostólica Patris Corde (Corazón de padre) para conmemorar los 150 años del decreto Quemadmodum Deus, con el cual el Beato Pío IX declaró a San José Patrono de la Iglesia universal.</p>
+        
+        <p>Durante este tiempo de gracia especial, que duró hasta el 8 de diciembre de 2021, la Iglesia buscó profundizar la devoción al Padre adoptivo de Cristo. Además, los fieles pueden ganar de diversas formas indulgencia plenaria, que remite todo castigo temporal causado por el pecado.</p>
+    </div>
+
+</main>
+
+<footer>
+    <div class="cross">✝</div>
+    <p class="tagline">Jesús, En Vos Confío</p>
+    <p>© 2026 — Portal de la Divina Misericordia</p>
+</footer>
+
+<div class="scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})"></div>
+<div class="scroll-down" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})"></div>
+
+<script>
+const canvas=document.getElementById('divine-canvas'),ctx=canvas.getContext('2d');
+let w,h,particles=[];
+function r(){w=canvas.width=window.innerWidth;h=canvas.height=window.innerHeight;}
+function initP(){
+    particles=[];
+    for(let i=0;i<80;i++){
+        particles.push({
+            x:Math.random()*w,y:Math.random()*h,
+            r:Math.random()*2+0.5,
+            vx:(Math.random()-0.5)*0.3,vy:(Math.random()-0.5)*0.3,
+            alpha:Math.random()*0.5+0.2
+        });
+    }
+}
+function draw(){
+    ctx.clearRect(0,0,w,h);
+    particles.forEach(p=>{
+        p.x+=p.vx;p.y+=p.vy;
+        if(p.x<0)p.x=w;if(p.x>w)p.x=0;
+        if(p.y<0)p.y=h;if(p.y>h)p.y=0;
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle=`rgba(169,199,232,${p.alpha})`;
+        ctx.fill();
+    });
+    requestAnimationFrame(draw);
+}
+window.addEventListener('resize',()=>{r();initP();});
+r();initP();draw();
+
+const hdr=document.querySelector('header');
+window.addEventListener('scroll',()=>{
+    hdr.classList.toggle('scrolled',window.scrollY>80);
+});
+</script>
+
+
+<!-- Cursor Script -->
+<script>
+(function(){
+  const cursor = document.getElementById('cursor');
+  if(!cursor) return;
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+  document.addEventListener('mouseover', e => {
+    cursor.classList.toggle('hover', !!e.target.closest('a,button,[onclick],.btn,.scroll-btn'));
+  });
+})();
+</script>
+
+</body>
+</html>

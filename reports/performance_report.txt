@@ -1,0 +1,75 @@
+## Informe Técnico de Rendimiento Web
+
+### 📊 CSS
+
+| Problema | Severidad | Detalles |
+|----------|-----------|----------|
+| CSS en línea crítico | ⚠️ Media | ~800 líneas en `<style>` de index.html. Beneficioso para FCP, pero dificulta cache |
+| Sin minificar | ⚠️ Media | CSS no está minificado (comentarios, espacios) |
+| selectores complejos | ⚠️ Media | `linear-gradient`, `radial-gradient`, `box-shadow` múltiples repetidos |
+| `backdrop-filter: blur()` | 🔴 Alta | Línea 180, 277 - costoso en renderizado |
+
+---
+
+### ⚠️ JavaScript Bloqueante
+
+| Problema | Severidad | Localización |
+|----------|-----------|--------------|
+| JS en línea sin async/defer | 🔴 Alta | 5+ bloques `<script>` en body |
+| Canvas animado (50 rays + 120 particles) | 🔴 Alta | `index.html:1233-1322` - `requestAnimationFrame` contínuo |
+| Cursor personalizado con `mousemove` | 🟡 Baja | `index.html:1325-1336` - evento en documento |
+| Scroll listener sin throttling | 🟡 Baja | `index.html:1343` |
+
+---
+
+### 🖼️ Imágenes y Lazy Loading
+
+| Recurso | Lazy | Notas |
+|---------|------|-------|
+| `logo_divina_misericordia.jpg` | ✅ Sí | Línea 943 |
+| `jesus_misericordioso.jpeg` | ❌ No | Otras páginas |
+| `sor-faustina.jpg` | ❌ No | Otras páginas |
+| Videos MP4 (3) | ❌ No | Sin `preload="none"`, sin `poster` |
+
+**Total imágenes sin lazy: ~70%+ de páginas HTML**
+
+---
+
+### 📈 Core Web Vitals - Problemas Identificados
+
+| Métrica | Problema |
+|---------|----------|
+| **LCP** | Video + canvas + gradientes complejos en above-the-fold. Sin preload de recursos críticos |
+| **INP** | Canvas animation + scroll listeners bloquean hilo principal |
+| **CLS** | Videos sin dimensiones explícitas (`index.html:1027`). Animaciones con `scale` |
+| **FCP** | CSS en línea es correcto, pero fuentes externas bloquean render |
+
+---
+
+### 🔧 Problemas Adicionales
+
+- **Google Fonts**: 3 familias (Cinzel, Cinzel Decorative, EB Garamond) - demasiado para sitio estático
+- **JSON-LD repetido**: Schema `WebSite` definido 2 veces (`index.html:70-87`, `106-118`)
+- **SVG inline**: 2 SVGs complejos en hero (`index.html:987-1020`, `1132-1166`)
+- **Sin compressión**: Servidor Node.js no tiene gzip/brotli configurado
+
+---
+
+### ✅ Lo Que Está Bien
+
+- `loading="lazy"` en logo del header
+- `preconnect` a Google Fonts
+- `scroll-behavior: smooth` en CSS
+- `will-change` usado en animaciones CSS
+- `playsinline muted loop` en video
+
+---
+
+### Recomendaciones Prioritarias
+
+1. **Alta**: Mover canvas animation a Web Workers o reducir partículas
+2. **Alta**: Agregar `loading="lazy"` a todas las imágenes
+3. **Alta**: Añadir `width/height` a videos
+4. **Media**: Eliminar fuentes innecesarias (EB Garamond)
+5. **Media**: Deferir scripts no esenciales
+6. **Media**: Habilitar gzip en servidor Node.js
