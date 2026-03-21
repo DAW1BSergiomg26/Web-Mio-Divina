@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Música Sacra - cantos Gregorinanos para la Oración | Divina Misericordia</title>
+<meta name="description" content="Escucha cantos gregorianos y música sacra para la oración y meditación. Ambiente celestial para rezarr la Coronilla, Novena y Hora de la Misericordia.">
+<meta name="keywords" content="canto gregoriano, música sacra, meditación católica, música oración, chants, gregorian, música celestial">
+<meta name="author" content="Asociación Apóstoles de la Divina Misericordia">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://misericordiadejesus.es/musica-sacra.html">
+<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#050d1a">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://misericordiadejesus.es/musica-sacra.html">
+<meta property="og:title" content="Música Sacra - cantos Gregorianos para la Oración">
+<meta property="og:description" content="Ambiente celestial para rezarr la Coronilla y Novena de la Divina Misericordia.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --gold: #d4af37;
+  --gold-light: #f4e2a1;
+  --gold-dark: #b8960c;
+  --blue-deep: #050d1a;
+  --blue-mid: #0a1628;
+  --celestial: #6fa8dc;
+  --celestial-light: #a9c7e8;
+  --white: #faf7f0;
+  --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background: var(--blue-deep);
+  color: var(--white);
+  font-family: 'EB Garamond', Georgia, serif;
+  line-height: 1.85;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+.bg {
+  position: fixed; inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, #1a3a6e 0%, #0a1628 40%, #050d1a 100%);
+  z-index: -2;
+}
+.particles-bg {
+  position: fixed; inset: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, rgba(212,175,55,0.3) 50%, transparent 50%),
+    radial-gradient(2px 2px at 40% 70%, rgba(111,168,220,0.3) 50%, transparent 50%),
+    radial-gradient(2px 2px at 60% 20%, rgba(212,175,55,0.2) 50%, transparent 50%),
+    radial-gradient(2px 2px at 80% 60%, rgba(111,168,220,0.2) 50%, transparent 50%);
+  background-size: 200px 200px;
+  animation: sparkle 8s linear infinite;
+  z-index: -1;
+}
+@keyframes sparkle {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+
+header {
+  position: fixed; width: 100%;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 30px;
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(24px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(212,175,55,0.25);
+}
+.logo {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.2rem; color: var(--gold-light);
+  text-decoration: none; display: flex; align-items: center; gap: 10px;
+}
+.logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(212,175,55,0.3); }
+.logo span { color: var(--white); }
+
+nav { display: flex; gap: 4px; flex-wrap: wrap; justify-content: center; }
+nav a {
+  color: var(--celestial); text-decoration: none;
+  font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 1px;
+  padding: 8px 12px; border-radius: 6px;
+  transition: all var(--transition);
+}
+nav a:hover { background: rgba(111,168,220,0.15); color: var(--celestial-light); }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; }
+.hamburger span { width: 26px; height: 2px; background: var(--gold); border-radius: 2px; transition: 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 900px) {
+  .hamburger { display: flex; }
+  nav {
+    position: fixed; top: 0; right: -100%;
+    width: min(300px, 80vw); height: 100dvh;
+    background: rgba(5,13,26,0.98);
+    flex-direction: column; padding: 80px 30px;
+    transition: right 0.4s; border-left: 1px solid rgba(212,175,55,0.25);
+  }
+  nav.active { right: 0; }
+  nav a { font-size: 1rem; width: 100%; padding: 12px; }
+}
+
+.main-content {  padding: 180px 20px 80px; }
+
+h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--gold-light);
+  text-align: center;
+  margin-bottom: 10px;
+  text-shadow: 0 0 30px rgba(212,175,55,0.6);
+}
+.subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: rgba(250,247,240,0.7);
+  margin-bottom: 40px;
+  font-style: italic;
+}
+
+.audio-section {
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  color: var(--gold-light);
+  text-align: center;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.section-title::before, .section-title::after {
+  content: '';
+  flex: 1;
+  max-width: 100px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold));
+}
+.section-title::after {
+  background: linear-gradient(to left, transparent, var(--gold));
+}
+
+.audio-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.audio-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(212,175,55,0.2);
+  border-radius: 16px;
+  padding: 20px;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.audio-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.audio-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(212,175,55,0.4);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+.audio-card:hover::before { opacity: 1; }
+
+.audio-card h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.audio-card .icon { font-size: 1.3rem; }
+.audio-card p {
+  font-size: 0.9rem;
+  color: rgba(250,247,240,0.6);
+  margin-bottom: 15px;
+}
+
+.audio-player {
+  background: rgba(0,0,0,0.4);
+  border-radius: 12px;
+  padding: 15px;
+  position: relative;
+}
+
+.audio-visualizer {
+  height: 40px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px;
+  margin-bottom: 12px;
+  opacity: 0.7;
+}
+.bar {
+  width: 4px;
+  background: linear-gradient(to top, var(--gold), var(--celestial));
+  border-radius: 2px;
+  transition: height 0.1s;
+}
+.audio-player.playing .bar {
+  animation: visualize 0.5s ease-in-out infinite alternate;
+}
+@keyframes visualize {
+  from { height: 5px; }
+  to { height: 30px; }
+}
+.bar:nth-child(1) { animation-delay: 0s; }
+.bar:nth-child(2) { animation-delay: 0.1s; }
+.bar:nth-child(3) { animation-delay: 0.2s; }
+.bar:nth-child(4) { animation-delay: 0.15s; }
+.bar:nth-child(5) { animation-delay: 0.05s; }
+.bar:nth-child(6) { animation-delay: 0.25s; }
+.bar:nth-child(7) { animation-delay: 0.1s; }
+
+.audio-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.play-btn {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+.play-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px rgba(212,175,55,0.6);
+}
+.play-btn::after {
+  content: '';
+  width: 0; height: 0;
+  border-left: 14px solid var(--blue-deep);
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  margin-left: 4px;
+}
+.play-btn.playing::after { display: none; }
+.play-btn.playing {
+  background: linear-gradient(135deg, var(--celestial-dark), var(--celestial));
+}
+.play-btn.playing::before {
+  content: '';
+  width: 14px; height: 16px;
+  background: var(--blue-deep);
+  clip-path: polygon(0 0, 30% 0, 30% 100%, 0 100%, 0 0, 50% 0, 50% 100%, 0 100%);
+}
+
+.audio-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.audio-progress {
+  width: 100%;
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  position: relative;
+}
+.audio-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--celestial));
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+.audio-time {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: rgba(250,247,240,0.5);
+  font-family: 'Cinzel', serif;
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.volume-btn {
+  background: none;
+  border: none;
+  color: var(--gold);
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 4px;
+}
+.volume-slider {
+  width: 60px;
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px; height: 12px;
+  background: var(--gold);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.prayer-counter {
+  background: linear-gradient(145deg, rgba(10,22,40,0.9), rgba(5,13,26,0.95));
+  border: 2px solid var(--gold);
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  margin: 40px 0;
+  position: relative;
+  overflow: hidden;
+}
+.prayer-counter::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(212,175,55,0.1), transparent);
+  animation: rotate 10s linear infinite;
+}
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.counter-content { position: relative; z-index: 1; }
+.counter-content h2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.5rem;
+  color: var(--gold-light);
+  margin-bottom: 15px;
+}
+.counter-display {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 4rem;
+  color: var(--white);
+  text-shadow: 0 0 30px rgba(212,175,55,0.8);
+  margin: 20px 0;
+}
+.counter-label {
+  font-size: 1rem;
+  color: var(--celestial-light);
+  margin-bottom: 20px;
+}
+.counter-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.counter-btn {
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  border: none;
+}
+.counter-btn.primary {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: var(--blue-deep);
+}
+.counter-btn.primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(212,175,55,0.5);
+}
+.counter-btn.secondary {
+  background: transparent;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+}
+.counter-btn.secondary:hover {
+  background: rgba(212,175,55,0.15);
+}
+
+.meditation-timer {
+  background: rgba(111,168,220,0.1);
+  border: 1px solid rgba(111,168,220,0.3);
+  border-radius: 16px;
+  padding: 25px;
+  margin: 30px 0;
+  text-align: center;
+}
+.meditation-timer h3 {
+  font-family: 'Cinzel', serif;
+  color: var(--celestial-light);
+  margin-bottom: 15px;
+}
+.timer-display {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 3rem;
+  color: var(--white);
+  margin: 15px 0;
+}
+.timer-presets {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+.preset-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: rgba(111,168,220,0.2);
+  border: 1px solid rgba(111,168,220,0.4);
+  color: var(--celestial-light);
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.preset-btn:hover, .preset-btn.active {
+  background: rgba(111,168,220,0.4);
+  border-color: var(--celestial);
+}
+.timer-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+footer {
+  background: rgba(0,0,0,0.6);
+  padding: 30px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(212,175,55,0.2);
+  margin-top: 60px;
+}
+footer .cross {
+  font-size: 2.5rem;
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(212,175,55,0.5);
+  animation: crossPulse 2.5s ease-in-out infinite;
+}
+@keyframes crossPulse {
+  0%, 100% { text-shadow: 0 0 15px rgba(212,175,55,0.5); }
+  50% { text-shadow: 0 0 30px rgba(212,175,55,0.8); }
+}
+footer p { color: rgba(250,247,240,0.6); margin: 8px 0; font-size: 0.9rem; }
+footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1rem; }
+
+.cursor-cruz {
+  position: fixed; pointer-events: none; z-index: 9999;
+  width: 36px; height: 36px;
+  transition: transform 0.15s ease;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 8px rgba(212,175,55,0.8));
+}
+.cursor-cruz svg { width: 100%; height: 100%; }
+.cursor-cruz .cruz-normal { transition: opacity 0.2s; }
+.cursor-cruz .cruz-rayos { opacity: 0; transition: opacity 0.25s; }
+.cursor-cruz.hover { transform: translate(-50%, -50%) scale(1.5); }
+.cursor-cruz.hover .cruz-normal { opacity: 0; }
+.cursor-cruz.hover .cruz-rayos { opacity: 1; }
+
+.scroll-btn {
+  position: fixed; z-index: 1000;
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  border: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  backdrop-filter: blur(8px);
+}
+.scroll-btn:hover { background: rgba(212,175,55,0.3); }
+.scroll-btn svg { width: 24px; height: 24px; stroke: var(--gold); stroke-width: 2; fill: none; }
+.scroll-up { top: 120px; right: 20px; }
+.scroll-down { bottom: 30px; right: 20px; }
+
+@media (hover: none) { .cursor-cruz { display: none; } body { cursor: default; } }
+@media (max-width: 768px) {
+  header { padding: 10px 16px; }
+  .main-content {  padding: 180px 20px 80px; }
+  .counter-display { font-size: 3rem; }
+  .timer-display { font-size: 2.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="particles-bg"></div>
+
+<div class="cursor-cruz" id="cursor">
+  <svg class="cruz-normal" viewBox="0 0 40 40">
+    <defs>
+      <linearGradient id="cg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fff5c0"/><stop offset="50%" stop-color="#d4af37"/><stop offset="100%" stop-color="#8a7000"/>
+      </linearGradient>
+    </defs>
+    <rect x="18" y="4" width="4" height="32" rx="2" fill="url(#cg)"/>
+    <rect x="6" y="14" width="28" height="4" rx="2" fill="url(#cg)"/>
+    <circle cx="20" cy="10" r="2" fill="#fff5c0"/>
+  </svg>
+  <svg class="cruz-rayos" viewBox="0 0 40 40">
+    <rect x="18" y="4" width="4" height="32" rx="2" fill="#cc0000"/>
+    <rect x="6" y="14" width="28" height="4" rx="2" fill="#cc0000"/>
+    <circle cx="20" cy="10" r="2.5" fill="#ff8888"/>
+  </svg>
+</div>
+
+<header>
+  <a href="index.html" class="logo">
+    <img src="img/logo_divina_misericordia.jpg" alt="Logo" loading="lazy">
+    Divina<span>Misericordia</span>
+  </a>
+    <nav id="mainNav">
+    <a href="index.html">Inicio</a>
+    <a href="quienes-somos.html">Quiénes Somos</a>
+    <a href="introduccion.html">Introducción</a>
+    <a href="santa-faustina.html">Santa Faustina</a>
+    <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
+    <a href="coronilla.html">Coronilla</a>
+    <a href="novena.html">Novena</a>
+    <a href="via-crucis.html">Vía Crucis</a>
+    <a href="oraciones.html">Oraciones</a>
+    <a href="santo-rosario.html">El Santo Rosario</a>
+    <a href="maria.html">María</a>
+    <a href="obras-de-misericordia.html">Obras de Misericordia</a>
+    <a href="consagracion.html">Consagración</a>
+    <a href="lugares-de-culto.html">Lugares de Culto</a>
+    <a href="musica-sacra.html">Música Sacra</a>
+    <a href="noticias.html">Noticias</a>
+    <a href="enlaces.html">Enlaces</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="la-santina.html" class="santina-btn">La Santina</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-lujan.html" class="lujan-btn">Virgen de Luján</a>
+    <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones ✦</a>
+  </nav>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main class="main-content">
+  <h1>🕊️ Música Sacra 🕊️</h1>
+  <p class="subtitle">Ambiente celestial para tu oración y meditación</p>
+
+  <section class="audio-section">
+    <h2 class="section-title">✝️ Cantos Gregorianos</h2>
+    <div class="audio-cards">
+      
+      <div class="audio-card">
+        <h3><span class="icon">🎵</span> Misa Gregoriana Completa</h3>
+        <p>Misa dominical con cantos tradicionales en latín. Ideal para la oración y el recogimiento.</p>
+        <div class="audio-player" data-src="https://archive.org/download/GregorianChantMass/Gregorian_Chant_Mass_64kb.mp3">
+          <div class="audio-visualizer">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+          </div>
+          <div class="audio-controls">
+            <button class="play-btn" onclick="togglePlay(this)" aria-label="Reproducir"></button>
+            <div class="audio-info">
+              <div class="audio-progress" onclick="seekAudio(this, event)">
+                <div class="audio-progress-bar"></div>
+              </div>
+              <div class="audio-time">
+                <span class="current">0:00</span>
+                <span class="duration">--:--</span>
+              </div>
+            </div>
+            <div class="volume-control">
+              <button class="volume-btn" onclick="toggleMute(this)" aria-label="Silenciar">🔊</button>
+              <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="0.7" oninput="setVolume(this.value)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="audio-card">
+        <h3><span class="icon">🙏</span> Miserere Mei Deus</h3>
+        <p>Salmo 51 - Canto de arrepentimiento y Misericordia. Perfecto para la confesión y Cuaresma.</p>
+        <div class="audio-player" data-src="">
+          <div class="audio-visualizer">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+          </div>
+          <div class="audio-controls">
+            <button class="play-btn" onclick="togglePlay(this)" aria-label="Reproducir"></button>
+            <div class="audio-info">
+              <div class="audio-progress" onclick="seekAudio(this, event)">
+                <div class="audio-progress-bar"></div>
+              </div>
+              <div class="audio-time">
+                <span class="current">0:00</span>
+                <span class="duration">--:--</span>
+              </div>
+            </div>
+            <div class="volume-control">
+              <button class="volume-btn" onclick="toggleMute(this)" aria-label="Silenciar">🔊</button>
+              <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="0.7" oninput="setVolume(this.value)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="audio-card">
+        <h3><span class="icon">✨</span> Tantum Ergo</h3>
+        <p>Himno eucarístico tradicional. Adoración al Santísimo Sacramento.</p>
+        <div class="audio-player" data-src="">
+          <div class="audio-visualizer">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+          </div>
+          <div class="audio-controls">
+            <button class="play-btn" onclick="togglePlay(this)" aria-label="Reproducir"></button>
+            <div class="audio-info">
+              <div class="audio-progress" onclick="seekAudio(this, event)">
+                <div class="audio-progress-bar"></div>
+              </div>
+              <div class="audio-time">
+                <span class="current">0:00</span>
+                <span class="duration">--:--</span>
+              </div>
+            </div>
+            <div class="volume-control">
+              <button class="volume-btn" onclick="toggleMute(this)" aria-label="Silenciar">🔊</button>
+              <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="0.7" oninput="setVolume(this.value)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="audio-section">
+    <h2 class="section-title">🎧 Para Meditar</h2>
+    <div class="audio-cards">
+
+      <div class="audio-card">
+        <h3><span class="icon">🕯️</span> ambient Sacred Music</h3>
+        <p>Música ambiente para oración silenciosa y meditación. 3 horas de paz celestial.</p>
+        <div class="audio-player" data-src="">
+          <div class="audio-visualizer">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+          </div>
+          <div class="audio-controls">
+            <button class="play-btn" onclick="togglePlay(this)" aria-label="Reproducir"></button>
+            <div class="audio-info">
+              <div class="audio-progress" onclick="seekAudio(this, event)">
+                <div class="audio-progress-bar"></div>
+              </div>
+              <div class="audio-time">
+                <span class="current">0:00</span>
+                <span class="duration">--:--</span>
+              </div>
+            </div>
+              <div class="volume-control">
+              <button class="volume-btn" onclick="toggleMute(this)" aria-label="Silenciar">🔊</button>
+              <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="0.7" oninput="setVolume(this.value)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="audio-card">
+        <h3><span class="icon">👼</span> Angeles de Dios</h3>
+        <p>Música suave para accompany your prayers. Perfecta para la Coronilla y el Rosario.</p>
+        <div class="audio-player" data-src="">
+          <div class="audio-visualizer">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+          </div>
+          <div class="audio-controls">
+            <button class="play-btn" onclick="togglePlay(this)" aria-label="Reproducir"></button>
+            <div class="audio-info">
+              <div class="audio-progress" onclick="seekAudio(this, event)">
+                <div class="audio-progress-bar"></div>
+              </div>
+              <div class="audio-time">
+                <span class="current">0:00</span>
+                <span class="duration">--:--</span>
+              </div>
+            </div>
+            <div class="volume-control">
+              <button class="volume-btn" onclick="toggleMute(this)" aria-label="Silenciar">🔊</button>
+              <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="0.7" oninput="setVolume(this.value)">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="meditation-timer">
+    <h3>⏱️ Temporizador de Meditación</h3>
+    <div class="timer-display" id="timerDisplay">15:00</div>
+    <div class="timer-presets">
+      <button class="preset-btn" onclick="setTimer(5)">5 min</button>
+      <button class="preset-btn active" onclick="setTimer(15)">15 min</button>
+      <button class="preset-btn" onclick="setTimer(30)">30 min</button>
+      <button class="preset-btn" onclick="setTimer(60)">1 hora</button>
+    </div>
+    <div class="timer-controls">
+      <button class="counter-btn primary" onclick="toggleTimer()" id="timerBtn">▶ Iniciar</button>
+      <button class="counter-btn secondary" onclick="resetTimer()">↺ Reiniciar</button>
+    </div>
+  </div>
+
+  <div class="prayer-counter">
+    <div class="counter-content">
+      <h2>📿 Contador de Oraciones</h2>
+      <p style="color: var(--text-muted); margin-bottom: 15px;">Lleva registro de las oraciones que has rezaddo hoy</p>
+      <div class="counter-display" id="prayerCount">0</div>
+      <p class="counter-label">Oraciones rezadas hoy</p>
+      <div class="counter-buttons">
+        <button class="counter-btn primary" onclick="incrementCounter()">+1 Rezarr</button>
+        <button class="counter-btn secondary" onclick="addMany(10)">+10</button>
+        <button class="counter-btn secondary" onclick="addMany(50)">+50</button>
+        <button class="counter-btn secondary" onclick="resetCounter()">Reiniciar</button>
+      </div>
+      <p style="margin-top: 20px; font-size: 0.85rem; color: rgba(250,247,240,0.5);">
+        🌟 ¡Dios bendiga tu constancia en la oración! 🌟
+      </p>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 40px;">
+    <p style="color: var(--text-muted); margin-bottom: 20px;">¿Quieres contribuir con audios?</p>
+    <a href="contacto.html" class="counter-btn primary" style="text-decoration: none; display: inline-block;">
+      📧 Contáctanos
+    </a>
+  </div>
+
+</main>
+
+<footer>
+  <div class="cross">✝</div>
+  <p class="tagline">Jesús, En Vos Confío</p>
+  
+  <p>&copy; 2026 · Todos los derechos reservados</p>
+</footer>
+
+<button class="scroll-btn scroll-up" onclick="scrollToTop()" aria-label="Subir">
+  <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<button class="scroll-btn scroll-down" onclick="scrollToDown()" aria-label="Bajar">
+  <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mainNav').classList.toggle('active');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+function scrollToDown() { window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); }
+
+const cursor = document.getElementById('cursor');
+let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; }, { passive: true });
+function animateCursor() {
+  cursorX += (mouseX - cursorX) * 0.15;
+  cursorY += (mouseY - cursorY) * 0.15;
+  cursor.style.left = cursorX + 'px';
+  cursor.style.top = cursorY + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+document.querySelectorAll('a, button, .audio-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+
+let audioElements = {};
+
+function togglePlay(btn) {
+  const player = btn.closest('.audio-player');
+  const src = player.dataset.src;
+  
+  if (!src) {
+    alert('Audio próximamente disponible. ¡Gracias por tu paciencia!');
+    return;
+  }
+  
+  if (!audioElements[player]) {
+    audioElements[player] = new Audio(src);
+    audioElements[player].volume = 0.7;
+    audioElements[player].addEventListener('timeupdate', () => {
+      const progress = (audioElements[player].currentTime / audioElements[player].duration) * 100;
+      player.querySelector('.audio-progress-bar').style.width = progress + '%';
+      player.querySelector('.current').textContent = formatTime(audioElements[player].currentTime);
+    });
+    audioElements[player].addEventListener('loadedmetadata', () => {
+      player.querySelector('.duration').textContent = formatTime(audioElements[player].duration);
+    });
+    audioElements[player].addEventListener('ended', () => {
+      btn.classList.remove('playing');
+      player.classList.remove('playing');
+    });
+  }
+  
+  if (audioElements[player].paused) {
+    Object.values(audioElements).forEach(a => a.pause());
+    document.querySelectorAll('.play-btn').forEach(b => b.classList.remove('playing'));
+    document.querySelectorAll('.audio-player').forEach(p => p.classList.remove('playing'));
+    audioElements[player].play();
+    btn.classList.add('playing');
+    player.classList.add('playing');
+  } else {
+    audioElements[player].pause();
+    btn.classList.remove('playing');
+    player.classList.remove('playing');
+  }
+}
+
+function seekAudio(progress, e) {
+  const player = progress.closest('.audio-player');
+  if (!audioElements[player]) return;
+  const rect = progress.getBoundingClientRect();
+  const percent = (e.clientX - rect.left) / rect.width;
+  audioElements[player].currentTime = percent * audioElements[player].duration;
+}
+
+function toggleMute(btn) {
+  const player = btn.closest('.audio-player');
+  if (!audioElements[player]) return;
+  if (audioElements[player].volume > 0) {
+    audioElements[player].prevVolume = audioElements[player].volume;
+    audioElements[player].volume = 0;
+    btn.textContent = '🔇';
+  } else {
+    audioElements[player].volume = audioElements[player].prevVolume || 0.7;
+    btn.textContent = '🔊';
+  }
+}
+
+function setVolume(val) {
+  Object.values(audioElements).forEach(a => a.volume = val);
+}
+
+function formatTime(seconds) {
+  if (isNaN(seconds)) return '--:--';
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m}:${s.toString().padStart(2, '0')}`;
+}
+
+let timerInterval = null;
+let timerSeconds = 15 * 60;
+let timerRunning = false;
+
+function setTimer(minutes) {
+  timerSeconds = minutes * 60;
+  timerRunning = false;
+  clearInterval(timerInterval);
+  updateTimerDisplay();
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('timerBtn').textContent = '▶ Iniciar';
+}
+
+function toggleTimer() {
+  if (timerRunning) {
+    timerRunning = false;
+    clearInterval(timerInterval);
+    document.getElementById('timerBtn').textContent = '▶ Iniciar';
+  } else {
+    timerRunning = true;
+    timerInterval = setInterval(() => {
+      timerSeconds--;
+      if (timerSeconds <= 0) {
+        timerSeconds = 0;
+        timerRunning = false;
+        clearInterval(timerInterval);
+        document.getElementById('timerBtn').textContent = '⏰ ¡Tiempo!';
+        document.getElementById('timerBtn').style.background = 'linear-gradient(135deg, #cc0000, #ff4444)';
+        if ('Notification' in window && Notification.permission === 'granted') {
+          new Notification('⏰ Tiempo de Meditación', { body: 'Tu tiempo de oración ha terminado. ¡Que Dios te bendiga!', icon: 'img/logo_divina_misericordia.jpg' });
+        }
+      }
+      updateTimerDisplay();
+    }, 1000);
+    document.getElementById('timerBtn').textContent = '⏸ Pausar';
+  }
+}
+
+function resetTimer() {
+  timerRunning = false;
+  clearInterval(timerInterval);
+  document.getElementById('timerBtn').textContent = '▶ Iniciar';
+  document.getElementById('timerBtn').style.background = '';
+  const active = document.querySelector('.preset-btn.active');
+  timerSeconds = parseInt(active.textContent) * 60 || 15 * 60;
+  updateTimerDisplay();
+}
+
+function updateTimerDisplay() {
+  const m = Math.floor(timerSeconds / 60);
+  const s = timerSeconds % 60;
+  document.getElementById('timerDisplay').textContent = `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+}
+
+let prayerCount = parseInt(localStorage.getItem('prayerCount') || '0');
+document.getElementById('prayerCount').textContent = prayerCount;
+
+function incrementCounter() {
+  prayerCount++;
+  saveCounter();
+}
+
+function addMany(num) {
+  prayerCount += num;
+  saveCounter();
+}
+
+function saveCounter() {
+  document.getElementById('prayerCount').textContent = prayerCount;
+  localStorage.setItem('prayerCount', prayerCount.toString());
+  localStorage.setItem('prayerCountDate', new Date().toDateString());
+  const display = document.getElementById('prayerCount');
+  display.style.transform = 'scale(1.2)';
+  setTimeout(() => display.style.transform = 'scale(1)', 200);
+}
+
+function resetCounter() {
+  prayerCount = 0;
+  saveCounter();
+}
+
+if (localStorage.getItem('prayerCountDate') !== new Date().toDateString()) {
+  prayerCount = 0;
+  saveCounter();
+}
+
+if ('Notification' in window && Notification.permission === 'default') {
+  Notification.requestPermission();
+}
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/sw.js').then(reg => console.log('SW registered')).catch(e => console.log('SW error'));
+}
+</script>
+
+</body>
+</html>

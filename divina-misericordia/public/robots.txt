@@ -1,14 +1,47 @@
-# Robots.txt para Asociación Apóstoles de la Divina Misericordia
+# ============================================================
+# Robots.txt - Asociación Apóstoles de la Divina Misericordia
+# Última actualización: 2026-03-19
+# ============================================================
 
 User-agent: *
 Allow: /
+Allow: /img/
+Allow: /css/
+Allow: /js/
 
-# ---------------------------------------------------------------
-# Bloqueos futuros - Descomenta y modifica según necesidades
-# ---------------------------------------------------------------
-# User-agent: *
-# Disallow: /ruta-privada/
-# Disallow: /admin/
-# Disallow: /carpeta-interna/
+Disallow: /admin/
+Disallow: /admin_panel.html
+Disallow: /admin.html
+Disallow: /backups/
+Disallow: /public_backup_/
+Disallow: /Rufi_Divina/
 
-Sitemap: https://devocioncardiaca.es/sitemap.xml
+Crawl-delay: 2
+
+Sitemap: https://misericordiadejesus.es/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Googlebot-Image
+Allow: /img/
+Crawl-delay: 5
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 2
+
+# Archivos estáticos públicos permitidos
+Allow: /humans.txt
+Allow: /sitemap.xml
+Allow: /robots.txt
+
+# Bloquear archivos de configuración sensibles
+Disallow: /*.json$
+Disallow: /*.log$
+Disallow: /*.env$

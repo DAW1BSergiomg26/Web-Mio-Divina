@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virgen de Caacupé - Patrona del Paraguay | Tupãsy Caacupé | Divina Misericordia</title>
+<meta name="description" content="Virgen de Caacupé - Tupãsy Caacupé. Patrona del Paraguay, Nuestra Señora de los Milagros. Historia, oraciones, novena, peregrinación y recursos verificados.">
+<meta name="author" content="Asociación Apóstoles de la Divina Misericordia">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#003566">
+<link rel="canonical" href="https://misericordiadejesus.es/virgen-caacupe.html">
+<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --azul-abismo: #001233;
+    --azul-profundo: #003566;
+    --azul-cielo: #0353A4;
+    --azul-celeste: #006DAA;
+    --celeste: #48B5D6;
+    --celeste-light: #7DD3F0;
+    
+    --gold: #d4af37;
+    --gold-light: #f4e2a1;
+    --gold-dark: #b8960c;
+    --gold-glow: rgba(212,175,55,0.7);
+    
+    --guarani: #C85C2E;
+    --guarani-light: #E8854A;
+    
+    --white: #faf7f0;
+    --cream: #FDFBF5;
+    
+    --text-main: rgba(255,255,255,0.9);
+    --text-muted: rgba(255,255,255,0.7);
+    --border-gold: rgba(212,175,55,0.3);
+    --transition: 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+    background: var(--azul-abismo);
+    color: var(--text-main);
+    font-family:'EB Garamond',Georgia,serif;
+    line-height:1.85; overflow-x:hidden;
+    cursor:none;
+}
+
+.bg { 
+    position:fixed; inset:0; 
+    background: linear-gradient(135deg, #001233 0%, #003566 25%, #0353A4 50%, #006DAA 75%, #001233 100%);
+    background-size: 400% 400%;
+    animation: bgShift 20s ease infinite;
+    z-index:-2; 
+}
+@keyframes bgShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.sacred-rays {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300vmax;
+    height: 300vmax;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.15;
+}
+.ray {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 70%;
+    transform-origin: bottom center;
+}
+.ray::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(to top, 
+        rgba(212,175,55,1) 0%,
+        rgba(72,181,214,0.7) 40%,
+        rgba(0,109,170,0.4) 70%,
+        transparent 100%);
+    animation: rayPulse 4s ease-in-out infinite;
+}
+.ray:nth-child(1) { transform: translateY(-100%) rotate(0deg); animation-delay: 0s; }
+.ray:nth-child(2) { transform: translateY(-100%) rotate(20deg); animation-delay: 0.2s; }
+.ray:nth-child(3) { transform: translateY(-100%) rotate(40deg); animation-delay: 0.4s; }
+.ray:nth-child(4) { transform: translateY(-100%) rotate(60deg); animation-delay: 0.6s; }
+.ray:nth-child(5) { transform: translateY(-100%) rotate(80deg); animation-delay: 0.8s; }
+.ray:nth-child(6) { transform: translateY(-100%) rotate(100deg); animation-delay: 1s; }
+.ray:nth-child(7) { transform: translateY(-100%) rotate(120deg); animation-delay: 1.2s; }
+.ray:nth-child(8) { transform: translateY(-100%) rotate(140deg); animation-delay: 1.4s; }
+.ray:nth-child(9) { transform: translateY(-100%) rotate(160deg); animation-delay: 1.6s; }
+.ray:nth-child(10) { transform: translateY(-100%) rotate(180deg); animation-delay: 1.8s; }
+.ray:nth-child(11) { transform: translateY(-100%) rotate(200deg); animation-delay: 2s; }
+.ray:nth-child(12) { transform: translateY(-100%) rotate(220deg); animation-delay: 2.2s; }
+.ray:nth-child(13) { transform: translateY(-100%) rotate(240deg); animation-delay: 2.4s; }
+.ray:nth-child(14) { transform: translateY(-100%) rotate(260deg); animation-delay: 2.6s; }
+.ray:nth-child(15) { transform: translateY(-100%) rotate(280deg); animation-delay: 2.8s; }
+.ray:nth-child(16) { transform: translateY(-100%) rotate(300deg); animation-delay: 3s; }
+.ray:nth-child(17) { transform: translateY(-100%) rotate(320deg); animation-delay: 3.2s; }
+.ray:nth-child(18) { transform: translateY(-100%) rotate(340deg); animation-delay: 3.4s; }
+
+@keyframes rayPulse {
+    0%, 100% { opacity: 0.3; height: 60%; }
+    25% { opacity: 1; height: 100%; }
+    50% { opacity: 0.5; height: 80%; }
+    75% { opacity: 0.9; height: 95%; }
+}
+
+.particles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+.particle {
+    position: absolute;
+    width: 4px; height: 4px;
+    background: var(--celeste);
+    border-radius: 50%;
+    animation: floatParticle 20s linear infinite;
+    box-shadow: 0 0 8px rgba(72,181,214,0.8), 0 0 15px rgba(212,175,55,0.5);
+}
+.particle:nth-child(odd) { background: var(--gold); box-shadow: 0 0 8px rgba(212,175,55,0.8); }
+.particle:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 22s; }
+.particle:nth-child(2) { left: 10%; animation-delay: 2s; animation-duration: 26s; width: 3px; height: 3px; }
+.particle:nth-child(3) { left: 15%; animation-delay: 4s; animation-duration: 24s; }
+.particle:nth-child(4) { left: 20%; animation-delay: 1s; animation-duration: 28s; width: 5px; height: 5px; }
+.particle:nth-child(5) { left: 25%; animation-delay: 3s; animation-duration: 20s; }
+.particle:nth-child(6) { left: 30%; animation-delay: 5s; animation-duration: 27s; width: 3px; height: 3px; }
+.particle:nth-child(7) { left: 35%; animation-delay: 0.5s; animation-duration: 23s; }
+.particle:nth-child(8) { left: 40%; animation-delay: 2.5s; animation-duration: 25s; width: 5px; height: 5px; }
+.particle:nth-child(9) { left: 45%; animation-delay: 4.5s; animation-duration: 21s; }
+.particle:nth-child(10) { left: 50%; animation-delay: 1.5s; animation-duration: 29s; width: 3px; height: 3px; }
+.particle:nth-child(11) { left: 55%; animation-delay: 3.5s; animation-duration: 22s; }
+.particle:nth-child(12) { left: 60%; animation-delay: 0s; animation-duration: 24s; width: 5px; height: 5px; }
+.particle:nth-child(13) { left: 65%; animation-delay: 2s; animation-duration: 20s; }
+.particle:nth-child(14) { left: 70%; animation-delay: 4s; animation-duration: 26s; width: 3px; height: 3px; }
+.particle:nth-child(15) { left: 75%; animation-delay: 1s; animation-duration: 23s; }
+.particle:nth-child(16) { left: 80%; animation-delay: 3s; animation-duration: 27s; width: 5px; height: 5px; }
+.particle:nth-child(17) { left: 85%; animation-delay: 5s; animation-duration: 21s; }
+.particle:nth-child(18) { left: 90%; animation-delay: 2.5s; animation-duration: 25s; width: 3px; height: 3px; }
+.particle:nth-child(19) { left: 95%; animation-delay: 0.5s; animation-duration: 22s; }
+.particle:nth-child(20) { left: 3%; animation-delay: 4.5s; animation-duration: 30s; width: 5px; height: 5px; }
+
+@keyframes floatParticle {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    5% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+}
+
+#divine-canvas { position:fixed; inset:0; z-index:-1; opacity:0.4; }
+
+.progress-bar {
+    position:fixed; top:0; left:0; height:2px; width:0;
+    background:linear-gradient(to right, var(--azul-cielo), var(--celeste), var(--gold));
+    z-index:1100; transition:width 0.1s linear;
+    box-shadow:0 0 10px rgba(72,181,214,0.7);
+}
+
+header {
+    position:fixed; width:100%;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:10px 30px;
+    background:rgba(0,0,0,0.92);
+    backdrop-filter:blur(24px);
+    z-index:1000; border-bottom:1px solid var(--border-gold);
+    transition:padding var(--transition);
+}
+header.scrolled { padding:6px 30px; background:rgba(0,18,51,0.98); }
+
+.logo {
+    font-family:'Cinzel Decorative',serif;
+    font-size:1.25rem; color:var(--gold-light);
+    text-decoration:none; display:flex; align-items:center; gap:12px;
+}
+.logo:hover { opacity:0.85; }
+.logo img { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--border-gold); }
+.logo span { color:var(--white); }
+
+nav { display:flex; gap:4px; flex-wrap:wrap; justify-content:center; align-items:center; }
+nav a {
+    color:var(--gold); text-decoration:none;
+    font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:1px;
+    padding:8px 10px; border-radius:6px;
+    transition:all var(--transition); position:relative; white-space:nowrap;
+}
+nav a::after {
+    content:''; position:absolute; bottom:4px; left:50%;
+    transform:translateX(-50%) scaleX(0);
+    width:60%; height:1px; background:var(--gold);
+    transition:transform var(--transition);
+}
+nav a:hover::after, nav a.activo::after { transform:translateX(-50%) scaleX(1); }
+nav a:hover, nav a.activo {
+    color:var(--gold-light);
+    background:rgba(212,175,55,0.15);
+    text-shadow:0 0 18px var(--gold-glow);
+}
+
+nav a.caacupe-btn {
+    color: #fff;
+    background: linear-gradient(135deg, var(--azul-cielo), var(--azul-celeste));
+    border: 2px solid var(--celeste);
+    padding: 10px 18px;
+    font-weight: 700;
+    animation: caacupeGlow 2s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(72,181,214,0.6), 0 0 40px rgba(212,175,55,0.3);
+}
+@keyframes caacupeGlow {
+    0%, 100% { 
+        box-shadow: 0 0 20px rgba(72,181,214,0.6), 0 0 40px rgba(212,175,55,0.3), 0 0 60px rgba(0,109,170,0.4);
+        border-color: var(--celeste);
+    }
+    50% { 
+        box-shadow: 0 0 30px rgba(72,181,214,0.9), 0 0 60px rgba(212,175,55,0.6), 0 0 90px rgba(0,109,170,0.6);
+        border-color: var(--celeste-light);
+    }
+}
+nav a.caacupe-btn:hover {
+    background: linear-gradient(135deg, var(--azul-celeste), var(--celeste));
+    color: var(--white);
+    transform: scale(1.05);
+}
+
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:10px; z-index:1100; }
+.hamburger span { width:26px; height:2px; background:var(--gold); border-radius:2px; transition:all var(--transition); display:block; }
+.hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+.hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+@media (max-width:900px) {
+    .hamburger { display:flex; }
+    nav {
+        position:fixed; top:0; right:-100%;
+        width:min(320px,80vw); height:100dvh;
+        background:rgba(0,18,51,0.98);
+        backdrop-filter:blur(30px);
+        flex-direction:column; align-items:flex-start; justify-content:flex-start;
+        padding:90px 30px 30px; gap:6px;
+        transition:right 0.4s cubic-bezier(0.4,0,0.2,1);
+        border-left:1px solid var(--border-gold); overflow-y:auto;
+    }
+    nav.active { right:0; }
+    nav a { font-size:1rem; width:100%; padding:12px 16px; border-radius:8px; }
+    nav a::after { display:none; }
+}
+
+.main-content { max-width:1000px; margin:0 auto; position: relative; z-index: 2; padding: 180px 20px 80px; }
+
+.reveal { opacity:0; transform:translateY(30px); transition:all 0.8s cubic-bezier(0.4,0,0.2,1); }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+.hero { background: linear-gradient(to bottom, rgba(0,109,170,0.85) 0%, rgba(0,51,102,0.95) 100%); min-height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; border-radius: 24px; margin-bottom: 50px; border: 2px solid var(--celeste); box-shadow: 0 0 60px rgba(72,181,214,0.3), 0 0 120px rgba(0,109,170,0.2); padding: 180px 20px 80px; }
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: conic-gradient(from 0deg, transparent, rgba(72,181,214,0.1), transparent, rgba(212,175,55,0.1), transparent);
+    animation: heroRotate 15s linear infinite;
+}
+@keyframes heroRotate {
+    from { transform:rotate(0deg); }
+    to { transform:rotate(360deg); }
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-icon { 
+    font-size: 80px; margin-bottom: 20px; 
+    animation: iconShimmer 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 30px rgba(72,181,214,0.8));
+}
+@keyframes iconShimmer {
+    0%,100% { filter: drop-shadow(0 0 20px rgba(72,181,214,0.6)); transform: scale(1); }
+    50% { filter: drop-shadow(0 0 40px rgba(72,181,214,1)); transform: scale(1.1); }
+}
+.hero h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--white);
+    text-shadow: 0 0 40px rgba(72,181,214,0.8);
+    margin-bottom: 15px;
+}
+.hero h1 span { color: var(--celeste-light); }
+.hero .tagline {
+    font-family: 'EB Garamond', serif; font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.3rem); 
+    color: var(--text-main);
+    max-width: 650px; margin: 0 auto 30px;
+}
+.hero-stats {
+    display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;
+}
+.hero-stat { text-align: center; }
+.hero-stat .num { 
+    font-family: 'Cinzel', serif; font-size: 1.8rem; 
+    color: var(--celeste-light); font-weight: 700; display: block; 
+}
+.hero-stat .lab { font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; }
+
+.section { margin-bottom: 60px; scroll-margin-top: 80px; }
+.section-header {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--azul-celeste);
+    padding-bottom: 16px;
+}
+.section-icon { font-size: 2.5rem; flex-shrink: 0; }
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    color: var(--celeste-light); font-weight: 700;
+}
+.section-subtitle { font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-top: 4px; }
+
+.card {
+    background: linear-gradient(145deg, rgba(0,51,102,0.6), rgba(0,18,51,0.9));
+    border: 1px solid rgba(72,181,214,0.3);
+    border-left: 4px solid var(--celeste);
+    border-radius: 4px 12px 12px 4px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    transition: all var(--transition);
+}
+.card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4), 0 0 30px rgba(72,181,214,0.1);
+}
+.card h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold-light); font-size: 1rem;
+    letter-spacing: 0.05em; margin-bottom: 12px;
+}
+.card p { color: var(--text-main); font-size: 1.05rem; line-height: 1.85; }
+.card.gold-border { border-left-color: var(--gold); }
+.card.highlight {
+    background: linear-gradient(135deg, rgba(0,51,102,0.4), rgba(0,18,51,0.8));
+    border: 1px solid var(--border-gold);
+    border-left: 4px solid var(--gold);
+}
+.card.guarani { border-left-color: var(--guarani); }
+
+.info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 16px; margin: 20px 0; }
+.info-box {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(72,181,214,0.2);
+    border-radius: 12px;
+    padding: 22px 18px; text-align: center;
+    transition: all var(--transition);
+}
+.info-box:hover { 
+    transform: translateY(-4px); 
+    box-shadow: 0 10px 30px rgba(72,181,214,0.2);
+    border-color: var(--celeste);
+}
+.info-box .icon-big { font-size: 2.5rem; margin-bottom: 10px; }
+.info-box strong { 
+    font-family: 'Cinzel', serif; font-size: 0.9rem; 
+    color: var(--celeste-light); display: block; margin-bottom: 8px; 
+}
+.info-box p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+.timeline { position: relative; padding-left: 36px; margin: 20px 0; }
+.timeline::before {
+    content: ''; position: absolute; left: 12px; top: 8px; bottom: 8px;
+    width: 2px; background: linear-gradient(to bottom, var(--celeste), var(--gold));
+}
+.t-item { position: relative; margin-bottom: 28px; }
+.t-item::before {
+    content: ''; position: absolute; left: -30px; top: 6px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--celeste); border: 3px solid var(--azul-abismo);
+    box-shadow: 0 0 10px rgba(72,181,214,0.7);
+}
+.t-year {
+    font-family: 'Cinzel', serif; font-size: 0.95rem; font-weight: 700;
+    color: var(--celeste-light); letter-spacing: 0.08em; margin-bottom: 6px;
+}
+.t-text { font-size: 1rem; color: var(--text-main); line-height: 1.75; }
+
+.prayer-block {
+    background: linear-gradient(145deg, var(--azul-cielo) 0%, #002855 100%);
+    border-radius: 16px;
+    padding: 40px;
+    margin: 24px 0;
+    border: 1px solid rgba(212,175,55,0.3);
+    position: relative; overflow: hidden;
+}
+.prayer-block::before {
+    content: '+ + +'; position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+    color: rgba(212,175,55,0.4); font-size: 0.8rem; letter-spacing: 12px;
+}
+.prayer-block h3 {
+    font-family: 'Cinzel', serif; color: var(--gold);
+    text-align: center; font-size: 1rem; letter-spacing: 0.1em;
+    margin: 24px 0 20px;
+}
+.prayer-block p {
+    font-family: 'EB Garamond', serif; font-style: italic;
+    font-size: 1.05rem; line-height: 2; text-align: justify;
+    color: rgba(244,232,192,0.9);
+}
+.prayer-block .jac {
+    text-align: center; font-size: 1.2rem; color: var(--white);
+    font-family: 'Cinzel', serif; letter-spacing: 0.05em; margin: 16px 0 10px;
+}
+.prayer-block .note { 
+    text-align: center; font-size: 0.85rem; font-style: normal; 
+    opacity: 0.6; margin-top: 10px; 
+}
+.prayer-block .note a { color: var(--celeste-light); }
+
+blockquote {
+    border-left: 4px solid var(--gold);
+    margin: 24px 0; padding: 20px 28px;
+    background: rgba(212,175,55,0.05);
+    border-radius: 0 10px 10px 0;
+    font-family: 'EB Garamond', serif; font-style: italic;
+    font-size: 1.15rem; color: var(--text-main);
+}
+blockquote cite {
+    display: block; margin-top: 12px; font-size: 0.85rem;
+    font-style: normal; color: var(--gold);
+    font-family: 'Cinzel', serif; letter-spacing: 0.06em;
+}
+
+.table-wrap { overflow-x: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin: 20px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+thead { background: var(--azul-cielo); color: var(--gold-light); }
+thead th { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.1em; padding: 14px 16px; text-align: left; }
+tbody tr { border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.15s; }
+tbody tr:nth-child(even) { background: rgba(72,181,214,0.08); }
+tbody tr:hover { background: rgba(72,181,214,0.15); }
+tbody td { padding: 12px 16px; vertical-align: middle; line-height: 1.55; }
+tbody td a { color: var(--celeste-light); text-decoration: none; font-weight: 600; }
+tbody td a:hover { text-decoration: underline; color: var(--gold); }
+.badge-top { 
+    background: var(--gold); color: var(--azul-cielo); 
+    font-size: 0.65rem; font-family: 'Cinzel', serif; 
+    padding: 2px 8px; border-radius: 4px; letter-spacing: 0.06em; margin-left: 8px; 
+}
+
+.banner {
+    background: linear-gradient(135deg, var(--azul-cielo), var(--azul-celeste));
+    border-radius: 14px; padding: 30px 34px;
+    color: var(--gold-light); text-align: center; margin: 28px 0;
+    border: 1px solid rgba(212,175,55,0.25);
+    box-shadow: 0 0 30px rgba(72,181,214,0.3);
+}
+.banner h3 { font-family: 'Cinzel', serif; color: var(--white); font-size: 1rem; margin-bottom: 12px; letter-spacing: 0.08em; }
+.banner p { font-size: 0.95rem; opacity: 0.85; max-width: 650px; margin: 0 auto; }
+.banner .tel { 
+    font-family: 'Cinzel', serif; color: var(--gold-light); 
+    font-size: 0.9rem; margin-top: 12px; display: block; 
+}
+.banner a { color: var(--celeste-light); text-decoration: none; display: block; margin-top: 8px; }
+.banner a:hover { text-decoration: underline; }
+
+.video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 16px; margin: 20px 0; }
+.video-card {
+    background: linear-gradient(145deg, var(--azul-cielo), rgba(0,18,51,0.95));
+    border-radius: 12px;
+    padding: 22px; color: var(--gold-light);
+    border: 1px solid rgba(72,181,214,0.2);
+    transition: all var(--transition);
+}
+.video-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(72,181,214,0.3); }
+.video-card .v-icon { font-size: 1.8rem; margin-bottom: 12px; }
+.video-card h4 { font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--gold); margin-bottom: 10px; letter-spacing: 0.06em; }
+.video-card p { font-size: 0.85rem; opacity: 0.75; margin-bottom: 14px; line-height: 1.55; }
+.video-card a {
+    display: inline-block; background: var(--gold);
+    color: var(--azul-cielo); font-family: 'Cinzel', serif;
+    font-size: 0.75rem; letter-spacing: 0.08em;
+    padding: 8px 16px; border-radius: 6px; text-decoration: none;
+    font-weight: 700; transition: background 0.2s;
+}
+.video-card a:hover { background: var(--gold-light); }
+
+.res-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 16px; margin: 20px 0; }
+.res-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(72,181,214,0.2); border-radius: 12px;
+    padding: 22px;
+    border-top: 3px solid var(--celeste);
+    transition: all var(--transition);
+}
+.res-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(72,181,214,0.2); }
+.res-card.gold-top { border-top-color: var(--gold); }
+.res-card h4 { font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--gold-light); margin-bottom: 8px; letter-spacing: 0.04em; }
+.res-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px; line-height: 1.6; }
+.res-card a { color: var(--celeste-light); font-size: 0.85rem; font-weight: 700; text-decoration: none; }
+.res-card a:hover { color: var(--gold); text-decoration: underline; }
+.res-tag { 
+    display: inline-block; font-size: 0.65rem; 
+    font-family: 'Cinzel', serif; letter-spacing: 0.08em; 
+    padding: 3px 10px; border-radius: 4px; margin-bottom: 10px; 
+}
+.res-tag.oficial { background: rgba(72,181,214,0.2); color: var(--celeste-light); }
+.res-tag.pdf { background: rgba(212,175,55,0.15); color: var(--gold-light); }
+.res-tag.youtube { background: rgba(204,0,0,0.15); color: #ff6666; }
+.res-tag.libro { background: rgba(200,92,46,0.2); color: var(--guarani-light); }
+.res-tag.vaticano { background: rgba(255,215,0,0.15); color: var(--gold); }
+
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: 14px; margin: 20px 0; }
+.stat-box {
+    background: linear-gradient(135deg, var(--azul-cielo), var(--azul-profundo));
+    border-radius: 10px; padding: 18px 14px; text-align: center;
+    border: 1px solid rgba(72,181,214,0.3);
+    box-shadow: 0 3px 14px rgba(72,181,214,0.2);
+}
+.stat-box .num { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--celeste-light); font-weight: 700; display: block; }
+.stat-box .lab { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.05em; font-family: 'Cinzel', serif; margin-top: 4px; }
+
+.separator-wrap {
+    width:100%; margin:3rem auto;
+    display:flex; align-items:center; justify-content:center;
+}
+.separator-cruz {
+    display:flex; align-items:center; justify-content:center;
+    gap:0; width:100%; max-width:500px;
+}
+.separator-linea {
+    flex:1; height:1px;
+    background:linear-gradient(to right, transparent, var(--celeste));
+}
+.separator-linea.right { background:linear-gradient(to left, transparent, var(--celeste)); }
+.separator-cruz-svg {
+    flex-shrink:0; width:70px; height:70px;
+    animation:cruzBreath 3.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(72,181,214,0.7));
+}
+@keyframes cruzBreath {
+    0%,100% { filter:drop-shadow(0 0 15px rgba(72,181,214,0.7)); transform:scale(1); }
+    50% { filter:drop-shadow(0 0 30px rgba(72,181,214,1)) drop-shadow(0 0 50px rgba(212,175,55,0.5)); transform:scale(1.08); }
+}
+
+.notice { 
+    background: rgba(212,175,55,0.07); 
+    border: 1px solid rgba(212,175,55,0.3); 
+    border-radius: 8px; padding: 13px 20px; 
+    font-size: 0.9rem; color: var(--text-main); margin: 16px 0; 
+}
+
+.symbol-block {
+    background: linear-gradient(135deg, rgba(200,92,46,0.1), rgba(0,51,102,0.3));
+    border: 1px solid rgba(200,92,46,0.3); border-radius: 10px;
+    padding: 24px 28px; margin-bottom: 18px;
+}
+.symbol-block h4 { font-family: 'Cinzel', serif; color: var(--guarani-light); font-size: 0.9rem; letter-spacing: 0.06em; margin-bottom: 10px; }
+.symbol-block ul { padding-left: 18px; }
+.symbol-block ul li { font-size: 0.95rem; margin-bottom: 8px; line-height: 1.6; color: var(--text-main); }
+
+.footer-menu {
+    background: linear-gradient(145deg, rgba(0,18,51,0.9), rgba(0,51,102,0.7));
+    border: 1px solid var(--border-gold);
+    border-radius: 20px; padding: 35px; margin: 40px auto;
+    backdrop-filter: blur(10px);
+}
+.footer-menu-title {
+    font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--gold-light);
+    text-align: center; margin-bottom: 25px; letter-spacing: 3px; text-transform: uppercase;
+}
+.footer-menu-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.footer-menu-links a {
+    color: var(--text-muted); text-decoration: none; font-size: 0.85rem;
+    padding: 10px 18px; border: 1px solid rgba(72,181,214,0.2); border-radius: 25px;
+    transition: all var(--transition); font-family: 'EB Garamond', serif;
+}
+.footer-menu-links a:hover {
+    background: rgba(72,181,214,0.15); border-color: var(--celeste);
+    color: var(--celeste-light); transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(72,181,214,0.2);
+}
+
+.golden-divine-line {
+    width: 100%; max-width: 1000px; height: 5px;
+    margin: 0 auto 50px; position: relative;
+    background: linear-gradient(90deg, 
+        transparent 0%, var(--azul-cielo) 5%, var(--celeste) 15%, var(--celeste-light) 25%,
+        var(--white) 35%, var(--celeste-light) 45%, var(--celeste) 55%, var(--azul-cielo) 65%,
+        var(--azul-profundo) 75%, var(--celeste) 85%, transparent 100%);
+    border-radius: 3px;
+    box-shadow: 0 0 20px rgba(72,181,214,0.5), 0 0 40px rgba(212,175,55,0.3);
+    animation: lineGlow 2.5s ease-in-out infinite;
+}
+@keyframes lineGlow {
+    0%,100% { filter: brightness(1); }
+    50% { filter: brightness(1.3); }
+}
+
+footer.main-footer {
+    background: linear-gradient(to bottom, rgba(0,18,51,0.9), rgba(0,51,102,0.95));
+    padding: 40px 20px; text-align: center;
+    border-top: 2px solid var(--celeste);
+    display: flex; flex-direction: column; align-items: center;
+}
+footer.main-footer .cross-glow {
+    font-size: 3rem; color: var(--celeste);
+    text-shadow: 0 0 30px rgba(72,181,214,0.8), 0 0 60px rgba(212,175,55,0.3);
+    margin-bottom: 15px; animation: crossPulse 2.5s ease-in-out infinite;
+}
+@keyframes crossPulse {
+    0%,100% { text-shadow: 0 0 30px rgba(72,181,214,0.8), 0 0 60px rgba(212,175,55,0.3); transform: scale(1); }
+    50% { text-shadow: 0 0 50px rgba(72,181,214,1), 0 0 100px rgba(212,175,55,0.5), 0 0 150px rgba(72,181,214,0.5); transform: scale(1.1); }
+}
+footer.main-footer p { color: var(--text-muted); margin: 5px 0; font-size: 0.95rem; }
+footer.main-footer .tagline { color: var(--celeste-light); font-family: 'Cinzel', serif; font-size: 1.05rem; letter-spacing: 2px; }
+
+.scroll-btn {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: rgba(0,0,0,0.7); border: 2px solid var(--celeste);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; animation: scrollPulse 2s ease-in-out infinite;
+    transition: all 0.3s ease; position: fixed; z-index: 1000;
+    backdrop-filter: blur(8px);
+}
+.scroll-btn:hover {
+    background: rgba(72,181,214,0.3);
+    box-shadow: 0 0 30px rgba(72,181,214,0.8), 0 0 60px rgba(212,175,55,0.3);
+    transform: scale(1.1);
+}
+.scroll-btn svg { width: 24px; height: 24px; stroke: var(--celeste); stroke-width: 2.5; fill: none; }
+.scroll-up { top: 120px; right: 20px; }
+.scroll-down { bottom: 30px; right: 20px; }
+@keyframes scrollPulse {
+    0%,100% { box-shadow: 0 0 20px rgba(72,181,214,0.5), 0 0 40px rgba(212,175,55,0.2); }
+    50% { box-shadow: 0 0 35px rgba(72,181,214,0.8), 0 0 70px rgba(212,175,55,0.4); }
+}
+
+.cursor-cruz {
+    position: fixed; pointer-events: none; z-index: 9999;
+    width: 36px; height: 36px; transform: translate(-50%, -50%);
+}
+.cursor-cruz svg {
+    width: 100%; height: 100%;
+    filter: drop-shadow(0 0 8px rgba(72,181,214,0.9)) drop-shadow(0 0 16px rgba(212,175,55,0.6));
+}
+.cursor-cruz.hover { transform: translate(-50%, -50%) scale(1.4); }
+.cursor-cruz.hover svg {
+    filter: drop-shadow(0 0 12px rgba(72,181,214,1)) drop-shadow(0 0 24px rgba(212,175,55,0.9)) drop-shadow(0 0 40px rgba(0,109,170,0.5));
+}
+
+@media (max-width: 768px) {
+    .hero { min-height: auto; padding: 180px 20px 80px; }
+    .hero-stats { gap: 16px; }
+    .prayer-block { padding: 28px 20px; }
+    .info-grid { grid-template-columns: 1fr 1fr; }
+    .video-grid, .res-grid { grid-template-columns: 1fr; }
+    .scroll-up { top: 100px; right: 15px; }
+    .scroll-down { bottom: 20px; right: 15px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Rayos de Luz -->
+<div class="sacred-rays">
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div>
+</div>
+
+<!-- Partículas -->
+<div class="particles">
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+</div>
+
+<div class="bg"></div>
+<canvas id="divine-canvas"></canvas>
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Cursor Cruz -->
+<div class="cursor-cruz" id="cursor">
+    <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="cruzCeleste" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#7dd3f0"/>
+                <stop offset="30%" stop-color="#48b5d6"/>
+                <stop offset="50%" stop-color="#d4af37"/>
+                <stop offset="70%" stop-color="#48b5d6"/>
+                <stop offset="100%" stop-color="#006daa"/>
+            </linearGradient>
+            <filter id="glowCeleste">
+                <feGaussianBlur stdDeviation="2" result="blur1"/>
+                <feGaussianBlur stdDeviation="4" result="blur2"/>
+                <feMerge>
+                    <feMergeNode in="blur2"/>
+                    <feMergeNode in="blur1"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+        <rect x="17" y="2" width="6" height="36" rx="2" fill="url(#cruzCeleste)" filter="url(#glowCeleste)"/>
+        <rect x="4" y="12" width="32" height="6" rx="2" fill="url(#cruzCeleste)" filter="url(#glowCeleste)"/>
+        <circle cx="20" cy="7" r="3.5" fill="#7dd3f0" filter="url(#glowCeleste)"/>
+    </svg>
+</div>
+
+<!-- Header -->
+<header id="mainHeader">
+    <a href="index.html" class="logo">
+        <img src="img/logo_divina_misericordia.jpg" alt="Logo" loading="lazy">
+        Divina<span>Misericordia</span>
+    </a>
+    <nav id="mainNav">
+        <a href="index.html">Inicio</a>
+        <a href="quienes-somos.html">Quiénes Somos</a>
+        <a href="introduccion.html">Introducción</a>
+        <a href="santa-faustina.html">Santa Faustina</a>
+        <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
+        <a href="coronilla.html">Coronilla</a>
+        <a href="novena.html">Novena</a>
+        <a href="via-crucis.html">Vía Crucis</a>
+        <a href="oraciones.html">Oraciones</a>
+        <a href="santo-rosario.html">El Santo Rosario</a>
+        <a href="maria.html">María</a>
+        <a href="obras-de-misericordia.html">Obras de Misericordia</a>
+        <a href="consagracion.html">Consagración</a>
+        <a href="lugares-de-culto.html">Lugares de Culto</a>
+        <a href="musica-sacra.html">Música Sacra</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="enlaces.html">Enlaces</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="la-santina.html" class="santina-btn">La Santina</a>
+        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+        <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+
+<!-- Main Content -->
+<main class="main-content">
+
+    <!-- HERO -->
+    <div class="hero reveal">
+        <div class="hero-content">
+            <div class="hero-icon">+</div>
+            <h1>Virgen de <span>Caacupé</span></h1>
+            <p class="tagline">«Tupãsy Caacupé» — La Virgencita Azul · Patrona del Paraguay · Corazón de América</p>
+            <div class="hero-stats">
+                <div class="hero-stat"><span class="num">~1600</span><span class="lab">Origen Guaraní</span></div>
+                <div class="hero-stat"><span class="num">8 Dic</span><span class="lab">Fiesta Patronal</span></div>
+                <div class="hero-stat"><span class="num">+2M</span><span class="lab">Peregrinos/año</span></div>
+                <div class="hero-stat"><span class="num">2015</span><span class="lab">Basílica Menor</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HISTORIA -->
+    <section class="section" id="historia">
+        <div class="section-header">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Historia Completa · Origen Guaraní · Misiones Franciscanas</h2>
+                <p class="section-subtitle">Fuentes: Wikipedia ES, ABC Color, La Nación PY, Portal Guaraní, Archivo Nacional de Asunción</p>
+            </div>
+        </div>
+
+        <div class="card guarani">
+            <h3>+ KA'A KUPE — DETRAS DEL BOSQUE DE YERBA</h3>
+            <p><strong>Caacupé</strong> proviene de la lengua guaraní: <em>ka'a kupé</em>, que se traduce como <strong>"detrás de la yerba"</strong> o <strong>"detrás del bosque de yerba"</strong>. El término <em>ka'aguý</em> significa 'monte' (bosque) y <em>ka'á</em> es 'yerba mate', la planta sagrada y símbolo de identidad guaraní. Este nombre refleja la memoria de un pueblo cuya fe nació en el monte, en el corazón verde del Paraguay.</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>~1600 d.C.</strong>
+                <p>Un indio guaraní de nombre José, converso de la misión franciscana de Tobatí, escapa de la tribu mbayá. Promete tallar a la Virgen.</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Dos Tallas</strong>
+                <p>Del mismo tronco talló dos imágenes. La mayor fue a la iglesia de Tobatí. La menor —la que hoy se venera— es para su devoción personal.</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Inundación · Primer Milagro</strong>
+                <p>Una gran inundación forma el lago Ypacaraí. Al retroceder las aguas, aparece flotando en una caja de madera la imagen de la Virgen.</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>1765 · Primera Capilla</strong>
+                <p>El 8 de diciembre de 1765 se inaugura la primera capilla. Un documento de 1769 confirma la donación de la imagen al pueblo.</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>4 Abril 1770</strong>
+                <p>Fundación oficial del pueblo de Caacupé. La devoción a la Virgen fue el imán que atrajo pobladores y fundó la ciudad espiritual.</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Basílica Actual · 1980</strong>
+                <p>La construcción del templo actual comenzó en 1945. La imagen se instala en 1980. En 2015, el Papa Francisco la eleva a Basilica Menor.</p>
+            </div>
+        </div>
+
+        <div class="timeline">
+            <div class="t-item">
+                <div class="t-year">~1600 · El Origen</div>
+                <div class="t-text">En el pueblo de <strong>Tobatí</strong> fundado hacia 1600, vivía un escultor guaraní llamado <strong>José</strong>, converso de la misión franciscana. Al volver del valle Ytú con un trozo de madera, se encontró frente a guerreros <em>mbayá</em> y le prometió a la Virgen que si sobrevivía, tallaría su imagen.</div>
+            </div>
+            <div class="t-item">
+                <div class="t-year">~1600 · El Cumplimiento de la Promesa</div>
+                <div class="t-text">José cumplió su promesa. Con la madera del árbol protector talló <strong>dos imágenes</strong> idénticas. La imagen mayor se destinó a la iglesia de Tobatí. La menor —de apenas 50 cm— la conservó para su devoción personal. Construyó un humilde oratorio que se convirtió en el núcleo del futuro Caacupé.</div>
+            </div>
+            <div class="t-item">
+                <div class="t-year">~1603 · El Segundo Milagro del Agua</div>
+                <div class="t-text">Una gran inundación formó lo que hoy es el <strong>lago Ypacaraí</strong>. Los frailes franciscanos liderados por el <strong>Padre Luis de Bolaños</strong> organizaron una rogativa. Al retroceder las aguas, apareció flotando en una caja de madera la imagen de la Virgen, idéntica a la tallada por José.</div>
+            </div>
+            <div class="t-item">
+                <div class="t-year">1713 · Primer Registro Documental</div>
+                <div class="t-text">En el <strong>Archivo Nacional de Asunción</strong> (ANA, CyJ, vol. 1275, no. 2) se encuentran documentos que desde 1713 señalan la geografía como "Valle de Caacupé". En 1800, otra fuente cita "Capilla de Nuestra Señora de los Milagros de Caacupé".</div>
+            </div>
+            <div class="t-item">
+                <div class="t-year">8 Dic 1765 · Primera Misa Oficial</div>
+                <div class="t-text">El 10 de octubre de 1769 se celebra la primera misa en la capilla denominada "Vice parroquial Iglesia de Nuestra Señora de los Milagros de Caacupé". El <strong>4 de abril de 1770</strong> se funda oficialmente el pueblo de Caacupé.</div>
+            </div>
+            <div class="t-item">
+                <div class="t-year">18 Mayo 1988 · Juan Pablo II</div>
+                <div class="t-text">En su viaje apostólico a Paraguay, <strong>Juan Pablo II</strong> consagra el país a la Virgen de Caacupé. Pronuncia una oración histórica, hoy conservada en el Vaticano.</div>
+            </div>
+            <div class="t-item">
+                <div class="t-year">11 Jul 2015 · Papa Francisco</div>
+                <div class="t-text"><strong>El Papa Francisco</strong> eleva el Santuario de Caacupé a la categoría de <em>Basílica Menor</em>, convirtiéndolo en la segunda iglesia del Paraguay con esa categoría.</div>
+            </div>
+            <div class="t-item">
+                <div class="t-year">Dic 2025 · Récord Histórico</div>
+                <div class="t-text">La festividad de Caacupé 2025 registró el <strong>mayor volumen de peregrinos en toda la historia reciente</strong>. Se estima un total de cerca de <strong>2 millones de peregrinos</strong> entre el novenario y el día 8.</div>
+            </div>
+        </div>
+
+        <blockquote>
+            "La narración mítica habla de las peregrinaciones guaraníes, de los peligros mortales que padecieron, de su devoción a la Inmaculada, la Tupäsy —Madre de Dios— que tomó el lugar de la mítica Ñandesy de sus ancestros."
+            <cite>— Wikipedia ES · Virgen de Caacupé (citando Historia de la Iglesia en Paraguay, Ed. Tiempo de Historia)</cite>
+        </blockquote>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#7dd3f0"/>
+                        <stop offset="50%" stop-color="#d4af37"/>
+                        <stop offset="100%" stop-color="#006daa"/>
+                    </linearGradient>
+                    <filter id="cruzGlow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                </defs>
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#7dd3f0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- LA IMAGEN -->
+    <section class="section" id="imagen">
+        <div class="section-header">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">La Imagen · Descripción Oficial y Datos Verificados</h2>
+                <p class="section-subtitle">Fuentes: Catholic.net, virgencaacupe.com, Wikipedia ES</p>
+            </div>
+        </div>
+
+        <div class="card gold-border">
+            <h3>+ DESCRIPCION DE LA TALLA ORIGINAL</h3>
+            <p>La imagen es una <strong>hermosa talla en madera de apenas 50 cm de altura</strong>, con un delicado rostro ovalado y ojos azules. Como la Inmaculada, une sus manos en oración sobre el pecho y su rubiaabelladura le cae sobre los hombros. La Virgen de los Milagros viste una lujosa <strong>túnica blanca</strong> y lleva sobre sus hombros un exquisito <strong>manto azul celeste</strong> —el color que la define e identifica en todo el Paraguay.</p>
+            <br>
+            <p>Sus pies descansan sobre una pequeña esfera (el mundo), con una <strong>cinta con los colores de la bandera paraguaya</strong> representando a María protegiendo al pueblo. A su alrededor, una corona de doce estrellas la identifica con la Mujer del Apocalipsis.</p>
+        </div>
+
+        <div class="card">
+            <h3>+ DATO HISTORICO VERIFICADO</h3>
+            <p>La imagen que actualmente se venera en la Basilica tiene sus pies pisando una serpiente y está de pie sobre el globo terráqueo azul con tres estrellas doradas. La imagen fue vinculada por diferentes narraciones al escultor guaraní José, y múltiples estudios confirman que la técnica de la talla original y la conservada son compatibles con el trabajo de un artista nativo del siglo XVII.</p>
+        </div>
+
+        <div class="card highlight">
+            <h3>+ UBICACION OFICIAL Y ACCESO</h3>
+            <p>La Basilica Santuario se ubica en <strong>Caacupé, departamento de Cordillera, Paraguay</strong>, a 50 km al este de Asunción por la Ruta PY02. Es la sede de la <strong>Diótesis de Caacupé</strong>, erigida el 2 de agosto de 1960 bajo el Papa Juan XXIII. El obispo actual desde 2017 es <strong>Mons. Ricardo Jorge Valenzuela Ríos</strong>.</p>
+        </div>
+
+        <div class="banner">
+            <h3>+ LA VIRGEN DE CAACUPE EN DIRECTO</h3>
+            <p>El Santuario emite en vivo misas, Vía Crucis, novenario y celebraciones especiales a través de Facebook y YouTube.</p>
+            <a href="https://www.facebook.com/TupasyCaacupe/" target="_blank">facebook.com/TupasyCaacupe</a>
+        </div>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#7dd3f0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- SIMBOLISMO -->
+    <section class="section" id="simbolismo">
+        <div class="section-header">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Simbolismo · Visión Guaraní · «Tupäsy Caacupé»</h2>
+                <p class="section-subtitle">Fuente: SciELO, virgencaacupe.com, ABC Color</p>
+            </div>
+        </div>
+
+        <div class="card guarani">
+            <h3>+ LA VIRGEN MESTIZA</h3>
+            <p>Los estudiosos abordan a la Virgen de Caacupé como una <strong>Virgen mestiza</strong>: su origen se relaciona con la protección al pueblo guaraní, pero su iconografía —la corona de doce estrellas, el mundo, el manto azul, la serpiente bajo sus pies— la conecta con la Inmaculada de tradición hispánica. Esta fusión entre el alma guaraní y la fe católica es lo que la hace única en América Latina.</p>
+        </div>
+
+        <div class="symbol-block">
+            <h4>+ SIMBOLOS DE LA IMAGEN Y SU SIGNIFICADO</h4>
+            <ul>
+                <li><strong>Manto azul celeste:</strong> Color de los cielos, símbolo de la Inmaculada, identidad nacional paraguaya</li>
+                <li><strong>Pasiflora en el manto:</strong> Flor tropical originaria de zonas guaraníes</li>
+                <li><strong>Globo terráqueo con tres estrellas doradas:</strong> María sobre el mundo; las tres estrellas representan la Trinidad</li>
+                <li><strong>Cinta con colores de la bandera paraguaya:</strong> María protegiendo al pueblo paraguayo</li>
+                <li><strong>Rostro moreno:</strong> Cruce entre la raza indígena guaraní y la raza blanca europea; símbolo de mestizaje</li>
+                <li><strong>Serpiente bajo los pies:</strong> Victoria sobre el pecado; la Inmaculada Concepción</li>
+            </ul>
+        </div>
+
+        <blockquote>
+            "José, 'humilde y desconocido', representa a cualquiera de los creyentes que caminaron por siglos entre peligros, trabajos y esperanzas, siempre acompañados por la Madre Azul. La Tupäsy tomó el lugar de la mítica Ñandesy de sus ancestros."
+            <cite>— Padre Marciano Toledo, historiador de Caacupé</cite>
+        </blockquote>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#7dd3f0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- ORACIONES -->
+    <section class="section" id="oraciones">
+        <div class="section-header">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Oraciones Oficiales y Tradición Devocional</h2>
+                <p class="section-subtitle">Fuentes: virgencaacupe.com, aleteia.org, catholic.net</p>
+            </div>
+        </div>
+
+        <div class="prayer-block">
+            <h3>+ ORACION OFICIAL DEL SANTUARIO DE CAACUPE +</h3>
+            <p class="jac">8 de Diciembre — Fiesta de la Inmaculada Concepción</p>
+            <p>"Inmaculada Virgen María, Madre de Dios y Madre nuestra, desde el Santuario de Caacupé cubre con tu manto protector a todo el pueblo paraguayo. Cobijados por ti, Madre querida, nosotros tus hijos, te pedimos: pan y amor para nuestros hogares, salud para los enfermos, educación para nuestros hijos, la palabra del Señor para nuestras familias, misericordia para los pobres y abandonados de nuestra tierra y trabajo para todos.</p>
+            <br>
+            <p>Te pedimos también, por nuestros gobernantes: el poder de conducción, la capacidad y honestidad para administrar con justicia el bien común. Te pedimos por nuestros pastores: que sepan conducir a sus diocesis con el gozo de la nueva evangelización de nuestro pueblo, en estos tiempos difíciles que vivimos. Amén."</p>
+            <p class="note">— Oración oficial publicada en la web del Santuario de Caacupé</p>
+        </div>
+
+        <div class="prayer-block">
+            <h3>+ ORACION TRADICIONAL A LA VIRGEN DE CAACUPE +</h3>
+            <p>"Santísima Madre de Dios y madre nuestra, desde vuestro Santuario de Caacupé cubrid con vuestro manto protector a vuestros devotos y a todo el Paraguay. Interceded por nuestros padres y bienhechores, por los desvalidos y todos los necesitados de perdón, de consuelo y de paz. Pedid al Señor bendiga las familias, sostengas a los que sufren, proteja a los que trabajan para que sean fruto de alegría y de vida para sus familias. Alcanzadnos una ferviente devoción a vuestro Inmaculado Corazón, una fe viva, una esperanza firme y una ardiente caridad hacia Dios y los prójimos."</p>
+            <p class="note">— Fuente: Catholic.net</p>
+        </div>
+
+        <div class="prayer-block">
+            <h3>+ ORACION POR LA PATRIA (MONS. DEMETRIO AQUINO) +</h3>
+            <p>"Virgen de Caacupé, desde tu santuario humilde te suplicamos tus hijos todos, por el bien del Paraguay. Ilumina a los gobernantes para que promuevan la justicia, la igualdad y la paz entre todos tus hijos. Llama a los jóvenes al apostolado y toca el corazón para el sacerdocio, a fin de que tu pueblo no perezca por falta de pastores. Bendice a nuestros niños que son las semillas de un país mejor. Que pastores y pueblo peregrino, caminemos bajo tu amparo con espíritu de comunión, misión y servicio. Virgen gloriosa de Caacupé, recíbenos al partir de este mundo. Amén."</p>
+            <p class="note">— Mons. Demetrio Aquino</p>
+        </div>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#7dd3f0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- CONSAGRACION -->
+    <section class="section" id="consagracion">
+        <div class="section-header">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Consagración de Juan Pablo II · Documento Oficial del Vaticano</h2>
+                <p class="section-subtitle">Fuente primaria oficial: Vatican.va — 18 de mayo de 1988</p>
+            </div>
+        </div>
+
+        <div class="banner">
+            <h3>+ FUENTE DE MAS ALTO VALOR ESPIRITUAL</h3>
+            <p>El 18 de mayo de 1988, Juan Pablo II consagró Paraguay a la Virgen de Caacupé. La oración completa está en el Vaticano:</p>
+            <a href="https://www.vatican.va/content/john-paul-ii/es/speeches/1988/may/documents/hf_jp-ii_spe_19880518_affidamento-caacupe.html" target="_blank">vatican.va — Consagración completa de Juan Pablo II (1988)</a>
+        </div>
+
+        <div class="prayer-block">
+            <h3>+ CONSAGRACION DEL PARAGUAY A LA VIRGEN DE CAACUPE +</h3>
+            <p class="jac">San Juan Pablo II · 18 mayo 1988 · Fuente: Vatican.va</p>
+            <p>"Con todo el pueblo del Paraguay, Santísima Virgen de Caacupé, Purísima en tu Concepción Inmaculada, Señora de los Milagros y Madre de la Patria, vengo a ratificar en tu presencia la ofrenda de amor y de fidelidad que te presentan agradecidos los hijos de esta tierra a quienes acompañas en su peregrinación en la fe.</p>
+            <br>
+            <p>Tu imagen nos habla de unión entre Evangelio y cultura nativa, del arraigo de la religiosidad popular, del atractivo que ejercen desde siglos tu nombre y tu santuario.</p>
+            <br>
+            <p>En este día venturoso te ofrezco y te confío la Iglesia entera del Paraguay, los Pastores y los fieles, los sacerdotes, los religiosos y religiosas, los seglares, las familias, los jóvenes. Encomiendo a tus solícitos cuidados la fidelidad del Paraguay a su vocación y a sus raíces cristianas. Amén."</p>
+            <p class="note">— <a href="https://www.vatican.va/content/john-paul-ii/es/speeches/1988/may/documents/hf_jp-ii_spe_19880518_affidamento-caacupe.html" target="_blank">vatican.va</a></p>
+        </div>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#7dd3f0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- WEBS -->
+    <section class="section" id="webs">
+        <div class="section-header">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Sitios Web Oficiales y Verificados</h2>
+                <p class="section-subtitle">+ = Fuente primaria recomendada</p>
+            </div>
+        </div>
+
+        <div class="notice">El dominio oficial y activo del santuario es <strong>tupasycaacupe.gov.py</strong></div>
+
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Sitio</th><th>Tipo</th><th>Descripción</th><th>URL</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Basílica Santuario OFICIAL</strong> <span class="badge-top">TOP</span></td>
+                        <td>Santuario oficial</td>
+                        <td>Web oficial de Tupäsy Caacupé con noticias, misas en vivo, novena</td>
+                        <td><a href="https://tupasycaacupe.gov.py" target="_blank">tupasycaacupe.gov.py</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>X (Twitter) Basílica Santuario</strong> <span class="badge-top">TOP</span></td>
+                        <td>Redes oficiales</td>
+                        <td>Cuenta oficial activa con misas en vivo 2026</td>
+                        <td><a href="https://x.com/tupasycaacupe" target="_blank">x.com/@tupasycaacupe</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vatican.va — Consagración 1988</strong> <span class="badge-top">TOP</span></td>
+                        <td>Vaticano</td>
+                        <td>Consagración de Paraguay por Juan Pablo II (18 mayo 1988)</td>
+                        <td><a href="https://www.vatican.va/content/john-paul-ii/es/speeches/1988/may/documents/hf_jp-ii_spe_19880518_affidamento-caacupe.html" target="_blank">vatican.va</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Wikipedia ES · Virgen de Caacupé</strong></td>
+                        <td>Enciclopedia</td>
+                        <td>Historia completa documentada</td>
+                        <td><a href="https://es.wikipedia.org/wiki/Virgen_de_Caacup%C3%A9" target="_blank">wikipedia.org</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Catholic.net</strong></td>
+                        <td>Religioso</td>
+                        <td>Historia espiritual, leyenda y descripción</td>
+                        <td><a href="https://es.catholic.net/op/articulos/60421/cat/99/caacupe-el-santuario-la-leyenda-y-la-imagen-de-la-patrona-de-paraguay.html" target="_blank">catholic.net</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>VirgenCaacupe.com</strong></td>
+                        <td>Devoción</td>
+                        <td>Oraciones completas, historia, simbolismo</td>
+                        <td><a href="https://www.virgencaacupe.com/" target="_blank">virgencaacupe.com</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>EWTN · Consagración JPI II</strong></td>
+                        <td>Religioso</td>
+                        <td>Texto completo de la consagración</td>
+                        <td><a href="https://www.ewtn.com/es/catolicismo/biblioteca/consagracion-a-la-virgen-de-caacupe-18964" target="_blank">ewtn.com</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>SciELO · Artículo Académico</strong></td>
+                        <td>Académico</td>
+                        <td>"La Virgen de Caacupé como símbolo de paraguayidad"</td>
+                        <td><a href="https://www.scielo.org.mx/scielo.php?script=sci_arttext&pid=S1665-85742014000100009" target="_blank">scielo.org.mx</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#7dd3f0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- VIDEOS -->
+    <section class="section" id="videos">
+        <div class="section-header">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Videos · Canal Oficial y YouTube</h2>
+                <p class="section-subtitle">Canal oficial: Tupäsy Caacupé en Facebook y YouTube</p>
+            </div>
+        </div>
+
+        <div class="banner">
+            <h3>+ CANAL OFICIAL — MISAS EN VIVO DESDE LA BASILICA</h3>
+            <p>El Santuario de Caacupé transmite en vivo misas, Vía Crucis, novenario y celebraciones especiales.</p>
+            <a href="https://www.facebook.com/TupasyCaacupe/" target="_blank">Facebook Oficial: Basílica Santuario Nuestra Señora de los Milagros</a>
+        </div>
+
+        <div class="video-grid">
+            <div class="video-card">
+                <div class="v-icon">+</div>
+                <h4>MISAS EN VIVO 2026</h4>
+                <p>Vía Crucis de Cuaresma todos los viernes. Misas dominicales con Mons. Ricardo Valenzuela.</p>
+                <a href="https://www.facebook.com/TupasyCaacupe/" target="_blank">Ver en Facebook</a>
+            </div>
+            <div class="video-card">
+                <div class="v-icon">+</div>
+                <h4>8 DE DICIEMBRE · DIA GRANDE</h4>
+                <p>Misa central del 8 de diciembre. Peregrinación masiva con 2 millones de fieles.</p>
+                <a href="https://www.youtube.com/results?search_query=caacupe+8+diciembre+misa+central" target="_blank">Buscar en YouTube</a>
+            </div>
+            <div class="video-card">
+                <div class="v-icon">+</div>
+                <h4>NOVENARIO COMPLETO</h4>
+                <p>Del 29 noviembre al 8 diciembre. Transmisión completa del novenario de la Santina Azul.</p>
+                <a href="https://www.youtube.com/results?search_query=novenario+virgen+caacupe+paraguay" target="_blank">Ver novenario</a>
+            </div>
+            <div class="video-card">
+                <div class="v-icon">+</div>
+                <h4>PAPA FRANCISCO EN CAACUPE</h4>
+                <p>Misa histórica del 11 de julio de 2015. Francisco eleva el Santuario a Basílica Menor.</p>
+                <a href="https://www.youtube.com/results?search_query=papa+francisco+caacupe+paraguay+2015" target="_blank">Ver visita papal</a>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:20px;">
+            <h3>+ HORARIO DE MISAS EN LA BASILICA (2026)</h3>
+            <table style="width:100%; font-size:14px; border-collapse:collapse; margin-top:10px;">
+                <thead style="background:var(--azul-cielo); color:var(--gold-light);">
+                    <tr>
+                        <th style="padding:10px; text-align:left; font-family:'Cinzel',serif; font-size:11px;">Día</th>
+                        <th style="padding:10px; text-align:left; font-family:'Cinzel',serif; font-size:11px;">Hora</th>
+                        <th style="padding:10px; text-align:left; font-family:'Cinzel',serif; font-size:11px;">Acto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom:1px solid rgba(255,255,255,0.1);"><td style="padding:10px;">Lunes a Viernes</td><td style="padding:10px;">19:00h</td><td style="padding:10px;">Eucaristía</td></tr>
+                    <tr style="border-bottom:1px solid rgba(255,255,255,0.1); background:rgba(72,181,214,0.08);"><td style="padding:10px;">Sábados</td><td style="padding:10px;">11:00h y 19:15h</td><td style="padding:10px;">Eucaristía</td></tr>
+                    <tr style="border-bottom:1px solid rgba(255,255,255,0.1);"><td style="padding:10px;">Domingos</td><td style="padding:10px;">11:00h / 12:30h / 19:00h</td><td style="padding:10px;">Castellano / Guaraní / Castellano</td></tr>
+                    <tr style="border-bottom:1px solid rgba(255,255,255,0.1);"><td style="padding:10px;">Todos los días</td><td style="padding:10px;">18:30h</td><td style="padding:10px;">Santo Rosario</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#7dd3f0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- PEREGRINACION -->
+    <section class="section" id="peregrinacion">
+        <div class="section-header">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Peregrinación · La Mayor Expresión de Fe del Paraguay</h2>
+                <p class="section-subtitle">Fuentes 2025: ABC Color, La Nación PY, Ministerio de Salud Paraguay</p>
+            </div>
+        </div>
+
+        <div class="stat-grid">
+            <div class="stat-box"><span class="num">~2M</span><span class="lab">Peregrinos 2025</span></div>
+            <div class="stat-box"><span class="num">15.516</span><span class="lab">Atenciones médicas</span></div>
+            <div class="stat-box"><span class="num">2.500</span><span class="lab">Sanitarios</span></div>
+            <div class="stat-box"><span class="num">50 km</span><span class="lab">Desde Asunción</span></div>
+            <div class="stat-box"><span class="num">PY02</span><span class="lab">Ruta de la fe</span></div>
+            <div class="stat-box"><span class="num">0</span><span class="lab">Víctimas fatales</span></div>
+        </div>
+
+        <div class="card gold-border">
+            <h3>+ CAACUPE 2025 — AÑO RECORD HISTORICO</h3>
+            <p>La festividad de Caacupé 2025 <strong>batió todos los récords de la historia reciente</strong>. El volumen de gente fue muy superior a lo esperado. La concurrencia superó en 50-60% a la de 2019 (pre-pandemia). Se estima un total de cerca de <strong>dos millones de peregrinos</strong> entre el novenario y el 8 de diciembre. <strong>No se registró ninguna víctima fatal.</strong></p>
+        </div>
+
+        <div class="card">
+            <h3>+ RUTA DE LA PEREGRINACION</h3>
+            <ul style="padding-left: 20px; line-height: 2.3; font-size: 15px;">
+                <li><strong>Inicio:</strong> Asunción (capital) → Ruta PY02 →</li>
+                <li><strong>Hito 1:</strong> Kuruzú Peregrino (punto de gran concentración)</li>
+                <li><strong>Hito 2:</strong> Ypacaraí (lago del segundo milagro)</li>
+                <li><strong>Destino:</strong> Basílica Santuario de Caacupé (50 km desde Asunción)</li>
+                <li><strong>Misa central 8 Dic:</strong> 06:00h en la explanada de la Basílica</li>
+            </ul>
+        </div>
+
+        <blockquote>
+            "A pesar de las dificultades económicas y sociales que atraviesa nuestro país, la fe del pueblo paraguayo se mantiene firme e inquebrantable, encontrando en la 'Virgencita Azul' el consuelo y la esperanza."
+            <cite>— ABC Color · Caacupé 2025</cite>
+        </blockquote>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#7dd3f0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- FIESTAS -->
+    <section class="section" id="fiestas">
+        <div class="section-header">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Fiestas y Datos Culturales · 8 de Diciembre</h2>
+                <p class="section-subtitle">La festividad fue declarada Patrimonio Cultural Inmaterial del Paraguay en 2025</p>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>8 de Diciembre</strong>
+                <p>Fiesta de la Inmaculada Concepción y Día Nacional de la Patrona del Paraguay</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Medianoche</strong>
+                <p>El festejo comienza con estruendosos fuegos artificiales, bombas y cohetes a las 00:00h</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Novenario</strong>
+                <p>Del 29 noviembre al 7 diciembre. Nueve días de oración, rosario y misas especiales</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>El Caballito de Promesa</strong>
+                <p>Tradición única: los devotos llevan pequeñas figuras de caballos como símbolo de promesas cumplidas</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Patrimonio Inmaterial 2025</strong>
+                <p>La festividad fue declarada Patrimonio Cultural Inmaterial por el Estado paraguayo</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Lago Ypacaraí</strong>
+                <p>El lago donde ocurrió el segundo milagro (rescate de la imagen)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#7dd3f0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- CONTACTOS -->
+    <section class="section" id="contacto">
+        <div class="section-header">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Contacto y Redes Oficiales</h2>
+                <p class="section-subtitle">Datos verificados · Diótesis de Caacupé · 2025-2026</p>
+            </div>
+        </div>
+
+        <div class="card highlight">
+            <h3>+ BASILICA SANTUARIO NUESTRA SEÑORA DE LOS MILAGROS DE CAACUPE</h3>
+            <table style="width:100%; font-size:15px; border-collapse:collapse; margin-top:10px;">
+                <tr style="border-bottom:1px solid rgba(255,255,255,0.1);"><td style="padding:10px; font-weight:700; width:30%;">Obispo</td><td style="padding:10px;">Mons. Ricardo Jorge Valenzuela Ríos (desde 29 jun 2017)</td></tr>
+                <tr style="border-bottom:1px solid rgba(255,255,255,0.1);"><td style="padding:10px; font-weight:700;">Web Oficial</td><td style="padding:10px;"><a href="https://tupasycaacupe.gov.py" target="_blank">tupasycaacupe.gov.py</a></td></tr>
+                <tr style="border-bottom:1px solid rgba(255,255,255,0.1);"><td style="padding:10px; font-weight:700;">Facebook</td><td style="padding:10px;"><a href="https://www.facebook.com/TupasyCaacupe/" target="_blank">facebook.com/TupasyCaacupe</a></td></tr>
+                <tr style="border-bottom:1px solid rgba(255,255,255,0.1);"><td style="padding:10px; font-weight:700;">X / Twitter</td><td style="padding:10px;"><a href="https://x.com/tupasycaacupe" target="_blank">@tupasycaacupe</a></td></tr>
+                <tr><td style="padding:10px; font-weight:700;">Diótesis</td><td style="padding:10px;">Dioecesis Caacupensis — Departamento de Cordillera, Paraguay</td></tr>
+            </table>
+        </div>
+
+        <div class="banner">
+            <h3>+ «TUPASY CAACUPE — OREREKO PYOAKO» +</h3>
+            <p>«Madre de Caacupé — Alégrate con nosotros» <br>La Virgencita Azul nació del corazón de un guaraní y nunca ha dejado de escuchar los dolores y esperanzas de su pueblo.</p>
+            <a href="https://tupasycaacupe.gov.py" target="_blank">tupasycaacupe.gov.py — Web Oficial del Santuario</a>
+        </div>
+    </section>
+
+</main>
+
+<!-- Golden Line -->
+<div class="golden-divine-line"></div>
+
+<!-- Footer Menu -->
+<div class="footer-menu">
+    <div class="footer-menu-title">Recursos Espirituales</div>
+    <div class="footer-menu-links">
+        <a href="coronilla.html">Coronilla</a>
+        <a href="novena.html">Novena</a>
+        <a href="oraciones.html">Oraciones</a>
+        <a href="via-crucis.html">Vía Crucis</a>
+        <a href="santo-rosario.html">Santo Rosario</a>
+        <a href="la-santina.html">La Santina</a>
+        <a href="virgen-caacupe.html">Virgen Caacupé</a>
+        <a href="contacto.html">Contacto</a>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="main-footer">
+    <div class="cross-glow">+</div>
+    <p class="tagline">Virgen de Caacupé — Patrona del Paraguay</p>
+    <p>Tupäsy Caacupé · Corazón de América · Capital Espiritual de América del Sur</p>
+    <br>
+    <p>Fuentes: tupasycaacupe.gov.py · vatican.va · wikipedia.org · catholic.net</p>
+    <br>
+    <p style="opacity:0.4; font-size:11px;">
+        Asociación Apóstoles de la Divina Misericordia<br>
+        Divina Misericordia — misericordiadejesus.es
+    </p>
+</footer>
+
+<!-- Scroll Buttons -->
+<button class="scroll-btn scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Subir">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+<button class="scroll-btn scroll-down" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})" aria-label="Bajar">
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+
+<script>
+// Cursor divino
+const cursor = document.getElementById('cursor');
+let mouseX = 0, mouseY = 0;
+let cursorX = 0, cursorY = 0;
+
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
+
+function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.15;
+    cursorY += (mouseY - cursorY) * 0.15;
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+document.querySelectorAll('a, button, .btn').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+
+// Progress bar
+const progressBar = document.getElementById('progressBar');
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrollPercent + '%';
+});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// Header scroll effect
+const header = document.getElementById('mainHeader');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const nav = document.getElementById('mainNav');
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    nav.classList.toggle('active');
+});
+</script>
+</body>
+</html>
