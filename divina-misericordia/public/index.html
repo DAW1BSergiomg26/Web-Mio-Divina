@@ -433,19 +433,19 @@ nav a.nav-otras-devociones:hover {
 /* =============================================
    HERO - CELESTIAL Y MAGNÍFICO
    ============================================= */
-.hero { min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; position:relative; padding: 180px 20px 80px; }
+.hero { min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; position:relative; padding: 100px 20px 80px; }
 .hero::before {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 150%;
-  height: 150%;
+  width: 100%;
+  height: 100%;
   transform: translate(-50%, -50%);
   background: radial-gradient(ellipse at center, 
-    rgba(212,175,55,0.08) 0%, 
-    rgba(212,175,55,0.04) 30%, 
-    transparent 60%);
+    rgba(212,175,55,0.06) 0%, 
+    rgba(212,175,55,0.03) 40%, 
+    transparent 70%);
   animation: heroAura 4s ease-in-out infinite;
   pointer-events: none;
 }
@@ -461,38 +461,13 @@ nav a.nav-otras-devociones:hover {
   font-size:clamp(2.8rem,9vw,5.8rem);
   color:var(--gold-light);
   text-shadow: 
-    0 0 30px rgba(212,175,55,0.9), 
-    0 0 60px rgba(212,175,55,0.6),
-    0 0 100px rgba(212,175,55,0.4),
-    0 0 150px rgba(255,200,60,0.2);
+    0 0 15px rgba(212,175,55,0.7), 
+    0 0 30px rgba(212,175,55,0.5),
+    0 0 50px rgba(212,175,55,0.3);
   animation: titleGlow 3s ease-in-out infinite, heroEntrance 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   opacity:0; margin-bottom:12px; line-height:1.2;
   letter-spacing: 4px;
   position: relative;
-}
-.hero h1::before {
-  content: '✦';
-  position: absolute;
-  left: -40px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.5rem;
-  color: rgba(212,175,55,0.6);
-  animation: starFloat 3s ease-in-out infinite;
-}
-.hero h1::after {
-  content: '✦';
-  position: absolute;
-  right: -40px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.5rem;
-  color: rgba(212,175,55,0.6);
-  animation: starFloat 3s ease-in-out infinite reverse;
-}
-@keyframes starFloat {
-  0%, 100% { opacity: 0.4; transform: translateY(-50%) scale(1); }
-  50% { opacity: 1; transform: translateY(-50%) scale(1.2); }
 }
 @keyframes heroEntrance {
   0% { opacity: 0; transform: translateY(40px) scale(0.95); filter: blur(10px); }
@@ -502,16 +477,16 @@ nav a.nav-otras-devociones:hover {
 @keyframes titleGlow {
   0%,100% { 
     text-shadow: 
-      0 0 30px rgba(212,175,55,0.9), 
-      0 0 60px rgba(212,175,55,0.6),
-      0 0 100px rgba(212,175,55,0.4);
+      0 0 15px rgba(212,175,55,0.7), 
+      0 0 30px rgba(212,175,55,0.5),
+      0 0 50px rgba(212,175,55,0.3);
   }
   50% { 
     text-shadow: 
-      0 0 60px rgba(255,235,100,1), 
-      0 0 120px rgba(212,175,55,0.8),
-      0 0 180px rgba(255,215,0,0.5),
-      0 0 250px rgba(212,175,55,0.3);
+      0 0 25px rgba(255,235,100,0.9), 
+      0 0 50px rgba(212,175,55,0.7),
+      0 0 80px rgba(255,215,0,0.4),
+      0 0 100px rgba(212,175,55,0.2);
   }
 }
 
@@ -618,7 +593,7 @@ nav a.nav-otras-devociones:hover {
   position: relative;
   width: 100%;
   max-width: 850px;
-  margin: 3rem auto;
+  margin: 1.5rem auto;
   border-radius: 24px;
   overflow: hidden;
   box-shadow: 
@@ -721,7 +696,7 @@ nav a.nav-otras-devociones:hover {
 /* =============================================
    SECTIONS - TRANSICIONES SUAVES
    ============================================= */
-.sections { padding:50px 20px 80px; max-width:1200px; margin:0 auto; }
+.sections { padding:30px 20px 80px; max-width:1200px; margin:0 auto; }
 
 .section-title {
   font-family:'Cinzel Decorative',serif;
@@ -1599,7 +1574,7 @@ footer.main-footer .tagline {
    ============================================= */
 @media (max-width:768px) {
   header { padding:10px 16px; }
-  .hero {  padding: 180px 20px 80px; }
+  .hero {  padding: 100px 20px 80px; }
   .sections { padding:30px 14px 50px; }
   .about-section { padding:28px 20px; }
   .cta-group { gap:10px; }
