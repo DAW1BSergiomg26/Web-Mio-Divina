@@ -285,7 +285,7 @@ nav a.caacupe-btn:hover {
 .reveal { opacity:0; transform:translateY(30px); transition:all 0.8s cubic-bezier(0.4,0,0.2,1); }
 .reveal.visible { opacity:1; transform:translateY(0); }
 
-.hero { background: linear-gradient(to bottom, rgba(46,139,87,0.85) 0%, rgba(214,51,132,0.7) 40%, rgba(0,51,102,0.95) 100%); min-height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; border-radius: 24px; margin-bottom: 50px; border: 2px solid var(--lapacho-rosa); box-shadow: 0 0 60px rgba(214,51,132,0.3), 0 0 120px rgba(46,139,87,0.2); padding: 180px 20px 80px; }
+.hero { background: linear-gradient(to bottom, rgba(46,139,87,0.85) 0%, rgba(214,51,132,0.7) 40%, rgba(0,51,102,0.95) 100%); min-height: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; border-radius: 16px; margin-bottom: 40px; border: 2px solid var(--lapacho-rosa); box-shadow: 0 0 40px rgba(214,51,132,0.3), 0 0 80px rgba(46,139,87,0.2); padding: 60px 20px 40px; }
 .hero::before {
     content: '';
     position: absolute;
@@ -300,19 +300,19 @@ nav a.caacupe-btn:hover {
 }
 .hero-content { position: relative; z-index: 1; }
 .hero-icon { 
-    font-size: 80px; margin-bottom: 20px; 
+    font-size: 40px; margin-bottom: 10px; 
     animation: iconShimmer 3s ease-in-out infinite;
-    filter: drop-shadow(0 0 30px rgba(214,51,132,0.8));
+    filter: drop-shadow(0 0 20px rgba(214,51,132,0.8));
 }
 @keyframes iconShimmer {
-    0%,100% { filter: drop-shadow(0 0 20px rgba(214,51,132,0.6)); transform: scale(1); }
-    33% { filter: drop-shadow(0 0 30px rgba(46,139,87,0.8)); transform: scale(1.05); }
-    66% { filter: drop-shadow(0 0 40px rgba(255,215,0,1)); transform: scale(1.1); }
-    100% { filter: drop-shadow(0 0 20px rgba(214,51,132,0.6)); transform: scale(1); }
+    0%,100% { filter: drop-shadow(0 0 15px rgba(214,51,132,0.6)); transform: scale(1); }
+    33% { filter: drop-shadow(0 0 20px rgba(46,139,87,0.8)); transform: scale(1.05); }
+    66% { filter: drop-shadow(0 0 25px rgba(255,215,0,1)); transform: scale(1.1); }
+    100% { filter: drop-shadow(0 0 15px rgba(214,51,132,0.6)); transform: scale(1); }
 }
 .hero h1 {
     font-family: 'Cinzel Decorative', serif;
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     background: linear-gradient(90deg, 
         #D62B2B 0%,      /* Rojo Paraguay */
         #ffffff 20%,     /* Blanco */
@@ -326,10 +326,10 @@ nav a.caacupe-btn:hover {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: titleShimmer 4s linear infinite;
-    filter: drop-shadow(0 0 20px rgba(214,51,132,0.6)) 
-            drop-shadow(0 0 40px rgba(0,56,168,0.4))
-            drop-shadow(0 0 60px rgba(255,215,0,0.3));
-    margin-bottom: 15px;
+    filter: drop-shadow(0 0 15px rgba(214,51,132,0.6)) 
+            drop-shadow(0 0 30px rgba(0,56,168,0.4))
+            drop-shadow(0 0 45px rgba(255,215,0,0.3));
+    margin-bottom: 10px;
 }
 @keyframes titleShimmer {
     0% { background-position: 0% 50%; }
@@ -354,19 +354,19 @@ nav a.caacupe-btn:hover {
 }
 .hero .tagline {
     font-family: 'EB Garamond', serif; font-style: italic;
-    font-size: clamp(1rem, 2vw, 1.3rem); 
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem); 
     color: var(--text-main);
-    max-width: 650px; margin: 0 auto 30px;
+    max-width: 550px; margin: 0 auto 20px;
 }
 .hero-stats {
-    display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;
+    display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
 }
 .hero-stat { text-align: center; }
 .hero-stat .num { 
-    font-family: 'Cinzel', serif; font-size: 1.8rem; 
+    font-family: 'Cinzel', serif; font-size: 1.3rem; 
     color: var(--lapacho-amarillo); font-weight: 700; display: block; 
 }
-.hero-stat .lab { font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; }
+.hero-stat .lab { font-size: 0.65rem; letter-spacing: 0.05em; color: var(--text-muted); text-transform: uppercase; }
 
 .section { margin-bottom: 60px; scroll-margin-top: 80px; }
 .section-header {
@@ -711,8 +711,13 @@ footer.main-footer .tagline { color: var(--lapacho-rosa); font-family: 'Cinzel',
 }
 
 @media (max-width: 768px) {
-    .hero { min-height: auto; padding: 180px 20px 80px; }
-    .hero-stats { gap: 16px; }
+    .hero { padding: 80px 15px 40px; }
+    .hero-icon { font-size: 30px; margin-bottom: 8px; }
+    .hero h1 { font-size: clamp(1.3rem, 4vw, 2rem); }
+    .hero .tagline { font-size: 0.85rem; margin-bottom: 15px; }
+    .hero-stats { gap: 12px; }
+    .hero-stat .num { font-size: 1.1rem; }
+    .hero-stat .lab { font-size: 0.6rem; }
     .prayer-block { padding: 28px 20px; }
     .info-grid { grid-template-columns: 1fr 1fr; }
     .video-grid, .res-grid { grid-template-columns: 1fr; }
@@ -1437,12 +1442,7 @@ footer.main-footer .tagline { color: var(--lapacho-rosa); font-family: 'Cinzel',
     <p class="tagline">Virgen de Caacupé — Patrona del Paraguay</p>
     <p>Tupäsy Caacupé · Corazón de América · Capital Espiritual de América del Sur</p>
     <br>
-    <p>Fuentes: tupasycaacupe.gov.py · vatican.va · wikipedia.org · catholic.net</p>
-    <br>
-    <p style="opacity:0.4; font-size:11px;">
-        Asociación Apóstoles de la Divina Misericordia<br>
-        Divina Misericordia — misericordiadejesus.es
-    </p>
+    <p style="opacity:0.5; font-size:0.8rem;">Fuentes: tupasycaacupe.gov.py · wikipedia.org · catholic.net</p>
 </footer>
 
 <!-- Scroll Buttons -->
