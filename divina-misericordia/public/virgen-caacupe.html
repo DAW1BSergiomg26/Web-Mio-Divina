@@ -16,6 +16,7 @@
 
 <style>
 :root {
+    /* AZUL PARAGUAYO */
     --azul-abismo: #001233;
     --azul-profundo: #003566;
     --azul-cielo: #0353A4;
@@ -23,11 +24,26 @@
     --celeste: #48B5D6;
     --celeste-light: #7DD3F0;
     
+    /* VERDE CAMPO PARAGUAYO */
+    --verde-campo: #2E8B57;
+    --verde-selva: #1B5E20;
+    --verde-hoja: #4CAF50;
+    --verde-menta: #66BB6A;
+    
+    /* COLORES LAPACHO (flor nacional Paraguay) */
+    --lapacho-rosa: #D63384;
+    --lapacho-magenta: #E040FB;
+    --lapacho-fucsia: #FF1493;
+    --lapacho-amarillo: #FFD700;
+    --lapacho-dorado: #FFC107;
+    
+    /* ORO */
     --gold: #d4af37;
     --gold-light: #f4e2a1;
     --gold-dark: #b8960c;
     --gold-glow: rgba(212,175,55,0.7);
     
+    /* GUARANÍ */
     --guarani: #C85C2E;
     --guarani-light: #E8854A;
     
@@ -37,6 +53,7 @@
     --text-main: rgba(255,255,255,0.9);
     --text-muted: rgba(255,255,255,0.7);
     --border-gold: rgba(212,175,55,0.3);
+    --border-lapacho: rgba(214,51,132,0.4);
     --transition: 0.4s cubic-bezier(0.4,0,0.2,1);
 }
 
@@ -52,7 +69,7 @@ body {
 
 .bg { 
     position:fixed; inset:0; 
-    background: linear-gradient(135deg, #001233 0%, #003566 25%, #0353A4 50%, #006DAA 75%, #001233 100%);
+    background: linear-gradient(135deg, #001233 0%, #003566 15%, #0353A4 30%, #2E8B57 50%, #D63384 70%, #001233 85%, #001233 100%);
     background-size: 400% 400%;
     animation: bgShift 20s ease infinite;
     z-index:-2; 
@@ -87,9 +104,10 @@ body {
     top: 0; left: 0;
     width: 100%; height: 100%;
     background: linear-gradient(to top, 
-        rgba(212,175,55,1) 0%,
-        rgba(72,181,214,0.7) 40%,
-        rgba(0,109,170,0.4) 70%,
+        rgba(214,51,132,1) 0%,
+        rgba(46,139,87,0.7) 30%,
+        rgba(72,181,214,0.7) 50%,
+        rgba(255,215,0,0.4) 70%,
         transparent 100%);
     animation: rayPulse 4s ease-in-out infinite;
 }
@@ -130,12 +148,13 @@ body {
 .particle {
     position: absolute;
     width: 4px; height: 4px;
-    background: var(--celeste);
+    background: var(--lapacho-rosa);
     border-radius: 50%;
     animation: floatParticle 20s linear infinite;
-    box-shadow: 0 0 8px rgba(72,181,214,0.8), 0 0 15px rgba(212,175,55,0.5);
+    box-shadow: 0 0 8px rgba(214,51,132,0.8), 0 0 15px rgba(46,139,87,0.5);
 }
-.particle:nth-child(odd) { background: var(--gold); box-shadow: 0 0 8px rgba(212,175,55,0.8); }
+.particle:nth-child(3n) { background: var(--verde-campo); box-shadow: 0 0 8px rgba(46,139,87,0.8); }
+.particle:nth-child(odd) { background: var(--lapacho-amarillo); box-shadow: 0 0 8px rgba(255,215,0,0.8); }
 .particle:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 22s; }
 .particle:nth-child(2) { left: 10%; animation-delay: 2s; animation-duration: 26s; width: 3px; height: 3px; }
 .particle:nth-child(3) { left: 15%; animation-delay: 4s; animation-duration: 24s; }
@@ -168,9 +187,9 @@ body {
 
 .progress-bar {
     position:fixed; top:0; left:0; height:2px; width:0;
-    background:linear-gradient(to right, var(--azul-cielo), var(--celeste), var(--gold));
+    background:linear-gradient(to right, var(--azul-cielo), var(--lapacho-rosa), var(--verde-campo), var(--lapacho-amarillo));
     z-index:1100; transition:width 0.1s linear;
-    box-shadow:0 0 10px rgba(72,181,214,0.7);
+    box-shadow:0 0 10px rgba(214,51,132,0.7);
 }
 
 header {
@@ -215,25 +234,25 @@ nav a:hover, nav a.activo {
 
 nav a.caacupe-btn {
     color: #fff;
-    background: linear-gradient(135deg, var(--azul-cielo), var(--azul-celeste));
-    border: 2px solid var(--celeste);
+    background: linear-gradient(135deg, var(--lapacho-rosa), var(--verde-campo), var(--azul-cielo));
+    border: 2px solid var(--lapacho-magenta);
     padding: 10px 18px;
     font-weight: 700;
     animation: caacupeGlow 2s ease-in-out infinite;
-    box-shadow: 0 0 20px rgba(72,181,214,0.6), 0 0 40px rgba(212,175,55,0.3);
+    box-shadow: 0 0 20px rgba(214,51,132,0.6), 0 0 40px rgba(46,139,87,0.4);
 }
 @keyframes caacupeGlow {
     0%, 100% { 
-        box-shadow: 0 0 20px rgba(72,181,214,0.6), 0 0 40px rgba(212,175,55,0.3), 0 0 60px rgba(0,109,170,0.4);
-        border-color: var(--celeste);
+        box-shadow: 0 0 20px rgba(214,51,132,0.6), 0 0 40px rgba(46,139,87,0.4), 0 0 60px rgba(72,181,214,0.4);
+        border-color: var(--lapacho-rosa);
     }
     50% { 
-        box-shadow: 0 0 30px rgba(72,181,214,0.9), 0 0 60px rgba(212,175,55,0.6), 0 0 90px rgba(0,109,170,0.6);
-        border-color: var(--celeste-light);
+        box-shadow: 0 0 30px rgba(255,20,147,0.8), 0 0 60px rgba(46,139,87,0.6), 0 0 90px rgba(255,215,0,0.4);
+        border-color: var(--lapacho-fucsia);
     }
 }
 nav a.caacupe-btn:hover {
-    background: linear-gradient(135deg, var(--azul-celeste), var(--celeste));
+    background: linear-gradient(135deg, var(--lapacho-fucsia), var(--lapacho-rosa), var(--verde-menta));
     color: var(--white);
     transform: scale(1.05);
 }
@@ -266,13 +285,13 @@ nav a.caacupe-btn:hover {
 .reveal { opacity:0; transform:translateY(30px); transition:all 0.8s cubic-bezier(0.4,0,0.2,1); }
 .reveal.visible { opacity:1; transform:translateY(0); }
 
-.hero { background: linear-gradient(to bottom, rgba(0,109,170,0.85) 0%, rgba(0,51,102,0.95) 100%); min-height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; border-radius: 24px; margin-bottom: 50px; border: 2px solid var(--celeste); box-shadow: 0 0 60px rgba(72,181,214,0.3), 0 0 120px rgba(0,109,170,0.2); padding: 180px 20px 80px; }
+.hero { background: linear-gradient(to bottom, rgba(46,139,87,0.85) 0%, rgba(214,51,132,0.7) 40%, rgba(0,51,102,0.95) 100%); min-height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; border-radius: 24px; margin-bottom: 50px; border: 2px solid var(--lapacho-rosa); box-shadow: 0 0 60px rgba(214,51,132,0.3), 0 0 120px rgba(46,139,87,0.2); padding: 180px 20px 80px; }
 .hero::before {
     content: '';
     position: absolute;
     top: -50%; left: -50%;
     width: 200%; height: 200%;
-    background: conic-gradient(from 0deg, transparent, rgba(72,181,214,0.1), transparent, rgba(212,175,55,0.1), transparent);
+    background: conic-gradient(from 0deg, transparent, rgba(214,51,132,0.15), transparent, rgba(46,139,87,0.15), transparent, rgba(255,215,0,0.1), transparent);
     animation: heroRotate 15s linear infinite;
 }
 @keyframes heroRotate {
@@ -283,20 +302,22 @@ nav a.caacupe-btn:hover {
 .hero-icon { 
     font-size: 80px; margin-bottom: 20px; 
     animation: iconShimmer 3s ease-in-out infinite;
-    filter: drop-shadow(0 0 30px rgba(72,181,214,0.8));
+    filter: drop-shadow(0 0 30px rgba(214,51,132,0.8));
 }
 @keyframes iconShimmer {
-    0%,100% { filter: drop-shadow(0 0 20px rgba(72,181,214,0.6)); transform: scale(1); }
-    50% { filter: drop-shadow(0 0 40px rgba(72,181,214,1)); transform: scale(1.1); }
+    0%,100% { filter: drop-shadow(0 0 20px rgba(214,51,132,0.6)); transform: scale(1); }
+    33% { filter: drop-shadow(0 0 30px rgba(46,139,87,0.8)); transform: scale(1.05); }
+    66% { filter: drop-shadow(0 0 40px rgba(255,215,0,1)); transform: scale(1.1); }
+    100% { filter: drop-shadow(0 0 20px rgba(214,51,132,0.6)); transform: scale(1); }
 }
 .hero h1 {
     font-family: 'Cinzel Decorative', serif;
     font-size: clamp(2rem, 5vw, 3.5rem);
     color: var(--white);
-    text-shadow: 0 0 40px rgba(72,181,214,0.8);
+    text-shadow: 0 0 40px rgba(214,51,132,0.8);
     margin-bottom: 15px;
 }
-.hero h1 span { color: var(--celeste-light); }
+.hero h1 span { color: var(--lapacho-rosa); }
 .hero .tagline {
     font-family: 'EB Garamond', serif; font-style: italic;
     font-size: clamp(1rem, 2vw, 1.3rem); 
@@ -309,7 +330,7 @@ nav a.caacupe-btn:hover {
 .hero-stat { text-align: center; }
 .hero-stat .num { 
     font-family: 'Cinzel', serif; font-size: 1.8rem; 
-    color: var(--celeste-light); font-weight: 700; display: block; 
+    color: var(--lapacho-amarillo); font-weight: 700; display: block; 
 }
 .hero-stat .lab { font-size: 0.75rem; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; }
 
@@ -317,33 +338,33 @@ nav a.caacupe-btn:hover {
 .section-header {
     display: flex; align-items: center; gap: 16px;
     margin-bottom: 30px;
-    border-bottom: 2px solid var(--azul-celeste);
+    border-bottom: 2px solid var(--lapacho-rosa);
     padding-bottom: 16px;
 }
 .section-icon { font-size: 2.5rem; flex-shrink: 0; }
 .section-title {
     font-family: 'Cinzel', serif;
     font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-    color: var(--celeste-light); font-weight: 700;
+    color: var(--lapacho-rosa); font-weight: 700;
 }
 .section-subtitle { font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-top: 4px; }
 
 .card {
-    background: linear-gradient(145deg, rgba(0,51,102,0.6), rgba(0,18,51,0.9));
-    border: 1px solid rgba(72,181,214,0.3);
-    border-left: 4px solid var(--celeste);
+    background: linear-gradient(145deg, rgba(46,139,87,0.2), rgba(0,51,102,0.8));
+    border: 1px solid rgba(214,51,132,0.3);
+    border-left: 4px solid var(--lapacho-rosa);
     border-radius: 4px 12px 12px 4px;
     padding: 24px 28px;
     margin-bottom: 20px;
     transition: all var(--transition);
 }
 .card:hover {
-    border-color: var(--gold);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.4), 0 0 30px rgba(72,181,214,0.1);
+    border-color: var(--lapacho-amarillo);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4), 0 0 30px rgba(214,51,132,0.15);
 }
 .card h3 {
     font-family: 'Cinzel', serif;
-    color: var(--gold-light); font-size: 1rem;
+    color: var(--lapacho-amarillo); font-size: 1rem;
     letter-spacing: 0.05em; margin-bottom: 12px;
 }
 .card p { color: var(--text-main); font-size: 1.05rem; line-height: 1.85; }
@@ -357,56 +378,56 @@ nav a.caacupe-btn:hover {
 
 .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 16px; margin: 20px 0; }
 .info-box {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(72,181,214,0.2);
+    background: linear-gradient(145deg, rgba(46,139,87,0.15), rgba(0,18,51,0.6));
+    border: 1px solid rgba(214,51,132,0.25);
     border-radius: 12px;
     padding: 22px 18px; text-align: center;
     transition: all var(--transition);
 }
 .info-box:hover { 
     transform: translateY(-4px); 
-    box-shadow: 0 10px 30px rgba(72,181,214,0.2);
-    border-color: var(--celeste);
+    box-shadow: 0 10px 30px rgba(46,139,87,0.25);
+    border-color: var(--lapacho-rosa);
 }
 .info-box .icon-big { font-size: 2.5rem; margin-bottom: 10px; }
 .info-box strong { 
     font-family: 'Cinzel', serif; font-size: 0.9rem; 
-    color: var(--celeste-light); display: block; margin-bottom: 8px; 
+    color: var(--lapacho-rosa); display: block; margin-bottom: 8px; 
 }
 .info-box p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
 
 .timeline { position: relative; padding-left: 36px; margin: 20px 0; }
 .timeline::before {
     content: ''; position: absolute; left: 12px; top: 8px; bottom: 8px;
-    width: 2px; background: linear-gradient(to bottom, var(--celeste), var(--gold));
+    width: 2px; background: linear-gradient(to bottom, var(--lapacho-rosa), var(--verde-campo), var(--lapacho-amarillo));
 }
 .t-item { position: relative; margin-bottom: 28px; }
 .t-item::before {
     content: ''; position: absolute; left: -30px; top: 6px;
     width: 14px; height: 14px; border-radius: 50%;
-    background: var(--celeste); border: 3px solid var(--azul-abismo);
-    box-shadow: 0 0 10px rgba(72,181,214,0.7);
+    background: var(--lapacho-rosa); border: 3px solid var(--azul-abismo);
+    box-shadow: 0 0 10px rgba(214,51,132,0.7);
 }
 .t-year {
     font-family: 'Cinzel', serif; font-size: 0.95rem; font-weight: 700;
-    color: var(--celeste-light); letter-spacing: 0.08em; margin-bottom: 6px;
+    color: var(--lapacho-rosa); letter-spacing: 0.08em; margin-bottom: 6px;
 }
 .t-text { font-size: 1rem; color: var(--text-main); line-height: 1.75; }
 
 .prayer-block {
-    background: linear-gradient(145deg, var(--azul-cielo) 0%, #002855 100%);
+    background: linear-gradient(145deg, var(--verde-selva) 0%, rgba(214,51,132,0.4) 50%, #002855 100%);
     border-radius: 16px;
     padding: 40px;
     margin: 24px 0;
-    border: 1px solid rgba(212,175,55,0.3);
+    border: 1px solid rgba(255,215,0,0.3);
     position: relative; overflow: hidden;
 }
 .prayer-block::before {
     content: '+ + +'; position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
-    color: rgba(212,175,55,0.4); font-size: 0.8rem; letter-spacing: 12px;
+    color: rgba(255,215,0,0.4); font-size: 0.8rem; letter-spacing: 12px;
 }
 .prayer-block h3 {
-    font-family: 'Cinzel', serif; color: var(--gold);
+    font-family: 'Cinzel', serif; color: var(--lapacho-amarillo);
     text-align: center; font-size: 1rem; letter-spacing: 0.1em;
     margin: 24px 0 20px;
 }
@@ -426,46 +447,46 @@ nav a.caacupe-btn:hover {
 .prayer-block .note a { color: var(--celeste-light); }
 
 blockquote {
-    border-left: 4px solid var(--gold);
+    border-left: 4px solid var(--lapacho-rosa);
     margin: 24px 0; padding: 20px 28px;
-    background: rgba(212,175,55,0.05);
+    background: rgba(214,51,132,0.05);
     border-radius: 0 10px 10px 0;
     font-family: 'EB Garamond', serif; font-style: italic;
     font-size: 1.15rem; color: var(--text-main);
 }
 blockquote cite {
     display: block; margin-top: 12px; font-size: 0.85rem;
-    font-style: normal; color: var(--gold);
+    font-style: normal; color: var(--lapacho-rosa);
     font-family: 'Cinzel', serif; letter-spacing: 0.06em;
 }
 
 .table-wrap { overflow-x: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin: 20px 0; }
 table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
-thead { background: var(--azul-cielo); color: var(--gold-light); }
+thead { background: linear-gradient(135deg, var(--lapacho-rosa), var(--verde-campo)); color: var(--white); }
 thead th { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.1em; padding: 14px 16px; text-align: left; }
 tbody tr { border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.15s; }
-tbody tr:nth-child(even) { background: rgba(72,181,214,0.08); }
-tbody tr:hover { background: rgba(72,181,214,0.15); }
+tbody tr:nth-child(even) { background: rgba(46,139,87,0.08); }
+tbody tr:hover { background: rgba(214,51,132,0.15); }
 tbody td { padding: 12px 16px; vertical-align: middle; line-height: 1.55; }
-tbody td a { color: var(--celeste-light); text-decoration: none; font-weight: 600; }
-tbody td a:hover { text-decoration: underline; color: var(--gold); }
+tbody td a { color: var(--lapacho-rosa); text-decoration: none; font-weight: 600; }
+tbody td a:hover { text-decoration: underline; color: var(--lapacho-amarillo); }
 .badge-top { 
-    background: var(--gold); color: var(--azul-cielo); 
+    background: var(--lapacho-amarillo); color: var(--azul-abismo); 
     font-size: 0.65rem; font-family: 'Cinzel', serif; 
     padding: 2px 8px; border-radius: 4px; letter-spacing: 0.06em; margin-left: 8px; 
 }
 
 .banner {
-    background: linear-gradient(135deg, var(--azul-cielo), var(--azul-celeste));
+    background: linear-gradient(135deg, var(--verde-selva), var(--lapacho-rosa));
     border-radius: 14px; padding: 30px 34px;
-    color: var(--gold-light); text-align: center; margin: 28px 0;
-    border: 1px solid rgba(212,175,55,0.25);
-    box-shadow: 0 0 30px rgba(72,181,214,0.3);
+    color: var(--white); text-align: center; margin: 28px 0;
+    border: 1px solid rgba(255,215,0,0.25);
+    box-shadow: 0 0 30px rgba(214,51,132,0.3);
 }
-.banner h3 { font-family: 'Cinzel', serif; color: var(--white); font-size: 1rem; margin-bottom: 12px; letter-spacing: 0.08em; }
+.banner h3 { font-family: 'Cinzel', serif; color: var(--lapacho-amarillo); font-size: 1rem; margin-bottom: 12px; letter-spacing: 0.08em; }
 .banner p { font-size: 0.95rem; opacity: 0.85; max-width: 650px; margin: 0 auto; }
 .banner .tel { 
-    font-family: 'Cinzel', serif; color: var(--gold-light); 
+    font-family: 'Cinzel', serif; color: var(--lapacho-amarillo); 
     font-size: 0.9rem; margin-top: 12px; display: block; 
 }
 .banner a { color: var(--celeste-light); text-decoration: none; display: block; margin-top: 8px; }
@@ -473,59 +494,59 @@ tbody td a:hover { text-decoration: underline; color: var(--gold); }
 
 .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 16px; margin: 20px 0; }
 .video-card {
-    background: linear-gradient(145deg, var(--azul-cielo), rgba(0,18,51,0.95));
+    background: linear-gradient(145deg, rgba(46,139,87,0.3), rgba(214,51,132,0.2));
     border-radius: 12px;
     padding: 22px; color: var(--gold-light);
-    border: 1px solid rgba(72,181,214,0.2);
+    border: 1px solid rgba(214,51,132,0.25);
     transition: all var(--transition);
 }
-.video-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(72,181,214,0.3); }
+.video-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(214,51,132,0.3); }
 .video-card .v-icon { font-size: 1.8rem; margin-bottom: 12px; }
-.video-card h4 { font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--gold); margin-bottom: 10px; letter-spacing: 0.06em; }
+.video-card h4 { font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--lapacho-amarillo); margin-bottom: 10px; letter-spacing: 0.06em; }
 .video-card p { font-size: 0.85rem; opacity: 0.75; margin-bottom: 14px; line-height: 1.55; }
 .video-card a {
-    display: inline-block; background: var(--gold);
-    color: var(--azul-cielo); font-family: 'Cinzel', serif;
+    display: inline-block; background: var(--lapacho-rosa);
+    color: var(--white); font-family: 'Cinzel', serif;
     font-size: 0.75rem; letter-spacing: 0.08em;
     padding: 8px 16px; border-radius: 6px; text-decoration: none;
     font-weight: 700; transition: background 0.2s;
 }
-.video-card a:hover { background: var(--gold-light); }
+.video-card a:hover { background: var(--lapacho-fucsia); }
 
 .res-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 16px; margin: 20px 0; }
 .res-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(72,181,214,0.2); border-radius: 12px;
+    background: linear-gradient(145deg, rgba(46,139,87,0.1), rgba(0,18,51,0.6));
+    border: 1px solid rgba(214,51,132,0.2); border-radius: 12px;
     padding: 22px;
-    border-top: 3px solid var(--celeste);
+    border-top: 3px solid var(--lapacho-rosa);
     transition: all var(--transition);
 }
-.res-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(72,181,214,0.2); }
-.res-card.gold-top { border-top-color: var(--gold); }
-.res-card h4 { font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--gold-light); margin-bottom: 8px; letter-spacing: 0.04em; }
+.res-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(46,139,87,0.25); }
+.res-card.gold-top { border-top-color: var(--lapacho-amarillo); }
+.res-card h4 { font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--lapacho-amarillo); margin-bottom: 8px; letter-spacing: 0.04em; }
 .res-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px; line-height: 1.6; }
-.res-card a { color: var(--celeste-light); font-size: 0.85rem; font-weight: 700; text-decoration: none; }
-.res-card a:hover { color: var(--gold); text-decoration: underline; }
+.res-card a { color: var(--lapacho-rosa); font-size: 0.85rem; font-weight: 700; text-decoration: none; }
+.res-card a:hover { color: var(--lapacho-amarillo); text-decoration: underline; }
 .res-tag { 
     display: inline-block; font-size: 0.65rem; 
     font-family: 'Cinzel', serif; letter-spacing: 0.08em; 
     padding: 3px 10px; border-radius: 4px; margin-bottom: 10px; 
 }
-.res-tag.oficial { background: rgba(72,181,214,0.2); color: var(--celeste-light); }
-.res-tag.pdf { background: rgba(212,175,55,0.15); color: var(--gold-light); }
-.res-tag.youtube { background: rgba(204,0,0,0.15); color: #ff6666; }
+.res-tag.oficial { background: rgba(46,139,87,0.25); color: var(--verde-menta); }
+.res-tag.pdf { background: rgba(255,215,0,0.15); color: var(--lapacho-amarillo); }
+.res-tag.youtube { background: rgba(214,51,132,0.2); color: var(--lapacho-fucsia); }
 .res-tag.libro { background: rgba(200,92,46,0.2); color: var(--guarani-light); }
 .res-tag.vaticano { background: rgba(255,215,0,0.15); color: var(--gold); }
 
 .stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: 14px; margin: 20px 0; }
 .stat-box {
-    background: linear-gradient(135deg, var(--azul-cielo), var(--azul-profundo));
+    background: linear-gradient(135deg, var(--verde-campo), var(--lapacho-rosa));
     border-radius: 10px; padding: 18px 14px; text-align: center;
-    border: 1px solid rgba(72,181,214,0.3);
-    box-shadow: 0 3px 14px rgba(72,181,214,0.2);
+    border: 1px solid rgba(255,215,0,0.3);
+    box-shadow: 0 3px 14px rgba(214,51,132,0.2);
 }
-.stat-box .num { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--celeste-light); font-weight: 700; display: block; }
-.stat-box .lab { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.05em; font-family: 'Cinzel', serif; margin-top: 4px; }
+.stat-box .num { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--lapacho-amarillo); font-weight: 700; display: block; }
+.stat-box .lab { font-size: 0.7rem; color: var(--white); letter-spacing: 0.05em; font-family: 'Cinzel', serif; margin-top: 4px; }
 
 .separator-wrap {
     width:100%; margin:3rem auto;
@@ -537,17 +558,17 @@ tbody td a:hover { text-decoration: underline; color: var(--gold); }
 }
 .separator-linea {
     flex:1; height:1px;
-    background:linear-gradient(to right, transparent, var(--celeste));
+    background:linear-gradient(to right, transparent, var(--lapacho-rosa));
 }
-.separator-linea.right { background:linear-gradient(to left, transparent, var(--celeste)); }
+.separator-linea.right { background:linear-gradient(to left, transparent, var(--verde-campo)); }
 .separator-cruz-svg {
     flex-shrink:0; width:70px; height:70px;
     animation:cruzBreath 3.5s ease-in-out infinite;
-    filter: drop-shadow(0 0 15px rgba(72,181,214,0.7));
+    filter: drop-shadow(0 0 15px rgba(214,51,132,0.7));
 }
 @keyframes cruzBreath {
-    0%,100% { filter:drop-shadow(0 0 15px rgba(72,181,214,0.7)); transform:scale(1); }
-    50% { filter:drop-shadow(0 0 30px rgba(72,181,214,1)) drop-shadow(0 0 50px rgba(212,175,55,0.5)); transform:scale(1.08); }
+    0%,100% { filter:drop-shadow(0 0 15px rgba(214,51,132,0.7)); transform:scale(1); }
+    50% { filter:drop-shadow(0 0 30px rgba(255,215,0,1)) drop-shadow(0 0 50px rgba(46,139,87,0.5)); transform:scale(1.08); }
 }
 
 .notice { 
@@ -567,36 +588,35 @@ tbody td a:hover { text-decoration: underline; color: var(--gold); }
 .symbol-block ul li { font-size: 0.95rem; margin-bottom: 8px; line-height: 1.6; color: var(--text-main); }
 
 .footer-menu {
-    background: linear-gradient(145deg, rgba(0,18,51,0.9), rgba(0,51,102,0.7));
-    border: 1px solid var(--border-gold);
+    background: linear-gradient(145deg, rgba(27,94,32,0.4), rgba(0,18,51,0.9));
+    border: 1px solid var(--border-lapacho);
     border-radius: 20px; padding: 35px; margin: 40px auto;
     backdrop-filter: blur(10px);
 }
 .footer-menu-title {
-    font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--gold-light);
+    font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--lapacho-amarillo);
     text-align: center; margin-bottom: 25px; letter-spacing: 3px; text-transform: uppercase;
 }
 .footer-menu-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 .footer-menu-links a {
     color: var(--text-muted); text-decoration: none; font-size: 0.85rem;
-    padding: 10px 18px; border: 1px solid rgba(72,181,214,0.2); border-radius: 25px;
+    padding: 10px 18px; border: 1px solid rgba(214,51,132,0.25); border-radius: 25px;
     transition: all var(--transition); font-family: 'EB Garamond', serif;
 }
 .footer-menu-links a:hover {
-    background: rgba(72,181,214,0.15); border-color: var(--celeste);
-    color: var(--celeste-light); transform: translateY(-3px);
-    box-shadow: 0 5px 20px rgba(72,181,214,0.2);
+    background: rgba(214,51,132,0.15); border-color: var(--lapacho-rosa);
+    color: var(--lapacho-rosa); transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(214,51,132,0.2);
 }
 
 .golden-divine-line {
     width: 100%; max-width: 1000px; height: 5px;
     margin: 0 auto 50px; position: relative;
     background: linear-gradient(90deg, 
-        transparent 0%, var(--azul-cielo) 5%, var(--celeste) 15%, var(--celeste-light) 25%,
-        var(--white) 35%, var(--celeste-light) 45%, var(--celeste) 55%, var(--azul-cielo) 65%,
-        var(--azul-profundo) 75%, var(--celeste) 85%, transparent 100%);
+        transparent 0%, var(--lapacho-rosa) 10%, var(--verde-campo) 30%, 
+        var(--lapacho-amarillo) 50%, var(--verde-campo) 70%, var(--lapacho-rosa) 90%, transparent 100%);
     border-radius: 3px;
-    box-shadow: 0 0 20px rgba(72,181,214,0.5), 0 0 40px rgba(212,175,55,0.3);
+    box-shadow: 0 0 20px rgba(214,51,132,0.5), 0 0 40px rgba(46,139,87,0.3);
     animation: lineGlow 2.5s ease-in-out infinite;
 }
 @keyframes lineGlow {
@@ -605,42 +625,42 @@ tbody td a:hover { text-decoration: underline; color: var(--gold); }
 }
 
 footer.main-footer {
-    background: linear-gradient(to bottom, rgba(0,18,51,0.9), rgba(0,51,102,0.95));
+    background: linear-gradient(to bottom, rgba(0,18,51,0.9), rgba(46,139,87,0.3));
     padding: 40px 20px; text-align: center;
-    border-top: 2px solid var(--celeste);
+    border-top: 2px solid var(--lapacho-rosa);
     display: flex; flex-direction: column; align-items: center;
 }
 footer.main-footer .cross-glow {
-    font-size: 3rem; color: var(--celeste);
-    text-shadow: 0 0 30px rgba(72,181,214,0.8), 0 0 60px rgba(212,175,55,0.3);
+    font-size: 3rem; color: var(--lapacho-rosa);
+    text-shadow: 0 0 30px rgba(214,51,132,0.8), 0 0 60px rgba(46,139,87,0.4);
     margin-bottom: 15px; animation: crossPulse 2.5s ease-in-out infinite;
 }
 @keyframes crossPulse {
-    0%,100% { text-shadow: 0 0 30px rgba(72,181,214,0.8), 0 0 60px rgba(212,175,55,0.3); transform: scale(1); }
-    50% { text-shadow: 0 0 50px rgba(72,181,214,1), 0 0 100px rgba(212,175,55,0.5), 0 0 150px rgba(72,181,214,0.5); transform: scale(1.1); }
+    0%,100% { text-shadow: 0 0 30px rgba(214,51,132,0.8), 0 0 60px rgba(46,139,87,0.4); transform: scale(1); }
+    50% { text-shadow: 0 0 50px rgba(255,215,0,1), 0 0 100px rgba(214,51,132,0.6), 0 0 150px rgba(46,139,87,0.4); transform: scale(1.1); }
 }
 footer.main-footer p { color: var(--text-muted); margin: 5px 0; font-size: 0.95rem; }
-footer.main-footer .tagline { color: var(--celeste-light); font-family: 'Cinzel', serif; font-size: 1.05rem; letter-spacing: 2px; }
+footer.main-footer .tagline { color: var(--lapacho-rosa); font-family: 'Cinzel', serif; font-size: 1.05rem; letter-spacing: 2px; }
 
 .scroll-btn {
     width: 52px; height: 52px; border-radius: 50%;
-    background: rgba(0,0,0,0.7); border: 2px solid var(--celeste);
+    background: rgba(0,0,0,0.7); border: 2px solid var(--lapacho-rosa);
     display: flex; align-items: center; justify-content: center;
     cursor: pointer; animation: scrollPulse 2s ease-in-out infinite;
     transition: all 0.3s ease; position: fixed; z-index: 1000;
     backdrop-filter: blur(8px);
 }
 .scroll-btn:hover {
-    background: rgba(72,181,214,0.3);
-    box-shadow: 0 0 30px rgba(72,181,214,0.8), 0 0 60px rgba(212,175,55,0.3);
+    background: rgba(214,51,132,0.3);
+    box-shadow: 0 0 30px rgba(214,51,132,0.8), 0 0 60px rgba(46,139,87,0.4);
     transform: scale(1.1);
 }
-.scroll-btn svg { width: 24px; height: 24px; stroke: var(--celeste); stroke-width: 2.5; fill: none; }
+.scroll-btn svg { width: 24px; height: 24px; stroke: var(--lapacho-rosa); stroke-width: 2.5; fill: none; }
 .scroll-up { top: 120px; right: 20px; }
 .scroll-down { bottom: 30px; right: 20px; }
 @keyframes scrollPulse {
-    0%,100% { box-shadow: 0 0 20px rgba(72,181,214,0.5), 0 0 40px rgba(212,175,55,0.2); }
-    50% { box-shadow: 0 0 35px rgba(72,181,214,0.8), 0 0 70px rgba(212,175,55,0.4); }
+    0%,100% { box-shadow: 0 0 20px rgba(214,51,132,0.5), 0 0 40px rgba(46,139,87,0.2); }
+    50% { box-shadow: 0 0 35px rgba(214,51,132,0.8), 0 0 70px rgba(46,139,87,0.4); }
 }
 
 .cursor-cruz {
@@ -649,11 +669,11 @@ footer.main-footer .tagline { color: var(--celeste-light); font-family: 'Cinzel'
 }
 .cursor-cruz svg {
     width: 100%; height: 100%;
-    filter: drop-shadow(0 0 8px rgba(72,181,214,0.9)) drop-shadow(0 0 16px rgba(212,175,55,0.6));
+    filter: drop-shadow(0 0 8px rgba(214,51,132,0.9)) drop-shadow(0 0 16px rgba(46,139,87,0.6));
 }
 .cursor-cruz.hover { transform: translate(-50%, -50%) scale(1.4); }
 .cursor-cruz.hover svg {
-    filter: drop-shadow(0 0 12px rgba(72,181,214,1)) drop-shadow(0 0 24px rgba(212,175,55,0.9)) drop-shadow(0 0 40px rgba(0,109,170,0.5));
+    filter: drop-shadow(0 0 12px rgba(255,215,0,1)) drop-shadow(0 0 24px rgba(214,51,132,0.9)) drop-shadow(0 0 40px rgba(46,139,87,0.5));
 }
 
 @media (max-width: 768px) {
@@ -696,14 +716,14 @@ footer.main-footer .tagline { color: var(--celeste-light); font-family: 'Cinzel'
 <div class="cursor-cruz" id="cursor">
     <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
         <defs>
-            <linearGradient id="cruzCeleste" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#7dd3f0"/>
-                <stop offset="30%" stop-color="#48b5d6"/>
-                <stop offset="50%" stop-color="#d4af37"/>
-                <stop offset="70%" stop-color="#48b5d6"/>
-                <stop offset="100%" stop-color="#006daa"/>
+            <linearGradient id="cruzParaguay" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#D63384"/>
+                <stop offset="30%" stop-color="#2E8B57"/>
+                <stop offset="50%" stop-color="#FFD700"/>
+                <stop offset="70%" stop-color="#2E8B57"/>
+                <stop offset="100%" stop-color="#D63384"/>
             </linearGradient>
-            <filter id="glowCeleste">
+            <filter id="glowParaguay">
                 <feGaussianBlur stdDeviation="2" result="blur1"/>
                 <feGaussianBlur stdDeviation="4" result="blur2"/>
                 <feMerge>
@@ -713,9 +733,9 @@ footer.main-footer .tagline { color: var(--celeste-light); font-family: 'Cinzel'
                 </feMerge>
             </filter>
         </defs>
-        <rect x="17" y="2" width="6" height="36" rx="2" fill="url(#cruzCeleste)" filter="url(#glowCeleste)"/>
-        <rect x="4" y="12" width="32" height="6" rx="2" fill="url(#cruzCeleste)" filter="url(#glowCeleste)"/>
-        <circle cx="20" cy="7" r="3.5" fill="#7dd3f0" filter="url(#glowCeleste)"/>
+        <rect x="17" y="2" width="6" height="36" rx="2" fill="url(#cruzParaguay)" filter="url(#glowParaguay)"/>
+        <rect x="4" y="12" width="32" height="6" rx="2" fill="url(#cruzParaguay)" filter="url(#glowParaguay)"/>
+        <circle cx="20" cy="7" r="3.5" fill="#FFD700" filter="url(#glowParaguay)"/>
     </svg>
 </div>
 
@@ -866,16 +886,16 @@ footer.main-footer .tagline { color: var(--celeste-light); font-family: 'Cinzel'
             <div class="separator-linea"></div>
             <svg class="separator-cruz-svg" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#7dd3f0"/>
-                        <stop offset="50%" stop-color="#d4af37"/>
-                        <stop offset="100%" stop-color="#006daa"/>
+                    <linearGradient id="goldGradParaguay" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#D63384"/>
+                        <stop offset="50%" stop-color="#FFD700"/>
+                        <stop offset="100%" stop-color="#2E8B57"/>
                     </linearGradient>
                     <filter id="cruzGlow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
                 </defs>
-                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
-                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
-                <circle cx="50" cy="24" r="5" fill="#7dd3f0" filter="url(#cruzGlow)"/>
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGradParaguay)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGradParaguay)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#FFD700" filter="url(#cruzGlow)"/>
             </svg>
             <div class="separator-linea right"></div>
         </div>
