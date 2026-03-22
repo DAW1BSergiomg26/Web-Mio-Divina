@@ -520,6 +520,11 @@ nav a.devociones-btn:hover {
     gap: 24px;
     margin: 30px 0;
 }
+.devocion-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
 .devocion-card {
     background: linear-gradient(145deg, rgba(26,58,110,0.4), rgba(10,22,40,0.9));
     border: 2px solid transparent;
@@ -829,18 +834,39 @@ blockquote cite {
 .scroll-down { bottom:35px; right:95px; }
 
 /* ══════════════════════════════════════════
-   CURSOR CELESTIAL
+   CURSOR CELESTIAL - CRUZ
    ══════════════════════════════════════════ */
 #cursor {
-    position: fixed; width: 32px; height: 32px;
-    border: 2px solid var(--oro); border-radius: 50%;
+    position: fixed; width: 24px; height: 24px;
     pointer-events: none; z-index: 9999; 
-    transform: translate(-50%, -50%); mix-blend-mode: difference;
-    transition: transform 0.15s, border-color 0.3s;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out, opacity 0.2s;
+}
+#cursor::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 2px; height: 24px;
+    background: var(--oro);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 6px var(--oro);
+}
+#cursor::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 24px; height: 2px;
+    background: var(--oro);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 6px var(--oro);
 }
 #cursor.hover { 
-    transform: translate(-50%, -50%) scale(1.6); 
-    border-color: var(--celeste-mariano);
+    transform: translate(-50%, -50%) scale(1.4);
+}
+#cursor.hover::before,
+#cursor.hover::after {
+    background: var(--oro-light);
+    box-shadow: 0 0 12px var(--oro-light), 0 0 20px var(--oro);
 }
 
 /* ══════════════════════════════════════════
@@ -1033,40 +1059,50 @@ blockquote cite {
         </p>
 
         <div class="devociones-grid">
-            <div class="devocion-card santina reveal">
-                <span class="icon">+</span>
-                <h4>La Santina</h4>
-                <p>La imagen de la Divina Misericordia pintada por Adolf Hyla, donde Jesús se presenta con los sellos de la luz, recordándonos que la misericordia divina es la mayor perfección del Amor divino.</p>
-                <a href="la-santina.html" class="btn">Conocer más</a>
-            </div>
+            <a href="la-santina.html" class="devocion-card-link">
+                <div class="devocion-card santina reveal">
+                    <span class="icon">+</span>
+                    <h4>La Santina</h4>
+                    <p>La imagen de la Divina Misericordia pintada por Adolf Hyla, donde Jesús se presenta con los sellos de la luz, recordándonos que la misericordia divina es la mayor perfección del Amor divino.</p>
+                    <span class="btn">Conocer más</span>
+                </div>
+            </a>
 
-            <div class="devocion-card caacupe reveal">
-                <span class="icon">+</span>
-                <h4>Virgen de Caacupé</h4>
-                <p>Patrona del Paraguay, venerada como la «Virgen de los Milagros» y «Tupãsy Caacupé» (Madre de Dios de Caacupé). Primera patronaamericana declarada oficialmente.</p>
-                <a href="virgen-caacupe.html" class="btn">Conocer más</a>
-            </div>
+            <a href="virgen-caacupe.html" class="devocion-card-link">
+                <div class="devocion-card caacupe reveal">
+                    <span class="icon">+</span>
+                    <h4>Virgen de Caacupé</h4>
+                    <p>Patrona del Paraguay, venerada como la «Virgen de los Milagros» y «Tupãsy Caacupé» (Madre de Dios de Caacupé). Primera patronaamericana declarada oficialmente.</p>
+                    <span class="btn">Conocer más</span>
+                </div>
+            </a>
 
-            <div class="devocion-card luján reveal">
-                <span class="icon">+</span>
-                <h4>Virgen de Luján</h4>
-                <p>Patrona de Argentina, Uruguay y Paraguay. La Virgen morena que se apareció en una carreta y cuyos milagros fundaron una nación-devoción.</p>
-                <a href="virgen-lujan.html" class="btn">Conocer más</a>
-            </div>
+            <a href="virgen-lujan.html" class="devocion-card-link">
+                <div class="devocion-card luján reveal">
+                    <span class="icon">+</span>
+                    <h4>Virgen de Luján</h4>
+                    <p>Patrona de Argentina, Uruguay y Paraguay. La Virgen morena que se apareció en una carreta y cuyos milagros fundaron una nación-devoción.</p>
+                    <span class="btn">Conocer más</span>
+                </div>
+            </a>
 
-            <div class="devocion-card auxiliadora reveal">
-                <span class="icon">+</span>
-                <h4>María Auxiliadora</h4>
-                <p>Devoción propagada por San Juan Bosco, con el título de «Auxilio de los Cristianos». Patrona de los jóvenes y de la Familia Salesiana mundial.</p>
-                <a href="maria-auxiliadora.html" class="btn">Conocer más</a>
-            </div>
+            <a href="maria-auxiliadora.html" class="devocion-card-link">
+                <div class="devocion-card auxiliadora reveal">
+                    <span class="icon">+</span>
+                    <h4>María Auxiliadora</h4>
+                    <p>Devoción propagada por San Juan Bosco, con el título de «Auxilio de los Cristianos». Patrona de los jóvenes y de la Familia Salesiana mundial.</p>
+                    <span class="btn">Conocer más</span>
+                </div>
+            </a>
 
-            <div class="devocion-card medalla reveal">
-                <span class="icon">+</span>
-                <h4>Medalla Milagrosa</h4>
-                <p>La aparición a Santa Catalina Labouré en la Rue du Bac, París (1830). La Virgen prometió gracias abundantes a quienes lleven su imagen con fe.</p>
-                <a href="medalla-milagrosa.html" class="btn">Conocer más</a>
-            </div>
+            <a href="medalla-milagrosa.html" class="devocion-card-link">
+                <div class="devocion-card medalla reveal">
+                    <span class="icon">+</span>
+                    <h4>Medalla Milagrosa</h4>
+                    <p>La aparición a Santa Catalina Labouré en la Rue du Bac, París (1830). La Virgen prometió gracias abundantes a quienes lleven su imagen con fe.</p>
+                    <span class="btn">Conocer más</span>
+                </div>
+            </a>
         </div>
     </section>
 
