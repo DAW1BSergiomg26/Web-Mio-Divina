@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medalla Milagrosa - Apariciones de la Rue du Bac | Divina Misericordia</title>
+<meta name="description" content="Medalla Milagrosa - Virgen María. Apariciones a Santa Catalina Labouré, París 1830. Historia, oraciones, novena, simbología y recursos verificados.">
+<meta name="author" content="Asociación Apóstoles de la Divina Misericordia">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1A3D8F">
+<link rel="canonical" href="https://misericordiadejesus.es/medalla-milagrosa.html">
+<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    /* AZUL MEDALLA MILAGROSA */
+    --azul-abismo: #001233;
+    --azul-profundo: #0D2260;
+    --azul-cielo: #1A3D8F;
+    --azul-medio: #3A6CC8;
+    --azul-light: #5A9BE8;
+    
+    /* BLANCO */
+    --blanco: #F8FBFF;
+    --blanco-perla: #F0F5FF;
+    
+    /* ORO / PLATA */
+    --oro: #C9960A;
+    --oro-light: #F0C840;
+    --oro-pale: #FEF5D0;
+    --plata: #A8B8C8;
+    --plata-light: #C8D8E8;
+    
+    /* GRIS CELESTE */
+    --gris-azulado: #6B8FB8;
+    
+    /* COLORES BASE */
+    --white: #faf7f0;
+    --cream: #FDFBF5;
+    --text-main: rgba(255,255,255,0.9);
+    --text-muted: rgba(255,255,255,0.7);
+    --border-gold: rgba(201,150,10,0.3);
+    --border-azul: rgba(58,108,200,0.4);
+    --transition: 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+    background: var(--azul-abismo);
+    color: var(--text-main);
+    font-family:'EB Garamond',Georgia,serif;
+    line-height:1.85; overflow-x:hidden;
+    cursor:none;
+}
+
+.bg { 
+    position:fixed; inset:0; 
+    background: linear-gradient(135deg, #001233 0%, #0D2260 20%, #1A3D8F 40%, #3A6CC8 55%, #C9960A 75%, #001233 100%);
+    background-size: 400% 400%;
+    animation: bgShift 20s ease infinite;
+    z-index:-2; 
+}
+@keyframes bgShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.sacred-rays {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300vmax;
+    height: 300vmax;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.15;
+}
+.ray {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 70%;
+    transform-origin: bottom center;
+}
+.ray::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(to top, 
+        rgba(58,108,200,1) 0%,
+        rgba(201,150,10,0.7) 50%,
+        rgba(255,255,255,0.4) 70%,
+        transparent 100%);
+    animation: rayPulse 4s ease-in-out infinite;
+}
+.ray:nth-child(1) { transform: translateY(-100%) rotate(0deg); animation-delay: 0s; }
+.ray:nth-child(2) { transform: translateY(-100%) rotate(20deg); animation-delay: 0.2s; }
+.ray:nth-child(3) { transform: translateY(-100%) rotate(40deg); animation-delay: 0.4s; }
+.ray:nth-child(4) { transform: translateY(-100%) rotate(60deg); animation-delay: 0.6s; }
+.ray:nth-child(5) { transform: translateY(-100%) rotate(80deg); animation-delay: 0.8s; }
+.ray:nth-child(6) { transform: translateY(-100%) rotate(100deg); animation-delay: 1s; }
+.ray:nth-child(7) { transform: translateY(-100%) rotate(120deg); animation-delay: 1.2s; }
+.ray:nth-child(8) { transform: translateY(-100%) rotate(140deg); animation-delay: 1.4s; }
+.ray:nth-child(9) { transform: translateY(-100%) rotate(160deg); animation-delay: 1.6s; }
+.ray:nth-child(10) { transform: translateY(-100%) rotate(180deg); animation-delay: 1.8s; }
+.ray:nth-child(11) { transform: translateY(-100%) rotate(200deg); animation-delay: 2s; }
+.ray:nth-child(12) { transform: translateY(-100%) rotate(220deg); animation-delay: 2.2s; }
+.ray:nth-child(13) { transform: translateY(-100%) rotate(240deg); animation-delay: 2.4s; }
+.ray:nth-child(14) { transform: translateY(-100%) rotate(260deg); animation-delay: 2.6s; }
+.ray:nth-child(15) { transform: translateY(-100%) rotate(280deg); animation-delay: 2.8s; }
+.ray:nth-child(16) { transform: translateY(-100%) rotate(300deg); animation-delay: 3s; }
+.ray:nth-child(17) { transform: translateY(-100%) rotate(320deg); animation-delay: 3.2s; }
+.ray:nth-child(18) { transform: translateY(-100%) rotate(340deg); animation-delay: 3.4s; }
+
+@keyframes rayPulse {
+    0%, 100% { opacity: 0.3; height: 60%; }
+    25% { opacity: 1; height: 100%; }
+    50% { opacity: 0.5; height: 80%; }
+    75% { opacity: 0.9; height: 95%; }
+}
+
+.particles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+.particle {
+    position: absolute;
+    width: 4px; height: 4px;
+    background: var(--oro);
+    border-radius: 50%;
+    animation: floatParticle 20s linear infinite;
+    box-shadow: 0 0 8px rgba(201,150,10,0.8), 0 0 15px rgba(58,108,200,0.5);
+}
+.particle:nth-child(3n) { background: var(--azul-medio); box-shadow: 0 0 8px rgba(58,108,200,0.8); }
+.particle:nth-child(odd) { background: var(--plata); box-shadow: 0 0 8px rgba(168,184,200,0.8); }
+.particle:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 22s; }
+.particle:nth-child(2) { left: 10%; animation-delay: 2s; animation-duration: 26s; width: 3px; height: 3px; }
+.particle:nth-child(3) { left: 15%; animation-delay: 4s; animation-duration: 24s; }
+.particle:nth-child(4) { left: 20%; animation-delay: 1s; animation-duration: 28s; width: 5px; height: 5px; }
+.particle:nth-child(5) { left: 25%; animation-delay: 3s; animation-duration: 20s; }
+.particle:nth-child(6) { left: 30%; animation-delay: 5s; animation-duration: 27s; width: 3px; height: 3px; }
+.particle:nth-child(7) { left: 35%; animation-delay: 0.5s; animation-duration: 23s; }
+.particle:nth-child(8) { left: 40%; animation-delay: 2.5s; animation-duration: 25s; width: 5px; height: 5px; }
+.particle:nth-child(9) { left: 45%; animation-delay: 4.5s; animation-duration: 21s; }
+.particle:nth-child(10) { left: 50%; animation-delay: 1.5s; animation-duration: 29s; width: 3px; height: 3px; }
+.particle:nth-child(11) { left: 55%; animation-delay: 3.5s; animation-duration: 22s; }
+.particle:nth-child(12) { left: 60%; animation-delay: 0s; animation-duration: 24s; width: 5px; height: 5px; }
+.particle:nth-child(13) { left: 65%; animation-delay: 2s; animation-duration: 20s; }
+.particle:nth-child(14) { left: 70%; animation-delay: 4s; animation-duration: 26s; width: 3px; height: 3px; }
+.particle:nth-child(15) { left: 75%; animation-delay: 1s; animation-duration: 23s; }
+.particle:nth-child(16) { left: 80%; animation-delay: 3s; animation-duration: 27s; width: 5px; height: 5px; }
+.particle:nth-child(17) { left: 85%; animation-delay: 5s; animation-duration: 21s; }
+.particle:nth-child(18) { left: 90%; animation-delay: 2.5s; animation-duration: 25s; width: 3px; height: 3px; }
+.particle:nth-child(19) { left: 95%; animation-delay: 0.5s; animation-duration: 22s; }
+.particle:nth-child(20) { left: 3%; animation-delay: 4.5s; animation-duration: 30s; width: 5px; height: 5px; }
+
+@keyframes floatParticle {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    5% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+}
+
+#divine-canvas { position:fixed; inset:0; z-index:-1; opacity:0.4; }
+
+.progress-bar {
+    position:fixed; top:0; left:0; height:2px; width:0;
+    background:linear-gradient(to right, var(--azul-cielo), var(--oro), var(--azul-light), var(--oro-light));
+    z-index:1100; transition:width 0.1s linear;
+    box-shadow:0 0 10px rgba(201,150,10,0.7);
+}
+
+header {
+    position:fixed; width:100%;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:10px 30px;
+    background:rgba(0,0,0,0.92);
+    backdrop-filter:blur(24px);
+    z-index:1000; border-bottom:1px solid var(--border-gold);
+    transition:padding var(--transition);
+}
+header.scrolled { padding:6px 30px; background:rgba(0,18,51,0.98); }
+
+.logo {
+    font-family:'Cinzel Decorative',serif;
+    font-size:1.25rem; color:var(--oro-light);
+    text-decoration:none; display:flex; align-items:center; gap:12px;
+}
+.logo:hover { opacity:0.85; }
+.logo img { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--border-gold); }
+.logo span { color:var(--white); }
+
+nav { display:flex; gap:4px; flex-wrap:wrap; justify-content:center; align-items:center; }
+nav a {
+    color:var(--oro); text-decoration:none;
+    font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:1px;
+    padding:8px 10px; border-radius:6px;
+    transition:all var(--transition); position:relative; white-space:nowrap;
+}
+nav a::after {
+    content:''; position:absolute; bottom:4px; left:50%;
+    transform:translateX(-50%) scaleX(0);
+    width:60%; height:1px; background:var(--oro);
+    transition:transform var(--transition);
+}
+nav a:hover::after, nav a.activo::after { transform:translateX(-50%) scaleX(1); }
+nav a:hover, nav a.activo {
+    color:var(--oro-light);
+    background:rgba(201,150,10,0.15);
+    text-shadow:0 0 18px rgba(201,150,10,0.6);
+}
+
+nav a.medalla-btn {
+    color: #fff;
+    background: linear-gradient(135deg, var(--azul-cielo), var(--oro));
+    border: 2px solid var(--oro);
+    padding: 10px 18px;
+    font-weight: 700;
+    animation: medallaGlow 2s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(58,108,200,0.6), 0 0 40px rgba(201,150,10,0.4);
+}
+@keyframes medallaGlow {
+    0%, 100% { 
+        box-shadow: 0 0 20px rgba(58,108,200,0.6), 0 0 40px rgba(201,150,10,0.4), 0 0 60px rgba(58,108,200,0.4);
+        border-color: var(--oro);
+    }
+    50% { 
+        box-shadow: 0 0 30px rgba(90,155,232,0.8), 0 0 60px rgba(240,200,64,0.6), 0 0 90px rgba(201,150,10,0.4);
+        border-color: var(--oro-light);
+    }
+}
+nav a.medalla-btn:hover {
+    background: linear-gradient(135deg, var(--azul-medio), var(--oro-light));
+    color: var(--white);
+    transform: scale(1.05);
+}
+
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:10px; z-index:1100; }
+.hamburger span { width:26px; height:2px; background:var(--oro); border-radius:2px; transition:all var(--transition); display:block; }
+.hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+.hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+@media (max-width:900px) {
+    .hamburger { display:flex; }
+    nav {
+        position:fixed; top:0; right:-100%;
+        width:min(320px,80vw); height:100dvh;
+        background:rgba(0,18,51,0.98);
+        backdrop-filter:blur(30px);
+        flex-direction:column; align-items:flex-start; justify-content:flex-start;
+        padding:90px 30px 30px; gap:6px;
+        transition:right 0.4s cubic-bezier(0.4,0,0.2,1);
+        border-left:1px solid var(--border-gold); overflow-y:auto;
+    }
+    nav.active { right:0; }
+    nav a { font-size:1rem; width:100%; padding:12px 16px; border-radius:8px; }
+    nav a::after { display:none; }
+}
+
+.main-content { max-width:1000px; margin:0 auto; position: relative; z-index: 2; padding: 180px 20px 80px; }
+
+.reveal { opacity:0; transform:translateY(30px); transition:all 0.8s cubic-bezier(0.4,0,0.2,1); }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+.hero { background: linear-gradient(to bottom, rgba(13,34,96,0.85) 0%, rgba(58,108,200,0.7) 40%, rgba(201,150,10,0.4) 100%); min-height: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; border-radius: 16px; margin-bottom: 40px; border: 2px solid var(--oro); box-shadow: 0 0 40px rgba(58,108,200,0.3), 0 0 80px rgba(201,150,10,0.2); padding: 60px 20px 40px; }
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: conic-gradient(from 0deg, transparent, rgba(58,108,200,0.15), transparent, rgba(201,150,10,0.15), transparent, rgba(168,184,200,0.1), transparent);
+    animation: heroRotate 15s linear infinite;
+}
+@keyframes heroRotate {
+    from { transform:rotate(0deg); }
+    to { transform:rotate(360deg); }
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-icon { 
+    font-size: 40px; margin-bottom: 10px; 
+    animation: iconShimmer 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(201,150,10,0.8));
+}
+@keyframes iconShimmer {
+    0%,100% { filter: drop-shadow(0 0 15px rgba(201,150,10,0.6)); transform: scale(1); }
+    33% { filter: drop-shadow(0 0 20px rgba(58,108,200,0.8)); transform: scale(1.05); }
+    66% { filter: drop-shadow(0 0 25px rgba(168,184,200,1)); transform: scale(1.1); }
+    100% { filter: drop-shadow(0 0 15px rgba(201,150,10,0.6)); transform: scale(1); }
+}
+.hero h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    background: linear-gradient(90deg, 
+        #1A3D8F 0%,      /* Azul profundo */
+        #3A6CC8 25%,     /* Azul medio */
+        #F0C840 50%,     /* Oro */
+        #A8B8C8 75%,    /* Plata */
+        #1A3D8F 100%     /* Azul profundo */
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleShimmer 4s linear infinite;
+    filter: drop-shadow(0 0 15px rgba(201,150,10,0.6)) 
+            drop-shadow(0 0 30px rgba(58,108,200,0.4))
+            drop-shadow(0 0 45px rgba(168,184,200,0.3));
+    margin-bottom: 10px;
+}
+@keyframes titleShimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+.hero h1 span { 
+    background: linear-gradient(90deg, 
+        #F0C840 0%,      /* Oro */
+        #A8B8C8 33%,     /* Plata */
+        #3A6CC8 66%,     /* Azul */
+        #F0C840 100%     /* Oro */
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: spanShimmer 3s linear infinite;
+}
+@keyframes spanShimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: -200% 50%; }
+}
+.hero .tagline {
+    font-family: 'EB Garamond', serif; font-style: italic;
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem); 
+    color: var(--text-main);
+    max-width: 550px; margin: 0 auto 20px;
+}
+.hero-stats {
+    display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
+}
+.hero-stat { text-align: center; }
+.hero-stat .num { 
+    font-family: 'Cinzel', serif; font-size: 1.3rem; 
+    color: var(--oro-light); font-weight: 700; display: block; 
+}
+.hero-stat .lab { font-size: 0.65rem; letter-spacing: 0.05em; color: var(--text-muted); text-transform: uppercase; }
+
+.section { margin-bottom: 60px; scroll-margin-top: 80px; }
+.section-header {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--oro);
+    padding-bottom: 16px;
+}
+.section-icon { font-size: 2.5rem; flex-shrink: 0; }
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    color: var(--oro-light); font-weight: 700;
+}
+.section-subtitle { font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-top: 4px; }
+
+.card {
+    background: linear-gradient(145deg, rgba(58,108,200,0.2), rgba(13,34,96,0.8));
+    border: 1px solid rgba(201,150,10,0.3);
+    border-left: 4px solid var(--oro);
+    border-radius: 4px 12px 12px 4px;
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    transition: all var(--transition);
+}
+.card:hover {
+    border-color: var(--oro-light);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4), 0 0 30px rgba(201,150,10,0.15);
+}
+.card h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--oro-light); font-size: 1rem;
+    letter-spacing: 0.05em; margin-bottom: 12px;
+}
+.card p { color: var(--text-main); font-size: 1.05rem; line-height: 1.85; }
+.card.gold-border { border-left-color: var(--oro); }
+.card.highlight {
+    background: linear-gradient(135deg, rgba(13,34,96,0.4), rgba(0,18,51,0.8));
+    border: 1px solid var(--border-gold);
+    border-left: 4px solid var(--oro);
+}
+.card.azul { border-left-color: var(--azul-medio); }
+.card.plata { border-left-color: var(--plata); background: linear-gradient(145deg, rgba(168,184,200,0.1), rgba(13,34,96,0.8)); }
+
+.info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 16px; margin: 20px 0; }
+.info-box {
+    background: linear-gradient(145deg, rgba(58,108,200,0.15), rgba(0,18,51,0.6));
+    border: 1px solid rgba(201,150,10,0.25);
+    border-radius: 12px;
+    padding: 22px 18px; text-align: center;
+    transition: all var(--transition);
+}
+.info-box:hover { 
+    transform: translateY(-4px); 
+    box-shadow: 0 10px 30px rgba(58,108,200,0.25);
+    border-color: var(--oro);
+}
+.info-box .icon-big { font-size: 2.5rem; margin-bottom: 10px; }
+.info-box strong { 
+    font-family: 'Cinzel', serif; font-size: 0.9rem; 
+    color: var(--oro-light); display: block; margin-bottom: 8px; 
+}
+.info-box p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+
+.timeline { position: relative; padding-left: 36px; margin: 20px 0; }
+.timeline::before {
+    content: ''; position: absolute; left: 12px; top: 8px; bottom: 8px;
+    width: 2px; background: linear-gradient(to bottom, var(--azul-medio), var(--oro), var(--plata));
+}
+.t-item { position: relative; margin-bottom: 28px; }
+.t-item::before {
+    content: ''; position: absolute; left: -30px; top: 6px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--oro); border: 3px solid var(--azul-abismo);
+    box-shadow: 0 0 10px rgba(201,150,10,0.7);
+}
+.t-year {
+    font-family: 'Cinzel', serif; font-size: 0.95rem; font-weight: 700;
+    color: var(--oro-light); letter-spacing: 0.08em; margin-bottom: 6px;
+}
+.t-text { font-size: 1rem; color: var(--text-main); line-height: 1.75; }
+
+.prayer-block {
+    background: linear-gradient(145deg, var(--azul-profundo) 0%, rgba(58,108,200,0.4) 50%, #0D2260 100%);
+    border-radius: 16px;
+    padding: 40px;
+    margin: 24px 0;
+    border: 1px solid rgba(201,150,10,0.3);
+    position: relative; overflow: hidden;
+}
+.prayer-block::before {
+    content: '+ + +'; position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+    color: rgba(201,150,10,0.4); font-size: 0.8rem; letter-spacing: 12px;
+}
+.prayer-block h3 {
+    font-family: 'Cinzel', serif; color: var(--oro-light);
+    text-align: center; font-size: 1rem; letter-spacing: 0.1em;
+    margin: 24px 0 20px;
+}
+.prayer-block p {
+    font-family: 'EB Garamond', serif; font-style: italic;
+    font-size: 1.05rem; line-height: 2; text-align: justify;
+    color: rgba(244,232,192,0.9);
+}
+.prayer-block .jac {
+    text-align: center; font-size: 1.2rem; color: var(--white);
+    font-family: 'Cinzel', serif; letter-spacing: 0.05em; margin: 16px 0 10px;
+}
+.prayer-block .note { 
+    text-align: center; font-size: 0.85rem; font-style: normal; 
+    opacity: 0.6; margin-top: 10px; 
+}
+.prayer-block .note a { color: var(--azul-light); }
+
+blockquote {
+    border-left: 4px solid var(--oro);
+    margin: 24px 0; padding: 20px 28px;
+    background: rgba(201,150,10,0.05);
+    border-radius: 0 10px 10px 0;
+    font-family: 'EB Garamond', serif; font-style: italic;
+    font-size: 1.15rem; color: var(--text-main);
+}
+blockquote cite {
+    display: block; margin-top: 12px; font-size: 0.85rem;
+    font-style: normal; color: var(--oro-light);
+    font-family: 'Cinzel', serif; letter-spacing: 0.06em;
+}
+
+.table-wrap { overflow-x: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin: 20px 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+thead { background: linear-gradient(135deg, var(--azul-cielo), var(--oro)); color: var(--white); }
+thead th { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.1em; padding: 14px 16px; text-align: left; }
+tbody tr { border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.15s; }
+tbody tr:nth-child(even) { background: rgba(58,108,200,0.08); }
+tbody tr:hover { background: rgba(201,150,10,0.15); }
+tbody td { padding: 12px 16px; vertical-align: middle; line-height: 1.55; }
+tbody td a { color: var(--oro-light); text-decoration: none; font-weight: 600; }
+tbody td a:hover { text-decoration: underline; color: var(--oro); }
+.badge-top { 
+    background: var(--oro); color: var(--azul-abismo); 
+    font-size: 0.65rem; font-family: 'Cinzel', serif; 
+    padding: 2px 8px; border-radius: 4px; letter-spacing: 0.06em; margin-left: 8px; 
+}
+
+.banner {
+    background: linear-gradient(135deg, var(--azul-profundo), var(--oro));
+    border-radius: 14px; padding: 30px 34px;
+    color: var(--white); text-align: center; margin: 28px 0;
+    border: 1px solid rgba(201,150,10,0.25);
+    box-shadow: 0 0 30px rgba(58,108,200,0.3);
+}
+.banner h3 { font-family: 'Cinzel', serif; color: var(--oro-light); font-size: 1rem; margin-bottom: 12px; letter-spacing: 0.08em; }
+.banner p { font-size: 0.95rem; opacity: 0.85; max-width: 650px; margin: 0 auto; }
+.banner .tel { 
+    font-family: 'Cinzel', serif; color: var(--oro-light); 
+    font-size: 0.9rem; margin-top: 12px; display: block; 
+}
+.banner a { color: var(--azul-light); text-decoration: none; display: block; margin-top: 8px; }
+.banner a:hover { text-decoration: underline; }
+
+.video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 16px; margin: 20px 0; }
+.video-card {
+    background: linear-gradient(145deg, rgba(58,108,200,0.3), rgba(201,150,10,0.2));
+    border-radius: 12px;
+    padding: 22px; color: var(--oro-light);
+    border: 1px solid rgba(201,150,10,0.25);
+    transition: all var(--transition);
+}
+.video-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(58,108,200,0.3); }
+.video-card .v-icon { font-size: 1.8rem; margin-bottom: 12px; }
+.video-card h4 { font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--oro-light); margin-bottom: 10px; letter-spacing: 0.06em; }
+.video-card p { font-size: 0.85rem; opacity: 0.75; margin-bottom: 14px; line-height: 1.55; }
+.video-card a {
+    display: inline-block; background: var(--oro);
+    color: var(--azul-abismo); font-family: 'Cinzel', serif;
+    font-size: 0.75rem; letter-spacing: 0.08em;
+    padding: 8px 16px; border-radius: 6px; text-decoration: none;
+    font-weight: 700; transition: background 0.2s;
+}
+.video-card a:hover { background: var(--oro-light); }
+
+.res-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 16px; margin: 20px 0; }
+.res-card {
+    background: linear-gradient(145deg, rgba(58,108,200,0.1), rgba(0,18,51,0.6));
+    border: 1px solid rgba(201,150,10,0.2); border-radius: 12px;
+    padding: 22px;
+    border-top: 3px solid var(--oro);
+    transition: all var(--transition);
+}
+.res-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(58,108,200,0.25); }
+.res-card.gold-top { border-top-color: var(--oro-light); }
+.res-card h4 { font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--oro-light); margin-bottom: 8px; letter-spacing: 0.04em; }
+.res-card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px; line-height: 1.6; }
+.res-card a { color: var(--oro-light); font-size: 0.85rem; font-weight: 700; text-decoration: none; }
+.res-card a:hover { color: var(--oro); text-decoration: underline; }
+.res-tag { 
+    display: inline-block; font-size: 0.65rem; 
+    font-family: 'Cinzel', serif; letter-spacing: 0.08em; 
+    padding: 3px 10px; border-radius: 4px; margin-bottom: 10px; 
+}
+.res-tag.oficial { background: rgba(58,108,200,0.25); color: var(--azul-light); }
+.res-tag.pdf { background: rgba(201,150,10,0.15); color: var(--oro-light); }
+.res-tag.youtube { background: rgba(201,150,10,0.2); color: var(--oro); }
+.res-tag.libro { background: rgba(168,184,200,0.2); color: var(--plata-light); }
+.res-tag.vaticano { background: rgba(201,150,10,0.15); color: var(--oro); }
+
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: 14px; margin: 20px 0; }
+.stat-box {
+    background: linear-gradient(135deg, var(--azul-cielo), var(--oro));
+    border-radius: 10px; padding: 18px 14px; text-align: center;
+    border: 1px solid rgba(201,150,10,0.3);
+    box-shadow: 0 3px 14px rgba(58,108,200,0.2);
+}
+.stat-box .num { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--oro-light); font-weight: 700; display: block; }
+.stat-box .lab { font-size: 0.7rem; color: var(--white); letter-spacing: 0.05em; font-family: 'Cinzel', serif; margin-top: 4px; }
+
+.separator-wrap {
+    width:100%; margin:3rem auto;
+    display:flex; align-items:center; justify-content:center;
+}
+.separator-cruz {
+    display:flex; align-items:center; justify-content:center;
+    gap:0; width:100%; max-width:500px;
+}
+.separator-linea {
+    flex:1; height:1px;
+    background:linear-gradient(to right, transparent, var(--oro));
+}
+.separator-linea.right { background:linear-gradient(to left, transparent, var(--azul-medio)); }
+.separator-cruz-svg {
+    flex-shrink:0; width:70px; height:70px;
+    animation:cruzBreath 3.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(201,150,10,0.7));
+}
+@keyframes cruzBreath {
+    0%,100% { filter:drop-shadow(0 0 15px rgba(201,150,10,0.7)); transform:scale(1); }
+    50% { filter:drop-shadow(0 0 30px rgba(58,108,200,1)) drop-shadow(0 0 50px rgba(201,150,10,0.5)); transform:scale(1.08); }
+}
+
+.notice { 
+    background: rgba(201,150,10,0.07); 
+    border: 1px solid rgba(201,150,10,0.3); 
+    border-radius: 8px; padding: 13px 20px; 
+    font-size: 0.9rem; color: var(--text-main); margin: 16px 0; 
+}
+
+.medal-image-container {
+    text-align: center;
+    margin: 24px 0;
+}
+.medal-image {
+    max-width: 280px;
+    width: 100%;
+    border-radius: 50%;
+    border: 4px solid var(--oro);
+    box-shadow: 0 0 30px rgba(201,150,10,0.5), 0 0 60px rgba(58,108,200,0.3);
+    animation: medalGlow 3s ease-in-out infinite;
+}
+@keyframes medalGlow {
+    0%, 100% { box-shadow: 0 0 30px rgba(201,150,10,0.5), 0 0 60px rgba(58,108,200,0.3); }
+    50% { box-shadow: 0 0 50px rgba(201,150,10,0.8), 0 0 80px rgba(58,108,200,0.5); }
+}
+
+.symbol-block {
+    background: linear-gradient(135deg, rgba(168,184,200,0.1), rgba(13,34,96,0.3));
+    border: 1px solid rgba(168,184,200,0.3); border-radius: 10px;
+    padding: 24px 28px; margin-bottom: 18px;
+}
+.symbol-block h4 { font-family: 'Cinzel', serif; color: var(--plata-light); font-size: 0.9rem; letter-spacing: 0.06em; margin-bottom: 10px; }
+.symbol-block ul { padding-left: 18px; }
+.symbol-block ul li { font-size: 0.95rem; margin-bottom: 8px; line-height: 1.6; color: var(--text-main); }
+
+.footer-menu {
+    background: linear-gradient(145deg, rgba(13,34,96,0.4), rgba(0,18,51,0.9));
+    border: 1px solid var(--border-gold);
+    border-radius: 20px; padding: 35px; margin: 40px auto;
+    backdrop-filter: blur(10px);
+}
+.footer-menu-title {
+    font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--oro-light);
+    text-align: center; margin-bottom: 25px; letter-spacing: 3px; text-transform: uppercase;
+}
+.footer-menu-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.footer-menu-links a {
+    color: var(--text-muted); text-decoration: none; font-size: 0.85rem;
+    padding: 10px 18px; border: 1px solid rgba(201,150,10,0.25); border-radius: 25px;
+    transition: all var(--transition); font-family: 'EB Garamond', serif;
+}
+.footer-menu-links a:hover {
+    background: rgba(201,150,10,0.15); border-color: var(--oro);
+    color: var(--oro-light); transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(201,150,10,0.2);
+}
+
+.golden-divine-line {
+    width: 100%; max-width: 1000px; height: 5px;
+    margin: 0 auto 50px; position: relative;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--azul-medio) 20%, 
+        var(--oro) 50%, 
+        var(--azul-medio) 80%, 
+        transparent 100%
+    );
+    border-radius: 3px;
+    box-shadow: 0 0 20px rgba(201,150,10,0.4);
+}
+
+.main-footer {
+    background: linear-gradient(145deg, rgba(13,34,96,0.9), var(--azul-abismo));
+    text-align: center; padding: 48px 24px 36px;
+    border-top: 1px solid var(--border-gold);
+}
+.cross-glow { font-size: 2rem; color: var(--oro); margin-bottom: 16px; animation: cruzBreath 3s ease-in-out infinite; }
+.main-footer .tagline { font-family: 'Cinzel', serif; color: var(--oro-light); font-size: 1.1rem; margin-bottom: 12px; }
+.main-footer p { color: var(--text-muted); font-size: 0.9rem; line-height: 2.2; }
+
+.scroll-btn {
+    position:fixed; width:46px; height:46px; border-radius:50%;
+    background:var(--azul-cielo); border:2px solid var(--oro);
+    color:var(--oro-light); cursor:pointer; z-index:900;
+    display:flex; align-items:center; justify-content:center;
+    transition:all var(--transition); opacity:0.7;
+}
+.scroll-btn:hover { opacity:1; background:var(--oro); color:var(--azul-abismo); }
+.scroll-btn svg { width:20px; height:20px; }
+.scroll-up { bottom:30px; right:30px; }
+.scroll-down { bottom:30px; right:85px; }
+
+#cursor {
+    position: fixed; width: 28px; height: 28px;
+    border: 2px solid var(--oro); border-radius: 50%;
+    pointer-events: none; z-index: 9999; transition: transform 0.15s;
+    transform: translate(-50%, -50%); mix-blend-mode: difference;
+}
+#cursor.hover { transform: translate(-50%, -50%) scale(1.5); border-color: var(--oro-light); }
+
+@media(max-width:640px){
+    .main-content { padding: 140px 16px 60px; }
+    .hero { padding: 40px 16px 30px; }
+    .hero h1 { font-size: 1.4rem; }
+    .card { padding: 18px 20px; }
+    .prayer-block { padding: 28px 20px; }
+    .info-grid { grid-template-columns: 1fr 1fr; }
+    .scroll-up { bottom:20px; right:20px; }
+    .scroll-down { bottom:20px; right:70px; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+
+<div class="sacred-rays">
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div>
+</div>
+
+<div class="particles">
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div>
+</div>
+
+<canvas id="divine-canvas"></canvas>
+<div class="progress-bar" id="progressBar"></div>
+<div id="cursor"></div>
+
+<header id="mainHeader">
+    <a href="index.html" class="logo">
+        <img src="img/logo_divina_misericordia.jpg" alt="Logo" loading="lazy">
+        Divina<span>Misericordia</span>
+    </a>
+    <nav id="mainNav">
+        <a href="index.html">Inicio</a>
+        <a href="quienes-somos.html">Quiénes Somos</a>
+        <a href="introduccion.html">Introducción</a>
+        <a href="santa-faustina.html">Santa Faustina</a>
+        <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
+        <a href="coronilla.html">Coronilla</a>
+        <a href="novena.html">Novena</a>
+        <a href="via-crucis.html">Vía Crucis</a>
+        <a href="oraciones.html">Oraciones</a>
+        <a href="santo-rosario.html">El Santo Rosario</a>
+        <a href="maria.html">María</a>
+        <a href="obras-de-misericordia.html">Obras de Misericordia</a>
+        <a href="consagracion.html">Consagración</a>
+        <a href="lugares-de-culto.html">Lugares de Culto</a>
+        <a href="musica-sacra.html">Música Sacra</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="enlaces.html">Enlaces</a>
+        <a href="la-santina.html" class="santina-btn">La Santina</a>
+        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+        <a href="virgen-lujan.html">Virgen de Luján</a>
+        <a href="maria-auxiliadora.html">María Auxiliadora</a>
+        <a href="medalla-milagrosa.html" class="medalla-btn">Medalla Milagrosa</a>
+        <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+
+<main class="main-content">
+
+    <!-- HERO -->
+    <div class="hero reveal">
+        <div class="hero-content">
+            <div class="hero-icon">+</div>
+            <h1>La Virgen de la <span>Medalla Milagrosa</span></h1>
+            <p class="tagline">Rue du Bac, París · 1830 · Apariciones a Santa Catalina Labouré</p>
+            <div class="hero-stats">
+                <div class="hero-stat"><span class="num">18 Jul 1830</span><span class="lab">1ª Aparición</span></div>
+                <div class="hero-stat"><span class="num">27 Nov 1830</span><span class="lab">La Medalla</span></div>
+                <div class="hero-stat"><span class="num">1832</span><span class="lab">Primera acuñación</span></div>
+                <div class="hero-stat"><span class="num">1947</span><span class="lab">Canonización</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- IMAGEN DE LA MEDALLA -->
+    <section class="section reveal">
+        <div class="medal-image-container">
+            <img src="img/medalla_milagrosa.jpeg" alt="Medalla Milagrosa" class="medal-image">
+            <p style="text-align:center; font-style:italic; color:var(--text-muted); margin-top:16px; font-size:0.9rem;">
+                Imagen de la Virgen de la Medalla Milagrosa
+            </p>
+        </div>
+    </section>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="42" y="10" width="16" height="80" rx="2" fill="url(#crossGrad)"/>
+                <rect x="15" y="25" width="70" height="16" rx="2" fill="url(#crossGrad)"/>
+                <defs>
+                    <linearGradient id="crossGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#C9960A"/>
+                        <stop offset="100%" stop-color="#F0C840"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- MENSAJE CENTRAL -->
+    <section class="section reveal">
+        <div class="card highlight" style="text-align:center; padding:32px;">
+            <h3>+ EL MENSAJE CENTRAL DE LAS APARICIONES +</h3>
+            <p style="font-size:1.1rem; font-style:italic; line-height:2; margin-top:16px;">
+                «Ven al pie de este altar. Aquí las gracias se derramarán sobre todas las personas que las pidan con confianza y fervor.<br>
+                Todos aquellos que porten esta medalla recibirán grandes gracias.»
+            </p>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:14px;">
+                La Virgen María, a Santa Catalina Labouré · Rue du Bac 140, París · 1830
+            </p>
+        </div>
+    </section>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="42" y="10" width="16" height="80" rx="2" fill="url(#crossGrad)"/>
+                <rect x="15" y="25" width="70" height="16" rx="2" fill="url(#crossGrad)"/>
+                <defs>
+                    <linearGradient id="crossGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#C9960A"/>
+                        <stop offset="100%" stop-color="#F0C840"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- CONTEXTO HISTORICO -->
+    <section class="section" id="historia">
+        <div class="section-header reveal">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Contexto Histórico · Francia 1830</h2>
+                <p class="section-subtitle">El año de las Tres Glorias</p>
+            </div>
+        </div>
+
+        <div class="card gold-border reveal">
+            <h3>+ POR QUÉ 1830 ES UN AÑO CLAVE</h3>
+            <p><strong>1830 es el año de las "Tres Glorias":</strong> la revolución de julio que derroca a Carlos X y lleva al poder a los liberales, el fin de la restauración monárquica borbónica y el comienzo de una nueva oleada de anticlericalismo. Es el año en que comienzan las "apariciones modernas" de la Virgen, lo que los teólogos interpretan como la respuesta del cielo a los tiempos convulsos: <strong>La Salette (1846), Lourdes (1858) y Fátima (1917)</strong> son los eslabones siguientes de la misma cadena.</p>
+        </div>
+
+        <div class="info-grid reveal">
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Revolución de Julio 1830</strong>
+                <p>La monarquía borbónica legítima cae definitivamente. Los ideales anticristianos de la Revolución Francesa se reactivan.</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Desprecio al Clero</strong>
+                <p>El contexto pide una señal del cielo. La fe católica está asediada. Los sacerdotes son insultados en las calles.</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Profecía de Catalina</strong>
+                <p>La Virgen anuncia los males que vendrían: la caída del rey, la persecución de la Iglesia. Pero señala el camino.</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Primer Dogma Mariano</strong>
+                <p>La inscripción de la medalla —"Oh María sin pecado concebida"— anticipa el dogma de la Inmaculada Concepción (1854).</p>
+            </div>
+        </div>
+
+        <blockquote class="reveal">
+            «1830 es un año clave: tiene lugar en París la primera aparición moderna de la Virgen Santísima. Comienza lo que se llamó la 'era de María'.»
+            <cite>— Fuentes: Catholic.net, Wikipedia ES</cite>
+        </blockquote>
+    </section>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="42" y="10" width="16" height="80" rx="2" fill="url(#crossGrad)"/>
+                <rect x="15" y="25" width="70" height="16" rx="2" fill="url(#crossGrad)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- SANTA CATALINA -->
+    <section class="section" id="catalina">
+        <div class="section-header reveal">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Santa Catalina Labouré · La Confidenta del Secreto</h2>
+                <p class="section-subtitle">1806 - 1876</p>
+            </div>
+        </div>
+
+        <div class="card gold-border reveal">
+            <h3>+ PERFIL DE LA SANTA</h3>
+            <p><strong>Catalina Labouré</strong> nació el <strong>2 de mayo de 1806</strong> en Fain-lès-Moutiers, Borgoña (Francia). Era la novena de once hijos. Su madre murió cuando Catalina tenía 9 años. En ese momento, <strong>la niña tomó una imagen de la Virgen y le dijo: "Ahora tú serás mi madre"</strong>. Ese gesto infantil fue el núcleo de toda su espiritualidad mariana.</p>
+            <p style="margin-top:12px;">El <strong>21 de abril de 1830</strong> ingresó al noviciado de las Hijas de la Caridad, en la Casa Madre de la Rue du Bac 140, París. Apenas llevaba tres meses cuando comenzaron las apariciones.</p>
+        </div>
+
+        <div class="card highlight reveal">
+            <h3>+ EL SECRETO DE 45 AÑOS · EL MAYOR EJEMPLO DE HUMILDAD</h3>
+            <p>Desde las apariciones de 1830 hasta su muerte en 1876, <strong>nadie excepto su confesor supo que ella era la vidente</strong>. Durante 45 años vivió lavando ropa, cuidando ancianos y trabajando en la cocina. Jamás buscó reconocimiento.</p>
+            <p style="margin-top:12px;"><strong>El 31 de diciembre de 1876, Catalina falleció.</strong> Fue canonizada el <strong>27 de julio de 1947 por el Papa Pío XII</strong>. Cuando su cuerpo fue exhumado en 1933, 57 años después de su muerte, <strong>estaba incorrupto</strong>: sus ojos permanecían azules y bellos, y sus brazos eran tan flexibles como si durmiera. Hoy su cuerpo incorrupto reposa en vidrio bajo el altar lateral de la Capilla de la Rue du Bac.</p>
+        </div>
+    </section>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="42" y="10" width="16" height="80" rx="2" fill="url(#crossGrad)"/>
+                <rect x="15" y="25" width="70" height="16" rx="2" fill="url(#crossGrad)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- LAS TRES APARICIONES -->
+    <section class="section" id="apariciones">
+        <div class="section-header reveal">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Las Tres Apariciones · Julio - Diciembre 1830</h2>
+                <p class="section-subtitle">Fuentes: Capilla Rue du Bac, Asociación Internacional</p>
+            </div>
+        </div>
+
+        <div class="timeline reveal">
+            <div class="t-item">
+                <div class="t-year">18-19 Julio 1830 · Noche · La Primera Aparición</div>
+                <div class="t-text"><strong>A las 11:30 h de la noche</strong>, un niño de unos cuatro años vestido de blanco resplandeciente despertó a Catalina: <em>"Hermana, ven a la capilla. La Santísima Virgen te espera"</em>. Todo el pasillo estaba iluminado. Al llegar a la capilla, <strong>Catalina oyó el roce de un vestido de seda</strong>. Una Señora de extremada belleza avanzó y se sentó en el sillón del sacerdote, junto al altar mayor.</div>
+            </div>
+            <div class="t-item">
+                <div class="t-year">27 Noviembre 1830 · 17:30h · La Aparición de la Medalla</div>
+                <div class="t-text">Era el primer domingo de Adviento. <strong>De nuevo el roce del vestido de seda.</strong> La Virgen apareció vestida de blanco sobre un globo terráqueo, aplastando con sus pies una serpiente verde con pintas amarillas. Entre sus manos, a la altura del pecho, sostenía una pequeña esfera dorada. Entonces la Virgen <strong>bajó sus ojos</strong> y miró a Catalina. Sus manos se llenaron de anillos con piedras preciosas que proyectaban rayos de luz hacia la tierra.</div>
+            </div>
+            <div class="t-item">
+                <div class="t-year">Diciembre 1830 - Enero 1831 · La Última Aparición</div>
+                <div class="t-text">La Virgen apareció nuevamente detrás del altar. Los rayos de luz llenaban toda la parte baja. Luego llegó la despedida: <em>"Ya no me verás más… pero oirás mi voz durante tus oraciones."</em> <strong>Y nunca más se le apareció.</strong> La primera medalla fue acuñada en junio de 1832.</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="42" y="10" width="16" height="80" rx="2" fill="url(#crossGrad)"/>
+                <rect x="15" y="25" width="70" height="16" rx="2" fill="url(#crossGrad)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- LA MEDALLA -->
+    <section class="section" id="medalla">
+        <div class="section-header reveal">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">La Medalla Milagrosa · Datos Históricos</h2>
+                <p class="section-subtitle">Fuente: Wikipedia ES, Asociación Internacional Medal Milagrosa</p>
+            </div>
+        </div>
+
+        <div class="info-grid reveal">
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Nombre Original</strong>
+                <p>"Medalla de la Inmaculada Concepción". El apodo "Milagrosa" surgió del pueblo al ver los milagros.</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Primera Acuñación</strong>
+                <p>Junio de 1832. Orfebre: Adrien Vachette, París. Primeros 1.500 ejemplares.</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Aprobación Canónica</strong>
+                <p>1836: investigación canónica del Arzobispado de París declaró las apariciones auténticas.</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Devoción Universal</strong>
+                <p>Millones de medalas distribuidas en todo el mundo.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="42" y="10" width="16" height="80" rx="2" fill="url(#crossGrad)"/>
+                <rect x="15" y="25" width="70" height="16" rx="2" fill="url(#crossGrad)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- SIMBOLOGIA -->
+    <section class="section" id="simbolos">
+        <div class="section-header reveal">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Simbología de la Medalla</h2>
+                <p class="section-subtitle">Cada símbolo explicado</p>
+            </div>
+        </div>
+
+        <div class="card reveal">
+            <h3>+ ANVERSO (CARA PRINCIPAL)</h3>
+            <ul style="margin-left:20px; margin-top:10px; line-height:2;">
+                <li><strong>María de pie sobre el globo:</strong> Reina del Cielo y de la Tierra. Su posición elevada sobre el mundo expresa su misión universal.</li>
+                <li><strong>La serpiente aplastada:</strong> María, la Inmaculada, aplasta con sus pies la cabeza de la serpiente. Simboliza su poder para triunfar sobre Satanás.</li>
+                <li><strong>Los rayos de luz:</strong> De los anillos de las manos de la Virgen brotan rayos. Simbolizan las gracias que María distribuye.</li>
+                <li><strong>Doce estrellas:</strong> Identifican a María con la "Mujer del Apocalipsis" (Ap 12:1).</li>
+                <li><strong>Inscripción: "Oh María sin pecado concebida, ruega por nosotros que recurrimos a ti"</strong></li>
+            </ul>
+        </div>
+
+        <div class="card reveal">
+            <h3>+ REVERSO (CARA POSTERIOR)</h3>
+            <ul style="margin-left:20px; margin-top:10px; line-height:2;">
+                <li><strong>La letra "M":</strong> Inicial de María. Símbolo de su Maternidad y papel como Mediatriz.</li>
+                <li><strong>La cruz sobre la "M":</strong> Simboliza a la Madre del Crucificado. María unida al misterio de la Redención.</li>
+                <li><strong>Sagrado Corazón de Jesús:</strong> Coronado de espinas, representa el amor infinito de Cristo.</li>
+                <li><strong>Corazón Inmaculado de María:</strong> Atravesado por una espada, simboliza su sufrimiento al pie de la Cruz.</li>
+            </ul>
+        </div>
+
+        <blockquote class="reveal">
+            «La M y los dos corazones son bastante elocuentes.»
+            <cite>— La Virgen María a Santa Catalina Labouré</cite>
+        </blockquote>
+    </section>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="42" y="10" width="16" height="80" rx="2" fill="url(#crossGrad)"/>
+                <rect x="15" y="25" width="70" height="16" rx="2" fill="url(#crossGrad)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- MILAGROS -->
+    <section class="section" id="milagros">
+        <div class="section-header reveal">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Milagros y Testimonios Históricos</h2>
+                <p class="section-subtitle">Fuentes: Wikipedia ES, Infobae, Hozana</p>
+            </div>
+        </div>
+
+        <div class="info-grid reveal">
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Alfonso Ratisbonne (1842)</strong>
+                <p>Banquero judío anticatólico. Llevó la medalla por apuesta. En Roma, la Virgen se le apareció. Se convirtió fulminantemente.</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Cuerpo Incorrupto (1933)</strong>
+                <p>El cuerpo de Catalina exhumado 57 años después de su muerte apareció perfectamente conservado.</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>El Dogma de 1854</strong>
+                <p>El Papa Pío IX afirmó haber tenido en cuenta las apariciones de la Rue du Bac al proclamar el Dogma.</p>
+            </div>
+            <div class="info-box">
+                <div class="icon-big">+</div>
+                <strong>Juan Pablo II (1980)</strong>
+                <p>El Papa visitó la Capilla y besó el cuerpo incorrupto de Catalina Labouré.</p>
+            </div>
+        </div>
+
+        <div class="card highlight reveal">
+            <h3>+ CASO HISTÓRICO: RATISBONNE · 1842</h3>
+            <p><strong>Alfonso Ratisbonne</strong> era un joven banquero judío de Estrasburgo, <em>hostil al catolicismo</em>. En Roma, su amigo le desafió a llevar la medalla durante unos días. Al día siguiente, entró a la iglesia de Sant'Andrea delle Fratte: <em>"Toda la iglesia quedó oscura excepto una capilla que brillaba con el mayor esplendor, y vi a la Santísima Virgen de pie, viva..."</em> Ratisbonne cayó de rodillas. Se hizo sacerdote jesuita.</p>
+        </div>
+    </section>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="42" y="10" width="16" height="80" rx="2" fill="url(#crossGrad)"/>
+                <rect x="15" y="25" width="70" height="16" rx="2" fill="url(#crossGrad)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- PROMESAS -->
+    <section class="section" id="promesas">
+        <div class="section-header reveal">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Las Promesas de la Virgen</h2>
+                <p class="section-subtitle">Palabras directas de la Virgen a Catalina</p>
+            </div>
+        </div>
+
+        <div class="card gold-border reveal">
+            <h3>+ LAS PALABRAS DE LA VIRGEN A CATALINA</h3>
+            <ul style="margin-left:20px; margin-top:12px; line-height:2.2; font-size:1rem;">
+                <li><em>«Ven al pie de este altar. Aquí las gracias se derramarán sobre todos los que las pidan con confianza y fervor.»</em></li>
+                <li><em>«Todos cuanto la lleven puesta recibirán grandes gracias. Las gracias serán más abundantes para los que la lleven con confianza.»</em></li>
+                <li><em>«Es la imagen de las gracias que reparto sobre las personas que me las piden.»</em></li>
+            </ul>
+        </div>
+
+        <div class="notice reveal">
+            La Asociación de la Medalla Milagrosa aclara: No es un amuleto de buena suerte. Sus milagros más grandes son de paciencia, de perdón, de arrepentimiento y de fe.
+        </div>
+    </section>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="42" y="10" width="16" height="80" rx="2" fill="url(#crossGrad)"/>
+                <rect x="15" y="25" width="70" height="16" rx="2" fill="url(#crossGrad)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- ORACIONES -->
+    <section class="section" id="oraciones">
+        <div class="section-header reveal">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Oraciones a la Virgen de la Medalla Milagrosa</h2>
+                <p class="section-subtitle">Fuentes: amminter.org, ammespanol.org, Catholic.net</p>
+            </div>
+        </div>
+
+        <div class="prayer-block reveal">
+            <h3>+ JACULATORIA +</h3>
+            <p class="jac">«Oh María sin pecado concebida,<br>ruega por nosotros que recurrimos a ti»</p>
+            <p class="note">Dictada directamente por la Virgen María a Catalina · 27 noviembre 1830</p>
+        </div>
+
+        <div class="prayer-block reveal">
+            <h3>+ ORACIÓN OFICIAL DE LA MEDALLA MILAGROSA +</h3>
+            <p>Oh Virgen María, que sin pecado fuiste concebida, intercede por nosotros que a ti recurrimos. Y también por los que no recurren a ti, especialmente por los enemigos de la Iglesia y por los que están encomendados a tu cuidado especial.</p>
+            <br>
+            <p>Oh María, tú que conoces la debilidad y la miseria de los hombres, sé nuestra Madre, nuestra esperanza y nuestra fuerza. Ruega al Señor Dios que nos conceda la fe viva, la esperanza firme y la caridad ardiente, para que amemos a Dios con todo nuestro corazón y al prójimo como a nosotros mismos por amor a Dios. Amén.</p>
+        </div>
+
+        <div class="prayer-block reveal">
+            <h3>+ CONSAGRACIÓN A NUESTRA SEÑORA +</h3>
+            <p>Oh Inmaculada Virgen María, Madre de Nuestro Señor Jesucristo y Madre nuestra, penetrado de la más viva fe en tus poderes maternales sobre todos los corazones, y lleno de confianza en tu bondad, me arrodillo ante ti para consagrarte mi persona y todo lo que me pertenece.</p>
+            <br>
+            <p>Te suplico, Señora, que de ahora en adelante me concedas tú misma todo lo que necesito, tanto para el alma como para el cuerpo. Consagro al Señor mi corazón entero, a través de ti, pura y santa Virgen María. Amén.</p>
+        </div>
+    </section>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="42" y="10" width="16" height="80" rx="2" fill="url(#crossGrad)"/>
+                <rect x="15" y="25" width="70" height="16" rx="2" fill="url(#crossGrad)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- NOVENA -->
+    <section class="section" id="novena">
+        <div class="section-header reveal">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Novena a la Virgen de la Medalla Milagrosa</h2>
+                <p class="section-subtitle">Fuente: amminter.org, ammespanol.org</p>
+            </div>
+        </div>
+
+        <div class="card highlight reveal">
+            <h3>+ ESTRUCTURA DE LA NOVENA</h3>
+            <p>La novena se reza <strong>durante 9 días consecutivos</strong>, especialmente antes del <strong>27 de noviembre</strong> (festividad principal).</p>
+            <ol style="padding-left:22px; margin-top:14px; line-height:2.4;">
+                <li>Señal de la Cruz</li>
+                <li>Acto de fe en la presencia de Dios</li>
+                <li>Meditación del día sobre las apariciones</li>
+                <li>Oración específica del día</li>
+                <li>Jaculatoria: <em>«Oh María sin pecado concebida, ruega por nosotros»</em> (3 veces)</li>
+                <li>Petición personal</li>
+            </ol>
+        </div>
+
+        <div class="banner reveal">
+            <h3>+ NOVENAS Y MATERIAL OFICIAL</h3>
+            <p>Las asociaciones oficiales tienen novenas completas disponibles gratuitamente.</p>
+            <a href="https://amminter.org/es/novena/" target="_blank">amminter.org - Novena oficial</a>
+            <a href="https://ammespanol.org/es/novena-a-la-virgen-de-la-medalla-milagrosa/" target="_blank">ammespanol.org - Novena en español</a>
+        </div>
+    </section>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="42" y="10" width="16" height="80" rx="2" fill="url(#crossGrad)"/>
+                <rect x="15" y="25" width="70" height="16" rx="2" fill="url(#crossGrad)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- LINKS UTILES -->
+    <section class="section" id="recursos">
+        <div class="section-header reveal">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Recursos y Enlaces Útiles</h2>
+                <p class="section-subtitle">Fuentes verificadas</p>
+            </div>
+        </div>
+
+        <div class="res-grid reveal">
+            <div class="res-card gold-top">
+                <span class="res-tag oficial">OFICIAL</span>
+                <h4>Asociación Internacional Medal Milagrosa</h4>
+                <p>Novena, oraciones, historia completa. Padres Vicentinos.</p>
+                <a href="https://amminter.org/es/" target="_blank">amminter.org</a>
+            </div>
+            <div class="res-card gold-top">
+                <span class="res-tag oficial">OFICIAL</span>
+                <h4>Asociación USA en español</h4>
+                <p>Historia, oraciones, novena y medalla gratuita disponible.</p>
+                <a href="https://ammespanol.org/es/" target="_blank">ammespanol.org</a>
+            </div>
+            <div class="res-card">
+                <span class="res-tag oficial">CAPILLA</span>
+                <h4>Capilla Rue du Bac - París</h4>
+                <p>Web oficial del santuario de las apariciones.</p>
+                <a href="https://www.chapellenotredamedelamedaillemiraculeuse.com/langues/espanol/" target="_blank">chapellenotredamedelamedaillmiraculeuse.com</a>
+            </div>
+            <div class="res-card">
+                <span class="res-tag pdf">WIKIPEDIA</span>
+                <h4>Medalla Milagrosa - Wikipedia</h4>
+                <p>Artículo exhaustivo sobre el diseño, historia y simbolismo.</p>
+                <a href="https://es.wikipedia.org/wiki/Medalla_Milagrosa" target="_blank">es.wikipedia.org</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer Menu -->
+<div class="footer-menu">
+    <h3 class="footer-menu-title">Recursos Espirituales</h3>
+    <div class="footer-menu-links">
+        <a href="coronilla.html">Coronilla</a>
+        <a href="novena.html">Novena</a>
+        <a href="oraciones.html">Oraciones</a>
+        <a href="via-crucis.html">Vía Crucis</a>
+        <a href="santo-rosario.html">Santo Rosario</a>
+        <a href="la-santina.html">La Santina</a>
+        <a href="virgen-caacupe.html">Virgen Caacupé</a>
+        <a href="maria-auxiliadora.html">María Auxiliadora</a>
+        <a href="contacto.html">Contacto</a>
+    </div>
+</div>
+
+<footer class="main-footer">
+    <div class="cross-glow">+</div>
+    <p class="tagline">La Virgen de la Medal Milagrosa · Rue du Bac, París · 1830</p>
+    <p>Santa María, Madre de Dios, ruega por nosotros pecadores.</p>
+</footer>
+
+<div class="golden-divine-line"></div>
+
+<button class="scroll-btn scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Subir">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+<button class="scroll-btn scroll-down" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})" aria-label="Bajar">
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+
+<script>
+// Cursor divino
+const cursor = document.getElementById('cursor');
+let mouseX = 0, mouseY = 0;
+let cursorX = 0, cursorY = 0;
+
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
+
+function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.15;
+    cursorY += (mouseY - cursorY) * 0.15;
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+document.querySelectorAll('a, button, .btn').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+
+// Progress bar
+const progressBar = document.getElementById('progressBar');
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrollPercent + '%';
+});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// Header scroll effect
+const header = document.getElementById('mainHeader');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const nav = document.getElementById('mainNav');
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    nav.classList.toggle('active');
+});
+
+// Particles background
+(function(){
+    const canvas = document.getElementById('divine-canvas');
+    const ctx = canvas.getContext('2d');
+    let w, h, particles = [];
+    
+    function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+    }
+    
+    class Particle {
+        constructor() { this.reset(); }
+        reset() {
+            this.x = Math.random() * w;
+            this.y = Math.random() * h;
+            this.size = Math.random() * 2 + 0.8;
+            this.speedX = (Math.random() - 0.5) * 0.3;
+            this.speedY = (Math.random() - 0.5) * 0.3 - 0.08;
+            this.opacity = Math.random() * 0.5 + 0.2;
+            this.color = Math.random() > 0.5 ? '201,150,10' : (Math.random() > 0.5 ? '58,108,200' : '168,184,200');
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x < 0 || this.x > w || this.y < 0 || this.y > h) this.reset();
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${this.color},${this.opacity})`;
+            ctx.fill();
+        }
+    }
+    
+    resize();
+    for (let i = 0; i < 80; i++) particles.push(new Particle());
+    
+    function animate() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animate);
+    }
+    
+    window.addEventListener('resize', resize);
+    animate();
+})();
+</script>
+
+</body>
+</html>
