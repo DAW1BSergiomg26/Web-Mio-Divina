@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estudios Bíblicos y Religión - El Portal de la Divina Misericordia</title>
+<meta name="description" content="Recursos educativos sobre Biblia, fenomenología de la religión, religiones del mundo, antropología cristiana y más.">
+<meta name="keywords" content="Biblia, estudios bíblicos, religión, fenomenología, religiones monoteístas, antropología cristiana, historia de la salvación, nuevo testamento, antiguo testamento">
+<meta name="author" content="El Portal de la Divina Misericordia">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#050d1a">
+<link rel="canonical" href="https://misericordiadejesus.es/estudios-biblicos.html">
+<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Estudios Bíblicos y Religión",
+  "description": "Recursos educativos sobre Biblia, fenomenología de la religión y religiones del mundo",
+  "url": "https://misericordiadejesus.es/estudios-biblicos.html",
+  "publisher": {"@type": "Organization", "name": "El Portal de la Divina Misericordia"}
+}
+</script>
+
+<link rel="stylesheet" href="css/styles.css">
+<style>
+/* Estilos específicos para Estudios Bíblicos */
+.hero-biblia {
+  background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #0d1f3c 100%);
+  padding: 4rem 1rem;
+  text-align: center;
+  border-bottom: 3px solid rgba(247, 231, 180, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+.hero-biblia::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at center, rgba(247, 231, 180, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-biblia::after {
+  content: '✝';
+  position: absolute;
+  font-size: 15rem;
+  opacity: 0.03;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.hero-biblia h1 {
+  color: #f7e7b4;
+  font-size: 2.5rem;
+  margin: 0;
+  text-shadow: 0 0 30px rgba(247, 231, 180, 0.5);
+  position: relative;
+  z-index: 1;
+}
+.hero-biblia p {
+  color: #a0a8c8;
+  margin: 1rem 0 0;
+  font-size: 1.2rem;
+  position: relative;
+  z-index: 1;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 2rem 1rem; }
+.section { margin-bottom: 3rem; }
+.section h2 {
+  color: #f7e7b4;
+  border-bottom: 2px solid rgba(247, 231, 180, 0.3);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+}
+.section h3 {
+  color: #4cc3ff;
+  margin-top: 1.5rem;
+  font-size: 1.2rem;
+}
+.content-box {
+  background: linear-gradient(135deg, rgba(10, 22, 40, 0.95), rgba(20, 35, 60, 0.85));
+  border: 1px solid rgba(247, 231, 180, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+.content-box h3 { margin-top: 0; }
+.tema-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.tema-card {
+  background: linear-gradient(135deg, rgba(76, 195, 255, 0.1), rgba(255, 107, 122, 0.1));
+  border: 1px solid rgba(76, 195, 255, 0.3);
+  border-radius: 12px;
+  padding: 1.25rem;
+  transition: all 0.3s ease;
+}
+.tema-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(76, 195, 255, 0.2);
+  border-color: rgba(76, 195, 255, 0.6);
+}
+.tema-card h4 {
+  color: #f7e7b4;
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+.tema-card p {
+  color: #a0a8c8;
+  margin: 0;
+  font-size: 0.9rem;
+}
+.cuadro-comparativo {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+.cuadro-comparativo th, .cuadro-comparativo td {
+  border: 1px solid rgba(247, 231, 180, 0.3);
+  padding: 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+.cuadro-comparativo th {
+  background: rgba(247, 231, 180, 0.15);
+  color: #f7e7b4;
+  font-weight: 600;
+}
+.cuadro-comparativo tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.03);
+}
+.cita-biblica {
+  background: linear-gradient(135deg, rgba(30, 50, 80, 0.9), rgba(40, 60, 100, 0.7));
+  border-left: 4px solid #f7e7b4;
+  padding: 1.25rem 1.5rem;
+  margin: 1rem 0;
+  border-radius: 0 12px 12px 0;
+}
+.cita-biblica .referencia {
+  color: #4cc3ff;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.cita-biblica .texto {
+  color: #d4d7f5;
+  font-style: italic;
+  margin-top: 0.5rem;
+  line-height: 1.6;
+}
+.btn-volver {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #4cc3ff, #ff6b7a);
+  color: #050814;
+  text-decoration: none;
+  border-radius: 999px;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+.btn-volver:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(76, 195, 255, 0.5);
+}
+.nav-breadcrumb {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+.nav-breadcrumb a {
+  color: #4cc3ff;
+  text-decoration: none;
+}
+.nav-breadcrumb a:hover {
+  text-decoration: underline;
+}
+.nav-breadcrumb span {
+  color: #a0a8c8;
+  margin: 0 0.5rem;
+}
+.indice-secciones {
+  background: rgba(247, 231, 180, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+.indice-secciones h3 {
+  color: #f7e7b4;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+.indice-secciones ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 0.5rem;
+}
+.indice-secciones li a {
+  color: #4cc3ff;
+  text-decoration: none;
+  padding: 0.5rem;
+  display: block;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+.indice-secciones li a:hover {
+  background: rgba(76, 195, 255, 0.1);
+  color: #7dd3ff;
+}
+@media (max-width: 768px) {
+  .hero-biblia h1 { font-size: 1.8rem; }
+  .content-box { padding: 1.25rem; }
+  .tema-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+<header id="mainHeader">
+  <div class="header-oscura">
+    <div class="header-contenido">
+      <div class="logo-circulo">
+        <img src="img/logo-divina.png" alt="Logo Divina Misericordia" width="76" height="76">
+      </div>
+      <div class="header-texto">
+        <h1 class="titulo-principal">El Portal de la Divina Misericordia</h1>
+        <h2 class="subtitulo-corazon">Jesús, En Vos Confío</h2>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="index.html">Inicio</a>
+    <a href="introduccion.html">Introducción</a>
+    <a href="coronilla.html">Coronilla</a>
+    <a href="novena.html">Novena</a>
+    <a href="hora-de-la-misericordia.html">Hora 3pm</a>
+    <a href="santo-rosario.html">Rosario</a>
+    <a href="devociones-marianas.html">Marianas</a>
+    <a href="estudios-biblicos.html" class="activo">Estudios</a>
+    <a href="oraciones.html">Oraciones</a>
+    <a href="quienes-somos.html">Quiénes</a>
+    <a href="contacto.html">Contacto</a>
+  </div>
+</nav>
+
+<main id="main-content">
+  <section class="hero-biblia">
+    <h1>Estudios Bíblicos y Religión</h1>
+    <p>Recursos educativos sobre la Biblia, fenomenología de la religión y ciencias religiosas</p>
+  </section>
+
+  <div class="container">
+    <div class="nav-breadcrumb">
+      <a href="index.html">Inicio</a> <span>›</span> Estudios Bíblicos y Religión
+    </div>
+    
+    <a href="index.html" class="btn-volver">← Volver al Inicio</a>
+
+    <!-- Índice de secciones -->
+    <div class="indice-secciones">
+      <h3>Índice de Contenidos</h3>
+      <ul>
+        <li><a href="#citacion-biblica">Cómo citar un texto bíblico</a></li>
+        <li><a href="#temas-curso">Temas del Curso de Religión</a></li>
+        <li><a href="#historia-salvacion-at">Historia de la Salvación: AT</a></li>
+        <li><a href="#historia-salvacion-nt">Historia de la Salvación: NT</a></li>
+        <li><a href="#linea-tiempo">Línea del Tiempo</a></li>
+        <li><a href="#introduccion-at">Introducción al AT</a></li>
+        <li><a href="#introduccion-nt">Introducción al NT y Evangelios</a></li>
+        <li><a href="#libros-biblia">Libros de la Biblia</a></li>
+        <li><a href="#generos-literarios">Géneros Literarios de la Biblia</a></li>
+        <li><a href="#lexico-biblico">Léxico Bíblico</a></li>
+        <li><a href="#contexto-sociocultural">Contexto Sociocultural</a></li>
+        <li><a href="#religiones-monoteistas">Religiones Monoteístas</a></li>
+        <li><a href="#religiones-mundo">Principales Religiones del Mundo</a></li>
+        <li><a href="#preguntas-sentido">Preguntas por el Sentido</a></li>
+        <li><a href="#hecho-religioso">El Hecho Religioso</a></li>
+        <li><a href="#actitud-religiosa">La Actitud Religiosa</a></li>
+        <li><a href="#mediacion-simbolica">La Mediación Simbólica</a></li>
+        <li><a href="#antropologia-cristiana">Antropología Cristiana</a></li>
+        <li><a href="#persona-vocacion">Persona, Vocación y Servicio</a></li>
+        <li><a href="#fe-razon-ciencia">Fe, Razón y Ciencia</a></li>
+        <li><a href="#fenomenologia">Fenomenología de la Religión</a></li>
+        <li><a href="#fe-cultura">La Fe se Hace Cultura</a></li>
+        <li><a href="#ser-cristiano">Ser Cristiano Hoy</a></li>
+        <li><a href="#evangelizacion">Evangelizar Hoy</a></li>
+      </ul>
+    </div>
+
+    <!-- Cómo citar textos bíblicos -->
+    <section class="section" id="citacion-biblica">
+      <h2>Cómo Citar un Texto Bíblico</h2>
+      <div class="content-box">
+        <p>La cita de textos bíblicos sigue un sistema estandarizado que incluye el libro, capítulo y versículo:</p>
+        
+        <div class="cita-biblica">
+          <div class="referencia">Jn 3:16</div>
+          <div class="texto">"Porque tanto amó Dios al mundo, que dio a su Hijo unigénito, para que todo el que cree en él no muera, sino que tenga vida eterna."</div>
+        </div>
+        
+        <h3>Sistema de citas:</h3>
+        <ul>
+          <li><strong>Libro:</strong> Abreviatura del libro bíblico (Gn = Génesis, Ex = Éxodo, Mt = Mateo, Mc = Marcos, Lc = Lucas, Jn = Juan, Rom = Romanos, etc.)</li>
+          <li><strong>Capítulo:</strong> Número del capítulo</li>
+          <li><strong>Versículo:</strong> Número del versículo o versículos (usa guión para rangos, coma para varios)</li>
+        </ul>
+        
+        <h3>Ejemplos:</h3>
+        <ul>
+          <li><strong>Salmo 23:1</strong> - "El Señor es mi pastor"</li>
+          <li><strong>Is 9:2-7</strong> - Profecía sobre el Mesías</li>
+          <li><strong>Rom 8:28</strong> - "Todas las cosas cooperan para el bien"</li>
+          <li><strong>1 Cor 13:4-8</strong> - El himno al amor</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Temas del curso -->
+    <section class="section" id="temas-curso">
+      <h2>Temas del Curso de Religión</h2>
+      <div class="content-box">
+        <div class="tema-grid">
+          <div class="tema-card">
+            <h4>Tema 1</h4>
+            <p>Hecho religioso y fenomenología de la Religión</p>
+          </div>
+          <div class="tema-card">
+            <h4>Tema 2</h4>
+            <p>Grandes religiones y diálogo interreligioso</p>
+          </div>
+          <div class="tema-card">
+            <h4>Tema 3</h4>
+            <p>Introducción a la Biblia</p>
+          </div>
+          <div class="tema-card">
+            <h4>Tema 4</h4>
+            <p>La Biblia y la historia de la salvación</p>
+          </div>
+          <div class="tema-card">
+            <h4>Tema 5</h4>
+            <p>El ser humano y el sentido de su vida</p>
+          </div>
+          <div class="tema-card">
+            <h4>Tema 6</h4>
+            <p>El Cristianismo y el diálogo con la cultura</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Historia de la Salvación AT -->
+    <section class="section" id="historia-salvacion-at">
+      <h2>Historia de la Salvación: Antiguo Testamento</h2>
+      <div class="content-box">
+        <p>La Historia de la Salvación en el Antiguo Testamento es el plan de Dios para la humanidad:</p>
+        <ul>
+          <li><strong>Creación:</strong> Génesis 1-3 - Dios crea el mundo y al ser humano</li>
+          <li><strong>Pecado original:</strong> La ruptura de la alianza con Dios</li>
+          <li><strong>Los Patriarcas:</strong> Abrahán, Isaac, Jacob - Dios elige un pueblo</li>
+          <li><strong>Éxodo:</strong> Liberación de Egipto, alianza en el Sinaí</li>
+          <li><strong>Monarquía:</strong> David y Salomón, construcción del Templo</li>
+          <li><strong>Exilio:</strong> Cautividad en Babilonia</li>
+          <li><strong>Retorno:</strong> Reconstrucción de Jerusalén</li>
+          <li><strong>Esperanza mesiánica:</strong> Los profetas anuncian al Mesías</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Historia de la Salvación NT -->
+    <section class="section" id="historia-salvacion-nt">
+      <h2>Historia de la Salvación: Nuevo Testamento</h2>
+      <div class="content-box">
+        <p>El Nuevo Testamento completa y cumple la promesa del Antiguo:</p>
+        <ul>
+          <li><strong>Anuncio:</strong> Juan Bautista prepara el camino</li>
+          <li><strong>Vida de Jesús:</strong> Encarnación, ministerio, milagros</li>
+          <li><strong>Muerte y Resurrección:</strong> Salvación perfecta</li>
+          <li><strong>Ascensión:</strong> Jesús retorna al Padre</li>
+          <li><strong>Pentecostés:</strong> Nacimiento de la Iglesia</li>
+          <li><strong>Expansión:</strong> Los Apóstoles predican el evangelio</li>
+          <li><strong>Iglesia primitiva:</strong> Comunidad de creyentes</li>
+          <li><strong>Esperanza escatológica:</strong> Segunda Venida</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Línea del tiempo -->
+    <section class="section" id="linea-tiempo">
+      <h2>Línea del Tiempo: Historia de la Salvación</h2>
+      <div class="content-box">
+        <table class="cuadro-comparativo">
+          <thead>
+            <tr>
+              <th>Período</th>
+              <th>Años</th>
+              <th>Eventos principales</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Creación</td><td>s. XIX a.C.</td><td>Dios crea el cielo y la tierra</td></tr>
+            <tr><td>Patriarcas</td><td>s. XIX-XVII a.C.</td><td>Abrahán, Isaac, Jacob</td></tr>
+            <tr><td>Éxodo</td><td>s. XIII a.C.</td><td>Salida de Egipto, Ley</td></tr>
+            <tr><td>Monarquía</td><td>s. X a.C.</td><td>David, Salomón, Templo</td></tr>
+            <tr><td>Exilio</td><td>s. VI a.C.</td><td>Cautividad en Babilonia</td></tr>
+            <tr><td>Retorno</td><td>s. V a.C.</td><td>Reconstrucción</td></tr>
+            <tr><td>Nacimiento de Jesús</td><td>s. I d.C.</td><td>Encarnación del Hijo</td></tr>
+            <tr><td>Muerte y Resurrección</td><td>~33 d.C.</td><td>Salvación eterna</td></tr>
+            <tr><td>Pentecostés</td><td>~33 d.C.</td><td>Nacimiento Iglesia</td></tr>
+            <tr><td>Actualidad</td><td>s. XXI d.C.</td><td>Iglesia universal</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Introducción al AT -->
+    <section class="section" id="introduccion-at">
+      <h2>Introducción al Antiguo Testamento</h2>
+      <div class="content-box">
+        <p>El Antiguo Testamento (AT) es la primera parte de la Biblia cristiana:</p>
+        <ul>
+          <li><strong>Torá (Ley):</strong> Los primeros 5 libros - Génesis a Deuteronomio</li>
+          <li><strong>Libros históricos:</strong> Relatan la historia de Israel</li>
+          <li><strong>Libros sapienciales:</strong> Sabiduría práctica y filosófica</li>
+          <li><strong>Profetas mayores:</strong> Isaías, Jeremías, Ezequiel, Daniel</li>
+          <li><strong>Profetas menores:</strong> Los 12 profetas menores</li>
+        </ul>
+        <p>El AT fue escrito principalmente en hebreo, con algunas partes en arameo.</p>
+      </div>
+    </section>
+
+    <!-- Introducción al NT -->
+    <section class="section" id="introduccion-nt">
+      <h2>Introducción al Nuevo Testamento y los Evangelios</h2>
+      <div class="content-box">
+        <h3>Los Cuatro Evangelios</h3>
+        <ul>
+          <li><strong>Mateo:</strong> Jesús como Mesías rey - público judío</li>
+          <li><strong>Marcos:</strong> Jesús como Hijo de Dios - público romano</li>
+          <li><strong>Lucas:</strong> Jesús como Salvador universal - público griego</li>
+          <li><strong>Juan:</strong> Jesús como Palabra eterna - público espiritual</li>
+        </ul>
+        
+        <h3>Otros libros del NT:</h3>
+        <ul>
+          <li><strong>Hechos de los Apóstoles:</strong> Historia de la Iglesia primitiva</li>
+          <li><strong>Cartas de Pablo:</strong> Romanos a Filemón (13 cartas)</li>
+          <li><strong>Cartas católicas:</strong> Santiago, Pedro, Juan, Judas</li>
+          <li><strong>Apocalipsis:</strong> Profecía final</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Libros de la Biblia -->
+    <section class="section" id="libros-biblia">
+      <h2>Libros que Componen la Biblia o Sagrada Escritura</h2>
+      <div class="content-box">
+        <h3>Antiguo Testamento (46 libros)</h3>
+        <ul>
+          <li><strong>Pentateuco (5):</strong> Gn, Ex, Lv, Nm, Dt</li>
+          <li><strong>Libros históricos (16):</strong> Jos, Jue, Rt, 1-2 Sm, 1-2 Re, 1-2 Cr, Esd, Ne, Tb, Jdt, Est, 1-2 Mac</li>
+          <li><strong>Libros sapienciales (7):</strong> Job, Sal, Pr, Ecl, Ct, Sab, Eclo</li>
+          <li><strong>Profetas (18):</strong> Is, Jr, Ba, Ez, Dn, Os, Jl, Am, Abd, Jn, Mi, Nah, Hab, Sof, Ag, Zc, Mal</li>
+        </ul>
+        
+        <h3>Nuevo Testamento (27 libros)</h3>
+        <ul>
+          <li><strong>Evangelios (4):</strong> Mt, Mc, Lc, Jn</li>
+          <li><strong>Hechos (1):</strong> Hch</li>
+          <li><strong>Cartas de Pablo (13):</strong> Rom, 1-2 Cor, Gal, Ef, Flp, Col, 1-2 Tes, 1-2 Tim, Tit, Flm</li>
+          <li><strong>Cartas católicas (7):</strong> St, 1-2 Pe, 1-3 Jn, Jud</li>
+          <li><strong>Apocalipsis (1):</strong> Ap</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Géneros literarios -->
+    <section class="section" id="generos-literarios">
+      <h2>Géneros Literarios de la Biblia</h2>
+      <div class="content-box">
+        <p>La Biblia no es un libro uniforme; contiene diversos géneros literarios:</p>
+        
+        <h3>Géneros del Antiguo Testamento:</h3>
+        <ul>
+          <li><strong>Narrativo:</strong> Historias de creación, patriarcas, reyes</li>
+          <li><strong>Legal:</strong> Códigos de ley, mandamientos</li>
+          <li><strong>Profético:</strong> Mensajes de los profetas</li>
+          <li><strong>Sapiencial:</strong> Reflexiones sobre la vida (Job, Proverbios)</li>
+          <li><strong>Lírico:</strong> Oración y alabanza (Salmos)</li>
+          <li><strong>Apocalíptico:</strong> Visiones simbólicas del futuro</li>
+        </ul>
+        
+        <h3>Géneros del Nuevo Testamento:</h3>
+        <ul>
+          <li><strong>Evangelio:</strong> Narración de la vida de Jesús</li>
+          <li><strong>Carta:</strong> Cartas a comunidades cristianas</li>
+          <li><strong>Hechos:</strong> Historia de la Iglesia primitiva</li>
+          <li><strong>Apocalipsis:</strong> Literatura apocalíptica cristiana</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Léxico bíblico -->
+    <section class="section" id="lexico-biblico">
+      <h2>Léxico Bíblico Abreviado</h2>
+      <div class="content-box">
+        <table class="cuadro-comparativo">
+          <thead>
+            <tr>
+              <th>Término</th>
+              <th>Significado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Alianza</strong></td><td>Pacto entre Dios y su pueblo</td></tr>
+            <tr><td><strong>Amen</strong></td><td>"Así sea", afirmación de fe</td></tr>
+            <tr><td><strong>Anunciación</strong></td><td>Mensaje del ángel a María</td></tr>
+            <tr><td><strong>Apocalipsis</strong></td><td>Revelación, último libro de la Biblia</td></tr>
+            <tr><td><strong>Biblia</strong></td><td>Escrituras sagradas (AT + NT)</td></tr>
+            <tr><td><strong>Cánon</strong></td><td>Lista de libros inspirados</td></tr>
+            <tr><td><strong>Corán</strong></td><td>Libro sagrado del Islam</td></tr>
+            <tr><td><strong>Creación</strong></td><td>Obra de Dios al inicio</td></tr>
+            <tr><td><strong>Credo</strong></td><td>Profesión de fe</td></tr>
+            <tr><td><strong>Evangelio</strong></td><td>Buena Nueva de Jesús</td></tr>
+            <tr><td><strong>Exilio</strong></td><td>Cautividad de Israel en Babilonia</td></tr>
+            <tr><td><strong>Gracia</strong></td><td>Don gratuito de Dios</td></tr>
+            <tr><td><strong>Iglesia</strong></td><td>Comunidad de creyentes</td></tr>
+            <tr><td><strong>Imago Dei</strong></td><td>Imagen de Dios en el ser humano</td></tr>
+            <tr><td><strong>Inspiración</strong></td><td>Dirección divina a los escritores</td></tr>
+            <tr><td><strong>Jesucristo</strong></td><td>Jesús, el Mesías e Hijo de Dios</td></tr>
+            <tr><td><strong>Mesías</strong></td><td>Ungido, Salvador esperado</td></tr>
+            <tr><td><strong>Pentecostés</strong></td><td>Envío del Espíritu Santo</td></tr>
+            <tr><td><strong>Profeta</strong></td><td>Mensajero de Dios</td></tr>
+            <tr><td><strong>Salvación</strong></td><td>Libertad del pecado y muerte eterna</td></tr>
+            <tr><td><strong>Torá</strong></td><td>Ley de Moisés, primeros 5 libros</td></tr>
+            <tr><td><strong>Trinidad</strong></td><td>Padre, Hijo y Espíritu Santo</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Contexto sociocultural -->
+    <section class="section" id="contexto-sociocultural">
+      <h2>I. Rasgos que Definen Nuestro Contexto Sociocultural</h2>
+      <div class="content-box">
+        <p>En el mundo actual, caracterizado por la pluralidad cultural, el fenómeno religioso adquiere nuevos matices:</p>
+        <ul>
+          <li><strong>Secularización:</strong> Creciente separación entre fe y vida pública</li>
+          <li><strong>Retorno de lo espiritual:</strong> Nuevas formas de espiritualidad</li>
+          <li><strong>Diálogo intercultural:</strong> Convivencia de culturas y religiones</li>
+          <li><strong>Nuevos movimientos religiosos:</strong> Búsqueda de sentido</li>
+          <li><strong>Fundamentalismo y pluralismo:</strong> Tensiones religiosas actuales</li>
+          <li><strong>Laicismo:</strong> Exclusión de lo religioso del espacio público</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Cuadro comparativo religiones monoteístas -->
+    <section class="section" id="religiones-monoteistas">
+      <h2>Cuadro Comparativo de las Tres Grandes Religiones Monoteístas</h2>
+      <div class="content-box">
+        <table class="cuadro-comparativo">
+          <thead>
+            <tr>
+              <th>Aspecto</th>
+              <th>Judaismo</th>
+              <th>Cristianismo</th>
+              <th>Islam</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Fundador</strong></td>
+              <td>Abraham (patriarca)</td>
+              <td>Jesús de Nazareth</td>
+              <td>Muhammad</td>
+            </tr>
+            <tr>
+              <td><strong>Texto sagrado</strong></td>
+              <td>Torá (Antiguo Testamento)</td>
+              <td>Biblia (AT + NT)</td>
+              <td>Corán (Alcorán)</td>
+            </tr>
+            <tr>
+              <td><strong>Lugar santo</strong></td>
+              <td>Jerusalén (Templo)</td>
+              <td>Jerusalén, Vaticano, iglesias</td>
+              <td>Meca (Caaba), Medina</td>
+            </tr>
+            <tr>
+              <td><strong>Celebración principal</strong></td>
+              <td>Pésaj (Pascua)</td>
+              <td>Navidad, Pascua</td>
+              <td>Ramadán, Eid al-Fitr</td>
+            </tr>
+            <tr>
+              <td><strong>Concepto de Dios</strong></td>
+              <td>Un Dios personal (Yahvé)</td>
+              <td>Trinidad (Padre, Hijo, Espíritu)</td>
+              <td>Un Dios único (Alá)</td>
+            </tr>
+            <tr>
+              <td><strong>Origen</strong></td>
+              <td>Siglo XIX a.C.</td>
+              <td>Siglo I d.C.</td>
+              <td>Siglo VII d.C.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Cuadro comparativo religiones del mundo -->
+    <section class="section" id="religiones-mundo">
+      <h2>Principales Religiones del Mundo</h2>
+      <div class="content-box">
+        <table class="cuadro-comparativo">
+          <thead>
+            <tr>
+              <th>Religión</th>
+              <th>Seguidores</th>
+              <th>Origen</th>
+              <th>Texto sagrado</th>
+              <th>Concepto central</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Cristianismo</strong></td>
+              <td>2.400 millones</td>
+              <td>Siglo I, Oriente Medio</td>
+              <td>Biblia</td>
+              <td>Amor de Dios, salvación por Cristo</td>
+            </tr>
+            <tr>
+              <td><strong>Islam</strong></td>
+              <td>1.900 millones</td>
+              <td>Siglo VII, Arabia</td>
+              <td>Corán</td>
+              <td>Sumisión a Alá</td>
+            </tr>
+            <tr>
+              <td><strong>Hinduismo</strong></td>
+              <td>1.200 millones</td>
+              <td>Siglo XV a.C., India</td>
+              <td>Vedas, Upanishads</td>
+              <td>Dharma, karma, moksha</td>
+            </tr>
+            <tr>
+              <td><strong>Budismo</strong></td>
+              <td>500 millones</td>
+              <td>Siglo VI a.C., India</td>
+              <td>Tripitaka</td>
+              <td>Nirvana, iluminación</td>
+            </tr>
+            <tr>
+              <td><strong>Judaismo</strong></td>
+              <td>15 millones</td>
+              <td>Siglo XIX a.C.</td>
+              <td>Torá, Talmud</td>
+              <td>Alianza con Dios</td>
+            </tr>
+            <tr>
+              <td><strong>Confucianismo</strong></td>
+              <td>6 millones</td>
+              <td>Siglo VI a.C., China</td>
+              <td>Analectas</td>
+              <td>Armonía social, virtud</td>
+            </tr>
+            <tr>
+              <td><strong>Sikhismo</strong></td>
+              <td>30 millones</td>
+              <td>Siglo XV, India</td>
+              <td>Guru Granth Sahib</td>
+              <td>Igualdad, servicio a Dios</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Preguntas por el sentido -->
+    <section class="section" id="preguntas-sentido">
+      <h2>Las Preguntas por el Sentido de la Vida en las Principales Religiones</h2>
+      <div class="content-box">
+        <table class="cuadro-comparativo">
+          <thead>
+            <tr>
+              <th>Religión</th>
+              <th>Pregunta central</th>
+              <th>Respuesta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Cristianismo</strong></td>
+              <td>¿Cuál es el sentido de la vida?</td>
+              <td>Amar a Dios y al prójimo, alcanzar la salvación eterna</td>
+            </tr>
+            <tr>
+              <td><strong>Islam</strong></td>
+              <td>¿Cuál es el propósito de la existencia?</td>
+              <td>Servir a Alá, someterse a su voluntad</td>
+            </tr>
+            <tr>
+              <td><strong>Hinduismo</strong></td>
+              <td>¿Cómo liberarse del sufrimiento?</td>
+              <td>Moksha (liberación del ciclo de reencarnación)</td>
+            </tr>
+            <tr>
+              <td><strong>Budismo</strong></td>
+              <td>¿Cómo alcanzar la paz interior?</td>
+              <td>Nirvana, iluminación a través del Noble Óctuple Sendero</td>
+            </tr>
+            <tr>
+              <td><strong>Judaismo</strong></td>
+              <td>¿Cómo vivir una vida justa?</td>
+              <td>Cumplir la Torá y los mandamientos</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- El hecho religioso -->
+    <section class="section" id="hecho-religioso">
+      <h2>El Hecho Religioso: Núcleo Esencial, Estructura y Pluralidad</h2>
+      <div class="content-box">
+        <h3>Núcleo Esencial</h3>
+        <p>El hecho religioso constituye una experiencia fundamental del ser humano:</p>
+        <ul>
+          <li><strong>Lo sagrado:</strong> Reconocimiento de una realidad trascendente</li>
+          <li><strong>La fe:</strong> Confianza en lo invisible</li>
+          <li><strong>El culto:</strong> Expresión de veneración y comunicación con lo divino</li>
+          <li><strong>La ética:</strong> Normas de conducta derivadas de creencias</li>
+        </ul>
+        
+        <h3>Estructura</h3>
+        <ul>
+          <li>Creencias (doctrina)</li>
+          <li>Ritos (celebraciones)</li>
+          <li>Preceptos (normas morales)</li>
+          <li>Experiencias (oración, meditación)</li>
+          <li>Comunidad (pertenencia grupal)</li>
+        </ul>
+        
+        <h3>Pluralidad</h3>
+        <p>Las religiones expresan el hecho religioso de formas diversas: monoteísmos, politeísmos, animistas, etc., pero todas buscan dar sentido a la vida y conectar con lo trascendente.</p>
+      </div>
+    </section>
+
+    <!-- La actitud religiosa -->
+    <section class="section" id="actitud-religiosa">
+      <h2>La Actitud Religiosa</h2>
+      <div class="content-box">
+        <p>La actitud religiosa es la disposición interior del ser humano ante lo sagrado:</p>
+        <ul>
+          <li><strong>Adoración:</strong> Reconocimiento de la grandeza de Dios</li>
+          <li><strong>Oración:</strong> Comunicación personal con lo divino</li>
+          <li><strong>Agradecimiento:</strong> Reconocimiento de los dones recibidos</li>
+          <li><strong>Petición:</strong> Solicitud de ayuda y guía</li>
+          <li><strong>Contemplación:</strong> Reflexión silenciosa sobre lo trascendente</li>
+          <li><strong>Celebración:</strong> Festividad y comunidad de fe</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- La mediación simbólica -->
+    <section class="section" id="mediacion-simbolica">
+      <h2>La Mediación Simbólica</h2>
+      <div class="content-box">
+        <p>La mediación simbólica es la forma en que expresamos lo inexpresable:</p>
+        <ul>
+          <li><strong>Símbolo:</strong> Signo que representa algo más profundo</li>
+          <li><strong>Rito:</strong> Acción simbólica que comunica gracia</li>
+          <li><strong>Sacramento:</strong> Mediación de gracia por signos sensibles</li>
+          <li><strong>Arte sagrado:</strong> Expresión de lo divino a través del arte</li>
+          <li><strong>Liturgia:</strong> Celebración pública de la fe</li>
+        </ul>
+        <p><strong>Ejemplos:</strong> agua (purificación), pan (sustento), luz (vida, Cristo), cruz (salvación).</p>
+      </div>
+    </section>
+
+    <!-- Antropología cristiana -->
+    <section class="section" id="antropologia-cristiana">
+      <h2>Antropología Cristiana: Concepto de Persona</h2>
+      <div class="content-box">
+        <p>La antropología cristiana entiende a la persona humana como:</p>
+        <ul>
+          <li><strong>Imagen de Dios (Imago Dei):</strong> El ser humano refleja la grandeza divina</li>
+          <li><strong>Cuerpo y alma:</strong> Unidad psicosomática</li>
+          <li><strong>Dignidad inviolable:</strong> Todo ser humano tiene valor intrínseco</li>
+          <li><strong>Libertad:</strong> Capacidad de elegir el bien</li>
+          <li><strong>Vocación:</strong> Llamados a la comunión con Dios y los demás</li>
+          <li><strong>Solidaridad:</strong> Unidos como miembros de un cuerpo</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Persona, vocación y servicio -->
+    <section class="section" id="persona-vocacion">
+      <h2>La Persona, Vocación y Servicio</h2>
+      <div class="content-box">
+        <p>El ser humano está llamado a realizarse a través del servicio:</p>
+        <ul>
+          <li><strong>Vocación general:</strong> Llamada universal a la santidad</li>
+          <li><strong>Vocación específica:</strong> Llamada particular (matrimonio, celibato, sacerdocio)</li>
+          <li><strong>Servicio:</strong> Carisma para ayudar a otros</li>
+          <li><strong>Misión:</strong> Envío a transmitir la fe</li>
+          <li><strong>Testimonio:</strong> Vida que refleja valores evangélicos</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Fe, razón y ciencia -->
+    <section class="section" id="fe-razon-ciencia">
+      <h2>Fe, Razón y Ciencia</h2>
+      <div class="content-box">
+        <p>La relación entre fe y razón ha sido objeto de reflexión a lo largo de la historia:</p>
+        <ul>
+          <li><strong>Fe y razón no se oponen:</strong> Son complementarias</li>
+          <li><strong>La razón permite comprender la fe:</strong> Fides et ratio</li>
+          <li><strong>Ciencia y fe:</strong> Distintos métodos, distintos objetos</li>
+          <li><strong>Fe y cultura:</strong> El cristianismo ha sido motor de ciencia</li>
+        </ul>
+        <p>La fe religiosa y el conocimiento científico pueden coexistir harmonicamente, cada uno en su ámbito.</p>
+      </div>
+    </section>
+
+    <!-- Fenomenología de la religión -->
+    <section class="section" id="fenomenologia">
+      <h2>Fenomenología de la Religión</h2>
+      <div class="content-box">
+        <p>La fenomenología de la religión es el estudio científico de las manifestaciones religiosas:</p>
+        <ul>
+          <li><strong>Historia de las religiones:</strong> Evolución y comparación</li>
+          <li><strong>Antropología religiosa:</strong> Culturas y creencias</li>
+          <li><strong>Sociología de la religión:</strong> Religión y sociedad</li>
+          <li><strong>Psicología de la religión:</strong> Experiencia religiosa individual</li>
+          <li><strong>Teología comparada:</strong> Diálogo interreligioso</li>
+        </ul>
+        
+        <h3>Autores principales:</h3>
+        <ul>
+          <li>Mircea Eliade</li>
+          <li>Rudolf Otto</li>
+          <li>Émile Durkheim</li>
+          <li>Max Weber</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- La fe y la cultura -->
+    <section class="section" id="fe-cultura">
+      <h2>La Fe se Hace Cultura</h2>
+      <div class="content-box">
+        <p>La fe cristiana ha generado riqueza cultural:</p>
+        <ul>
+          <li><strong>Arte:</strong> Catedrales, pinturas, esculturas (Miguel Ángel, Dalí)</li>
+          <li><strong>Literatura:</strong> Dante, Cervantes, Tolkien, Chesterton</li>
+          <li><strong>Música:</strong> Canto gregoriano, oratorios, misas</li>
+          <li><strong>Arquitectura:</strong> Gótico, románico, barroco</li>
+          <li><strong>Filosofía:</strong> Agustín, Tomás de Aquino, Pascal</li>
+          <li><strong>Ciencia:</strong> Muchos científicos importantes fueron creyentes</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Cultura y cristianismo -->
+    <section class="section">
+      <h2>Cultura y Cristianismo Hoy: Un Fenómeno de Extrañamiento</h2>
+      <div class="content-box">
+        <p>La relación entre la cultura contemporánea y el cristianismo presenta desafíos:</p>
+        <ul>
+          <li><strong>Secularización:</strong> Separación entre fe y vida pública</li>
+          <li><strong>Pluralismo:</strong> Convivencia de múltiples cosmovisiones</li>
+          <li><strong>Relativismo:</strong> Cuestionamiento de verdades absolutas</li>
+          <li><strong>Laicismo:</strong> Exclusión de lo religioso del espacio público</li>
+        </ul>
+        <p>Sin embargo, el cristianismo sigue siendo fuente de valores, arte, literatura y pensamiento para millones de personas.</p>
+      </div>
+    </section>
+
+    <!-- La negación y afirmación de la fe -->
+    <section class="section">
+      <h2>La Negación y la Afirmación de la Fe</h2>
+      <div class="content-box">
+        <h3>Afirmaciones de fe:</h3>
+        <ul>
+          <li>Credo niceno-constantinopolitano</li>
+          <li>Credo apostólico</li>
+          <li>Profesión de fe personal</li>
+        </ul>
+        
+        <h3>Negaciones (herejías históricas):</h3>
+        <ul>
+          <li><strong>Arianismo:</strong> Negación de la divinidad de Cristo</li>
+          <li><strong>Monofisismo:</strong> Negación de la naturaleza humana de Cristo</li>
+          <li><strong>Pelagianismo:</strong> Negación de la gracia divina</li>
+          <li><strong>Ateísmo:</strong> Negación de la existencia de Dios</li>
+          <li><strong>Secularismo:</strong> Exclusión de lo religioso de la vida pública</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Sentido de la vida -->
+    <section class="section">
+      <h2>Sentido de la Vida y Panorama de Respuestas</h2>
+      <div class="content-box">
+        <p>La humanidad ha dado diferentes respuestas a la pregunta fundamental:</p>
+        <ul>
+          <li><strong>Hedonismo:</strong> Buscar el placer como sentido último</li>
+          <li><strong>Materialismo:</strong> El sentido está en lo tangible y económico</li>
+          <li><strong>Existencialismo:</strong> Cada persona crea su propio sentido</li>
+          <li><strong>Religión:</strong> El sentido viene de la relación con lo divino</li>
+          <li><strong>Altruismo:</strong> El sentido está en servir a los demás</li>
+          <li><strong>Humanismo:</strong> El sentido está en el desarrollo humano</li>
+        </ul>
+        <p>La fe cristiana propone que el sentido último de la vida es el amor: amar a Dios y al prójimo.</p>
+      </div>
+    </section>
+
+    <!-- Ser cristiano hoy -->
+    <section class="section" id="ser-cristiano">
+      <h2>Ser Cristiano Hoy</h2>
+      <div class="content-box">
+        <p>Ser cristiano en el mundo actual implica:</p>
+        <ul>
+          <li><strong>Discipulado:</strong> Seguir a Jesús como maestro y Señor</li>
+          <li><strong>Testimonio:</strong> Vivir la fe con coherencia</li>
+          <li><strong>Misión:</strong> Anunciar el evangelio con palabras y obras</li>
+          <li><strong>Comunidad:</strong> Participar en la vida eclesial</li>
+          <li><strong>Servicio:</strong> Ayudar a los más necesitados</li>
+          <li><strong>Diálogo:</strong> Respeto y conversación con otras creencias</li>
+          <li><strong>Contemplación:</strong> Oración y relación personal con Dios</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Evangelización -->
+    <section class="section" id="evangelizacion">
+      <h2>Evangelizar en el Mundo Contemporáneo</h2>
+      <div class="content-box">
+        <p>La evangelización en el mundo actual enfrenta nuevos desafíos:</p>
+        <ul>
+          <li><strong>Nuevo Areópago:</strong> Inculturación en contextos modernos</li>
+          <li><strong>Testimonio de vida:</strong> La evidencia de la fe vivida</li>
+          <li><strong>Diálogo:</strong> Comunicación respetuosa con no creyentes</li>
+          <li><strong>Medios de comunicación:</strong> Anuncio a través de nuevas tecnologías</li>
+          <li><strong>Misión ad intra:</strong> Renovación de la propia comunidad</li>
+          <li><strong>Misión ad extra:</strong> Anuncio a quienes no conocen a Cristo</li>
+        </ul>
+        <p>El Papa Francisco nos invita a una Iglesia en salida, cercana a los márgenes y a los más necesitados.</p>
+      </div>
+    </section>
+
+    <!-- Religiones en la actualidad -->
+    <section class="section">
+      <h2>Religiones en la Actualidad</h2>
+      <div class="content-box">
+        <p>El panorama religioso mundial actual:</p>
+        <ul>
+          <li><strong>Cristianismo:</strong> 2.400 millones - Mayoría en Europa, América, África</li>
+          <li><strong>Islam:</strong> 1.900 millones - Mayoría en Oriente Medio, Asia, África</li>
+          <li><strong>Hinduismo:</strong> 1.200 millones - Principalmente en India</li>
+          <li><strong>Budismo:</strong> 500 millones - Asia principalmente</li>
+          <li><strong>Judaismo:</strong> 15 millones - Israel, EE.UU., Europa</li>
+          <li><strong>Otras religiones:</strong> Sikhismo, Bahaísmo, Taoísmo, etc.</li>
+          <li><strong>Ateos/Agnósticos:</strong> 1.100 millones - Crecimiento en Occidente</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="main-footer">
+  <div class="footer-menu">
+    <h3 class="footer-menu-title">Enlaces Espirituales</h3>
+    <div class="footer-menu-links">
+      <a href="index.html">Inicio</a>
+      <a href="coronilla.html">Coronilla</a>
+      <a href="novena.html">Novena</a>
+      <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
+      <a href="santo-rosario.html">Santo Rosario</a>
+      <a href="devociones-marianas.html">Devociones Marianas</a>
+      <a href="estudios-biblicos.html">Estudios Bíblicos</a>
+      <a href="oraciones.html">Oraciones</a>
+      <a href="quienes-somos.html">Quiénes Somos</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+  </div>
+  <div class="footer-oscuro">
+    <span>El Portal de la Divina Misericordia</span> - Jesús, En Vos Confío
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/components/cookie-banner.js"></script>
+<cookie-banner></cookie-banner>
+</body>
+</html>
