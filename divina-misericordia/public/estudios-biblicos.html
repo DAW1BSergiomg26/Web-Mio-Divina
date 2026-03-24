@@ -26,6 +26,58 @@
 
 <link rel="stylesheet" href="css/styles.css">
 <style>
+/* Navigation - Gold Style */
+nav#mainNav {
+  background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(5,13,26,0.95) 100%);
+  padding: 8px 20px;
+  border-bottom: 1px solid rgba(212,175,55,0.3);
+}
+nav#mainNav .nav-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+nav#mainNav a {
+  color: #d4af37 !important;
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+nav#mainNav a::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 60%;
+  height: 1px;
+  background: #d4af37;
+  transition: transform 0.3s ease;
+}
+nav#mainNav a:hover::after,
+nav#mainNav a.activo::after {
+  transform: translateX(-50%) scaleX(1);
+}
+nav#mainNav a:hover,
+nav#mainNav a.activo {
+  color: #f4e2a1 !important;
+  background: rgba(212,175,55,0.15);
+  text-shadow: 0 0 18px rgba(212,175,55,0.6);
+}
+nav#mainNav a.activo {
+  background: rgba(212,175,55,0.25);
+  box-shadow: 0 0 20px rgba(212,175,55,0.2);
+}
+
 /* Estilos específicos para Estudios Bíblicos */
 .hero-biblia {
   background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #0d1f3c 100%);
@@ -45,14 +97,176 @@
   background: radial-gradient(ellipse at center, rgba(247, 231, 180, 0.15) 0%, transparent 70%);
   pointer-events: none;
 }
-.hero-biblia::after {
-  content: '✝';
+
+/* ===== CRUZ DIVINA CON EFECTO CORAZÓN Y LUZ ===== */
+.cruz-divina-hero {
   position: absolute;
-  font-size: 15rem;
-  opacity: 0.03;
-  right: 5%;
+  right: 3%;
   top: 50%;
   transform: translateY(-50%);
+  width: 90px;
+  height: 110px;
+  cursor: pointer;
+  z-index: 1;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cruz-divina-hero:hover {
+  transform: translateY(-50%) scale(1.15);
+}
+
+.cruz-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 30px rgba(255, 245, 190, 0.9)) drop-shadow(0 0 60px rgba(212, 175, 55, 0.7)) drop-shadow(0 0 90px rgba(212, 175, 55, 0.4));
+  animation: cruzHeartbeat 2s ease-in-out infinite;
+  transition: filter 0.3s ease;
+}
+
+.cruz-divina-hero:hover .cruz-svg {
+  filter: drop-shadow(0 0 50px rgba(255, 255, 220, 1)) drop-shadow(0 0 80px rgba(255, 245, 190, 0.9)) drop-shadow(0 0 120px rgba(212, 175, 55, 0.8));
+}
+
+/* Efecto latido del corazón */
+@keyframes cruzHeartbeat {
+  0%, 100% { 
+    transform: scale(1);
+    filter: drop-shadow(0 0 20px rgba(255, 245, 190, 0.8)) drop-shadow(0 0 40px rgba(212, 175, 55, 0.6));
+  }
+  15% { 
+    transform: scale(1.04);
+    filter: drop-shadow(0 0 35px rgba(255, 255, 220, 1)) drop-shadow(0 0 60px rgba(255, 245, 190, 0.9)) drop-shadow(0 0 80px rgba(212, 175, 55, 0.7));
+  }
+  30% { 
+    transform: scale(1);
+    filter: drop-shadow(0 0 20px rgba(255, 245, 190, 0.8)) drop-shadow(0 0 40px rgba(212, 175, 55, 0.6));
+  }
+  45% { 
+    transform: scale(1.03);
+    filter: drop-shadow(0 0 30px rgba(255, 255, 220, 1)) drop-shadow(0 0 50px rgba(255, 245, 190, 0.8)) drop-shadow(0 0 70px rgba(212, 175, 55, 0.6));
+  }
+  60% { 
+    transform: scale(1);
+    filter: drop-shadow(0 0 20px rgba(255, 245, 190, 0.8)) drop-shadow(0 0 40px rgba(212, 175, 55, 0.6));
+  }
+}
+
+/* Rayos de luz dorados */
+.rayos-hero {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  pointer-events: none;
+  animation: rotateRayos 20s linear infinite;
+}
+
+@keyframes rotateRayos {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.rayo-hero {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px;
+  height: 50px;
+  background: linear-gradient(180deg, rgba(255, 255, 220, 1) 0%, rgba(255, 245, 190, 0.9) 30%, rgba(212, 175, 55, 0.5) 70%, transparent 100%);
+  transform-origin: center bottom;
+  opacity: 0.8;
+  animation: rayoPulse 2s ease-in-out infinite;
+  box-shadow: 0 0 15px rgba(255, 245, 190, 0.8), 0 0 30px rgba(212, 175, 55, 0.5);
+}
+
+.rayo-hero:nth-child(1) { transform: translate(-50%, -100%) rotate(0deg) scale(0.7); animation-delay: 0s; }
+.rayo-hero:nth-child(2) { transform: translate(-50%, -100%) rotate(45deg) scale(0.7); animation-delay: 0.3s; }
+.rayo-hero:nth-child(3) { transform: translate(-50%, -100%) rotate(90deg) scale(0.7); animation-delay: 0.6s; }
+.rayo-hero:nth-child(4) { transform: translate(-50%, -100%) rotate(135deg) scale(0.7); animation-delay: 0.9s; }
+.rayo-hero:nth-child(5) { transform: translate(-50%, -100%) rotate(180deg) scale(0.7); animation-delay: 1.2s; }
+.rayo-hero:nth-child(6) { transform: translate(-50%, -100%) rotate(225deg) scale(0.7); animation-delay: 1.5s; }
+.rayo-hero:nth-child(7) { transform: translate(-50%, -100%) rotate(270deg) scale(0.7); animation-delay: 1.8s; }
+.rayo-hero:nth-child(8) { transform: translate(-50%, -100%) rotate(315deg) scale(0.7); animation-delay: 2.1s; }
+
+@keyframes rayoPulse {
+  0%, 100% { opacity: 0.3; height: 60px; }
+  50% { opacity: 0.7; height: 90px; }
+}
+
+/* Aura circular */
+.aura-cruz-hero {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 245, 190, 0.4) 0%, rgba(212, 175, 55, 0.25) 30%, rgba(212, 175, 55, 0.1) 60%, transparent 80%);
+  animation: auraBreathing 3s ease-in-out infinite;
+  pointer-events: none;
+  box-shadow: 0 0 40px rgba(255, 245, 190, 0.5), 0 0 80px rgba(212, 175, 55, 0.3), inset 0 0 30px rgba(255, 245, 190, 0.2);
+}
+
+@keyframes auraBreathing {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+}
+
+/* Hover - Intensificar efectos */
+.cruz-divina-hero:hover ~ .aura-cruz-hero {
+  animation: auraExplosion 0.6s ease-out forwards;
+}
+
+@keyframes auraExplosion {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+}
+
+/* Partículas brillantes */
+.particulas-hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particula-hero {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 255, 220, 1);
+  border-radius: 50%;
+  animation: particulaFloat 3s ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(255, 255, 220, 1), 0 0 15px rgba(255, 245, 190, 0.8), 0 0 25px rgba(212, 175, 55, 0.5);
+}
+
+.particula-hero:nth-child(1) { left: 20%; top: 30%; animation-delay: 0s; }
+.particula-hero:nth-child(2) { left: 80%; top: 20%; animation-delay: 0.5s; }
+.particula-hero:nth-child(3) { left: 60%; top: 70%; animation-delay: 1s; }
+.particula-hero:nth-child(4) { left: 30%; top: 60%; animation-delay: 1.5s; }
+.particula-hero:nth-child(5) { left: 70%; top: 40%; animation-delay: 2s; }
+
+@keyframes particulaFloat {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
+  50% { transform: translateY(-20px) scale(1.3); opacity: 0.9; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cruz-divina-hero {
+    width: 60px;
+    height: 70px;
+    right: 5%;
+    opacity: 0.5;
+  }
+  .rayos-hero { width: 80px; height: 80px; }
+  .aura-cruz-hero { width: 80px; height: 80px; }
 }
 .hero-biblia h1 {
   color: #f7e7b4;
@@ -273,6 +487,71 @@
   <section class="hero-biblia">
     <h1>Estudios Bíblicos y Religión</h1>
     <p>Recursos educativos sobre la Biblia, fenomenología de la religión y ciencias religiosas</p>
+    
+    <!-- Cruz Divina Animada -->
+    <div class="cruz-divina-hero" title="Jesús, En Vos Confío">
+      <svg class="cruz-svg" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="cruzOro" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fff5c0"/>
+            <stop offset="30%" stop-color="#d4af37"/>
+            <stop offset="70%" stop-color="#f4e2a1"/>
+            <stop offset="100%" stop-color="#b8960c"/>
+          </linearGradient>
+          <linearGradient id="cruzOroVertical" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#b8960c"/>
+            <stop offset="50%" stop-color="#f4e2a1"/>
+            <stop offset="100%" stop-color="#b8960c"/>
+          </linearGradient>
+          <filter id="glowOro">
+            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+          <filter id="brilloIntenso">
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+          </filter>
+        </defs>
+        <!-- Rama horizontal -->
+        <rect x="15" y="35" width="70" height="12" rx="3" fill="url(#cruzOro)" filter="url(#glowOro)"/>
+        <!-- Rama vertical -->
+        <rect x="42" y="0" width="16" height="130" rx="3" fill="url(#cruzOroVertical)" filter="url(#glowOro)"/>
+        <!-- Corona de espinas -->
+        <circle cx="50" cy="18" r="8" fill="none" stroke="#b8960c" stroke-width="1.5" opacity="0.6"/>
+        <circle cx="50" cy="18" r="5" fill="#d4af37" opacity="0.4"/>
+        <!-- Resplandor central -->
+        <circle cx="50" cy="55" r="15" fill="rgba(255,245,190,0.3)" filter="url(#brilloIntenso)"/>
+        <!--INRI -->
+        <text x="50" y="12" text-anchor="middle" font-size="6" fill="#d4af37" font-family="serif">INRI</text>
+      </svg>
+    </div>
+    
+    <!-- Rayos de luz -->
+    <div class="rayos-hero">
+      <div class="rayo-hero"></div>
+      <div class="rayo-hero"></div>
+      <div class="rayo-hero"></div>
+      <div class="rayo-hero"></div>
+      <div class="rayo-hero"></div>
+      <div class="rayo-hero"></div>
+      <div class="rayo-hero"></div>
+      <div class="rayo-hero"></div>
+    </div>
+    
+    <!-- Aura circular -->
+    <div class="aura-cruz-hero"></div>
+    
+    <!-- Partículas -->
+    <div class="particulas-hero">
+      <div class="particula-hero"></div>
+      <div class="particula-hero"></div>
+      <div class="particula-hero"></div>
+      <div class="particula-hero"></div>
+      <div class="particula-hero"></div>
+    </div>
   </section>
 
   <div class="container">
@@ -314,6 +593,13 @@
         <li><a href="#fe-cultura">La Fe se Hace Cultura</a></li>
         <li><a href="#ser-cristiano">Ser Cristiano Hoy</a></li>
         <li><a href="#evangelizacion">Evangelizar Hoy</a></li>
+        <li><a href="#humanismo-cristiano">Humanismo Cristiano Siglo XXI</a></li>
+        <li><a href="#formacion-profesor-religion">Formación Profesor Religión</a></li>
+        <li><a href="#sentido-vida">El Sentido de la Vida</a></li>
+        <li><a href="#cristologia-intensificado">Cristología - Contenido Expandido</a></li>
+        <li><a href="#vocacion-servicio">Vocación y Servicio</a></li>
+        <li><a href="#persona-ser-especial">La Persona - Ser Especial</a></li>
+        <li><a href="#negacion-afirmacion-fe">Negación y Afirmación de la Fe</a></li>
       </ul>
     </div>
 
@@ -1128,67 +1414,107 @@
 
     <!-- Cuadro comparativo religiones del mundo -->
     <section class="section" id="religiones-mundo">
-      <h2>Principales Religiones del Mundo</h2>
+      <h2>Cuadro Comparativo: Principales Religiones del Mundo</h2>
       <div class="content-box">
         <table class="cuadro-comparativo">
           <thead>
             <tr>
-              <th>Religión</th>
-              <th>Seguidores</th>
-              <th>Origen</th>
-              <th>Texto sagrado</th>
-              <th>Concepto central</th>
+              <th>Indicador</th>
+              <th>Cristianismo</th>
+              <th>Judaismo</th>
+              <th>Islam</th>
+              <th>Budismo</th>
+              <th>Hinduismo</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Cristianismo</strong></td>
-              <td>2.400 millones</td>
-              <td>Siglo I, Oriente Medio</td>
-              <td>Biblia</td>
-              <td>Amor de Dios, salvación por Cristo</td>
+              <td><strong>Fundador</strong></td>
+              <td>Jesús</td>
+              <td>Abrahán</td>
+              <td>Mahoma</td>
+              <td>Siddharta Gautama (Buda)</td>
+              <td>No tiene fundador; origen en sabios inspirados de las tribus indoarias hace más de 3.000 años</td>
             </tr>
             <tr>
-              <td><strong>Islam</strong></td>
-              <td>1.900 millones</td>
-              <td>Siglo VII, Arabia</td>
-              <td>Corán</td>
-              <td>Sumisión a Alá</td>
+              <td><strong>Símbolo</strong></td>
+              <td>Cruz</td>
+              <td>Estrella de David</td>
+              <td>Luna creciente</td>
+              <td>Rueda del Dharma</td>
+              <td>Om (AUM)</td>
             </tr>
             <tr>
-              <td><strong>Hinduismo</strong></td>
-              <td>1.200 millones</td>
-              <td>Siglo XV a.C., India</td>
-              <td>Vedas, Upanishads</td>
-              <td>Dharma, karma, moksha</td>
+              <td><strong>Libro sagrado</strong></td>
+              <td>Biblia (AT + NT)</td>
+              <td>Torá, Talmud (Misná)</td>
+              <td>Corán (114 suras)</td>
+              <td>Tripitaka (sutras,abhidharma)</td>
+              <td>Vedas, Upanishads, Bhagavad-Gita, Ramayana</td>
             </tr>
             <tr>
-              <td><strong>Budismo</strong></td>
-              <td>500 millones</td>
-              <td>Siglo VI a.C., India</td>
-              <td>Tripitaka</td>
-              <td>Nirvana, iluminación</td>
+              <td><strong>Corrientes</strong></td>
+              <td>Católicos, Ortodoxos, Protestantes</td>
+              <td>Ortodoxos/tradicionalistas, Liberales/reformados</td>
+              <td>Suníes (90%), Chiítas (10%)</td>
+              <td>Theravada, Mahayana, Vajrayana</td>
+              <td>Visnu (Krishna), Shiva, Sakti</td>
             </tr>
             <tr>
-              <td><strong>Judaismo</strong></td>
-              <td>15 millones</td>
-              <td>Siglo XIX a.C.</td>
-              <td>Torá, Talmud</td>
-              <td>Alianza con Dios</td>
+              <td><strong>Convicciones fundamentales</strong></td>
+              <td>Dios uno y trino: Padre, Hijo, Espíritu Santo. La salvación es don gratuito.</td>
+              <td>Dios creó el Universo. El hombre tiene libre arbitrio. La historia tiene sentido hacia la era mesiánica.</td>
+              <td>Un solo Dios (Alá). La vida es prueba. Fe y revelación orientan.</td>
+              <td>Karma (retribución de actos), samsara (reencarnación), nirvana (extinción)</td>
+              <td>Respeto de los Vedas. Reencarnación. Karma. Castas.</td>
             </tr>
             <tr>
-              <td><strong>Confucianismo</strong></td>
-              <td>6 millones</td>
-              <td>Siglo VI a.C., China</td>
-              <td>Analectas</td>
-              <td>Armonía social, virtud</td>
+              <td><strong>Preceptos de conducta</strong></td>
+              <td>Amor a Dios y al prójimo. 10 Mandamientos. Sermón de la Montaña.</td>
+              <td>613 preceptos (mitzvot). Unión con Pueblo, Tierra, Ley (Torá).</td>
+              <td>5 pilares: oración, ayuno, limosna, peregrinación. Justica y generosidad.</td>
+              <td>10 preceptos: respeto vida, propiedad, sexualidad, verdad, abstinencia. Vegetarianismo.</td>
+              <td>4 varnas (castas): brahmanes, guerreros, comerciantes, sirvientes. 4 etapas de vida.</td>
             </tr>
             <tr>
-              <td><strong>Sikhismo</strong></td>
-              <td>30 millones</td>
-              <td>Siglo XV, India</td>
-              <td>Guru Granth Sahib</td>
-              <td>Igualdad, servicio a Dios</td>
+              <td><strong>Alimentación</strong></td>
+              <td>Sin prohibiciones estrictas. Abstinencia recomendada.</td>
+              <td>Kosher: sin cerdo, sin sangre. Carne y lácteos separados.</td>
+              <td>Sin cerdo. Alcohol y drogas prohibidos. Sacrificio invocando a Dios.</td>
+              <td>Vegetarianismo tradicional. Abstinencia de bebidas embriagantes.</td>
+              <td>Vegetarianismo general. Prohibición de carne bovina.</td>
+            </tr>
+            <tr>
+              <td><strong>Fiestas principales</strong></td>
+              <td>Adviento, Navidad, Cuaresma, Semana Santa, Pascua, Pentecostés, Corpus Christi</td>
+              <td>Shabbat (descanso), Pesaj (Pascua), Shavuot (Pentecostés), Sukkot (Tabernáculos), Yom Kipur</td>
+              <td>Viernes (día de oración), Ramadán (ayuno), Eid al-Fitr, Eid al-Adha</td>
+              <td>Vesakha (luna llena), Asala, Kathina</td>
+              <td>Makara Sankranti, Mahashivratri, Holi, Rama Navami, Janmastami</td>
+            </tr>
+            <tr>
+              <td><strong>Del nacimiento a la muerte</strong></td>
+              <td>Bautismo, Catequesis, Confirmación, Matrimonio, Órden, Unción de enfermos</td>
+              <td>Circuncisión (8 días), Bar Mitzvá (13 años), Matrimonio, Duelo</td>
+              <td>Circuncisión, Prácticas desde pubertad, Recitación de fe en muerte</td>
+              <td>Ceremonias nacimiento/muerte. Votos monásticos</td>
+              <td>Nombrar hijo, matrimonio, entrada en vida ascética, cremación</td>
+            </tr>
+            <tr>
+              <td><strong>Lugar de oración</strong></td>
+              <td>Templo/Iglesia</td>
+              <td>Sinagoga</td>
+              <td>Mezquita</td>
+              <td>Templo (meditación)</td>
+              <td>Templo o casa (puja)</td>
+            </tr>
+            <tr>
+              <td><strong>% de adeptos</strong></td>
+              <td>33%</td>
+              <td>0.2%</td>
+              <td>19.6%</td>
+              <td>5.9%</td>
+              <td>13.4%</td>
             </tr>
           </tbody>
         </table>
@@ -1484,6 +1810,965 @@
           <li><strong>Otras religiones:</strong> Sikhismo, Bahaísmo, Taoísmo, etc.</li>
           <li><strong>Ateos/Agnósticos:</strong> 1.100 millones - Crecimiento en Occidente</li>
         </ul>
+      </div>
+    </section>
+
+    <!-- Humanismo Cristiano Siglo XXI -->
+    <section class="section" id="humanismo-cristiano">
+      <h2>Un Humanismo Cristiano para el Siglo XXI</h2>
+      <div class="content-box">
+        <p class="autor-info"><strong>Dr. Francesc Torralba Roselló</strong><br>Universitat Ramon Llull (Barcelona)<br><em>Barcelona, octubre de 2013</em></p>
+
+        <h3>1. Prolegómenos</h3>
+        <p>Explorar las condiciones de posibilidad de un humanismo cristiano para el siglo XXI es una tarea que alberga muchas dificultades, porque, en nuestro presente, no sólo está en entredicho el mismo concepto de humanismo, sino la legitimidad de un discurso cristiano sobre el ser humano.</p>
+        
+        <p>Para poder abordar tal tarea, se debe rememorar la historia de los humanismos del siglo XX, su extraordinaria eclosión, así como su posterior disolución.</p>
+        
+        <p>El humanismo cristiano es un tipo de humanismo que, como todo humanismo, no puede ignorar las persistentes críticas contra la idea de que el ser humano, la persona, es lo más valiosa que existe en el cosmos o, para decirlo con las mismas palabras de santo Tomás de Aquino, lo más perfecto que subsiste en la naturaleza.</p>
+        
+        <p>Esta idea está latente en todas las formas de humanismo, también en aquel que Henri de Lubac caracterizó como un drama, el humanismo ateo.</p>
+        
+        <h4>La tesis en cuestión</h4>
+        <p>El valor eminente del ser humano, su lugar especial en el cosmos, para decirlo al modo de Max Scheler es, precisamente, la que está en cuestión, la que ha sido intensamente discutida a lo largo de los últimos treinta años.</p>
+        
+        <p>Desde distintas posturas intelectuales, con gran eco mediático, se afirma que no existe una superioridad ontológica del ser humano, un privilegio de derechos para él. Tal sospecha, que dinamita uno de los presupuestos filosóficos de la cultura occidental, no puede ser ignorado.</p>
+
+        <h3>2. La Eclosión de los Humanismos</h3>
+        <p>La hecatombe de la Primera Guerra Mundial y la posterior llegada de la Segunda Guerra Mundial suscitó una fuerte eclosión de los humanismos. La vulneración sistemática de los derechos humanos, la explotación de hombres, mujeres y niños, la persecución de seres humanos por su condición racial, las fábricas de la muerte, el genocidio, todo este conjunto de hechos propiciaron una reflexión filosófica sobre la dignidad de lo humano.</p>
+        
+        <p>La expresión más evidente de tal grito, ¡Nunca más!, fue la Declaración Universal de los Derechos del Hombre, firmada en el Palais Chaillot de París el 10 de diciembre de 1948.</p>
+
+        <h4>2.1. El Humanismo Existencialista</h4>
+        <p>Los tres grandes artífices del denominado humanismo existencialista fueron Jean Paul Sartre (autor de <em>El existencialismo es un humanismo</em>), Albert Camus (autor de <em>El hombre rebelde</em>) y Martin Heidegger (autor de <em>Carta sobre el humanismo</em>).</p>
+        
+        <p>Desde la perspectiva del humanismo existencialista, el hombre no tiene una esencia determinada; su esencia se construye en la existencia, primero como proyecto y después a través de sus acciones. El hombre es libre, inexcusablemente libre de hacer lo que desee de su propia existencia.</p>
+        
+        <p>Esto significa que <strong>la existencia precede a la esencia</strong>. El hombre, en la concepción existencialista, no es definible; será cómo se habrá hecho a sí mismo. Lo que realmente le hace distinto y superior de todos los otros seres vivos es la libertad, su inexcusable libertad.</p>
+
+        <h4>2.2. El Humanismo Marxista</h4>
+        <p>Después de la Segunda Guerra Mundial, se desarrolló una nueva interpretación de la filosofía de Karl Marx que se conoció como el humanismo marxista.</p>
+        
+        <p>Sus representantes sostienen que el marxismo tiene un rostro humano, que su fin esencial es la liberación del hombre de toda forma de opresión y de alienación y que, en consecuencia, es, por esencia, un humanismo.</p>
+        
+        <p>Según Rodolfo Mondolfo, el materialismo histórico de Marx y Engels es, en esencia, un <em>realer Humanismus</em>, que considera al hombre en su realidad efectiva y concreta, comprende su existencia en la historia y comprende la historia como una realidad producida por el hombre.</p>
+
+        <h4>2.3. El Humanismo Cristiano</h4>
+        <p>Después de la tragedia de la Primera Guerra Mundial, en un clima de desilusión general frente a las ideas de progreso sostenidas por el socialismo y el liberalismo, desde perspectivas cristianas, se articuló el denominado humanismo cristiano que tuvo como uno de sus máximos exponentes al filósofo francés Jacques Maritain.</p>
+        
+        <p>Su obra clave es <em>El humanismo integral</em>. En ella examina la evolución del pensamiento moderno desde la crisis de la Cristiandad medieval hasta el individualismo burgués y el totalitarismo del siglo XX.</p>
+        
+        <p>Maritain distingue entre el <strong>humanismo antropocéntrico</strong> (donde el hombre es el centro, el punto de llegada de todo el universo) y el <strong>humanismo integral o teocéntrico</strong> (donde el centro es Dios y el ser humano es imagen y semejanza de Dios).</p>
+        
+        <p>El hombre es concebido como persona, no es ni pura naturaleza, ni pura razón. Maritain distingue en la persona dos tipos de aspiraciones: las <em>connaturales</em> y las <em>transnaturales</em>. Mediante las primeras, tiende a realizar ciertas cualidades específicas. Mediante las segundas, tiende a superar los límites de su condición humana.</p>
+
+        <h3>3. La Eclosión del Antihumanismo</h3>
+        <p>Si desde el humanismo se ubica al ser humano en el centro del cosmos y se le dota de un valor cualitativamente superior; desde el antihumanismo, el ser humano es una expresión más de la naturaleza, una manifestación tardía y destructiva, pero carente de relevancia.</p>
+        
+        <p>Una de las corrientes filosóficas que adoptan una posición antihumanista es el <strong>estructuralismo</strong>. Surge en los años sesenta del siglo pasado, especialmente en Francia, con pensadores como Lévi-Strauss, Roland Barthes, Jacques Lacan, Michel Foucault y Louis Althusser.</p>
+        
+        <p>Como dice Lévi-Strauss: <em>"el fin último de las ciencias humanas no es construir al hombre, sino disolverlo"</em>.</p>
+        
+        <p>Según Michel Foucault, uno de los obstáculos más graves con los que se enfrenta el pensamiento actual es la idea de humanismo. En <em>Las palabras y las cosas</em>, sugiere que es hora de despertar de este sueño antropológico.</p>
+        
+        <p><em>"La muerte de Dios conduce, inevitablemente, a la muerte del hombre."</em> - Michel Foucault</p>
+
+        <h3>4. La Emergencia del Biocentrismo</h3>
+        <p>El ser humano es concebido, por el biocentrismo, como una expresión tardía y destructiva de la vida. La vida es el centro de gravedad, lo que realmente tiene valor.</p>
+        
+        <p>La expresión militant del biocentrismo se halla en la <strong>ecología profunda</strong>, que promueve un giro copernicano, rechazando la superioridad del ser humano sobre la naturaleza surgida del mandato bíblico.</p>
+        
+        <p>Está el biocentrismo radical y el <strong>biocentrismo moderado</strong>, desde donde se considera que todos los seres vivos son dignos de consideración moral, aunque pueda jerarquizarse sin caer en el especieísmo.</p>
+
+        <h3>5. La Emergencia del Posthumanismo</h3>
+        <p>Posthumanismo es un término vago usado de manera plural en esta primera década del siglo XXI. Es el resultado de metamorfosis filosóficas, tecnológicas e históricas.</p>
+        
+        <p>Uno de sus máximos representantes es el filósofo alemán <strong>Peter Sløterdijk</strong>, que pone en entredicho el valor de los libros y de la educación para cambiar la faz del ser humano e insinúa cómo a través de las técnicas aplicadas a la vida será posible vencer barreras y superar límites.</p>
+        
+        <p>Según Sløterdijk, se debe prescindir de una interpretación humanista del mundo estructurada sobre la dicotomía sujeto-objeto, porque los hombres necesitan relacionarse con las máquinas, los animales, las plantas.</p>
+
+        <h3>6. La Reconstrucción del Humanismo Cristiano</h3>
+        <p>El antihumanismo, el biocentrismo y el posthumanismo constituyen tres anillos de una misma cadena que tiene como objetivo disolver el humanismo tradicional.</p>
+        
+        <p>La reformulación del humanismo cristiano pivota sobre tres ideas-clave:</p>
+
+        <h4>6.1. La Sublime Dignidad de la Persona Humana</h4>
+        <p>La defensa de la sublime dignidad de la persona humana se puede desarrollar desde un punto de vista teológico y desde un punto de vista filosófico. En nuestro contexto cultural, la argumentación más plausible es la filosófica.</p>
+        
+        <p>En esta argumentación es fundamental ahondar en la diferencia entre la persona y los brutos, así como en la diferencia entre la persona y el artefacto técnico.</p>
+
+        <h4>6.2. Equidad en la Dignidad. Contra el Clasismo</h4>
+        <p>Como expresa lúcidamente Edith Stein: <em>"para el cristiano no hay extranjeros"</em>.</p>
+        
+        <p>La equidad entre todos los seres humanos, más allá de sus diferencias patentes de raza, género, edad, inteligencia o cualesquiera que sean, constituye una tesis fundamental del humanismo cristiano que le sitúa a las antípodas de toda forma de clasismo, elitismo, racismo o gremialismo.</p>
+        
+        <p>La tesis de la equidad está bellamente expresada en el primer y segundo artículo de la Declaración Universal de los Derechos del Hombre (1948), cuya redacción fue liderada por Jacques Maritain.</p>
+
+        <h4>6.3. Idea de Creación. Interdependencia y Contingencia</h4>
+        <p>Una tercera idea está en la base del humanismo cristiano: la interdependencia de todos los seres que configuran el cosmos y su contingencia ontológica.</p>
+        
+        <p><strong>Todo cuanto es, podría no haber existido nunca. Todo cuanto es, deixará de ser. Es, por lo tanto, contingente.</strong></p>
+        
+        <p>El ser humano no se ha dado a sí mismo la existencia, ni tampoco ha dado la existencia a los otros seres vivos. Se halla en él, pero podría no haber existido nunca. Esta contingencia tiene sus consecuencias éticas: el mundo no le pertenece, como no le pertenece la vida de ningún ser humano, ni siquiera la propia. La existencia es don y, como tal, debe ser cuidada y amada.</p>
+        
+        <p>La idea de interdependencia exige cura por el mundo, equilibrio en las acciones, responsabilidad en los comportamientos.</p>
+
+        <h3>7. A Modo de Conclusión</h3>
+        <p>En definitiva, la tarea de reconstruir el humanismo cristiano en el siglo XXI no es baladí. Hay mucho en juego. Las traducciones políticas, sociales y educativas del posthumanismo o del biocentrismo radical son nefastas para la especie humana.</p>
+        
+        <p>El argumento consecuencialista enseña que cuando se olvida el principio de la eminente dignidad de toda persona, todo es posible.</p>
+        
+        <p>El humanismo cristiano del siglo XXI será permeable o no será. Tendrá que establecer alianzas con otros humanismos emergentes ya sea de signo confesional o no, pues lo más relevante es la defensa de la persona humana.</p>
+        
+        <p>Para tal tarea, la aportación filosófica y teológica de la filósofa judía <strong>Edith Stein</strong> puede jugar un papel decisivo, pues sus argumentaciones a favor de la eminente dignidad de la persona humana en el conjunto del cosmos y su visión de la contingencia y de la creación tienen plena vigencia.</p>
+        
+        <p><em>"Los interlocutores han cambiado y los contextos se han transformado, pero la filosofía de Edith Stein es semilla creativa para el futuro."</em></p>
+      </div>
+    </section>
+
+    <!-- Formación Profesor Religión -->
+    <section class="section" id="formacion-profesor-religion">
+      <h2>La Formación Teológica del Profesor/a de Religión y Moral Católica</h2>
+      <div class="content-box">
+        <p>La enseñanza de la Religión y Moral Católica en la escuela con su estructura académica equiparable a las otras áreas, exige un profesorado preparado, con las titulaciones de carácter universitario similares a las de sus compañeros de otras áreas.</p>
+        
+        <h3>El elemento aglutinante: La vocación</h3>
+        <p>En la formación del profesor de religión hay un elemento aglutinante que no podemos nunca olvidar: el descubrimiento, valoración y cuidado de su propia vocación como cristiano comprometido en el ámbito educativo y como consecuencia el cultivo de su disponibilidad para cumplir la misión que la Iglesia le encomienda en la escuela.</p>
+
+        <h3>La necesidad de formación teológica</h3>
+        <p>La necesidad de formación teológica del profesor de religión viene exigida por:</p>
+        <ol>
+          <li><strong>a) La fidelidad a la fe de la Iglesia</strong>, exigido por las familias de los alumnos.</li>
+          <li><strong>b) El contenido doctrinal del Currículo de cada etapa</strong>.</li>
+          <li><strong>c) La propuesta de la fe en diálogo con la cultura de su tiempo</strong>.</li>
+        </ol>
+
+        <h3>a) La fidelidad a la fe de la Iglesia</h3>
+        <p>La fidelidad a la fe de la Iglesia entraña la adquisición de los conocimientos necesarios para la comprensión de la estructura y contenido de la fe revelada por Dios y transmitida por la Iglesia Católica que se expresa en las fuentes de la revelación: Sagrada Escritura y Tradición y a través del intérprete autorizado, que es el Magisterio eclesial.</p>
+        
+        <p>El Catecismo de la Iglesia Católica recoge esos contenidos y verdades fundamentales. En él se puede percibir:</p>
+        <blockquote>
+          <p><em>"La admirable unidad del misterio de Dios, de su designio de salvación, así como el lugar central de Jesucristo Hijo único de Dios, enviado por el Padre, hecho hombre en el seno de la Virgen María por el Espíritu Santo, para ser nuestro Salvador. Muerto y resucitado, está siempre presente en la Iglesia, particularmente en los sacramentos; es la fuente de la fe, el modelo del obrar cristiano y el Maestro de nuestra oración".</em></p>
+        </blockquote>
+        
+        <p>Este núcleo esencial y básico en la formación del profesor exige un estudio metódico, orgánico y sistemático que supere cualquier discurso fragmentario y ocasional.</p>
+
+        <h3>b) El contenido doctrinal del currículo</h3>
+        <p>El contenido doctrinal del currículo supone el conocimiento de los bloques temáticos y específicos en la etapa correspondiente. Este contenido está estructurado y orientado teniendo en cuenta las fuentes del currículo:</p>
+        <ul>
+          <li><strong>Psicológica</strong></li>
+          <li><strong>Pedagógica</strong></li>
+          <li><strong>Socio-cultural</strong></li>
+          <li><strong>Epistemológica</strong></li>
+        </ul>
+        
+        <p>Cada etapa presenta de alguna forma una síntesis que se abre progresivamente, atendiendo al desarrollo de las capacidades de los alumnos según su edad. Por ello, el contenido del currículo de Religión requiere también un conocimiento previo de la psicología evolutiva.</p>
+
+        <h3>c) La propuesta de la fe en diálogo con la cultura</h3>
+        <p>La propuesta de la fe en diálogo con la cultura exige el conocimiento de los elementos que constituyen la cultura contemporánea, así como la actualización de los contenidos teológicos que hacen posible una síntesis vital en orden a la formación integral del alumno.</p>
+        
+        <p>Todo ello será difícilmente posible sin una competencia humanística y filosófica adecuada que permita al profesor de religión no estar por debajo del nivel de sus colegas en otras áreas.</p>
+        
+        <blockquote>
+          <p><em>"La prioridad de la ética sobre la técnica, la primacía de la persona sobre las cosas, la superioridad del espíritu sobre la materia"</em></p>
+          <cite>— Gaudium et Spes, n. 61</cite>
+        </blockquote>
+
+        <h3>No basta saber teología, hay que saber enseñarla</h3>
+        <p>No basta saber teología. Hay que saber enseñarla de modo significativo, para que no se convierta en fórmulas incomprensibles para los alumnos.</p>
+        
+        <p>El diálogo de la fe con la cultura supone estar muy atento a:</p>
+        <ul>
+          <li>Las experiencias y la problemática de los alumnos</li>
+          <li>Los principios y proyectos educativos de la escuela</li>
+          <li>Las propuestas y los modelos de vida que proyecta la sociedad</li>
+        </ul>
+
+        <h3>La fe y la cultura</h3>
+        <p>No es una novedad la preocupación de la Iglesia por la cultura, su estima, promoción y diálogo con ella, sobre todo en los ámbitos donde la cultura se transmite sistemáticamente, como es la escuela.</p>
+        
+        <p>En la escuela se realiza la asimilación sistemática y crítica de un universo cultural que va a conformar el desarrollo progresivo de la futura personalidad del alumno. Por ello, la Religión y Moral Católica pretende traducir lo esencial del mensaje cristiano en las categorías propias de la cultura.</p>
+        
+        <blockquote>
+          <p><em>"La síntesis entre la cultura y la fe no es solamente una exigencia de la cultura sino también de la fe. Una fe que no se convierte en cultura es una fe no aceptada plenamente, no pensada enteramente, no vivida fielmente".</em></p>
+          <cite>— Juan Pablo II</cite>
+        </blockquote>
+        
+        <p>Consecuentemente, el profesor de religión ha de estar en la escuela en actitud de diálogo respetuoso y constructivo, asumiendo en profundidad y críticamente la cultura con todos sus valores positivos y sus vacíos, integrando la dimensión religiosa en la formación humana y evitando la consideración de la fe como un añadido o como un componente extraño a la propia vida.</p>
+      </div>
+    </section>
+
+    <!-- El Sentido de la Vida -->
+    <section class="section" id="sentido-vida">
+      <h2>El Sentido de la Vida</h2>
+      <div class="content-box">
+        <h3>1. Introducción</h3>
+        <p>Cuando hablamos del sentido de la vida hemos de hacer referencia a toda una serie de preguntas que se hacen las personas y que podemos resumir en las千古问题:</p>
+        
+        <blockquote style="background: rgba(76, 195, 255, 0.1); border-left: 4px solid #4cc3ff; padding: 1rem; margin: 1rem 0;">
+          <p><strong>¿Quiénes somos? ¿De dónde venimos? ¿A dónde vamos?</strong></p>
+        </blockquote>
+        
+        <p>Todas estas preguntas se pueden dividir en existenciales y científicas. Toda persona en este mundo se planta alguna vez las preguntas sobre el sentido de la vida. Aunque la gente no se plantee las preguntas, sí que busca el sentido de su vida, es decir, su felicidad, por diferentes caminos:</p>
+        
+        <ul>
+          <li>Por el materialismo y consumismo (dinero, riquezas, motos, coches, etc.)</li>
+          <li>Por los placeres de la vida (drogas, sexo, etc.)</li>
+          <li>Por las ciencias ocultas (magia, cartas astrales, el espiritismo, brujería, etc.)</li>
+          <li>En las respuestas y descubrimientos de las ciencias empíricas</li>
+          <li>En el voluntariado y la ayuda a los demás</li>
+          <li>En la religión y sus distintas manifestaciones</li>
+          <li>Los Cristianos buscan el sentido de su vida viviendo como Jesucristo nos enseña en el evangelio</li>
+          <li>Y otros... no encuentran el sentido a su vida y决定 terminar con su vida</li>
+        </ul>
+
+        <h3>2. El Panorama de Respuestas</h3>
+        <p>Las respuestas al sentido de la vida se pueden agrupar en tres grandes grupos:</p>
+        
+        <h4>2.1. Las ciencias empíricas y los humanismos</h4>
+        <p>Las ciencias empíricas buscan responder a las preguntas sobre el sentido de la vida solamente en la razón humana, es decir en la ciencia, en lo que se puede comprobar científicamente. La característica principal de estas ciencias es que buscan la respuesta a las preguntas últimas dentro de los límites de la razón.</p>
+        <p>El problema es que las ciencias a veces se basan en hipótesis que no están comprobadas científicamente. La gran paradoja de hoy día es que cuanto más desarrollada están las ciencias, la mayoría de personas buscan su sentido de la vida no en las ciencias sino en las ciencias ocultas o en las religiones.</p>
+
+        <h4>2.2. Las ciencias occultas y la magia</h4>
+        <p>El interés de las personas por conocer su futuro y encontrar respuestas a sus dudas es muy antiguo. Las ciencias occultas aceptan una fuerza o algo superior a este mundo pero no lo consideran como personal. Hoy día han resurgido con fuerza porque muchas personas buscan sus respuestas en lo oculto.</p>
+        <p>Muchos científicos las califican como "Pseudo-Ciencias" porque dan como ciertos unos fenómenos que no se pueden comprobar científicamente.</p>
+
+        <h4>2.3. Las Religiones</h4>
+        <p>Todas las religiones históricas han cumplido la función de dar sentido a la vida y responder a las preguntas últimas recurriendo a un Ser trascendente y Absoluto.</p>
+
+        <h3>3. El Ateísmo y los Humanismos</h3>
+        
+        <h4>3.1. ¿Qué es el ateísmo?</h4>
+        <p>La palabra Ateísmo viene del griego "A-Theos" que significa sin Dios. Dentro del ateísmo distinguimos tres clases:</p>
+        <ul>
+          <li><strong>Ateísmo:</strong> Los que no creen en Dios y tratan de demostrar que Dios no existe</li>
+          <li><strong>Ateísmo práctico o indiferentes:</strong> Los que viven su vida habitualmente como si Dios no existiera</li>
+          <li><strong>Agnósticos:</strong> Los que no se plantean las cuestiones religiosas porque no se pueden conocer ni demostrar científicamente</li>
+        </ul>
+
+        <h4>3.2. Causas del aumento de la increencia</h4>
+        <ul>
+          <li>El rápido desarrollo de las ciencias</li>
+          <li>El progreso de la técnica</li>
+          <li>El cambio social (de sociedad agrícola a industrial)</li>
+          <li>La sociedad del bienestar y consumo</li>
+          <li>La mala imagen de Dios enseñada por muchos cristianos</li>
+          <li>Una religión sociológica</li>
+          <li>La secularización de la sociedad</li>
+          <li>La irrelevancia de Dios y de la fe</li>
+          <li>El problema del mal</li>
+        </ul>
+
+        <h4>3.3. Ludwig Feuerbach - El padre del ateísmo moderno</h4>
+        <p>Para Feuerbach Dios es sólo una idea, una proyección que han hecho las personas. "El hombre crea a Dios a su imagen". Por tanto no es Dios quien crea al hombre sino al revés.</p>
+        <p>La conclusión para Feuerbach es que el hombre religioso es un ser alienado.</p>
+
+        <h4>3.4. El Comunismo de Karl Marx</h4>
+        <p>Para Marx, "la religión es el opio del pueblo", "es el suspiro de la criatura oprimida". Es una especie de droga suministrada al pueblo por las clases dominantes para consolar las penas de los proletarios.</p>
+        <p>El sentido de la vida para Marx es establecer una sociedad sin propiedad privada ni clases sociales.</p>
+
+        <h4>3.5. El Nihilismo de Friedrich Nietzsche</h4>
+        <p>Nietzsche parte de un dato básico: La propia vivencia de la experiencia de la vida que suele ser de insatisfacción.</p>
+        <p>Nietzsche proclama la muerte de Dios y propone el Superhombre. El sentido de la vida para Nietzsche es darle la vuelta a la moral de esclavos, olvidarse de Dios y caminar hacia el superhombre.</p>
+        
+        <blockquote style="border-left: 4px solid #d4af37; padding: 1rem; margin: 1rem 0;">
+          <p><em>"No todo el mundo debe ser cristal - dice la filosofía -; pero todo el mundo debe serhard. Y yo no he dicho nunca que fueran ustedes suficientemente duros."</em></p>
+        </blockquote>
+
+        <h4>3.6. El Ateísmo de Protesta: El Escándalo del Mal</h4>
+        <p>El problema del mal se ha convertido en uno de los mayores obstáculos de hoy día para la fe. Mucha gente es atea porque no puede conciliar la existencia de Dios y su bondad, con la maldad que hay en el mundo.</p>
+        
+        <p>Esta pregunta ya se la plantean los antiguos filósofos epicúreos:</p>
+        <blockquote style="background: rgba(255, 107, 122, 0.1); border-left: 4px solid #ff6b7a; padding: 1rem; margin: 1rem 0;">
+          <p><em>"O Dios quiere evitar el mal pero no puede, y entonces no es todopoderoso; o puede y no quiere, y entonces no es bueno; pero tanto en un caso como en otro, no sería Dios".</em></p>
+        </blockquote>
+
+        <h4>3.7. El Agnosticismo</h4>
+        <p>El pensamiento agnóstico se basa fundamentalmente en esta ecuación:</p>
+        <ol>
+          <li>Sólo es real = Lo que se conoce</li>
+          <li>Sóamente se conoce = Lo que se puede comprobar empíricamente</li>
+          <li>Todo lo que excede la razón = Es irracional</li>
+        </ol>
+        <p>Por tanto: Realidad = Lo que se puede comprobar científicamente.</p>
+        <p>El sentido de la vida para los agnósticos es disfrutar al máximo en este mundo e intentar construir un mundo mejor pero aquí en la tierra.</p>
+
+        <h4>3.8. La Cultura de la Increencia</h4>
+        <p>Todos los cambios de ideas en materia religiosa han generado una auténtica cultura de la increencia. Esta cultura se caracteriza por:</p>
+        <ul>
+          <li>Creer en Dios está pasado de moda</li>
+          <li>El centro de referencia es el hombre como único absoluto</li>
+          <li>El sentido de la vida es "vivir a tope el momento presente" (Carpe Diem)</li>
+          <li>Cada uno hace lo que le da la gana</li>
+          <li>Lo bueno es lo que la mayoría cree que es bueno</li>
+        </ul>
+
+        <h3>4. La Respuesta de las Ciencias Ocultas</h3>
+        
+        <h4>4.1. Constatación de un hecho: el aumento de las ciencias ocultas</h4>
+        <p>En un mundo tan científico y tecnológico, paradójicamente ocurre justo lo contrario. Se intenta penetrar en la oscuridad del destino humano a través de:</p>
+        <ul>
+          <li>Las artes adivinatorias (quiromancia, tarot, cartas astrales)</li>
+          <li>Los horóscopos</li>
+          <li>Los curanderos</li>
+          <li>Los espiritistas</li>
+          <li>Los ovnis y seres de otros mundos</li>
+        </ul>
+
+        <h4>4.2. Esquema de las ciencias occultas</h4>
+        <ul>
+          <li><strong>Paranormal:</strong> Poderes extrasensoriales, telepatía, clarividencia</li>
+          <li><strong>Más allá del tiempo:</strong> Adivinación, astrología, horóscopos</li>
+          <li><strong>Más allá de lo racional:</strong> Superstición, magia, espiritismo, curanderos</li>
+          <li><strong>Más allá de la conciencia:</strong> Meditación trascendental, posesiones diabólicas</li>
+        </ul>
+
+        <h4>4.3. El Cristianismo desconfía de las ciencias occultas</h4>
+        <p>La Biblia tiene palabras muy severas sobre las ciencias occultas. En Dt 18,10-11 dice: "No debe haber en ti quien practique adivinación, hechicerías o magia, ningún encantador ni consultor de espectros, ni adivino ni evocador de muertos".</p>
+        <p>El cristianismo no puede aceptar la idea de que los astros influyen en las personas porque esto significaría que las personas no son libres.</p>
+
+        <h3>5. La New Age (La Nueva Era)</h3>
+        
+        <h4>5.1. ¿Por qué se llama New Age?</h4>
+        <p>Se llama Nueva Era porque estamos a punto de presenciar el paso del sol del signo Piscis al de Acuario. Para los integrantes de este movimiento han fracasado las visiones racionalistas y materialistas del pasado.</p>
+
+        <h4>5.2. Características principales de la Nueva Era</h4>
+        <ul>
+          <li>Gran desconfianza hacia el progreso</li>
+          <li>Preocupación por la ecología</li>
+          <li>Conciben a Dios como una fuerza o energía presente dentro del mundo (Panteísmo)</li>
+          <li>Creen en la reencarnación</li>
+          <li>Practican meditación, yoga, vegetarianismo</li>
+          <li>La Nueva Era elimina la salvación que hizo Cristo</li>
+        </ul>
+
+        <h4>5.3. ¿Por qué han aumentado las ciencias occultas?</h4>
+        <ul>
+          <li>El hombre moderno busca sentido a su vida</li>
+          <li>La ciencia no hace felices a las personas</li>
+          <li>El hombre siempre necesita creer en algo</li>
+          <li>La gente no tiene tiempo para reflexionar sobre cuestiones existenciales</li>
+        </ul>
+
+        <h3>Conclusión</h3>
+        <p>La persona humana necesita de la religión. La religión es precisamente el esfuerzo que hace el hombre por encontrar el sentido de su vida en Dios. Como dijo el evangelista Mateo en Mt 4,4: <em>"No sólo de pan vive el hombre"</em>.</p>
+        <p>Las ciencias y la tecnología nunca podrán dar la felicidad a las personas, el ateísmo tampoco, en cambio la Religión sí que llena de sentido la vida de las personas religiosas.</p>
+      </div>
+    </section>
+
+    <!-- Cristología - Estructura del Libro -->
+    <section class="section" id="estructura-libro-cristologia">
+      <h2>Cristología: Estructura General del Libro</h2>
+      <div class="content-box">
+        <h3>Prólogo</h3>
+        <p>El autor explica su intención de escribir teología de forma accesible para personas sencillas, respondiendo a la petición de sus padres. Reconoce la dificultad de equilibrar profundidad teológica con lenguaje claro, y presenta este libro como un intento más ligero y sencillo sobre cristología.</p>
+
+        <h3>I. Hablar sobre Jesucristo y sobre la vida cristiana</h3>
+        <ul>
+          <li><strong>Jesús de Nazaret, siempre actual:</strong> Reflexión sobre la vigencia de Jesús como personaje histórico que suscita interés en creyentes y no creyentes.</li>
+          <li><strong>...Y la vida cristiana:</strong> Qué significa ser cristiano hoy, buscando lo esencial frente a prácticas secundarias.</li>
+          <li><strong>Y el mal y el sufrimiento de los inocentes:</strong> El problema del mal como desafío para la fe y la respuesta desde la Cruz.</li>
+          <li><strong>Que Él ilumine nuestras vidas:</strong> La persona de Cristo como luz para todos los misterios de la fe.</li>
+        </ul>
+
+        <h3>II. ¿Quién eres tú, Jesús de Nazaret?</h3>
+        <ul>
+          <li><strong>Aquel hombre llamado Jesús de Nazaret:</strong> Existencia histórica de Jesús y fuentes para conocerlo.</li>
+          <li><strong>¿Qué dijeron los no cristianos sobre Jesús?:</strong> Testimonios romanos (Tácito, Suetonio, Plinio) y judíos (Flavio Josefo).</li>
+          <li><strong>¿Y qué dicen los cristianos?:</strong> La fe cristiana y la relación entre el Jesús histórico y el Cristo de la fe.</li>
+          <li><strong>¿Quién fue Jesús de Nazaret?:</strong> Síntesis de datos históricos: origen galileo, ministerio público, predicación del Reino, muerte y resurrección.</li>
+        </ul>
+
+        <h3>III. El camino hacia la fe cristiana</h3>
+        <ul>
+          <li><strong>Creemos en Jesucristo:</strong> La fe en Cristo como centro del cristianismo.</li>
+          <li><strong>El camino hacia la fe cristiana:</strong> Proceso personal y comunitario de llegada a la fe.</li>
+          <li><strong>El camino de los primeros cristianos:</strong> De la fe en el Jesús terreno a la fe pascual en el Resucitado.</li>
+          <li><strong>Nuestro camino hacia la fe cristiana:</strong> Desafíos actuales para creer en el siglo XXI.</li>
+        </ul>
+
+        <h3>IV. La resurrección de Cristo y los orígenes de la fe cristiana</h3>
+        <ul>
+          <li><strong>La fe cristiana, ¿en qué consiste?:</strong> Dimensión personal y objetiva de la fe.</li>
+          <li><strong>Si Cristo no ha resucitado, vana es nuestra fe:</strong> Importancia central de la resurrección.</li>
+          <li><strong>¿Importa hoy algo la resurrección?:</strong> Significado actual del misterio pascual.</li>
+          <li><strong>Cristo ha resucitado:</strong> Confesiones primitivas de fe en la resurrección.</li>
+          <li><strong>El sepulcro está vacío:</strong> Significado teológico del relato del sepulcro vacío.</li>
+          <li><strong>Se nos ha appeared:</strong> Los relatos de apariciones como catequesis pascual.</li>
+          <li><strong>El sentido de la resurrección de Jesús:</strong> Revelación de Dios, confirmación de Jesús, valor salvador.</li>
+          <li><strong>¿Y qué dicen nuestros contemporáneos?:</strong> La resurrección en la cultura actual.</li>
+        </ul>
+
+        <h3>V. Los nombres de Cristo o sus títulos</h3>
+        <ul>
+          <li><strong>¿Cómo nombrar a este hombre?:</strong> Importancia de los títulos cristológicos.</li>
+          <li><strong>Un profeta y más que un profeta:</strong> Jesús como profeta escatológico.</li>
+          <li><strong>Es el Siervo Paciente de Yahveh:</strong> La figura del Siervo sufriente de Isaías aplicada a Jesús.</li>
+          <li><strong>Él es el Mesías, el Señor:</strong> Significado de los títulos mesiánicos.</li>
+          <li><strong>Es el Sumo Sacerdote:</strong> Cristo como mediador entre Dios y los hombres.</li>
+          <li><strong>Es el Hijo de Dios:</strong> La filiación divina de Jesús.</li>
+          <li><strong>Él es el Hijo del hombre:</strong> Significado de este título enigmático.</li>
+          <li><strong>Él es la Palabra de Dios:</strong> El Logos encarnado como revelación definitiva.</li>
+        </ul>
+
+        <h3>VI. Dios y hombre verdadero (Divino y humano a la vez)</h3>
+        <ul>
+          <li><strong>Esa es la cuestión:</strong> El misterio central de la fe cristiana.</li>
+          <li><strong>¿Otro Dios?:</strong> Desafíos para conciliar la divinidad de Jesús con el monoteísmo judío.</li>
+          <li><strong>La divinidad de Cristo y su relación con Dios:</strong> Debates cristológicos de los primeros siglos (Nicea, Arrio).</li>
+          <li><strong>La humanidad de Cristo y su relación con nosotros:</strong> Defensa de la verdadera humanidad de Jesús.</li>
+          <li><strong>¿Pero son dos personas o es una persona?:</strong> La unidad de persona en Cristo (Calcedonia).</li>
+          <li><strong>¿Jesús, será humano con todas las consecuencias?:</strong> La voluntad humana de Cristo.</li>
+          <li><strong>¿No tendremos que revisar nuestras imágenes de Dios?:</strong> Implicaciones para entender el misterio de Cristo.</li>
+        </ul>
+
+        <h3>VII. En Jesucristo encontramos salvación</h3>
+        <ul>
+          <li><strong>¿Por qué nos interesa Jesucristo?:</strong> La búsqueda de salvación como motivación fundamental.</li>
+          <li><strong>Dinos, Jesús: ¿qué es la salvación, qué es la felicidad?:</strong> Definición cristiana de salvación.</li>
+          <li><strong>¿Cuándo y cómo nos salvó?:</strong> Diversas interpretaciones sobre el momento de la salvación.</li>
+          <li><strong>¿Pero, por qué ha muerto así?:</strong> Sentido de la muerte de Jesús (profeta-mártir, justo paciente, expiación).</li>
+          <li><strong>¿No tenía Dios otra forma menos dolorosa de salvarnos?:</strong> Reflexiones sobre la necesidad de la encarnación (Anselmo, Tomás de Aquino, Lutero, Trento).</li>
+          <li><strong>Nombres para hablar de la "salvación cristiana":</strong> Sacrificio expiatorio, redención, satisfacción, sustitución.</li>
+        </ul>
+
+        <h3>VIII. Jesús, ¿cómo es Dios?</h3>
+        <ul>
+          <li><strong>A Dios nadie lo ha visto nunca:</strong> El conocimiento de Dios como misterio.</li>
+          <li><strong>Jesús nos lo ha dado a conocer:</strong> Cristo como revelador del Padre.</li>
+          <li><strong>Un Dios en forma humana:</strong> La encarnación como humanización de Dios.</li>
+          <li><strong>El escándalo de un Dios crucificado:</strong> La Cruz como revelación paradójica de Dios.</li>
+          <li><strong>El Dios que resucitó a Jesús:</strong> Rasgos del Dios de la resurrección.</li>
+          <li><strong>Seguir buscando a Dios con humildad:</strong> Conocimiento de Dios en fe y esperanza.</li>
+        </ul>
+
+        <h3>IX. Les hablaba del Reino de Dios</h3>
+        <ul>
+          <li><strong>¿Qué hemos de hacer, hermanos?:</strong> La pregunta fundamental tras escuchar el Evangelio.</li>
+          <li><strong>El Evangelio de Jesús y el Reino de Dios:</strong> Relación entre Evangelio y Reino.</li>
+          <li><strong>¿Qué se propuso Jesús?:</strong> La "pretensión" de Jesús y su propuesta de vida.</li>
+          <li><strong>Signos de la presencia del Reino de Dios:</strong> Milagros, perdón, acogida a pecadores, banquetes.</li>
+          <li><strong>Jesús predicaba el Reino de Dios:</strong> Las parábolas y bienaventuranzas como revelación del Reino.</li>
+          <li><strong>¿Significa algo el Reino de Dios para el hombre y la mujer de hoy?:</strong> Actualidad del mensaje del Reino.</li>
+        </ul>
+
+        <h3>X. La vida cristiana y el seguimiento de Jesús</h3>
+        <ul>
+          <li><strong>Ser cristiano: seguir a Jesús:</strong> El seguimiento como esencia de la vida cristiana.</li>
+          <li><strong>¿Se nos ha olvidado el seguimiento de Jesús?:</strong> Recuperación del ideal evangélico.</li>
+          <li><strong>Esta historia comenzó en Galilea:</strong> Galilea como símbolo del seguimiento.</li>
+          <li><strong>Jesús llama a su seguimiento:</strong> Los relatos de vocación y la iniciativa de Cristo.</li>
+          <li><strong>La vocación cristiana y las renuncias:</strong> Sentido evangélico de las renuncias.</li>
+          <li><strong>La llamada es para todas las personas:</strong> Universalidad de la vocación cristiana.</li>
+          <li><strong>Seguir a Jesús antes de Pascua y después de Pascua:</strong> Dos etapas del discipulado.</li>
+          <li><strong>¿Seguir o imitar a Jesús?:</strong> Matices entre seguimiento e imitación.</li>
+          <li><strong>Seguir a Jesucristo hoy:</strong> Actualización del seguimiento en el presente.</li>
+        </ul>
+
+        <h3>XI. La fe cristiana</h3>
+        <ul>
+          <li><strong>La razón última de la vida cristiana:</strong> La fe como fundamento de la vida cristiana.</li>
+          <li><strong>El Reino de Dios está ya presente:</strong> Carácter presente y futuro del Reino.</li>
+          <li><strong>Invitación a la fe:</strong> Llamada a creer en el Evangelio.</li>
+          <li><strong>¿Se necesitan los milagros para creer?:</strong> Relación entre fe y signos.</li>
+          <li><strong>"El que inicia y consuma nuestra fe":</strong> Jesús como modelo y objeto de la fe.</li>
+          <li><strong>La fe de Jesús y la fe de los cristianos:</strong> La fe de Cristo como fundamento de la nuestra.</li>
+          <li><strong>Creer en Jesucristo:</strong> Contenido esencial de la fe cristiana.</li>
+          <li><strong>¿Por qué tenéis tan poca fe?:</strong> Desafíos para fortalecer la fe hoy.</li>
+        </ul>
+
+        <h3>XII. La esperanza cristiana</h3>
+        <ul>
+          <li><strong>Esperar es muy cristiano:</strong> La esperanza como virtud teologal.</li>
+          <li><strong>La esperanza humana es necesaria, pero frágil:</strong> Vulnerabilidad y necesidad de la esperanza.</li>
+          <li><strong>"Venga a nosotros tu Reino":</strong> El carácter futuro del Reino como objeto de esperanza.</li>
+          <li><strong>La esperanza de Jesús:</strong> La esperanza de Cristo injertada en la de Israel.</li>
+          <li><strong>¿Cómo ha de ser la esperanza cristiana?:</strong> Dimensión corporal, comunitaria y escatológica.</li>
+          <li><strong>¿Esperanza pasiva o comprometida?:</strong> Esperanza activa y responsable.</li>
+          <li><strong>¿Qué esperan los cristianos del más allá?:</strong> Muerte, juicio, cielo e infierno desde la fe.</li>
+          <li><strong>La esperanza cristiana, don y responsabilidad:</strong> Avivar la esperanza en la comunidad.</li>
+        </ul>
+
+        <h3>XIII. La moral cristiana: amor y justicia</h3>
+        <ul>
+          <li><strong>La moral cristiana o evangélica:</strong> Relación entre fe y moral.</li>
+          <li><strong>La moral de Jesús:</strong> Crítica al sistema de pureza y propuesta del amor.</li>
+          <li><strong>¿Moral de la ley o del amor?:</strong> Primacía del amor sobre el legalismo.</li>
+          <li><strong>La justicia bíblica y la justicia del Reino de Dios:</strong> Justicia que incluye misericordia.</li>
+          <li><strong>El mandamiento principal: el amor:</strong> Armonización del amor a Dios y al prójimo.</li>
+          <li><strong>¿Se puede gobernar el mundo a base de amor, perdón y gratuidad?:</strong> Realismo de la ética evangélica.</li>
+        </ul>
+
+        <h3>XIV. Celebrar la vida</h3>
+        <ul>
+          <li><strong>La celebración en la vida cristiana:</strong> Importancia de la liturgia.</li>
+          <li><strong>Celebrar y festejar la vida:</strong> Función antropológica de la fiesta.</li>
+          <li><strong>Evangelio de la alegría y de la fiesta:</strong> Jesús como profeta de la alegría.</li>
+          <li><strong>Comencemos por la oración:</strong> La oración como alma del culto.</li>
+          <li><strong>A Jesús le gustaba celebrar:</strong> Banquetes, amistad y culto en la vida de Jesús.</li>
+          <li><strong>El bautismo de Jesús y el bautismo cristiano:</strong> Significado del sacramento de iniciación.</li>
+          <li><strong>La cena de Jesús y la eucaristía de los cristianos:</strong> Memorial de la entrega de Cristo.</li>
+          <li><strong>La celebración y la fiesta en la vida cristiana:</strong> Relación entre liturgia y vida.</li>
+        </ul>
+
+        <h3>Meditación Final</h3>
+        <p>Invitación a continuar la búsqueda de Cristo en silencio orante, reconociendo el misterio inagotable y la responsabilidad de ser testigos del Resucitado.</p>
+
+        <h3>Temas Centrales del Libro</h3>
+        <ul>
+          <li><strong>Cristología accesible:</strong> Presentar el misterio de Cristo en lenguaje comprensible.</li>
+          <li><strong>Fe y razón:</strong> Armonizar la confesión de fe con la búsqueda intelectual.</li>
+          <li><strong>Seguimiento de Jesús:</strong> La vida cristiana como respuesta a la llamada de Cristo.</li>
+          <li><strong>Reino de Dios:</strong> Centralidad del mensaje de Jesús sobre la soberanía de Dios.</li>
+          <li><strong>Salvación:</strong> Comprensión de la obra redentora de Cristo.</li>
+          <li><strong>Esperanza y moral:</strong> Vivir la fe cristiana con compromiso histórico.</li>
+          <li><strong>Celebración litúrgica:</strong> La fiesta como expresión de la fe.</li>
+        </ul>
+
+        <hr style="border: none; border-top: 1px solid rgba(212,175,55,0.3); margin: 2rem 0;">
+
+        <h3 style="color: #4cc3ff; margin-top: 2rem;">CONTENIDO AMPLIADO Y INTENSIFICADO</h3>
+
+        <h4>I. JESUCRISTO Y LA VIDA CRISTIANA</h4>
+        <p><strong>Jesús de Nazaret, siempre actual:</strong> Después de más de 2000 años, Jesús de Nazaret sigue siendo una figura que genera interés universal. No solo los creyentes, sino también historiadores, filósofos, artistas y personas de todas las culturas se sienten atraídas por este judío de Galilea. Su mensaje trasciende fronteras y épocas, demostrando una vigencia que ninguna otra figura histórica ha alcanzado.</p>
+        
+        <p><strong>La vida cristiana hoy:</strong> Ser cristiano en el siglo XXI significa seguir a Jesús de Nazaret, vivir según sus teachings y reproducir en nuestra vida los valores del Reino: amor, justicia, mercy, perdón, solidaridad. La vida cristiana no es un conjunto de prácticas externas, sino una relación personal con Cristo que transforma toda la existencia.</p>
+        
+        <p><strong>El mal y el sufrimiento de los inocentes:</strong> Una de las objeciones más frecuentes contra la fe es el problema del mal. ¿Cómo puede existir un Dios bueno y todopoderoso si los inocentes sufren? La respuesta cristiana no está en explicar el mal, sino en mostrar que Cristo, en su Cruz, ha entrado en el sufrimiento humano y lo ha transformado. El sufrimiento no tiene la última palabra: la resurrección es la victoria final.</p>
+
+        <h4>II. ¿QUIÉN ES JESUCRISTO?</h4>
+        <p><strong>Fuentes para conocer a Jesús:</strong></p>
+        <ul>
+          <li><strong>Fuentes cristianas:</strong> Los cuatro Evangelios (Mateo, Marcos, Lucas, Juan), los Hechos de los Apóstoles, las Cartas paulinas y demás Escritos neotestamentarios.</li>
+          <li><strong>Fuentes romanas:</strong> Tácito menciona a Cristo en sus Anales (año 64 d.C.), Suetonio menciona a "Cristo" en su obra sobre Claudio, Plinio el Younger testify about los cristianos en Bitinia.</li>
+          <li><strong>Fuentes judías:</strong> Flavio Josefo menciona a Jesús en sus Antigüedades Judías (Testimonium Flavianum).</li>
+        </ul>
+
+        <p><strong>El Jesús histórico y el Cristo de la fe:</strong> Existe una distinción entre el Jesús que vivió históricamente en Palestina (con su mensaje, healings, relaciones) y el Cristo que los cristianos confess tras la resurrección. Ambos son el mismo Jesús, pero la fe pascual descubrió en él una dimensión que no era evidente antes de Pascua.</p>
+
+        <h4>III. EL CAMINO HACIA LA FE</h4>
+        <p><strong>El proceso de fe:</strong> La fe no es un acto instantáneo, sino un proceso que incluye:</p>
+        <ul>
+          <li><strong>Escucha:</strong> Reception del anuncio del Evangelio</li>
+          <li><strong>Reflexión:</strong> Examination de las razones para creer</li>
+          <li><strong>Experiencia:</strong> Encounter personal con Cristo</li>
+          <li><strong>Comunidad:</strong> Incorporación a la Iglesia</li>
+          <li><strong>Testimonio:</strong> Public profession de la fe</li>
+        </ul>
+
+        <h4>IV. LA RESURRECCIÓN</h4>
+        <p><strong>Centralidad de la resurrección:</strong> La resurrección de Jesús es el fundamento de la fe cristiana. San Pablo afirma: "Si Cristo no ha resucitado, vana es nuestra fe" (1 Cor 15,17). La resurrección no es un regreso a la vida anterior (como Lázaro), sino una nueva forma de existencia, gloriosa y eterna.</p>
+        
+        <p><strong>El sepulcro vacío:</strong> El hecho de que el sepulcro estuviera vacío no prueba por sí solo la resurrección, pero es un signo que acompaña a la fe. Los evangelios recount que las mujeres fueron las primeras en descubrir el sepulcro vacío.</p>
+        
+        <p><strong>Las apariciones:</strong> Jesús se apareció a María Magdalena, a los discípulos, a los dos de Emaús, a Tomás y a más de quinientos hermanos (1 Cor 15,6). Estas apariciones no fueron visiones, sino encounters reales donde el Resuciado comía, mostraba sus heridas, hablaba.</p>
+
+        <h4>V. LOS NOMBRES DE CRISTO</h4>
+        <p><strong>Títulos cristológicos principales:</strong></p>
+        <ul>
+          <li><strong>Mesías (Cristo):</strong> Ungido por Dios, esperado por Israel</li>
+          <li><strong>Hijo de Dios:</strong> Relación única con el Padre</li>
+          <li><strong>Hijo del hombre:</strong> Figura apocalíptica de Daniel, indica地位的 elevado</li>
+          <li><strong>Señor:</strong> Título de divinidad en el AT, aplicado a Cristo</li>
+          <li><strong>Profeta:</strong> Like Moses, pero mayor</li>
+          <li><strong>Sacerdote:</strong> Mediador entre Dios y los hombres</li>
+          <li><strong>Palabra (Logos):</strong> Revelación definitiva de Dios (Juan)</li>
+        </ul>
+
+        <h4>VI. DIOS Y HOMBRE VERDADERO</h4>
+        <p><strong>El misterio de la Encarnación:</strong> Cristo es verdadero Dios y verdadero hombre. Esta verdad, definida en el Concilio de Calcedonia (451 d.C.), es el corazón del misterio cristiano. No confundimos las naturalezas (divina y humana) ni las separamos (una persona, dos naturalezas).</p>
+        
+        <p><strong>Debates cristológicos:</strong></p>
+        <ul>
+          <li><strong>Arrio (s. IV):</strong> Sostenía que el Hijo era criatura, no divino</li>
+          <li><strong>Nicea (325 d.C.):</strong> Declaró que el Hijo es "consustancial al Padre" (homoousios)</li>
+          <li><strong>Calcedonia (451 d.C.):</strong> Definió las dos naturalezas en una persona</li>
+        </ul>
+
+        <h4>VII. LA SALVACIÓN</h4>
+        <p><strong>¿Qué es la salvación?:</strong> La salvación no es solo perdón de pecados, sino comunión plena con Dios y con los demás. Es liberación del mal, del pecado, de la muerte. Es participación en la vida trinitaria.</p>
+        
+        <p><strong>¿Cómo nos salvó Cristo?:</strong> Por su vida, muerte y resurrección. Cristo asumió nuestra naturaleza humana y la transformó desde dentro. Su muerte fue sacrificio de expiación, satisfacción, redención.</p>
+        
+        <p><strong>Teologías de la salvación:</strong></p>
+        <ul>
+          <li><strong>Anselmo:</strong> Satisfacción (Cristo paga la deuda del pecado)</li>
+          <li><strong>Tomás de Aquino:</strong> Mério (Cristo merita la gracia)</li>
+          <li><strong>Lutero:</strong> Justificación por la fe</li>
+          <li><strong>Concilio de Trento:</strong> Justificación como transformación</li>
+        </ul>
+
+        <h4>VIII. ¿CÓMO ES DIOS?</h4>
+        <p><strong>Dios nos revela su naturaleza:</strong> En Cristo, Dios se hace visible. Ver a Jesús es ver al Padre (Jn 14,9). La Cruz es la máxima revelación del amor de Dios: "Dios demuestra su amor hacia nosotros en esto: que siendo aún pecadores, Cristo murió por nosotros" (Rom 5,8).</p>
+        
+        <p><strong>Rasgos del Dios cristiano:</strong></p>
+        <ul>
+          <li><strong>Amor:</strong> Dios es amor (1 Jn 4,8)</li>
+          <li><strong>Padre:</strong> Dios como Padre de jesús y nuestro</li>
+          <li><strong>Trinidad:</strong> Tres personas un solo Dios</li>
+          <li><strong>Misericordia:</strong> Dios que perdona y acog</li>
+        </ul>
+
+        <h4>IX. EL REINO DE DIOS</h4>
+        <p><strong>El centro del mensaje de Jesús:</strong> "El tiempo se ha cumplido y el Reino de Dios está cerca" (Mc 1,15). El Reino no es un lugar, sino el reinado de Dios en los corazones y en el mundo.</p>
+        
+        <p><strong>Las parábolas:</strong> Jesús teach about el Reino through parábolas: el sembrador, la semilla que crece sola, la levadura, el tesoro escondido, la perla valiosa, la red.</p>
+        
+        <p><strong>Las bienaventuranzas:</strong> Mt 5,3-10 presenta las características de los ciudadanos del Reino: pobres de espíritu, mansos, misericordiosos, perseguidos...</p>
+
+        <h4>X. EL SEGUIMIENTO DE JESÚS</h4>
+        <p><strong>Ser discípulo:</strong> Seguir a Jesús implica dejar todo (Mc 1,18), tomar la cruz (Mc 8,34), amar hasta el extremo (Jn 13,1).</p>
+        
+        <p><strong>Las condiciones del seguimiento:</strong></p>
+        <ul>
+          <li>Fe y confianza en Jesús</li>
+          <li>Negarse a sí mismo</li>
+          <li>Tomar la cruz daily</li>
+          <li>Guardar su palabra</li>
+          <li>Dar testimonio</li>
+        </ul>
+
+        <h4>XI. LA FE CRISTIANA</h4>
+        <p><strong>Naturaleza de la fe:</strong> La fe es don de Dios y acto libre del hombre. Incluye assent (creer), fiducia (confiar), y affectus (amar).</p>
+        
+        <p><strong>El objeto de la fe:</strong> No es solo creer en Dios, sino creer en Jesucristo, aceptar su persona, su mensaje, su obra.</p>
+        
+        <p><strong>Fe y milagros:</strong> Los milagros son signos que acreditan el mensaje de Jesús, pero no sustituyen la fe. La fe verdadero no exige milagros (Jn 4,48).</p>
+
+        <h4>XII. LA ESPERANZA CRISTIANA</h4>
+        <p><strong>La esperanza como virtue:</strong> La esperanza cristiana es diferente de la esperanza humana. No es desear, sino confiar en las promesas de Dios.</p>
+        
+        <p><strong>El objeto de la esperanza:</strong> La vida eterna, la resurrección, la gloria, el cielo. "Si hemos muerto con él, viviremos con él" (2 Tim 2,11).</p>
+        
+        <p><strong>La escatología:</strong> La fe cristiana mira al futuro: segunda venida, juicio final, cielo, infierno, purgatorio.</p>
+
+        <h4>XIII. LA MORAL CRISTIANA</h4>
+        <p><strong>El amor como norma:</strong> "Amarás al Señor tu Dios con todo tu corazón... y a tu prójimo como a ti mismo" (Mt 22,37-40). El amor es el cumplimiento de la Ley.</p>
+        
+        <p><strong>Las obras de misericordia:</strong> Corporal: alimentar, dar de beber, vestir,redimir, acoger, visitar, enterrar. Espirituales: informar, enseñar, corregir, consolar, perdonar, sufrir.</p>
+
+        <h4>XIV. CELEBRAR LA VIDA</h4>
+        <p><strong>La liturgia:</strong> La Iglesia celebrate the misterio de Cristo, especially en la Eucaristía, memorial de la Cena del Señor y sacrificio de la Cruz.</p>
+        
+        <p><strong>La oración:</strong> Jesús teach sus discípulos a orar con el Padrenuestro. La oración es diálogo con Dios, alabanza, petición, acción de gracias.</p>
+        
+        <p><strong>Los sacramentos:</strong> Medios de gracia instituidos por Cristo: Bautismo, Confirmación, Eucaristía, Penitencia, Unción de Enfermos, Orden Sacerdotal, Matrimonio.</p>
+
+        <h3 style="color: #4cc3ff;">CONCLUSIÓN</h3>
+        <p>La cristología nos lleva a encuentro personal con Jesús de Nazaret, el Hijo de Dios hecho hombre, que murió por nosotros y resucitó. Conocer a Cristo no es solo saber sobre él, sino encontrarlo, seguirlo, amarlo. "Ya no vivo yo, sino que Cristo vive en mí" (Gal 2,20).</p>
+      </div>
+    </section>
+
+    <!-- Vocación y Servicio -->
+    <section class="section" id="vocacion-servicio">
+      <h2>UD 3: Vocación y Servicio</h2>
+      <div class="content-box">
+        <h3>1. La vida en Cristo</h3>
+        <p>Fue en Antioquía, en el siglo I d.C., donde comenzaron a llamar cristianos a los seguidores de Jesús. Ser cristiano significa vivir en él y por él, con una relación de amistad y amor.</p>
+        
+        <p><strong>"Quien recibe el Bautismo es sumergido en la muerte de Cristo y resucita con él como una nueva criatura" (Compendio del CEC, n. 252).</strong></p>
+        
+        <p>El amor crea un estrecho lazo que lleva a que dos personas se identifiquen. Por eso, acabados pareciéndonos a aquellos a los que más queremos. En la vida cristiana sucede algo similar: el cristiano que trata de imitar las actitudes profundas de Jesús, que reza diariamente, que ayuda a los demás, que se acerca a los sacramentos con frecuencia, se va pareciendo cada vez más a Él.</p>
+        
+        <h4>El mandamiento del amor</h4>
+        <p><strong>"Como yo os he amado, amaos también unos a otros" (Jn 13,34).</strong></p>
+        
+        <h3>2. Tipos de amor: Eros y Ágape</h3>
+        <p>Benedicto XVI, en su encíclica <em>Dios es amor</em> (Deus Caritas Est), explica los dos tipos de amor:</p>
+        
+        <ul>
+          <li><strong>Eros:</strong> Es el amor pasional, el deseo de quien busca satisfacer sus impulsos con las cosas y las personas. Es el amor cuyo único protagonista es el amante, pues busca su propio beneficio.</li>
+          <li><strong>Ágape:</strong> Es el amor de encuentro en el que prevalece la relación personal. Lo que se ama es la persona del otro y lo que se busca es su bien. Es un amor que tiende a la comunión y cuyo fruto es la alegría de quien se entrega a otra persona sin condiciones. Este tipo de amor se traduce al español por <strong>caridad</strong>.</li>
+        </ul>
+        
+        <p>El ideal del amor cristiano no consiste en anular el eros, sino en ordenar y orientar su fuerza desde el ágape.</p>
+
+        <h3>3. La vocación</h3>
+        <h4>La vida como don y tarea</h4>
+        <p>Muchas personas no saben por qué ni para qué vivir. Donde no hay sentido, objetivo ni esperanza, no hay proyecto de vida.</p>
+        
+        <p>Dios nos salva de este anonimato, pues en él los seres humanos descubrimos que nada es fruto del azar, que todo tiene una razón profunda en su amor eterno.</p>
+        
+        <p><strong>Cada vida humana es un don de Dios:</strong> Él nos eligió en Cristo antes de la fundación del mundo para que fuésemos santos e intachables ante él por el amor.</p>
+        
+        <h4>¿Qué es la vocación?</h4>
+        <p>En latín, <em>vocare</em> significa llamar. De esta palabra deriva el término <strong>vocación</strong>. Descubrir la propia vocación es uno de los retos más apasionantes de la vida.</p>
+        
+        <ul>
+          <li>¿Qué puedo hacer con mi vida?</li>
+          <li>¿Con quién quiero compartirlo todo?</li>
+          <li>¿Cómo me gustaría emplear los años de mi existencia?</li>
+        </ul>
+        
+        <p>El cristiano añade otro interrogante: <strong>¿Qué quiere Dios de mí?</strong></p>
+        
+        <h4>La vocación común: la santidad</h4>
+        <p>Todos los cristianos tenemos una vocación común: estamos llamados a la santidad. La palabra santo se corresponde con el término griego <em>makariotes</em>, que significa feliz.</p>
+        
+        <p><strong>"No sois vosotros los que me habeis elegido, soy yo quien os he elegido y os he destinado para que vayáis y deis fruto, y vuestro fruto permanezca" (Jn 15,16).</strong></p>
+
+        <h3>4. La respuesta a la vocación</h3>
+        <h4>Vivir el amor</h4>
+        <p>Según el Papa Francisco: <em>"Hay un criterio fundamental para vivir de verdad el amor: permanecer en el Señor y el Señor en nosotros. El primer criterio es amar con las obras, no con las palabras. Las palabras se las lleva el viento... El segundo criterio de lo concreto es que en el amor es más importante dar que recibir."</em></p>
+        
+        <h3>5. La entrega al prójimo</h3>
+        <h4>La fe mueve a la acción</h4>
+        <p>En la carta del apóstol Santiago encontramos la relación entre fe y obras: <em>"¿De qué le sirve, hermanos míos, a uno decir que tiene fe, si no tiene obras? ¿Acaso podrá salvarle esa fe? [...] Así también la fe, si no tiene obras, está realmente muerta" (Santiago 2,14-17).</em></p>
+        
+        <h4>El lavatorio de los pies</h4>
+        <p>En la Última Cena, Jesús hizo un gesto inaudito: el lavatorio de los pies. Esta era una tarea propia de siervos. El Hijo de Dios Altísimo se quitó la túnica, se agachó delante de cada discípulo y les lavó los pies. También a Judas, que lo traicionaba.</p>
+        
+        <p><strong>"Os he dado ejemplo para que lo que yo he hecho con vosotros, vosotros también lo hagáis para servir" (Jn 13,15).</strong></p>
+        
+        <p><em>"No ha venido a ser servido, sino a servir" (Mt 20,28).</em></p>
+
+        <h3>6. Bienaventurados los pobres de espíritu</h3>
+        <h4>La virtud de la pobreza</h4>
+        <p>En la enseñanza de Jesucristo, la pobreza es una virtud fundamental. La pobreza cristiana supone una actitud ante los bienes materiales consistente, no tanto en no poseéros como en desprenderse de ellos.</p>
+        
+        <p>Jesús nos alerta sobre la necesidad de vivir sobriamente y templadamente. Subraya con frecuencia que existe el riesgo de convertir el corazón hacia las cosas, olvidando así a Dios, pues <em>"ningún siervo puede servir a dos señores" (Lc 16,13)</em>.</p>
+        
+        <h4>La pregunta evangélica</h4>
+        <p><em>"¿De qué le serviría a un hombre ganar el mundo entero, si pierde su alma?" (Mt 16,26).</em></p>
+
+        <h3>Síntesis</h3>
+        <ul>
+          <li>La vida cristiana consiste en un nuevo modo de actuar, de vivir y de ser al estilo de Jesús, desde el mandamiento del Amor.</li>
+          <li>Cada hombre ha sido llamado por Dios para llevar a cabo una misión que dé sentido a su existencia.</li>
+          <li>La vocación cristiana tiene una dimensión comunitaria: la persona humana necesita la vida social.</li>
+          <li>La vida del cristiano debe tener siempre una dimensión de servicio, especialmente con los más necesitados.</li>
+          <li>La pobreza es una virtud fundamental que muestra una actitud de desprendimiento ante los bienes materiales.</li>
+        </ul>
+
+        <h3>Vocabulario</h3>
+        <ul>
+          <li><strong>Ágape:</strong> El amor de encuentro en el que prevalece la relación personal. Se traduce por caridad.</li>
+          <li><strong>Eros:</strong> El amor pasional que busca satisfacer los impulsos. El protagonista es el amante que busca su propio beneficio.</li>
+          <li><strong>Santidad:</strong> Condición de los hijos de Dios en virtud de la acción sobrenatural del Espíritu Santo.</li>
+          <li><strong>Vocación:</strong> Inclinación natural o inspiración con la que Dios llama a algún estado (matrimonio, religión, etc.).</li>
+          <li><strong>Virtud:</strong> Disposición constante del alma para las acciones conformes a la ley moral.</li>
+          <li><strong>Ministerio:</strong> Función o servicio en la Iglesia; forma de servir.</li>
+          <li><strong>Canonización:</strong> Declaración del Papa de que una persona ha vivido las virtudes en grado heroico y está en el cielo.</li>
+        </ul>
+
+        <h3>Evaluación</h3>
+        <ol>
+          <li><strong>¿Qué implica principalmente ser cristiano?</strong> Vivir en Cristo y por Cristo una relación de amor y amistad.</li>
+          <li><strong>¿Cómo se caracteriza una vida humana?</strong> Como un don de Dios destinado a amarlo libremente.</li>
+          <li><strong>¿Cuál es el mandamiento principal?</strong> Amarnos los unos a los otros como Jesús nos ha amado.</li>
+          <li><strong>¿Cuál es la vocación más habitual?</strong> El Matrimonio.</li>
+          <li><strong>¿Qué produciría el amor como Jesús nos pide?</strong> Lograr una sociedad mejor.</li>
+          <li><strong>¿Cuál es el reto más importante de la vida?</strong> Descubrir y ser fiel a la propia vocación.</li>
+          <li><strong>¿En quién está singularmente presente Jesús?</strong> En la persona que sufre.</li>
+          <li><strong>¿Cuál es la vocación común de todos los cristianos?</strong> La llamada a la santidad.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- La Persona - Ser Especial -->
+    <section class="section" id="persona-ser-especial">
+      <h2>La Persona: Un Ser Especial</h2>
+      <div class="content-box">
+        <h3>1. Creados a imagen y semejanza de Dios</h3>
+        <p>La Biblia deja claro que el ser humano posee una grandeza especial (Gn 1, 26-28a.31a).</p>
+        
+        <p>El ser humano no es una criatura más de la creación, sino que ocupa un puesto privilegiado, ya que Dios se la entrega toda para que pueda disponer de ella, porque sólo él ha sido creado <strong>"a imagen y semejanza"</strong> de Dios.</p>
+        
+        <p><strong>Ser imagen de Dios implica:</strong></p>
+        <ul>
+          <li>Que toda persona es valiosa porque refleja a Dios</li>
+          <li>Que debe ser respetada y tratada por los demás como tal sin excepción</li>
+          <li>Que toda persona debe actuar como actúa Él, respetando y no dañando a los demás</li>
+        </ul>
+
+        <h3>2. La dignidad humana</h3>
+        <p>La grandeza del ser humano recibe el nombre de <strong>dignidad</strong>. A lo largo de la historia, no sólo la Biblia, sino también otras religiones y pensadores han defendido que las personas son valiosas en sí mismas.</p>
+        
+        <p>La dignidad implica que las personas deben ser respetadas de forma absoluta, independientemente de sus creencias, religión, sexo, poder económico, nivel cultural... En consecuencia, nada se puede poner por encima de ellas.</p>
+        
+        <h4>El Humanismo (Siglo XVI)</h4>
+        <p>Defendió la grandeza de los seres humanos. La persona era considerada el centro del Universo y, en consecuencia, todo giraba en torno a ella. Algunos humanistas pensaron que la grandeza del ser humano se debía a que la persona es un ser que, por la libertad, decide qué quiere ser en la vida, al contrario que los animales.</p>
+        
+        <h4>Immanuel Kant (Siglo XVIII)</h4>
+        <p>El filósofo alemán defendió la dignidad humana afirmando que el ser humano existe como un fin en sí mismo y no como un medio que pueda ser usado por otras personas.</p>
+        
+        <blockquote>
+          <p><em>"Las personas son medios, ya que están al servicio de las personas, pero las personas nunca pueden ser usadas por otras en busca de un beneficio."</em></p>
+        </blockquote>
+
+        <h3>3. Los derechos humanos</h3>
+        <p>La dignidad humana no siempre se respeta. Muchas personas sufren violencia, son sometidas a trabajos inhumanos o no tienen lo necesario para vivir.</p>
+        
+        <p>Para proteger su dignidad, en el año 1948, la ONU proclamó la <strong>Declaración Universal de los Derechos Humanos</strong>.</p>
+        
+        <h4>Generaciones de derechos:</h4>
+        <ul>
+          <li><strong>Derechos de primera generación:</strong> Relacionados con la libertad (derecho a la vida, libertad de conciencia, libertad de expresión, participación política...)</li>
+          <li><strong>Derechos de segunda generación:</strong> Relacionados con la igualdad (derecho al trabajo, vivienda, educación, asistencia sanitaria...)</li>
+          <li><strong>Derechos de tercera generación:</strong> Relacionados con la solidaridad (derecho al desarrollo de los pueblos, medio ambiente adecuado, paz...)</li>
+          <li><strong>Derechos de cuarta generación:</strong> Relacionados con el mundo digital y las redes sociales (derecho a la privacidad, protección contra el acoso, noticias veraces...)</li>
+        </ul>
+
+        <h3>4. Crecer en humanidad</h3>
+        <p>El ser humano se distingue de los animales en que nosólo evoluciona biológicamente, sino también moral y culturalmente. Este proceso de hacerse más humano recibe el nombre de <strong>humanización</strong>.</p>
+        
+        <p>Por él, las personas deben elegir aquellos modos de vida que las hacen mejores y más humanas, y que las conducen a superar todas aquellas situaciones que las degradan.</p>
+
+        <h3>5. Igualdad entre hombre y mujer</h3>
+        <p>El proyecto de Dios para los seres humanos es el de la igualdad. El primer relato de la Creación subraya la igualdad entre el hombre y la mujer, ya que afirma que los dos fueron creados a su <strong>"imagen y semblance"</strong>.</p>
+        
+        <p>En consecuencia, poseen la misma dignidad y merecen el mismo respeto. Los creyentes, y toda la sociedad, deben poner todos los medios a su disposición para que el proyecto divino de una sociedad de hombres y mujeres con igualdad de derechos y oportunidades sea realidad en todos los ámbitos de la vida.</p>
+
+        <h3>6. ¿Mejorados por la tecnología?</h3>
+        <p>El desarrollo actual de la ciencia y de la técnica permite intervenir en la naturaleza humana y modificarla.</p>
+        
+        <h4>Bebés a la carta</h4>
+        <p>Crear niños modificados genéticamente para que los padres puedan elegir el color de ojos, del pelo y el sexo del bebé.</p>
+        
+        <h4>Dos posturas éticas:</h4>
+        <ul>
+          <li><strong>Imperativo tecnológico:</strong> Defiende que se debe hacer todo lo que la ciencia y la técnica permitan hacer</li>
+          <li><strong>Imperativo ético de la responsabilidad:</strong> Defiende que no todo lo que se puede hacer se debe hacer y que primero hay que pensar si esos descubrimientos humanizan a la persona</li>
+        </ul>
+
+        <h4>Manipulación genética</h4>
+        <p>Con la manipulación genética, posible tras descifrar el genoma humano, se puede modificar el material genético de las personas. Esto ayuda a avanzar en la lucha contra algunas enfermedades, pero también a lograr los "bebés diseño".</p>
+        
+        <p><strong>Preguntas morales:</strong></p>
+        <ul>
+          <li>¿Qué tipo de ser humano es mejor?</li>
+          <li>Tener una enfermedad, ¿significa menos dignidad?</li>
+          <li>¿Para ser feliz hay que ser "perfectos" físicamente?</li>
+          <li>¿Diseñar el hijo que se quiere no es dejar de ver la vida como un regalo?</li>
+        </ul>
+
+        <h4>Poshumanismo biónico</h4>
+        <p>Pretende implantar tecnología en las personas para dominar y transformar su entorno. Esta postura origina preguntas como: ¿estas técnicas favorecerán la discriminación entre los que pueden pagarlas y los que no? ¿las personas biónicas tendrán más dignidad que las "normales"?</p>
+
+        <h4>Transhumanismo robótico</h4>
+        <p>Pretende, mediante la ingeniería, construir humanos artificiales o robots. Para ello, se copiaría la mente humana, como si fuera un software, y se pondría en un soporte físico como un hardware.</p>
+        
+        <p><strong>Preguntas:</strong></p>
+        <ul>
+          <li>¿Los robots tendrían autoconciencia, sentimientos o libertad?</li>
+          <li>¿Sustituir el cuerpo por una máquina?</li>
+        </ul>
+
+        <h3>Síntesis</h3>
+        <ul>
+          <li>El ser humano fue creado a imagen y semejanza de Dios, lo que le otorga una dignidad única e inviolable.</li>
+          <li>Los derechos humanos protegen la dignidad de toda persona.</li>
+          <li>El proceso de humanización nos hace crecer moral y culturalmente.</li>
+          <li>La igualdad entre hombre y mujer es proyecto de Dios.</li>
+          <li>La tecnología debe estar al servicio de la persona, nunca al revés.</li>
+          <li>No todo lo que se puede hacer se debe hacer: hace falta un imperativo ético.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Negación y Afirmación de la Fe -->
+    <section class="section" id="negacion-afirmacion-fe">
+      <h2>La Negación y la Afirmación de la Fe</h2>
+      <div class="content-box">
+        <h3>1. La ausencia de Dios</h3>
+        
+        <h4>Agnosticismo y ateísmo</h4>
+        <p>El <strong>agnosticismo</strong> es la posición de quienes consideran que no es posible conocer la existencia de Dios ni su inexistencia. El nombre proviene del griego: <em>a-</em> (sin) y <em>gnosis</em> (conocimiento).</p>
+        
+        <p>El <strong>ateísmo</strong> es la negación de la existencia de Dios. El ateo no simplemente duda, sino que afirma que Dios no existe. Puede argumentar desde la ciencia, la experiencia del mal, o la falta de evidencias.</p>
+        
+        <blockquote>
+          <p><em>"El ateísmo es, en un sentido, una rebelión contra la visión del mundo que afirma la existencia de Dios. El ateo rehúsa aceptar que hay un Ser superior, un Creador, un Ordenador del universo."</em></p>
+        </blockquote>
+
+        <h4>"Si Dios no existe, todo está permitido"</h4>
+        <p>Esta frase, atribuida a Fiódor Dostoievski en su obra <em>Los hermanos Karamazov</em>, plantea una cuestión fundamental: ¿cuál es el fundamento de la moral?</p>
+        
+        <p>Si no existe un Dios trascendente que dé sentido y valor absoluto a la persona humana, los valores morales se reducen a convenciones sociales o preferencias personales. Esto plantea:</p>
+        <ul>
+          <li>¿Por qué no matar si no hay un mandamiento divino?</li>
+          <li>¿Por qué respetar a los demás si no hay una ley natural?</li>
+          <li>¿Cuál es el fundamento de los derechos humanos?</li>
+        </ul>
+
+        <h4>"Sin Dios, no hay futuro"</h4>
+        <p>El filósofo Jürgen Habermas reflexiona sobre la necesidad de un horizonte trascendente para fundamentar la esperanza y el proyecto de humanidad.</p>
+        
+        <p>La negación de Dios puede llevar a:</p>
+        <ul>
+          <li><strong>Nihilismo:</strong> La Nada como destino final</li>
+          <li><strong>Relativismo moral:</strong> Todo vale igual</li>
+          <li><strong>Desesperanza:</strong> Ausencia de sentido último</li>
+        </ul>
+
+        <h3>2. La búsqueda de Dios</h4>
+        <p>A lo largo de la historia, el ser humano ha buscado a Dios en diferentes lugares:</p>
+        
+        <ul>
+          <li><strong>En la naturaleza:</strong> "Los cielos narran la gloria de Dios" (Sal 19,2)</li>
+          <li><strong>En la filosofía:</strong> El deseo natural de ver a Dios</li>
+          <li><strong>En el corazón:</strong> "Nos has creado para ti, y nuestro corazón está inquieto hasta que descanse en ti" (San Agustín)</li>
+          <li><strong>En la historia:</strong> Dios se revela en la historia de Israel y en Jesucristo</li>
+        </ul>
+
+        <h3>3. Pruebas de la existencia de Dios</h3>
+        <p>La tradición cristiana ha proposé varias "pruebas" o argumentos para llegar a Dios desde la razón. Aunque no son demostraciones estrictas, son caminos que mueven al entendimiento hacia la fe.</p>
+
+        <h4>El argumento del movimiento (Tomás de Aquino)</h4>
+        <p>Nada se mueve a sí mismo. Todo movimiento tiene una causa. Esta cadena no puede ser infinita. Debe haber un Primer Motor que no sea movido: Dios.</p>
+
+        <h4>El argumento de la causa eficiente</h4>
+        <p>Todo efecto tiene una causa. No puede haber una serie infinita de causas. Debe haber una Primera Causa que no sea causada: Dios.</p>
+
+        <h4>El argumento de la posibilidad y necesidad</h4>
+        <p>Las cosas existen, pero podrían no existir. Lo que no existe no puede comenzar a existir por sí solo. Debe haber un Ser necesario que sea por sí mismo: Dios.</p>
+
+        <h4>El argumento del ordenamiento</h4>
+        <p>Los seres no racionales no obran por un fin. Pero obran como si hubiera un fin. Debe haber un Ser inteligente que ordene todo hacia su fin: Dios.</p>
+
+        <h4>El argumento cosmológico</h4>
+        <p>El universo tuvo un principio (Big Bang). Todo lo que comienza a existir tiene una causa. El universo tiene una causa: Dios.</p>
+
+        <h4>El argumento antropológico</h4>
+        <p>La conciencia moral universal indica un fundamento moral objetivo. Este fundamento es Dios.</p>
+
+        <h3>4. El acto de fe</h3>
+        <p>La fe es un don de Dios, pero también un acto libre del ser humano. "La fe es garantizar las cosas que esperamos y demostrar las que no vemos" (Heb 11,1).</p>
+        
+        <p>La fe no es contraria a la razón. La fe se apoya en la razón y la razón se abre a la fe.</p>
+
+        <h3>Síntesis</h3>
+        <ul>
+          <li>El ateísmo y agnosticismo son posiciones que niegan o dudan de la existencia de Dios.</li>
+          <li>Sin Dios, la moral carece de fundamento absoluto.</li>
+          <li>La búsqueda de Dios es connatural al ser humano.</li>
+          <li>Existen argumentos racionales que mueven hacia la fe en Dios.</li>
+          <li>La fe es un don y un acto libre que no contradice la razón.</li>
+        </ul>
+
+        <h3>Vocabulario</h3>
+        <ul>
+          <li><strong>Agnosticismo:</strong> Doctrina que sostiene que no es posible conocer la existencia de Dios.</li>
+          <li><strong>Ateísmo:</strong> Negación de la existencia de Dios.</li>
+          <li><strong>Deísmo:</strong> Creencia en un Dios creador pero que no interviene en el mundo.</li>
+          <li><strong>Teísmo:</strong> Creencia en un Dios personal que crea y interviene en el mundo.</li>
+          <li><strong>Panteísmo:</strong> Doctrina que identifica a Dios con el universo.</li>
+          <li><strong>Monoteísmo:</strong> Creencia en un único Dios.</li>
+          <li><strong>Politeísmo:</strong> Creencia en múltiples dioses.</li>
+          <li><strong>Nihilismo:</strong> Doctrina que niega todo sentido, valor o fundamento.</li>
+          <li><strong>Relativismo:</strong> Doctrina que niega las verdades absolutas.</li>
+        </ul>
+
+        <h3>Evaluación</h3>
+        <ol>
+          <li><strong>¿Qué diferencia hay entre agnóstico y ateo?</strong> El agnóstico duda, el ateo niega.</li>
+          <li><strong>¿Por qué "si Dios no existe, todo está permitido"?</strong> Porque sin fundamento divino, la moral es relativa.</li>
+          <li><strong>¿Qué argumenta el argumento del movimiento?</strong> Debe haber un Primer Motor no movido.</li>
+          <li><strong>¿Qué argumenta el argumento de la causa eficiente?</strong> Debe haber una Primera Causa no causada.</li>
+          <li><strong>¿Qué argumenta el argumento del ordenamiento?</strong> Debe haber un Ser inteligente que ordene todo.</li>
+          <li><strong>¿Es la fe contraria a la razón?</strong> No, se complementan.</li>
+          <li><strong>¿Qué es el deísmo?</strong> Cree en un Dios creador pero que no interviene.</li>
+          <li><strong>¿Qué es el panteísmo?</strong> Identifica a Dios con el universo.</li>
+        </ol>
       </div>
     </section>
 
