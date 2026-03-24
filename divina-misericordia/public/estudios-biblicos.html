@@ -220,6 +220,15 @@
   background: rgba(76, 195, 255, 0.1);
   color: #7dd3ff;
 }
+.lista-libros {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.25rem;
+}
+.lista-libros li {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.9rem;
+}
 @media (max-width: 768px) {
   .hero-biblia h1 { font-size: 1.8rem; }
   .content-box { padding: 1.25rem; }
@@ -278,13 +287,17 @@
       <h3>Índice de Contenidos</h3>
       <ul>
         <li><a href="#citacion-biblica">Cómo citar un texto bíblico</a></li>
+        <li><a href="#que-es-biblia">¿Qué es la Biblia?</a></li>
+        <li><a href="#biblia-judia">La Biblia Judía (TaNaK)</a></li>
+        <li><a href="#biblia-cristiana">La Biblia Cristiana</a></li>
+        <li><a href="#canon-biblico">El Canon Bíblico</a></li>
         <li><a href="#temas-curso">Temas del Curso de Religión</a></li>
         <li><a href="#historia-salvacion-at">Historia de la Salvación: AT</a></li>
         <li><a href="#historia-salvacion-nt">Historia de la Salvación: NT</a></li>
         <li><a href="#linea-tiempo">Línea del Tiempo</a></li>
         <li><a href="#introduccion-at">Introducción al AT</a></li>
         <li><a href="#introduccion-nt">Introducción al NT y Evangelios</a></li>
-        <li><a href="#libros-biblia">Libros de la Biblia</a></li>
+        <li><a href="#libros-biblia">Lista de Libros de la Biblia</a></li>
         <li><a href="#generos-literarios">Géneros Literarios de la Biblia</a></li>
         <li><a href="#lexico-biblico">Léxico Bíblico</a></li>
         <li><a href="#contexto-sociocultural">Contexto Sociocultural</a></li>
@@ -467,25 +480,198 @@
       </div>
     </section>
 
-    <!-- Libros de la Biblia -->
-    <section class="section" id="libros-biblia">
-      <h2>Libros que Componen la Biblia o Sagrada Escritura</h2>
+    <!-- QUÉ ES LA BIBLIA -->
+    <section class="section" id="que-es-biblia">
+      <h2>¿Qué es la Biblia?</h2>
       <div class="content-box">
+        <h3>Definición</h3>
+        <ul>
+          <li>La palabra <strong>"Biblia"</strong> viene del griego <em>biblion</em> que significa "libro". <strong>"Biblia"</strong> es el plural y significa "libros", es una pequeña biblioteca.</li>
+          <li>Designa los libros del <strong>Antiguo</strong> y del <strong>Nuevo Testamento</strong>.</li>
+          <li>Para muchos contiene el mensaje de Dios a toda la humanidad.</li>
+          <li>Dios mismo lo ha inspirado, por eso mismo es sagrada y se la conoce como <strong>Sagrada Escritura</strong>.</li>
+          <li>La Biblia es sagrada para <strong>judíos</strong> y <strong>cristianos</strong>.</li>
+        </ul>
+        
+        <h3>¿Qué NO es la Biblia?</h3>
+        <ul>
+          <li><strong>No es un libro de Historia:</strong> Aunque contiene relatos históricos, no es un libro de historia.</li>
+          <li><strong>No es un conjunto de biografías:</strong> Aunque contiene la vida de muchos personajes.</li>
+          <li><strong>No está dictada al pie de la letra:</strong> Es un libro inspirado por Dios, pero no es un dictate.</li>
+          <li><strong>No es un libro científico:</strong> Refleja los conocimientos sobre el mundo que se tenían cuando se escribió.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- LA BIBLIA JUDÍA -->
+    <section class="section" id="biblia-judia">
+      <h2>La Biblia Judía (TaNaK)</h2>
+      <div class="content-box">
+        <p>Comprende basically lo que conocemos como <strong>Antiguo Testamento</strong>. Tiene tres partes:</p>
+        <ul>
+          <li><strong>Torá (ley):</strong> Los 5 primeros libros (Pentateuco)</li>
+          <li><strong>Nebiim (Profetas):</strong> Libros históricos y proféticos</li>
+          <li><strong>Ketubim (Escritos):</strong> Libros poéticos y sapienciales</li>
+        </ul>
+        <p>Al conjunto lo llaman <strong>TaNaK</strong> por las siglas <strong>T - N - K</strong>.</p>
+        <p>Está escrito en <strong>hebreo</strong>. (Los judíos no incluyen los libros del Antiguo Testamento que están escritos en griego, los llamados deuterocanónicos).</p>
+      </div>
+    </section>
+
+    <!-- LA BIBLIA CRISTIANA -->
+    <section class="section" id="biblia-cristiana">
+      <h2>La Biblia Cristiana</h2>
+      <div class="content-box">
+        <p>Tiene dos partes o testamentos ("testamento" significa <strong>alianza</strong>):</p>
+        
         <h3>Antiguo Testamento (46 libros)</h3>
         <ul>
-          <li><strong>Pentateuco (5):</strong> Gn, Ex, Lv, Nm, Dt</li>
-          <li><strong>Libros históricos (16):</strong> Jos, Jue, Rt, 1-2 Sm, 1-2 Re, 1-2 Cr, Esd, Ne, Tb, Jdt, Est, 1-2 Mac</li>
-          <li><strong>Libros sapienciales (7):</strong> Job, Sal, Pr, Ecl, Ct, Sab, Eclo</li>
-          <li><strong>Profetas (18):</strong> Is, Jr, Ba, Ez, Dn, Os, Jl, Am, Abd, Jn, Mi, Nah, Hab, Sof, Ag, Zc, Mal</li>
+          <li>Coincide basically con la Biblia judía.</li>
+          <li>Contiene los libros escritos <strong>antes de Jesús</strong>.</li>
+          <li>Se refiere a la <strong>Alianza</strong> que Dios hizo con el pueblo judío a través de Noé, Abraham, Moisés, David...</li>
+          <li>Están escritos, en su mayoría, en <strong>hebreo</strong>.</li>
+          <li>Los libros deuterocanónicos están escritos en <strong>griego</strong> (estos son los que no admiten los judíos).</li>
         </ul>
         
         <h3>Nuevo Testamento (27 libros)</h3>
         <ul>
-          <li><strong>Evangelios (4):</strong> Mt, Mc, Lc, Jn</li>
-          <li><strong>Hechos (1):</strong> Hch</li>
-          <li><strong>Cartas de Pablo (13):</strong> Rom, 1-2 Cor, Gal, Ef, Flp, Col, 1-2 Tes, 1-2 Tim, Tit, Flm</li>
-          <li><strong>Cartas católicas (7):</strong> St, 1-2 Pe, 1-3 Jn, Jud</li>
-          <li><strong>Apocalipsis (1):</strong> Ap</li>
+          <li>Habla de <strong>Jesús</strong> y de los primeros cristianos.</li>
+          <li>Se refiere a la <strong>Nueva Alianza</strong> que Dios hace con toda la humanidad a través de Jesús y la Iglesia.</li>
+          <li>Están escritos en <strong>griego</strong>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EL CÁNON BÍBLICO -->
+    <section class="section" id="canon-biblico">
+      <h2>¿Por Qué Están en la Biblia Estos Libros y No Otros?</h2>
+      <div class="content-box">
+        <h3>El Canon</h3>
+        <p>El pueblo o comunidad de Israel y la comunidad cristiana primitiva tenían otros libros además de los de la Biblia. Los libros de la Biblia fueron aceptados por toda la comunidad y sus dirigentes. Y la misma comunidad ha transmitido a través de los siglos estos libros.</p>
+        <p>A la lista de los libros que forman parte de la Biblia se le llama <strong>"canon"</strong>, y a los libros que forman parte de la misma se les llama <strong>"canónicos"</strong>.</p>
+        
+        <h3>Libros Deuterocanónicos</h3>
+        <p>Hay unos libros a los que se llama <strong>deuterocanónicos</strong>. Estos libros no son considerados sagrados por todos, por lo que no los incluyen entre sus libros sagrados. Es el caso de los judíos y de otras iglesias cristianas.</p>
+        
+        <h3>Libros Apócrifos</h3>
+        <p>En la época en que se escribieron los libros que forman parte de la Biblia se escribieron otros libros parecido, pero que se llaman <strong>apócrifos</strong> (significa "ocultos") y que no se consideran inspirados por Dios. Por esta razón no se incluyeron en el canon y no forman parte de la Biblia.</p>
+      </div>
+    </section>
+
+    <!-- Libros de la Biblia -->
+    <section class="section" id="libros-biblia">
+      <h2>Lista Completa de Libros de la Biblia</h2>
+      <div class="content-box">
+        <h3>Antiguo Testamento (46 libros)</h3>
+        
+        <h4>Pentateuco (5 libros)</h4>
+        <ul class="lista-libros">
+          <li><strong>Gn</strong> - Génesis</li>
+          <li><strong>Ex</strong> - Éxodo</li>
+          <li><strong>Lv</strong> - Levítico</li>
+          <li><strong>Nm</strong> - Números</li>
+          <li><strong>Dt</strong> - Deuteronomio</li>
+        </ul>
+        
+        <h4>Libros Históricos</h4>
+        <ul class="lista-libros">
+          <li><strong>Jos</strong> - Josué</li>
+          <li><strong>Jue</strong> - Jueces</li>
+          <li><strong>Rut</strong> - Rut</li>
+          <li><strong>1 Sm</strong> - 1 Samuel</li>
+          <li><strong>2 Sm</strong> - 2 Samuel</li>
+          <li><strong>1 Re</strong> - 1 Reyes</li>
+          <li><strong>2 Re</strong> - 2 Reyes</li>
+          <li><strong>1 Cr</strong> - 1 Crónicas</li>
+          <li><strong>2 Cr</strong> - 2 Crónicas</li>
+          <li><strong>Esd</strong> - Esdras</li>
+          <li><strong>Neh</strong> - Nehemías</li>
+          <li><strong>Tob</strong> - Tobías</li>
+          <li><strong>Jdt</strong> - Judit</li>
+          <li><strong>Est</strong> - Ester</li>
+          <li><strong>1 Mac</strong> - 1 Macabeos</li>
+          <li><strong>2 Mac</strong> - 2 Macabeos</li>
+        </ul>
+        
+        <h4>Libros Proféticos</h4>
+        <ul class="lista-libros">
+          <li><strong>Is</strong> - Isaías</li>
+          <li><strong>Jr</strong> - Jeremías</li>
+          <li><strong>Bar</strong> - Baruc</li>
+          <li><strong>Ez</strong> - Ezequiel</li>
+          <li><strong>Dn</strong> - Daniel</li>
+          <li><strong>Os</strong> - Oseas</li>
+          <li><strong>Jl</strong> - Joel</li>
+          <li><strong>Am</strong> - Amós</li>
+          <li><strong>Abd</strong> - Abdías</li>
+          <li><strong>Jon</strong> - Jonás</li>
+          <li><strong>Miq</strong> - Miqueas</li>
+          <li><strong>Nah</strong> - Nahum</li>
+          <li><strong>Hab</strong> - Habacuc</li>
+          <li><strong>Sof</strong> - Sofonías</li>
+          <li><strong>Ag</strong> - Ageo</li>
+          <li><strong>Zac</strong> - Zacarías</li>
+          <li><strong>Mal</strong> - Malaquías</li>
+        </ul>
+        
+        <h4>Libros Sapienciales y Poéticos</h4>
+        <ul class="lista-libros">
+          <li><strong>Job</strong> - Job</li>
+          <li><strong>Sal</strong> - Salmos</li>
+          <li><strong>Prov</strong> - Proverbios</li>
+          <li><strong>Ecl</strong> - Eclesiastés</li>
+          <li><strong>Cant</strong> - Cantar de los Cantares</li>
+          <li><strong>Sab</strong> - Sabiduría</li>
+          <li><strong>Eclo</strong> - Eclesiástico</li>
+        </ul>
+        
+        <h3>Nuevo Testamento (27 libros)</h3>
+        
+        <h4>Evangelios</h4>
+        <ul class="lista-libros">
+          <li><strong>Mt</strong> - Mateo</li>
+          <li><strong>Mc</strong> - Marcos</li>
+          <li><strong>Lc</strong> - Lucas</li>
+          <li><strong>Jn</strong> - Juan</li>
+        </ul>
+        
+        <h4>Hechos</h4>
+        <ul class="lista-libros">
+          <li><strong>Hch</strong> - Hechos de los Apóstoles</li>
+        </ul>
+        
+        <h4>Cartas de Pablo</h4>
+        <ul class="lista-libros">
+          <li><strong>Rom</strong> - Romanos</li>
+          <li><strong>1 Cor</strong> - 1 Corintios</li>
+          <li><strong>2 Cor</strong> - 2 Corintios</li>
+          <li><strong>Gal</strong> - Gálatas</li>
+          <li><strong>Ef</strong> - Efesios</li>
+          <li><strong>Flp</strong> - Filipenses</li>
+          <li><strong>Col</strong> - Colosenses</li>
+          <li><strong>1 Tes</strong> - 1 Tesalonicenses</li>
+          <li><strong>2 Tes</strong> - 2 Tesalonicenses</li>
+          <li><strong>1 Tim</strong> - 1 Timoteo</li>
+          <li><strong>2 Tim</strong> - 2 Timoteo</li>
+          <li><strong>Tit</strong> - Tito</li>
+          <li><strong>Flm</strong> - Filemón</li>
+          <li><strong>Heb</strong> - Hebreos</li>
+        </ul>
+        
+        <h4>Cartas Católicas</h4>
+        <ul class="lista-libros">
+          <li><strong>Sant</strong> - Santiago</li>
+          <li><strong>1 Pe</strong> - 1 Pedro</li>
+          <li><strong>2 Pe</strong> - 2 Pedro</li>
+          <li><strong>1 Jn</strong> - 1 Juan</li>
+          <li><strong>2 Jn</strong> - 2 Juan</li>
+          <li><strong>3 Jn</strong> - 3 Juan</li>
+          <li><strong>Jds</strong> - Judas</li>
+        </ul>
+        
+        <h4>Apocalipsis</h4>
+        <ul class="lista-libros">
+          <li><strong>Ap</strong> - Apocalipsis</li>
         </ul>
       </div>
     </section>
