@@ -177,6 +177,71 @@ nav#mainNav .nav-cross svg {
   50% { filter: drop-shadow(0 0 20px rgba(212, 175, 55, 1)); }
 }
 
+/* Scroll Buttons - Sabiduría Divina */
+.scroll-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(10, 22, 40, 0.9), rgba(20, 35, 60, 0.85));
+  border: 2px solid rgba(212, 175, 55, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  animation: scrollDivinePulse 2.5s ease-in-out infinite;
+  transition: all 0.3s ease;
+  position: fixed;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4), inset 0 0 15px rgba(212, 175, 55, 0.1);
+}
+.scroll-btn:hover {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.4), rgba(180, 140, 40, 0.5));
+  box-shadow: 
+    0 0 30px rgba(212, 175, 55, 1),
+    0 0 60px rgba(212, 175, 55, 0.6),
+    0 0 90px rgba(212, 175, 55, 0.3),
+    inset 0 0 20px rgba(255, 250, 220, 0.2);
+  transform: scale(1.15);
+  border-color: rgba(247, 231, 180, 1);
+}
+.scroll-btn svg {
+  width: 28px;
+  height: 28px;
+  stroke: rgba(212, 175, 55, 1);
+  stroke-width: 2.5;
+  fill: none;
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 1));
+  transition: all 0.3s ease;
+}
+.scroll-btn:hover svg {
+  transform: scale(1.2);
+  stroke: #fffbe8;
+  filter: drop-shadow(0 0 12px rgba(255, 251, 232, 1));
+}
+.scroll-up { 
+  top: 100px; 
+  right: 25px; 
+}
+.scroll-down { 
+  bottom: 30px; 
+  right: 25px; 
+}
+@keyframes scrollDivinePulse {
+  0%,100% {
+    box-shadow: 
+      0 0 20px rgba(212, 175, 55, 0.5),
+      0 0 40px rgba(212, 175, 55, 0.2),
+      inset 0 0 10px rgba(212, 175, 55, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(212, 175, 55, 0.8),
+      0 0 60px rgba(212, 175, 55, 0.4),
+      inset 0 0 15px rgba(212, 175, 55, 0.2);
+  }
+}
+
 /* Header styles */
 #mainHeader {
   background: linear-gradient(180deg, #020408 0%, #050d1a 50%, #0a1628 100%);
@@ -2199,6 +2264,20 @@ nav#mainNav .nav-cross svg {
     <span>El Portal de la Divina Misericordia</span> - Jesús, En Vos Confío
   </div>
 </footer>
+
+<!-- Botones de Navegación - Sabiduría Divina -->
+<button class="scroll-btn scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Subir al cielo" aria-label="Subir al inicio">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <polyline points="18,15 12,9 6,15"></polyline>
+    <line x1="12" y1="9" x2="12" y2="21"></line>
+  </svg>
+</button>
+<button class="scroll-btn scroll-down" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})" title="Bajar a la tierra" aria-label="Ir al final">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <polyline points="6,9 12,15 18,9"></polyline>
+    <line x1="12" y1="3" x2="12" y2="15"></line>
+  </svg>
+</button>
 
 <script src="js/main.js"></script>
 <script src="js/components/cookie-banner.js"></script>
