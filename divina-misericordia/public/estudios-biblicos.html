@@ -87,6 +87,40 @@ nav#mainNav a.activo {
   background: rgba(212,175,55,0.25);
   box-shadow: 0 0 20px rgba(212,175,55,0.2);
 }
+nav#mainNav .nav-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+nav#mainNav .nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+nav#mainNav .nav-logo-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid rgba(212,175,55,0.6);
+  box-shadow: 0 0 15px rgba(212,175,55,0.4);
+}
+nav#mainNav .nav-cross {
+  width: 40px;
+  height: 48px;
+  animation: navCrossPulse 3s ease-in-out infinite;
+}
+nav#mainNav .nav-cross svg {
+  width: 100%;
+  height: 100%;
+}
+@keyframes navCrossPulse {
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(212,175,55,0.5)); }
+  50% { filter: drop-shadow(0 0 12px rgba(212,175,55,0.9)); }
+}
 
 /* Animated Golden Cross in Footer */
 .footer-oscuro {
@@ -200,7 +234,7 @@ nav#mainNav a.activo {
 /* Estilos específicos para Estudios Bíblicos */
 .hero-biblia {
   background: linear-gradient(135deg, #0a1628 0%, #1a2a4a 50%, #0d1f3c 100%);
-  padding: 4rem 1rem;
+  padding: 1.5rem 1rem;
   text-align: center;
   border-bottom: 3px solid rgba(247, 231, 180, 0.5);
   position: relative;
@@ -429,52 +463,41 @@ nav#mainNav a.activo {
 
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
-<header id="mainHeader">
-  <div class="header-oscura">
-    <div class="header-contenido">
-      <a href="index.html" class="logo">
-        <img src="img/logo_divina_misericordia.jpg" alt="Logo Divina Misericordia" loading="lazy">
-        Divina<span>Misericordia</span>
+<nav id="mainNav">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a href="index.html">
+        <img src="img/logo_divina_misericordia.jpg" alt="Logo" class="nav-logo-img">
       </a>
-      <div class="separator-cruz">
-        <svg class="separator-cruz-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-label="Cruz Divina Misericordia">
+      <div class="nav-cross">
+        <svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="cruzGold" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient id="navGold" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" style="stop-color:#f7e7b4"/>
               <stop offset="50%" style="stop-color:#d4af37"/>
               <stop offset="100%" style="stop-color:#b8962e"/>
             </linearGradient>
-            <filter id="glowCruz">
-              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-              <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
-              </feMerge>
-            </filter>
           </defs>
-          <rect x="52" y="15" width="16" height="90" rx="3" fill="url(#cruzGold)" filter="url(#glowCruz)"/>
-          <rect x="15" y="40" width="90" height="16" rx="3" fill="url(#cruzGold)" filter="url(#glowCruz)"/>
-          <circle cx="60" cy="32" r="8" fill="none" stroke="url(#cruzGold)" stroke-width="2"/>
-          <text x="60" y="36" text-anchor="middle" fill="url(#cruzGold)" font-size="8" font-weight="bold">INRI</text>
+          <rect x="42" y="10" width="16" height="100" rx="3" fill="url(#navGold)"/>
+          <rect x="10" y="35" width="80" height="16" rx="3" fill="url(#navGold)"/>
+          <circle cx="50" cy="25" r="8" fill="none" stroke="url(#navGold)" stroke-width="2"/>
+          <text x="50" y="29" text-anchor="middle" fill="url(#navGold)" font-size="8" font-weight="bold">INRI</text>
         </svg>
       </div>
     </div>
-  </div>
-</header>
-
-<nav id="mainNav">
-  <div class="nav-inner">
-    <a href="index.html">Inicio</a>
-    <a href="introduccion.html">Introducción</a>
-    <a href="coronilla.html">Coronilla</a>
-    <a href="novena.html">Novena</a>
-    <a href="hora-de-la-misericordia.html">Hora 3pm</a>
-    <a href="santo-rosario.html">Rosario</a>
-    <a href="devociones-marianas.html">Marianas</a>
-    <a href="estudios-biblicos.html" class="activo">Estudios</a>
-    <a href="oraciones.html">Oraciones</a>
-    <a href="quienes-somos.html">Quiénes</a>
-    <a href="contacto.html">Contacto</a>
+    <div class="nav-inner">
+      <a href="index.html">Inicio</a>
+      <a href="introduccion.html">Introducción</a>
+      <a href="coronilla.html">Coronilla</a>
+      <a href="novena.html">Novena</a>
+      <a href="hora-de-la-misericordia.html">Hora 3pm</a>
+      <a href="santo-rosario.html">Rosario</a>
+      <a href="devociones-marianas.html">Marianas</a>
+      <a href="estudios-biblicos.html" class="activo">Estudios</a>
+      <a href="oraciones.html">Oraciones</a>
+      <a href="quienes-somos.html">Quiénes</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
   </div>
 </nav>
 
@@ -485,12 +508,6 @@ nav#mainNav a.activo {
   </section>
 
   <div class="container">
-    <div class="nav-breadcrumb">
-      <a href="index.html">Inicio</a> <span>›</span> Estudios Bíblicos y Religión
-    </div>
-    
-    <a href="index.html" class="btn-volver">← Volver al Inicio</a>
-
     <!-- Índice de secciones -->
     <div class="indice-secciones">
       <h3>Índice de Contenidos</h3>
