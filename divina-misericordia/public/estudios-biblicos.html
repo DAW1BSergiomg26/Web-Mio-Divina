@@ -26,6 +26,16 @@
 
 <link rel="stylesheet" href="css/styles.css">
 <style>
+/* Canvas de Rayos Divinos */
+body {
+  background: radial-gradient(ellipse at 50% 30%, #1a3a6e 0%, #0a1628 50%, #050d1a 100%);
+}
+#divine-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
 /* Navigation - Gold Style */
 nav#mainNav {
   background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(5,13,26,0.95) 100%);
@@ -81,11 +91,12 @@ nav#mainNav a.activo {
 /* Animated Golden Cross in Footer */
 .footer-oscuro {
   background: linear-gradient(180deg, #020408 0%, #050d1a 50%, #0a1628 100%);
-  padding: 2rem 1rem;
+  padding: 3rem 1rem 2rem;
   text-align: center;
-  border-top: 1px solid rgba(212,175,55,0.3);
+  border-top: 3px solid rgba(212,175,55,0.6);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 -5px 30px rgba(212, 175, 55, 0.2), inset 0 0 50px rgba(212, 175, 55, 0.03);
 }
 .footer-oscuro::before {
   content: '';
@@ -119,6 +130,71 @@ nav#mainNav a.activo {
 @keyframes crossPulse {
   0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
   50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+}
+.footer-cross {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 72px;
+  animation: footerCrossPulse 3s ease-in-out infinite;
+}
+@keyframes footerCrossPulse {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6)); }
+  50% { filter: drop-shadow(0 0 20px rgba(212, 175, 55, 1)); }
+}
+
+/* Header styles */
+#mainHeader {
+  background: linear-gradient(180deg, #020408 0%, #050d1a 50%, #0a1628 100%);
+  border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+  position: relative;
+}
+.header-contenido {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+}
+.logo img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid rgba(212, 175, 55, 0.5);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+.logo span {
+  color: #f7e7b4;
+  font-family: 'Cinzel', serif;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+.logo span:last-child {
+  color: #d4af37;
+}
+.separator-cruz {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.separator-cruz-svg {
+  width: 80px;
+  height: 80px;
+  animation: cruzBreath 4s ease-in-out infinite;
+}
+@keyframes cruzBreath {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5)); }
+  50% { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.8)); }
 }
 
 /* Estilos específicos para Estudios Bíblicos */
@@ -180,11 +256,27 @@ nav#mainNav a.activo {
 }
 .content-box {
   background: linear-gradient(135deg, rgba(10, 22, 40, 0.95), rgba(20, 35, 60, 0.85));
-  border: 1px solid rgba(247, 231, 180, 0.2);
+  border: 2px solid rgba(212, 175, 55, 0.6);
   border-radius: 16px;
   padding: 2rem;
   margin-bottom: 1.5rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), inset 0 0 30px rgba(212, 175, 55, 0.05), 0 0 15px rgba(212, 175, 55, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+.content-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+  animation: shine-border 3s ease-in-out infinite;
+}
+@keyframes shine-border {
+  0% { left: -100%; }
+  50%, 100% { left: 100%; }
 }
 .content-box h3 { margin-top: 0; }
 .tema-grid {
@@ -332,17 +424,39 @@ nav#mainNav a.activo {
 </style>
 </head>
 <body>
+<!-- Canvas de Rayos Divinos -->
+<canvas id="divine-canvas"></canvas>
+
 <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
 <header id="mainHeader">
   <div class="header-oscura">
     <div class="header-contenido">
-      <div class="logo-circulo">
-        <img src="img/logo-divina.png" alt="Logo Divina Misericordia" width="76" height="76">
-      </div>
-      <div class="header-texto">
-        <h1 class="titulo-principal">El Portal de la Divina Misericordia</h1>
-        <h2 class="subtitulo-corazon">Jesús, En Vos Confío</h2>
+      <a href="index.html" class="logo">
+        <img src="img/logo_divina_misericordia.jpg" alt="Logo Divina Misericordia" loading="lazy">
+        Divina<span>Misericordia</span>
+      </a>
+      <div class="separator-cruz">
+        <svg class="separator-cruz-svg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-label="Cruz Divina Misericordia">
+          <defs>
+            <linearGradient id="cruzGold" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#f7e7b4"/>
+              <stop offset="50%" style="stop-color:#d4af37"/>
+              <stop offset="100%" style="stop-color:#b8962e"/>
+            </linearGradient>
+            <filter id="glowCruz">
+              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <rect x="52" y="15" width="16" height="90" rx="3" fill="url(#cruzGold)" filter="url(#glowCruz)"/>
+          <rect x="15" y="40" width="90" height="16" rx="3" fill="url(#cruzGold)" filter="url(#glowCruz)"/>
+          <circle cx="60" cy="32" r="8" fill="none" stroke="url(#cruzGold)" stroke-width="2"/>
+          <text x="60" y="36" text-anchor="middle" fill="url(#cruzGold)" font-size="8" font-weight="bold">INRI</text>
+        </svg>
       </div>
     </div>
   </div>
@@ -1829,7 +1943,26 @@ nav#mainNav a.activo {
     </div>
   </div>
   <div class="footer-oscuro">
-    <div class="cross-glow">✝</div>
+    <svg class="footer-cross" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg" aria-label="Cruz Divina Misericordia">
+      <defs>
+        <linearGradient id="footerGold" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#f7e7b4"/>
+          <stop offset="50%" style="stop-color:#d4af37"/>
+          <stop offset="100%" style="stop-color:#b8962e"/>
+        </linearGradient>
+        <filter id="footerGlow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+      <rect x="42" y="10" width="16" height="100" rx="3" fill="url(#footerGold)" filter="url(#footerGlow)"/>
+      <rect x="10" y="35" width="80" height="16" rx="3" fill="url(#footerGold)" filter="url(#footerGlow)"/>
+      <circle cx="50" cy="25" r="8" fill="none" stroke="url(#footerGold)" stroke-width="2"/>
+      <text x="50" y="29" text-anchor="middle" fill="url(#footerGold)" font-size="8" font-weight="bold">INRI</text>
+    </svg>
     <span>El Portal de la Divina Misericordia</span> - Jesús, En Vos Confío
   </div>
 </footer>
@@ -1837,5 +1970,95 @@ nav#mainNav a.activo {
 <script src="js/main.js"></script>
 <script src="js/components/cookie-banner.js"></script>
 <cookie-banner></cookie-banner>
+
+<!-- Canvas de Rayos Divinos -->
+<script>
+(function(){
+  const canvas = document.getElementById('divine-canvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let width, height, rays = [], particles = [];
+
+  function resize(){
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+    initRays();
+    initParticles();
+  }
+  function initRays(){
+    rays = [];
+    for(let i=0;i<60;i++){
+      rays.push({
+        angle: Math.random()*Math.PI*2,
+        length: height*0.8 + Math.random()*height*0.5,
+        width: 2 + Math.random()*4,
+        speed: 0.0005 + Math.random()*0.001,
+        offset: Math.random()*Math.PI*2,
+        isRed: Math.random()>0.5,
+        baseOpacity: 0.1+Math.random()*0.3,
+        flickerSpeed: 0.02+Math.random()*0.03
+      });
+    }
+  }
+  function initParticles(){
+    particles = [];
+    for(let i=0;i<150;i++){
+      particles.push({
+        x: Math.random()*window.innerWidth,
+        y: Math.random()*window.innerHeight,
+        size: Math.random()*2+0.5,
+        speed: Math.random()*0.5+0.1
+      });
+    }
+  }
+  let time=0;
+  function draw(){
+    ctx.clearRect(0,0,width,height);
+    const cx=width/2, cy=height*0.3;
+    rays.forEach(ray=>{
+      const a = ray.angle + Math.sin(time*ray.speed+ray.offset)*0.1;
+      const f = Math.sin(time*ray.flickerSpeed+ray.offset)*0.5+0.5;
+      const op = ray.baseOpacity*f;
+      const g = ctx.createLinearGradient(cx,cy, cx+Math.cos(a)*ray.length, cy+Math.sin(a)*ray.length);
+      if(ray.isRed){
+        g.addColorStop(0,`rgba(255,50,50,${op})`);
+        g.addColorStop(0.3,`rgba(200,30,30,${op*0.7})`);
+        g.addColorStop(1,'rgba(100,10,10,0)');
+      } else {
+        g.addColorStop(0,`rgba(255,250,220,${op})`);
+        g.addColorStop(0.3,`rgba(255,230,150,${op*0.7})`);
+        g.addColorStop(1,'rgba(255,250,200,0)');
+      }
+      const ex=cx+Math.cos(a)*ray.length, ey=cy+Math.sin(a)*ray.length;
+      const px=Math.cos(a+Math.PI/2)*ray.width, py=Math.sin(a+Math.PI/2)*ray.width;
+      ctx.beginPath();
+      ctx.moveTo(cx,cy);
+      ctx.lineTo(ex+px,ey+py);
+      ctx.lineTo(ex-px,ey-py);
+      ctx.closePath();
+      ctx.fillStyle=g;
+      ctx.fill();
+    });
+    const gg=ctx.createRadialGradient(cx,cy,0,cx,cy,300);
+    const gp=Math.sin(time*0.002)*0.3+0.7;
+    gg.addColorStop(0,`rgba(255,250,230,${0.4*gp})`);
+    gg.addColorStop(0.5,`rgba(255,150,50,${0.1*gp})`);
+    gg.addColorStop(1,'rgba(255,100,50,0)');
+    ctx.beginPath(); ctx.arc(cx,cy,300,0,Math.PI*2); ctx.fillStyle=gg; ctx.fill();
+    ctx.fillStyle='rgba(255,250,240,0.8)';
+    particles.forEach(p=>{
+      ctx.beginPath(); ctx.arc(p.x,p.y,p.size,0,Math.PI*2); ctx.fill();
+      p.y -= p.speed;
+      p.x += Math.sin(time*0.001+p.x*0.01)*0.3;
+      if(p.y<0){ p.y=height; p.x=Math.random()*width; }
+    });
+    time++;
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+  draw();
+})();
+</script>
 </body>
 </html>
