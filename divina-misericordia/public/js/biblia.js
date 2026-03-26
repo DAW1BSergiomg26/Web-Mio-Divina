@@ -178,7 +178,7 @@
       }
     }
     
-    return `[${libroAbrev} ${capitulo}:${versiculo}]<br><em>Texto de ejemplo. Para leer la Biblia Católica completa, visita:</em><br><a href="https://www.biblegateway.com/versions/" target="_blank">📖 BibleGateway</a><br><a href="https://www.catholic.org/bible/" target="_blank">📖 Catholic.org Bible</a><br><a href="https://www.ewtn.com/catholicism/devotionals/daily-readings" target="_blank">📖 EWTN Lecturas</a>`;
+    return `[${libroAbrev} ${capitulo}:${versiculo}]<br><em>Texto de ejemplo. Para leer la Biblia Católica completa, visita:</em><br><a href="https://www.biblegateway.com/versions/" target="_blank">📖 BibleGateway</a><br><a href="https://www.catholic.org/bible/" target="_blank">📖 Catholic.org Bible</a><br><a href="https://www.ewtnnews.com/our-faith/daily-readings" target="_blank">📖 EWTN Lecturas</a>`;
   }
   
   // Buscar texto

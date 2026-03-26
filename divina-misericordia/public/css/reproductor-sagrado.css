@@ -1,0 +1,323 @@
+/* ============================================================
+   REPRODUCTOR SAGRADO - Estilos Divina Misericordia
+   Colores dorados y celestiales para el reproductor divino
+   ============================================================ */
+
+.reproductor-sagrado {
+  background: linear-gradient(135deg, rgba(5, 13, 26, 0.95) 0%, rgba(10, 22, 40, 0.9) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 15px 0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(212, 175, 55, 0.1);
+}
+
+.reproductor-sagrado::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #d4af37, #6fa8dc, #d4af37, transparent);
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.reproductor-sagrado:hover {
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5), 0 0 30px rgba(212, 175, 55, 0.15);
+  transform: translateY(-2px);
+}
+
+.reproductor-sagrado.playing {
+  border-color: rgba(111, 168, 220, 0.5);
+  box-shadow: 0 0 40px rgba(111, 168, 220, 0.2), inset 0 0 20px rgba(111, 168, 220, 0.05);
+}
+
+.reproductor-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.reproductor-icono {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #b8960c 0%, #d4af37 50%, #f4e2a1 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #050d1a;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+  animation: pulse-gold 2s ease-in-out infinite;
+}
+
+.reproductor-sagrado.playing .reproductor-icono {
+  animation: pulse-gold-fast 0.8s ease-in-out infinite;
+}
+
+@keyframes pulse-gold {
+  0%, 100% { transform: scale(1); box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4); }
+  50% { transform: scale(1.05); box-shadow: 0 6px 25px rgba(212, 175, 55, 0.6); }
+}
+
+@keyframes pulse-gold-fast {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.reproductor-titulo {
+  flex: 1;
+}
+
+.reproductor-titulo h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: #f4e2a1;
+  margin: 0 0 4px 0;
+}
+
+.reproductor-titulo p {
+  font-size: 0.85rem;
+  color: rgba(250, 247, 240, 0.5);
+  margin: 0;
+}
+
+.reproductor-controles {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-play-sagrado {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #b8960c 0%, #d4af37 100%);
+  color: #050d1a;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.5);
+  flex-shrink: 0;
+}
+
+.btn-play-sagrado:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 30px rgba(212, 175, 55, 0.7);
+}
+
+.btn-play-sagrado.playing {
+  background: linear-gradient(135deg, #4a7db8 0%, #6fa8dc 100%);
+  box-shadow: 0 4px 20px rgba(111, 168, 220, 0.5);
+}
+
+.reproductor-progress {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #d4af37, #6fa8dc);
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.1s linear;
+  position: relative;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: #f4e2a1;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.progress-bar-container:hover .progress-bar::after {
+  opacity: 1;
+}
+
+.reproductor-tiempos {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: rgba(250, 247, 240, 0.6);
+}
+
+.reproductor-volumen {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-volume-sagrado {
+  background: none;
+  border: none;
+  color: rgba(250, 247, 240, 0.6);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.3s;
+}
+
+.btn-volume-sagrado:hover {
+  color: #d4af37;
+}
+
+.volume-slider-sagrado {
+  width: 60px;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.volume-slider-sagrado::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(135deg, #d4af37, #f4e2a1);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.btn-download-sagrado {
+  background: none;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: #d4af37;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-download-sagrado:hover {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: #d4af37;
+  transform: translateY(-2px);
+}
+
+.btn-download-sagrado span {
+  font-size: 1rem;
+}
+
+/* Visualizador ornamental cuando reproduce */
+.reproductor-sagrado.playing .reproductor-visualizador {
+  display: flex;
+}
+
+.reproductor-visualizador {
+  display: none;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 3px;
+  height: 30px;
+  margin-bottom: 15px;
+}
+
+.reproductor-visualizador .viz-bar {
+  width: 4px;
+  background: linear-gradient(to top, #d4af37, #6fa8dc);
+  border-radius: 2px;
+  animation: vizualizar 0.5s ease-in-out infinite alternate;
+}
+
+.viz-bar:nth-child(1) { height: 10px; animation-delay: 0s; }
+.viz-bar:nth-child(2) { height: 20px; animation-delay: 0.1s; }
+.viz-bar:nth-child(3) { height: 15px; animation-delay: 0.2s; }
+.viz-bar:nth-child(4) { height: 25px; animation-delay: 0.15s; }
+.viz-bar:nth-child(5) { height: 12px; animation-delay: 0.05s; }
+
+@keyframes vizualizar {
+  from { height: 5px; }
+  to { height: 25px; }
+}
+
+/* Estilos para section-music en las páginas */
+.section-music {
+  background: linear-gradient(135deg, rgba(10, 22, 40, 0.8) 0%, rgba(5, 13, 26, 0.9) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 20px;
+  padding: 25px;
+  margin: 25px 0;
+  text-align: center;
+}
+
+.section-music h3 {
+  font-family: 'Cinzel', serif;
+  color: #d4af37;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.section-music > p {
+  color: rgba(250, 247, 240, 0.7);
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .reproductor-controles {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .reproductor-info {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .reproductor-volumen {
+    display: none;
+  }
+  
+  .btn-download-sagrado {
+    width: 100%;
+    justify-content: center;
+  }
+}

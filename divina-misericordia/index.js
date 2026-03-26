@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const port = 3001;
+const port = 3002;
 const dataFile = path.join(__dirname, 'data', 'cms-data.json');
 
 function loadData() {
@@ -28,6 +28,14 @@ const server = http.createServer((req, res) => {
   console.log(`Petición: ${req.method} ${req.url}`);
 
   let urlPath = req.url;
+  
+  // Decodificar URL para manejar espacios y caracteres especiales
+  urlPath = decodeURIComponent(urlPath);
+  
+  // DEBUG: registrar todas las URLs
+  if (urlPath.includes('.mp3')) {
+    console.log('DEBUG: Solicitud MP3 detectada:', urlPath);
+  }
 
   // API Endpoints para CMS
   if (urlPath.startsWith('/api/')) {
@@ -200,6 +208,22 @@ const server = http.createServer((req, res) => {
 
   const filePath = path.join(__dirname, 'public', urlPath);
   const ext = path.extname(filePath).toLowerCase();
+  
+  // DEBUG extra
+  if (urlPath.includes('mp3')) {
+    console.log('DEBUG MP3: urlPath=', urlPath);
+    console.log('DEBUG MP3: filePath=', filePath);
+    console.log('DEBUG MP3: ext=', ext);
+    console.log('DEBUG MP3: exists=', require('fs').existsSync(filePath));
+    
+    // Forzar que venga del sistema de archivos
+    const publicDir = path.join(__dirname, 'public');
+    const decodedUrlPath = decodeURIComponent(urlPath);
+    const correctPath = path.join(publicDir, decodedUrlPath);
+    console.log('DEBUG MP3: correctPath=', correctPath);
+    console.log('DEBUG MP3: exists2=', require('fs').existsSync(correctPath));
+  }
+  
   let contentType = 'text/html; charset=utf-8';
 
   switch (ext) {
@@ -222,6 +246,15 @@ const server = http.createServer((req, res) => {
     case '.json':
       contentType = 'application/json; charset=utf-8';
       break;
+    case '.mp3':
+      contentType = 'audio/mpeg';
+      break;
+    case '.wav':
+      contentType = 'audio/wav';
+      break;
+    case '.ogg':
+      contentType = 'audio/ogg';
+      break;
     default:
       contentType = 'text/html; charset=utf-8';
   }
@@ -229,6 +262,12 @@ const server = http.createServer((req, res) => {
   fs.readFile(filePath, (err, data) => {
     if (err) {
       console.error('Error leyendo archivo:', filePath, err.code);
+      // Agregar más debugging para MP3
+      if (ext === '.mp3') {
+        console.error('DEBUG MP3 - URL solicitada:', urlPath);
+        console.error('DEBUG MP3 - Ruta resolved:', filePath);
+        console.error('DEBUG MP3 - Existe:', require('fs').existsSync(filePath));
+      }
       if (err.code === 'ENOENT') {
         res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
         return res.end('<h1>404</h1><p>Archivo no encontrado</p>');

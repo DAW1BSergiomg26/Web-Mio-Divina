@@ -53,6 +53,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/reproductor-sagrado.css">
+<link rel="stylesheet" href="css/reproductor-global.css">
 
 <style>
 /* =============================================
@@ -770,6 +772,78 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
   <h1 class="page-title">Hora de la Misericordia <span class="hour-badge">3:00</span></h1>
   <p class="subtitle-line">✦ El momento sagrado de las 3 de la tarde ✦</p>
 
+  <!-- Reproductor de Música Sagrada para la Hora de la Misericordia -->
+  <div class="section-music">
+    <h3>🎶 Ambiente de Oración a las 3 de la tarde</h3>
+    <p>Escucha música celestial durante la Hora de la Misericordia:</p>
+    
+    <!-- Air de Bach - reflexión -->
+    <div class="reproductor-sagrado" data-src="mp3/09. J.S. Bach_ J.S. Bach_ Orchestral Suite No. 3 in D Major, BWV 1068_ 2. Air_spotdown.org.mp3" data-title="Air on the G String - Bach">
+      <div class="reproductor-visualizador">
+        <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
+      </div>
+      <div class="reproductor-info">
+        <div class="reproductor-icono">🕊️</div>
+        <div class="reproductor-titulo">
+          <h4>Air on the G String - Bach</h4>
+          <p>Suite orquestal No. 3</p>
+        </div>
+      </div>
+      <div class="reproductor-controles">
+        <button class="btn-play-sagrado" onclick="togglePlaySagrado(this)">▶</button>
+        <div class="reproductor-progress">
+          <div class="progress-bar-container" onclick="seekSagrado(this, event)">
+            <div class="progress-bar"></div>
+          </div>
+          <div class="reproductor-tiempos">
+            <span class="current-time">0:00</span>
+            <span class="duration">--:--</span>
+          </div>
+        </div>
+        <div class="reproductor-volumen">
+          <button class="btn-volume-sagrado" onclick="this.nextElementSibling.value=this.nextElementSibling.value==0.7?0:0.7;setVolumeSagrado(this.nextElementSibling.value)">🔊</button>
+          <input type="range" class="volume-slider-sagrado" min="0" max="1" step="0.1" value="0.7" oninput="setVolumeSagrado(this.value)">
+        </div>
+        <button class="btn-download-sagrado" onclick="downloadSagrado(this)">
+          <span>⬇</span> Descargar
+        </button>
+      </div>
+    </div>
+
+    <!-- Largo de Handel - paz -->
+    <div class="reproductor-sagrado" data-src="mp3/06. Serse, HWV 40_ Largo _Ombra mai fu__spotdown.org.mp3" data-title="Largo de Handel's Xerxes">
+      <div class="reproductor-visualizador">
+        <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
+      </div>
+      <div class="reproductor-info">
+        <div class="reproductor-icono">🌿</div>
+        <div class="reproductor-titulo">
+          <h4>Largo "Ombra mai fu" - Handel</h4>
+          <p>Xerxes (Serse)</p>
+        </div>
+      </div>
+      <div class="reproductor-controles">
+        <button class="btn-play-sagrado" onclick="togglePlaySagrado(this)">▶</button>
+        <div class="reproductor-progress">
+          <div class="progress-bar-container" onclick="seekSagrado(this, event)">
+            <div class="progress-bar"></div>
+          </div>
+          <div class="reproductor-tiempos">
+            <span class="current-time">0:00</span>
+            <span class="duration">--:--</span>
+          </div>
+        </div>
+        <div class="reproductor-volumen">
+          <button class="btn-volume-sagrado" onclick="this.nextElementSibling.value=this.nextElementSibling.value==0.7?0:0.7;setVolumeSagrado(this.nextElementSibling.value)">🔊</button>
+          <input type="range" class="volume-slider-sagrado" min="0" max="1" step="0.1" value="0.7" oninput="setVolumeSagrado(this.value)">
+        </div>
+        <button class="btn-download-sagrado" onclick="downloadSagrado(this)">
+          <span>⬇</span> Descargar
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- RELOJ DIVINO -->
   <div class="divine-countdown">
     <div class="divine-countdown-title">⏰ Faltan para la Hora de la Misericordia</div>
@@ -1139,10 +1213,7 @@ document.addEventListener('click',e=>{
 <!-- PWA -->
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#050d1a">
-<script>
-if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('/sw.js').then(reg=>console.log('SW registered')).catch(e=>console.log('SW error'));
-}
-</script>
+<script src="js/reproductor-sagrado.js"></script>
+<script src="js/reproductor-global.js"></script>
 </body>
 </html>

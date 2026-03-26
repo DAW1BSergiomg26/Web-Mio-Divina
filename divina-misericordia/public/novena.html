@@ -62,6 +62,8 @@
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/reproductor-sagrado.css">
+<link rel="stylesheet" href="css/reproductor-global.css">
 <style>
 :root {
   --gold: #d4af37;
@@ -476,6 +478,78 @@ footer p { color:var(--text-muted); margin:5px 0; font-size:0.9rem; }
 <p class="subtitle-line">9 días de oración revelados por Jesús</p>
 <p class="intro-text">La Novena de la Divina Misericordia fue enseñada por Jesús a Santa Faustina. Cada día tiene una intención específica. Haz clic en el día que desees rezar.</p>
 
+  <!-- Reproductor de Música Sagrada para la Novena -->
+  <div class="section-music">
+    <h3>🎶 Ambiente de Oración para la Novena</h3>
+    <p>Escucha música celestial mientras realizas los 9 días de la Novena:</p>
+    
+    <!-- Brandenburg Concerto - energía positiva -->
+    <div class="reproductor-sagrado" data-src="mp3/05. Brandenburg Concerto No. 1 in F Major, BWV 1046_ I. —_spotdown.org.mp3" data-title="Brandenburg Concerto No. 1 - Bach">
+      <div class="reproductor-visualizador">
+        <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
+      </div>
+      <div class="reproductor-info">
+        <div class="reproductor-icono">🎻</div>
+        <div class="reproductor-titulo">
+          <h4>Brandenburg Concerto No. 1 - Bach</h4>
+          <p>Concierto para orquesta</p>
+        </div>
+      </div>
+      <div class="reproductor-controles">
+        <button class="btn-play-sagrado" onclick="togglePlaySagrado(this)">▶</button>
+        <div class="reproductor-progress">
+          <div class="progress-bar-container" onclick="seekSagrado(this, event)">
+            <div class="progress-bar"></div>
+          </div>
+          <div class="reproductor-tiempos">
+            <span class="current-time">0:00</span>
+            <span class="duration">--:--</span>
+          </div>
+        </div>
+        <div class="reproductor-volumen">
+          <button class="btn-volume-sagrado" onclick="this.nextElementSibling.value=this.nextElementSibling.value==0.7?0:0.7;setVolumeSagrado(this.nextElementSibling.value)">🔊</button>
+          <input type="range" class="volume-slider-sagrado" min="0" max="1" step="0.1" value="0.7" oninput="setVolumeSagrado(this.value)">
+        </div>
+        <button class="btn-download-sagrado" onclick="downloadSagrado(this)">
+          <span>⬇</span> Descargar
+        </button>
+      </div>
+    </div>
+
+    <!-- Spring Vivaldi - renovación espiritual -->
+    <div class="reproductor-sagrado" data-src="mp3/10. Spring (La Primavera) Op.8 No.1 E Major_ Allegro_spotdown.org.mp3" data-title="La Primavera - Vivaldi">
+      <div class="reproductor-visualizador">
+        <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
+      </div>
+      <div class="reproductor-info">
+        <div class="reproductor-icono">🌸</div>
+        <div class="reproductor-titulo">
+          <h4>La Primavera - Vivaldi</h4>
+          <p>Las Cuatro Estaciones</p>
+        </div>
+      </div>
+      <div class="reproductor-controles">
+        <button class="btn-play-sagrado" onclick="togglePlaySagrado(this)">▶</button>
+        <div class="reproductor-progress">
+          <div class="progress-bar-container" onclick="seekSagrado(this, event)">
+            <div class="progress-bar"></div>
+          </div>
+          <div class="reproductor-tiempos">
+            <span class="current-time">0:00</span>
+            <span class="duration">--:--</span>
+          </div>
+        </div>
+        <div class="reproductor-volumen">
+          <button class="btn-volume-sagrado" onclick="this.nextElementSibling.value=this.nextElementSibling.value==0.7?0:0.7;setVolumeSagrado(this.nextElementSibling.value)">🔊</button>
+          <input type="range" class="volume-slider-sagrado" min="0" max="1" step="0.1" value="0.7" oninput="setVolumeSagrado(this.value)">
+        </div>
+        <button class="btn-download-sagrado" onclick="downloadSagrado(this)">
+          <span>⬇</span> Descargar
+        </button>
+      </div>
+    </div>
+  </div>
+
 <div class="tabs-nav">
 <button class="tab-btn active" onclick="showDay(1)">Día 1</button>
 <button class="tab-btn" onclick="showDay(2)">Día 2</button>
@@ -868,6 +942,8 @@ document.addEventListener('mouseover', e => {
 <!-- PWA -->
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#050d1a">
+<script src="js/reproductor-sagrado.js"></script>
+<script src="js/reproductor-global.js"></script>
 <script>
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(reg=>console.log('SW registered')).catch(e=>console.log('SW error'));
