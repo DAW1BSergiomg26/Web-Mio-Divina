@@ -178,7 +178,7 @@
       }
     }
     
-    return `[${libroAbrev} ${capitulo}:${versiculo}]<br><em>Texto de ejemplo. Para leer la Biblia Católica completa, visita:</em><br><a href="https://www.vatican.va/archive/Biblia/index_sp.htm" target="_blank">📖 Biblia Vaticana (Oficial)</a><br><a href="https://www.biblegateway.com" target="_blank">📖 BibleGateway</a>`;
+    return `[${libroAbrev} ${capitulo}:${versiculo}]<br><em>Texto de ejemplo. Para leer la Biblia Católica completa, visita:</em><br><a href="https://santabiblia.com/" target="_blank">📖 SantaBiblia.com</a><br><a href="https://www.biblegateway.com/" target="_blank">📖 BibleGateway</a><br><a href="https://www.biblia.catoliconline.com/" target="_blank">📖 Biblia Católica Online</a>`;
   }
   
   // Buscar texto
