@@ -161,23 +161,24 @@
     `;
   }
   
-  // Obtener texto (simulado - en producción usar API)
-  function getTextoBiblia(libro, capitulo, versiculo) {
-    const textos = {
-      'Jn 3:16': 'Porque tanto amó Dios al mundo, que dio a su Hijo unigénito, para que todo el que cree en él no se pierda, sino que tenga vida eterna.',
-      'Mt 5:9': 'Bienaventurados los pacificadores, porque ellos serán llamados hijos de Dios.',
-      'Mt 5:14': 'Vosotros sois la luz del mundo. Una ciudad situada sobre un monte no puede esconderse.',
-      'Lc 2:11': 'Hoy os ha nacido en la ciudad de David un Salvador, que es el Cristo Señor.',
-      'Rom 8:28': 'Y sabemos que todas las cosas cooperan para el bien de los que aman a Dios, que son llamados según su propósito.',
-      '1 Cor 13:4': 'El amor es sufrido, es benigno; el amor no tiene envidia; el amor no se jacta, no se envanece.',
-      'Ef 4:32': 'Antes sed benignos unos con otros, misericordiosos, forgiveos mutuamente, así como Dios os perdonó en Cristo.',
-      'Sal 23:1': 'Jehová es mi pastor; nada me faltará.',
-      'Sal 91:1': 'El que habita al abrigo del Altísimo, bajo la sombra del Omnipotente descansará.',
-      'Is 9:6': 'Porque un niño nos es nacido, hijo nos es dado, y el principado será sobre su hombro; y se llamará su nombre Admirable, Consejero, Dios fuerte, Padre eterno, Príncipe de paz.'
-    };
+  // Obtener texto desde bibliaData
+  function getTextoBiblia(libroAbrev, capitulo, versiculo) {
+    // Buscar en todos los testamentos
+    for (const [key, data] of Object.entries(bibliaData)) {
+      const libroEncontrado = data.libros.find(l => 
+        l.abreviado.toLowerCase() === libroAbrev.toLowerCase() ||
+        l.nombre.toLowerCase().includes(libroAbrev.toLowerCase())
+      );
+      
+      if (libroEncontrado && libroEncontrado.contenido && libroEncontrado.contenido[capitulo]) {
+        const versiculoData = libroEncontrado.contenido[capitulo].find(v => v.v === parseInt(versiculo));
+        if (versiculoData) {
+          return versiculoData.t;
+        }
+      }
+    }
     
-    const clave = `${libro} ${capitulo}:${versiculo}`;
-    return textos[clave] || `[${libro} ${capitulo}:${versiculo}]<br><em>Texto no disponible en esta versión de demostración. Este es un sistema de Biblia interactiva en desarrollo.</em><br><br>Para leer la Biblia completa, visita: <a href="https://www.biblegateway.com" target="_blank">BibleGateway</a> o <a href="https://www.vatican.va/archive/Biblia/index_sp.htm" target="_blank">Biblia Vaticana</a>`;
+    return `[${libroAbrev} ${capitulo}:${versiculo}]<br><em>Texto de ejemplo. Para leer la Biblia Católica completa, visita:</em><br><a href="https://www.vatican.va/archive/Biblia/index_sp.htm" target="_blank">📖 Biblia Vaticana (Oficial)</a><br><a href="https://www.biblegateway.com" target="_blank">📖 BibleGateway</a>`;
   }
   
   // Buscar texto
