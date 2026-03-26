@@ -1,0 +1,24 @@
+# FORMATO DEL ARCHIVO DE TRADUCCIÓN DE LA BIBLIA
+# IMPORTANTE: Este es un archivo de EJEMPLO/MUESTRA
+# No copies тексты biblícos con derechos de autor
+
+# Formato: testamento|Libro|Capítulo|Versículo|Texto
+# Ejemplo:
+nt|Mateo|3|16|Porque tanto amó Dios al mundo...
+nt|Mateo|5|9|Bienaventurados los pacificadores...
+nt|Marcos|1|15|El tiempo se ha cumplido y el Reino de Dios está cerca...
+
+# Para obtener тексты biblícos合法的, usa:
+# - BibleGateway.com (buscar "King James Version" u otras)
+# - API gratuita: https://bible-api.com/
+# - BibleSearch: https://github.com/biblesearch/biblesearch
+# -抓取 from public domain translations (Reina-Valera 1909)
+
+# Обратите внимание: La Biblia онлайн con más de 200 traducciones
+# está disponible gratuitamente en:
+# - https://www.biblegateway.com/versions/
+# - https://www.bibliaonline.com.br/
+# - https://www.vatican.va/archive/Biblia/index_sp.htm (Vaticano)
+
+# Una vez que tengas tu archivo de traducción en el formato correcto,
+# ejecuta: node genera-biblia-json.js
