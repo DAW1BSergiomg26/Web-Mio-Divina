@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel de Administración - Divina Misericordia</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#d4af37;--gold-light:#f4e2a1;--gold-dark:#b8960c;--blue-deep:#050d1a;--white:#faf7f0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--blue-deep);color:var(--white);font-family:'EB Garamond',Georgia,serif;min-height:100vh}
+header{position:fixed;top:0;width:100%;background:rgba(0,0,0,0.95);padding:15px 30px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--gold);z-index:1000}
+header h1{font-family:'Cinzel Decorative';color:var(--gold-light);font-size:1.5rem}
+header button{background:linear-gradient(135deg,var(--gold-dark),var(--gold));border:none;padding:10px 20px;border-radius:8px;color:var(--blue-deep);font-family:Cinzel;font-weight:bold;cursor:pointer}
+.container{padding:100px 20px 40px;max-width:1600px;margin:0 auto}
+.sidebar{position:fixed;left:0;top:70px;width:220px;height:calc(100vh - 70px);background:rgba(0,0,0,0.85);border-right:1px solid rgba(212,175,55,0.3);overflow-y:auto;padding:15px}
+.sidebar h3{color:var(--gold-light);font-family:Cinzel;margin-bottom:10px;font-size:0.9rem;padding:8px 12px;background:rgba(212,175,55,0.1);border-radius:6px}
+.sidebar ul{list-style:none}
+.sidebar li{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.08);cursor:pointer;transition:0.2s;font-size:0.85rem;border-radius:6px;margin-bottom:3px}
+.sidebar li:hover{background:rgba(212,175,55,0.15)}
+.sidebar li.active{background:rgba(212,175,55,0.25);border-left:3px solid var(--gold)}
+.sidebar .category-header{color:var(--gold-light);font-family:Cinzel;font-size:0.85rem;padding:8px 12px;margin-top:10px;background:rgba(212,175,55,0.08);border-radius:4px}
+.main-content{margin-left:240px}
+.editor{background:rgba(0,0,0,0.5);border:1px solid rgba(212,175,55,0.3);border-radius:15px;padding:20px;margin-bottom:20px}
+.editor h2{color:var(--gold-light);font-family:Cinzel;margin-bottom:15px}
+.editor textarea{width:100%;min-height:350px;background:rgba(20,20,30,0.9);border:1px solid rgba(212,175,55,0.5);border-radius:10px;padding:15px;color:#e0e0e0;font-family:'Consolas','Monaco',monospace;font-size:13px;line-height:1.5}
+.editor input{width:100%;padding:12px;margin:10px 0;background:rgba(255,255,255,0.1);border:1px solid rgba(212,175,55,0.5);border-radius:8px;color:#fff}
+.editor-buttons{display:flex;gap:10px;margin-top:15px;flex-wrap:wrap}
+.editor button{background:linear-gradient(135deg,var(--gold-dark),var(--gold));border:none;padding:12px 24px;border-radius:8px;color:var(--blue-deep);font-family:Cinzel;font-weight:bold;cursor:pointer;flex:1;min-width:150px}
+.editor button:hover{box-shadow:0 0 20px rgba(212,175,55,0.5)}
+.editor button:disabled{opacity:0.5;cursor:not-allowed}
+.editor button.secondary{background:rgba(255,255,255,0.1);border:1px solid var(--gold);color:var(--gold)}
+.editor button.secondary:hover{background:rgba(212,175,55,0.2)}
+.editor button.undo{background:linear-gradient(135deg,#e53935,#c62828);border:none;color:#fff}
+.editor button.undo:hover{box-shadow:0 0 20px rgba(229,57,53,0.5)}
+.editor button.redo{background:linear-gradient(135deg,#43a047,#2e7d32);border:none;color:#fff}
+.editor button.redo:hover{box-shadow:0 0 20px rgba(67,160,71,0.5)}
+.preview{border:1px solid rgba(212,175,55,0.3);border-radius:15px;padding:20px;margin-top:20px;background:rgba(255,255,255,0.02)}
+.preview h3{color:var(--gold-light);margin-bottom:15px}
+.preview iframe{width:100%;height:450px;border:none;background:#fff;border-radius:10px}
+.success{background:rgba(76,175,80,0.25);border:1px solid #4caf50;border-radius:8px;padding:15px;margin-bottom:15px;display:none;color:#81c784}
+.error{background:rgba(244,67,54,0.25);border:1px solid #f44336;border-radius:8px;padding:15px;margin-bottom:15px;display:none;color:#e57373}
+.loading{background:rgba(255,193,7,0.25);border:1px solid #ffc107;border-radius:8px;padding:15px;margin-bottom:15px;display:none;color:#ffd54f}
+.page-info{background:rgba(212,175,55,0.1);border:1px solid var(--gold);border-radius:10px;padding:12px;margin-bottom:15px}
+.page-info p{margin:4px 0;color:rgba(255,255,255,0.7);font-size:0.85rem}
+.page-info strong{color:var(--gold-light)}
+.history-info{background:rgba(33,150,243,0.15);border:1px solid #2196f3;border-radius:8px;padding:10px;margin-bottom:15px;font-size:0.85rem;color:#64b5f6}
+.status-bar{display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.3);border-radius:8px;padding:10px 15px;margin-bottom:15px;font-size:0.85rem}
+.status-bar .modified{color:#ff9800}
+.status-bar .saved{color:#4caf50}
+.cursor-cruz{position:fixed;pointer-events:none;z-index:9999;font-size:2rem;color:var(--gold);text-shadow:0 0 10px var(--gold),0 0 20px var(--gold);transition:transform 0.15s ease,color 0.2s ease,text-shadow 0.2s ease}
+.cursor-cruz.hover{color:#ff4444;text-shadow:0 0 15px #ff4444,0 0 30px #ff0000;transform:scale(1.3)}
+@media (hover:none){.cursor-cruz{display:none}body{cursor:default}}
+
+/* Scroll buttons profesionales con brillo */
+.scroll-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.6);
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    animation: scrollPulse 2s ease-in-out infinite;
+    transition: all 0.3s ease;
+    position: fixed;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+}
+.scroll-btn:hover {
+    background: rgba(212,175,55,0.35);
+    box-shadow: 0 0 25px rgba(212,175,55,0.8), 0 0 50px rgba(212,175,55,0.4), 0 0 70px rgba(212,175,55,0.2);
+    transform: scale(1.1);
+}
+.scroll-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--gold);
+    stroke-width: 2.5;
+    fill: none;
+    filter: drop-shadow(0 0 4px rgba(212,175,55,0.8));
+    transition: transform 0.2s ease;
+}
+.scroll-btn:hover svg {
+    transform: scale(1.15);
+    stroke: #fff5c0;
+    filter: drop-shadow(0 0 8px rgba(255,245,192,0.9));
+}
+.scroll-up { top: 120px; right: 20px; }
+.scroll-down { bottom: 30px; right: 20px; }
+@keyframes scrollPulse {
+    0%, 100% { box-shadow: 0 0 15px rgba(212,175,55,0.5), 0 0 30px rgba(212,175,55,0.2); }
+    50% { box-shadow: 0 0 25px rgba(212,175,55,0.8), 0 0 50px rgba(212,175,55,0.4), 0 0 70px rgba(212,175,55,0.2); }
+}
+
+/* BORDE DORADO RESPLANDECIENTE - DIVINO - TITILANTE */
+.sacred-glow-border {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border: 3px solid transparent;
+  border-radius: 16px;
+  background: linear-gradient(45deg, #d4af37, #f4e2a1, #d4af37, #b8960c, #f4e2a1) border-box;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) padding-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: sacredPulse 3.2s ease-in-out infinite;
+  box-shadow: 
+    0 0 15px 4px rgba(212,175,55,0.7),
+    0 0 35px 8px rgba(244,226,161,0.5),
+    inset 0 0 25px rgba(212,175,55,0.4);
+}
+
+@keyframes sacredPulse {
+  0%, 100% {
+    opacity: 0.65;
+    box-shadow: 
+      0 0 15px 4px rgba(212,175,55,0.7),
+      0 0 35px 8px rgba(244,226,161,0.5),
+      inset 0 0 25px rgba(212,175,55,0.4);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 
+      0 0 35px 12px rgba(212,175,55,1),
+      0 0 70px 20px rgba(244,226,161,0.8),
+      inset 0 0 45px rgba(212,175,55,0.7);
+  }
+}
+
+.sacred-footer {
+  position: relative;
+  overflow: hidden;
+  border-top: 3px solid transparent;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(10,20,40,0.8));
+}
+
+.sacred-footer::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border: 3px solid transparent;
+  border-radius: 0 0 16px 16px;
+  background: linear-gradient(90deg, #b8960c, #d4af37, #f4e2a1, #d4af37, #b8960c) border-box;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) padding-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: sacredPulse 4s ease-in-out infinite;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-cruz" id="cursor">
+  <svg class="cruz-normal" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="cruzGold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fff5c0"/>
+        <stop offset="50%" stop-color="#d4af37"/>
+        <stop offset="100%" stop-color="#8a7000"/>
+      </linearGradient>
+      <filter id="glowGold"><feGaussianBlur stdDeviation="2" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <rect x="18" y="4" width="4" height="32" rx="2" fill="url(#cruzGold)" filter="url(#glowGold)"/>
+    <rect x="6" y="14" width="28" height="4" rx="2" fill="url(#cruzGold)" filter="url(#glowGold)"/>
+    <circle cx="20" cy="10" r="2" fill="#fff5c0" filter="url(#glowGold)"/>
+  </svg>
+  <svg class="cruz-rayos" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="cruzRojo" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ff6666"/>
+        <stop offset="50%" stop-color="#cc0000"/>
+        <stop offset="100%" stop-color="#880000"/>
+      </linearGradient>
+      <linearGradient id="cruzAzul" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#6699ff"/>
+        <stop offset="50%" stop-color="#0044cc"/>
+        <stop offset="100%" stop-color="#002266"/>
+      </linearGradient>
+      <filter id="glowRayos"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <rect x="18" y="4" width="4" height="32" rx="2" fill="url(#cruzRojo)" filter="url(#glowRayos)"/>
+    <rect x="6" y="14" width="28" height="4" rx="2" fill="url(#cruzAzul)" filter="url(#glowRayos)"/>
+    <circle cx="20" cy="10" r="2.5" fill="#ff8888" filter="url(#glowRayos)"/>
+    <circle cx="20" cy="30" r="2" fill="#88bbff" filter="url(#glowRayos)"/>
+  </svg>
+</div>
+
+<header>
+<h1>Panel Admin - Divina Misericordia</h1>
+<button onclick="logout()">Cerrar Sesión</button>
+</header>
+<div class="container">
+<div class="sidebar">
+<h3>PÁGINAS PRINCIPALES</h3>
+<ul id="pageList"></ul>
+<h3 style="margin-top:15px;">OTRAS DEVOCIONES</h3>
+<ul id="pageListDevociones"></ul>
+<h3 style="margin-top:15px;">SANTOS PAPAS</h3>
+<ul id="pageListPapas"></ul>
+</div>
+<div class="main-content">
+<div class="loading" id="loadingMsg">⏳ Guardando cambios en el servidor...</div>
+<div class="success" id="successMsg">✅ ¡Cambios guardados correctamente!</div>
+<div class="error" id="errorMsg">❌ Error al guardar</div>
+<div class="page-info" id="pageInfo"></div>
+<div class="history-info" id="historyInfo">ℹ️ Usa Ctrl+Z para deshacer y Ctrl+Y para rehacer</div>
+<div class="status-bar">
+<span id="pageStatus">📄 Ninguna página seleccionada</span>
+<span id="saveStatus" class="saved">✓ Guardado</span>
+</div>
+<div class="editor">
+<h2>✏️ EDITAR PÁGINA</h2>
+<textarea id="contentEditor" placeholder="Escribe el código HTML aquí..."></textarea>
+<div class="editor-buttons">
+<button onclick="saveContent()" id="saveBtn">💾 GUARDAR CAMBIOS</button>
+<button class="undo" onclick="undoChange()" id="undoBtn" disabled>↩️ DESHACER (Ctrl+Z)</button>
+<button class="redo" onclick="redoChange()" id="redoBtn" disabled>↪️ REHACER (Ctrl+Y)</button>
+<button class="secondary" onclick="copyContent()">📋 COPIAR CÓDIGO</button>
+<button class="secondary" onclick="downloadFile()">⬇️ DESCARGAR</button>
+</div>
+</div>
+<div class="preview">
+<h3>👁️ VISTA PREVIA</h3>
+<iframe id="previewFrame"></iframe>
+</div>
+</div>
+</div>
+<script>
+// Categorías de páginas
+const mainPages = [
+{file:'index.html',name:'🏠 Inicio',desc:'Página principal'},
+{file:'estudios-biblicos.html',name:'📚 Estudios Bíblicos y Religión',desc:'Educación religiosa'},
+{file:'quienes-somos.html',name:'👥 Quiénes Somos',desc:'Información'},
+{file:'santa-faustina.html',name:'✝ Santa Faustina',desc:'Biografía'},
+{file:'novena.html',name:'📿 Novena',desc:'9 días'},
+{file:'hora-de-la-misericordia.html',name:'⏰ Hora Misericordia',desc:'Hora Santa'},
+{file:'coronilla.html',name:'📀 Coronilla',desc:'Oración'},
+{file:'consagracion.html',name:'💒 Consagración',desc:'Oración'},
+{file:'lugares-de-culto.html',name:'⛪ Lugares de Culto',desc:'Mapas'},
+{file:'obras-de-misericordia.html',name:'🤲 Obras de Misericordia',desc:'14 obras'},
+{file:'via-crucis.html',name:'🛤️ Vía Crucis',desc:'Estaciones'},
+{file:'maria.html',name:'🌹 María',desc:'Devoción'},
+{file:'introduccion.html',name:'📖 Introducción',desc:'Intro'},
+{file:'enlaces.html',name:'🔗 Enlaces',desc:'Enlaces'},
+{file:'noticias.html',name:'📰 Noticias',desc:'Noticias'},
+{file:'contacto.html',name:'📧 Contacto',desc:'Formulario'},
+{file:'galeria.html',name:'🖼️ Galería',desc:'Imágenes'},
+{file:'oraciones.html',name:'🙏 Oraciones',desc:'Colección'},
+{file:'santo-rosario.html',name:'📿 Santo Rosario',desc:'Rosario completo'},
+{file:'misterios-gozosos.html',name:'🌟 Misterios Gozosos',desc:'Lunes/Sábado'},
+{file:'misterios-dolorosos.html',name:'💔 Misterios Dolorosos',desc:'Martes/Viernes'},
+{file:'misterios-luminosos.html',name:'💡 Misterios Luminosos',desc:'Jueves'},
+{file:'misterios-de-gloria.html',name:'✨ Misterios de Gloria',desc:'Miércoles/Domingo'},
+{file:'lecturas-recomendadas.html',name:'📚 Lecturas',desc:'Recomendadas'},
+{file:'espacio-jovenes.html',name:'🌟 Espacio Jóvenes',desc:'Jóvenes'},
+{file:'musica-sacra.html',name:'🎵 Música Sacra',desc:'Música'},
+{file:'oracion-del-estudiante.html',name:'📖 Oración Estudiante',desc:'Estudiantes'},
+{file:'oracion-san-miguel.html',name:'⚔️ Oración San Miguel',desc:'Arcángel'},
+{file:'oracion-san-antonio.html',name:'🕯️ San Antonio',desc:'Padua'}
+];
+
+const devocionesPages = [
+{file:'otras-devociones.html',name:'✨ Otras Devociones',desc:'Sección principal'},
+{file:'divino-nino-jesus.html',name:'👶 Divino Niño Jesús',desc:'Devoción'},
+{file:'san-jose-dormido.html',name:'😴 San José Dormido',desc:'Devoción'},
+{file:'san-judas-tadeo.html',name:'🕊️ San Judas Tadeo',desc:'Devoción'},
+{file:'san-cayetano.html',name:'🔥 San Cayetano',desc:'Devoción'},
+{file:'consagracion-sagrado-corazon.html',name:'❤️ Sagrado Corazón',desc:'Consagración'},
+{file:'santa-francisca-romana.html',name:'🌹 Santa Francisca Romana',desc:'Esposa, Madre y Fundadora'},
+{file:'oracion-eucharistia.html',name:'📿 Jesús Eucaristía',desc:'Oración Eucarística'},
+{file:'maria-auxiliadora.html',name:'🌺 María Auxiliadora',desc:'Devoción'},
+{file:'san-sanson.html',name:'🦁 Sansón',desc:'Devoción bíblica'},
+{file:'san-benito.html',name:'✝ San Benito',desc:'Patrón de Europa'},
+{file:'oracion-santa-cruz.html',name:'✝ Santa Cruz',desc:'Oración'},
+{file:'san-francisco.html',name:'🕊️ San Francisco',desc:'Patrón de Italia'},
+{file:'cruz-del-perdon.html',name:'✝ Cruz del Perdón',desc:'Devoción'},
+{file:'san-jose.html',name:'👑 San José',desc:'Esposo de María'}
+];
+
+const papasPages = [
+{file:'ss-leon-xiv.html',name:'👑 S.S. León XIV',desc:'Papa'},
+{file:'ss-francisco.html',name:'📖 S.S. Francisco',desc:'Papa'},
+{file:'ss-benedicto-xvi.html',name:'🔵 S.S. Benedicto XVI',desc:'Papa'},
+{file:'ss-juan-pablo-ii.html',name:'⚪ S.S. Juan Pablo II',desc:'Papa'}
+];
+
+// Todas las páginas combinadas (para compatibilidad)
+const pages = [...mainPages, ...devocionesPages, ...papasPages, {file:'los-rayos.html',name:'⚡ Los Rayos',desc:'Efecto'}];
+
+let currentPage = '';
+let originalContent = '';
+let historyStack = [];
+let redoStack = [];
+let isModified = false;
+
+function init(){
+if(!localStorage.getItem('adminLogged')){
+window.location.href = 'admin.html';
+return;
+}
+
+// Poblar lista de páginas principales
+const listMain = document.getElementById('pageList');
+mainPages.forEach(p => {
+const li = document.createElement('li');
+li.textContent = p.name;
+li.onclick = () => loadPage(p);
+listMain.appendChild(li);
+});
+
+// Poblar lista de devociones
+const listDevociones = document.getElementById('pageListDevociones');
+devocionesPages.forEach(p => {
+const li = document.createElement('li');
+li.textContent = p.name;
+li.onclick = () => loadPage(p);
+listDevociones.appendChild(li);
+});
+
+// Poblar lista de papas
+const listPapas = document.getElementById('pageListPapas');
+papasPages.forEach(p => {
+const li = document.createElement('li');
+li.textContent = p.name;
+li.onclick = () => loadPage(p);
+listPapas.appendChild(li);
+});
+
+// Cargar primera página
+loadPage(mainPages[0]);
+}
+
+function loadPage(page){
+if(isModified && !confirm('Tienes cambios sin guardar. ¿Quieres cambiar de página sin guardar?')){
+return;
+}
+currentPage = page.file;
+// Quitar active de todas las listas
+document.querySelectorAll('.sidebar li').forEach(l => l.classList.remove('active'));
+// Añadir active al elemento clickeado
+if(event && event.target){
+event.target.closest('li').classList.add('active');
+}else{
+// Si se llama programáticamente, buscar en todas las listas
+document.querySelectorAll('#pageList li, #pageListDevociones li, #pageListPapas li').forEach(li => {
+if(li.textContent === page.name) li.classList.add('active');
+});
+}
+document.getElementById('pageInfo').innerHTML = `<p><strong>📄 Archivo:</strong> ${page.file}</p><p><strong>📝 Descripción:</strong> ${page.desc}</p>`;
+document.getElementById('pageStatus').textContent = `📄 Editando: ${page.name}`;
+historyStack = [];
+redoStack = [];
+updateUndoButton();
+updateRedoButton();
+fetch(page.file + '?t=' + Date.now()).then(r => r.text()).then(html => {
+originalContent = html;
+historyStack = [];
+redoStack = [];
+updateUndoButton();
+updateRedoButton();
+document.getElementById('contentEditor').value = html;
+updatePreview(html);
+setSavedStatus(true);
+}).catch(e => {
+showError('Error al cargar la página: ' + e.message);
+});
+}
+
+function updatePreview(html){
+const frame = document.getElementById('previewFrame');
+frame.srcdoc = html;
+}
+
+function setSavedStatus(saved){
+isModified = !saved;
+const statusEl = document.getElementById('saveStatus');
+if(saved){
+statusEl.textContent = '✓ Guardado';
+statusEl.className = 'saved';
+}else{
+statusEl.textContent = '✏️ Modificado';
+statusEl.className = 'modified';
+}
+}
+
+function showLoading(){
+document.getElementById('loadingMsg').style.display = 'block';
+document.getElementById('successMsg').style.display = 'none';
+document.getElementById('errorMsg').style.display = 'none';
+document.getElementById('saveBtn').disabled = true;
+}
+
+function showSuccess(){
+document.getElementById('loadingMsg').style.display = 'none';
+document.getElementById('successMsg').innerHTML = '✅ <strong>¡Guardado!</strong> Los cambios se han guardado en el servidor.<br><small>Recarga la página (Ctrl+F5) para ver los cambios更新.</small>';
+document.getElementById('successMsg').style.display = 'block';
+setTimeout(() => document.getElementById('successMsg').style.display = 'none',8000);
+}
+
+function showError(msg){
+document.getElementById('loadingMsg').style.display = 'none';
+const el = document.getElementById('errorMsg');
+el.textContent = msg;
+el.style.display = 'block';
+document.getElementById('saveBtn').disabled = false;
+setTimeout(() => el.style.display = 'none',8000);
+}
+
+function saveHistory(){
+const currentContent = document.getElementById('contentEditor').value;
+if(currentContent !== historyStack[historyStack.length - 1]){
+historyStack.push(currentContent);
+if(historyStack.length > 20) historyStack.shift();
+redoStack = [];
+updateUndoButton();
+updateRedoButton();
+}
+}
+
+function updateUndoButton(){
+const undoBtn = document.getElementById('undoBtn');
+undoBtn.disabled = historyStack.length === 0;
+}
+
+function updateRedoButton(){
+const redoBtn = document.getElementById('redoBtn');
+redoBtn.disabled = redoStack.length === 0;
+}
+
+function undoChange(){
+if(historyStack.length > 0){
+const currentContent = document.getElementById('contentEditor').value;
+redoStack.push(currentContent);
+const previousContent = historyStack.pop();
+document.getElementById('contentEditor').value = previousContent;
+updatePreview(previousContent);
+setSavedStatus(false);
+updateUndoButton();
+updateRedoButton();
+showMessage('↩️ Cambio deshecho');
+}
+}
+
+function redoChange(){
+if(redoStack.length > 0){
+const currentContent = document.getElementById('contentEditor').value;
+historyStack.push(currentContent);
+const nextContent = redoStack.pop();
+document.getElementById('contentEditor').value = nextContent;
+updatePreview(nextContent);
+setSavedStatus(false);
+updateUndoButton();
+updateRedoButton();
+showMessage('↪️ Cambio rehecho');
+}
+}
+
+function showMessage(msg){
+const el = document.createElement('div');
+el.style.cssText = 'background:rgba(33,150,243,0.25);border:1px solid #2196f3;border-radius:8px;padding:10px;margin-bottom:15px;color:#64b5f6';
+el.textContent = msg;
+document.querySelector('.main-content').insertBefore(el, document.querySelector('.main-content').children[1]);
+setTimeout(() => el.remove(),3000);
+}
+
+async function saveContent(){
+const content = document.getElementById('contentEditor').value;
+if(!content || content.length < 100){
+showError('El contenido está vacío o es muy corto. Asegúrate de tener el código HTML completo.');
+return;
+}
+showLoading();
+console.log('[CLIENTE] Intentando guardar:', currentPage);
+console.log('[CLIENTE] Tamaño del contenido:', content.length, 'caracteres');
+try{
+const response = await fetch('/api/save',{
+method:'POST',
+headers:{'Content-Type':'application/json'},
+body:JSON.stringify({file:currentPage,content:content})
+});
+console.log('[CLIENTE] Respuesta del servidor:', response.status, response.statusText);
+const result = await response.json();
+console.log('[CLIENTE] Resultado:', result);
+if(response.ok && result.success){
+originalContent = content;
+historyStack = [];
+redoStack = [];
+updateUndoButton();
+updateRedoButton();
+showSuccess();
+updatePreview(content);
+setSavedStatus(true);
+document.getElementById('saveBtn').disabled = false;
+}else{
+showError('Error del servidor: ' + (result.error || 'Error desconocido'));
+}
+}catch(e){
+console.error('[CLIENTE] Error de conexión:', e);
+showError('Error de conexión: ' + e.message + '. Los cambios se han copiado al portapapeles.');
+navigator.clipboard.writeText(content);
+}
+}
+
+function copyContent(){
+const content = document.getElementById('contentEditor').value;
+navigator.clipboard.writeText(content).then(() => {
+alert('¡Código copiado al portapapeles!');
+}).catch(() => {
+showError('No se pudo copiar. Usa Ctrl+C manualmente.');
+});
+}
+
+function downloadFile(){
+const content = document.getElementById('contentEditor').value;
+const blob = new Blob([content],{type:'text/html'});
+const url = URL.createObjectURL(blob);
+const a = document.createElement('a');
+a.href = url;
+a.download = currentPage;
+a.click();
+URL.revokeObjectURL(url);
+}
+
+function logout(){
+localStorage.removeItem('adminLogged');
+window.location.href = 'admin.html';
+}
+
+document.getElementById('contentEditor').addEventListener('input',e => {
+saveHistory();
+updatePreview(e.target.value);
+setSavedStatus(false);
+});
+
+document.getElementById('contentEditor').addEventListener('keydown',e => {
+if((e.ctrlKey || e.metaKey) && e.key === 'z'){
+e.preventDefault();
+undoChange();
+}
+if((e.ctrlKey || e.metaKey) && e.key === 'y'){
+e.preventDefault();
+redoChange();
+}
+});
+
+init();
+
+const cursor=document.getElementById('cursor');
+let mouseX=0,mouseY=0;
+document.addEventListener('mousemove',e=>{
+  mouseX=e.clientX;mouseY=e.clientY;
+  cursor.style.left=(mouseX+15)+'px';cursor.style.top=(mouseY+15)+'px';
+});
+document.addEventListener('mouseover',e=>{
+  cursor.classList.toggle('hover',!!e.target.closest('a,button,li'));
+});
+</script>
+
+<!-- Cursor Script -->
+<script>
+(function(){
+  const cursor = document.getElementById('cursor');
+  if(!cursor) return;
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+  document.addEventListener('mouseover', e => {
+    cursor.classList.toggle('hover', !!e.target.closest('a,button,[onclick],.btn,.scroll-btn'));
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  var hdr = document.getElementById('mainHeader');
+  if(!hdr) return;
+  window.addEventListener('scroll', function(){
+    hdr.classList.toggle('scrolled', window.scrollY > 60);
+  });
+})();
+</script>
+
+</body>
+</html>

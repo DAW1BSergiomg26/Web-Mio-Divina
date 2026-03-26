@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devociones Marianas - María, Madre de Dios | Divina Misericordia</title>
+<meta name="description" content="Devociones Marianas - María, Madre de Dios y Madre de la Iglesia. La Santina, Virgen de Caacupé, Virgen de Luján, María Auxiliadora y más. Todas las devociones marianas reunidas.">
+<meta name="author" content="El Portal de la Divina Misericordia">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1a3a6e">
+<link rel="canonical" href="https://misericordiadejesus.es/devociones-marianas.html">
+<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    /* COLORES CELESTIALES MARIANOS */
+    --azul-abismo: #001233;
+    --azul-profundo: #0a1628;
+    --azul-celeste: #1a3a6e;
+    --azul-cielo: #2d5a87;
+    --azul-light: #4a7eb8;
+    --celeste-mariano: #6fa8dc;
+    
+    /* ROSA MARIANO */
+    --rosa-mariano: #d4a5a5;
+    --rosa-light: #e8c4c4;
+    --rosa-soft: #f5dede;
+    
+    /* BLANCO CELESTIAL */
+    --blanco-estelar: #f0f5ff;
+    --blanco-perla: #f8fbff;
+    
+    /* ORO CELESTIAL */
+    --oro: #d4af37;
+    --oro-light: #f4e2a1;
+    --oro-pale: #fef5d0;
+    --oro-divino: #fcd34d;
+    
+    /* COLORES BASE */
+    --white: #faf7f0;
+    --cream: #FDFBF5;
+    --text-main: rgba(255,255,255,0.92);
+    --text-muted: rgba(255,255,255,0.7);
+    --border-gold: rgba(212,175,55,0.3);
+    --border-rosa: rgba(212,165,165,0.4);
+    --transition: 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+    background: var(--azul-abismo);
+    color: var(--text-main);
+    font-family:'EB Garamond',Georgia,serif;
+    line-height:1.85; overflow-x:hidden;
+    cursor:none;
+}
+
+/* ══════════════════════════════════════════
+   FONDO CELESTIAL ANIMADO
+   ══════════════════════════════════════════ */
+.bg { 
+    position:fixed; inset:0; 
+    background: 
+        radial-gradient(ellipse 120% 80% at 50% 0%, rgba(26,58,110,0.6) 0%, transparent 50%),
+        radial-gradient(ellipse 80% 60% at 20% 100%, rgba(212,165,165,0.15) 0%, transparent 40%),
+        radial-gradient(ellipse 80% 60% at 80% 100%, rgba(107,168,220,0.15) 0%, transparent 40%),
+        linear-gradient(180deg, #001233 0%, #0a1628 30%, #1a3a6e 60%, #001233 100%);
+    background-size: 200% 200%;
+    animation: celestialShift 25s ease infinite;
+    z-index:-2; 
+}
+@keyframes celestialShift {
+    0%, 100% { background-position: 0% 0%; }
+    25% { background-position: 50% 10%; }
+    50% { background-position: 100% 0%; }
+    75% { background-position: 50% 10%; }
+}
+
+/* ══════════════════════════════════════════
+   RAYOS CELESTIALES
+   ══════════════════════════════════════════ */
+.sacred-rays {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 400vmax;
+    height: 400vmax;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.12;
+}
+.ray {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 75%;
+    transform-origin: bottom center;
+}
+.ray::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(to top, 
+        rgba(212,175,55,1) 0%,
+        rgba(107,168,220,0.8) 30%,
+        rgba(212,165,165,0.5) 60%,
+        transparent 100%);
+    animation: rayPulse 5s ease-in-out infinite;
+}
+.ray:nth-child(1) { transform: translateY(-100%) rotate(0deg); animation-delay: 0s; }
+.ray:nth-child(2) { transform: translateY(-100%) rotate(15deg); animation-delay: 0.15s; }
+.ray:nth-child(3) { transform: translateY(-100%) rotate(30deg); animation-delay: 0.3s; }
+.ray:nth-child(4) { transform: translateY(-100%) rotate(45deg); animation-delay: 0.45s; }
+.ray:nth-child(5) { transform: translateY(-100%) rotate(60deg); animation-delay: 0.6s; }
+.ray:nth-child(6) { transform: translateY(-100%) rotate(75deg); animation-delay: 0.75s; }
+.ray:nth-child(7) { transform: translateY(-100%) rotate(90deg); animation-delay: 0.9s; }
+.ray:nth-child(8) { transform: translateY(-100%) rotate(105deg); animation-delay: 1.05s; }
+.ray:nth-child(9) { transform: translateY(-100%) rotate(120deg); animation-delay: 1.2s; }
+.ray:nth-child(10) { transform: translateY(-100%) rotate(135deg); animation-delay: 1.35s; }
+.ray:nth-child(11) { transform: translateY(-100%) rotate(150deg); animation-delay: 1.5s; }
+.ray:nth-child(12) { transform: translateY(-100%) rotate(165deg); animation-delay: 1.65s; }
+.ray:nth-child(13) { transform: translateY(-100%) rotate(180deg); animation-delay: 1.8s; }
+.ray:nth-child(14) { transform: translateY(-100%) rotate(195deg); animation-delay: 1.95s; }
+.ray:nth-child(15) { transform: translateY(-100%) rotate(210deg); animation-delay: 2.1s; }
+.ray:nth-child(16) { transform: translateY(-100%) rotate(225deg); animation-delay: 2.25s; }
+.ray:nth-child(17) { transform: translateY(-100%) rotate(240deg); animation-delay: 2.4s; }
+.ray:nth-child(18) { transform: translateY(-100%) rotate(255deg); animation-delay: 2.55s; }
+.ray:nth-child(19) { transform: translateY(-100%) rotate(270deg); animation-delay: 2.7s; }
+.ray:nth-child(20) { transform: translateY(-100%) rotate(285deg); animation-delay: 2.85s; }
+.ray:nth-child(21) { transform: translateY(-100%) rotate(300deg); animation-delay: 3s; }
+.ray:nth-child(22) { transform: translateY(-100%) rotate(315deg); animation-delay: 3.15s; }
+.ray:nth-child(23) { transform: translateY(-100%) rotate(330deg); animation-delay: 3.3s; }
+.ray:nth-child(24) { transform: translateY(-100%) rotate(345deg); animation-delay: 3.45s; }
+
+@keyframes rayPulse {
+    0%, 100% { opacity: 0.25; height: 60%; }
+    25% { opacity: 1; height: 100%; }
+    50% { opacity: 0.4; height: 75%; }
+    75% { opacity: 0.9; height: 95%; }
+}
+
+/* ══════════════════════════════════════════
+   ESTRELLAS Y PARTÍCULAS
+   ══════════════════════════════════════════ */
+.stars {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+.star {
+    position: absolute;
+    width: 3px; height: 3px;
+    background: var(--blanco-estelar);
+    border-radius: 50%;
+    animation: twinkle 3s ease-in-out infinite;
+    box-shadow: 0 0 6px rgba(255,255,255,0.8);
+}
+.star:nth-child(odd) { background: var(--oro-light); box-shadow: 0 0 8px rgba(244,226,161,0.8); }
+.star:nth-child(3n) { background: var(--celeste-mariano); box-shadow: 0 0 8px rgba(107,168,220,0.8); width: 4px; height: 4px; }
+.star:nth-child(1) { top: 5%; left: 10%; animation-delay: 0s; }
+.star:nth-child(2) { top: 8%; left: 25%; animation-delay: 0.5s; }
+.star:nth-child(3) { top: 12%; left: 40%; animation-delay: 1s; }
+.star:nth-child(4) { top: 6%; left: 55%; animation-delay: 1.5s; }
+.star:nth-child(5) { top: 15%; left: 70%; animation-delay: 2s; }
+.star:nth-child(6) { top: 9%; left: 85%; animation-delay: 0.3s; }
+.star:nth-child(7) { top: 18%; left: 15%; animation-delay: 0.8s; }
+.star:nth-child(8) { top: 22%; left: 35%; animation-delay: 1.3s; }
+.star:nth-child(9) { top: 16%; left: 60%; animation-delay: 1.8s; }
+.star:nth-child(10) { top: 20%; left: 80%; animation-delay: 2.3s; }
+.star:nth-child(11) { top: 25%; left: 5%; animation-delay: 0.6s; }
+.star:nth-child(12) { top: 28%; left: 45%; animation-delay: 1.1s; }
+.star:nth-child(13) { top: 30%; left: 90%; animation-delay: 1.6s; }
+.star:nth-child(14) { top: 35%; left: 20%; animation-delay: 2.1s; }
+.star:nth-child(15) { top: 38%; left: 75%; animation-delay: 0.4s; }
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+}
+
+.particles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+.particle {
+    position: absolute;
+    width: 4px; height: 4px;
+    background: var(--oro);
+    border-radius: 50%;
+    animation: floatDivine 25s linear infinite;
+    box-shadow: 0 0 10px rgba(212,175,55,0.8), 0 0 20px rgba(107,168,220,0.4);
+}
+.particle:nth-child(3n) { background: var(--celeste-mariano); box-shadow: 0 0 10px rgba(107,168,220,0.8); }
+.particle:nth-child(odd) { background: var(--rosa-light); box-shadow: 0 0 8px rgba(212,165,165,0.8); }
+.particle:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 28s; }
+.particle:nth-child(2) { left: 12%; animation-delay: 3s; animation-duration: 32s; width: 3px; height: 3px; }
+.particle:nth-child(3) { left: 18%; animation-delay: 6s; animation-duration: 26s; }
+.particle:nth-child(4) { left: 25%; animation-delay: 2s; animation-duration: 30s; width: 5px; height: 5px; }
+.particle:nth-child(5) { left: 32%; animation-delay: 5s; animation-duration: 24s; }
+.particle:nth-child(6) { left: 38%; animation-delay: 8s; animation-duration: 34s; width: 3px; height: 3px; }
+.particle:nth-child(7) { left: 45%; animation-delay: 1s; animation-duration: 28s; }
+.particle:nth-child(8) { left: 52%; animation-delay: 4s; animation-duration: 32s; width: 5px; height: 5px; }
+.particle:nth-child(9) { left: 58%; animation-delay: 7s; animation-duration: 26s; }
+.particle:nth-child(10) { left: 65%; animation-delay: 2s; animation-duration: 36s; width: 3px; height: 3px; }
+.particle:nth-child(11) { left: 72%; animation-delay: 5s; animation-duration: 30s; }
+.particle:nth-child(12) { left: 78%; animation-delay: 0s; animation-duration: 28s; width: 5px; height: 5px; }
+.particle:nth-child(13) { left: 85%; animation-delay: 3s; animation-duration: 24s; }
+.particle:nth-child(14) { left: 92%; animation-delay: 6s; animation-duration: 32s; width: 3px; height: 3px; }
+
+@keyframes floatDivine {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    5% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(1080deg); opacity: 0; }
+}
+
+#divine-canvas { position:fixed; inset:0; z-index:-1; opacity:0.35; }
+
+.progress-bar {
+    position:fixed; top:0; left:0; height:2px; width:0;
+    background:linear-gradient(to right, var(--azul-cielo), var(--oro), var(--rosa-light), var(--celeste-mariano), var(--oro-light));
+    z-index:1100; transition:width 0.1s linear;
+    box-shadow:0 0 15px rgba(212,175,55,0.7);
+}
+
+/* ══════════════════════════════════════════
+   HEADER CELESTIAL
+   ══════════════════════════════════════════ */
+header {
+    position:fixed; width:100%;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:10px 30px;
+    background:rgba(0,0,0,0.88);
+    backdrop-filter:blur(28px);
+    z-index:1000; border-bottom:1px solid var(--border-gold);
+    transition:padding var(--transition);
+}
+header.scrolled { padding:6px 30px; background:rgba(0,18,51,0.98); }
+
+.logo {
+    font-family:'Cinzel Decorative',serif;
+    font-size:1.25rem; color:var(--oro-light);
+    text-decoration:none; display:flex; align-items:center; gap:12px;
+}
+.logo:hover { opacity:0.85; }
+.logo img { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--border-gold); }
+.logo span { color:var(--white); }
+
+nav { display:flex; gap:4px; flex-wrap:wrap; justify-content:center; align-items:center; }
+nav a {
+    color:var(--oro); text-decoration:none;
+    font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:1px;
+    padding:8px 12px; border-radius:6px;
+    transition:all var(--transition); position:relative; white-space:nowrap;
+}
+nav a::after {
+    content:''; position:absolute; bottom:4px; left:50%;
+    transform:translateX(-50%) scaleX(0);
+    width:60%; height:1px; background:var(--oro);
+    transition:transform var(--transition);
+}
+nav a:hover::after, nav a.activo::after { transform:translateX(-50%) scaleX(1); }
+nav a:hover, nav a.activo {
+    color:var(--oro-light);
+    background:rgba(212,175,55,0.12);
+    text-shadow:0 0 18px rgba(212,175,55,0.6);
+}
+
+nav a.devociones-btn {
+    color: #fff;
+    background: linear-gradient(135deg, var(--azul-celeste), var(--celeste-mariano), var(--rosa-light));
+    border: 2px solid var(--oro);
+    padding: 10px 20px;
+    font-weight: 700;
+    animation: marianaGlow 2.5s ease-in-out infinite;
+    box-shadow: 0 0 25px rgba(107,168,220,0.5), 0 0 50px rgba(212,165,165,0.3);
+}
+@keyframes marianaGlow {
+    0%, 100% { 
+        box-shadow: 0 0 25px rgba(107,168,220,0.5), 0 0 50px rgba(212,165,165,0.3), 0 0 75px rgba(212,175,55,0.2);
+        border-color: var(--oro);
+    }
+    50% { 
+        box-shadow: 0 0 40px rgba(107,168,220,0.8), 0 0 70px rgba(212,165,165,0.5), 0 0 100px rgba(212,175,55,0.4);
+        border-color: var(--oro-light);
+    }
+}
+nav a.devociones-btn:hover {
+    background: linear-gradient(135deg, var(--celeste-mariano), var(--rosa-light), var(--oro-light));
+    color: var(--azul-abismo);
+    transform: scale(1.05);
+}
+
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:10px; z-index:1100; }
+.hamburger span { width:26px; height:2px; background:var(--oro); border-radius:2px; transition:all var(--transition); display:block; }
+.hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+.hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+@media (max-width:900px) {
+    .hamburger { display:flex; }
+    nav {
+        position:fixed; top:0; right:-100%;
+        width:min(320px,80vw); height:100dvh;
+        background:rgba(0,18,51,0.98);
+        backdrop-filter:blur(30px);
+        flex-direction:column; align-items:flex-start; justify-content:flex-start;
+        padding:90px 30px 30px; gap:6px;
+        transition:right 0.4s cubic-bezier(0.4,0,0.2,1);
+        border-left:1px solid var(--border-gold); overflow-y:auto;
+    }
+    nav.active { right:0; }
+    nav a { font-size:1rem; width:100%; padding:12px 16px; border-radius:8px; }
+    nav a::after { display:none; }
+}
+
+/* ══════════════════════════════════════════
+   CONTENIDO PRINCIPAL
+   ══════════════════════════════════════════ */
+.main-content { max-width:1100px; margin:0 auto; position: relative; z-index: 2; padding: 180px 20px 80px; }
+
+.reveal { opacity:0; transform:translateY(40px); transition:all 0.9s cubic-bezier(0.4,0,0.2,1); }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* ══════════════════════════════════════════
+   HERO CELESTIAL
+   ══════════════════════════════════════════ */
+.hero { 
+    text-align: center;
+    position: relative;
+    padding: 80px 20px 60px;
+    margin-bottom: 60px;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;
+    height: 150%;
+    background: conic-gradient(from 0deg, 
+        transparent 0deg,
+        rgba(212,175,55,0.08) 30deg,
+        transparent 60deg,
+        rgba(107,168,220,0.08) 90deg,
+        transparent 120deg,
+        rgba(212,165,165,0.08) 150deg,
+        transparent 180deg,
+        rgba(212,175,55,0.08) 210deg,
+        transparent 240deg,
+        rgba(107,168,220,0.08) 270deg,
+        transparent 300deg,
+        rgba(212,165,165,0.08) 330deg,
+        transparent 360deg
+    );
+    animation: cosmicRotate 30s linear infinite;
+    pointer-events: none;
+}
+@keyframes cosmicRotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.hero-crown {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    color: var(--oro-light);
+    text-shadow: 
+        0 0 20px rgba(212,175,55,0.8),
+        0 0 40px rgba(212,175,55,0.5),
+        0 0 60px rgba(212,175,55,0.3);
+    animation: crownShimmer 4s ease-in-out infinite;
+    margin-bottom: 10px;
+}
+@keyframes crownShimmer {
+    0%, 100% { 
+        text-shadow: 0 0 20px rgba(212,175,55,0.8), 0 0 40px rgba(212,175,55,0.5), 0 0 60px rgba(212,175,55,0.3);
+        transform: scale(1);
+    }
+    50% { 
+        text-shadow: 0 0 30px rgba(212,175,55,1), 0 0 60px rgba(212,175,55,0.7), 0 0 90px rgba(212,175,55,0.4);
+        transform: scale(1.02);
+    }
+}
+
+.hero h1 {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    background: linear-gradient(135deg, 
+        var(--white) 0%,
+        var(--celeste-mariano) 25%,
+        var(--oro-light) 50%,
+        var(--white) 75%,
+        var(--celeste-mariano) 100%
+    );
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleDivine 6s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(212,175,55,0.6));
+    margin-bottom: 20px;
+}
+@keyframes titleDivine {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.hero-subtitle {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: var(--text-main);
+    max-width: 700px;
+    margin: 0 auto 30px;
+    line-height: 1.8;
+}
+
+.hero-quote {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    color: var(--celeste-mariano);
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 30px;
+    border-left: 3px solid var(--oro);
+    border-right: 3px solid var(--oro);
+    background: rgba(107,168,220,0.05);
+}
+
+/* ══════════════════════════════════════════
+   SECCIONES
+   ══════════════════════════════════════════ */
+.section { margin-bottom: 80px; scroll-margin-top: 80px; }
+.section-header {
+    display: flex; align-items: center; gap: 20px;
+    margin-bottom: 35px;
+    border-bottom: 2px solid var(--oro);
+    padding-bottom: 18px;
+}
+.section-icon { font-size: 3rem; flex-shrink: 0; filter: drop-shadow(0 0 10px rgba(212,175,55,0.5)); }
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    color: var(--oro-light); font-weight: 700;
+    text-shadow: 0 0 20px rgba(212,175,55,0.3);
+}
+.section-subtitle { font-size: 0.85rem; color: var(--text-muted); font-style: italic; margin-top: 4px; }
+
+/* ══════════════════════════════════════════
+   CARDS CELESTIALES
+   ══════════════════════════════════════════ */
+.card {
+    background: linear-gradient(145deg, rgba(26,58,110,0.3), rgba(10,22,40,0.8));
+    border: 1px solid rgba(212,175,55,0.25);
+    border-left: 4px solid var(--oro);
+    border-radius: 4px 16px 16px 4px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(212,175,55,0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+.card:hover {
+    border-color: var(--oro-light);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.4), 0 0 40px rgba(212,175,55,0.1);
+    transform: translateY(-4px);
+}
+.card h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--oro-light); font-size: 1.1rem;
+    letter-spacing: 0.06em; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+}
+.card h3::before { content: '+'; color: var(--celeste-mariano); }
+.card p { color: var(--text-main); font-size: 1.08rem; line-height: 1.9; }
+.card.gold { border-left-color: var(--oro); }
+.card.rosa { border-left-color: var(--rosa-mariano); }
+.card.azul { border-left-color: var(--celeste-mariano); }
+.card.highlight {
+    background: linear-gradient(135deg, rgba(107,168,220,0.15), rgba(212,165,165,0.1), rgba(10,22,40,0.9));
+    border: 1px solid rgba(212,175,55,0.3);
+    border-left: 4px solid var(--oro);
+}
+.card.divine {
+    background: linear-gradient(145deg, rgba(212,175,55,0.1), rgba(26,58,110,0.4));
+    border: 1px solid var(--border-gold);
+    text-align: center;
+}
+
+/* ══════════════════════════════════════════
+   GRID DE DEVOCIONES
+   ══════════════════════════════════════════ */
+.devociones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    margin: 30px 0;
+}
+.devocion-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.devocion-card {
+    background: linear-gradient(145deg, rgba(26,58,110,0.4), rgba(10,22,40,0.9));
+    border: 2px solid transparent;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
+    overflow: hidden;
+}
+.devocion-card::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: conic-gradient(from 0deg, transparent, rgba(212,175,55,0.1), transparent, rgba(107,168,220,0.1), transparent);
+    animation: cardRotate 10s linear infinite;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+.devocion-card:hover::before { opacity: 1; }
+@keyframes cardRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+.devocion-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--oro);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 50px rgba(212,175,55,0.2);
+}
+.devocion-card .icon { font-size: 4rem; margin-bottom: 15px; display: block; }
+.devocion-card h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    color: var(--oro-light);
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px rgba(212,175,55,0.4);
+}
+.devocion-card p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 18px;
+}
+.devocion-card .btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, var(--oro), var(--oro-light));
+    color: var(--azul-abismo);
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(212,175,55,0.3);
+}
+.devocion-card .btn:hover {
+    background: linear-gradient(135deg, var(--oro-light), var(--oro));
+    transform: scale(1.05);
+    box-shadow: 0 6px 30px rgba(212,175,55,0.5);
+}
+
+.devocion-card.santina { border-color: rgba(212,165,165,0.3); }
+.devocion-card.santina:hover { border-color: var(--rosa-mariano); }
+.devocion-card.caacupe { border-color: rgba(46,139,87,0.3); }
+.devocion-card.lujan { border-color: rgba(168,204,232,0.3); }
+.devocion-card.auxiliadora { border-color: rgba(107,168,220,0.3); }
+.devocion-card.medalla { border-color: rgba(201,150,10,0.3); }
+
+/* ══════════════════════════════════════════
+   CONSAGRACIÓN - 10 FORMAS
+   ══════════════════════════════════════════ */
+.consagracion-hero {
+    background: linear-gradient(135deg, rgba(26,58,110,0.5), rgba(212,165,165,0.15), rgba(10,22,40,0.9));
+    border: 2px solid var(--oro);
+    border-radius: 20px;
+    padding: 35px 40px;
+    margin: 30px 0 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.consagracion-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(212,175,55,0.08) 0%, transparent 70%);
+}
+.consagracion-hero h3 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    color: var(--oro-light);
+    margin-bottom: 15px;
+    text-shadow: 0 0 20px rgba(212,175,55,0.4);
+}
+.consagracion-hero p {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    line-height: 1.9;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.consagracion-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.consagracion-item {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    background: linear-gradient(145deg, rgba(26,58,110,0.35), rgba(10,22,40,0.85));
+    border: 1px solid rgba(212,175,55,0.2);
+    border-radius: 16px;
+    padding: 25px 30px;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+.consagracion-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(to bottom, var(--celeste-mariano), var(--oro), var(--rosa-light));
+}
+.consagracion-item:hover {
+    border-color: var(--oro);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3), 0 0 30px rgba(212,175,55,0.1);
+    transform: translateX(5px);
+}
+
+.consagracion-num {
+    flex-shrink: 0;
+    width: 60px; height: 60px;
+    background: linear-gradient(135deg, var(--oro), var(--oro-light));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--azul-abismo);
+    box-shadow: 0 0 25px rgba(212,175,55,0.5);
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.consagracion-content {
+    flex: 1;
+}
+.consagracion-content h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.15rem;
+    color: var(--oro-light);
+    margin-bottom: 12px;
+    letter-spacing: 0.04em;
+}
+.consagracion-content p {
+    font-size: 1.05rem;
+    color: var(--text-main);
+    line-height: 1.85;
+}
+
+.virtudes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+.virtud {
+    background: linear-gradient(135deg, rgba(107,168,220,0.2), rgba(212,165,165,0.15));
+    border: 1px solid rgba(212,175,55,0.3);
+    border-radius: 25px;
+    padding: 8px 18px;
+    font-family: 'EB Garamond', serif;
+    font-size: 0.95rem;
+    color: var(--oro-light);
+    transition: all 0.3s;
+}
+.virtud:hover {
+    background: linear-gradient(135deg, rgba(107,168,220,0.35), rgba(212,165,165,0.25));
+    border-color: var(--oro);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(212,175,55,0.2);
+}
+
+/* ══════════════════════════════════════════
+   INFO GRID
+   ══════════════════════════════════════════ */
+.info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: 18px; margin: 24px 0; }
+.info-box {
+    background: linear-gradient(145deg, rgba(26,58,110,0.3), rgba(10,22,40,0.7));
+    border: 1px solid rgba(212,175,55,0.2);
+    border-radius: 16px;
+    padding: 24px 18px; text-align: center;
+    transition: all var(--transition);
+}
+.info-box:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    border-color: var(--oro);
+}
+.info-box .icon-big { font-size: 3rem; margin-bottom: 12px; display: block; }
+.info-box strong { 
+    font-family: 'Cinzel', serif; font-size: 0.95rem; 
+    color: var(--oro-light); display: block; margin-bottom: 8px; 
+}
+.info-box p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.65; }
+
+/* ══════════════════════════════════════════
+   PRAYER BLOCK
+   ══════════════════════════════════════════ */
+.prayer-block {
+    background: linear-gradient(145deg, var(--azul-profundo) 0%, rgba(26,58,110,0.6) 40%, rgba(107,168,220,0.2) 70%, var(--azul-profundo) 100%);
+    border-radius: 24px;
+    padding: 50px 45px;
+    margin: 30px 0;
+    border: 2px solid rgba(212,175,55,0.3);
+    position: relative; overflow: hidden;
+}
+.prayer-block::before {
+    content: '+ + +';
+    position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+    color: rgba(212,175,55,0.35); font-size: 0.9rem; letter-spacing: 20px;
+    font-family: 'Cinzel', serif;
+}
+.prayer-block::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(212,175,55,0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+.prayer-block h3 {
+    font-family: 'Cinzel', serif; color: var(--oro-light);
+    text-align: center; font-size: 1.1rem; letter-spacing: 0.12em;
+    margin: 30px 0 24px;
+}
+.prayer-block p {
+    font-family: 'EB Garamond', serif; font-style: italic;
+    font-size: 1.15rem; line-height: 2.2; text-align: center;
+    color: rgba(255,255,255,0.92);
+}
+.prayer-block .rosario {
+    font-size: 1.3rem; line-height: 2.5;
+}
+.prayer-block .note { 
+    text-align: center; font-size: 0.85rem; font-style: normal; 
+    opacity: 0.5; margin-top: 20px; 
+}
+
+/* ══════════════════════════════════════════
+   TIMELINE CELESTIAL
+   ══════════════════════════════════════════ */
+.timeline { position: relative; padding-left: 40px; margin: 30px 0; }
+.timeline::before {
+    content: ''; position: absolute; left: 14px; top: 10px; bottom: 10px;
+    width: 2px; background: linear-gradient(to bottom, var(--celeste-mariano), var(--oro), var(--rosa-light), var(--celeste-mariano));
+}
+.t-item { position: relative; margin-bottom: 32px; }
+.t-item::before {
+    content: ''; position: absolute; left: -36px; top: 8px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--oro); border: 4px solid var(--azul-abismo);
+    box-shadow: 0 0 15px rgba(212,175,55,0.7);
+}
+.t-year {
+    font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 700;
+    color: var(--oro-light); letter-spacing: 0.08em; margin-bottom: 8px;
+}
+.t-text { font-size: 1.05rem; color: var(--text-main); line-height: 1.8; }
+
+/* ══════════════════════════════════════════
+   BLOQUEO DE CITAS
+   ══════════════════════════════════════════ */
+blockquote {
+    border-left: 4px solid var(--oro);
+    margin: 30px 0; padding: 25px 35px;
+    background: linear-gradient(135deg, rgba(212,175,55,0.06), rgba(107,168,220,0.03));
+    border-radius: 0 16px 16px 0;
+    font-family: 'EB Garamond', serif; font-style: italic;
+    font-size: 1.2rem; color: var(--text-main);
+    position: relative;
+}
+blockquote::before {
+    content: '"';
+    position: absolute;
+    top: 10px; left: 15px;
+    font-size: 4rem;
+    color: rgba(212,175,55,0.2);
+    font-family: 'Great Vibes', serif;
+    line-height: 1;
+}
+blockquote cite {
+    display: block; margin-top: 16px; font-size: 0.9rem;
+    font-style: normal; color: var(--celeste-mariano);
+    font-family: 'Cinzel', serif; letter-spacing: 0.06em;
+}
+
+/* ══════════════════════════════════════════
+   SEPARADORES DIVINOS
+   ══════════════════════════════════════════ */
+.separator-wrap {
+    width:100%; margin:4rem auto;
+    display:flex; align-items:center; justify-content:center;
+}
+.separator-cruz {
+    display:flex; align-items:center; justify-content:center;
+    gap:0; width:100%; max-width:600px;
+}
+.separator-linea {
+    flex:1; height:2px;
+    background:linear-gradient(to right, transparent, var(--oro));
+}
+.separator-linea.right { background:linear-gradient(to left, transparent, var(--celeste-mariano)); }
+.separator-cruz-svg {
+    flex-shrink:0; width:80px; height:80px;
+    animation:cruzBreath 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(212,175,55,0.8));
+}
+@keyframes cruzBreath {
+    0%,100% { filter:drop-shadow(0 0 20px rgba(212,175,55,0.7)); transform:scale(1); }
+    50% { filter:drop-shadow(0 0 40px rgba(107,168,220,1)) drop-shadow(0 0 60px rgba(212,175,55,0.6)); transform:scale(1.1); }
+}
+
+/* ══════════════════════════════════════════
+   BANNER CELESTIAL
+   ══════════════════════════════════════════ */
+.banner {
+    background: linear-gradient(135deg, var(--azul-profundo), var(--azul-celeste), var(--rosa-mariano));
+    border-radius: 20px; padding: 40px 35px;
+    color: var(--white); text-align: center; margin: 35px 0;
+    border: 2px solid rgba(212,175,55,0.3);
+    box-shadow: 0 0 50px rgba(107,168,220,0.2);
+    position: relative;
+    overflow: hidden;
+}
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(212,175,55,0.1) 0%, transparent 70%);
+}
+.banner h3 { 
+    font-family: 'Cinzel', serif; color: var(--oro-light); 
+    font-size: 1.2rem; margin-bottom: 14px; letter-spacing: 0.08em;
+    position: relative;
+}
+.banner p { font-size: 1rem; opacity: 0.9; max-width: 650px; margin: 0 auto; position: relative; }
+.banner a { 
+    color: var(--celeste-mariano); text-decoration: none; 
+    display: inline-block; margin-top: 14px; font-weight: 600;
+    position: relative;
+}
+.banner a:hover { text-decoration: underline; }
+
+/* ══════════════════════════════════════════
+   FOOTER CELESTIAL
+   ══════════════════════════════════════════ */
+.footer-menu {
+    background: linear-gradient(145deg, rgba(26,58,110,0.5), rgba(0,18,51,0.95));
+    border: 1px solid var(--border-gold);
+    border-radius: 24px; padding: 40px; margin: 50px auto;
+    backdrop-filter: blur(15px);
+}
+.footer-menu-title {
+    font-family: 'Cinzel', serif; font-size: 1rem; color: var(--oro-light);
+    text-align: center; margin-bottom: 28px; letter-spacing: 4px; text-transform: uppercase;
+}
+.footer-menu-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.footer-menu-links a {
+    color: var(--text-muted); text-decoration: none; font-size: 0.9rem;
+    padding: 12px 20px; border: 1px solid rgba(212,175,55,0.25); border-radius: 30px;
+    transition: all var(--transition); font-family: 'EB Garamond', serif;
+}
+.footer-menu-links a:hover {
+    background: rgba(212,175,55,0.15); border-color: var(--oro);
+    color: var(--oro-light); transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(212,175,55,0.2);
+}
+
+.golden-divine-line {
+    width: 100%; max-width: 1000px; height: 6px;
+    margin: 0 auto 60px; position: relative;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--celeste-mariano) 15%, 
+        var(--oro) 50%, 
+        var(--celeste-mariano) 85%, 
+        transparent 100%
+    );
+    border-radius: 3px;
+    box-shadow: 0 0 30px rgba(212,175,55,0.5);
+}
+
+.main-footer {
+    background: linear-gradient(180deg, rgba(26,58,110,0.4), var(--azul-abismo));
+    text-align: center; padding: 60px 24px 45px;
+    border-top: 1px solid var(--border-gold);
+}
+.cross-glow { font-size: 2.5rem; color: var(--oro); margin-bottom: 20px; animation: cruzBreath 3s ease-in-out infinite; }
+.main-footer .tagline { 
+    font-family: 'Cinzel', serif; color: var(--oro-light); 
+    font-size: 1.2rem; margin-bottom: 14px; 
+}
+.main-footer p { color: var(--text-muted); font-size: 0.95rem; line-height: 2.2; }
+
+/* ══════════════════════════════════════════
+   BOTONES DE SCROLL
+   ══════════════════════════════════════════ */
+.scroll-btn {
+    position:fixed; width:50px; height:50px; border-radius:50%;
+    background: linear-gradient(135deg, var(--azul-celeste), var(--oro));
+    border:2px solid var(--oro);
+    color:var(--white); cursor:pointer; z-index:900;
+    display:flex; align-items:center; justify-content:center;
+    transition:all var(--transition); opacity:0.75;
+}
+.scroll-btn:hover { opacity:1; transform:scale(1.1); }
+.scroll-btn svg { width:22px; height:22px; }
+.scroll-up { bottom:35px; right:35px; }
+.scroll-down { bottom:35px; right:95px; }
+
+/* ══════════════════════════════════════════
+   CURSOR CELESTIAL MARIANO
+   ══════════════════════════════════════════ */
+.cursor-cruz {
+    position: fixed; pointer-events: none; z-index: 9999;
+    width: 36px; height: 36px; transform: translate(-50%, -50%);
+}
+.cursor-cruz svg {
+    width: 100%; height: 100%;
+    filter: drop-shadow(0 0 8px rgba(107,168,220,0.9)) drop-shadow(0 0 16px rgba(212,165,165,0.6));
+}
+.cursor-cruz.hover { transform: translate(-50%, -50%) scale(1.4); }
+.cursor-cruz.hover svg {
+    filter: drop-shadow(0 0 12px rgba(255,215,0,1)) drop-shadow(0 0 24px rgba(107,168,220,0.9)) drop-shadow(0 0 40px rgba(212,165,165,0.5));
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════ */
+@media(max-width:640px){
+    .main-content { padding: 140px 16px 60px; }
+    .hero { padding: 60px 16px 40px; }
+    .hero-crown { font-size: 2.5rem; }
+    .hero h1 { font-size: 1.8rem; }
+    .card { padding: 20px 22px; }
+    .prayer-block { padding: 35px 25px; }
+    .devociones-grid { grid-template-columns: 1fr; }
+    .info-grid { grid-template-columns: 1fr 1fr; }
+    .scroll-up { bottom:20px; right:20px; }
+    .scroll-down { bottom:20px; right:75px; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+
+<div class="sacred-rays">
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+</div>
+
+<div class="stars">
+    <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+    <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+    <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+</div>
+
+<div class="particles">
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+</div>
+
+<canvas id="divine-canvas"></canvas>
+<div class="progress-bar" id="progressBar"></div>
+<!-- Cursor Cruz Mariana -->
+<div class="cursor-cruz" id="cursor">
+    <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="cruzMariana" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#6fa8dc"/>
+                <stop offset="30%" stop-color="#d4a5a5"/>
+                <stop offset="50%" stop-color="#d4af37"/>
+                <stop offset="70%" stop-color="#d4a5a5"/>
+                <stop offset="100%" stop-color="#6fa8dc"/>
+            </linearGradient>
+            <filter id="glowMariana">
+                <feGaussianBlur stdDeviation="2" result="blur1"/>
+                <feGaussianBlur stdDeviation="4" result="blur2"/>
+                <feMerge>
+                    <feMergeNode in="blur2"/>
+                    <feMergeNode in="blur1"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+        <rect x="17" y="2" width="6" height="36" rx="2" fill="url(#cruzMariana)" filter="url(#glowMariana)"/>
+        <rect x="4" y="12" width="32" height="6" rx="2" fill="url(#cruzMariana)" filter="url(#glowMariana)"/>
+        <circle cx="20" cy="7" r="3.5" fill="#d4af37" filter="url(#glowMariana)"/>
+    </svg>
+</div>
+
+<header id="mainHeader">
+    <a href="index.html" class="logo">
+        <img src="img/logo_divina_misericordia.jpg" alt="Logo" loading="lazy">
+        Divina<span>Misericordia</span>
+    </a>
+    <nav id="mainNav">
+        <a href="index.html">Inicio</a>
+        <a href="quienes-somos.html">Quiénes Somos</a>
+        <a href="introduccion.html">Introducción</a>
+        <a href="santa-faustina.html">Santa Faustina</a>
+        <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
+        <a href="coronilla.html">Coronilla</a>
+        <a href="novena.html">Novena</a>
+        <a href="via-crucis.html">Vía Crucis</a>
+        <a href="oraciones.html">Oraciones</a>
+        <a href="santo-rosario.html">El Santo Rosario</a>
+        <a href="maria.html">María</a>
+        <a href="obras-de-misericordia.html">Obras de Misericordia</a>
+        <a href="consagracion.html">Consagración</a>
+        <a href="lugares-de-culto.html">Lugares de Culto</a>
+        <a href="musica-sacra.html">Música Sacra</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="enlaces.html">Enlaces</a>
+        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+        <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
+    <a href="estudios-biblicos.html">Estudios</a>
+        <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones</a>
+        <a href="contacto.html">Contacto</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+
+<main class="main-content">
+
+    <!-- HERO CELESTIAL -->
+    <section class="hero reveal">
+        <span class="hero-crown">Santa María</span>
+        <h1>Devociones Marianas</h1>
+        <p class="hero-subtitle">
+            Bajo tu protección nos acogemos, Santa Madre de Dios;<br>
+            no deseches nuestras súplicas en nuestras necesidades,<br>
+            mas líbranos siempre de todo peligro,<br>
+            Oh Virgen gloriosa y bendita.
+        </p>
+        <p class="hero-quote">
+            «María es la obra maestra de Dios, la más perfecta, la más pura, la más santa, la más cercana a Él.»
+        </p>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" fill="none">
+                <defs>
+                    <linearGradient id="celestialGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#d4af37"/>
+                        <stop offset="50%" stop-color="#6fa8dc"/>
+                        <stop offset="100%" stop-color="#f4e2a1"/>
+                    </linearGradient>
+                    <filter id="divineGlow"><feGaussianBlur stdDeviation="2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                </defs>
+                <rect x="42" y="8" width="16" height="84" rx="3" fill="url(#celestialGrad)" filter="url(#divineGlow)"/>
+                <rect x="14" y="28" width="72" height="16" rx="3" fill="url(#celestialGrad)" filter="url(#divineGlow)"/>
+                <circle cx="50" cy="18" r="6" fill="#f4e2a1" filter="url(#divineGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- INTRODUCCIÓN -->
+    <section class="section reveal">
+        <div class="section-header">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">María, Madre de Dios y Madre de la Iglesia</h2>
+                <p class="section-subtitle">El misterio de la Theotokos en la tradición católica</p>
+            </div>
+        </div>
+
+        <div class="card divine reveal">
+            <h3>Quién es María para nosotros</h3>
+            <p style="font-size:1.15rem; line-height:2;">
+                Santa María, Madre de Dios, ha sido venerada desde los primeros siglos del cristianismo como la más perfecta discípula de su Hijo y modelo supremo de fe, esperanza y caridad para todos los bautizados. La Iglesia Católica, en conformidad con la Sagrada Escritura y la Tradición Apostólica, le rinde un culto <strong>hiperdulia</strong> —superior al de los demás santos, pero inferior al culto de latría debido exclusivamente a Dios—.
+            </p>
+        </div>
+
+        <div class="info-grid reveal">
+            <div class="info-box">
+                <span class="icon-big">+</span>
+                <strong>Theotokos</strong>
+                <p>En el año 431, el Concilio de Éfeso proclamó a María como Madre de Dios (Theotokos), confirmando su papel único en el misterio de la Encarnación.</p>
+            </div>
+            <div class="info-box">
+                <span class="icon-big">+</span>
+                <strong>Inmaculada Concepción</strong>
+                <p>El 8 de diciembre de 1854, el Papa Pío IX definió como dogma de fe que María fue concebida sin pecado original desde el primer instante de su existencia.</p>
+            </div>
+            <div class="info-box">
+                <span class="icon-big">+</span>
+                <strong>Asunción a los Cielos</strong>
+                <p>El 1 de noviembre de 1950, el Papa Pío XII definió como dogma que María fue elevada en cuerpo y alma a la gloria celestial.</p>
+            </div>
+            <div class="info-box">
+                <span class="icon-big">+</span>
+                <strong>Madre de la Iglesia</strong>
+                <p>El 11 de octubre de 1964, el Papa Pablo VI proclamó a María como Madre de la Iglesia, confirmando su misión maternal en el Pueblo de Dios.</p>
+            </div>
+        </div>
+
+        <blockquote class="reveal">
+            «María no es solamente el modelo perfecto de la Iglesia, sino también su Madre e intercesora ante el trono de la gracia.»
+            <cite>— Catecismo de la Iglesia Católica, n. 963</cite>
+        </blockquote>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="42" y="8" width="16" height="84" rx="3" fill="url(#celestialGrad)" filter="url(#divineGlow)"/>
+                <rect x="14" y="28" width="72" height="16" rx="3" fill="url(#celestialGrad)" filter="url(#divineGlow)"/>
+                <circle cx="50" cy="18" r="6" fill="#f4e2a1" filter="url(#divineGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- NUESTRAS DEVOCIONES -->
+    <section class="section reveal">
+        <div class="section-header">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Nuestras Devociones Marianas</h2>
+                <p class="section-subtitle">Las advocaciones marianas que honramos en nuestra comunidad</p>
+            </div>
+        </div>
+
+        <p style="font-size:1.1rem; color:var(--text-main); line-height:1.9; margin-bottom:30px; text-align:center;">
+            En <strong>el Portal de la Divina Misericordia</strong>, honramos diversas advocaciones de la Santísima Virgen María, cada una con su historia, devoción y gracias particulares. Cada advocación mariana nos acerca a Cristo y a su misterio de salvación.
+        </p>
+
+        <div class="devociones-grid">
+            <a href="la-santina.html" class="devocion-card-link">
+                <div class="devocion-card santina reveal">
+                    <span class="icon">+</span>
+                    <h4>La Santina</h4>
+                    <p>La imagen de la Divina Misericordia pintada por Adolf Hyla, donde Jesús se presenta con los sellos de la luz, recordándonos que la misericordia divina es la mayor perfección del Amor divino.</p>
+                    <span class="btn">Conocer más</span>
+                </div>
+            </a>
+
+            <a href="virgen-caacupe.html" class="devocion-card-link">
+                <div class="devocion-card caacupe reveal">
+                    <span class="icon">+</span>
+                    <h4>Virgen de Caacupé</h4>
+                    <p>Patrona del Paraguay, venerada como la «Virgen de los Milagros» y «Tupãsy Caacupé» (Madre de Dios de Caacupé). Primera patronaamericana declarada oficialmente.</p>
+                    <span class="btn">Conocer más</span>
+                </div>
+            </a>
+
+            <a href="virgen-lujan.html" class="devocion-card-link">
+                <div class="devocion-card luján reveal">
+                    <span class="icon">+</span>
+                    <h4>Virgen de Luján</h4>
+                    <p>Patrona de Argentina, Uruguay y Paraguay. La Virgen morena que se apareció en una carreta y cuyos milagros fundaron una nación-devoción.</p>
+                    <span class="btn">Conocer más</span>
+                </div>
+            </a>
+
+            <a href="maria-auxiliadora.html" class="devocion-card-link">
+                <div class="devocion-card auxiliadora reveal">
+                    <span class="icon">+</span>
+                    <h4>María Auxiliadora</h4>
+                    <p>Devoción propagada por San Juan Bosco, con el título de «Auxilio de los Cristianos». Patrona de los jóvenes y de la Familia Salesiana mundial.</p>
+                    <span class="btn">Conocer más</span>
+                </div>
+            </a>
+
+            <a href="medalla-milagrosa.html" class="devocion-card-link">
+                <div class="devocion-card medalla reveal">
+                    <span class="icon">+</span>
+                    <h4>Medalla Milagrosa</h4>
+                    <p>La aparición a Santa Catalina Labouré en la Rue du Bac, París (1830). La Virgen prometió gracias abundantes a quienes lleven su imagen con fe.</p>
+                    <span class="btn">Conocer más</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="42" y="8" width="16" height="84" rx="3" fill="url(#celestialGrad)" filter="url(#divineGlow)"/>
+                <rect x="14" y="28" width="72" height="16" rx="3" fill="url(#celestialGrad)" filter="url(#divineGlow)"/>
+                <circle cx="50" cy="18" r="6" fill="#f4e2a1" filter="url(#divineGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- 10 FORMAS DE CONSAGRARSE -->
+    <section class="section reveal">
+        <div class="section-header">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title" style="font-size:clamp(1.3rem,2.5vw,1.8rem);">Diez Formas de Consagrarse a la Virgen María</h2>
+                <p class="section-subtitle">Formas sencillas que cambiarán radicalmente tu vida</p>
+            </div>
+        </div>
+
+        <div class="consagracion-hero reveal">
+            <h3>«Cambiar Radicalmente tu Vida Entera»</h3>
+            <p>Estas diez prácticas mariológicas, recomendadas por el <strong style="color:var(--oro-light);">Padre Escobita</strong> y el <strong style="color:var(--oro-light);">Padre Broom</strong>, te acercarán a Cristo a través del Corazón Inmaculado de María.</p>
+        </div>
+
+        <div class="consagracion-grid">
+            <div class="consagracion-item reveal">
+                <div class="consagracion-num">1</div>
+                <div class="consagracion-content">
+                    <h4>Consagración</h4>
+                    <p><strong style="color:var(--oro-light);">«El primer gesto que deberíamos hacer cada mañana es una oración: la oración de consagración a Jesús por medio del Corazón Inmaculado. ¡Arranca bien el día por medio de María!»</strong></p>
+                    <p>Como rezaba Santa Teresa de Calcuta: <em>«María, dame tu corazón, tan hermoso, puro e inmaculado, tan pleno de amor y humildad que yo pueda recibir a Jesús en el Pan de Vida, amarle como tú le amas y servirle en el rostro angustiado de los pobres»</em>.</p>
+                </div>
+            </div>
+
+            <div class="consagracion-item reveal">
+                <div class="consagracion-num">2</div>
+                <div class="consagracion-content">
+                    <h4>Rezar el Ángelus o el Regina Caeli</h4>
+                    <p><strong style="color:var(--oro-light);">«Santificaremos las horas de la mañana, de la tarde y de la noche por medio de la santa y dulce presencia de María»</strong></p>
+                    <p>San Juan María Vianney, Santo Cura de Ars, afirmaba: <em>«Solo después del Juicio Final podrá María descansar. Desde ahora y hasta entonces, está demasiado ocupada con sus hijos. Servir a la Reina del Cielo es reinar allí»</em>.</p>
+                </div>
+            </div>
+
+            <div class="consagracion-item reveal">
+                <div class="consagracion-num">3</div>
+                <div class="consagracion-content">
+                    <h4>Consagrar el Hogar y la Familia</h4>
+                    <p><strong style="color:var(--oro-light);">«Dios Padre derramará un aluvión de bendiciones sobre cada miembro de la familia»</strong></p>
+                    <p>El Padre Escobita propone una novena de nueve días de Rosarios culminando con la <strong style="color:var(--celeste-mariano);">bendición por parte de un sacerdote</strong> de la imagen, el hogar y los miembros de la familia.</p>
+                </div>
+            </div>
+
+            <div class="consagracion-item reveal">
+                <div class="consagracion-num">4</div>
+                <div class="consagracion-content">
+                    <h4>Consagración de Uno Mismo</h4>
+                    <p><strong style="color:var(--oro-light); font-size:1.1rem;">«Esa consagración cambiará radicalmente tu vida entera.»</strong></p>
+                    <p>Según las formas de <strong style="color:var(--celeste-mariano);">San Maximiliano Kolbe</strong>, <strong style="color:var(--celeste-mariano);">San Luis María Grignion de Montfort</strong>, o la moderna del Padre Michael Gaitely. <em>«María tiene poder sobre nosotros en formas que van más allá de nuestra más rebuscada imaginación»</em>.</p>
+                </div>
+            </div>
+
+            <div class="consagracion-item reveal">
+                <div class="consagracion-num">5</div>
+                <div class="consagracion-content">
+                    <h4>Imitar a María</h4>
+                    <p>Las <strong style="color:var(--oro-light); font-size:1.1rem;">DIEZ VIRTUDES</strong> de Nuestra Señora que debemos imitar (según San Luis María Grignion de Monfort):</p>
+                    <div class="virtudes-grid">
+                        <span class="virtud">Humildad profunda</span>
+                        <span class="virtud">Fe viva</span>
+                        <span class="virtud">Obediencia ciega</span>
+                        <span class="virtud">Oración incesante</span>
+                        <span class="virtud">Negación de sí mismo</span>
+                        <span class="virtud">Pureza absoluta</span>
+                        <span class="virtud">Amor ardiente</span>
+                        <span class="virtud">Paciencia heroica</span>
+                        <span class="virtud">Amabilidad angelical</span>
+                        <span class="virtud">Sabiduría celestial</span>
+                    </div>
+                    <p><em>«Los mayores santos, los más ricos en gracia y virtud, serán quienes recen con mayor frecuencia a la Santísima Virgen»</em> — San Luis María Grignion de Monfort.</p>
+                </div>
+            </div>
+
+            <div class="consagracion-item reveal">
+                <div class="consagracion-num">6</div>
+                <div class="consagracion-content">
+                    <h4>En las Tentaciones, Acude a María</h4>
+                    <p><strong style="color:var(--oro-light); font-size:1.2rem;">«¡Pronuncia el Nombre de María, reza el Avemaría!»</strong></p>
+                    <p><strong style="color:var(--celeste-mariano);">María es el general del ejército.</strong> A sus órdenes, el enemigo se desvanece. Como decía San Buenaventura: <em>«Los hombres no temen tanto a un poderoso ejército enemigo como temen los poderes del infierno el nombre y la protección de María»</em>.</p>
+                </div>
+            </div>
+
+            <div class="consagracion-item reveal">
+                <div class="consagracion-num">7</div>
+                <div class="consagracion-content">
+                    <h4>María y el Año Litúrgico</h4>
+                    <p>Conocer la presencia de María en el Cuerpo Místico de Cristo a través del <strong style="color:var(--oro-light);">año litúrgico</strong>, donde la Virgen tiene un lugar especial.</p>
+                    <p>Lectura recomendada: <strong style="color:var(--celeste-mariano);">Marialis Cultus</strong> de Pablo VI, <em>«una obra maestra espiritual»</em>.</p>
+                </div>
+            </div>
+
+            <div class="consagracion-item reveal">
+                <div class="consagracion-num">8</div>
+                <div class="consagracion-content">
+                    <h4>Leer sobre María</h4>
+                    <p><strong style="color:var(--oro-light);">«Una mariología integral y bien fundamentada debe cultivar tanto la doctrina como la devoción»</strong></p>
+                    <p><em>«María es la forma más rápida, breve, fácil y eficaz de llegar a Jesús»</em> — Padre Escobita.</p>
+                    <p>Lectura recomendada: <strong style="color:var(--celeste-mariano);">Rosarium Virginis Mariae</strong> de San Juan Pablo II: <em>«Contemplar el rostro de Jesús a través de los ojos y el corazón de María»</em>.</p>
+                </div>
+            </div>
+
+            <div class="consagracion-item reveal">
+                <div class="consagracion-num">9</div>
+                <div class="consagracion-content">
+                    <h4>Apostolado Mariano</h4>
+                    <p><strong style="color:var(--oro-light); font-size:1.1rem;">«Conviértete en un ardiente, ferviente y apasionado Apóstol de María»</strong></p>
+                    <p>Como <strong style="color:var(--celeste-mariano);">San Maximiliano Kolbe</strong>, que spreadía la devoción mediante la <strong style="color:var(--celeste-mariano);">Medalla Milagrosa</strong>, que él llamaba <em>«balas espirituales»</em>.</p>
+                    <p><em>«Solo a la Inmaculada le ha sido prometida por Dios la victoria sobre Satanás. Ella busca almas que se le consagren enteramente»</em> — San Maximiliano Kolbe.</p>
+                </div>
+            </div>
+
+            <div class="consagracion-item reveal">
+                <div class="consagracion-num">10</div>
+                <div class="consagracion-content">
+                    <h4>El Santo Rosario</h4>
+                    <p><strong style="color:var(--oro-light); font-size:1.2rem;">«Si obedecemos a la Madre de Dios, la familia se salvará y alcanzaremos la paz que el corazón humano tanto anhela»</strong></p>
+                    <p>Las seis veces que la Virgen se apareció en Fátima a los pastorcillos, <strong style="color:var(--celeste-mariano);">insistió en el rezo del Rosario</strong>. San Juan Pablo II le atribuye al Rosario la capacidad de <strong style="color:var(--celeste-mariano);">salvar la familia y la paz mundial</strong>.</p>
+                    <p><em>«Familia que reza unida, permanece unida»</em> — Padre Patrick Peyton.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="42" y="8" width="16" height="84" rx="3" fill="url(#celestialGrad)" filter="url(#divineGlow)"/>
+                <rect x="14" y="28" width="72" height="16" rx="3" fill="url(#celestialGrad)" filter="url(#divineGlow)"/>
+                <circle cx="50" cy="18" r="6" fill="#f4e2a1" filter="url(#divineGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- ORACIONES MARIANAS -->
+    <section class="section reveal">
+        <div class="section-header">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Oraciones Marianas</h2>
+                <p class="section-subtitle">Las oraciones más bellas dedicadas a Santa María</p>
+            </div>
+        </div>
+
+        <div class="prayer-block reveal">
+            <h3>+ SALVE SANCTA PARENS +</h3>
+            <p class="rosario">
+                Dios te salve, María, llena eres de gracia;<br>
+                el Señor es contigo;<br>
+                bendita tú eres entre todas las mujeres,<br>
+                y bendito es el fruto de tu vientre: Jesús.<br><br>
+                Santa María, Madre de Dios,<br>
+                ruega por nosotros pecadores,<br>
+                ahora y en la hora de nuestra muerte.<br>
+                Amén.
+            </p>
+            <p class="note">Rezada en todas las liturgias marianas</p>
+        </div>
+
+        <div class="prayer-block reveal">
+            <h3>+ CONSAGRACIÓN A MARÍA +</h3>
+            <p>
+                María, yo me consagro hoy a ti con todo mi ser, para vivir en adelante con aquel amor que te une a Dios y que te hace tan digna de Él.<br><br>
+                Tómame bajo tu maternal cuidado y guíame como un hijo. Enséñame a ser bueno y generoso, a servir con alegría y a caminar siempre junto a tu Hijo Jesús.<br><br>
+                Amén.
+            </p>
+        </div>
+
+        <div class="prayer-block reveal">
+            <h3>+ JACULATORIA MARIANA +</h3>
+            <p style="font-size:1.4rem; line-height:2.5;">
+                «¡Ruega por nosotros, Santa Madre de Dios,<br>
+                para que seamos dignos de las promesas de Cristo!»
+            </p>
+        </div>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="42" y="8" width="16" height="84" rx="3" fill="url(#celestialGrad)" filter="url(#divineGlow)"/>
+                <rect x="14" y="28" width="72" height="16" rx="3" fill="url(#celestialGrad)" filter="url(#divineGlow)"/>
+                <circle cx="50" cy="18" r="6" fill="#f4e2a1" filter="url(#divineGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- APARICIONES MARIANAS -->
+    <section class="section reveal">
+        <div class="section-header">
+            <span class="section-icon">+</span>
+            <div>
+                <h2 class="section-title">Las Grandes Apariciones Marianas</h2>
+                <p class="section-subtitle">Cuando el cielo se hizo visible en la tierra</p>
+            </div>
+        </div>
+
+        <div class="timeline reveal">
+            <div class="t-item">
+                <div class="t-year">La Salette · Francia · 1846</div>
+                <div class="t-text">La Virgen se apareció a Melanie Calvat y Maximino Giraud en La Salette. Lloraba por los pecados del mundo y pedía penitencia y oración.</div>
+            </div>
+            <div class="t-item">
+                <div class="t-year">Lourdes · Francia · 1858</div>
+                <div class="t-text">A Bernadette Soubirous, en la gruta de Massabielle. Se identificó como «la Inmaculada Concepción» y prometió hacer dichosos a quienes vinieran en peregrinación.</div>
+            </div>
+            <div class="t-item">
+                <div class="t-year">Fátima · Portugal · 1917</div>
+                <div class="t-text">Nuestra Señora se apareció a tres pastorcillos —Lucía, Francisco y Jacinta— seis veces. Prometió la paz al mundo y reveló los tres secretos de Fátima.</div>
+            </div>
+            <div class="t-item">
+                <div class="t-year">Medjugorje · Bosnia · 1981</div>
+                <div class="t-text">La Virgen se aparece diariamente desde el 24 de junio de 1981, llamando a la conversión, la oración y la paz. Es una de las apariciones más recientes y activas.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEPARADOR -->
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" fill="none">
+                <rect x="42" y="8" width="16" height="84" rx="3" fill="url(#celestialGrad)" filter="url(#divineGlow)"/>
+                <rect x="14" y="28" width="72" height="16" rx="3" fill="url(#celestialGrad)" filter="url(#divineGlow)"/>
+                <circle cx="50" cy="18" r="6" fill="#f4e2a1" filter="url(#divineGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- BANNER FINAL -->
+    <div class="banner reveal">
+        <h3>+ BAJO TU PROTECCIÓN +</h3>
+        <p>
+            «Bajo tu protección nos acogemos, Santa Madre de Dios; no deseches nuestras súplicas en nuestras necesidades, mas líbranos siempre de todo peligro, Oh Virgen gloriosa y bendita.»
+        </p>
+        <p style="margin-top:15px; font-size:0.9rem; opacity:0.7;">
+            Sub tuum praesidium confugimus, Sancta Dei Genetrix
+        </p>
+    </div>
+
+</main>
+
+<!-- Footer Menu -->
+<div class="footer-menu">
+    <h3 class="footer-menu-title">Recursos Espirituales</h3>
+    <div class="footer-menu-links">
+        <a href="coronilla.html">Coronilla</a>
+        <a href="novena.html">Novena</a>
+        <a href="oraciones.html">Oraciones</a>
+        <a href="via-crucis.html">Vía Crucis</a>
+        <a href="santo-rosario.html">Santo Rosario</a>
+        <a href="maria.html">María</a>
+        <a href="la-santina.html">La Santina</a>
+        <a href="virgen-caacupe.html">Virgen Caacupé</a>
+        <a href="virgen-lujan.html">Virgen de Luján</a>
+        <a href="contacto.html">Contacto</a>
+    </div>
+</div>
+
+<footer class="main-footer">
+    <div class="cross-glow">+</div>
+    <p class="tagline">Santa María, Madre de Dios, ruega por nosotros</p>
+    <p>«Ecce mater tua» — «Heaqui tuam matrem»</p>
+    <p style="margin-top:20px; opacity:0.6;">El Portal de la Divina Misericordia</p>
+</footer>
+
+<div class="golden-divine-line"></div>
+
+<button class="scroll-btn scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Subir">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+<button class="scroll-btn scroll-down" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})" aria-label="Bajar">
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+
+<script>
+// Cursor celestial
+const cursor = document.getElementById('cursor');
+let mouseX = 0, mouseY = 0;
+let cursorX = 0, cursorY = 0;
+
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
+
+function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.15;
+    cursorY += (mouseY - cursorY) * 0.15;
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+document.querySelectorAll('a, button, .btn, .devocion-card').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+
+// Progress bar
+const progressBar = document.getElementById('progressBar');
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progressBar.style.width = scrollPercent + '%';
+});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// Header scroll effect
+const header = document.getElementById('mainHeader');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const nav = document.getElementById('mainNav');
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    nav.classList.toggle('active');
+});
+
+// Particles canvas
+(function(){
+    const canvas = document.getElementById('divine-canvas');
+    const ctx = canvas.getContext('2d');
+    let w, h, particles = [];
+    
+    function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+    }
+    
+    class Particle {
+        constructor() { this.reset(); }
+        reset() {
+            this.x = Math.random() * w;
+            this.y = Math.random() * h;
+            this.size = Math.random() * 2.5 + 1;
+            this.speedX = (Math.random() - 0.5) * 0.4;
+            this.speedY = (Math.random() - 0.5) * 0.4 - 0.1;
+            this.opacity = Math.random() * 0.6 + 0.2;
+            const colors = [
+                '212,175,55',  // oro
+                '107,168,220', // celeste
+                '212,165,165'  // rosa
+            ];
+            this.color = colors[Math.floor(Math.random() * colors.length)];
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x < 0 || this.x > w || this.y < 0 || this.y > h) this.reset();
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${this.color},${this.opacity})`;
+            ctx.fill();
+        }
+    }
+    
+    resize();
+    for (let i = 0; i < 100; i++) particles.push(new Particle());
+    
+    function animate() {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animate);
+    }
+    
+    window.addEventListener('resize', resize);
+    animate();
+})();
+</script>
+
+</body>
+</html>

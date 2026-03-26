@@ -1,0 +1,74 @@
+Voy a revisar páginas específicas (no backups) para el análisis:
+Basado en mi análisis, aquí están las **recomendaciones SEO** para el sitio:
+
+---
+
+## ✅ LO QUE YA ESTÁ BIEN
+
+### Meta Tags
+- **title**: Correcto en todas las páginas
+- **description**: Presente y descriptivo
+- **keywords**: Incluidas
+- **author**:正确
+- **robots**: `index, follow`
+- **theme-color**: Definido
+- **canonical**: URL canónica correcta
+
+### Open Graph
+- Completo en todas las páginas (`og:title`, `og:description`, `og:type`, `og:url`, `og:site_name`, `og:locale`, `og:image`, `og:image:width`, `og:image:height`, `og:image:alt`)
+
+### Twitter Cards
+- Presentes (`twitter:card`, `twitter:title`, `twitter:description`, `twitter:image`, `twitter:site`, `twitter:creator`)
+
+### Schema.org
+- **Solo en index.html** tiene ReligiousOrganization, WebSite y BreadcrumbList completos
+
+### Headings
+- Cada página tiene un solo `<h1>` (correcto)
+- Estructura lógica: h1 → h2 → h3
+
+---
+
+## ❌ PROBLEMAS ENCONTRADOS
+
+### 1. Schema.org FALTANTE
+**35 de 36 páginas** no tienen Schema.org JSON-LD:
+- coronilla.html, novena.html, quienes-somos.html, santa-faustina.html, etc.
+- Solo index.html lo tiene
+
+**Recomendación**: Añadir Schema.org a cada página según su tipo:
+- `Article` para páginas de contenido (coronilla, novena, oraciones)
+- `ContactPage` para contacto.html
+- `ReligiousOrganization` para todas las páginas
+
+### 2. Schema.org Duplicado en index.html
+El mismo `WebSite` aparece dos veces (líneas 70 y 106). Eliminar uno.
+
+### 3. Meta Tags que faltan en algunas páginas
+- `geo.region`: Recomendado para contenido regional (ej: `ES-AS`)
+- `geo.placename`: Nombre de la ubicación
+
+### 4. Missing itemprop en Open Graph
+Algunas imágenes no tienen `property="og:image"` (tienen solo `name`), debería ser consistente:
+```html
+<meta property="og:image" content="...">
+```
+
+### 5. Falta hreflang para internacionalización
+Si el sitio tiene versiones en otros idiomas, falta `<link rel="alternate" hreflang="...">`.
+
+### 6. Falta preload de recursos críticos
+Recomendable agregar preload para fuentes o imágenes above-the-fold.
+
+---
+
+## RESUMEN DE PRIORIDADES
+
+| Prioridad | Elemento | Páginas afetadas |
+|-----------|----------|------------------|
+| **Alta** | Schema.org JSON-LD | 35 páginas |
+| **Alta** | Corregir schema duplicado | index.html |
+| **Media** | hreflang | Todas |
+| **Baja** | geo tags | Todas |
+
+El sitio tiene una base SEO sólida. El principal déficit es la falta de Schema.org en la mayoría de las páginas.

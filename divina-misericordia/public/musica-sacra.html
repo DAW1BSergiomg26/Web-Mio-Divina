@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Música Divina - Biblioteca de Música Sacra | Divina Misericordia</title>
+<meta name="description" content="Explora nuestra colección de música sacra, cantos gregorianos, himnos tradicionales y música classical para la oración y meditación.">
+<meta name="keywords" content="música sacra, himnos católicos, cantos gregorianos, música oración, meditación, biblioteca musical">
+<meta name="author" content="El Portal de la Divina Misericordia">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://misericordiadejesus.es/musica-sacra.html">
+<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#050d1a">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://misericordiadejesus.es/musica-sacra.html">
+<meta property="og:title" content="Biblioteca de Música Divina">
+<meta property="og:description" content="Tu biblioteca de música sacra y classical para la oración">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --gold: #d4af37;
+  --gold-light: #f4e2a1;
+  --gold-dark: #b8960c;
+  --blue-deep: #050d1a;
+  --blue-mid: #0a1628;
+  --celestial: #6fa8dc;
+  --celestial-light: #a9c7e8;
+  --white: #faf7f0;
+  --text-muted: rgba(250,247,240,0.6);
+  --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--blue-deep);
+  color: var(--white);
+  font-family: 'EB Garamond', Georgia, serif;
+  line-height: 1.8;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+.bg {
+  position: fixed; inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, #1a3a6e 0%, #0a1628 40%, #050d1a 100%);
+  z-index: -2;
+}
+/* =============================================
+   MUSICAL NOTES BACKGROUND - Dancing Notes
+   ============================================= */
+.music-notes-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: 
+    radial-gradient(ellipse at 30% 20%, rgba(212,175,55,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(111,168,220,0.06) 0%, transparent 50%);
+}
+
+.music-note {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  text-shadow: 0 0 20px currentColor;
+  animation: danceNote linear infinite;
+}
+
+.music-note.gold { color: rgba(212,175,55,0.8); text-shadow: 0 0 25px rgba(212,175,55,0.6); }
+.music-note.celestial { color: rgba(111,168,220,0.8); text-shadow: 0 0 25px rgba(111,168,220,0.6); }
+.music-note.warm { color: rgba(244,226,161,0.7); text-shadow: 0 0 20px rgba(244,226,161,0.5); }
+.music-note.rose { color: rgba(180,130,160,0.7); text-shadow: 0 0 20px rgba(180,130,160,0.5); }
+.music-note.white { color: rgba(255,255,255,0.6); text-shadow: 0 0 30px rgba(255,255,255,0.7); }
+
+@keyframes danceNote {
+  0% {
+    transform: translateY(105vh) translateX(0) rotate(0deg) scale(0.6);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.9;
+    transform: translateY(90vh) translateX(20px) rotate(20deg) scale(1);
+  }
+  20% {
+    transform: translateY(75vh) translateX(-35px) rotate(-25deg) scale(1.15);
+  }
+  35% {
+    transform: translateY(55vh) translateX(30px) rotate(30deg) scale(0.95);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(40vh) translateX(-25px) rotate(-20deg) scale(1.1);
+  }
+  65% {
+    transform: translateY(25vh) translateX(35px) rotate(25deg) scale(1);
+    opacity: 0.9;
+  }
+  80% {
+    transform: translateY(10vh) translateX(-20px) rotate(-15deg) scale(0.9);
+  }
+  90% {
+    transform: translateY(2vh) translateX(10px) rotate(8deg) scale(0.7);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg) scale(0.4);
+    opacity: 0;
+  }
+}
+
+/* Note size variations */
+.music-note.tiny { font-size: 1rem; }
+.music-note.small { font-size: 1.4rem; }
+.music-note.medium { font-size: 1.8rem; }
+.music-note.large { font-size: 2.2rem; }
+.music-note.xlarge { font-size: 2.8rem; }
+
+/* Musical note symbols */
+.music-note.note1::before { content: '♪'; }
+.music-note.note2::before { content: '♫'; }
+.music-note.note3::before { content: '♬'; }
+.music-note.note4::before { content: '♩'; }
+.music-note.note5::before { content: '𝅘𝅥𝅮'; }
+.music-note.note6::before { content: '♪'; }
+
+/* Animated music notes - varied timing and positions */
+.music-note:nth-child(1) { left: 2%; bottom: -50px; animation-duration: 18s; animation-delay: 0s; }
+.music-note:nth-child(2) { left: 7%; bottom: -50px; animation-duration: 14s; animation-delay: 1.2s; }
+.music-note:nth-child(3) { left: 12%; bottom: -50px; animation-duration: 20s; animation-delay: 0.6s; }
+.music-note:nth-child(4) { left: 18%; bottom: -50px; animation-duration: 16s; animation-delay: 2.8s; }
+.music-note:nth-child(5) { left: 24%; bottom: -50px; animation-duration: 15s; animation-delay: 1.5s; }
+.music-note:nth-child(6) { left: 30%; bottom: -50px; animation-duration: 17s; animation-delay: 3.5s; }
+.music-note:nth-child(7) { left: 36%; bottom: -50px; animation-duration: 19s; animation-delay: 0.8s; }
+.music-note:nth-child(8) { left: 42%; bottom: -50px; animation-duration: 14s; animation-delay: 2.2s; }
+.music-note:nth-child(9) { left: 48%; bottom: -50px; animation-duration: 21s; animation-delay: 4s; }
+.music-note:nth-child(10) { left: 54%; bottom: -50px; animation-duration: 16s; animation-delay: 0.3s; }
+.music-note:nth-child(11) { left: 60%; bottom: -50px; animation-duration: 18s; animation-delay: 5s; }
+.music-note:nth-child(12) { left: 66%; bottom: -50px; animation-duration: 15s; animation-delay: 1.8s; }
+.music-note:nth-child(13) { left: 72%; bottom: -50px; animation-duration: 17s; animation-delay: 3s; }
+.music-note:nth-child(14) { left: 78%; bottom: -50px; animation-duration: 14s; animation-delay: 2.5s; }
+.music-note:nth-child(15) { left: 84%; bottom: -50px; animation-duration: 20s; animation-delay: 0.5s; }
+.music-note:nth-child(16) { left: 90%; bottom: -50px; animation-duration: 16s; animation-delay: 4.5s; }
+.music-note:nth-child(17) { left: 96%; bottom: -50px; animation-duration: 18s; animation-delay: 6s; }
+.music-note:nth-child(18) { left: 4%; bottom: -50px; animation-duration: 22s; animation-delay: 7s; }
+.music-note:nth-child(19) { left: 16%; bottom: -50px; animation-duration: 15s; animation-delay: 8s; }
+.music-note:nth-child(20) { left: 28%; bottom: -50px; animation-duration: 17s; animation-delay: 5.5s; }
+.music-note:nth-child(21) { left: 40%; bottom: -50px; animation-duration: 19s; animation-delay: 6.5s; }
+.music-note:nth-child(22) { left: 52%; bottom: -50px; animation-duration: 16s; animation-delay: 4s; }
+.music-note:nth-child(23) { left: 64%; bottom: -50px; animation-duration: 21s; animation-delay: 7.5s; }
+.music-note:nth-child(24) { left: 76%; bottom: -50px; animation-duration: 14s; animation-delay: 3.2s; }
+.music-note:nth-child(25) { left: 88%; bottom: -50px; animation-duration: 18s; animation-delay: 8.5s; }
+.music-note:nth-child(26) { left: 98%; bottom: -50px; animation-duration: 15s; animation-delay: 2s; }
+.music-note:nth-child(27) { left: 10%; bottom: -50px; animation-duration: 20s; animation-delay: 9s; }
+.music-note:nth-child(28) { left: 22%; bottom: -50px; animation-duration: 16s; animation-delay: 10s; }
+.music-note:nth-child(29) { left: 34%; bottom: -50px; animation-duration: 18s; animation-delay: 11s; }
+.music-note:nth-child(30) { left: 46%; bottom: -50px; animation-duration: 14s; animation-delay: 9.5s; }
+.music-note:nth-child(31) { left: 58%; bottom: -50px; animation-duration: 17s; animation-delay: 12s; }
+.music-note:nth-child(32) { left: 70%; bottom: -50px; animation-duration: 19s; animation-delay: 10.5s; }
+.music-note:nth-child(33) { left: 82%; bottom: -50px; animation-duration: 15s; animation-delay: 8s; }
+.music-note:nth-child(34) { left: 94%; bottom: -50px; animation-duration: 21s; animation-delay: 11.5s; }
+.music-note:nth-child(35) { left: 6%; bottom: -50px; animation-duration: 16s; animation-delay: 13s; }
+.music-note:nth-child(36) { left: 18%; bottom: -50px; animation-duration: 18s; animation-delay: 7.2s; }
+.music-note:nth-child(37) { left: 32%; bottom: -50px; animation-duration: 20s; animation-delay: 14s; }
+.music-note:nth-child(38) { left: 44%; bottom: -50px; animation-duration: 15s; animation-delay: 6.8s; }
+.music-note:nth-child(39) { left: 56%; bottom: -50px; animation-duration: 17s; animation-delay: 12.5s; }
+.music-note:nth-child(40) { left: 68%; bottom: -50px; animation-duration: 19s; animation-delay: 5.2s; }
+.music-note:nth-child(41) { left: 80%; bottom: -50px; animation-duration: 16s; animation-delay: 15s; }
+.music-note:nth-child(42) { left: 92%; bottom: -50px; animation-duration: 14s; animation-delay: 4.2s; }
+.music-note:nth-child(43) { left: 15%; bottom: -50px; animation-duration: 22s; animation-delay: 16s; }
+.music-note:nth-child(44) { left: 38%; bottom: -50px; animation-duration: 18s; animation-delay: 13.5s; }
+.music-note:nth-child(45) { left: 62%; bottom: -50px; animation-duration: 20s; animation-delay: 9.8s; }
+.music-note:nth-child(46) { left: 85%; bottom: -50px; animation-duration: 15s; animation-delay: 14.5s; }
+.music-note:nth-child(47) { left: 25%; bottom: -50px; animation-duration: 17s; animation-delay: 11.2s; }
+.music-note:nth-child(48) { left: 50%; bottom: -50px; animation-duration: 19s; animation-delay: 16.5s; }
+.music-note:nth-child(49) { left: 75%; bottom: -50px; animation-duration: 14s; animation-delay: 8.7s; }
+.music-note:nth-child(50) { left: 3%; bottom: -50px; animation-duration: 21s; animation-delay: 17s; }
+
+/* =============================================
+   FOOTER CROSS WITH MUSICAL RAYS
+   ============================================= */
+.main-footer {
+  position: relative;
+  padding: 60px 20px;
+  overflow: visible;
+}
+
+.main-footer .cross {
+  position: relative;
+  font-size: 3.5rem;
+  color: var(--gold);
+  text-shadow: 
+    0 0 10px rgba(212,175,55,0.8),
+    0 0 20px rgba(212,175,55,0.6),
+    0 0 40px rgba(212,175,55,0.4),
+    0 0 60px rgba(212,175,55,0.2);
+  animation: crossPulse 2s ease-in-out infinite;
+}
+
+/* Musical rays container */
+.cross-radiant {
+  position: relative;
+  display: inline-block;
+}
+
+.cross-radiant::before {
+  content: '♪';
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  font-size: 1.2rem;
+  color: var(--gold-light);
+  opacity: 0;
+  animation: rayNote1 3s ease-in-out infinite;
+  text-shadow: 0 0 15px rgba(212,175,55,0.8);
+}
+
+.cross-radiant::after {
+  content: '♫';
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  font-size: 1.2rem;
+  color: var(--celestial);
+  opacity: 0;
+  animation: rayNote2 3s ease-in-out infinite 1.5s;
+  text-shadow: 0 0 15px rgba(111,168,220,0.8);
+}
+
+@keyframes rayNote1 {
+  0%, 100% { opacity: 0; transform: translateY(0) translateX(-50%); }
+  30% { opacity: 0.8; transform: translateY(-15px) translateX(-50%); }
+  70% { opacity: 0.8; transform: translateY(-25px) translateX(calc(-50% + 10px)); }
+}
+
+@keyframes rayNote2 {
+  0%, 100% { opacity: 0; transform: translateY(0) translateX(-50%); }
+  30% { opacity: 0.8; transform: translateY(15px) translateX(-50%); }
+  70% { opacity: 0.8; transform: translateY(25px) translateX(calc(-50% - 10px)); }
+}
+
+/* Musical rays emanating from cross */
+.cross-rays {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  pointer-events: none;
+}
+
+.cross-ray {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(to top, rgba(212,175,55,0.6), transparent);
+  transform-origin: bottom center;
+  animation: rayPulse 2s ease-in-out infinite;
+}
+
+.cross-ray:nth-child(1) { transform: translateX(-50%) rotate(0deg); animation-delay: 0s; }
+.cross-ray:nth-child(2) { transform: translateX(-50%) rotate(45deg); animation-delay: 0.25s; }
+.cross-ray:nth-child(3) { transform: translateX(-50%) rotate(90deg); animation-delay: 0.5s; }
+.cross-ray:nth-child(4) { transform: translateX(-50%) rotate(135deg); animation-delay: 0.75s; }
+.cross-ray:nth-child(5) { transform: translateX(-50%) rotate(180deg); animation-delay: 1s; }
+.cross-ray:nth-child(6) { transform: translateX(-50%) rotate(225deg); animation-delay: 1.25s; }
+.cross-ray:nth-child(7) { transform: translateX(-50%) rotate(270deg); animation-delay: 1.5s; }
+.cross-ray:nth-child(8) { transform: translateX(-50%) rotate(315deg); animation-delay: 1.75s; }
+
+.cross-ray span {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  opacity: 0.7;
+  animation: noteFloat 3s ease-in-out infinite;
+}
+
+.cross-ray:nth-child(1) span { animation-delay: 0s; color: var(--gold-light); }
+.cross-ray:nth-child(2) span { animation-delay: 0.3s; color: var(--celestial); }
+.cross-ray:nth-child(3) span { animation-delay: 0.6s; color: var(--gold-light); }
+.cross-ray:nth-child(4) span { animation-delay: 0.9s; color: var(--celestial-light); }
+.cross-ray:nth-child(5) span { animation-delay: 1.2s; color: var(--gold); }
+.cross-ray:nth-child(6) span { animation-delay: 1.5s; color: var(--celestial); }
+.cross-ray:nth-child(7) span { animation-delay: 1.8s; color: var(--gold-light); }
+.cross-ray:nth-child(8) span { animation-delay: 2.1s; color: var(--celestial-light); }
+
+@keyframes rayPulse {
+  0%, 100% {
+    opacity: 0.3;
+    height: 60px;
+  }
+  50% {
+    opacity: 0.8;
+    height: 90px;
+  }
+}
+
+@keyframes noteFloat {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+    opacity: 1;
+  }
+}
+
+@keyframes crossPulse {
+  0%, 100% {
+    text-shadow: 
+      0 0 10px rgba(212,175,55,0.8),
+      0 0 20px rgba(212,175,55,0.6),
+      0 0 40px rgba(212,175,55,0.4);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 
+      0 0 20px rgba(212,175,55,1),
+      0 0 40px rgba(212,175,55,0.8),
+      0 0 80px rgba(212,175,55,0.5),
+      0 0 120px rgba(111,168,220,0.3);
+    transform: scale(1.1);
+  }
+}
+
+/* Music note symbols around cross */
+.cross-notes {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  pointer-events: none;
+}
+
+.cross-note {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: orbitNote 6s linear infinite;
+}
+
+.cross-note:nth-child(1) { animation-delay: 0s; color: rgba(212,175,55,0.7); }
+.cross-note:nth-child(2) { animation-delay: -1.5s; color: rgba(111,168,220,0.7); }
+.cross-note:nth-child(3) { animation-delay: -3s; color: rgba(244,226,161,0.7); }
+.cross-note:nth-child(4) { animation-delay: -4.5s; color: rgba(169,199,232,0.7); }
+
+@keyframes orbitNote {
+  0% {
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 0.3;
+  }
+  25% {
+    top: 50%;
+    left: 100%;
+    opacity: 0.9;
+  }
+  50% {
+    top: 100%;
+    left: 50%;
+    opacity: 0.3;
+  }
+  75% {
+    top: 50%;
+    left: 0%;
+    opacity: 0.9;
+  }
+  100% {
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+/* Animated music notes */
+.music-note:nth-child(1) { left: 5%; bottom: 0; animation-duration: 12s; animation-delay: 0s; font-size: 1.8rem; }
+.music-note:nth-child(2) { left: 12%; bottom: 0; animation-duration: 10s; animation-delay: 1s; font-size: 2.2rem; }
+.music-note:nth-child(3) { left: 20%; bottom: 0; animation-duration: 14s; animation-delay: 2s; font-size: 1.5rem; }
+.music-note:nth-child(4) { left: 30%; bottom: 0; animation-duration: 11s; animation-delay: 0.5s; font-size: 2rem; }
+.music-note:nth-child(5) { left: 40%; bottom: 0; animation-duration: 13s; animation-delay: 3s; font-size: 1.7rem; }
+.music-note:nth-child(6) { left: 50%; bottom: 0; animation-duration: 9s; animation-delay: 1.5s; font-size: 2.3rem; }
+.music-note:nth-child(7) { left: 60%; bottom: 0; animation-duration: 11s; animation-delay: 2.5s; font-size: 1.6rem; }
+.music-note:nth-child(8) { left: 70%; bottom: 0; animation-duration: 12s; animation-delay: 0.8s; font-size: 2.1rem; }
+.music-note:nth-child(9) { left: 80%; bottom: 0; animation-duration: 10s; animation-delay: 3.5s; font-size: 1.8rem; }
+.music-note:nth-child(10) { left: 90%; bottom: 0; animation-duration: 13s; animation-delay: 2.2s; font-size: 1.9rem; }
+.music-note:nth-child(11) { left: 8%; bottom: 0; animation-duration: 11s; animation-delay: 4s; font-size: 1.4rem; }
+.music-note:nth-child(12) { left: 18%; bottom: 0; animation-duration: 9s; animation-delay: 5s; font-size: 2rem; }
+.music-note:nth-child(13) { left: 28%; bottom: 0; animation-duration: 12s; animation-delay: 3.2s; font-size: 1.6rem; }
+.music-note:nth-child(14) { left: 38%; bottom: 0; animation-duration: 10s; animation-delay: 4.5s; font-size: 1.9rem; }
+.music-note:nth-child(15) { left: 48%; bottom: 0; animation-duration: 14s; animation-delay: 1.8s; font-size: 2.1rem; }
+.music-note:nth-child(16) { left: 58%; bottom: 0; animation-duration: 11s; animation-delay: 2.8s; font-size: 1.5rem; }
+.music-note:nth-child(17) { left: 68%; bottom: 0; animation-duration: 13s; animation-delay: 3.8s; font-size: 2.2rem; }
+.music-note:nth-child(18) { left: 78%; bottom: 0; animation-duration: 9s; animation-delay: 4.2s; font-size: 1.7rem; }
+.music-note:nth-child(19) { left: 88%; bottom: 0; animation-duration: 12s; animation-delay: 2.1s; font-size: 1.9rem; }
+.music-note:nth-child(20) { left: 95%; bottom: 0; animation-duration: 10s; animation-delay: 3.7s; font-size: 1.6rem; }
+
+header {
+  position: fixed; width: 100%;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 30px;
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(24px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(212,175,55,0.25);
+}
+.logo {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.2rem; color: var(--gold-light);
+  text-decoration: none; display: flex; align-items: center; gap: 10px;
+}
+.logo img { width: 40px; height: 40px; border-radius: 50%; border: 2px solid rgba(212,175,55,0.3); }
+.logo span { color: var(--white); }
+
+nav { display: flex; gap: 4px; flex-wrap: wrap; justify-content: center; }
+nav a {
+  color: var(--celestial); text-decoration: none;
+  font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 1px;
+  padding: 8px 12px; border-radius: 6px;
+  transition: all var(--transition);
+}
+nav a:hover { background: rgba(111,168,220,0.15); color: var(--celestial-light); }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; }
+.hamburger span { width: 26px; height: 2px; background: var(--gold); border-radius: 2px; transition: 0.3s; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 900px) {
+  .hamburger { display: flex; }
+  nav {
+    position: fixed; top: 0; right: -100%;
+    width: min(300px, 80vw); height: 100dvh;
+    background: rgba(5,13,26,0.98);
+    flex-direction: column; padding: 80px 30px;
+    transition: right 0.4s; border-left: 1px solid rgba(212,175,55,0.25);
+  }
+  nav.active { right: 0; }
+  nav a { font-size: 1rem; width: 100%; padding: 12px; }
+}
+
+.main-content { padding: 150px 20px 80px; max-width: 1200px; margin: 0 auto; }
+
+h1 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  background: linear-gradient(135deg, var(--gold-light), var(--celestial-light), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-bottom: 10px;
+  animation: titleShimmer 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 30px rgba(212,175,55,0.6));
+}
+
+@keyframes titleShimmer {
+  0%, 100% {
+    filter: drop-shadow(0 0 20px rgba(212,175,55,0.6)) drop-shadow(0 0 40px rgba(111,168,220,0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 40px rgba(212,175,55,0.8)) drop-shadow(0 0 60px rgba(111,168,220,0.5));
+  }
+}
+.subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: rgba(250,247,240,0.7);
+  margin-bottom: 40px;
+  font-style: italic;
+}
+
+.library-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(212,175,55,0.2);
+}
+.library-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.5rem;
+  color: var(--celestial-light);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.now-playing {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  background: rgba(212,175,55,0.1);
+  border-radius: 30px;
+  border: 1px solid rgba(212,175,55,0.3);
+}
+.now-playing-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+.now-playing-text {
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  color: var(--gold-light);
+}
+
+.music-category {
+  margin-bottom: 45px;
+}
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 15px 25px;
+  background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(111,168,220,0.05) 100%);
+  border-radius: 12px;
+  border-left: 4px solid var(--gold);
+}
+.category-icon {
+  font-size: 1.8rem;
+}
+.category-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  color: var(--gold-light);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.category-count {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: var(--celestial);
+  background: rgba(111,168,220,0.15);
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+.tracks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.track-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 18px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(212,175,55,0.15);
+  border-radius: 12px;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+.track-card:hover {
+  background: rgba(212,175,55,0.08);
+  border-color: rgba(212,175,55,0.4);
+  transform: translateX(5px);
+}
+.track-card.active {
+  background: rgba(212,175,55,0.15);
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(212,175,55,0.2);
+}
+.track-card.playing {
+  border-color: var(--gold);
+  background: rgba(212,175,55,0.12);
+  box-shadow: 0 0 25px rgba(212,175,55,0.3);
+}
+.track-card.playing::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 80%;
+  background: var(--gold);
+  border-radius: 0 4px 4px 0;
+}
+
+/* Pista en sombra - esperando turno */
+.track-card.dimmed {
+  opacity: 0.45;
+  filter: grayscale(25%);
+  transition: all 0.4s ease;
+}
+.track-card.dimmed:hover {
+  opacity: 0.7;
+  filter: grayscale(10%);
+}
+.track-card.dimmed .track-title,
+.track-card.dimmed .track-artist {
+  color: rgba(250,247,240,0.3);
+}
+.track-card.dimmed .track-number {
+  background: rgba(100,100,100,0.2);
+  color: rgba(250,247,240,0.3);
+}
+
+.track-number {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(212,175,55,0.1);
+  border-radius: 8px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.track-card.playing .track-number {
+  background: var(--gold);
+  color: var(--blue-deep);
+}
+
+.track-play-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition);
+}
+.track-play-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(212,175,55,0.5);
+}
+.track-play-btn::after {
+  content: '';
+  width: 0; height: 0;
+  border-left: 10px solid var(--blue-deep);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  margin-left: 2px;
+}
+.track-card.playing .track-play-btn::after { display: none; }
+.track-card.playing .track-play-btn {
+  background: linear-gradient(135deg, var(--celestial), var(--celestial-light));
+}
+.track-card.playing .track-play-btn::before {
+  content: '';
+  width: 10px;
+  height: 12px;
+  background: var(--blue-deep);
+  clip-path: polygon(0 0, 40% 0, 40% 100%, 0 100%, 0 0, 60% 0, 60% 100%, 0 100%);
+}
+
+.track-info {
+  flex: 1;
+  min-width: 0;
+}
+.track-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  color: var(--white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.track-card:hover .track-title { color: var(--gold-light); }
+.track-artist {
+  font-size: 0.8rem;
+  color: rgba(250,247,240,0.5);
+  font-style: italic;
+}
+
+.track-duration {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  color: var(--celestial);
+  flex-shrink: 0;
+}
+
+.audio-player-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, rgba(5,13,26,0.98) 0%, rgba(10,22,40,0.98) 100%);
+  border-top: 1px solid rgba(212,175,55,0.3);
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  z-index: 1000;
+  backdrop-filter: blur(20px);
+}
+.player-bar-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 200px;
+}
+.player-bar-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+.player-bar-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  color: var(--white);
+}
+.player-bar-artist {
+  font-size: 0.75rem;
+  color: rgba(250,247,240,0.6);
+}
+
+.player-bar-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+  justify-content: center;
+}
+.player-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all var(--transition);
+}
+.player-btn:hover {
+  background: rgba(212,175,55,0.2);
+}
+.player-btn.main {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  border: none;
+}
+.player-btn.main:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(212,175,55,0.5);
+}
+.player-btn.main::after {
+  content: '';
+  width: 0; height: 0;
+  border-left: 14px solid var(--blue-deep);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  margin-left: 3px;
+}
+.player-btn.main.playing::after { display: none; }
+.player-btn.main.playing::before {
+  content: '';
+  width: 14px;
+  height: 16px;
+  background: var(--blue-deep);
+  clip-path: polygon(0 0, 30% 0, 30% 100%, 0 100%, 0 0, 60% 0, 60% 100%, 0 100%);
+}
+
+.player-progress {
+  flex: 1;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.progress-time {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  color: rgba(250,247,240,0.6);
+  min-width: 45px;
+}
+.progress-bar-container {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--celestial));
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.player-volume {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.volume-icon {
+  background: none;
+  border: none;
+  color: var(--gold);
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+.volume-slider {
+  width: 80px;
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px; height: 12px;
+  background: var(--gold);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.footer-menu { background:rgba(0,0,0,0.5); border:1px solid rgba(212,175,55,0.3); border-radius:15px; padding:20px; margin:30px auto; max-width:800px; }
+.footer-menu-title { font-family:Cinzel; font-size:0.85rem; color:var(--gold-light); text-align:center; margin-bottom:15px; letter-spacing:2px; }
+.footer-menu-links { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+.footer-menu-links a { color:var(--text-muted); text-decoration:none; font-size:0.78rem; padding:6px 14px; border:1px solid rgba(212,175,55,0.15); border-radius:20px; transition:all 0.3s; }
+.footer-menu-links a:hover { background:rgba(212,175,55,0.15); color:var(--gold-light); }
+
+.main-footer {
+  background: rgba(0,0,0,0.6);
+  padding: 30px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(212,175,55,0.2);
+  margin-top: 0;
+}
+.main-footer .cross {
+  font-size: 2.5rem;
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(212,175,55,0.5);
+  animation: crossPulse 2.5s ease-in-out infinite;
+}
+@keyframes crossPulse {
+  0%, 100% { text-shadow: 0 0 15px rgba(212,175,55,0.5); }
+  50% { text-shadow: 0 0 30px rgba(212,175,55,0.8); }
+}
+.main-footer p { color: rgba(250,247,240,0.6); margin: 8px 0; font-size: 0.9rem; }
+.main-footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1rem; }
+
+footer {
+  background: rgba(0,0,0,0.6);
+  padding: 30px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(212,175,55,0.2);
+  margin-top: 60px;
+}
+footer .cross {
+  font-size: 2.5rem;
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(212,175,55,0.5);
+  animation: crossPulse 2.5s ease-in-out infinite;
+}
+@keyframes crossPulse {
+  0%, 100% { text-shadow: 0 0 15px rgba(212,175,55,0.5); }
+  50% { text-shadow: 0 0 30px rgba(212,175,55,0.8); }
+}
+footer p { color: rgba(250,247,240,0.6); margin: 8px 0; font-size: 0.9rem; }
+footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1rem; }
+
+.cursor-cruz {
+  position: fixed; pointer-events: none; z-index: 9999;
+  width: 40px; height: 40px;
+  transition: transform 0.15s ease;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 0 8px rgba(212,175,55,0.8));
+}
+.cursor-cruz svg { width: 100%; height: 100%; }
+.cursor-cruz .cruz-normal { transition: opacity 0.2s; }
+.cursor-cruz .cruz-rayos { opacity: 0; transition: opacity 0.25s; }
+.cursor-cruz.hover { transform: translate(-50%, -50%) scale(1.5); }
+.cursor-cruz.hover .cruz-normal { opacity: 0; }
+.cursor-cruz.hover .cruz-rayos { opacity: 1; }
+
+.scroll-btn {
+  position: fixed; z-index: 1000;
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  border: 2px solid var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  backdrop-filter: blur(8px);
+}
+.scroll-btn:hover { background: rgba(212,175,55,0.3); }
+.scroll-btn svg { width: 24px; height: 24px; stroke: var(--gold); stroke-width: 2; fill: none; }
+.scroll-up { top: 120px; right: 20px; }
+.scroll-down { bottom: 30px; right: 20px; }
+
+@media (hover: none) { .cursor-cruz { display: none; } body { cursor: default; } }
+@media (max-width: 768px) {
+  header { padding: 10px 16px; }
+  .main-content { padding: 140px 15px 100px; }
+  .tracks-grid { grid-template-columns: 1fr; }
+  .audio-player-bar { flex-wrap: wrap; padding: 12px 15px; gap: 10px; }
+  .player-bar-info { min-width: auto; }
+  .player-bar-controls { order: 3; width: 100%; }
+  .player-progress { max-width: none; }
+  .player-volume { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="music-notes-bg"></div>
+
+<div class="cursor-cruz" id="cursor">
+  <svg class="cruz-normal" viewBox="0 0 40 40">
+    <defs>
+      <linearGradient id="cg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fff5c0"/><stop offset="50%" stop-color="#d4af37"/><stop offset="100%" stop-color="#8a7000"/>
+      </linearGradient>
+    </defs>
+    <rect x="18" y="4" width="4" height="32" rx="2" fill="url(#cg)"/>
+    <rect x="6" y="14" width="28" height="4" rx="2" fill="url(#cg)"/>
+    <circle cx="20" cy="10" r="2" fill="#fff5c0"/>
+  </svg>
+  <svg class="cruz-rayos" viewBox="0 0 40 40">
+    <rect x="18" y="4" width="4" height="32" rx="2" fill="#cc0000"/>
+    <rect x="6" y="14" width="28" height="4" rx="2" fill="#cc0000"/>
+    <circle cx="20" cy="10" r="2.5" fill="#ff8888"/>
+  </svg>
+</div>
+
+<header>
+  <a href="index.html" class="logo">
+    <img src="img/logo_divina_misericordia.jpg" alt="Logo" loading="lazy">
+    Divina<span>Misericordia</span>
+  </a>
+  <nav id="mainNav">
+    <a href="index.html">Inicio</a>
+    <a href="quienes-somos.html">Quiénes Somos</a>
+    <a href="santa-faustina.html">Santa Faustina</a>
+    <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
+    <a href="coronilla.html">Coronilla</a>
+    <a href="novena.html">Novena</a>
+    <a href="oraciones.html">Oraciones</a>
+    <a href="santo-rosario.html">Rosario</a>
+    <a href="maria.html">María</a>
+    <a href="estudios-biblicos.html">Estudios</a>
+    <a href="musica-sacra.html">Música Divina</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main class="main-content">
+  <h1>🎵 Biblioteca de Música Divina 🎵</h1>
+  <p class="subtitle">Música sacra y classical para tu oración y meditación</p>
+
+  <div class="library-header">
+    <div class="library-title">
+      <span>📚</span>
+      <span>Nuestra Colección</span>
+    </div>
+    <div class="now-playing" id="nowPlayingDisplay" style="display: none;">
+      <div class="now-playing-dot"></div>
+      <span class="now-playing-text" id="currentTrackTitle">Reproduciendo...</span>
+    </div>
+  </div>
+
+  <div id="musicLibrary"></div>
+
+</main>
+
+<footer class="footer-menu">
+  <h3 class="footer-menu-title">Explora nuestra web</h3>
+  <div class="footer-menu-links">
+    <a href="oraciones.html">Oraciones</a>
+    <a href="via-crucis.html">Vía Crucis</a>
+    <a href="maria.html">María</a>
+    <a href="obras-de-misericordia.html">Obras de Misericordia</a>
+    <a href="consagracion.html">Consagración</a>
+    <a href="lugares-de-culto.html">Lugares de Culto</a>
+    <a href="noticias.html">Noticias</a>
+    <a href="ss-leon-xiv.html">S.S. León XIV</a>
+    <a href="ss-francisco.html">S.S. Francisco</a>
+    <a href="ss-benedicto-xvi.html">S.S. Benedicto XVI</a>
+    <a href="ss-juan-pablo-ii.html">S.S. Juan Pablo II</a>
+    <a href="enlaces.html">Enlaces</a>
+    <a href="divino-nino-jesus.html">Divino Niño Jesús</a>
+    <a href="san-judas-tadeo.html">San Judas Tadeo</a>
+    <a href="san-cayetano.html">San Cayetano</a>
+    <a href="consagracion-sagrado-corazon.html">Sagrado Corazón</a>
+    <a href="maria-auxiliadora.html">María Auxiliadora</a>
+    <a href="san-sanson.html">Sansón</a>
+    <a href="san-benito.html">San Benito</a>
+    <a href="oracion-santa-cruz.html">Santa Cruz</a>
+    <a href="san-francisco.html">San Francisco</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
+    <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones</a>
+  </div>
+</footer>
+
+<footer class="main-footer">
+  <div class="cross-radiant">
+    <div class="cross-rays">
+      <div class="cross-ray"><span>♪</span></div>
+      <div class="cross-ray"><span>♫</span></div>
+      <div class="cross-ray"><span>♬</span></div>
+      <div class="cross-ray"><span>♩</span></div>
+      <div class="cross-ray"><span>♪</span></div>
+      <div class="cross-ray"><span>♫</span></div>
+      <div class="cross-ray"><span>♬</span></div>
+      <div class="cross-ray"><span>♩</span></div>
+    </div>
+    <div class="cross-notes">
+      <div class="cross-note">♪</div>
+      <div class="cross-note">♫</div>
+      <div class="cross-note">♬</div>
+      <div class="cross-note">♩</div>
+    </div>
+    <div class="cross">✝</div>
+  </div>
+  <p class="tagline">Jesús, En Vos Confío</p>
+  <p>© 2026 — Portal de la Divina Misericordia</p>
+</footer>
+
+<div class="audio-player-bar" id="playerBar" style="display: none;">
+  <div class="player-bar-info">
+    <div class="player-bar-icon">🎵</div>
+    <div>
+      <div class="player-bar-title" id="playerTitle">-</div>
+      <div class="player-bar-artist" id="playerArtist">Biblioteca Musical</div>
+    </div>
+  </div>
+  <div class="player-bar-controls">
+    <button class="player-btn" onclick="prevTrack()">⏮</button>
+    <button class="player-btn main" onclick="togglePlay()" id="mainPlayBtn"></button>
+    <button class="player-btn" onclick="nextTrack()">⏭</button>
+  </div>
+  <div class="player-progress">
+    <span class="progress-time" id="currentTime">0:00</span>
+    <div class="progress-bar-container" onclick="seekTrack(event)">
+      <div class="progress-bar-fill" id="progressBar"></div>
+    </div>
+    <span class="progress-time" id="totalTime">0:00</span>
+  </div>
+  <div class="player-volume">
+    <button class="volume-icon" onclick="toggleMute()">🔊</button>
+    <input type="range" class="volume-slider" min="0" max="1" step="0.05" value="0.7" onchange="setVolume(this.value)" id="volumeSlider">
+  </div>
+</div>
+
+<button class="scroll-btn scroll-up" onclick="scrollToTop()" aria-label="Subir">
+  <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<button class="scroll-btn scroll-down" onclick="scrollToDown()" aria-label="Bajar">
+  <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+</button>
+
+<!-- Music notes floating background -->
+<div class="music-notes-bg">
+  <div class="music-note gold large note1"></div>
+  <div class="music-note celestial small note2"></div>
+  <div class="music-note warm medium note3"></div>
+  <div class="music-note rose tiny note4"></div>
+  <div class="music-note gold xlarge note5"></div>
+  <div class="music-note celestial medium note6"></div>
+  <div class="music-note white small note1"></div>
+  <div class="music-note warm large note2"></div>
+  <div class="music-note gold tiny note3"></div>
+  <div class="music-note rose medium note4"></div>
+  <div class="music-note celestial xlarge note5"></div>
+  <div class="music-note gold small note6"></div>
+  <div class="music-note warm large note1"></div>
+  <div class="music-note white medium note2"></div>
+  <div class="music-note rose small note3"></div>
+  <div class="music-note gold tiny note4"></div>
+  <div class="music-note celestial large note5"></div>
+  <div class="music-note warm medium note6"></div>
+  <div class="music-note rose xlarge note1"></div>
+  <div class="music-note gold small note2"></div>
+  <div class="music-note white medium note3"></div>
+  <div class="music-note celestial large note4"></div>
+  <div class="music-note warm tiny note5"></div>
+  <div class="music-note gold xlarge note6"></div>
+  <div class="music-note rose small note1"></div>
+  <div class="music-note celestial medium note2"></div>
+  <div class="music-note warm large note3"></div>
+  <div class="music-note gold tiny note4"></div>
+  <div class="music-note white xlarge note5"></div>
+  <div class="music-note rose medium note6"></div>
+  <div class="music-note celestial small note1"></div>
+  <div class="music-note gold large note2"></div>
+  <div class="music-note warm tiny note3"></div>
+  <div class="music-note white medium note4"></div>
+  <div class="music-note rose xlarge note5"></div>
+  <div class="music-note celestial small note6"></div>
+  <div class="music-note gold large note1"></div>
+  <div class="music-note warm medium note2"></div>
+  <div class="music-note rose tiny note3"></div>
+  <div class="music-note white large note4"></div>
+  <div class="music-note celestial xlarge note5"></div>
+  <div class="music-note gold small note6"></div>
+  <div class="music-note warm medium note1"></div>
+  <div class="music-note rose large note2"></div>
+  <div class="music-note white tiny note3"></div>
+  <div class="music-note celestial xlarge note4"></div>
+  <div class="music-note gold medium note5"></div>
+  <div class="music-note warm small note6"></div>
+  <div class="music-note rose large note1"></div>
+</div>
+
+<script>
+const musicLibrary = [
+  { category: "🙏 Himnos de Devoción", icon: "🙏", tracks: [
+    { title: "Ave Maria", artist: "Canto Gregoriano", src: "mp3/00.%20Ave%20Maria.mp3" },
+    { title: "Jesus Paid It All", artist: "Himno Evangélico", src: "mp3/00.%20Jesus%20Paid%20It%20All.mp3" },
+    { title: "Hallelujah (Messiah)", artist: "G.F. Handel", src: "mp3/00.%20Messiah,%20HWV%2056,%20Pt.%202_%20No.%2044,%20Chorus.%20Hallelujah,%20for%20the%20Lord%20God%20Omnipotent%20Reigneth.mp3" },
+    { title: "Santa Faustina - Himno", artist: "Dedicación", src: "mp3/00.%20Santa%20Faustina,%20Himno%20Moderno.mp3" },
+    { title: "Jesus is All the World", artist: "Himno Tradicional", src: "mp3/01.%20Jesus%20is%20all%20the%20world%20to%20me.mp3" },
+    { title: "More About Jesus", artist: "Himno Evangélico", src: "mp3/02.%20More%20About%20Jesus.mp3" },
+    { title: "I Have Decided to Follow Jesus", artist: "Himno Tradicional", src: "mp3/03.%20I%20Have%20Decided%20to%20Follow%20Jesus.mp3" },
+    { title: "Sweet Hour of Prayer", artist: "Himno de Oración", src: "mp3/04.%20Sweet%20Hour%20of%20Prayer.mp3" },
+    { title: "A New Name in Glory", artist: "Himno Celebración", src: "mp3/05.%20A%20New%20Name%20in%20Glory%20-%20Instrumental.mp3" },
+    { title: "Vía Crucis - Para Orar", artist: "Devoción", src: "mp3/24.%20V%C3%ADa%20Crucis%20-%20Para%20Orar.mp3" },
+    { title: "Novena Divine Inspiration", artist: "Oración", src: "mp3/25.%20Novena%20Divine%20Inspiration.mp3" },
+    { title: "Hora de la Coronilla", artist: "Divina Misericordia", src: "mp3/26.%20Hora%20de%20la%20Coronilla%20de%20la%20Divina%20Misericordia%20-%20Instrumental.mp3" }
+  ]},
+  { category: "🎻 Música Barroca Clásica", icon: "🎻", tracks: [
+    { title: "Brandenburg Concerto No. 1", artist: "J.S. Bach", src: "mp3/05.%20Brandenburg%20Concerto%20No.%201%20in%20F%20Major,%20BWV%201046_%20I.mp3" },
+    { title: "Concierto de Brandeburgo No. 1", artist: "J.S. Bach", src: "mp3/01.%20Concierto-de-Branderburgo-n.1-BWV-1046-en-Fa-mayor-Adagio.mp3" },
+    { title: "Concierto de Brandeburgo No. 3", artist: "J.S. Bach", src: "mp3/03.%20Concierto-de-Branderburgo-n.3-BWV-1048-en-Sol-Mayor-Allegro-moderato.mp3" },
+    { title: "Largo 'Ombra mai fu' (Xerxes)", artist: "G.F. Handel", src: "mp3/06.%20Serse,%20HWV%2040_%20Largo%20_Ombra%20mai%20fu.mp3" },
+    { title: "Air (Suite No. 3)", artist: "J.S. Bach", src: "mp3/09.%20J.S.%20Bach_%20J.S.%20Bach_%20Orchestral%20Suite%20No.%203%20in%20D%20Major,%20BWV%201068_%202.mp3" },
+    { title: "Aria de la Suite No. 3", artist: "J.S. Bach", src: "mp3/07.%20Aria%20de%20la%20Suite%20no.%203%20en%20Re%20Mayor,%20BWV%201068.mp3" },
+    { title: "Sarabande (Keyboard Suite)", artist: "G.F. Handel", src: "mp3/08.%20Handel%20_%20Orch.%20Hale_%20Keyboard%20Suite%20No.%204%20in%20D%20Minor,%20HWV%20437_%20III.%20Sarabande.mp3" },
+    { title: "Sinfonie (Brockes Passion)", artist: "G.F. Handel", src: "mp3/01.%20Brockes%20Passion,%20HWV%2048_%20No.%201,%20Sinfonie.mp3" }
+  ]},
+  { category: "🕊️ Música de Contemplación", icon: "🕊️", tracks: [
+    { title: "Canon in D (Pachelbel)", artist: "Pachelbel", src: "mp3/14.%20Pachelbel%20Canon%20in%20D.mp3" },
+    { title: "Canon in D", artist: "Pachelbel", src: "mp3/15.%20Canon%20in%20D.mp3" },
+    { title: "Violin Sonata No. 3", artist: "J.S. Bach", src: "mp3/00.%20Violin%20Sonata%20No.%203%20in%20C%20Major,%20BWV%201005%20(Arr.%20for%20Piano%20by%20V%C3%ADkingur%20%C3%93lafsson)_%20I.%20Adagio.mp3" },
+    { title: "Swan Lake - Scène", artist: "P.I. Tchaikovsky", src: "mp3/11.%20Swan%20Lake,%20Op.%2020a_%20I.%20Sc%C3%A8ne.mp3" },
+    { title: "Shades and Shadows", artist: "Ambient", src: "mp3/12.%20Shades%20and%20Shadows.mp3" },
+    { title: "The Essence", artist: "Ambient", src: "mp3/13.%20The%20Essence.mp3" },
+    { title: "Sonata Violino Solo - Allemande", artist: "H.I.F. Biber", src: "mp3/16.%20Sonata%20violino%20solo%20representativa%20in%20A%20Major_%20III.%20Allemande.mp3" },
+    { title: "Sonata Quarta - Ciaccona", artist: "D. Castello", src: "mp3/17.%20Sonata%20quarta%20in%20D%20Major_%20I.%20Ciaccona.mp3" },
+    { title: "Violin Sonata No. 1 - Aria", artist: "J.S. Bach", src: "mp3/18.%20Violin%20Sonata%20No.%201%20in%20D%20Minor_%20VI.%20Aria.mp3" }
+  ]},
+  { category: "✨ Música de Gloria", icon: "✨", tracks: [
+    { title: "La Primavera (Spring)", artist: "A. Vivaldi", src: "mp3/10.%20Spring%20(La%20Primavera)%20Op.8%20No.1%20E%20Major_%20Allegro.mp3" },
+    { title: "Concerto in D Major - Adagio", artist: "A. Vivaldi", src: "mp3/19.%20Concerto%202%20in%20D%20Major,%20Op.%207_%20I.%20Adagio.mp3" },
+    { title: "Canzona Undecima", artist: "G. Gabrieli", src: "mp3/20.%20Canzona%20undecima%20a%20due%20canti%20_detta%20la%20plettenberger.mp3" },
+    { title: "Les Plaisirs - Sarabande", artist: "M. Marais", src: "mp3/21.%20Les%20plaisirs_%20Sarabande.mp3" },
+    { title: "5e Livre de Viole - Chaconne", artist: "M. Marais", src: "mp3/22.%205e%20livre%20de%20viole_%20Chaconne.mp3" },
+    { title: "Concerto Grosso - Largo", artist: "A. Corelli", src: "mp3/23.%20Concerto%20Grosso%20in%20D%20Major,%20Op.%201,%20No.%205_%20III.%20Largo.mp3" }
+  ]},
+  { category: "🎬 Música Cinematográfica Sagrada", icon: "🎬", tracks: [
+    { title: "Braveheart - End Titles", artist: "James Horner", src: "mp3/00%20.Braveheart-End%20Titles.mp3" },
+    { title: "Now We Are Free (Gladiator)", artist: "Hans Zimmer", src: "mp3/27.%20Now%20We%20Are%20Free%20(Gladiator)%20-%20Instrumental%20Version.mp3" },
+    { title: "Now We Are Free - Piano", artist: "Hans Zimmer", src: "mp3/28.%20Now%20We%20Are%20Free%20(from%20_Gladiator_)%20-%20Piano%20Solo%20Version.mp3" },
+    { title: "Tennessee", artist: "Hans Zimmer", src: "mp3/29.%20Tennessee.mp3" },
+    { title: "Honor Him", artist: "Hans Zimmer", src: "mp3/30.%20Honor%20Him.mp3" },
+    { title: "The Kiss", artist: "James Horner", src: "mp3/31.%20The%20Kiss.mp3" },
+    { title: "Elysium", artist: "James Horner", src: "mp3/32.%20Elysium.mp3" },
+    { title: "Evenstar", artist: "Howard Shore", src: "mp3/33.%20Evenstar.mp3" },
+    { title: "A Gift of a Thistle", artist: "James Horner", src: "mp3/55.%20A%20Gift%20Of%20A%20Thistle.mp3" },
+    { title: "For the Love of a Princess", artist: "James Horner", src: "mp3/56.%20For%20The%20Love%20Of%20A%20Princess.mp3" },
+    { title: "Murron's Burial", artist: "James Horner", src: "mp3/57.%20Murron's%20Burial.mp3" },
+    { title: "Revenge (Braveheart)", artist: "James Horner", src: "mp3/58.%20Revenge%20%5BBraveheart%20-%20Original%20Sound%20Track%5D.mp3" },
+    { title: "The Battle of Stirling", artist: "James Horner", src: "mp3/59.%20The%20Battle%20Of%20Stirling%20%5BBraveheart%20-%20Original%20Sound%20Track%5D.mp3" },
+    { title: "The Princess Pleads for Wallace", artist: "James Horner", src: "mp3/60.%20The%20Princess%20Pleads%20For%20Wallace's%20Life.mp3" },
+    { title: "The Secret Wedding", artist: "James Horner", src: "mp3/61.The%20Secret%20Wedding.mp3" }
+  ]},
+  { category: "⚔️ Música Épica y Aventura", icon: "⚔️", tracks: [
+    { title: "Heart of Courage", artist: "Two Steps From Hell", src: "mp3/34.%20Heart%20of%20Courage.mp3" },
+    { title: "Day One (Interstellar)", artist: "Hans Zimmer", src: "mp3/35.%20Day%20One%20(Interstellar%20Theme).mp3" },
+    { title: "Becoming Human", artist: "Hans Zimmer", src: "mp3/36.%20Becoming%20Human.mp3" },
+    { title: "Main Title", artist: "Hans Zimmer", src: "mp3/37.%20Main%20Title.mp3" },
+    { title: "He's a Pirate", artist: "Hans Zimmer", src: "mp3/38.He%27s%20a%20Pirate.mp3" },
+    { title: "Aphelion", artist: "Hans Zimmer", src: "mp3/49.%20Aphelion.mp3" },
+    { title: "Winter is Here", artist: "Ramin Djawadi", src: "mp3/50.%20Winter%20Is%20Here.mp3" },
+    { title: "No Sacrifice, No Victory", artist: "Steve Jablonsky", src: "mp3/42.%20No%20Sacrifice,%20No%20Victory.mp3" },
+    { title: "Pact Sworn in Blood", artist: "Inon Zur", src: "mp3/41.%20Pact%20Sworn%20in%20Blood.mp3" },
+    { title: "Promentory (Last of the Mohicans)", artist: "Trevor Jones", src: "mp3/44.%20Promentory.mp3" },
+    { title: "Blackheart", artist: "Inon Zur", src: "mp3/46.%20Blackheart.mp3" },
+    { title: "Goodbye Brother", artist: "Inon Zur", src: "mp3/47.%20Goodbye%20Brother.mp3" },
+    { title: "Optimus", artist: "Steve Jablonsky", src: "mp3/48.%20Optimus.mp3" }
+  ]},
+  { category: "🏰 El Señor de los Anillos", icon: "🏰", tracks: [
+    { title: "Concerning Hobbits", artist: "Howard Shore", src: "mp3/39.%20Concerning%20Hobbits.mp3" },
+    { title: "The Way Home", artist: "Howard Shore", src: "mp3/40.%20The%20Way%20Home.mp3" },
+    { title: "This Land", artist: "Howard Shore", src: "mp3/43.%20This%20Land.mp3" },
+    { title: "The Grey Havens", artist: "Howard Shore", src: "mp3/45.%20The%20Grey%20Havens%20(feat.%20Sir%20James%20Galway).mp3" },
+    { title: "Suite Señor de los Anillos", artist: "Howard Shore", src: "mp3/51.%20El%20se%C3%B1or%20de%20los%20anillos%20(Suite)%20(La%20comunidad%20del%20anillo).mp3" },
+    { title: "The Shire", artist: "Howard Shore", src: "mp3/52.%20The%20Shire.mp3" },
+    { title: "The Council of Elrond", artist: "Howard Shore", src: "mp3/53.%20The%20Council%20of%20Elrond%20(feat.%20_Aniron_)%20%5BTheme%20for%20Aragorn%20and%20Arwen%5D.mp3" },
+    { title: "The Bridge of Khazad-dûm", artist: "Howard Shore", src: "mp3/54.%20The%20Bridge%20Of%20Khazad-Dum%20(From%20_The%20Lord%20Of%20The%20Rings_).mp3" }
+  ]},
+  { category: "🦁 Crónicas de Narnia", icon: "🦁", tracks: [
+    { title: "A Narnia Lullaby (Piano)", artist: "Harry Gregson-Williams", src: "mp3/62.%20A%20Narnia%20Lullaby%20(From%20_The%20Chronicles%20of%20Narnia_)%20-%20Piano%20Version.mp3" },
+    { title: "A Narnia Lullaby", artist: "Harry Gregson-Williams", src: "mp3/63.%20A%20Narnia%20Lullaby.mp3" },
+    { title: "Only the Beginning", artist: "Harry Gregson-Williams", src: "mp3/64.%20Only%20The%20Beginning%20of%20The%20Adventure.mp3" },
+    { title: "Aslan Appears", artist: "Harry Gregson-Williams", src: "mp3/65.%20Aslan%20Appears.mp3" },
+    { title: "Aslan's Breath", artist: "Harry Gregson-Williams", src: "mp3/66.%20Aslan's%20Breath.mp3" },
+    { title: "Raid on the Castle", artist: "Harry Gregson-Williams", src: "mp3/67.%20Raid%20on%20the%20Castle%20-%20Score.mp3" },
+    { title: "The Battle", artist: "Harry Gregson-Williams", src: "mp3/68.%20The%20Battle.mp3" },
+    { title: "The Kings and Queens of Old", artist: "Harry Gregson-Williams", src: "mp3/69.%20The%20Kings%20and%20Queens%20of%20Old%20-%20Score.mp3" }
+  ]}
+];
+
+let currentAudio = null;
+let currentTrackIndex = null;
+let currentCategoryIndex = null;
+let isPlaying = false;
+let trackDurations = {};
+
+function initLibrary() {
+  const library = document.getElementById('musicLibrary');
+  let trackNum = 1;
+  
+  musicLibrary.forEach((cat, catIdx) => {
+    let tracksHtml = '';
+    cat.tracks.forEach((track, trackIdx) => {
+      const globalIdx = trackNum++;
+      tracksHtml += `
+        <div class="track-card" data-cat="${catIdx}" data-track="${trackIdx}" onclick="playTrack(${catIdx}, ${trackIdx})">
+          <div class="track-number">${globalIdx}</div>
+          <button class="track-play-btn" onclick="event.stopPropagation(); playTrack(${catIdx}, ${trackIdx})"></button>
+          <div class="track-info">
+            <div class="track-title">${track.title}</div>
+            <div class="track-artist">${track.artist}</div>
+          </div>
+          <div class="track-duration" data-src="${track.src}">--:--</div>
+        </div>
+      `;
+    });
+    
+    library.innerHTML += `
+      <div class="music-category">
+        <div class="category-header">
+          <span class="category-icon">${cat.icon}</span>
+          <span class="category-title">${cat.category}</span>
+          <span class="category-count">${cat.tracks.length} pistas</span>
+        </div>
+        <div class="tracks-grid">${tracksHtml}</div>
+      </div>
+    `;
+  });
+  
+  document.querySelectorAll('.track-duration').forEach(el => {
+    const src = el.dataset.src;
+    const audio = new Audio(src);
+    audio.addEventListener('loadedmetadata', () => {
+      const mins = Math.floor(audio.duration / 60);
+      const secs = Math.floor(audio.duration % 60);
+      el.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
+    });
+  });
+}
+
+function playTrack(catIdx, trackIdx) {
+  const track = musicLibrary[catIdx].tracks[trackIdx];
+  
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio = null;
+  }
+  
+  // Quitar playing y dimmed de todas las tarjetas
+  document.querySelectorAll('.track-card').forEach(c => {
+    c.classList.remove('playing', 'active', 'dimmed');
+  });
+  
+  // Añadir playing y active a la pista seleccionada
+  const card = document.querySelector(`.track-card[data-cat="${catIdx}"][data-track="${trackIdx}"]`);
+  card.classList.add('active', 'playing');
+  
+  // Sombrear las demás pistas
+  document.querySelectorAll('.track-card').forEach(c => {
+    if (c !== card) {
+      c.classList.add('dimmed');
+    }
+  });
+  
+  currentAudio = new Audio(track.src);
+  currentAudio.volume = document.getElementById('volumeSlider').value;
+  currentTrackIndex = trackIdx;
+  currentCategoryIndex = catIdx;
+  
+  currentAudio.addEventListener('timeupdate', updateProgress);
+  currentAudio.addEventListener('loadedmetadata', () => {
+    document.getElementById('totalTime').textContent = formatTime(currentAudio.duration);
+  });
+  currentAudio.addEventListener('ended', nextTrack);
+  
+  currentAudio.play().then(() => {
+    isPlaying = true;
+    updatePlayButton();
+    showPlayerBar(track);
+  }).catch(err => {
+    console.error('Error reproduciendo:', err);
+    alert('Error al reproducir: ' + track.title);
+  });
+}
+
+function updateProgress() {
+  if (!currentAudio) return;
+  const pct = (currentAudio.currentTime / currentAudio.duration) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('currentTime').textContent = formatTime(currentAudio.currentTime);
+}
+
+function togglePlay() {
+  if (!currentAudio) return;
+  if (isPlaying) {
+    currentAudio.pause();
+    isPlaying = false;
+  } else {
+    currentAudio.play();
+    isPlaying = true;
+  }
+  updatePlayButton();
+}
+
+function updatePlayButton() {
+  const btn = document.getElementById('mainPlayBtn');
+  btn.classList.toggle('playing', isPlaying);
+}
+
+function showPlayerBar(track) {
+  document.getElementById('playerBar').style.display = 'flex';
+  document.getElementById('playerTitle').textContent = track.title;
+  document.getElementById('currentTrackTitle').textContent = track.title;
+  document.getElementById('nowPlayingDisplay').style.display = 'flex';
+}
+
+function prevTrack() {
+  if (currentCategoryIndex === null) return;
+  let newIdx = currentTrackIndex - 1;
+  if (newIdx < 0) newIdx = musicLibrary[currentCategoryIndex].tracks.length - 1;
+  playTrack(currentCategoryIndex, newIdx);
+}
+
+function nextTrack() {
+  if (currentCategoryIndex === null) return;
+  let newIdx = currentTrackIndex + 1;
+  if (newIdx >= musicLibrary[currentCategoryIndex].tracks.length) newIdx = 0;
+  playTrack(currentCategoryIndex, newIdx);
+}
+
+function seekTrack(e) {
+  if (!currentAudio) return;
+  const rect = e.target.getBoundingClientRect();
+  const pct = (e.clientX - rect.left) / rect.width;
+  currentAudio.currentTime = pct * currentAudio.duration;
+}
+
+function setVolume(val) {
+  if (currentAudio) currentAudio.volume = val;
+}
+
+function toggleMute() {
+  const slider = document.getElementById('volumeSlider');
+  if (currentAudio) {
+    if (currentAudio.volume > 0) {
+      currentAudio.prevVol = currentAudio.volume;
+      currentAudio.volume = 0;
+      slider.value = 0;
+    } else {
+      currentAudio.volume = currentAudio.prevVol || 0.7;
+      slider.value = currentAudio.volume;
+    }
+  }
+}
+
+function formatTime(seconds) {
+  if (isNaN(seconds)) return '0:00';
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m}:${s.toString().padStart(2, '0')}`;
+}
+
+function toggleMenu() {
+  document.getElementById('mainNav').classList.toggle('active');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+function scrollToDown() { window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); }
+
+const cursor = document.getElementById('cursor');
+let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; }, { passive: true });
+function animateCursor() {
+  cursorX += (mouseX - cursorX) * 0.15;
+  cursorY += (mouseY - cursorY) * 0.15;
+  cursor.style.left = cursorX + 'px';
+  cursor.style.top = cursorY + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+document.querySelectorAll('a, button, .track-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+
+document.addEventListener('DOMContentLoaded', initLibrary);
+</script>
+
+</body>
+</html>
