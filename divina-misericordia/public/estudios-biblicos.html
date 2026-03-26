@@ -443,6 +443,154 @@ nav#mainNav .nav-cross svg {
   margin: 1rem 0;
   border-radius: 0 12px 12px 0;
 }
+
+/* Biblia Interactiva */
+.biblia-widget {
+  padding: 1.5rem;
+}
+.biblia-selector {
+  margin-bottom: 1rem;
+}
+.biblia-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+.biblia-group {
+  flex: 1;
+  min-width: 140px;
+}
+.biblia-group label {
+  display: block;
+  color: #d4af37;
+  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+  font-weight: 600;
+}
+.biblia-group select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  background: rgba(10, 22, 40, 0.95);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  border-radius: 8px;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.biblia-group select:hover,
+.biblia-group select:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+  outline: none;
+}
+.biblia-search {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.biblia-search input {
+  flex: 1;
+  padding: 0.65rem 1rem;
+  background: rgba(10, 22, 40, 0.95);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 8px;
+  color: #e0e0e0;
+  font-size: 0.9rem;
+}
+.biblia-search input:focus {
+  border-color: #d4af37;
+  outline: none;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+.biblia-search button {
+  padding: 0.65rem 1.25rem;
+  background: linear-gradient(135deg, #d4af37, #b8962e);
+  border: none;
+  border-radius: 8px;
+  color: #050814;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.biblia-search button:hover {
+  background: linear-gradient(135deg, #f7e7b4, #d4af37);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+.biblia-contenido {
+  background: rgba(5, 13, 26, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  min-height: 120px;
+  margin-bottom: 1rem;
+}
+.biblia-placeholder {
+  color: #a0a8c8;
+  text-align: center;
+  font-style: italic;
+}
+.biblia-versiculo-display {
+  text-align: center;
+}
+.biblia-referencia {
+  color: #d4af37;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+}
+.biblia-texto {
+  color: #e8eaf6;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  font-style: italic;
+}
+.biblia-resultados h4 {
+  color: #d4af37;
+  margin-bottom: 1rem;
+}
+.biblia-resultado-item {
+  background: rgba(10, 22, 40, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.biblia-resultado-item:hover {
+  border-color: #d4af37;
+  background: rgba(212, 175, 55, 0.1);
+}
+.biblia-resultado-item strong {
+  color: #4cc3ff;
+}
+.biblia-resultado-item p {
+  color: #c0c5d8;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+.biblia-enlaces {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.biblia-enlaces a {
+  color: #4cc3ff;
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(76, 195, 255, 0.4);
+  transition: all 0.3s ease;
+}
+.biblia-enlaces a:hover {
+  color: #f7e7b4;
+  border-bottom-color: #f7e7b4;
+}
+
 .cita-biblica .referencia {
   color: #4cc3ff;
   font-weight: bold;
@@ -617,6 +765,59 @@ nav#mainNav .nav-cross svg {
         <li><a href="#sacramentos-vida">Los Sacramentos de la Vida</a></li>
       </ul>
     </div>
+
+    <!-- Biblia Interactiva -->
+    <section class="section" id="biblia-interactiva">
+      <h2>Biblia Interactiva</h2>
+      <div class="content-box biblia-widget">
+        <div class="biblia-selector">
+          <div class="biblia-row">
+            <div class="biblia-group">
+              <label for="biblia-testamento">Testamento:</label>
+              <select id="biblia-testamento">
+                <option value="at">Antiguo Testamento</option>
+                <option value="nt" selected>Nuevo Testamento</option>
+              </select>
+            </div>
+            <div class="biblia-group">
+              <label for="biblia-libro">Libro:</label>
+              <select id="biblia-libro">
+                <option value="">Seleccionar libro</option>
+              </select>
+            </div>
+          </div>
+          <div class="biblia-row">
+            <div class="biblia-group">
+              <label for="biblia-capitulo">Capítulo:</label>
+              <select id="biblia-capitulo">
+                <option value="">Capítulo</option>
+              </select>
+            </div>
+            <div class="biblia-group">
+              <label for="biblia-versiculo">Versículo:</label>
+              <select id="biblia-versiculo">
+                <option value="">Versículo</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <div class="biblia-search">
+          <input type="text" id="biblia-buscar" placeholder="Buscar texto bíblico (ej: amor, fe, esperanza)...">
+          <button id="biblia-buscar-btn">Buscar</button>
+        </div>
+        
+        <div id="biblia-contenido" class="biblia-contenido">
+          <p class="biblia-placeholder">Selecciona un libro para comenzar a leer la Biblia</p>
+        </div>
+        
+        <div class="biblia-enlaces">
+          <a href="https://www.vatican.va/archive/Biblia/index_sp.htm" target="_blank">Biblia Vaticana (Version Oficial)</a>
+          <a href="https://www.biblegateway.com" target="_blank">BibleGateway</a>
+          <a href="https://www.shellcode.com/biblia" target="_blank">Biblia Online</a>
+        </div>
+      </div>
+    </section>
 
     <!-- Cómo citar textos bíblicos -->
     <section class="section" id="citacion-biblica">
@@ -2230,6 +2431,10 @@ nav#mainNav .nav-cross svg {
     <span>El Portal de la Divina Misericordia</span> - Jesús, En Vos Confío
   </div>
 </footer>
+
+<!-- Scripts de Biblia Interactiva -->
+<script src="js/biblia-data.js"></script>
+<script src="js/biblia.js"></script>
 
 <!-- Botones de Navegación - Sabiduría Divina -->
 <button class="scroll-btn scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Subir al cielo" aria-label="Subir al inicio">
