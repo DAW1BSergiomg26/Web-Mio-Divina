@@ -209,7 +209,6 @@
             <div class="sp-controls">
               <button id="sp-mute-btn" class="sp-control-btn" aria-label="Volumen">🔊</button>
               <input type="range" id="sp-volume" class="sp-volume" min="0" max="1" step="0.05" value="${this.volume}">
-              <a id="sp-download" class="sp-control-btn sp-download-btn" aria-label="Descargar" download>⬇</a>
             </div>
             <div class="sp-frase" id="sp-frase">
               <span class="sp-frase-icon">✝</span>
