@@ -70,19 +70,37 @@
 
 <style>
 :root {
-    --jose-gold: #c9a227;
-    --jose-gold-light: #e8c87a;
-    --jose-gold-dark: #8b7355;
-    --cafe-dark: #3e2723;
-    --cafe-medium: #5d4037;
-    --cafe-light: #795548;
+    /* Paleta de San José - Marrón y Verde característica */
+    --jose-marrón: #5C3A1E;         /* Marrón café oscuro */
+    --jose-marrón-oscuro: #3A2010;  /* Marrón muy oscuro */
+    --jose-marrón-claro: #8B5E3C;  /* Marrón claro */
+    --jose-verde: #2E6B3E;          /* Verde de la túnica */
+    --jose-verde-oscuro: #1B5E20;  /* Verde oscuro */
+    --jose-verde-claro: #4CAF50;    /* Verde brillante */
+    
+    /* Dorado tradicional */
+    --jose-dorado: #C9960A;        /* Dorado */
+    --jose-dorado-claro: #F0C840; /* Dorado brillante */
+    --jose-dorado-oscuro: #8B6914; /* Dorado oscuro */
+    
+    /* Ocre y tonos tierra */
+    --jose-ocre: #D2B48C;          /* Ocre */
+    --jose-crema: #FDFAF2;          /* Crema */
+    
+    /* Colores base */
+    --jose-gold: #C9960A;
+    --jose-gold-light: #F0C840;
+    --jose-gold-dark: #8B6914;
+    --cafe-dark: #3A2010;
+    --cafe-medium: #5C3A1E;
+    --cafe-light: #8B5E3C;
     --celestial-blue: #87ceeb;
     --blue-deep: #1a0f0a;
     --blue-mid: #2d1810;
     --white: #faf7f0;
     --text-main: rgba(250,247,240,0.9);
     --text-muted: rgba(250,247,240,0.7);
-    --border-gold: rgba(201,162,39,0.4);
+    --border-gold: rgba(201,150,10,0.4);
     --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
 }
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -94,7 +112,7 @@ body {
 }
 .bg { 
     position:fixed; inset:0; 
-    background: radial-gradient(ellipse at 50% 30%,#3e2723 0%,#2d1810 50%,#1a0f0a 100%);
+    background: radial-gradient(ellipse at 50% 30%,#5C3A1E 0%,#3A2010 40%,#2E6B3E 60%,#1a0f0a 100%);
     z-index:-2; 
 }
 #jose-canvas { position:fixed; inset:0; z-index:-1; opacity:0.85; }
@@ -439,43 +457,1149 @@ footer p { color:var(--text-muted); font-size:0.9rem; margin-top:15px; }
     .scroll-down { bottom:16px; right:12px; }
 }
 @media(hover:none) { .cursor-cruz { display:none; } body { cursor:default; } }
+
+    /* =============================================
+    SECCIONES NUEVAS - ORACIONES, RECURSOS
+    ============================================= */
+    
+    .section {
+        margin-bottom: 50px;
+        scroll-margin-top: 80px;
+    }
+    
+    .section-title {
+        font-family: 'Cinzel', serif;
+        font-size: 1.5rem;
+        color: var(--jose-dorado);
+        margin-bottom: 25px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--jose-dorado);
+        text-align: center;
+    }
+    
+    /* Prayer Block */
+    .prayer-block {
+        background: linear-gradient(135deg, rgba(58, 32, 16, 0.95) 0%, rgba(92, 58, 30, 0.9) 50%, rgba(46, 107, 62, 0.85) 100%);
+        color: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        padding: 35px 40px;
+        margin: 25px 0;
+        border: 2px solid var(--jose-dorado);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .prayer-block::before {
+        content: '✦ ✦ ✦';
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgba(255, 215, 0, 0.4);
+        font-size: 10px;
+        letter-spacing: 14px;
+    }
+    
+    .prayer-block h3 {
+        font-family: 'Cinzel', serif;
+        color: var(--jose-dorado-claro);
+        text-align: center;
+        font-size: 1.1rem;
+        letter-spacing: 0.1em;
+        margin: 20px 0 15px;
+    }
+    
+    .prayer-block p {
+        font-family: 'EB Garamond', serif;
+        font-style: italic;
+        font-size: 1.05rem;
+        line-height: 2;
+        text-align: justify;
+    }
+    
+    .prayer-block .src {
+        text-align: center;
+        font-size: 0.8rem;
+        color: rgba(255, 215, 0, 0.7);
+        margin-top: 15px;
+        font-style: normal;
+    }
+    
+    .prayer-block .note {
+        text-align: center;
+        font-size: 0.75rem;
+        opacity: 0.6;
+        margin-top: 10px;
+        font-style: normal;
+    }
+    
+    /* Recursos Grid */
+    .recursos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 18px;
+        margin: 20px 0;
+    }
+    
+    .recurso-card {
+        background: linear-gradient(135deg, rgba(13, 71, 161, 0.15) 0%, rgba(25, 118, 210, 0.1) 100%);
+        border: 1px solid rgba(255, 215, 0, 0.25);
+        border-radius: 12px;
+        padding: 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    
+    .recurso-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--jose-dorado);
+        box-shadow: 0 8px 30px rgba(255, 215, 0, 0.15);
+    }
+    
+    .recurso-icon {
+        font-size: 2rem;
+        display: block;
+        margin-bottom: 10px;
+    }
+    
+    .recurso-card h4 {
+        font-family: 'Cinzel', serif;
+        color: var(--jose-dorado);
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+        letter-spacing: 0.05em;
+    }
+    
+    .recurso-card p {
+        font-size: 0.85rem;
+        color: var(--white);
+        opacity: 0.8;
+        margin-bottom: 12px;
+        line-height: 1.5;
+    }
+    
+    .recurso-card a {
+        display: inline-block;
+        background: var(--jose-dorado);
+        color: var(--jose-azul);
+        font-family: 'Cinzel', serif;
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        padding: 6px 14px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 700;
+    }
+    
+    .recurso-card a:hover {
+        background: var(--jose-dorado-claro);
+    }
+    
+    /* Info Grid */
+    .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+    }
+    
+    .info-box {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 215, 0, 0.2);
+        border-radius: 10px;
+        padding: 18px 15px;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    
+    .info-box:hover {
+        background: rgba(255, 215, 0, 0.1);
+        border-color: var(--jose-dorado);
+    }
+    
+    .info-box .ib {
+        font-size: 2rem;
+        margin-bottom: 8px;
+    }
+    
+    .info-box strong {
+        font-family: 'Cinzel', serif;
+        color: var(--jose-dorado);
+        font-size: 0.85rem;
+        display: block;
+        margin-bottom: 6px;
+        letter-spacing: 0.04em;
+    }
+    
+    .info-box p {
+        font-size: 0.8rem;
+        color: var(--white);
+        opacity: 0.75;
+        line-height: 1.5;
+    }
+    
+    /* Divider */
+    .divider {
+        text-align: center;
+        margin: 40px 0;
+        color: var(--jose-dorado);
+        letter-spacing: 20px;
+        opacity: 0.5;
+    }
+    
+    .divider .divider-line {
+        display: inline-block;
+        width: 80px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--jose-dorado), transparent);
+        vertical-align: middle;
+    }
+    
+    .divider .divider-icon {
+        margin: 0 15px;
+        font-size: 1rem;
+    }
 </style>
 </head>
 <body>
 <div class="bg"></div>
 <canvas id="jose-canvas"></canvas>
 
-<header>
+<!-- Header estilo Virgen Caacupé con colores de San José -->
+<header id="mainHeader">
     <a href="index.html" class="logo">
         <img src="img/logo_divina_misericordia.jpg" alt="Logo" loading="lazy">
-        <span>Divina Misericordia</span>
+        Divina<span>Misericordia</span>
     </a>
-    <nav>
+    <nav id="mainNav">
         <a href="index.html">Inicio</a>
+        <a href="quienes-somos.html">Quiénes Somos</a>
+        <a href="introduccion.html">Introducción</a>
+        <a href="santa-faustina.html">Santa Faustina</a>
+        <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
         <a href="coronilla.html">Coronilla</a>
         <a href="novena.html">Novena</a>
-        <a href="santo-rosario.html">El Santo Rosario</a>
+        <a href="via-crucis.html">Vía Crucis</a>
         <a href="oraciones.html">Oraciones</a>
+        <a href="santo-rosario.html">El Santo Rosario</a>
+        <a href="maria.html">María</a>
+        <a href="obras-de-misericordia.html">Obras de Misericordia</a>
+        <a href="consagracion.html">Consagración</a>
+        <a href="lugares-de-culto.html">Lugares de Culto</a>
+        <a href="musica-sacra.html">Música Sacra</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="enlaces.html">Enlaces</a>
+        <a href="san-jose.html" class="jose-btn">San José</a>
         <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
-    <a href="estudios-biblicos.html">Estudios</a>
-        <a href="otras-devociones.html">Devociones</a>
-        
-        
-        
+        <a href="estudios-biblicos.html">Estudios</a>
+        <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones</a>
         <a href="contacto.html">Contacto</a>
     </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+    </button>
 </header>
 
-<main>
-    <h1 class="page-title">San Jose</h1>
-    <p class="page-subtitle">Patrono de la Iglesia, de los Trabajadores y de las Familias</p>
-    
-    <div class="divider">
-        <div class="divider-line"></div>
-        <span class="divider-icon">+</span>
-        <div class="divider-line"></div>
+<style>
+/* Header estilo Caacupé con colores de San José */
+header {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background: rgba(58, 32, 16, 0.95);
+    backdrop-filter: blur(24px);
+    z-index: 1000;
+    border-bottom: 2px solid var(--jose-dorado);
+    transition: padding var(--transition);
+}
+
+header.scrolled {
+    padding: 6px 30px;
+    background: rgba(58, 32, 16, 0.98);
+}
+
+.logo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.25rem;
+    color: var(--jose-gold-light);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo:hover {
+    opacity: 0.85;
+}
+
+.logo img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--jose-gold);
+}
+
+.logo span {
+    color: var(--white);
+}
+
+nav {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a {
+    color: var(--jose-gold);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    transition: all var(--transition);
+    position: relative;
+    white-space: nowrap;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 60%;
+    height: 1px;
+    background: var(--jose-gold);
+    transition: transform var(--transition);
+}
+
+nav a:hover::after,
+nav a.activo::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+nav a:hover,
+nav a.activo {
+    color: var(--jose-gold-light);
+    background: rgba(201, 162, 39, 0.15);
+    text-shadow: 0 0 18px rgba(201, 162, 39, 0.5);
+}
+
+/* Botón especial San José - Marrón y Verde */
+nav a.jose-btn {
+    color: #fff;
+    background: linear-gradient(135deg, var(--jose-marrón), var(--jose-verde), var(--jose-marrón-claro));
+    border: 2px solid var(--jose-dorado);
+    padding: 10px 18px;
+    font-weight: 700;
+    animation: joseGlow 2s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(201, 150, 10, 0.4), 0 0 40px rgba(46, 107, 62, 0.3);
+}
+
+@keyframes joseGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(201, 150, 10, 0.4), 0 0 40px rgba(46, 107, 62, 0.3), 0 0 60px rgba(201, 150, 10, 0.2);
+        border-color: var(--jose-dorado);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(240, 200, 64, 0.6), 0 0 60px rgba(46, 107, 62, 0.5), 0 0 90px rgba(201, 150, 10, 0.3);
+        border-color: var(--jose-dorado-claro);
+    }
+}
+
+nav a.jose-btn:hover {
+    background: linear-gradient(135deg, var(--jose-dorado-claro), var(--jose-verde-claro), var(--jose-dorado));
+    color: var(--jose-marrón-oscuro);
+    transform: scale(1.05);
+}
+
+/* Botón Caacupé */
+nav a.caacupe-btn {
+    color: #fff;
+    background: linear-gradient(135deg, #D63384, #2E8B57, #0353A4);
+    border: 2px solid #E040FB;
+    padding: 10px 18px;
+    font-weight: 700;
+    animation: caacupeGlow 2s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(214, 51, 132, 0.6), 0 0 40px rgba(46, 139, 87, 0.4);
+}
+
+nav a.caacupe-btn:hover {
+    background: linear-gradient(135deg, #FF1493, #D63384, #48B5D6);
+    color: var(--white);
+    transform: scale(1.05);
+}
+
+/* Botón Devociones Marianas */
+nav a.devociones-btn {
+    color: #fff;
+    background: linear-gradient(135deg, #6fa8dc, #6b4c9a, #87ceeb);
+    border: 2px solid #87ceeb;
+    padding: 10px 18px;
+    font-weight: 700;
+    box-shadow: 0 0 15px rgba(111, 168, 220, 0.4);
+}
+
+nav a.devociones-btn:hover {
+    background: linear-gradient(135deg, #87ceeb, #6fa8dc, #a9c7e8);
+    color: var(--cafe-dark);
+    transform: scale(1.05);
+}
+
+/* Botón Otras Devociones */
+nav a.nav-otras-devociones {
+    color: var(--jose-gold-light);
+    border: 1px solid var(--jose-gold-dark);
+}
+
+nav a.nav-otras-devociones:hover {
+    background: rgba(201, 162, 39, 0.25);
+    border-color: var(--jose-gold);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1100;
+}
+
+.hamburger span {
+    width: 26px;
+    height: 2px;
+    background: var(--jose-gold);
+    border-radius: 2px;
+    transition: all var(--transition);
+    display: block;
+}
+
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+    @media (max-width: 900px) {
+    .hamburger {
+        display: flex;
+    }
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: min(320px, 80vw);
+        height: 100dvh;
+        background: rgba(58, 32, 16, 0.98);
+        backdrop-filter: blur(30px);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 90px 30px 30px;
+        gap: 6px;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border-left: 2px solid var(--jose-gold);
+        overflow-y: auto;
+    }
+    nav.active {
+        right: 0;
+    }
+    nav a {
+        font-size: 1rem;
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: 8px;
+    }
+    nav a::after {
+        display: none;
+    }
+}
+
+/* Main content */
+.main-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    padding: 180px 20px 80px;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+
+<script>
+// Header scroll effect
+const header = document.getElementById('mainHeader');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// Mobile menu
+const hamburger = document.getElementById('hamburger');
+const mainNav = document.getElementById('mainNav');
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mainNav.classList.toggle('active');
+});
+
+// Close menu when clicking a link
+mainNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mainNav.classList.remove('active');
+    });
+});
+</script>
+
+<main class="main-content">
+    <!-- HERO SECTION -->
+    <div class="hero reveal">
+        <div class="hero-content">
+            <div class="hero-icon">✝</div>
+            <h1>San <span>José</span></h1>
+            <p class="tagline">Patrón de la Iglesia Católica · Patrono de los Trabajadores · Padre Adoptivo de Jesús</p>
+            <p class="hero-subtitle">«Jose, hombre justo» — El Santo del Silencio · Esposo de María · Guardián del Salvador</p>
+        </div>
     </div>
+    
+    <style>
+    .main-content {
+        padding-top: 20px;
+    }
+    
+    .hero {
+        text-align: center;
+        padding: 40px 20px 30px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200%;
+        height: 100%;
+        background: radial-gradient(ellipse at center, 
+            rgba(201,150,10,0.15) 0%, 
+            rgba(92,58,30,0.15) 30%,
+            rgba(46,107,62,0.1) 50%,
+            transparent 70%);
+        z-index: 0;
+        animation: heroGlow 4s ease-in-out infinite;
+    }
+    
+    @keyframes heroGlow {
+        0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+        50% { opacity: 1; transform: translateX(-50%) scale(1.05); }
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .hero-icon {
+        font-size: 3rem;
+        color: var(--jose-dorado);
+        text-shadow: 
+            0 0 20px rgba(255,215,0,0.8),
+            0 0 40px rgba(255,215,0,0.5),
+            0 0 60px rgba(13,71,161,0.3);
+        margin-bottom: 15px;
+        animation: iconPulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes iconPulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+    }
+    
+    .hero h1 {
+        font-family: 'Cinzel Decorative', serif;
+        font-size: 3.5rem;
+        color: var(--jose-dorado);
+        margin-bottom: 12px;
+        text-shadow: 
+            0 2px 4px rgba(0,0,0,0.5),
+            0 0 30px rgba(255,215,0,0.4);
+        letter-spacing: 3px;
+    }
+    
+    .hero h1 span {
+        color: var(--jose-dorado-claro);
+        text-shadow: 
+            0 0 20px rgba(255,215,0,0.8),
+            0 0 40px rgba(255,215,0,0.5);
+    }
+    
+    .tagline {
+        font-family: 'EB Garamond', serif;
+        font-size: 1.3rem;
+        color: var(--white);
+        margin-bottom: 8px;
+        font-weight: 400;
+        letter-spacing: 1px;
+    }
+    
+    .hero-subtitle {
+        font-family: 'EB Garamond', serif;
+        font-size: 1rem;
+        color: var(--jose-verde-claro);
+        font-style: italic;
+        opacity: 0.9;
+    }
+    
+    @media (max-width: 768px) {
+        .hero h1 { font-size: 2.5rem; }
+        .tagline { font-size: 1.1rem; }
+    }
+    </style>
+    
+    <!-- Imagen de San José - 50% más grande con borde dorado brillante -->
+    <div class="saint-image-container">
+        <div class="saint-frame">
+            <div class="saint-frame-inner">
+                <img src="img/san_jose.jpeg" alt="San José - Patrón de la Iglesia Católica" class="saint-hero-image">
+            </div>
+            <div class="saint-frame-glow"></div>
+        </div>
+        <div class="saint-image-glow"></div>
+    </div>
+    
+    <style>
+    /* Imagen 50% más grande */
+    .saint-image-container {
+        position: relative;
+        display: inline-block;
+        margin: 25px auto 35px;
+        max-width: 525px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .saint-frame {
+        position: relative;
+        padding: 8px;
+        background: linear-gradient(135deg, #FFD700 0%, #FFA500 25%, #FFD700 50%, #FFEC8B 75%, #FFD700 100%);
+        background-size: 300% 300%;
+        border-radius: 20px;
+        animation: goldFrameShine 3s ease-in-out infinite;
+    }
+    
+    @keyframes goldFrameShine {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+    
+    .saint-frame-inner {
+        position: relative;
+        padding: 4px;
+        background: linear-gradient(135deg, #d4af37 0%, #f4e2a1 50%, #d4af37 100%);
+        border-radius: 14px;
+    }
+    
+    .saint-frame-glow {
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        right: -15px;
+        bottom: -15px;
+        background: radial-gradient(ellipse at center, 
+            rgba(255,215,0,0.4) 0%, 
+            rgba(201,162,39,0.2) 30%,
+            rgba(111,168,220,0.15) 60%,
+            transparent 80%);
+        border-radius: 25px;
+        z-index: -1;
+        animation: saintGlow 2s ease-in-out infinite;
+    }
+    
+    .saint-hero-image {
+        width: 100%;
+        max-width: 480px;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 
+            0 15px 50px rgba(0,0,0,0.5),
+            0 0 80px rgba(201,162,39,0.3),
+            0 0 120px rgba(111,168,220,0.15),
+            inset 0 0 50px rgba(255,255,255,0.1);
+        transition: all 0.5s ease;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .saint-hero-image:hover {
+        transform: scale(1.05);
+        box-shadow: 
+            0 20px 60px rgba(0,0,0,0.6),
+            0 0 100px rgba(201,162,39,0.4),
+            0 0 150px rgba(111,168,220,0.2),
+            inset 0 0 60px rgba(255,255,255,0.15);
+    }
+    
+    .saint-image-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 120%;
+        height: 120%;
+        background: radial-gradient(ellipse at center, rgba(201,162,39,0.25) 0%, rgba(111,168,220,0.15) 40%, transparent 70%);
+        border-radius: 50%;
+        z-index: 0;
+        animation: saintGlowPulse 2.5s ease-in-out infinite;
+        animation-delay: 0.5s;
+    }
+    
+    @keyframes saintGlow {
+        0%, 100% { 
+            opacity: 0.6; 
+            transform: translate(-50%, -50%) scale(1);
+            filter: brightness(1);
+        }
+        50% { 
+            opacity: 1; 
+            transform: translate(-50%, -50%) scale(1.1);
+            filter: brightness(1.3);
+        }
+    }
+    
+    @keyframes saintGlowPulse {
+        0%, 100% { 
+            opacity: 0.5; 
+            transform: translate(-50%, -50%) scale(1);
+        }
+        33% {
+            background: radial-gradient(ellipse at center, rgba(201,162,39,0.35) 0%, rgba(212,175,55,0.2) 40%, transparent 70%);
+        }
+        66% {
+            background: radial-gradient(ellipse at center, rgba(111,168,220,0.3) 0%, rgba(111,168,220,0.15) 40%, transparent 70%);
+        }
+        50% { 
+            opacity: 0.9; 
+            transform: translate(-50%, -50%) scale(1.15);
+        }
+    }
+    </style>
+    
+    <!-- Reproductor de Himno a San José -->
+    <div class="jose-player-container">
+        <div class="jose-player">
+            <div class="jose-player-glow"></div>
+            <div class="jose-player-content">
+                <div class="jose-player-icon">🎵</div>
+                <div class="jose-player-info">
+                    <h3 class="jose-player-title">Himno a San José</h3>
+                    <p class="jose-player-artist">Oración y Devoción</p>
+                </div>
+                <button class="jose-player-btn" id="josePlayBtn" onclick="toggleJoseAudio()">
+                    <span id="josePlayIcon">▶</span>
+                </button>
+                <div class="jose-player-progress">
+                    <div class="jose-progress-bar" id="joseProgressBar">
+                        <div class="jose-progress-fill" id="joseProgressFill"></div>
+                    </div>
+                    <div class="jose-times">
+                        <span id="joseCurrentTime">0:00</span>
+                        <span id="joseDuration">--:--</span>
+                    </div>
+                </div>
+                <div class="jose-player-vol">
+                    <span>🔊</span>
+                    <input type="range" id="joseVolume" min="0" max="1" step="0.05" value="0.7" onchange="setJoseVolume(this.value)">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <audio id="joseAudio" src="mp3/00.%20Himno%20a%20San%20Jos%C3%A9.mp3" preload="metadata"></audio>
+    
+    <style>
+    .jose-player-container {
+        max-width: 500px;
+        margin: 25px auto 30px;
+        padding: 0 15px;
+    }
+    
+    .jose-player {
+        position: relative;
+        background: linear-gradient(135deg, rgba(58, 32, 16, 0.95) 0%, rgba(92, 58, 30, 0.9) 50%, rgba(46, 107, 62, 0.85) 100%);
+        border-radius: 20px;
+        padding: 20px 25px;
+        border: 2px solid var(--jose-dorado);
+        box-shadow: 
+            0 10px 40px rgba(0, 0, 0, 0.4),
+            0 0 30px rgba(201, 150, 10, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+    }
+    
+    .jose-player::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, 
+            var(--jose-marrón-oscuro) 0%, 
+            var(--jose-dorado) 25%, 
+            var(--jose-verde) 50%, 
+            var(--jose-dorado) 75%, 
+            var(--jose-marrón-oscuro) 100%);
+        background-size: 200% 100%;
+        animation: playerGradient 3s ease-in-out infinite;
+    }
+    
+    @keyframes playerGradient {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+    
+    .jose-player-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 120%;
+        height: 120%;
+        background: radial-gradient(ellipse at center, 
+            rgba(201, 150, 10, 0.15) 0%, 
+            rgba(92, 58, 30, 0.15) 40%, 
+            rgba(46, 107, 62, 0.1) 60%,
+            transparent 70%);
+        pointer-events: none;
+    }
+    
+    .jose-player-content {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .jose-player-icon {
+        font-size: 2rem;
+        animation: iconBounce 2s ease-in-out infinite;
+    }
+    
+    @keyframes iconBounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+    }
+    
+    .jose-player-info {
+        flex: 1;
+    }
+    
+    .jose-player-title {
+        font-family: 'Cinzel', serif;
+        font-size: 1.1rem;
+        color: var(--jose-gold-light);
+        margin: 0;
+        text-shadow: 0 0 10px rgba(201, 162, 39, 0.5);
+    }
+    
+    .jose-player-artist {
+        font-family: 'EB Garamond', serif;
+        font-size: 0.85rem;
+        color: var(--white);
+        opacity: 0.8;
+        margin: 3px 0 0;
+    }
+    
+    .jose-player-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid var(--jose-dorado);
+        background: linear-gradient(135deg, var(--jose-dorado), var(--jose-dorado-oscuro));
+        color: var(--jose-marrón-oscuro);
+        font-size: 1.2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 0 15px rgba(201, 150, 10, 0.4);
+    }
+    
+    .jose-player-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 25px rgba(201, 150, 10, 0.6);
+    }
+    
+    .jose-player-btn.playing {
+        animation: btnPulse 1s ease-in-out infinite;
+    }
+    
+    @keyframes btnPulse {
+        0%, 100% { box-shadow: 0 0 15px rgba(201, 150, 10, 0.4); }
+        50% { box-shadow: 0 0 30px rgba(201, 150, 10, 0.7), 0 0 45px rgba(46, 107, 62, 0.5); }
+    }
+    
+    .jose-player-progress {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .jose-progress-bar {
+        width: 100%;
+        height: 6px;
+        background: rgba(255, 215, 0, 0.2);
+        border-radius: 3px;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .jose-progress-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, var(--jose-dorado-oscuro), var(--jose-dorado), var(--jose-dorado-claro));
+        border-radius: 3px;
+        transition: width 0.1s linear;
+    }
+    
+    .jose-times {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.75rem;
+        color: var(--white);
+        opacity: 0.7;
+    }
+    
+    .jose-player-vol {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .jose-player-vol input[type="range"] {
+        width: 60px;
+        height: 4px;
+        -webkit-appearance: none;
+        background: rgba(255, 215, 0, 0.3);
+        border-radius: 2px;
+        outline: none;
+    }
+    
+    .jose-player-vol input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 12px;
+        height: 12px;
+        background: var(--jose-dorado);
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    
+    @media (max-width: 600px) {
+        .jose-player-content {
+            flex-wrap: wrap;
+        }
+        .jose-player-progress {
+            flex: 1 1 100%;
+            order: 3;
+            margin-top: 10px;
+        }
+        .jose-player-vol {
+            display: none;
+        }
+    }
+    </style>
+    
+    <script>
+    const joseAudio = document.getElementById('joseAudio');
+    const josePlayBtn = document.getElementById('josePlayBtn');
+    const josePlayIcon = document.getElementById('josePlayIcon');
+    const joseProgressFill = document.getElementById('joseProgressFill');
+    const joseProgressBar = document.getElementById('joseProgressBar');
+    const joseCurrentTime = document.getElementById('joseCurrentTime');
+    const joseDuration = document.getElementById('joseDuration');
+    let joseIsPlaying = false;
+    
+    joseAudio.volume = 0.7;
+    
+    function toggleJoseAudio() {
+        if (joseIsPlaying) {
+            joseAudio.pause();
+            josePlayIcon.textContent = '▶';
+            josePlayBtn.classList.remove('playing');
+        } else {
+            joseAudio.play();
+            josePlayIcon.textContent = '⏸';
+            josePlayBtn.classList.add('playing');
+        }
+        joseIsPlaying = !joseIsPlaying;
+    }
+    
+    joseAudio.addEventListener('timeupdate', () => {
+        const percent = (joseAudio.currentTime / joseAudio.duration) * 100;
+        joseProgressFill.style.width = percent + '%';
+        joseCurrentTime.textContent = formatTime(joseAudio.currentTime);
+    });
+    
+    joseAudio.addEventListener('loadedmetadata', () => {
+        joseDuration.textContent = formatTime(joseAudio.duration);
+    });
+    
+    joseAudio.addEventListener('ended', () => {
+        josePlayIcon.textContent = '▶';
+        josePlayBtn.classList.remove('playing');
+        joseIsPlaying = false;
+        joseProgressFill.style.width = '0%';
+    });
+    
+    joseProgressBar.addEventListener('click', (e) => {
+        const rect = joseProgressBar.getBoundingClientRect();
+        const percent = (e.clientX - rect.left) / rect.width;
+        joseAudio.currentTime = percent * joseAudio.duration;
+    });
+    
+    function setJoseVolume(val) {
+        joseAudio.volume = val;
+    }
+    
+    function formatTime(seconds) {
+        if (isNaN(seconds)) return '0:00';
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return mins + ':' + (secs < 10 ? '0' : '') + secs;
+    }
+    </script>
+    
+    <!-- Divisor con corazón latiente de colores divinos -->
+    <div class="divider heartbeat-divider">
+        <div class="divider-line heartbeat-line"></div>
+        <span class="divider-icon heartbeat-icon">✝</span>
+        <div class="divider-line heartbeat-line"></div>
+    </div>
+    
+    <style>
+    .heartbeat-divider {
+        margin: 25px auto 30px;
+        max-width: 400px;
+    }
+    
+    .divider-line.heartbeat-line {
+        height: 3px;
+        flex: 1;
+        background: linear-gradient(90deg, 
+            #d4af37 0%, 
+            #f4e2a1 16%, 
+            #6fa8dc 33%, 
+            #48B5D6 50%, 
+            #6fa8dc 66%, 
+            #f4e2a1 83%, 
+            #d4af37 100%);
+        background-size: 200% 100%;
+        animation: heartbeatGradient 3s ease-in-out infinite;
+        border-radius: 2px;
+    }
+    
+    @keyframes heartbeatGradient {
+        0%, 100% { 
+            background-position: 0% 50%;
+            filter: hue-rotate(0deg);
+        }
+        25% {
+            background-position: 25% 50%;
+            filter: hue-rotate(15deg);
+        }
+        50% { 
+            background-position: 50% 50%;
+            filter: hue-rotate(0deg);
+        }
+        75% {
+            background-position: 75% 50%;
+            filter: hue-rotate(-15deg);
+        }
+    }
+    
+    .divider-icon.heartbeat-icon {
+        font-size: 1.8rem;
+        margin: 0 18px;
+        color: #d4af37;
+        text-shadow: 
+            0 0 10px rgba(212,175,55,0.8),
+            0 0 20px rgba(212,175,55,0.6),
+            0 0 30px rgba(111,168,220,0.4);
+        animation: iconHeartbeat 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes iconHeartbeat {
+        0%, 100% { 
+            transform: scale(1);
+            text-shadow: 
+                0 0 10px rgba(212,175,55,0.8),
+                0 0 20px rgba(212,175,55,0.6),
+                0 0 30px rgba(111,168,220,0.4);
+        }
+        15% { 
+            transform: scale(1.15);
+        }
+        30% { 
+            transform: scale(1);
+        }
+        45% { 
+            transform: scale(1.1);
+        }
+        50% {
+            text-shadow: 
+                0 0 15px rgba(212,175,55,1),
+                0 0 30px rgba(212,175,55,0.8),
+                0 0 45px rgba(111,168,220,0.6),
+                0 0 60px rgba(72,181,214,0.4);
+        }
+        60% { 
+            transform: scale(1);
+        }
+    }
+    
+    .heartbeat-divider {
+        animation: dividerHeartbeat 2s ease-in-out infinite;
+    }
+    
+    @keyframes dividerHeartbeat {
+        0%, 100% { opacity: 0.9; }
+        50% { opacity: 1; }
+    }
+    </style>
 
     <div class="content-card">
         <h2>Biografia e Historia Sagrada</h2>
@@ -766,6 +1890,220 @@ footer p { color:var(--text-muted); font-size:0.9rem; margin-top:15px; }
         </div>
 
     </div>
+
+    <!-- =============================================
+    ORACIONES COMPLETAS - SAN JOSÉ
+    ============================================= -->
+    <section class="section" id="oraciones">
+        <h2 class="section-title">Oraciones a San José</h2>
+        
+        <!-- ORACIÓN OFICIAL DE PATRIS CORDE -->
+        <div class="prayer-block">
+            <h3>✦ ORACIÓN OFICIAL DE PATRIS CORDE ✦</h3>
+            <p>Papa Francisco · 8 de diciembre de 2020 · Vatican.va</p>
+            <br>
+            <p>"¡Oh, bienaventurado José!, a ti recurrimos en nuestra tribulación, y habiendo implorado la ayuda de tu santísima Esposa, solicitamos también con confianza tu patrocinio.</p>
+            <br>
+            <p>Por esa caridad que te unió con la Inmaculada Virgen Madre de Dios y por el paternal amor con que abrazaste al Niño Jesús, mira benignamente a la herencia que Jesucristo adquirió con su sangre, y con tu poder y auxilio, socorre nuestras necesidades.</p>
+            <br>
+            <p>Protege, oh castísimo padre, a la familia de Dios. Asiste con tu patrocinio invisible en las lucha que sostenemos con el poder de las tinieblas, y, así como libraste al Niño Jesús del peligro de su vida, así ahora defiende a la santa Iglesia de Dios de las asechanzas del enemigo y de toda adversidad.</p>
+            <br>
+            <p>Cúbrenos a cada uno de nosotros con tu patrocinio constante, para que, a tu ejemplo y mediante tu auxílio, podamos vivir virtuosamente, morir piadosamente y alcanzar la eterna bienaventuranza en el cielo. Amén."</p>
+            <p class="src">— Carta Apostólica Patris Corde · Vatican.va</p>
+        </div>
+        
+        <!-- ORACIÓN QUE EL PAPA REZA CADA DÍA -->
+        <div class="prayer-block">
+            <h3>✦ ORACIÓN DIARIA DEL PAPA FRANCISCO ✦</h3>
+            <p>El Papa reveló en Patris Corde que recita esta oración cada día desde hace más de 40 años:</p>
+            <br>
+            <p>"Glorioso Patriarca San José, cuyo poder hace posibles las cosas imposibles, ven en mi ayuda en estos momentos de angustia y dificultad.</p>
+            <br>
+            <p>Toma bajo tu protección las situaciones tan graves y difíciles que te encomiendo, para que tengan una solución favorable.</p>
+            <br>
+            <p>Mi querido padre adoptivo de Jesús, yo sé que tú puedes hacer posibles las cosas que parecen imposibles, y que cuando la situación es dificilísima e inquietan mis preocupaciones y mis penas, tú me enseñas que, mirando hacia el cielo todo tiene solución.</p>
+            <br>
+            <p>Glorioso Patriarca San José, dueño de la paz, el gozo y el trabajo, ayúdame a cumplir mis compromisos con los demás. Que no se diga que te haya invocado en vano, y puesto que tú puedes hacer todo lo posible cerca de Jesús y María, muéstrame que tu bondad es tan grande como tu poder. Amén."</p>
+            <p class="note">Fuente: Patris Corde, nota 10 · Vatican.va</p>
+        </div>
+        
+        <!-- MEMORARE A SAN JOSÉ -->
+        <div class="prayer-block">
+            <h3>✦ MEMORARE A SAN JOSÉ ✦</h3>
+            <p>"Acuérdate, oh purísimo esposo de la Virgen María, dulce protector mío San José, que jamás se ha oído decir que ninguno de cuantas han recurrido a tu protección e implorado tu socorro haya quedado sin consuelo.</p>
+            <br>
+            <p>Animado de esta confianza, acudo a ti, y con todo el fervor de mi alma me encomiendo a ti. No deseches mis súplicas, oh padre adoptivo del Redentor, antes bien, escúchalas y respóndelas favorablemente. Amén."</p>
+        </div>
+    </section>
+    
+    <div class="divider" style="margin:30px 0;">
+        <div class="divider-line"></div>
+        <span class="divider-icon">✝</span>
+        <div class="divider-line"></div>
+    </div>
+    
+    <!-- =============================================
+    MAGISTERIO - DOCUMENTOS OFICIALES
+    ============================================= -->
+    <section class="section" id="magisterio">
+        <h2 class="section-title">Documentos del Magisterio</h2>
+        
+        <div class="recursos-grid">
+            <div class="recurso-card">
+                <span class="recurso-icon">📜</span>
+                <h4>Patris Corde</h4>
+                <p>Carta Apostólica del Papa Francisco. 8 de diciembre de 2020.</p>
+                <a href="https://www.vatican.va/content/francesco/es/apost_letters/documents/papa-francesco-lettera-ap_20201208_patris-corde.html" target="_blank">Leer en Vatican.va</a>
+            </div>
+            <div class="recurso-card">
+                <span class="recurso-icon">📜</span>
+                <h4>Redemptoris Custos</h4>
+                <p>Exhortación de Juan Pablo II. 15 de agosto de 1989.</p>
+                <a href="https://www.vatican.va/content/john-paul-ii/es/apost_exhortations/documents/hf_jp-ii_exh_15081989_redemptoris-custos.html" target="_blank">Leer en Vatican.va</a>
+            </div>
+            <div class="recurso-card">
+                <span class="recurso-icon">📜</span>
+                <h4>Quemadmodum Deus</h4>
+                <p>Pío IX declara a San José Patrono de la Iglesia Universal. 1870.</p>
+                <a href="https://es.wikipedia.org/wiki/Jos%C3%A9_de_Nazaret#Patronato_de_la_Iglesia" target="_blank">Ver en Wikipedia</a>
+            </div>
+            <div class="recurso-card">
+                <span class="recurso-icon">📜</span>
+                <h4>Catequesis del Papa 2022</h4>
+                <p>6 audiencias generales sobre San José (enero 2022).</p>
+                <a href="https://www.vatican.va/content/francesco/es/audiences/2022/documents/20220105-udienza-generale.html" target="_blank">Vatican.va</a>
+            </div>
+        </div>
+    </section>
+    
+    <div class="divider" style="margin:30px 0;">
+        <div class="divider-line"></div>
+        <span class="divider-icon">✝</span>
+        <div class="divider-line"></div>
+    </div>
+    
+    <!-- =============================================
+    RECURSOS Y ENLACES ÚTILES
+    ============================================= -->
+    <section class="section" id="recursos">
+        <h2 class="section-title">Recursos y Enlaces Útiles</h2>
+        
+        <div class="recursos-grid">
+            <div class="recurso-card">
+                <span class="recurso-icon">📄</span>
+                <h4>Novena Oficial USCCB</h4>
+                <p>Novena a San José basada en Patris Corde. PDF descargable.</p>
+                <a href="https://www.usccb.org/resources/novena-san-jose-espanol.pdf" target="_blank">Descargar PDF</a>
+            </div>
+            <div class="recurso-card">
+                <span class="recurso-icon">📚</span>
+                <h4>ACI Prensa - Patris Corde</h4>
+                <p>Texto completo y ebook descargable.</p>
+                <a href="https://www.aciprensa.com/noticias/carta-apostolica-del-papa-francisco-patris-corde-sobre-san-jose-39263" target="_blank">Ver más</a>
+            </div>
+            <div class="recurso-card">
+                <span class="recurso-icon">📿</span>
+                <h4>Novena desde la Fe</h4>
+                <p>Novena completa con meditaciones de Patris Corde.</p>
+                <a href="https://desdelafe.mx/oraciones/novena-a-san-jose-patrono-iglesia-universal/" target="_blank">Ver Online</a>
+            </div>
+            <div class="recurso-card">
+                <span class="recurso-icon">🏛️</span>
+                <h4>Contexto Histórico</h4>
+                <p>Estudio completo sobre el oficio de José (τέκτων).</p>
+                <a href="https://catolicismodigital.com/contextos/jose-de-nazaret/" target="_blank">Ver Estudio</a>
+            </div>
+            <div class="recurso-card">
+                <span class="recurso-icon">📖</span>
+                <h4>Wikipedia - José de Nazaret</h4>
+                <p>Artículo extenso y documentado.</p>
+                <a href="https://es.wikipedia.org/wiki/Jos%C3%A9_de_Nazaret" target="_blank">Ver Artículo</a>
+            </div>
+            <div class="recurso-card">
+                <span class="recurso-icon">🎬</span>
+                <h4>Videos sobre San José</h4>
+                <p>Documentales, catequesis y celebraciones.</p>
+                <a href="https://www.youtube.com/results?search_query=san+jose+biblia+estudio+mateo+lucas" target="_blank">Ver en YouTube</a>
+            </div>
+        </div>
+    </section>
+    
+    <div class="divider" style="margin:30px 0;">
+        <div class="divider-line"></div>
+        <span class="divider-icon">✝</span>
+        <div class="divider-line"></div>
+    </div>
+    
+    <!-- =============================================
+    ICONOGRAFÍA - SÍMBOLOS
+    ============================================= -->
+    <section class="section" id="iconografia">
+        <h2 class="section-title">Iconografía y Símbolos</h2>
+        
+        <div class="info-grid">
+            <div class="info-box">
+                <div class="ib">🌺</div>
+                <strong>La Azucena</strong>
+                <p>Símbolo de pureza y castidad. Según el Protoevangelio de Santiago, el cayado de José floreció como señal divina.</p>
+            </div>
+            <div class="info-box">
+                <div class="ib">⚒️</div>
+                <strong>Herramientas de Carpintero</strong>
+                <p>Su oficio de τέκτων (tektôn). Vínculo con la dignidad del trabajo manual.</p>
+            </div>
+            <div class="info-box">
+                <div class="ib">👶</div>
+                <strong>El Niño Jesús</strong>
+                <p>En brazos, símbolo de su paternidad y custodia. Nutritor Domini.</p>
+            </div>
+            <div class="info-box">
+                <div class="ib">💤</div>
+                <strong>San José Dormido</strong>
+                <p>Con el ángel en sueños. El Papa Francisco tiene una escultura en su escritorio.</p>
+            </div>
+        </div>
+        
+        <div class="card" style="margin-top:20px;">
+            <h3>🖼️ Imágenes para Descargar</h3>
+            <ul style="list-style:none; padding:0;">
+                <li style="padding:8px 0;">🖼️ <a href="https://commons.wikimedia.org/wiki/Category:Saint_Joseph" target="_blank">Wikimedia Commons - San José</a> (Dominio Público)</li>
+                <li style="padding:8px 0;">🖼️ <a href="https://pixabay.com/es/images/search/san+jose/" target="_blank">Pixabay - Imágenes Libres</a></li>
+            </ul>
+        </div>
+    </section>
+    
+    <div class="divider" style="margin:30px 0;">
+        <div class="divider-line"></div>
+        <span class="divider-icon">✝</span>
+        <div class="divider-line"></div>
+    </div>
+    
+    <!-- =============================================
+    ERRORES COMUNES
+    ============================================= -->
+    <section class="section" id="errores">
+        <h2 class="section-title">Errores Comunes</h2>
+        
+        <div class="card">
+            <h3>❌ "José era un anciano cuando se casó con María"</h3>
+            <p><strong>Realidad:</strong> Esta idea proviene del Protoevangelio de Santiago (siglo II), NO de los Evangelios. Los estudios históricos modernos indican que probablemente tenía una edad similar a María.</p>
+        </div>
+        
+        <div class="card">
+            <h3>❌ "José adoptó a Jesús"</h3>
+            <p><strong>Realidad:</strong> El término correcto es <strong>"padre putativo"</strong> (que aparece como padre). Su paternidad no era solo legal sino mesiánica, al transmitir el linaje davídico.</p>
+        </div>
+        
+        <div class="card">
+            <h3>❌ "José tenía hijos de un matrimonio anterior"</h3>
+            <p><strong>Realidad:</strong> Esta teoría proviene del Protoevangelio. Los "hermanos del Señor" podrían ser primos (teoría jeronimiana) o hijos de un matrimonio anterior (teoría epifaniana). La Iglesia no define cuál es correcta.</p>
+        </div>
+        
+        <div class="card">
+            <h3>❌ "Pepe viene de Pater Putativus"</h3>
+            <p><strong>Realidad:</strong> FALSO. "Pepe" deriva de "Jusepe" (forma antigua de José), como en italiano "Giuseppe" y catalán "Pep".</p>
+        </div>
+    </section>
 
     <div class="btn-container">
         <a href="index.html" class="btn">Volver al Inicio</a>
