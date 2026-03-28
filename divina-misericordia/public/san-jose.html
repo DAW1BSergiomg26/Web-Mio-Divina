@@ -1973,6 +1973,14 @@ mainNav.querySelectorAll('a').forEach(link => {
                 <p>6 audiencias generales sobre San José (enero 2022).</p>
                 <a href="https://www.vatican.va/content/francesco/es/audiences/2022/documents/20220105-udienza-generale.html" target="_blank">Vatican.va</a>
             </div>
+            
+            <!-- LETANÍAS -->
+            <div class="recurso-card" style="grid-column: 1 / -1;">
+                <span class="recurso-icon">📿</span>
+                <h4>Letanías en Honor de San José</h4>
+                <p>Versión actualizada 2021 aprobada por la Conferencia Episcopal Española.</p>
+                <a href="https://www.conferenciaepiscopal.es/wp-content/uploads/2021/07/Letanias-de-San-Jose-castellano.pdf" target="_blank">📄 Descargar PDF</a>
+            </div>
         </div>
     </section>
     
@@ -2119,36 +2127,170 @@ mainNav.querySelectorAll('a').forEach(link => {
     <div class="divider-line"></div>
 </div>
 
-<footer>
-    <div class="cross">+</div>
-    <p class="tagline">Jesus, en Ti confio</p>
+<footer class="main-footer sacred-footer">
+    <div class="sacred-glow-border"></div>
+    
+    <!-- Cruz brillante con animación -->
+    <div class="cross-glow">✝</div>
+    <p class="tagline">Jesús, en Ti confío</p>
     
     <div class="footer-links">
         <a href="index.html">Inicio</a>
         <a href="coronilla.html">Coronilla</a>
         <a href="novena.html">Novena</a>
-        <a href="santo-rosario.html">El Santo Rosario</a>
+        <a href="santo-rosario.html">Santo Rosario</a>
         <a href="oraciones.html">Oraciones</a>
         <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
         <a href="otras-devociones.html">Devociones</a>
         <a href="contacto.html">Contacto</a>
-        <a href="quienes-somos.html">Quienes Somos</a>
-        <a href="introduccion.html">Introduccion</a>
-        <a href="santa-faustina.html">Santa Faustina</a>
-        <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
-        <a href="consagracion.html">Consagracion</a>
-        <a href="los-rayos.html">Los Rayos</a>
-        <a href="lecturas-recomendadas.html">Lecturas</a>
-        <a href="san-jose.html">San Jose</a>
-        <a href="san-judas-tadeo.html">San Judas</a>
-        <a href="san-benito.html">San Benito</a>
-        <a href="galeria.html">Galeria</a>
-        <a href="enlaces.html">Enlaces</a>
     </div>
     
-    <p>2026 - Portal de la Divina Misericordia</p>
+    <p style="margin-top:25px;font-size:0.85rem;opacity:0.7;">
+        © 2026 — Portal de la Divina Misericordia — San José, ruega por nosotros
+    </p>
 </footer>
+
+<style>
+/* Footer sagrado estilo Inicio */
+.sacred-footer {
+    background: linear-gradient(to bottom, rgba(58,32,16,0.9), rgba(26,15,10,0.95));
+    padding: 50px 20px 40px;
+    text-align: center;
+    border-top: 3px solid var(--jose-dorado);
+    position: relative;
+    overflow: hidden;
+}
+
+.sacred-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, rgba(201,150,10,0.08), transparent);
+    pointer-events: none;
+}
+
+.sacred-glow-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--jose-dorado) 20%, 
+        var(--jose-dorado-claro) 50%, 
+        var(--jose-dorado) 80%, 
+        transparent 100%);
+    background-size: 200% 100%;
+    animation: borderShine 3s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(201,150,10,0.5);
+}
+
+@keyframes borderShine {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.sacred-footer .cross-glow {
+    font-size: 4rem;
+    color: var(--jose-dorado);
+    text-shadow: 
+        0 0 30px rgba(201,150,10,0.8),
+        0 0 60px rgba(201,150,10,0.5),
+        0 0 100px rgba(201,150,10,0.3);
+    margin-bottom: 20px;
+    animation: crossPulse 2.5s ease-in-out infinite;
+    position: relative;
+}
+
+.sacred-footer .cross-glow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(201,150,10,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: crossAura 3s ease-in-out infinite;
+}
+
+@keyframes crossPulse {
+    0%, 100% {
+        text-shadow: 
+            0 0 25px rgba(201,150,10,0.8),
+            0 0 50px rgba(201,150,10,0.5),
+            0 0 80px rgba(201,150,10,0.3);
+        transform: scale(1);
+    }
+    50% {
+        text-shadow: 
+            0 0 50px rgba(240,200,64,1),
+            0 0 100px rgba(201,150,10,0.7),
+            0 0 150px rgba(201,150,10,0.4);
+        transform: scale(1.1);
+    }
+}
+
+@keyframes crossAura {
+    0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
+}
+
+.sacred-footer .tagline {
+    font-family: 'Cinzel', serif;
+    color: var(--jose-dorado);
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    text-shadow: 0 0 15px rgba(201,150,10,0.5);
+}
+
+.sacred-footer .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.sacred-footer .footer-links a {
+    color: rgba(250,247,240,0.8);
+    text-decoration: none;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.sacred-footer .footer-links a:hover {
+    color: var(--jose-dorado-claro);
+    background: rgba(201,150,10,0.15);
+    border-color: var(--jose-dorado);
+    text-shadow: 0 0 10px rgba(201,150,10,0.5);
+}
+
+.sacred-footer .footer-links a.caacupe-btn {
+    background: linear-gradient(135deg, #D63384, #2E8B57, #0353A4);
+    color: white;
+    border: 1px solid #E040FB;
+}
+
+.sacred-footer .footer-links a.devociones-btn {
+    background: linear-gradient(135deg, #6fa8dc, #6b4c9a);
+    color: white;
+    border: 1px solid #87ceeb;
+}
+</style>
 
 <button class="scroll-btn scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Subir">
     <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
