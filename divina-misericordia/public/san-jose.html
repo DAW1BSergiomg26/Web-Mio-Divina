@@ -2152,8 +2152,8 @@ mainNav.querySelectorAll('a').forEach(link => {
         <a href="san-benito.html">San Benito</a>
         <a href="oracion-santa-cruz.html">Santa Cruz</a>
         <a href="san-francisco.html">San Francisco</a>
-        <a href="devociones-marianas.html">Devociones Marianas</a>
-        <a href="virgen-caacupe.html">Virgen Caacupé</a>
+        <a href="devociones-marianas.html" class="special-btn marianas-btn">Devociones Marianas</a>
+        <a href="virgen-caacupe.html" class="special-btn caacupe-btn">Virgen Caacupé</a>
         <a href="otras-devociones.html">Otras Devociones</a>
     </div>
 </div>
@@ -2331,6 +2331,49 @@ footer.main-footer .tagline {
   transform: translateY(-3px);
   box-shadow: 0 5px 25px rgba(201,150,10,0.2), 0 0 40px rgba(201,150,10,0.1);
   text-shadow: 0 0 15px rgba(201,150,10,0.5);
+}
+
+/* Botones especiales iguales y combinados */
+.footer-menu-links .special-btn {
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  border: 2px solid;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-menu-links .special-btn::before {
+  display: none;
+}
+
+.footer-menu-links .marianas-btn {
+  background: linear-gradient(135deg, #6fa8dc 0%, #8B5CF6 50%, #6fa8dc 100%);
+  border-color: #87CEEB;
+  color: white;
+  box-shadow: 0 4px 20px rgba(111, 168, 220, 0.4), 0 0 30px rgba(139, 92, 246, 0.2);
+}
+
+.footer-menu-links .marianas-btn:hover {
+  background: linear-gradient(135deg, #87CEEB 0%, #A78BFA 50%, #87CEEB 100%);
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 0 8px 30px rgba(111, 168, 220, 0.6), 0 0 50px rgba(139, 92, 246, 0.4);
+}
+
+.footer-menu-links .caacupe-btn {
+  background: linear-gradient(135deg, #D63384 0%, #2E8B57 50%, #0353A4 100%);
+  border-color: #E040FB;
+  color: white;
+  box-shadow: 0 4px 20px rgba(214, 51, 132, 0.4), 0 0 30px rgba(46, 139, 87, 0.3);
+}
+
+.footer-menu-links .caacupe-btn:hover {
+  background: linear-gradient(135deg, #FF1493 0%, #48B5D6 50%, #D63384 100%);
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 0 8px 30px rgba(214, 51, 132, 0.6), 0 0 50px rgba(46, 139, 87, 0.5);
 }
 
 /* Golden Divine Line */
