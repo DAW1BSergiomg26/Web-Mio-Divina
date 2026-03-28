@@ -116,6 +116,129 @@
       frase: 'Patrón de la Iglesia',
       volumen: 0.5
     },
+    // Santos adicionales
+    'san-sanson': {
+      archivo: 'mp3/34. Heart of Courage.mp3',
+      titulo: 'Heart of Courage',
+      frase: 'Patrón de los pobres',
+      volumen: 0.6
+    },
+    'san-judas-tadeo': {
+      archivo: 'mp3/00. Ave Maria.mp3',
+      titulo: 'Ave Maria',
+      frase: 'Patrón de los imposibles',
+      volumen: 0.6
+    },
+    'san-benito': {
+      archivo: 'mp3/23. Concerto Grosso in D Major, Op. 1, No. 5_ III. Largo.mp3',
+      titulo: 'Concerto Grosso - Corelli',
+      frase: 'Patrón de Europa',
+      volumen: 0.5
+    },
+    'san-francisco': {
+      archivo: 'mp3/00. Salve Regina.mp3',
+      titulo: 'Salve Regina',
+      frase: 'Patrón de los pobres',
+      volumen: 0.6
+    },
+    'san-cayetano': {
+      archivo: 'mp3/38.He\'s a Pirate.mp3',
+      titulo: "He's a Pirate",
+      frase: 'Patrón del pan y el trabajo',
+      volumen: 0.5
+    },
+    'divino-nino-jesus': {
+      archivo: 'mp3/63. A Narnia Lullaby.mp3',
+      titulo: 'A Narnia Lullaby',
+      frase: 'El Niño Dios',
+      volumen: 0.5
+    },
+    // Vírgenes y devociones marianas
+    'virgen-lujan': {
+      archivo: 'mp3/00. Ave Maria.mp3',
+      titulo: 'Ave Maria',
+      frase: 'Patrona de Argentina',
+      volumen: 0.6
+    },
+    'virgen-caacupe': {
+      archivo: 'mp3/00. Ave Maria.mp3',
+      titulo: 'Ave Maria',
+      frase: 'Madre del Pueblo Paraguayo',
+      volumen: 0.6
+    },
+    'maria-auxiliadora': {
+      archivo: 'mp3/00. Ave Maria.mp3',
+      titulo: 'Ave Maria',
+      frase: 'Ayuda de los Cristianos',
+      volumen: 0.6
+    },
+    'la-santina': {
+      archivo: 'mp3/00. Ave Maria.mp3',
+      titulo: 'Ave Maria',
+      frase: 'Virgen del Carmen',
+      volumen: 0.6
+    },
+    'medalla-milagrosa': {
+      archivo: 'mp3/00. Ave Maria.mp3',
+      titulo: 'Ave Maria',
+      frase: 'Medalla Milagrosa',
+      volumen: 0.6
+    },
+    'devociones-marianas': {
+      archivo: 'mp3/00. Ave Maria.mp3',
+      titulo: 'Ave Maria',
+      frase: 'Devociones Marianas',
+      volumen: 0.6
+    },
+    // Otras devociones
+    'otras-devociones': {
+      archivo: 'mp3/04. Sweet Hour of Prayer.mp3',
+      titulo: 'Sweet Hour of Prayer',
+      frase: 'Oración constante',
+      volumen: 0.5
+    },
+    'consagracion': {
+      archivo: 'mp3/00. Santa Faustina, Himno Moderno.mp3',
+      titulo: 'Santa Faustina - Himno',
+      frase: 'Consagración a la Divina Misericordia',
+      volumen: 0.6
+    },
+    'consagracion-sagrado-corazon': {
+      archivo: 'mp3/00. Santa Faustina, Himno Moderno.mp3',
+      titulo: 'Santa Faustina - Himno',
+      frase: 'Consagración al Sagrado Corazón',
+      volumen: 0.6
+    },
+    'lugares-de-culto': {
+      archivo: 'mp3/23. Concerto Grosso in D Major, Op. 1, No. 5_ III. Largo.mp3',
+      titulo: 'Concerto Grosso - Corelli',
+      frase: 'Santuarios de fe',
+      volumen: 0.5
+    },
+    'oraciones': {
+      archivo: 'mp3/04. Sweet Hour of Prayer.mp3',
+      titulo: 'Sweet Hour of Prayer',
+      frase: 'En tu presencia, Señor',
+      volumen: 0.5
+    },
+    'oracion-santa-cruz': {
+      archivo: 'mp3/38.He\'s a Pirate.mp3',
+      titulo: "He's a Pirate",
+      frase: 'La Santa Cruz',
+      volumen: 0.5
+    },
+    'oracion-san-miguel': {
+      archivo: 'mp3/34. Heart of Courage.mp3',
+      titulo: 'Heart of Courage',
+      frase: 'San Miguel Arcángel',
+      volumen: 0.6
+    },
+    'obras-de-misericordia': {
+      archivo: 'mp3/04. Sweet Hour of Prayer.mp3',
+      titulo: 'Sweet Hour of Prayer',
+      frase: 'Obras de Misericordia',
+      volumen: 0.5
+    },
     // Default
     'default': {
       archivo: 'mp3/15. Canon in D.mp3',
