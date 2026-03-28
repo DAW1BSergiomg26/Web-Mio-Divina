@@ -2127,168 +2127,291 @@ mainNav.querySelectorAll('a').forEach(link => {
     <div class="divider-line"></div>
 </div>
 
-<footer class="main-footer sacred-footer">
-    <div class="sacred-glow-border"></div>
-    
-    <!-- Cruz brillante con animación -->
-    <div class="cross-glow">✝</div>
-    <p class="tagline">Jesús, en Ti confío</p>
-    
-    <div class="footer-links">
-        <a href="index.html">Inicio</a>
-        <a href="coronilla.html">Coronilla</a>
-        <a href="novena.html">Novena</a>
-        <a href="santo-rosario.html">Santo Rosario</a>
-        <a href="oraciones.html">Oraciones</a>
-        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
-        <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
-        <a href="otras-devociones.html">Devociones</a>
-        <a href="contacto.html">Contacto</a>
+<!-- Footer Menu como en INICIO -->
+<div class="footer-menu">
+    <h3 class="footer-menu-title">Explora nuestra web</h3>
+    <div class="footer-menu-links">
+        <a href="via-crucis.html">Vía Crucis</a>
+        <a href="maria.html">María</a>
+        <a href="obras-de-misericordia.html">Obras de Misericordia</a>
+        <a href="consagracion.html">Consagración</a>
+        <a href="lugares-de-culto.html">Lugares de Culto</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="ss-leon-xiv.html">S.S. León XIV</a>
+        <a href="ss-francisco.html">S.S. Francisco</a>
+        <a href="ss-benedicto-xvi.html">S.S. Benedicto XVI</a>
+        <a href="ss-juan-pablo-ii.html">S.S. Juan Pablo II</a>
+        <a href="enlaces.html">Enlaces</a>
+        <a href="san-jose.html">San José</a>
+        <a href="divino-nino-jesus.html">Divino Niño Jesús</a>
+        <a href="san-judas-tadeo.html">San Judas Tadeo</a>
+        <a href="san-cayetano.html">San Cayetano</a>
+        <a href="consagracion-sagrado-corazon.html">Sagrado Corazón</a>
+        <a href="maria-auxiliadora.html">María Auxiliadora</a>
+        <a href="san-sanson.html">Sansón</a>
+        <a href="san-benito.html">San Benito</a>
+        <a href="oracion-santa-cruz.html">Santa Cruz</a>
+        <a href="san-francisco.html">San Francisco</a>
+        <a href="devociones-marianas.html">Devociones Marianas</a>
+        <a href="virgen-caacupe.html">Virgen Caacupé</a>
+        <a href="otras-devociones.html">Otras Devociones</a>
     </div>
-    
-    <p style="margin-top:25px;font-size:0.85rem;opacity:0.7;">
-        © 2026 — Portal de la Divina Misericordia — San José, ruega por nosotros
-    </p>
+</div>
+
+<footer class="main-footer">
+    <div class="cross-glow">+</div>
+    <p class="tagline">Jesús, En Vos Confío</p>
+    <p>© 2026 — Portal de la Divina Misericordia</p>
 </footer>
 
+<!-- Golden Line Divine - Bella y Resplandeciente -->
+<div class="golden-divine-line">
+  <div class="line-glow"></div>
+  <div class="line-shine"></div>
+</div>
+
 <style>
-/* Footer sagrado estilo Inicio */
-.sacred-footer {
-    background: linear-gradient(to bottom, rgba(58,32,16,0.9), rgba(26,15,10,0.95));
-    padding: 50px 20px 40px;
-    text-align: center;
-    border-top: 3px solid var(--jose-dorado);
-    position: relative;
-    overflow: hidden;
+/* Footer principal */
+footer.main-footer {
+  background: linear-gradient(to bottom, rgba(58,32,16,0.9), rgba(26,15,10,0.95));
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 2px solid rgba(201,150,10,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 
-.sacred-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    background: linear-gradient(to bottom, rgba(201,150,10,0.08), transparent);
-    pointer-events: none;
+footer.main-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(201,150,10,0.05), transparent);
+  pointer-events: none;
 }
 
-.sacred-glow-border {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        var(--jose-dorado) 20%, 
-        var(--jose-dorado-claro) 50%, 
-        var(--jose-dorado) 80%, 
-        transparent 100%);
-    background-size: 200% 100%;
-    animation: borderShine 3s ease-in-out infinite;
-    box-shadow: 0 0 20px rgba(201,150,10,0.5);
+footer.main-footer .cross-glow {
+  font-size: 3.5rem;
+  color: var(--jose-dorado);
+  text-shadow: 
+    0 0 30px rgba(201,150,10,0.8),
+    0 0 60px rgba(201,150,10,0.5),
+    0 0 100px rgba(201,150,10,0.3);
+  margin-bottom: 15px;
+  animation: crossPulse 2.5s ease-in-out infinite;
+  position: relative;
 }
 
-@keyframes borderShine {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-}
-
-.sacred-footer .cross-glow {
-    font-size: 4rem;
-    color: var(--jose-dorado);
-    text-shadow: 
-        0 0 30px rgba(201,150,10,0.8),
-        0 0 60px rgba(201,150,10,0.5),
-        0 0 100px rgba(201,150,10,0.3);
-    margin-bottom: 20px;
-    animation: crossPulse 2.5s ease-in-out infinite;
-    position: relative;
-}
-
-.sacred-footer .cross-glow::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 80px;
-    height: 80px;
-    transform: translate(-50%, -50%);
-    background: radial-gradient(circle, rgba(201,150,10,0.15) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: crossAura 3s ease-in-out infinite;
+footer.main-footer .cross-glow::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(201,150,10,0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: crossAura 3s ease-in-out infinite;
 }
 
 @keyframes crossPulse {
-    0%, 100% {
-        text-shadow: 
-            0 0 25px rgba(201,150,10,0.8),
-            0 0 50px rgba(201,150,10,0.5),
-            0 0 80px rgba(201,150,10,0.3);
-        transform: scale(1);
-    }
-    50% {
-        text-shadow: 
-            0 0 50px rgba(240,200,64,1),
-            0 0 100px rgba(201,150,10,0.7),
-            0 0 150px rgba(201,150,10,0.4);
-        transform: scale(1.1);
-    }
+  0%,100% { 
+    text-shadow: 
+      0 0 25px rgba(201,150,10,0.8), 
+      0 0 50px rgba(201,150,10,0.5),
+      0 0 80px rgba(201,150,10,0.3);
+    transform:scale(1); 
+  }
+  50%      { 
+    text-shadow: 
+      0 0 50px rgba(240,200,64,1), 
+      0 0 100px rgba(201,150,10,0.7),
+      0 0 150px rgba(201,150,10,0.4);
+    transform:scale(1.1); 
+  }
 }
 
 @keyframes crossAura {
-    0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
 }
 
-.sacred-footer .tagline {
-    font-family: 'Cinzel', serif;
-    color: var(--jose-dorado);
-    font-size: 1.2rem;
-    letter-spacing: 3px;
-    margin-bottom: 25px;
-    text-shadow: 0 0 15px rgba(201,150,10,0.5);
+footer.main-footer p { color: var(--text-muted); margin: 5px 0; font-size: 0.95rem; }
+footer.main-footer .tagline {
+  color: var(--jose-dorado); font-family: 'Cinzel', serif;
+  font-size: 1.05rem; letter-spacing: 2px; margin-bottom: 4px;
 }
 
-.sacred-footer .footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    max-width: 900px;
-    margin: 0 auto;
+/* Footer Menu */
+.footer-menu {
+  background: linear-gradient(145deg, rgba(58,32,16,0.7), rgba(26,15,10,0.8));
+  border: 1px solid rgba(201,150,10,0.3);
+  border-radius: 20px;
+  padding: 35px 30px;
+  margin: 50px auto;
+  max-width: 950px;
+  backdrop-filter: blur(15px);
+  box-shadow: 
+    0 10px 40px rgba(0,0,0,0.4),
+    0 0 30px rgba(201,150,10,0.08);
+  position: relative;
+  overflow: hidden;
 }
 
-.sacred-footer .footer-links a {
-    color: rgba(250,247,240,0.8);
-    text-decoration: none;
-    font-family: 'Cinzel', serif;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-    padding: 8px 12px;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
+.footer-menu::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(201,150,10,0.5), transparent);
 }
 
-.sacred-footer .footer-links a:hover {
-    color: var(--jose-dorado-claro);
-    background: rgba(201,150,10,0.15);
-    border-color: var(--jose-dorado);
-    text-shadow: 0 0 10px rgba(201,150,10,0.5);
+.footer-menu-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  color: var(--jose-dorado-claro);
+  text-align: center;
+  margin-bottom: 25px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(201,150,10,0.3);
 }
 
-.sacred-footer .footer-links a.caacupe-btn {
-    background: linear-gradient(135deg, #D63384, #2E8B57, #0353A4);
-    color: white;
-    border: 1px solid #E040FB;
+.footer-menu-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
 }
 
-.sacred-footer .footer-links a.devociones-btn {
-    background: linear-gradient(135deg, #6fa8dc, #6b4c9a);
-    color: white;
-    border: 1px solid #87ceeb;
+.footer-menu-links a {
+  color: var(--white);
+  opacity: 0.8;
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding: 10px 20px;
+  border: 1px solid rgba(201,150,10,0.2);
+  border-radius: 30px;
+  transition: all 0.4s ease;
+  background: rgba(255,255,255,0.02);
+  font-family: 'EB Garamond', serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-menu-links a::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(201,150,10,0.3) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+  border-radius: 50%;
+}
+
+.footer-menu-links a:hover::before {
+  width: 200%;
+  height: 200%;
+}
+
+.footer-menu-links a:hover {
+  background: rgba(201,150,10,0.15);
+  border-color: rgba(201,150,10,0.5);
+  color: var(--jose-dorado-claro);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 25px rgba(201,150,10,0.2), 0 0 40px rgba(201,150,10,0.1);
+  text-shadow: 0 0 15px rgba(201,150,10,0.5);
+}
+
+/* Golden Divine Line */
+.golden-divine-line {
+  width: 100%;
+  max-width: 1000px;
+  height: 6px;
+  margin: 0 auto 50px;
+  position: relative;
+  border-radius: 3px;
+  overflow: visible;
+}
+
+.golden-divine-line::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, 
+    transparent 0%,
+    #B8860B 5%,
+    #D4AF37 15%,
+    #FFD700 25%,
+    #FFF8DC 35%,
+    #FFD700 45%,
+    #D4AF37 55%,
+    #B8960C 65%,
+    #D4AF37 75%,
+    #FFD700 85%,
+    #D4AF37 95%,
+    transparent 100%);
+  border-radius: 2px;
+  box-shadow: 
+    0 0 15px rgba(255,215,0,0.8),
+    0 0 30px rgba(201,150,10,0.6),
+    0 0 50px rgba(201,150,10,0.4),
+    0 0 80px rgba(201,150,10,0.2);
+  animation: lineGlow 2s ease-in-out infinite;
+}
+
+@keyframes lineGlow {
+  0%, 100% { 
+    box-shadow: 
+      0 0 15px rgba(255,215,0,0.7),
+      0 0 30px rgba(201,150,10,0.5),
+      0 0 50px rgba(201,150,10,0.3);
+    filter: brightness(1);
+  }
+  50% { 
+    box-shadow: 
+      0 0 25px rgba(255,240,150,1),
+      0 0 50px rgba(255,215,0,0.8),
+      0 0 80px rgba(201,150,10,0.6),
+      0 0 120px rgba(201,150,10,0.3);
+    filter: brightness(1.3);
+  }
+}
+
+.line-glow {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(255,255,255,0.8),
+    rgba(255,255,220,1),
+    rgba(255,255,255,0.9),
+    transparent
+  );
+  animation: lineShine 2s ease-in-out infinite;
+}
+
+@keyframes lineShine {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
 }
 </style>
 
