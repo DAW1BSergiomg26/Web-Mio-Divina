@@ -245,7 +245,7 @@ nav a:hover, nav a.activo { background: rgba(212,175,55,0.2); color: var(--gold-
 .separator-linea.right { background:linear-gradient(to left,transparent,rgba(212,175,55,0.5)); }
 .separator-cruz-svg { width:60px; height:60px; flex-shrink:0; }
 
-.scroll-up, .scroll-down { position:fixed; left:20px; width:45px; height:45px; border-radius:50%; background:rgba(0,0,0,0.6); border:2px solid var(--gold); display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:999; }
+.scroll-up, .scroll-down { position:fixed; right:20px; width:45px; height:45px; border-radius:50%; background:rgba(0,0,0,0.6); border:2px solid var(--gold); display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:999; }
 .scroll-up { top:100px; }
 .scroll-down { bottom:30px; }
 .scroll-up::before, .scroll-down::before { content:''; width:14px; height:14px; border-right:2px solid var(--gold); border-bottom:2px solid var(--gold); }
@@ -332,8 +332,8 @@ footer p { color:var(--text-muted); margin:5px 0; font-size:0.9rem; }
     stroke: #fff5c0;
     filter: drop-shadow(0 0 8px rgba(255,245,192,0.9));
 }
-.scroll-up { top: 120px; left: 20px; }
-.scroll-down { bottom: 30px; left: 20px; }
+.scroll-up { top: 120px; right: 90px; }
+.scroll-down { bottom: 30px; right: 90px; }
 @keyframes scrollPulse {
     0%, 100% { box-shadow: 0 0 15px rgba(212,175,55,0.5), 0 0 30px rgba(212,175,55,0.2); }
     50% { box-shadow: 0 0 25px rgba(212,175,55,0.8), 0 0 50px rgba(212,175,55,0.4), 0 0 70px rgba(212,175,55,0.2); }
