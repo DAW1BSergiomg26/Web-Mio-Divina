@@ -633,10 +633,15 @@
       this.audio.addEventListener('ended', () => this.onEnded());
       this.audio.addEventListener('error', (e) => {
         console.error('Error de audio:', e);
+        console.error('Código de error:', this.audio.error?.code);
+        console.error('Mensaje de error:', this.audio.error?.message);
         this.mostrarError();
       });
       this.audio.addEventListener('canplay', () => {
         console.log('Audio listo para reproducir');
+      });
+      this.audio.addEventListener('canplaythrough', () => {
+        console.log('Audio listo para reproducir sin interrupciones');
       });
     }
 
