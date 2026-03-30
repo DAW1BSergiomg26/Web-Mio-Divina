@@ -1210,103 +1210,8 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 </div>
 
 <script>
-const musicLibrary = [
-  { category: "🙏 Himnos de Devoción", icon: "🙏", tracks: [
-    { title: "Ave Maria", artist: "Canto Gregoriano", src: "mp3/00.%20Ave%20Maria.mp3" },
-    { title: "Jesus Paid It All", artist: "Himno Evangélico", src: "mp3/00.%20Jesus%20Paid%20It%20All.mp3" },
-    { title: "Hallelujah (Messiah)", artist: "G.F. Handel", src: "mp3/00.%20Messiah,%20HWV%2056,%20Pt.%202_%20No.%2044,%20Chorus.%20Hallelujah,%20for%20the%20Lord%20God%20Omnipotent%20Reigneth.mp3" },
-    { title: "Santa Faustina - Himno", artist: "Dedicación", src: "mp3/00.%20Santa%20Faustina,%20Himno%20Moderno.mp3" },
-    { title: "Jesus is All the World", artist: "Himno Tradicional", src: "mp3/01.%20Jesus%20is%20all%20the%20world%20to%20me.mp3" },
-    { title: "More About Jesus", artist: "Himno Evangélico", src: "mp3/02.%20More%20About%20Jesus.mp3" },
-    { title: "I Have Decided to Follow Jesus", artist: "Himno Tradicional", src: "mp3/03.%20I%20Have%20Decided%20to%20Follow%20Jesus.mp3" },
-    { title: "Sweet Hour of Prayer", artist: "Himno de Oración", src: "mp3/04.%20Sweet%20Hour%20of%20Prayer.mp3" },
-    { title: "A New Name in Glory", artist: "Himno Celebración", src: "mp3/05.%20A%20New%20Name%20in%20Glory%20-%20Instrumental.mp3" },
-    { title: "Vía Crucis - Para Orar", artist: "Devoción", src: "mp3/24.%20V%C3%ADa%20Crucis%20-%20Para%20Orar.mp3" },
-    { title: "Novena Divine Inspiration", artist: "Oración", src: "mp3/25.%20Novena%20Divine%20Inspiration.mp3" },
-    { title: "Hora de la Coronilla", artist: "Divina Misericordia", src: "mp3/26.%20Hora%20de%20la%20Coronilla%20de%20la%20Divina%20Misericordia%20-%20Instrumental.mp3" }
-  ]},
-  { category: "🎻 Música Barroca Clásica", icon: "🎻", tracks: [
-    { title: "Brandenburg Concerto No. 1", artist: "J.S. Bach", src: "mp3/05.%20Brandenburg%20Concerto%20No.%201%20in%20F%20Major,%20BWV%201046_%20I.mp3" },
-    { title: "Concierto de Brandeburgo No. 1", artist: "J.S. Bach", src: "mp3/01.%20Concierto-de-Branderburgo-n.1-BWV-1046-en-Fa-mayor-Adagio.mp3" },
-    { title: "Concierto de Brandeburgo No. 3", artist: "J.S. Bach", src: "mp3/03.%20Concierto-de-Branderburgo-n.3-BWV-1048-en-Sol-Mayor-Allegro-moderato.mp3" },
-    { title: "Largo 'Ombra mai fu' (Xerxes)", artist: "G.F. Handel", src: "mp3/06.%20Serse,%20HWV%2040_%20Largo%20_Ombra%20mai%20fu.mp3" },
-    { title: "Air (Suite No. 3)", artist: "J.S. Bach", src: "mp3/09.%20J.S.%20Bach_%20J.S.%20Bach_%20Orchestral%20Suite%20No.%203%20in%20D%20Major,%20BWV%201068_%202.mp3" },
-    { title: "Aria de la Suite No. 3", artist: "J.S. Bach", src: "mp3/07.%20Aria%20de%20la%20Suite%20no.%203%20en%20Re%20Mayor,%20BWV%201068.mp3" },
-    { title: "Sarabande (Keyboard Suite)", artist: "G.F. Handel", src: "mp3/08.%20Handel%20_%20Orch.%20Hale_%20Keyboard%20Suite%20No.%204%20in%20D%20Minor,%20HWV%20437_%20III.%20Sarabande.mp3" },
-    { title: "Sinfonie (Brockes Passion)", artist: "G.F. Handel", src: "mp3/01.%20Brockes%20Passion,%20HWV%2048_%20No.%201,%20Sinfonie.mp3" }
-  ]},
-  { category: "🕊️ Música de Contemplación", icon: "🕊️", tracks: [
-    { title: "Canon in D (Pachelbel)", artist: "Pachelbel", src: "mp3/14.%20Pachelbel%20Canon%20in%20D.mp3" },
-    { title: "Canon in D", artist: "Pachelbel", src: "mp3/15.%20Canon%20in%20D.mp3" },
-    { title: "Violin Sonata No. 3", artist: "J.S. Bach", src: "mp3/00.%20Violin%20Sonata%20No.%203%20in%20C%20Major,%20BWV%201005%20(Arr.%20for%20Piano%20by%20V%C3%ADkingur%20%C3%93lafsson)_%20I.%20Adagio.mp3" },
-    { title: "Swan Lake - Scène", artist: "P.I. Tchaikovsky", src: "mp3/11.%20Swan%20Lake,%20Op.%2020a_%20I.%20Sc%C3%A8ne.mp3" },
-    { title: "Shades and Shadows", artist: "Ambient", src: "mp3/12.%20Shades%20and%20Shadows.mp3" },
-    { title: "The Essence", artist: "Ambient", src: "mp3/13.%20The%20Essence.mp3" },
-    { title: "Sonata Violino Solo - Allemande", artist: "H.I.F. Biber", src: "mp3/16.%20Sonata%20violino%20solo%20representativa%20in%20A%20Major_%20III.%20Allemande.mp3" },
-    { title: "Sonata Quarta - Ciaccona", artist: "D. Castello", src: "mp3/17.%20Sonata%20quarta%20in%20D%20Major_%20I.%20Ciaccona.mp3" },
-    { title: "Violin Sonata No. 1 - Aria", artist: "J.S. Bach", src: "mp3/18.%20Violin%20Sonata%20No.%201%20in%20D%20Minor_%20VI.%20Aria.mp3" }
-  ]},
-  { category: "✨ Música de Gloria", icon: "✨", tracks: [
-    { title: "La Primavera (Spring)", artist: "A. Vivaldi", src: "mp3/10.%20Spring%20(La%20Primavera)%20Op.8%20No.1%20E%20Major_%20Allegro.mp3" },
-    { title: "Concerto in D Major - Adagio", artist: "A. Vivaldi", src: "mp3/19.%20Concerto%202%20in%20D%20Major,%20Op.%207_%20I.%20Adagio.mp3" },
-    { title: "Canzona Undecima", artist: "G. Gabrieli", src: "mp3/20.%20Canzona%20undecima%20a%20due%20canti%20_detta%20la%20plettenberger.mp3" },
-    { title: "Les Plaisirs - Sarabande", artist: "M. Marais", src: "mp3/21.%20Les%20plaisirs_%20Sarabande.mp3" },
-    { title: "5e Livre de Viole - Chaconne", artist: "M. Marais", src: "mp3/22.%205e%20livre%20de%20viole_%20Chaconne.mp3" },
-    { title: "Concerto Grosso - Largo", artist: "A. Corelli", src: "mp3/23.%20Concerto%20Grosso%20in%20D%20Major,%20Op.%201,%20No.%205_%20III.%20Largo.mp3" }
-  ]},
-  { category: "🎬 Música Cinematográfica Sagrada", icon: "🎬", tracks: [
-    { title: "Braveheart - End Titles", artist: "James Horner", src: "mp3/00%20.Braveheart-End%20Titles.mp3" },
-    { title: "Now We Are Free (Gladiator)", artist: "Hans Zimmer", src: "mp3/27.%20Now%20We%20Are%20Free%20(Gladiator)%20-%20Instrumental%20Version.mp3" },
-    { title: "Now We Are Free - Piano", artist: "Hans Zimmer", src: "mp3/28.%20Now%20We%20Are%20Free%20(from%20_Gladiator_)%20-%20Piano%20Solo%20Version.mp3" },
-    { title: "Tennessee", artist: "Hans Zimmer", src: "mp3/29.%20Tennessee.mp3" },
-    { title: "Honor Him", artist: "Hans Zimmer", src: "mp3/30.%20Honor%20Him.mp3" },
-    { title: "The Kiss", artist: "James Horner", src: "mp3/31.%20The%20Kiss.mp3" },
-    { title: "Elysium", artist: "James Horner", src: "mp3/32.%20Elysium.mp3" },
-    { title: "Evenstar", artist: "Howard Shore", src: "mp3/33.%20Evenstar.mp3" },
-    { title: "A Gift of a Thistle", artist: "James Horner", src: "mp3/55.%20A%20Gift%20Of%20A%20Thistle.mp3" },
-    { title: "For the Love of a Princess", artist: "James Horner", src: "mp3/56.%20For%20The%20Love%20Of%20A%20Princess.mp3" },
-    { title: "Murron's Burial", artist: "James Horner", src: "mp3/57.%20Murron's%20Burial.mp3" },
-    { title: "Revenge (Braveheart)", artist: "James Horner", src: "mp3/58.%20Revenge%20%5BBraveheart%20-%20Original%20Sound%20Track%5D.mp3" },
-    { title: "The Battle of Stirling", artist: "James Horner", src: "mp3/59.%20The%20Battle%20Of%20Stirling%20%5BBraveheart%20-%20Original%20Sound%20Track%5D.mp3" },
-    { title: "The Princess Pleads for Wallace", artist: "James Horner", src: "mp3/60.%20The%20Princess%20Pleads%20For%20Wallace's%20Life.mp3" },
-    { title: "The Secret Wedding", artist: "James Horner", src: "mp3/61.The%20Secret%20Wedding.mp3" }
-  ]},
-  { category: "⚔️ Música Épica y Aventura", icon: "⚔️", tracks: [
-    { title: "Heart of Courage", artist: "Two Steps From Hell", src: "mp3/34.%20Heart%20of%20Courage.mp3" },
-    { title: "Day One (Interstellar)", artist: "Hans Zimmer", src: "mp3/35.%20Day%20One%20(Interstellar%20Theme).mp3" },
-    { title: "Becoming Human", artist: "Hans Zimmer", src: "mp3/36.%20Becoming%20Human.mp3" },
-    { title: "Main Title", artist: "Hans Zimmer", src: "mp3/37.%20Main%20Title.mp3" },
-    { title: "He's a Pirate", artist: "Hans Zimmer", src: "mp3/38.He%27s%20a%20Pirate.mp3" },
-    { title: "Aphelion", artist: "Hans Zimmer", src: "mp3/49.%20Aphelion.mp3" },
-    { title: "Winter is Here", artist: "Ramin Djawadi", src: "mp3/50.%20Winter%20Is%20Here.mp3" },
-    { title: "No Sacrifice, No Victory", artist: "Steve Jablonsky", src: "mp3/42.%20No%20Sacrifice,%20No%20Victory.mp3" },
-    { title: "Pact Sworn in Blood", artist: "Inon Zur", src: "mp3/41.%20Pact%20Sworn%20in%20Blood.mp3" },
-    { title: "Promentory (Last of the Mohicans)", artist: "Trevor Jones", src: "mp3/44.%20Promentory.mp3" },
-    { title: "Blackheart", artist: "Inon Zur", src: "mp3/46.%20Blackheart.mp3" },
-    { title: "Goodbye Brother", artist: "Inon Zur", src: "mp3/47.%20Goodbye%20Brother.mp3" },
-    { title: "Optimus", artist: "Steve Jablonsky", src: "mp3/48.%20Optimus.mp3" }
-  ]},
-  { category: "🏰 El Señor de los Anillos", icon: "🏰", tracks: [
-    { title: "Concerning Hobbits", artist: "Howard Shore", src: "mp3/39.%20Concerning%20Hobbits.mp3" },
-    { title: "The Way Home", artist: "Howard Shore", src: "mp3/40.%20The%20Way%20Home.mp3" },
-    { title: "This Land", artist: "Howard Shore", src: "mp3/43.%20This%20Land.mp3" },
-    { title: "The Grey Havens", artist: "Howard Shore", src: "mp3/45.%20The%20Grey%20Havens%20(feat.%20Sir%20James%20Galway).mp3" },
-    { title: "Suite Señor de los Anillos", artist: "Howard Shore", src: "mp3/51.%20El%20se%C3%B1or%20de%20los%20anillos%20(Suite)%20(La%20comunidad%20del%20anillo).mp3" },
-    { title: "The Shire", artist: "Howard Shore", src: "mp3/52.%20The%20Shire.mp3" },
-    { title: "The Council of Elrond", artist: "Howard Shore", src: "mp3/53.%20The%20Council%20of%20Elrond%20(feat.%20_Aniron_)%20%5BTheme%20for%20Aragorn%20and%20Arwen%5D.mp3" },
-    { title: "The Bridge of Khazad-dûm", artist: "Howard Shore", src: "mp3/54.%20The%20Bridge%20Of%20Khazad-Dum%20(From%20_The%20Lord%20Of%20The%20Rings_).mp3" }
-  ]},
-  { category: "🦁 Crónicas de Narnia", icon: "🦁", tracks: [
-    { title: "A Narnia Lullaby (Piano)", artist: "Harry Gregson-Williams", src: "mp3/62.%20A%20Narnia%20Lullaby%20(From%20_The%20Chronicles%20of%20Narnia_)%20-%20Piano%20Version.mp3" },
-    { title: "A Narnia Lullaby", artist: "Harry Gregson-Williams", src: "mp3/63.%20A%20Narnia%20Lullaby.mp3" },
-    { title: "Only the Beginning", artist: "Harry Gregson-Williams", src: "mp3/64.%20Only%20The%20Beginning%20of%20The%20Adventure.mp3" },
-    { title: "Aslan Appears", artist: "Harry Gregson-Williams", src: "mp3/65.%20Aslan%20Appears.mp3" },
-    { title: "Aslan's Breath", artist: "Harry Gregson-Williams", src: "mp3/66.%20Aslan's%20Breath.mp3" },
-    { title: "Raid on the Castle", artist: "Harry Gregson-Williams", src: "mp3/67.%20Raid%20on%20the%20Castle%20-%20Score.mp3" },
-    { title: "The Battle", artist: "Harry Gregson-Williams", src: "mp3/68.%20The%20Battle.mp3" },
-    { title: "The Kings and Queens of Old", artist: "Harry Gregson-Williams", src: "mp3/69.%20The%20Kings%20and%20Queens%20of%20Old%20-%20Score.mp3" }
-  ]}
-];
+// Usar catálogo centralizado
+const musicLibrary = AudioCatalog.getCategories();
 
 let currentAudio = null;
 let currentTrackIndex = null;
@@ -1475,6 +1380,9 @@ document.querySelectorAll('a, button, .track-card').forEach(el => {
 
 document.addEventListener('DOMContentLoaded', initLibrary);
 </script>
+
+<!-- Audio Catalog -->
+<script src="js/audio-catalog.js"></script>
 
 <!-- Audio Player Premium -->
 <script src="js/audio-player.js"></script>
