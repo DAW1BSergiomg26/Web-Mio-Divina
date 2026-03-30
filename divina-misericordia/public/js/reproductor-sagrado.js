@@ -3,15 +3,20 @@
 // Reproductor sagrado con colores dorados y celestiales
 // ============================================================
 
-const reproductorDivino = {
+// Objeto global para el reproductor
+window.reproductorDivino = {
   audio: null,
   currentBtn: null,
   currentPlayer: null,
   isPlaying: false,
   
   init() {
+    // Crear elemento de audio
     this.audio = new Audio();
     this.audio.volume = 0.7;
+    this.audio.preload = 'metadata';
+    
+    console.log('[ReproductorSagrado] Inicializado');
     
     this.audio.addEventListener('ended', () => {
       this.onTrackEnded();
@@ -23,6 +28,10 @@ const reproductorDivino = {
     
     this.audio.addEventListener('loadedmetadata', () => {
       this.updateDuration();
+    });
+    
+    this.audio.addEventListener('error', (e) => {
+      console.error('[ReproductorSagrado] Error de audio:', e);
     });
   },
   
@@ -189,23 +198,71 @@ const reproductorDivino = {
   }
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-  reproductorDivino.init();
+// Inicializar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.reproductorDivino) {
+    window.reproductorDivino.init();
+    console.log('[ReproductorSagrado] DOM listo, reproductor inicializado');
+    
+    // Vincular eventos a los botones de reproducción
+    document.querySelectorAll('.btn-play-sagrado').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('[ReproductorSagrado] Botón play clickeado');
+        window.reproductorDivino.togglePlay(this);
+      });
+    });
+    
+    // Vincular eventos a las barras de progreso
+    document.querySelectorAll('.progress-bar-container').forEach(function(container) {
+      container.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const player = this.closest('.reproductor-sagrado');
+        window.reproductorDivino.seek(player, e);
+      });
+    });
+    
+    console.log('[ReproductorSagrado] Eventos vinculados a', document.querySelectorAll('.btn-play-sagrado').length, 'botones');
+  }
 });
 
-function togglePlaySagrado(btn) {
-  reproductorDivino.togglePlay(btn);
-}
+// Funciones globales siempre disponibles
+window.togglePlaySagrado = function(btn) {
+  console.log('[ReproductorSagrado] Toggle play llamado');
+  if (window.reproductorDivino) {
+    window.reproductorDivino.togglePlay(btn);
+  } else {
+    console.error('[ReproductorSagrado] reproductorDivino no está definido');
+  }
+};
 
-function seekSagrado(container, e) {
-  const player = container.closest('.reproductor-sagrado');
-  reproductorDivino.seek(player, e);
-}
+window.seekSagrado = function(container, e) {
+  if (window.reproductorDivino) {
+    const player = container.closest('.reproductor-sagrado');
+    window.reproductorDivino.seek(player, e);
+  }
+};
 
-function setVolumeSagrado(value) {
-  reproductorDivino.setVolume(value);
-}
+window.setVolumeSagrado = function(value) {
+  if (window.reproductorDivino) {
+    window.reproductorDivino.setVolume(value);
+  }
+};
 
-function downloadSagrado(btn) {
-  reproductorDivino.download(btn);
-}
+window.downloadSagrado = function(btn) {
+  if (window.reproductorDivino) {
+    window.reproductorDivino.download(btn);
+  }
+};
+
+// Inicializar inmediatamente también por si acaso
+(function() {
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    if (window.reproductorDivino && !window.reproductorDivino.audio) {
+      window.reproductorDivino.init();
+      console.log('[ReproductorSagrado] Inicializado inmediatamente');
+    }
+  }
+})();
