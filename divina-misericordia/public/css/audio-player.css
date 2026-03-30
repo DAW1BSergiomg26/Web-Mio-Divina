@@ -1,0 +1,647 @@
+/**
+ * Audio Player Premium - Sistema Global
+ * Diseño premium tipo "sala de control sacra"
+ * Compatible con Chrome, Firefox, Safari, Edge y móvil
+ */
+
+/* ============================================
+   VARIABLES
+   ============================================ */
+:root {
+  --player-bg: rgba(10, 22, 40, 0.95);
+  --player-border: rgba(212, 175, 55, 0.3);
+  --player-gold: #d4af37;
+  --player-gold-light: #f4e2a1;
+  --player-gold-dark: #b8960c;
+  --player-gold-glow: rgba(212, 175, 55, 0.6);
+  --player-blue-deep: #050d1a;
+  --player-white: #faf7f0;
+  --player-text-muted: rgba(250, 247, 240, 0.6);
+  --player-transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --player-z-index: 9999;
+}
+
+/* ============================================
+   CONTENEDOR PRINCIPAL
+   ============================================ */
+.audio-player-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--player-z-index);
+  transform: translateY(100%);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'EB Garamond', Georgia, serif;
+}
+
+.audio-player-container.active {
+  transform: translateY(0);
+}
+
+.audio-player-container.minimized {
+  transform: translateY(calc(100% - 60px));
+}
+
+/* Barra principal */
+.audio-player-bar {
+  background: linear-gradient(180deg, 
+    rgba(15, 35, 60, 0.98) 0%, 
+    rgba(10, 22, 40, 0.98) 50%,
+    rgba(5, 13, 26, 0.98) 100%);
+  border-top: 1px solid var(--player-border);
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 
+    0 -10px 40px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(212, 175, 55, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Borde superior dorado */
+.audio-player-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--player-gold) 20%, 
+    var(--player-gold-light) 50%, 
+    var(--player-gold) 80%, 
+    transparent 100%);
+  animation: playerBorderGlow 3s ease-in-out infinite;
+}
+
+@keyframes playerBorderGlow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* ============================================
+   INFO DE LA PISTA
+   ============================================ */
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 220px;
+  max-width: 280px;
+  flex-shrink: 0;
+}
+
+.player-artwork {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, 
+    rgba(212, 175, 55, 0.2) 0%, 
+    rgba(10, 22, 40, 0.8) 100%);
+  border: 1px solid var(--player-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.player-artwork svg {
+  width: 28px;
+  height: 28px;
+  fill: var(--player-gold);
+  filter: drop-shadow(0 0 8px var(--player-gold-glow));
+}
+
+.player-artwork img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.player-details {
+  overflow: hidden;
+}
+
+.player-track-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  color: var(--player-gold-light);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 3px;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.player-track-artist {
+  font-size: 0.8rem;
+  color: var(--player-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ============================================
+   CONTROLES DE REPRODUCCIÓN
+   ============================================ */
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.player-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid var(--player-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--player-transition);
+  color: var(--player-gold);
+}
+
+.player-btn:hover {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: var(--player-gold);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+  transform: scale(1.05);
+}
+
+.player-btn:active {
+  transform: scale(0.95);
+}
+
+.player-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  filter: drop-shadow(0 0 4px var(--player-gold-glow));
+}
+
+/* Botón principal (Play/Pause) */
+.player-btn.main {
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, 
+    var(--player-gold-dark) 0%, 
+    var(--player-gold) 50%, 
+    var(--player-gold-light) 100%);
+  border: 2px solid var(--player-gold-light);
+}
+
+.player-btn.main:hover {
+  background: linear-gradient(135deg, 
+    var(--player-gold) 0%, 
+    var(--player-gold-light) 50%, 
+    var(--player-gold) 100%);
+  box-shadow: 
+    0 0 30px rgba(212, 175, 55, 0.6),
+    0 0 60px rgba(212, 175, 55, 0.3);
+}
+
+.player-btn.main svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--player-blue-deep);
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+}
+
+/* Botón de stop */
+.player-btn.stop {
+  width: 36px;
+  height: 36px;
+}
+
+.player-btn.stop svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ============================================
+   BARRA DE PROGRESO
+   ============================================ */
+.player-progress-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 200px;
+}
+
+.player-time {
+  font-size: 0.75rem;
+  color: var(--player-text-muted);
+  font-family: 'Cinzel', serif;
+  min-width: 45px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.player-time.current {
+  color: var(--player-gold-light);
+}
+
+.progress-wrapper {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 3px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(212, 175, 55, 0.2) 50%, 
+    transparent 100%);
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, 
+    var(--player-gold-dark) 0%, 
+    var(--player-gold) 50%, 
+    var(--player-gold-light) 100%);
+  border-radius: 3px;
+  position: relative;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 10px var(--player-gold-glow);
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  background: var(--player-gold-light);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 10px var(--player-gold),
+    0 0 20px var(--player-gold-glow);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.progress-wrapper:hover .progress-bar::after {
+  opacity: 1;
+}
+
+.progress-bar.loading {
+  background: linear-gradient(90deg, 
+    var(--player-gold-dark) 0%, 
+    var(--player-gold) 50%, 
+    var(--player-gold-light) 100%);
+  background-size: 200% 100%;
+  animation: progressLoading 1.5s ease-in-out infinite;
+}
+
+@keyframes progressLoading {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* ============================================
+   CONTROL DE VOLUMEN
+   ============================================ */
+.player-volume {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 120px;
+}
+
+.volume-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--player-text-muted);
+  transition: all var(--player-transition);
+}
+
+.volume-btn:hover {
+  color: var(--player-gold);
+}
+
+.volume-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.volume-slider {
+  width: 80px;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  background: var(--player-gold);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 8px var(--player-gold-glow);
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: var(--player-gold);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 8px var(--player-gold-glow);
+}
+
+/* ============================================
+   BOTÓN MINIMIZAR
+   ============================================ */
+.player-toggle {
+  position: absolute;
+  top: -30px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 0 0;
+  background: linear-gradient(180deg, 
+    rgba(212, 175, 55, 0.3) 0%, 
+    rgba(10, 22, 40, 0.9) 100%);
+  border: 1px solid var(--player-border);
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--player-transition);
+}
+
+.player-toggle:hover {
+  background: linear-gradient(180deg, 
+    rgba(212, 175, 55, 0.5) 0%, 
+    rgba(10, 22, 40, 0.9) 100%);
+}
+
+.player-toggle svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--player-gold);
+  transform: rotate(180deg);
+  transition: transform var(--player-transition);
+}
+
+.audio-player-container.minimized .player-toggle svg {
+  transform: rotate(0deg);
+}
+
+/* ============================================
+   INDICADOR VISUAL (ONDAS)
+   ============================================ */
+.player-visualizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 24px;
+  padding: 0 10px;
+}
+
+.visualizer-bar {
+  width: 3px;
+  background: linear-gradient(to top, 
+    var(--player-gold-dark) 0%, 
+    var(--player-gold) 100%);
+  border-radius: 2px;
+  transition: height 0.1s ease;
+}
+
+.player-controls.playing .visualizer-bar:nth-child(1) { animation: visualizerWave 0.8s ease-in-out infinite; }
+.player-controls.playing .visualizer-bar:nth-child(2) { animation: visualizerWave 0.8s ease-in-out 0.1s infinite; }
+.player-controls.playing .visualizer-bar:nth-child(3) { animation: visualizerWave 0.8s ease-in-out 0.2s infinite; }
+.player-controls.playing .visualizer-bar:nth-child(4) { animation: visualizerWave 0.8s ease-in-out 0.3s infinite; }
+.player-controls.playing .visualizer-bar:nth-child(5) { animation: visualizerWave 0.8s ease-in-out 0.4s infinite; }
+
+@keyframes visualizerWave {
+  0%, 100% { height: 4px; opacity: 0.5; }
+  50% { height: 20px; opacity: 1; }
+}
+
+/* ============================================
+   ESTADOS
+   ============================================ */
+.audio-player-container.loading .player-btn.main {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.audio-player-container.error .player-btn.main {
+  background: linear-gradient(135deg, #8b0000 0%, #cc0000 50%, #ff4444 100%);
+  border-color: #ff4444;
+}
+
+.audio-player-container.error .player-btn.main:hover {
+  box-shadow: 0 0 30px rgba(255, 68, 68, 0.6);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+  .audio-player-bar {
+    flex-wrap: wrap;
+    padding: 12px 15px;
+    gap: 12px;
+  }
+
+  .player-info {
+    min-width: 100%;
+    max-width: 100%;
+    order: 1;
+  }
+
+  .player-controls {
+    order: 2;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .player-progress-container {
+    order: 3;
+    min-width: 100%;
+    flex: 1;
+  }
+
+  .player-volume {
+    order: 4;
+    min-width: auto;
+  }
+
+  .player-visualizer {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .audio-player-bar {
+    padding: 10px 12px;
+  }
+
+  .player-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .player-btn.main {
+    width: 44px;
+    height: 44px;
+  }
+
+  .player-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .player-btn.main svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .player-artwork {
+    width: 40px;
+    height: 40px;
+  }
+
+  .player-track-name {
+    font-size: 0.85rem;
+  }
+
+  .volume-slider {
+    width: 60px;
+  }
+}
+
+/* ============================================
+   ANIMACIONES DE TRANSICIÓN
+   ============================================ */
+.audio-player-container .player-artwork {
+  animation: artworkPulse 2s ease-in-out infinite;
+}
+
+.audio-player-container.playing .player-artwork {
+  animation: artworkGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes artworkPulse {
+  0%, 100% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); }
+  50% { box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3); }
+}
+
+@keyframes artworkGlow {
+  0%, 100% { 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3),
+                0 0 20px rgba(212, 175, 55, 0.4);
+  }
+  50% { 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3),
+                0 0 35px rgba(212, 175, 55, 0.7);
+  }
+}
+
+/* ============================================
+   TOGGLE FLOTANTE (BOTÓN FIJO)
+   ============================================ */
+.audio-player-toggle-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, 
+    var(--player-gold-dark) 0%, 
+    var(--player-gold) 100%);
+  border: 2px solid var(--player-gold-light);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9998;
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(212, 175, 55, 0.4);
+  transition: all var(--player-transition);
+}
+
+.audio-player-toggle-float:hover {
+  transform: scale(1.1);
+  box-shadow: 
+    0 6px 30px rgba(0, 0, 0, 0.5),
+    0 0 50px rgba(212, 175, 55, 0.6);
+}
+
+.audio-player-toggle-float svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--player-blue-deep);
+}
+
+.audio-player-toggle-float.visible {
+  display: flex;
+}
+
+/* Badge de pista activa */
+.audio-player-toggle-float .playing-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 20px;
+  height: 20px;
+  background: var(--player-gold);
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--player-blue-deep);
+  font-weight: bold;
+}
+
+.audio-player-toggle-float.playing .playing-badge {
+  display: flex;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}

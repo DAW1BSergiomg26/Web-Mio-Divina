@@ -21,6 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/audio-player.css">
 
 <style>
 :root {
@@ -1142,31 +1143,7 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
   <p>© 2026 — Portal de la Divina Misericordia</p>
 </footer>
 
-<div class="audio-player-bar" id="playerBar" style="display: none;">
-  <div class="player-bar-info">
-    <div class="player-bar-icon">🎵</div>
-    <div>
-      <div class="player-bar-title" id="playerTitle">-</div>
-      <div class="player-bar-artist" id="playerArtist">Biblioteca Musical</div>
-    </div>
-  </div>
-  <div class="player-bar-controls">
-    <button class="player-btn" onclick="prevTrack()">⏮</button>
-    <button class="player-btn main" onclick="togglePlay()" id="mainPlayBtn"></button>
-    <button class="player-btn" onclick="nextTrack()">⏭</button>
-  </div>
-  <div class="player-progress">
-    <span class="progress-time" id="currentTime">0:00</span>
-    <div class="progress-bar-container" onclick="seekTrack(event)">
-      <div class="progress-bar-fill" id="progressBar"></div>
-    </div>
-    <span class="progress-time" id="totalTime">0:00</span>
-  </div>
-  <div class="player-volume">
-    <button class="volume-icon" onclick="toggleMute()">🔊</button>
-    <input type="range" class="volume-slider" min="0" max="1" step="0.05" value="0.7" onchange="setVolume(this.value)" id="volumeSlider">
-  </div>
-</div>
+<!-- El reproductor premium se inicializa desde audio-player.js -->
 
 <button class="scroll-btn scroll-up" onclick="scrollToTop()" aria-label="Subir">
   <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
@@ -1346,7 +1323,7 @@ function initLibrary() {
     cat.tracks.forEach((track, trackIdx) => {
       const globalIdx = trackNum++;
       tracksHtml += `
-        <div class="track-card" data-cat="${catIdx}" data-track="${trackIdx}" onclick="playTrack(${catIdx}, ${trackIdx})">
+        <div class="track-card" data-title="${track.title}" data-artist="${track.artist}" data-src="${track.src}" data-category="${cat.category}" data-cat="${catIdx}" data-track="${trackIdx}">
           <div class="track-number">${globalIdx}</div>
           <button class="track-play-btn" onclick="event.stopPropagation(); playTrack(${catIdx}, ${trackIdx})"></button>
           <div class="track-info">
@@ -1381,13 +1358,10 @@ function initLibrary() {
   });
 }
 
+// Funciones del reproductor antiguo - delegadas al reproductor premium
 function playTrack(catIdx, trackIdx) {
   const track = musicLibrary[catIdx].tracks[trackIdx];
-  
-  if (currentAudio) {
-    currentAudio.pause();
-    currentAudio = null;
-  }
+  const category = musicLibrary[catIdx].category;
   
   // Quitar playing y dimmed de todas las tarjetas
   document.querySelectorAll('.track-card').forEach(c => {
@@ -1396,103 +1370,71 @@ function playTrack(catIdx, trackIdx) {
   
   // Añadir playing y active a la pista seleccionada
   const card = document.querySelector(`.track-card[data-cat="${catIdx}"][data-track="${trackIdx}"]`);
-  card.classList.add('active', 'playing');
+  if (card) {
+    card.classList.add('active', 'playing');
+    
+    // Sombrear las demás pistas
+    document.querySelectorAll('.track-card').forEach(c => {
+      if (c !== card) {
+        c.classList.add('dimmed');
+      }
+    });
+  }
   
-  // Sombrear las demás pistas
-  document.querySelectorAll('.track-card').forEach(c => {
-    if (c !== card) {
-      c.classList.add('dimmed');
-    }
-  });
-  
-  currentAudio = new Audio(track.src);
-  currentAudio.volume = document.getElementById('volumeSlider').value;
-  currentTrackIndex = trackIdx;
-  currentCategoryIndex = catIdx;
-  
-  currentAudio.addEventListener('timeupdate', updateProgress);
-  currentAudio.addEventListener('loadedmetadata', () => {
-    document.getElementById('totalTime').textContent = formatTime(currentAudio.duration);
-  });
-  currentAudio.addEventListener('ended', nextTrack);
-  
-  currentAudio.play().then(() => {
-    isPlaying = true;
-    updatePlayButton();
-    showPlayerBar(track);
-  }).catch(err => {
-    console.error('Error reproduciendo:', err);
-    alert('Error al reproducir: ' + track.title);
-  });
-}
-
-function updateProgress() {
-  if (!currentAudio) return;
-  const pct = (currentAudio.currentTime / currentAudio.duration) * 100;
-  document.getElementById('progressBar').style.width = pct + '%';
-  document.getElementById('currentTime').textContent = formatTime(currentAudio.currentTime);
+  // Usar el reproductor premium
+  const player = AudioPlayerPremium.getInstance();
+  if (player) {
+    player.loadTrack(track, category, true);
+  }
 }
 
 function togglePlay() {
-  if (!currentAudio) return;
-  if (isPlaying) {
-    currentAudio.pause();
-    isPlaying = false;
-  } else {
-    currentAudio.play();
-    isPlaying = true;
+  const player = AudioPlayerPremium.getInstance();
+  if (player) {
+    player.togglePlay();
   }
-  updatePlayButton();
 }
 
 function updatePlayButton() {
-  const btn = document.getElementById('mainPlayBtn');
-  btn.classList.toggle('playing', isPlaying);
+  // Ya no necesario con el nuevo reproductor
 }
 
 function showPlayerBar(track) {
-  document.getElementById('playerBar').style.display = 'flex';
-  document.getElementById('playerTitle').textContent = track.title;
-  document.getElementById('currentTrackTitle').textContent = track.title;
-  document.getElementById('nowPlayingDisplay').style.display = 'flex';
+  // Ya no necesario con el nuevo reproductor
 }
 
 function prevTrack() {
-  if (currentCategoryIndex === null) return;
-  let newIdx = currentTrackIndex - 1;
-  if (newIdx < 0) newIdx = musicLibrary[currentCategoryIndex].tracks.length - 1;
-  playTrack(currentCategoryIndex, newIdx);
+  const player = AudioPlayerPremium.getInstance();
+  if (player) {
+    player.prev();
+  }
 }
 
 function nextTrack() {
-  if (currentCategoryIndex === null) return;
-  let newIdx = currentTrackIndex + 1;
-  if (newIdx >= musicLibrary[currentCategoryIndex].tracks.length) newIdx = 0;
-  playTrack(currentCategoryIndex, newIdx);
+  const player = AudioPlayerPremium.getInstance();
+  if (player) {
+    player.next();
+  }
 }
 
 function seekTrack(e) {
-  if (!currentAudio) return;
-  const rect = e.target.getBoundingClientRect();
-  const pct = (e.clientX - rect.left) / rect.width;
-  currentAudio.currentTime = pct * currentAudio.duration;
+  const player = AudioPlayerPremium.getInstance();
+  if (player) {
+    player.seek(e);
+  }
 }
 
 function setVolume(val) {
-  if (currentAudio) currentAudio.volume = val;
+  const player = AudioPlayerPremium.getInstance();
+  if (player) {
+    player.setVolume(val);
+  }
 }
 
 function toggleMute() {
-  const slider = document.getElementById('volumeSlider');
-  if (currentAudio) {
-    if (currentAudio.volume > 0) {
-      currentAudio.prevVol = currentAudio.volume;
-      currentAudio.volume = 0;
-      slider.value = 0;
-    } else {
-      currentAudio.volume = currentAudio.prevVol || 0.7;
-      slider.value = currentAudio.volume;
-    }
+  const player = AudioPlayerPremium.getInstance();
+  if (player) {
+    player.toggleMute();
   }
 }
 
@@ -1528,6 +1470,38 @@ document.querySelectorAll('a, button, .track-card').forEach(el => {
 });
 
 document.addEventListener('DOMContentLoaded', initLibrary);
+</script>
+
+<!-- Audio Player Premium -->
+<script src="js/audio-player.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Inicializar reproductor premium
+  const player = AudioPlayerPremium.init(musicLibrary, {
+    defaultVolume: 0.7,
+    fadeDuration: 1500,
+    autoPlay: false
+  });
+
+  // Función global para reproducir pistas desde las tarjetas
+  window.playTrack = function(track, category) {
+    player.loadTrack(track, category, true);
+  };
+
+  // Actualizar las tarjetas de pistas para usar el nuevo reproductor
+  document.querySelectorAll('.track-card, .track-item').forEach(function(el) {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', function() {
+      const title = this.dataset.title || this.querySelector('.track-title')?.textContent;
+      const artist = this.dataset.artist || this.querySelector('.track-artist')?.textContent;
+      const src = this.dataset.src;
+      
+      if (src) {
+        window.playTrack({ title: title, artist: artist, src: src }, this.dataset.category || 'Biblioteca Musical');
+      }
+    });
+  });
+});
 </script>
 
 </body>
