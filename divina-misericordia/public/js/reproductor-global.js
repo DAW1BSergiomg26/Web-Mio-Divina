@@ -708,19 +708,41 @@
         return;
       }
 
-      // Fade in
-      this.audio.volume = 0;
-      this.audio.play().then(() => {
-        this.fadeIn();
-        this.isPlaying = true;
-        this.actualizarUIPlay(true);
-        this.guardarEstado();
-      }).catch(err => {
-        console.error('Error al reproducir:', err);
-        // Intentar sin fade
-        this.audio.volume = this.volume;
-        this.audio.play().catch(e => console.error('Sin audio:', e));
-      });
+      // Reset audio and wait for ready state
+      this.audio.load();
+      
+      const reproducirAhora = () => {
+        this.audio.volume = 0;
+        const playPromise = this.audio.play();
+        
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            console.log('▶ Reproducción iniciada');
+            this.fadeIn();
+            this.isPlaying = true;
+            this.actualizarUIPlay(true);
+            this.guardarEstado();
+          }).catch(err => {
+            console.error('❌ Error al reproducir:', err.name, err.message);
+            // Error común: autoplay bloqueado - intentar con volumen
+            if (err.name === 'NotAllowedError') {
+              console.log('🔊 Autoplay bloqueado - haz clic para reproducir');
+              this.audio.volume = this.volume;
+              this.audio.play().catch(e => console.error('Error 2:', e));
+            }
+          });
+        }
+      };
+
+      // Wait for canplay event before trying to play
+      if (this.audio.readyState >= 2) {
+        reproducirAhora();
+      } else {
+        this.audio.addEventListener('canplay', reproducirAhora, { once: true });
+        this.audio.addEventListener('error', (e) => {
+          console.error('❌ Error de carga:', e);
+        }, { once: true });
+      }
     }
 
     pausar() {
