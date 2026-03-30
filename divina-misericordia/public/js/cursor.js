@@ -129,8 +129,8 @@
       this.cursorY += (this.mouseY - this.cursorY) * this.smoothing;
 
       if (this.cursor) {
-        this.cursor.style.left = this.cursorX + 'px';
-        this.cursor.style.top = this.cursorY + 'px';
+        // Usar transform para mejor rendimiento (no causa reflow)
+        this.cursor.style.transform = `translate3d(${this.cursorX}px, ${this.cursorY}px, 0) translate(-50%, -50%)`;
       }
 
       this.animationId = requestAnimationFrame(() => this.animate());
