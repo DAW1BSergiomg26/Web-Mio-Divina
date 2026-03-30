@@ -75,7 +75,7 @@
      */
     createAudioElement() {
       this.audio = new Audio();
-      this.audio.preload = 'metadata';
+      this.audio.preload = 'none';
       this.audio.crossOrigin = 'anonymous';
     }
 
@@ -294,7 +294,7 @@
     }
 
     /**
-     * Cargar pista internamente
+     * Cargar pista internamente - Lazy Loading
      */
     _doLoadTrack(track, category, autoPlay) {
       this.setState('loading');
@@ -311,12 +311,15 @@
       // Actualizar UI
       this.updateTrackInfo(track, category);
 
-      // Cargar audio
-      this.audio.src = track.src;
-      this.audio.load();
-
+      // Lazy loading: solo cargar audio cuando se va a reproducir
       if (autoPlay || this.options.autoPlay) {
+        this.audio.src = track.src;
+        this.audio.load();
         this.fadeIn();
+      } else {
+        // Solo pre-cargar metadata para mostrar duración
+        this.audio.src = track.src;
+        this.audio.preload = 'metadata';
       }
 
       // Mostrar reproductor
@@ -336,16 +339,20 @@
     }
 
     /**
-     * Reproducir
+     * Reproducir - carga audio bajo demanda
      */
     play() {
-      if (this.state.status === 'loading') {
-        // Esperar a que cargue
-        this.audio.addEventListener('canplay', () => {
-          this.audio.play().catch(e => console.error('Error al reproducir:', e));
-        }, { once: true });
-        return;
+      // Si no hay pista, no hacer nada
+      if (!this.state.currentTrack) return;
+      
+      // Lazy loading: si el src está vacío o es diferente, cargar
+      if (!this.audio.src || this.audio.src !== this.state.currentTrack.src) {
+        this.audio.src = this.state.currentTrack.src;
+        this.audio.load();
       }
+      
+      // Asegurar que preload está en 'auto' para reproducción
+      this.audio.preload = 'auto';
       
       this.fadeIn();
     }
@@ -626,9 +633,18 @@
       console.error('Error de audio:', e);
       this.setState('error');
       
-      // Mostrar mensaje de error
+      // Mostrar mensaje de error elegante
+      const trackTitle = this.state.currentTrack ? this.state.currentTrack.title : 'esta pista';
       if (this.elements.trackName) {
-        this.elements.trackName.textContent = 'Error al cargar';
+        this.elements.trackName.textContent = '⚠️ Error al cargar';
+      }
+      if (this.elements.artistName) {
+        this.elements.artistName.textContent = 'Intenta reproducir otra pista';
+      }
+      
+      // Notificar al usuario con mensajetoast si está disponible
+      if (window.showToast) {
+        window.showToast('No se pudo cargar: ' + trackTitle, 'error');
       }
     }
 
@@ -688,3 +704,50 @@
   }
 
 })();
+
+// Función global de notificaciones toast
+window.showToast = function(message, type) {
+  const existing = document.querySelector('.audio-toast');
+  if (existing) existing.remove();
+
+  const toast = document.createElement('div');
+  toast.className = 'audio-toast audio-toast-' + (type || 'info');
+  toast.textContent = message;
+  toast.style.cssText = `
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: ${type === 'error' ? 'rgba(180,50,50,0.95)' : 'rgba(30,60,90,0.95)'};
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    z-index: 10000;
+    animation: toastFadeIn 0.3s ease;
+    border: 1px solid ${type === 'error' ? '#ff6666' : '#d4af37'};
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  `;
+
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.animation = 'toastFadeOut 0.3s ease forwards';
+    setTimeout(() => toast.remove(), 300);
+  }, 4000);
+};
+
+// Estilos para toast
+const toastStyle = document.createElement('style');
+toastStyle.textContent = `
+  @keyframes toastFadeIn {
+    from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+  @keyframes toastFadeOut {
+    from { opacity: 1; transform: translateX(-50%) translateY(0); }
+    to { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  }
+`;
+document.head.appendChild(toastStyle);
