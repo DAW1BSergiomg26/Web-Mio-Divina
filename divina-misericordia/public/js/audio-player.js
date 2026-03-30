@@ -8,14 +8,18 @@
 (function() {
   'use strict';
 
-  // Evitar duplicación
-  if (window.AudioPlayerPremium) return;
+  console.log('[AudioPlayerPremium] Cargando módulo...');
 
   /**
    * Clase principal del reproductor
    */
   class AudioPlayerPremium {
     constructor(options = {}) {
+      console.log('[AudioPlayerPremium] Constructor llamado');
+      
+      // Asignar instancia inmediatamente
+      window.AudioPlayerPremium.instance = this;
+      
       // Configuración
       this.options = {
         fadeDuration: options.fadeDuration || 1500,
@@ -636,34 +640,44 @@
     }
   }
 
-  // Instancia singleton
-  AudioPlayerPremium.instance = null;
+  // Instancia singleton - asegurar que existe
+  if (typeof window.AudioPlayerPremium === 'function') {
+    window.AudioPlayerPremium.instance = null;
+  }
 
-  // Inicializar
+  // Constructor/Factory
   window.AudioPlayerPremium = function(options) {
-    if (!AudioPlayerPremium.instance) {
-      AudioPlayerPremium.instance = new AudioPlayerPremium(options);
+    // Verificar si ya existe una instancia
+    if (window.AudioPlayerPremium.instance && window.AudioPlayerPremium.instance instanceof AudioPlayerPremium) {
+      console.log('[AudioPlayerPremium] Usando instancia existente');
+      return window.AudioPlayerPremium.instance;
     }
-    return AudioPlayerPremium.instance;
+    
+    console.log('[AudioPlayerPremium] Creando nueva instancia');
+    window.AudioPlayerPremium.instance = new AudioPlayerPremium(options);
+    return window.AudioPlayerPremium.instance;
   };
 
   // Métodos estáticos de conveniencia
   window.AudioPlayerPremium.init = function(library, options = {}) {
+    console.log('[AudioPlayerPremium] Init llamado con', library ? library.length + ' categorías' : 'sin biblioteca');
     const player = window.AudioPlayerPremium(options);
     if (library) {
       player.setLibrary(library);
     }
+    console.log('[AudioPlayerPremium] Instancia creada:', !!player);
     return player;
   };
 
   window.AudioPlayerPremium.play = function(track, category) {
-    if (AudioPlayerPremium.instance) {
-      AudioPlayerPremium.instance.loadTrack(track, category, true);
+    if (window.AudioPlayerPremium.instance) {
+      window.AudioPlayerPremium.instance.loadTrack(track, category, true);
     }
   };
 
   window.AudioPlayerPremium.getInstance = function() {
-    return AudioPlayerPremium.instance;
+    console.log('[AudioPlayerPremium] getInstance:', !!window.AudioPlayerPremium.instance);
+    return window.AudioPlayerPremium.instance;
   };
 
   // Auto-inicializar cuando el DOM esté listo
