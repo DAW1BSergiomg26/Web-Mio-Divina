@@ -1,5 +1,27 @@
 # Changelog - Divina Misericordia
 
+## [2.3.0] - 2026-03-31
+
+### Added - Sistema Global Unificado
+- **global.css**: Variables CSS completas, tokens de diseño, clases utilitarias
+- **system-init.js**: Punto de entrada único para componentes globales
+- **cursor.js**: Módulo cursor divino (ya existente, integrado)
+- **scroll-buttons.js**: Botones de navegación con soporte color dinámico
+- **golden-line.js**: Línea luminosa post-footer con cruces pulsantes
+- **footer.js**: Footer global con variaciones de tema
+- **header.js**: Header global con variaciones específicas:
+  - default: variación base
+  - marianas: para devociones marianas
+  - caacupe: para Virgen de Caacupé
+  - musica: para Música Sacra
+- **404.html**: Página 404 personalizada espiritual
+- **spiritual-details.js**: Easter eggs y micro-textos espiritualizados
+
+### Fixed
+- Servidor index.js configurado para servir 404.html automáticamente
+
+---
+
 ## [2.2.0] - 2026-03-31
 
 ### Added - SEO y Accesibilidad WCAG 2.1 AA
