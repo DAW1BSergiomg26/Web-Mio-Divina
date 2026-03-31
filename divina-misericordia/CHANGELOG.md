@@ -17,6 +17,12 @@
 - **DivineUtils**: Utilidades debounce, throttle, rafThrottle
 - WebGL con pause/resume/throttle para 3D
 
+### Added - Integración de Componentes 3D en Páginas
+- **el-altar.html**: Nueva página para Altar Virtual 3D
+- **index.html**: WebGL Hero y Geometría Sagrada integrados
+- **musica-sacra.html**: Geometría Sagrada (Mandala) integrada
+- Menú actualizado con enlace a "El Altar"
+
 ---
 
 ## [2.3.0] - 2026-03-31
