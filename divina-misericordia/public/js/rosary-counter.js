@@ -106,7 +106,7 @@
         <div class="rosary-beads-container">
           <div class="rosary-beads"></div>
         </div>
-        <div class="rosary-progress">
+        <div class="rosary-progress" aria-live="polite" aria-atomic="false">
           <div class="progress-label">Cuenta: <span class="current-bead">${this.currentBead}</span> / 59</div>
           <div class="progress-bar">
             <div class="progress-fill" style="width: ${(this.currentBead / 59) * 100}%"></div>

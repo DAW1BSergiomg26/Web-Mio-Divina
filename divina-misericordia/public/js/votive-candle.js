@@ -53,7 +53,7 @@
       }
 
       this.container.innerHTML = `
-        <div class="votive-candle-container ${this.isLit ? 'lit' : ''}" role="button" tabindex="0" aria-label="Encender vela votiva">
+        <div class="votive-candle-container ${this.isLit ? 'lit' : ''}" role="button" tabindex="0" aria-label="Encender vela votiva" aria-pressed="${this.isLit}">
           <div class="candle-body">
             <div class="candle-flame ${this.isLit ? 'active' : ''}">
               <div class="flame-core"></div>

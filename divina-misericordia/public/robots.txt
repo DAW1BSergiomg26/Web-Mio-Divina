@@ -1,6 +1,6 @@
 # ============================================================
-# Robots.txt - Asociación Apóstoles de la Divina Misericordia
-# Última actualización: 2026-03-19
+# Robots.txt - El Portal de la Divina Misericordia
+# Última actualización: 2026-03-31
 # ============================================================
 
 User-agent: *
@@ -16,32 +16,34 @@ Disallow: /backups/
 Disallow: /public_backup_/
 Disallow: /Rufi_Divina/
 
-Crawl-delay: 2
+Crawl-delay: 1
 
 Sitemap: https://misericordiadejesus.es/sitemap.xml
 
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 2
+Crawl-delay: 1
 
 User-agent: Googlebot-Image
 Allow: /img/
-Crawl-delay: 5
+Crawl-delay: 3
 
 User-agent: Bingbot
 Allow: /
-Crawl-delay: 2
+Crawl-delay: 1
 
 User-agent: DuckDuckBot
 Allow: /
-Crawl-delay: 2
+Crawl-delay: 1
 
-# Archivos estáticos públicos permitidos
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+
 Allow: /humans.txt
 Allow: /sitemap.xml
 Allow: /robots.txt
 
-# Bloquear archivos de configuración sensibles
 Disallow: /*.json$
 Disallow: /*.log$
 Disallow: /*.env$
