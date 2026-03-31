@@ -34,6 +34,11 @@
   --z-cursor:    9999;
   --z-overlay:   900;
   --z-modal:     2000;
+  
+  /* Variables de color litúrgico (se actualizan dinámicamente) */
+  --liturgical-color: #d4af37;
+  --liturgical-color-light: #f4d87a;
+  --liturgical-color-dark: #a68920;
 }
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -709,4 +714,77 @@ nav a:hover::before, .nav-link:hover::before {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* =============================================
+   TEMAS DE TEMPORADAS LITÚRGICAS
+   Adaptación visual según el calendario
+   ============================================= */
+
+/* Transición suave entre temporadas */
+body {
+  transition: background 2s ease, color 2s ease;
+}
+
+/* Adviento - Morados profundos, azules nocturnos */
+body.season-adviento {
+  --season-bg: #1a1025;
+  --season-gold: #9b7cb8;
+  --season-accent: #6b5b7a;
+}
+body.season-adviento .hero::before {
+  background: radial-gradient(ellipse at top, rgba(107,91,122,0.4) 0%, transparent 60%);
+}
+
+/* Navidad - Blancos luminosos, dorados cálidos */
+body.season-navidad {
+  --season-bg: #151820;
+  --season-gold: #fff8e0;
+  --season-accent: #ffeeba;
+}
+body.season-navidad .hero::before {
+  background: radial-gradient(ellipse at top, rgba(255,248,224,0.25) 0%, transparent 60%);
+}
+
+/* Cuaresma - Morados penitenciales, menos saturación */
+body.season-cuaresma {
+  --season-bg: #1f1828;
+  --season-gold: #8b6b9b;
+  --season-accent: #6b4d7a;
+}
+body.season-cuaresma .hero::before {
+  background: radial-gradient(ellipse at top, rgba(107,77,122,0.3) 0%, transparent 60%);
+}
+
+/* Semana Santa - Rojo oscuro/negro, animaciones solemnes */
+body.season-semana-santa {
+  --season-bg: #120a0a;
+  --season-gold: #6b2222;
+  --season-accent: #8b3030;
+}
+body.season-semana-santa .hero::before {
+  background: radial-gradient(ellipse at top, rgba(139,48,48,0.3) 0%, transparent 60%);
+}
+body.season-semana-santa * {
+  animation-duration: 3s !important;
+}
+
+/* Pascua - Blancos y dorados brillantes, más luz y movimiento */
+body.season-pascua {
+  --season-bg: #0f1815;
+  --season-gold: #f4e8c1;
+  --season-accent: #fff5d6;
+}
+body.season-pascua .hero::before {
+  background: radial-gradient(ellipse at top, rgba(244,232,193,0.35) 0%, transparent 60%);
+}
+body.season-pascua * {
+  animation-duration: 1s !important;
+}
+
+/* Tiempo Ordinario - Verdes esmeralda, paleta base */
+body.season-ordinario {
+  --season-bg: #050814;
+  --season-gold: #d4af37;
+  --season-accent: #6fa8dc;
 }
