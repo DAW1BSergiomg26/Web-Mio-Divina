@@ -564,7 +564,7 @@ nav a.nav-otras-devociones::after {
 <body>
 
 <!-- ====== CUSTOM CURSOR ====== -->
-<div class="cursor-cruz" id="cursor" aria-hidden="true">
+<div class="cursor-cruz" id="cursor">
   <svg class="cruz-normal" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="cruzGold" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -652,7 +652,7 @@ nav a.nav-otras-devociones::after {
 <!-- ====== MAIN CONTENT ====== -->
 <main class="main-content">
 
-  <h1< class="reveal-rise">Noticias de la Iglesia</h1>
+  <h1 class="page-title">Noticias de la Iglesia</h1>
 
   <p class="intro-text">
     Mantente informado sobre las últimas noticias de la Iglesia Católica relacionadas con la Divina Misericordia y otras devociones.
@@ -722,7 +722,7 @@ nav a.nav-otras-devociones::after {
   </div>
 
   <div class="content-block">
-    <h2< class="reveal-rise">Fuentes de Noticias Católicas</h2>
+    <h2>Fuentes de Noticias Católicas</h2>
     <ul>
       <li><a href="https://www.vaticannews.va/es/vaticano.html" target="_blank" rel="noopener noreferrer">Vatican News</a> — Noticias oficiales del Vaticano, el Papa y la Santa Sede en español.</li>
       <li><a href="https://es.zenit.org/" target="_blank" rel="noopener noreferrer">Zenit</a> — Agencia internacional de noticias católicas con análisis y reportajes.</li>
@@ -739,7 +739,7 @@ nav a.nav-otras-devociones::after {
 <!-- ====== FOOTER MENÚ ====== -->
 <div class="footer-menu" style="position: relative; overflow: hidden;">
   <div class="sacred-glow-border"></div>
-  <h3< class="reveal-rise">Explora nuestra web</h3>
+  <h3 class="footer-menu-title">Explora nuestra web</h3>
   <div class="footer-menu-links">
         <a href="oraciones.html">Oraciones</a>
     <a href="via-crucis.html">Vía Crucis</a>
@@ -769,10 +769,10 @@ nav a.nav-otras-devociones::after {
 </div>
 
 <!-- ====== FOOTER PRINCIPAL ====== -->
-<footer< class="reveal-sacred">
+<footer class="main-footer sacred-footer">
   <span class="cross-glow">+</span>
   <p class="tagline">Jesús, En Vos Confío</p>
-  <p>< class="reveal-fade">
+  <p>© 2026 — Portal de la Divina Misericordia</p>
 </footer>
 
 <!-- ====== SCROLL BUTTONS ====== -->
@@ -897,24 +897,5 @@ nav a.nav-otras-devociones::after {
   });
 })();
 </script>
-
-<!-- Motion Design Bundle -->
-<script src="js/splash.js"></script>
-<script src="js/transitions.js"></script>
-<script src="js/scroll-reveal.js"></script>
-<script src="js/parallax.js"></script>
-<script src="js/reading-progress.js"></script>
-<script src="js/particles.js"></script>
-
-<!-- PWA y Service Worker -->
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(reg => console.log('[PWA] SW registrado'))
-      .catch(err => console.log('[PWA] SW failed:', err));
-  }
-</script>
-<script src="js/pwa-install.js"></script>
-<script src="js/notifications.js"></script>
 </body>
 </html>

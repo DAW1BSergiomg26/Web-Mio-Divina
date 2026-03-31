@@ -1043,7 +1043,7 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 <div class="bg"></div>
 <div class="music-notes-bg"></div>
 
-<div class="cursor-cruz" id="cursor" aria-hidden="true">
+<div class="cursor-cruz" id="cursor">
   <svg class="cruz-normal" viewBox="0 0 40 40">
     <defs>
       <linearGradient id="cg" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1086,10 +1086,10 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 </header>
 
 <main class="main-content">
-  <h1< class="reveal-rise">🎵 Biblioteca de Música Divina 🎵</h1>
+  <h1>🎵 Biblioteca de Música Divina 🎵</h1>
   <p class="subtitle">Música sacra y classical para tu oración y meditación</p>
 
-  <div class="library-header"< class="reveal-glow">
+  <div class="library-header">
     <div class="library-title">
       <span>📚</span>
       <span>Nuestra Colección</span>
@@ -1108,7 +1108,7 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 <div class="footer-menu" style="position: relative; overflow: hidden;">
   <div class="sacred-glow-border"></div>
   
-  <h3< class="reveal-rise">Explora nuestra web</h3>
+  <h3 class="footer-menu-title">Explora nuestra web</h3>
   <div class="footer-menu-links">
     <a href="oraciones.html">Oraciones</a>
     <a href="via-crucis.html">Vía Crucis</a>
@@ -1137,10 +1137,10 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
   </div>
 </div>
 
-<footer< class="reveal-sacred">
+<footer class="main-footer sacred-footer">
   <div class="cross-glow">+</div>
   <p class="tagline">Jesús, En Vos Confío</p>
-  <p>< class="reveal-fade">
+  <p>© 2026 — Portal de la Divina Misericordia</p>
 </footer>
 
 <!-- El reproductor premium se inicializa desde audio-player.js -->
@@ -1231,7 +1231,7 @@ function initLibrary() {
     cat.tracks.forEach((track, trackIdx) => {
       const globalIdx = trackNum++;
       tracksHtml += `
-        <div class="track-card"< class="reveal-fade">
+        <div class="track-card" data-title="${track.title}" data-artist="${track.artist}" data-src="${track.src}" data-category="${cat.category}" data-cat="${catIdx}" data-track="${trackIdx}">
           <div class="track-number">${globalIdx}</div>
           <button class="track-play-btn" onclick="event.stopPropagation(); playTrack(${catIdx}, ${trackIdx})"></button>
           <div class="track-info">
@@ -1245,7 +1245,7 @@ function initLibrary() {
     
     library.innerHTML += `
       <div class="music-category">
-        <div class="category-header"< class="reveal-glow">
+        <div class="category-header">
           <span class="category-icon">${cat.icon}</span>
           <span class="category-title">${cat.category}</span>
           <span class="category-count">${cat.tracks.length} pistas</span>
@@ -1458,24 +1458,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-
-<!-- Motion Design Bundle -->
-<script src="js/splash.js"></script>
-<script src="js/transitions.js"></script>
-<script src="js/scroll-reveal.js"></script>
-<script src="js/parallax.js"></script>
-<script src="js/reading-progress.js"></script>
-<script src="js/particles.js"></script>
-
-<!-- PWA y Service Worker -->
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(reg => console.log('[PWA] SW registrado'))
-      .catch(err => console.log('[PWA] SW failed:', err));
-  }
-</script>
-<script src="js/pwa-install.js"></script>
-<script src="js/notifications.js"></script>
 </body>
 </html>

@@ -194,16 +194,16 @@ header button{background:linear-gradient(135deg,var(--gold-dark),var(--gold));bo
 </div>
 
 <header>
-<h1< class="reveal-rise">Panel Admin - Divina Misericordia</h1>
+<h1>Panel Admin - Divina Misericordia</h1>
 <button onclick="logout()">Cerrar Sesión</button>
 </header>
 <div class="container">
 <div class="sidebar">
-<h3< class="reveal-rise">PÁGINAS PRINCIPALES</h3>
+<h3>PÁGINAS PRINCIPALES</h3>
 <ul id="pageList"></ul>
-<h3< class="reveal-rise">OTRAS DEVOCIONES</h3>
+<h3 style="margin-top:15px;">OTRAS DEVOCIONES</h3>
 <ul id="pageListDevociones"></ul>
-<h3< class="reveal-rise">SANTOS PAPAS</h3>
+<h3 style="margin-top:15px;">SANTOS PAPAS</h3>
 <ul id="pageListPapas"></ul>
 </div>
 <div class="main-content">
@@ -217,7 +217,7 @@ header button{background:linear-gradient(135deg,var(--gold-dark),var(--gold));bo
 <span id="saveStatus" class="saved">✓ Guardado</span>
 </div>
 <div class="editor">
-<h2< class="reveal-rise">✏️ EDITAR PÁGINA</h2>
+<h2>✏️ EDITAR PÁGINA</h2>
 <textarea id="contentEditor" placeholder="Escribe el código HTML aquí..."></textarea>
 <div class="editor-buttons">
 <button onclick="saveContent()" id="saveBtn">💾 GUARDAR CAMBIOS</button>
@@ -228,7 +228,7 @@ header button{background:linear-gradient(135deg,var(--gold-dark),var(--gold));bo
 </div>
 </div>
 <div class="preview">
-<h3< class="reveal-rise">👁️ VISTA PREVIA</h3>
+<h3>👁️ VISTA PREVIA</h3>
 <iframe id="previewFrame"></iframe>
 </div>
 </div>
@@ -379,7 +379,7 @@ document.querySelectorAll('#pageList li, #pageListDevociones li, #pageListPapas 
 if(li.textContent === page.name) li.classList.add('active');
 });
 }
-document.getElementById('pageInfo').innerHTML = `<p>< class="reveal-fade">📄 Archivo:</strong> ${page.file}</p><p>< class="reveal-fade">📝 Descripción:</strong> ${page.desc}</p>`;
+document.getElementById('pageInfo').innerHTML = `<p><strong>📄 Archivo:</strong> ${page.file}</p><p><strong>📝 Descripción:</strong> ${page.desc}</p>`;
 document.getElementById('pageStatus').textContent = `📄 Editando: ${page.name}`;
 historyStack = [];
 redoStack = [];
@@ -615,24 +615,5 @@ document.addEventListener('mouseover',e=>{
 })();
 </script>
 
-
-<!-- Motion Design Bundle -->
-<script src="js/splash.js"></script>
-<script src="js/transitions.js"></script>
-<script src="js/scroll-reveal.js"></script>
-<script src="js/parallax.js"></script>
-<script src="js/reading-progress.js"></script>
-<script src="js/particles.js"></script>
-
-<!-- PWA y Service Worker -->
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(reg => console.log('[PWA] SW registrado'))
-      .catch(err => console.log('[PWA] SW failed:', err));
-  }
-</script>
-<script src="js/pwa-install.js"></script>
-<script src="js/notifications.js"></script>
 </body>
 </html>

@@ -624,7 +624,7 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
 <canvas id="divine-canvas"></canvas>
 <div class="progress-bar" id="progressBar"></div>
 
-<div class="cursor-cruz" id="cursor" aria-hidden="true">
+<div class="cursor-cruz" id="cursor">
   <svg class="cruz-normal" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="cruzGold" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -700,7 +700,7 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
 <!-- ========== MAIN ========== -->
 <main class="main-content">
 
-  <h1< class="reveal-rise">Introducción a la Divina Misericordia</h1>
+  <h1 class="page-title">Introducción a la Divina Misericordia</h1>
   <p class="subtitle-line">✦ El mensaje de amor de Jesús al mundo ✦</p>
   <p class="intro-text">
     La Divina Misericordia es uno de los mensajes más profundos y esperanzadores de la fe católica.
@@ -752,8 +752,13 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
 
   <!-- MENSAJE -->
   <div class="content-block reveal">
-    <h2< class="reveal-rise">El mensaje de la Divina Misericordia</h2>
-    <p>< class="reveal-fade">
+    <h2>El mensaje de la Divina Misericordia</h2>
+    <p>
+      La Divina Misericordia es uno de los mensajes más profundos y esperanzadores de la fe católica.
+      Jesús reveló este mensaje a Santa María Faustina Kowalska en el siglo XX, pidiéndole que el mundo
+      entero conozca su amor sin límites. El núcleo de este mensaje es sencillo y transformador:
+      no importa cuán grandes sean nuestros pecados — el amor misericordioso de Dios siempre es mayor.
+    </p>
   </div>
 
   <div class="quote reveal">
@@ -763,27 +768,27 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
 
   <!-- PILARES -->
   <div class="content-block reveal">
-    <h2< class="reveal-rise">Los cuatro pilares de esta devoción</h2>
+    <h2>Los cuatro pilares de esta devoción</h2>
     <div class="pillars">
       <div class="pillar">
         <span class="pillar-icon">🖼️</span>
-        <h3< class="reveal-rise">La Imagen</h3>
-        <p>< class="reveal-fade">
+        <h3>La Imagen</h3>
+        <p>Jesús Misericordioso con los rayos rojo y blanco emanando de su Corazón.</p>
       </div>
       <div class="pillar">
         <span class="pillar-icon">✝</span>
-        <h3< class="reveal-rise">La Coronilla</h3>
-        <p>< class="reveal-fade">
+        <h3>La Coronilla</h3>
+        <p>Oración revelada por Jesús para obtener gracias y misericordia divina.</p>
       </div>
       <div class="pillar">
         <span class="pillar-icon">⏰</span>
-        <h3< class="reveal-rise">La Hora Sagrada</h3>
-        <p>< class="reveal-fade">
+        <h3>La Hora Sagrada</h3>
+        <p>Las 3 de la tarde: momento de la muerte de Jesús en la Cruz.</p>
       </div>
       <div class="pillar">
         <span class="pillar-icon">🌸</span>
-        <h3< class="reveal-rise">La Fiesta</h3>
-        <p>< class="reveal-fade">
+        <h3>La Fiesta</h3>
+        <p>El domingo después de Pascua: Fiesta de la Divina Misericordia para toda la Iglesia.</p>
       </div>
     </div>
   </div>
@@ -832,8 +837,13 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
 
   <!-- JESÚS EN TI CONFÍO -->
   <div class="content-block reveal">
-    <h2< class="reveal-rise">Jesús, En Vos Confío</h2>
-    <p>< class="reveal-fade">
+    <h2>Jesús, En Vos Confío</h2>
+    <p>
+      Esta frase resume toda la espiritualidad de la Divina Misericordia. Es una expresión de confianza
+      total en el amor de Dios, sin importar cuán grandes sean nuestros pecados o debilidades.
+      Jesús pidió a Santa Faustina que inscribiera estas palabras al pie de su imagen,
+      para que todo el que la contemplara las hiciera suyas con el corazón.
+    </p>
   </div>
 
   <div class="quote reveal">
@@ -856,7 +866,7 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
 <div class="footer-menu" style="position: relative; overflow: hidden;">
   <div class="sacred-glow-border"></div>
 
-  <h3< class="reveal-rise">Explora nuestra web</h3>
+  <h3 class="footer-menu-title">Explora nuestra web</h3>
   <div class="footer-menu-links">
         <a href="oraciones.html">Oraciones</a>
     <a href="via-crucis.html">Vía Crucis</a>
@@ -885,10 +895,10 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
   </div>
 </div>
 
-<footer< class="reveal-sacred">
+<footer class="main-footer sacred-footer">
   <div class="cross-glow">+</div>
   <p class="tagline">Jesús, En Vos Confío</p>
-  <p>< class="reveal-fade">
+  <p>© 2026 — Portal de la Divina Misericordia</p>
 </footer>
 
 <!-- Golden Line Divine -->
@@ -1240,24 +1250,5 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
   animateCursor();
 })();
 
-
-<!-- Motion Design Bundle -->
-<script src="js/splash.js"></script>
-<script src="js/transitions.js"></script>
-<script src="js/scroll-reveal.js"></script>
-<script src="js/parallax.js"></script>
-<script src="js/reading-progress.js"></script>
-<script src="js/particles.js"></script>
-
-<!-- PWA y Service Worker -->
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(reg => console.log('[PWA] SW registrado'))
-      .catch(err => console.log('[PWA] SW failed:', err));
-  }
-</script>
-<script src="js/pwa-install.js"></script>
-<script src="js/notifications.js"></script>
 </body>
 </html>

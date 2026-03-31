@@ -565,7 +565,7 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
 <canvas id="divine-canvas"></canvas>
 <div class="progress-bar" id="progressBar"></div>
 
-<div class="cursor-cruz" id="cursor" aria-hidden="true">
+<div class="cursor-cruz" id="cursor">
   <svg class="cruz-normal" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="cruzGold" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -644,7 +644,7 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
 <!-- ========== MAIN ========== -->
 <main class="main-content">
 
-  <h1< class="reveal-rise">Los Rayos de la Divina Misericordia</h1>
+  <h1 class="page-title">Los Rayos de la Divina Misericordia</h1>
   <p class="subtitle-line">✦ Agua y Sangre del Corazón de Jesús ✦</p>
   <p class="intro-text">
     Del Corazón abierto de Jesús, como nos reveló Santa Faustina, brotan dos rayos:
@@ -698,8 +698,14 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
   <div class="ray-section agua reveal">
     <div class="ray-icon agua">💧</div>
     <div class="ray-info agua">
-      <h3< class="reveal-rise">El Rayo de Agua</h3>
-      <p>< class="reveal-fade">
+      <h3>El Rayo de Agua</h3>
+      <p>
+        El rayo de agua cristalina y luminosa representa la misericordia pura e infinitamente amable de Dios.
+        Es el agua viva que lava las almas, las purifica y limpia de todo pecado.
+        Este rayo nos recuerda que la misericordia de Dios es más fuerte que cualquier impureza
+        y que en el bautismo recibimos este don de vida nueva. Jesús dijo a Santa Faustina
+        que el agua representa las almas que son justificadas por su gracia.
+      </p>
     </div>
   </div>
 
@@ -707,8 +713,14 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
   <div class="ray-section sangre reveal">
     <div class="ray-icon sangre">🩸</div>
     <div class="ray-info sangre">
-      <h3< class="reveal-rise">El Rayo de Sangre</h3>
-      <p>< class="reveal-fade">
+      <h3>El Rayo de Sangre</h3>
+      <p>
+        El rayo de sangre representa la Sangre de Cristo, el precio de nuestra redención.
+        Es el amor oblativo que se entrega hasta el extremo, que lava los pecados con su Pasión
+        y su muerte en la Cruz. Este rayo nos recuerda el sacrificio supremo de Jesús
+        y nos invita a acercarnos a la Eucaristía, donde su Sangre nos alimenta y nos une a Él
+        en la vida divina.
+      </p>
     </div>
   </div>
 
@@ -720,8 +732,8 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
 
   <!-- SIGNIFICADO -->
   <div class="content-block reveal">
-    <h2< class="reveal-rise">Significado Espiritual</h2>
-    <p>< class="reveal-fade">
+    <h2>Significado Espiritual</h2>
+    <p>Los dos rayos que emanan del Corazón de Jesús simbolizan los dos grandes medios de salvación que Dios nos ofrece:</p>
     <ul>
       <li><strong>La luz blanca:</strong> Representa la gracia santificante que ilumina y justifica nuestras almas</li>
       <li><strong>La sangre roja:</strong> Representa el sacrificio redentor de Cristo en la Cruz</li>
@@ -780,8 +792,8 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
 
   <!-- MEDITACIÓN -->
   <div class="content-block reveal">
-    <h2< class="reveal-rise">Meditación sobre los Rayos</h2>
-    <p>< class="reveal-fade">
+    <h2>Meditación sobre los Rayos</h2>
+    <p>Cuando meditemos en los rayos de la Divina Misericordia, podemos contemplar en silencio:</p>
     <ul>
       <li>Jesús abrió su Corazón por amor a cada uno de nosotros</li>
       <li>De Él fluyen incesantemente perdón, luz y vida para el alma</li>
@@ -811,7 +823,7 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
 <div class="footer-menu" style="position: relative; overflow: hidden;">
   <div class="sacred-glow-border"></div>
 
-  <h3< class="reveal-rise">Explora nuestra web</h3>
+  <h3 class="footer-menu-title">Explora nuestra web</h3>
   <div class="footer-menu-links">
     <a href="via-crucis.html">Vía Crucis</a>
     <a href="maria.html">María</a>
@@ -839,10 +851,10 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
   </div>
 </div>
 
-<footer< class="reveal-sacred">
+<footer class="main-footer sacred-footer">
   <div class="cross-glow">+</div>
   <p class="tagline">Jesús, En Vos Confío</p>
-  <p>< class="reveal-fade">
+  <p>© 2026 — Portal de la Divina Misericordia</p>
 </footer>
 
 <!-- ========== SCROLL BUTTONS ========== -->
@@ -956,24 +968,5 @@ document.addEventListener('click',e=>{
 })();
 </script>
 
-
-<!-- Motion Design Bundle -->
-<script src="js/splash.js"></script>
-<script src="js/transitions.js"></script>
-<script src="js/scroll-reveal.js"></script>
-<script src="js/parallax.js"></script>
-<script src="js/reading-progress.js"></script>
-<script src="js/particles.js"></script>
-
-<!-- PWA y Service Worker -->
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(reg => console.log('[PWA] SW registrado'))
-      .catch(err => console.log('[PWA] SW failed:', err));
-  }
-</script>
-<script src="js/pwa-install.js"></script>
-<script src="js/notifications.js"></script>
 </body>
 </html>

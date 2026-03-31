@@ -49,10 +49,10 @@
   </style>
 </head>
 <body>
-  <h1< class="reveal-rise">🕊️ Test - Reproductor Divino</h1>
+  <h1>🕊️ Test - Reproductor Divino</h1>
   
   <div class="test-section">
-    <h2< class="reveal-rise">Prueba Manual</h2>
+    <h2>Prueba Manual</h2>
     <button onclick="testPlay()">▶ Reproducir Canon</button>
     <button onclick="testPause()">⏸ Pausar</button>
     <button onclick="testChange()">🔄 Cambiar a Faustina</button>
@@ -60,7 +60,7 @@
   </div>
 
   <div class="test-section">
-    <h2< class="reveal-rise">Estado</h2>
+    <h2>Estado</h2>
     <button onclick="checkState()">📋 Ver Estado</button>
     <div class="log" id="log">Esperando...</div>
   </div>
@@ -126,24 +126,5 @@
       log('Error: ' + e.message);
     });
   </script>
-
-<!-- Motion Design Bundle -->
-<script src="js/splash.js"></script>
-<script src="js/transitions.js"></script>
-<script src="js/scroll-reveal.js"></script>
-<script src="js/parallax.js"></script>
-<script src="js/reading-progress.js"></script>
-<script src="js/particles.js"></script>
-
-<!-- PWA y Service Worker -->
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(reg => console.log('[PWA] SW registrado'))
-      .catch(err => console.log('[PWA] SW failed:', err));
-  }
-</script>
-<script src="js/pwa-install.js"></script>
-<script src="js/notifications.js"></script>
 </body>
 </html>

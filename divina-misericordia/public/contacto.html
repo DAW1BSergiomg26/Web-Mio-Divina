@@ -500,7 +500,7 @@ footer.main-footer .tagline {
 <canvas id="divine-canvas"></canvas>
 <div class="progress-bar" id="progressBar"></div>
 
-<div class="cursor-cruz" id="cursor" aria-hidden="true">
+<div class="cursor-cruz" id="cursor">
   <svg class="cruz-normal" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="cruzGold" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -579,7 +579,7 @@ footer.main-footer .tagline {
 <!-- ========== MAIN ========== -->
 <main class="main-content">
 
-  <h1< class="reveal-rise">Contacto</h1>
+  <h1 class="page-title">Contacto</h1>
   <p class="subtitle-line">✦ Estamos aquí para escucharte ✦</p>
   <p class="intro-text">
     Si tienes alguna pregunta, petición de oración o deseas saber más sobre
@@ -702,7 +702,7 @@ footer.main-footer .tagline {
 
   <!-- INFO DE CONTACTO -->
   <div class="contact-info reveal">
-    <h3< class="reveal-rise">Otros medios de contacto</h3>
+    <h3>Otros medios de contacto</h3>
     <div class="contact-info-item">
       <span class="icon">✉</span>
       <a href="mailto:info@misericordiadejesus.es">info@misericordiadejesus.es</a>
@@ -722,7 +722,7 @@ footer.main-footer .tagline {
 <div class="footer-menu" style="position: relative; overflow: hidden;">
   <div class="sacred-glow-border"></div>
 
-  <h3< class="reveal-rise">Explora nuestra web</h3>
+  <h3 class="footer-menu-title">Explora nuestra web</h3>
   <div class="footer-menu-links">
     <a href="via-crucis.html">Vía Crucis</a>
     <a href="santo-rosario.html">El Santo Rosario</a>
@@ -751,10 +751,10 @@ footer.main-footer .tagline {
   </div>
 </div>
 
-<footer< class="reveal-sacred">
+<footer class="main-footer sacred-footer">
   <div class="cross-glow">+</div>
   <p class="tagline">Jesús, En Vos Confío</p>
-  <p>< class="reveal-fade">
+  <p>© 2026 — Portal de la Divina Misericordia</p>
 </footer>
 
 <!-- ========== SCROLL BUTTONS ========== -->
@@ -966,24 +966,5 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 })();
 </script>
 
-
-<!-- Motion Design Bundle -->
-<script src="js/splash.js"></script>
-<script src="js/transitions.js"></script>
-<script src="js/scroll-reveal.js"></script>
-<script src="js/parallax.js"></script>
-<script src="js/reading-progress.js"></script>
-<script src="js/particles.js"></script>
-
-<!-- PWA y Service Worker -->
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(reg => console.log('[PWA] SW registrado'))
-      .catch(err => console.log('[PWA] SW failed:', err));
-  }
-</script>
-<script src="js/pwa-install.js"></script>
-<script src="js/notifications.js"></script>
 </body>
 </html>

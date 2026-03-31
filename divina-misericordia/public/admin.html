@@ -197,7 +197,7 @@ body{background:var(--blue-deep);color:var(--white);font-family:'EB Garamond',Ge
 
 <div class="login-container">
 <div class="login-box">
-<h1< class="reveal-rise">Panel de Administración</h1>
+<h1>Panel de Administración</h1>
 <input type="text" id="username" placeholder="Usuario">
 <input type="password" id="password" placeholder="Contraseña">
 <button onclick="login()">Entrar</button>
@@ -260,24 +260,5 @@ if(cursor){
 })();
 </script>
 
-
-<!-- Motion Design Bundle -->
-<script src="js/splash.js"></script>
-<script src="js/transitions.js"></script>
-<script src="js/scroll-reveal.js"></script>
-<script src="js/parallax.js"></script>
-<script src="js/reading-progress.js"></script>
-<script src="js/particles.js"></script>
-
-<!-- PWA y Service Worker -->
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(reg => console.log('[PWA] SW registrado'))
-      .catch(err => console.log('[PWA] SW failed:', err));
-  }
-</script>
-<script src="js/pwa-install.js"></script>
-<script src="js/notifications.js"></script>
 </body>
 </html>
