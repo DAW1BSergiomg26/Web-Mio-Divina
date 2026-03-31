@@ -316,6 +316,13 @@
     },
 
     /**
+     * 节流 en modo bajo consumo
+     */
+    throttle() {
+      this.rotationSpeed = 0.0003; // Reducir velocidad a la mitad
+    },
+
+    /**
      * Cambiar tipo de geometría
      */
     setType(type) {

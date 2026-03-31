@@ -3,23 +3,19 @@
 ## [2.4.0] - 2026-03-31
 
 ### Added - Experiencias 3D y WebGL
-- **webgl-hero.js**: Cielo nocturno sagrado con Three.js
-  - StarField shader con parallax mouse (+/-15deg)
-  - Nebulosa dorada/azul con noise shader
-  - Rayo de luz cenital volumétrico
-  - Cruz de partículas con elevación al scroll
-  - Fallback para móviles, IntersectionObserver para pause
-- **sacred-geometry.js**: Geometría sagrada generativa Canvas 2D
-  - Flor de la Vida, Estrella de David, Mandala, Vesica Piscis
-  - Click revela mensaje: "El cosmos entero es oración"
-  - Mandala único por día con descarga PNG
-  - Rotación lenta (60-90s), opacidad subliminal (0.04-0.08)
+- **webgl-hero.js**: Cielo nocturnal sagrado con Three.js
+- **sacred-geometry.js**: Geometría sagrada generativa
 - **virtual-altar-3d.js**: Altar 3D navegable
-  - Mesa mármol, cruz con glow, velas animadas, flores, pano
-  - OrbitControls limitado (+/-45deg horizontal, sin zoom)
-  - Click interacciones: cruz→cita, velas→toggle, flores→offer
-  - Modo Adoración con cámara automática
-  - Audio: ambiental catedral, crackling vela, campanilla
+
+### Added - Optimización de Rendimiento
+- **performance-manager.js**: 
+  - Pausa automática de animaciones cuando no están en viewport
+  - Detección de modo bajo consumo (móvil, reduced-motion, conexión lenta)
+  - Detección de inactividad (30s) para pausar
+  - Throttling automático en tareas largas
+- **DivineLazyLoader**: Carga lazy con IntersectionObserver
+- **DivineUtils**: Utilidades debounce, throttle, rafThrottle
+- WebGL con pause/resume/throttle para 3D
 
 ---
 

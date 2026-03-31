@@ -448,6 +448,11 @@
         }
       },
 
+      throttle() {
+        // Reducir fps a 30 en modo bajo consumo
+        this.frameSkip = true;
+      },
+
       animate() {
         this.animationId = requestAnimationFrame(() => this.animate());
         

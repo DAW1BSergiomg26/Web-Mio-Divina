@@ -668,6 +668,21 @@
     },
 
     /**
+     * 节流 en modo bajo consumo
+     */
+    throttle() {
+      // Reducir calidad de sombras y limitar fps
+      if (this.renderer) {
+        this.renderer.setPixelRatio(1);
+        this.scene.traverse(obj => {
+          if (obj.isMesh && obj.material) {
+            obj.material.needsUpdate = true;
+          }
+        });
+      }
+    },
+
+    /**
      * Animación principal
      */
     animate() {
