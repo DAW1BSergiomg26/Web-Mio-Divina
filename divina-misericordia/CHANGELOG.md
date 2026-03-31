@@ -1,5 +1,28 @@
 # Changelog - Divina Misericordia
 
+## [2.4.0] - 2026-03-31
+
+### Added - Experiencias 3D y WebGL
+- **webgl-hero.js**: Cielo nocturno sagrado con Three.js
+  - StarField shader con parallax mouse (+/-15deg)
+  - Nebulosa dorada/azul con noise shader
+  - Rayo de luz cenital volumétrico
+  - Cruz de partículas con elevación al scroll
+  - Fallback para móviles, IntersectionObserver para pause
+- **sacred-geometry.js**: Geometría sagrada generativa Canvas 2D
+  - Flor de la Vida, Estrella de David, Mandala, Vesica Piscis
+  - Click revela mensaje: "El cosmos entero es oración"
+  - Mandala único por día con descarga PNG
+  - Rotación lenta (60-90s), opacidad subliminal (0.04-0.08)
+- **virtual-altar-3d.js**: Altar 3D navegable
+  - Mesa mármol, cruz con glow, velas animadas, flores, pano
+  - OrbitControls limitado (+/-45deg horizontal, sin zoom)
+  - Click interacciones: cruz→cita, velas→toggle, flores→offer
+  - Modo Adoración con cámara automática
+  - Audio: ambiental catedral, crackling vela, campanilla
+
+---
+
 ## [2.3.0] - 2026-03-31
 
 ### Added - Sistema Global Unificado
