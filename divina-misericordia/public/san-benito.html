@@ -1339,5 +1339,16 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 <script src="js/parallax.js"></script>
 <script src="js/reading-progress.js"></script>
 <script src="js/particles.js"></script>
+
+<!-- PWA y Service Worker -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(reg => console.log('[PWA] SW registrado'))
+      .catch(err => console.log('[PWA] SW failed:', err));
+  }
+</script>
+<script src="js/pwa-install.js"></script>
+<script src="js/notifications.js"></script>
 </body>
 </html>
