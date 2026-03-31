@@ -617,3 +617,96 @@ footer.main-footer .tagline, footer.sacred-footer .tagline {
   .scroll-up   { top:96px; right:20px; }
   .scroll-down { bottom:16px; right:20px; }
 }
+
+/* =============================================
+   HOVER STATES PREMIUM
+   ============================================= */
+
+/* Botones con luz expansiva */
+.btn, button, .btn-primary, .btn-sagrado {
+  position: relative;
+  overflow: hidden;
+}
+.btn::before, button::before, .btn-primary::before, .btn-sagrado::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+.btn:hover::before, button:hover::before, .btn-primary:hover::before, .btn-sagrado:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Links con subrayado progresivo */
+a:not(.btn):not([class*="nav"]) {
+  position: relative;
+  text-decoration: none;
+}
+a:not(.btn):not([class*="nav"])::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+a:not(.btn):not([class*="nav"]):hover::after {
+  width: 100%;
+}
+
+/* Imágenes con halo dorado */
+img, .devocion-card, .santo-card {
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+img:hover, .devocion-card:hover, .santo-card:hover {
+  box-shadow: 0 0 30px rgba(212,175,55,0.4), 0 10px 40px rgba(0,0,0,0.3);
+}
+
+/* Tarjetas con elevación */
+.card, .track-card, .santo-card, .devocion-card {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), 
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+}
+.card:hover, .track-card:hover, .santo-card:hover, .devocion-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4), 0 0 20px rgba(212,175,55,0.15);
+}
+
+/* Nav links */
+nav a, .nav-link {
+  position: relative;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+nav a::before, .nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+nav a:hover::before, .nav-link:hover::before {
+  width: 60%;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

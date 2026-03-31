@@ -19,6 +19,7 @@
     footer: true,
     header: true,
     goldenLine: true,
+    animations: true,
     theme: 'default' // default, marianas, caacupe, musica
   };
 
@@ -38,6 +39,32 @@
     if (config.scrollButtons) initScrollButtons();
     if (config.footer) initFooter();
     if (config.goldenLine) initGoldenLine();
+    if (config.animations) initAnimations();
+  }
+
+  /**
+   * Inicializar sistema de animaciones
+   */
+  function initAnimations() {
+    // Scroll Reveal
+    if (window.ScrollReveal) {
+      window.ScrollReveal.init();
+    }
+    
+    // Parallax
+    if (window.ParallaxSpiritual) {
+      window.ParallaxSpiritual.init();
+    }
+    
+    // Reading Progress
+    if (window.ReadingProgress) {
+      window.ReadingProgress.init();
+    }
+    
+    // Particles (solo en secciones específicas)
+    if (window.SacredParticles) {
+      window.SacredParticles.init();
+    }
   }
 
   /**
