@@ -1,5 +1,49 @@
 # Changelog - Divina Misericordia
 
+## [2.2.0] - 2026-03-31
+
+### Added - SEO y Accesibilidad WCAG 2.1 AA
+- **sitemap.xml**: Actualizado con 51 URLs, priorities, lastmod
+- **robots.txt**: Configuración optimizada para indexación
+- **Meta tags**: Open Graph, Twitter Cards en todas las páginas
+- **Schema.org**: JSON-LD ReligiousOrganization, WebSite, Breadcrumbs
+- **ARIA labels**: Cursor, Rosario, Velas, Videos
+- **aria-current="page"**: Navegación activa accesible
+- **Skip link**: "Saltar al contenido principal"
+- **Focus styles**: outline con color dorado
+- **Tipografía responsiva**: clamp() para fuentes, line-height 1.65
+- **Scripts con defer**: Optimización de carga
+
+### Added - Calendario Litúrgico
+- **feast-days.js**: Base de datos con 80+ fiestas litúrgicas
+  - Fiestas marianas (12 diciembre, Lourdes, Fátima, etc.)
+  - Santos del santoral universal
+  - Advocaciones españolas (Covadonga, Pilar, etc.)
+- **liturgical-calendar.js**: Motor de calendario
+  - Algoritmo de Pascua (Meeus/Jones/Butcher)
+  - Cálculo automático de tiempos litúrgicos
+  - Tema visual dinámico según temporada
+- **liturgical-widgets.js**: Widgets interactivos
+  - FeastBanner: Banner de fiesta del día
+  - DailySaint: Santo del día
+  - LiturgicalMusic: Sugerencias musicales
+- **global.css**: Temas por temporada (adviento, navidad, cuaresma, pascua)
+
+### Added - Detalles Espirituales
+- **spiritual-details.js**: Easter eggs y micro-textos
+  - Easter Egg "AVE": Animación de luz dorada
+  - Título de pestaña dinámico
+  - Mensaje de consola ASCII
+  - Selección de texto personalizada
+  - Micro-textos espiritualizados
+- **README.md**: Documentación técnica completa
+
+### Fixed - HTML Malformed
+- Corregidas etiquetas `<section<`, `<footer<`, etc.
+- Restaurados caracteres correctos (Jesús, « », ✝, ☾, ⏰)
+
+---
+
 ## [2.1.0] - 2026-03-31
 
 ### Added - Sistema de Motion Design
