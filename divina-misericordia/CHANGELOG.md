@@ -1,5 +1,45 @@
 # Changelog - Divina Misericordia
 
+## [2.1.0] - 2026-03-31
+
+### Added - Sistema de Motion Design
+- **Splash Screen (splash.js)**: Pantalla de carga sagrada con animación de materialización luminosa
+  - Se muestra una vez por sesión (sessionStorage)
+  - Efecto de cruz con anillos concéntricos
+  - Duración: 2s máximo
+- **Page Transitions (transitions.js)**: Transiciones entre secciones
+  - Efecto cortina de luz
+  - Duración: 400ms salida + 400ms entrada
+  - Compatible con historial del navegador
+- **Scroll Reveal (scroll-reveal.js)**: Sistema de revelación por scroll
+  - Clases: `.reveal-fade`, `.reveal-rise`, `.reveal-glow`, `.reveal-sacred`
+  - Threshold: 0.15
+  - Soporte para stagger (delay escalonado)
+- **Parallax Espiritual (parallax.js)**: Parallax sutil
+  - Elementos con `data-parallax="0.3"`
+  - Optimizado con requestAnimationFrame
+  - Desactivado en móvil
+- **Reading Progress (reading-progress.js)**: Indicador de progreso
+  - Barra de progreso en top de página
+  - Color según tokens de la sección
+- **Partículas Sacras (particles.js)**: Canvas particles ligero
+  - Solo en: Inicio, Música Sacra, Devociones
+  - Máximo 15 partículas, 2-3px cada una
+  - Frame budget: 2ms máximo
+
+### Added - Hover States Premium
+- Botones con luz expansiva desde punto de cursor
+- Links con subrayado progresivo izquierda-derecha
+- Imágenes con halo dorado
+- Tarjetas con elevación suave
+- Nav links con línea inferior
+
+### Fixed
+- Respeto total de `prefers-reduced-motion: reduce` en todas las animaciones
+- Optimización de rendimiento: transform/opacity siempre, nunca top/left
+
+---
+
 ## [2.0.0] - 2026-03-31
 
 ### Added
