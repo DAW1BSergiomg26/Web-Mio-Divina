@@ -1209,6 +1209,9 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
   <div class="music-note celestial large note3" data-note="♬" style="animation-delay: 6.5s, 7s;"></div>
 </div>
 
+<!-- Audio Catalog - debe cargarse primero -->
+<script src="js/audio-catalog.js"></script>
+
 <script>
 // Usar catálogo centralizado
 const musicLibrary = AudioCatalog.getCategories();
@@ -1380,9 +1383,6 @@ document.querySelectorAll('a, button, .track-card').forEach(el => {
 
 document.addEventListener('DOMContentLoaded', initLibrary);
 </script>
-
-<!-- Audio Catalog -->
-<script src="js/audio-catalog.js"></script>
 
 <!-- Audio Player Premium -->
 <script src="js/audio-player.js"></script>
