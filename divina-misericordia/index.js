@@ -269,6 +269,13 @@ const server = http.createServer((req, res) => {
         console.error('DEBUG MP3 - Existe:', require('fs').existsSync(filePath));
       }
       if (err.code === 'ENOENT') {
+        // Servir página 404 personalizada
+        const notFoundPath = path.join(__dirname, 'public', '404.html');
+        if (fs.existsSync(notFoundPath)) {
+          const notFoundContent = fs.readFileSync(notFoundPath, 'utf8');
+          res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+          return res.end(notFoundContent);
+        }
         res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
         return res.end('<h1>404</h1><p>Archivo no encontrado</p>');
       }

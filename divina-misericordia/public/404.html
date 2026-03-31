@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✝ Página No Encontrada - Divina Misericordia</title>
+  <meta name="description" content="Esta página no existe, pero la fe que te trajo aquí, sí.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="manifest" href="manifest.json">
+  <style>
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f4e2a1;
+      --gold-dark: #b8960c;
+      --blue-deep: #050d1a;
+      --blue-mid: #0a1628;
+      --white: #faf7f0;
+      --celestial: #6fa8dc;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: radial-gradient(ellipse at top, #1a2538 0%, var(--blue-deep) 50%, #020408 100%);
+      color: var(--white);
+      font-family: 'EB Garamond', Georgia, serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      overflow-x: hidden;
+    }
+    
+    /* Cruz decorativa de fondo */
+    .cross-bg {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .cross-bg::before {
+      content: '✝';
+      font-size: 400px;
+      color: var(--gold);
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+    }
+
+    .error-code {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(4rem, 15vw, 8rem);
+      font-weight: 700;
+      color: var(--gold);
+      text-shadow: 0 0 30px rgba(212,175,55,0.5), 0 0 60px rgba(212,175,55,0.3);
+      line-height: 1;
+      margin-bottom: 1rem;
+      animation: gentlePulse 4s ease-in-out infinite;
+    }
+    @keyframes gentlePulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+
+    .title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.3rem, 4vw, 2rem);
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .message {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: rgba(250,247,240,0.8);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .message strong {
+      color: var(--gold-light);
+    }
+
+    /* Vela decorativa */
+    .candle-container {
+      position: relative;
+      width: 50px;
+      height: 100px;
+      margin: 2rem auto;
+    }
+    .flame-glow {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(circle, rgba(255,200,100,0.4) 0%, transparent 70%);
+      filter: blur(8px);
+      animation: flickerGlow 2s ease-in-out infinite;
+    }
+    .flame {
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 20px;
+      background: radial-gradient(ellipse at bottom, #fff5c0 0%, #ffd700 40%, #ff8c00 80%, transparent 100%);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      animation: flicker 0.5s ease-in-out infinite alternate;
+    }
+    .candle {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 60px;
+      background: linear-gradient(90deg, #e8dcc8 0%, #f5efe6 30%, #d4c4a8 100%);
+      border-radius: 3px 3px 6px 6px;
+    }
+    @keyframes flicker {
+      0% { transform: translateX(-50%) scale(1) rotate(-2deg); opacity: 1; }
+      100% { transform: translateX(-50%) scale(1.1) rotate(2deg); opacity: 0.9; }
+    }
+    @keyframes flickerGlow {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 0.9; }
+    }
+
+    /* Botones */
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      letter-spacing: 0.05em;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--blue-deep);
+      border: none;
+      font-weight: 600;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(212,175,55,0.4);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--gold-light);
+      border: 1px solid var(--gold);
+    }
+    .btn-outline:hover {
+      background: rgba(212,175,55,0.1);
+    }
+
+    /* Cita espiritual */
+    .quote-section {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 8px;
+    }
+    .quote-text {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .quote-author {
+      font-size: 0.9rem;
+      color: var(--gold-light);
+    }
+
+    /* Footer */
+    .footer-nav {
+      margin-top: 3rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .footer-nav a {
+      color: rgba(250,247,240,0.6);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.3s;
+    }
+    .footer-nav a:hover {
+      color: var(--gold-light);
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .actions {
+        flex-direction: column;
+      }
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cross-bg"></div>
+
+  <div class="container">
+    <div class="error-code">404</div>
+    
+    <h1 class="title">Esta página no existe</h1>
+    
+    <p class="message">
+      Pero la <strong>fe</strong> que te trajo aquí, sí.<br>
+      Tal vez buscabas algo en el santuario que ha sido movido<br>
+      o aún no hemos creado. Pero no te vayas con las manos vacías.
+    </p>
+
+    <div class="candle-container">
+      <div class="flame-glow"></div>
+      <div class="flame"></div>
+      <div class="candle"></div>
+    </div>
+
+    <div class="actions">
+      <a href="index.html" class="btn btn-primary">✝ Volver al Inicio</a>
+      <a href="coronilla.html" class="btn btn-outline">Rezar la Coronilla</a>
+    </div>
+
+    <div class="quote-section">
+      <p class="quote-text">"Jesús, en Vos Confío"</p>
+      <p class="quote-author">— Santa Faustina Kowalska</p>
+    </div>
+
+    <nav class="footer-nav">
+      <a href="coronilla.html">Coronilla</a>
+      <a href="novena.html">Novena</a>
+      <a href="oraciones.html">Oraciones</a>
+      <a href="maria.html">María</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </div>
+
+  <script>
+    // Título dinámico cuando cambia de pestaña
+    document.addEventListener('visibilitychange', () => {
+      document.title = document.hidden 
+        ? '✝ Regresa cuando quieras — Divina Misericordia' 
+        : '✝ Página No Encontrada - Divina Misericordia';
+    });
+  </script>
+</body>
+</html>
