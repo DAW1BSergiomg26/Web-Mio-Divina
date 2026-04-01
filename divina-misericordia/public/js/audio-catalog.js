@@ -1,11 +1,7 @@
 /**
- * Audio Catalog - Catálogo Centralizado de Música Sacra
+ * Audio Catalog - Catálogo Completo de Música Sacra
  * Sistema de Curaduría Musical para Divina Misericordia
- * 
- * Clasificaciones:
- * - tempo: 'lenta' | 'moderada' | 'procesional' | 'rapida'
- * - caracter: 'contemplativo' | 'jubiloso' | 'penitencial' | 'mariano' | 'epico' | 'sagrado' | 'celebracion'
- * - instrumentacion: 'gregoriano' | 'organo' | 'orquestal' | 'coral' | 'piano' | 'cuerda' | 'ambiente'
+ * Total: 145 pistas
  */
 
 const AudioCatalog = (function() {
@@ -24,17 +20,85 @@ const AudioCatalog = (function() {
   function getCategories() {
     return [
       {
-        category: "🙏 Himnos de Devoción",
+        category: "🎵 Música Sacra Premium - Los Grandes Intérpretes",
+        icon: "🎵",
+        tracks: [
+          { file: "103. Anna Netrebko - Pie Jesu.mp3", title: "Pie Jesu", artist: "Anna Netrebko", tempo: "lenta", caracter: "sagrado", instrumentacion: "coral", sections: ["santa-faustina", "oraciones", "divina-misericordia"] },
+          { file: "104. José Carreras - Pie Jesu.mp3", title: "Pie Jesu", artist: "José Carreras", tempo: "lenta", caracter: "sagrado", instrumentacion: "coral", sections: ["santa-faustina", "oraciones"] },
+          { file: "105. Luciano Pavarotti - Ave Maria, D839 - Remastered 2013.mp3", title: "Ave Maria", artist: "Luciano Pavarotti", tempo: "lenta", caracter: "mariano", instrumentacion: "coral", sections: ["maria", "virgen-lujan", "virgen-caacupe"] },
+          { file: "106. Pavarotti - Ave Maria.mp3", title: "Ave Maria", artist: "Luciano Pavarotti", tempo: "lenta", caracter: "mariano", instrumentacion: "coral", sections: ["maria", "devociones-marianas"] },
+          { file: "107. Pavarotti & Erip Claton - Holy Mother.mp3", title: "Holy Mother", artist: "Pavarotti & Eric Clapton", tempo: "lenta", caracter: "sagrado", instrumentacion: "coral", sections: ["maria", "oraciones"] },
+          { file: "108. Tres Tenores - Silent Night (1).mp3", title: "Silent Night", artist: "Tres Tenores", tempo: "lenta", caracter: "jubiloso", instrumentacion: "coral", sections: ["navidad", "index"] },
+          { file: "133. Mille cherubini in coro (After Wiegenlied, D. 498) [Arr. Mercurio for Tenor].mp3", title: "Mille Cherubini in Coro", artist: "Tenor", tempo: "lenta", caracter: "sagrado", instrumentacion: "coral", sections: ["misa", "oraciones"] }
+        ].map(convertTrack)
+      },
+      {
+        category: "🙏 Himnos de Devoción y Oración",
         icon: "🙏",
         tracks: [
-          { file: "00. Ave Maria.mp3", title: "Ave Maria", artist: "Canto Gregoriano", tempo: "lenta", caracter: "mariano", instrumentacion: "gregoriano", sections: ["maria", "virgen-lujan", "virgen-caacupe", "devociones-marianas", "maria-auxiliadora", "medalla-milagrosa", "santa-francisca-romana"] },
-          { file: "00. Jesus Paid It All.mp3", title: "Jesus Paid It All", artist: "Himno Evangélico", tempo: "moderada", caracter: "jubiloso", instrumentacion: "coral", sections: ["oraciones", "quienes-somos", "introduccion"] },
-          { file: "00. Santa Faustina, Himno Moderno.mp3", title: "Santa Faustina - Himno", artist: "Dedicación", tempo: "moderada", caracter: "sagrado", instrumentacion: "coral", sections: ["santa-faustina", "divina-misericordia"] },
+          { file: "00. Virgen de los Estudiantes.mp3", title: "Virgen de los Estudiantes", artist: "Canto Popular", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["maria", "virgen-lujan"] },
           { file: "01. Jesus is all the world to me.mp3", title: "Jesus is All the World", artist: "Himno Tradicional", tempo: "moderada", caracter: "jubiloso", instrumentacion: "coral", sections: ["oraciones", "index"] },
           { file: "02. More About Jesus.mp3", title: "More About Jesus", artist: "Himno Evangélico", tempo: "moderada", caracter: "contemplativo", instrumentacion: "coral", sections: ["estudios-biblicos", "oraciones"] },
           { file: "03. I Have Decided to Follow Jesus.mp3", title: "I Have Decided to Follow Jesus", artist: "Himno Tradicional", tempo: "moderada", caracter: "jubiloso", instrumentacion: "coral", sections: ["consagracion", "quienes-somos"] },
-          { file: "04. Sweet Hour of Prayer.mp3", title: "Sweet Hour of Prayer", artist: "Himno de Oración", tempo: "lenta", caracter: "contemplativo", instrumentacion: "piano", sections: ["oraciones", "hora-de-la-misericordia", "coronilla"] },
-          { file: "05. A New Name in Glory - Instrumental.mp3", title: "A New Name in Glory", artist: "Himno Celebración", tempo: "moderada", caracter: "celebracion", instrumentacion: "orquestal", sections: ["noticias", "galeria"] }
+          { file: "95. Sweet Hour of Prayer.mp3", title: "Sweet Hour of Prayer", artist: "Himno de Oración", tempo: "lenta", caracter: "contemplativo", instrumentacion: "piano", sections: ["oraciones", "hora-de-la-misericordia"] },
+          { file: "96. A New Name in Glory - Instrumental.mp3", title: "A New Name in Glory", artist: "Himno Celebración", tempo: "moderada", caracter: "celebracion", instrumentacion: "orquestal", sections: ["noticias", "galeria"] },
+          { file: "84. Jesus Paid It All.mp3", title: "Jesus Paid It All", artist: "Himno Evangélico", tempo: "moderada", caracter: "jubiloso", instrumentacion: "coral", sections: ["oraciones", "consagracion"] },
+          { file: "83. Himno a San José.mp3", title: "Himno a San José", artist: "Dedicación", tempo: "moderada", caracter: "sagrado", instrumentacion: "coral", sections: ["san-jose", "san-jose-dormido"] },
+          { file: "87. Santa Faustina, Himno Moderno.mp3", title: "Santa Faustina - Himno", artist: "Dedicación", tempo: "moderada", caracter: "sagrado", instrumentacion: "coral", sections: ["santa-faustina", "divina-misericordia"] },
+          { file: "119. Pregária.mp3", title: "Pregária", artist: "Canto Devocional", tempo: "lenta", caracter: "contemplativo", instrumentacion: "coral", sections: ["oraciones", "novena"] },
+          { file: "120. Repentir.mp3", title: "Repentir", artist: "Canto Devocional", tempo: "lenta", caracter: "penitencial", instrumentacion: "coral", sections: ["via-crucis", "oraciones"] },
+          { file: "88. Violin Sonata No. 3 in C Major, BWV 1005 (Arr. for Piano by Víkingur Ólafsson)_ I. Adagio.mp3", title: "Violin Sonata No. 3 - Adagio", artist: "J.S. Bach", tempo: "lenta", caracter: "contemplativo", instrumentacion: "piano", sections: ["estudios-biblicos", "oraciones"] }
+        ].map(convertTrack)
+      },
+      {
+        category: "🇦🇷 Devociones Marianas - Virgen de Luján",
+        icon: "🇦🇷",
+        tracks: [
+          { file: "100. Virgencita de Lujan.mp3", title: "Virgencita de Luján", artist: "Canto Popular", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-lujan", "maria"] },
+          { file: "101. Virgencita de Lujan.mp3", title: "Virgencita de Luján", artist: "Canto Popular", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-lujan", "devociones-marianas"] },
+          { file: "102. Virgencita de Luján.mp3", title: "Virgencita de Luján", artist: "Coro Parroquial", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-lujan", "oraciones"] },
+          { file: "99. Virgencita de Lujan.mp3", title: "Virgencita de Luján", artist: "Canto Devocional", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-lujan", "oraciones"] },
+          { file: "98. Virgen India.mp3", title: "Virgen India", artist: "Canto Devocional", tempo: "lenta", caracter: "mariano", instrumentacion: "coral", sections: ["maria", "virgen-caacupe"] },
+          { file: "86. Salve Regina.mp3", title: "Salve Regina", artist: "Canto Gregoriano", tempo: "lenta", caracter: "mariano", instrumentacion: "gregoriano", sections: ["maria", "virgen-lujan", "virgen-caacupe", "devociones-marianas"] }
+        ].map(convertTrack)
+      },
+      {
+        category: "🇵🇾 Devociones Marianas - Virgen de Caacupé",
+        icon: "🇵🇾",
+        tracks: [
+          { file: "74. Virgencita de Caacupe - Edgar Galeano.mp3", title: "Virgencita de Caacupé", artist: "Edgar Galeano", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "devociones-marianas"] },
+          { file: "75. Virgencita De Caacupe - Francisco Russo.mp3", title: "Virgencita de Caacupé", artist: "Francisco Russo", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "maria"] },
+          { file: "76. Virgencita de Caacupe - Grupo Coral (3).mp3", title: "Virgencita de Caacupé", artist: "Grupo Coral", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "maria"] },
+          { file: "77. Virgencita de Caacupé - Las Paraguayas.mp3", title: "Virgencita de Caacupé", artist: "Las Paraguayas", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "devociones-marianas"] },
+          { file: "78. Virgencita de Caacupe - Los Tres Sudamericanos.mp3", title: "Virgencita de Caacupé", artist: "Los Tres Sudamericanos", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "oraciones"] },
+          { file: "79. Virgencita de Caacupe - Odilio Roman.mp3", title: "Virgencita de Caacupé", artist: "Odilio Roman", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "maria"] },
+          { file: "80. Virgencita de Caacupe - Viky Codas.mp3", title: "Virgencita de Caacupé", artist: "Viky Codas", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "devociones-marianas"] },
+          { file: "145. Tupasy Ka'akuppe - Las Paraguayas.mp3", title: "Tupasy Ka'akupë", artist: "Las Paraguayas", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "maria"] }
+        ].map(convertTrack)
+      },
+      {
+        category: "🎼 Música Litúrgica y Sacramental",
+        icon: "🎼",
+        tracks: [
+          { file: "110. Agnus Dei (Choral Version of the Intermezzo from L'Arlésienne, Op. 23, WD 28).mp3", title: "Agnus Dei", artist: "G. Bizet", tempo: "lenta", caracter: "sagrado", instrumentacion: "coral", sections: ["misa", "oraciones"] },
+          { file: "113. German Mass, D.872_ Heilig, heilig, heilig.mp3", title: "Heilig", artist: "F. Schubert", tempo: "lenta", caracter: "sagrado", instrumentacion: "coral", sections: ["misa", "oraciones"] },
+          { file: "115. Panis Angelicus.mp3", title: "Panis Angelicus", artist: "C. Franck", tempo: "lenta", caracter: "sagrado", instrumentacion: "coral", sections: ["misa", "eucaristia"] },
+          { file: "117. Panis Angelicus.mp3", title: "Panis Angelicus", artist: "Cesar Franck", tempo: "lenta", caracter: "sagrado", instrumentacion: "coral", sections: ["misa", "oraciones"] },
+          { file: "128. Panis Angelicus, FWV 61.mp3", title: "Panis Angelicus", artist: "C. Franck", tempo: "lenta", caracter: "sagrado", instrumentacion: "coral", sections: ["eucaristia", "misa"] },
+          { file: "116. Messiah _ Part 2_ 42. Chorus_ _Hallelujah.mp3", title: "Hallelujah", artist: "G.F. Handel", tempo: "rapida", caracter: "jubiloso", instrumentacion: "coral", sections: ["misa", "pascoa", "navidad"] },
+          { file: "85. Messiah, HWV 56, Pt. 2_ No. 44, Chorus. Hallelujah, for the Lord God Omnipotent Reigneth.mp3", title: "Hallelujah (Messiah)", artist: "G.F. Handel", tempo: "rapida", caracter: "jubiloso", instrumentacion: "coral", sections: ["misa", "pascoa", "navidad"] },
+          { file: "127. Ave verum corpus, K. 618.mp3", title: "Ave Verum Corpus", artist: "W.A. Mozart", tempo: "lenta", caracter: "sagrado", instrumentacion: "coral", sections: ["eucaristia", "oraciones"] },
+          { file: "124. Sancta Maria.mp3", title: "Sancta Maria", artist: "Canto Gregoriano", tempo: "lenta", caracter: "mariano", instrumentacion: "gregoriano", sections: ["maria", "oraciones"] },
+          { file: "122. Pietà, Signore.mp3", title: "Pietà, Signore", artist: "Canto Gregoriano", tempo: "lenta", caracter: "penitencial", instrumentacion: "gregoriano", sections: ["via-crucis", "oraciones"] },
+          { file: "118. Pietà, Signore.mp3", title: "Pietà, Signore", artist: "A. Stradella", tempo: "lenta", caracter: "penitencial", instrumentacion: "coral", sections: ["via-crucis", "oraciones"] },
+          { file: "123. Stabat Mater_ II. Cujus animam gementem.mp3", title: "Stabat Mater", artist: "G.B. Pergolesi", tempo: "lenta", caracter: "penitencial", instrumentacion: "coral", sections: ["via-crucis", "maria"] },
+          { file: "129. Requiem_ IIh. Ingemisco.mp3", title: "Ingemisco", artist: "G. Verdi", tempo: "lenta", caracter: "contemplativo", instrumentacion: "coral", sections: ["oraciones", "difuntos"] },
+          { file: "70. Missa Solemnis In C Major 'Dilectantenmesse'- VI. Agnus Dei. Larghetto.mp3", title: "Agnus Dei - Missa Solemnis", artist: "L. van Beethoven", tempo: "lenta", caracter: "sagrado", instrumentacion: "coral", sections: ["misa", "oraciones"] },
+          { file: "93. Missa solemnis in D Major, Op. 123_ I. Kyrie_ Kyrie eleison. Assai sostenuto.mp3", title: "Kyrie - Missa Solemnis", artist: "L. van Beethoven", tempo: "lenta", caracter: "sagrado", instrumentacion: "coral", sections: ["misa", "oraciones"] },
+          { file: "71. Introductory Choir from \"Gloria in excelsis Deo\", BWV 191.mp3", title: "Gloria in Excelsis Deo", artist: "J.S. Bach", tempo: "rapida", caracter: "jubiloso", instrumentacion: "coral", sections: ["misa", "navidad"] },
+          { file: "73. Introductory Choir from \"Gloria in excelsis Deo\", BWV 191.mp3", title: "Gloria in Excelsis Deo", artist: "J.S. Bach", tempo: "rapida", caracter: "jubiloso", instrumentacion: "coral", sections: ["misa", "navidad"] },
+          { file: "72. Cantata BWV 147 Jesús, Alegría de los hombres.mp3", title: "Jesús, Alegría de los Hombres", artist: "J.S. Bach", tempo: "moderada", caracter: "jubiloso", instrumentacion: "coral", sections: ["misa", "oraciones"] },
+          { file: "132. Petite messe solennelle_ II. Gloria. Domine Deus.mp3", title: "Gloria - Domine Deus", artist: "G. Rossini", tempo: "moderada", caracter: "sagrado", instrumentacion: "coral", sections: ["misa", "oraciones"] }
         ].map(convertTrack)
       },
       {
@@ -42,13 +106,26 @@ const AudioCatalog = (function() {
         icon: "🎻",
         tracks: [
           { file: "05. Brandenburg Concerto No. 1 in F Major, BWV 1046_ I.mp3", title: "Brandenburg Concerto No. 1", artist: "J.S. Bach", tempo: "procesional", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["novena", "consagracion", "index"] },
-          { file: "01. Concierto-de-Branderburgo-n.1-BWV-1046-en-Fa-mayor-Adagio.mp3", title: "Concierto de Brandeburgo No. 1", artist: "J.S. Bach", tempo: "lenta", caracter: "contemplativo", instrumentacion: "orquestal", sections: ["estudios-biblicos", "oraciones"] },
-          { file: "03. Concierto-de-Branderburgo-n.3-BWV-1048-en-Sol-Mayor-Allegro-moderato.mp3", title: "Concierto de Brandeburgo No. 3", artist: "J.S. Bach", tempo: "moderada", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["noticias", "galeria"] },
+          { file: "90. Concierto-de-Branderburgo-n.1-BWV-1046-en-Fa-mayor-Adagio.mp3", title: "Concierto de Brandeburgo No. 1 - Adagio", artist: "J.S. Bach", tempo: "lenta", caracter: "contemplativo", instrumentacion: "orquestal", sections: ["estudios-biblicos", "oraciones"] },
+          { file: "92. Concierto-de-Branderburgo-n.1-BWV-1046-en-Fa-mayor-Adagio_ok.mp3", title: "Concierto de Brandeburgo No. 1", artist: "J.S. Bach", tempo: "lenta", caracter: "contemplativo", instrumentacion: "orquestal", sections: ["estudios-biblicos"] },
+          { file: "04. Concierto-de-Branderburgo-n.3-BWV-1048-en-Sol-Mayor-Allegro-moderato_ok.mp3", title: "Concierto de Brandeburgo No. 3", artist: "J.S. Bach", tempo: "moderada", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["noticias", "galeria"] },
+          { file: "94. Concierto-de-Branderburgo-n.3-BWV-1048-en-Sol-Mayor-Allegro-moderato.mp3", title: "Concierto de Brandeburgo No. 3", artist: "J.S. Bach", tempo: "moderada", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["noticias"] },
           { file: "06. Serse, HWV 40_ Largo _Ombra mai fu.mp3", title: "Largo 'Ombra mai fu' (Xerxes)", artist: "G.F. Handel", tempo: "lenta", caracter: "contemplativo", instrumentacion: "orquestal", sections: ["hora-de-la-misericordia", "via-crucis", "oraciones", "coronilla"] },
+          { file: "130. Serse, HWV 40, Act I_ Frondi tenere e belle - Ombra mai fu.mp3", title: "Ombra mai fu", artist: "G.F. Handel", tempo: "lenta", caracter: "contemplativo", instrumentacion: "orquestal", sections: ["oraciones", "hora-de-la-misericordia"] },
           { file: "09. J.S. Bach_ J.S. Bach_ Orchestral Suite No. 3 in D Major, BWV 1068_ 2.mp3", title: "Air (Suite No. 3)", artist: "J.S. Bach", tempo: "lenta", caracter: "contemplativo", instrumentacion: "orquestal", sections: ["hora-de-la-misericordia", "coronilla", "estudios-biblicos"] },
           { file: "07. Aria de la Suite no. 3 en Re Mayor, BWV 1068.mp3", title: "Aria de la Suite No. 3", artist: "J.S. Bach", tempo: "lenta", caracter: "contemplativo", instrumentacion: "cuerda", sections: ["oraciones", "maria"] },
           { file: "08. Handel _ Orch. Hale_ Keyboard Suite No. 4 in D Minor, HWV 437_ III. Sarabande.mp3", title: "Sarabande (Keyboard Suite)", artist: "G.F. Handel", tempo: "lenta", caracter: "penitencial", instrumentacion: "organo", sections: ["via-crucis", "estudios-biblicos", "oraciones"] },
-          { file: "01. Brockes Passion, HWV 48_ No. 1, Sinfonie.mp3", title: "Sinfonie (Brockes Passion)", artist: "G.F. Handel", tempo: "moderada", caracter: "sagrado", instrumentacion: "orquestal", sections: ["semana-santa", "via-crucis"] }
+          { file: "134. Adeste Fideles.mp3", title: "Adeste Fideles", artist: "Canto de Navidad", tempo: "rapida", caracter: "jubiloso", instrumentacion: "coral", sections: ["navidad", "index"] },
+          { file: "135. Gloria a te, Cristo Gesù.mp3", title: "Gloria a te, Cristo Gesù", artist: "Canto Gregoriano", tempo: "lenta", caracter: "sagrado", instrumentacion: "gregoriano", sections: ["navidad", "oraciones"] },
+          { file: "91. Jesu, Joy of Man's Desiring.mp3", title: "Jesu, Joy of Man's Desiring", artist: "J.S. Bach", tempo: "moderada", caracter: "jubiloso", instrumentacion: "coral", sections: ["oraciones", "index"] },
+          { file: "136. Jesu, Joy of Man's Desiring.mp3", title: "Jesu, Joy of Man's Desiring", artist: "J.S. Bach", tempo: "moderada", caracter: "jubiloso", instrumentacion: "coral", sections: ["oraciones", "index"] },
+          { file: "137. Jesu, Joy of Man's Desiring.mp3", title: "Jesu, Joy of Man's Desiring", artist: "J.S. Bach", tempo: "moderada", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["oraciones", "consagracion"] },
+          { file: "138. Jesu, Joy Of Man's Desiring.mp3", title: "Jesu, Joy of Man's Desiring", artist: "J.S. Bach", tempo: "moderada", caracter: "jubiloso", instrumentacion: "coral", sections: ["noticias", "galeria"] },
+          { file: "139.Jesu, Joy of Man's Desiring (From _Herz und Mund und Tat und Leben, BWV 147_).mp3", title: "Jesu, Joy of Man's Desiring", artist: "J.S. Bach", tempo: "moderada", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["novena", "oraciones"] },
+          { file: "140. Herz und Mund und Tat und Leben, Cantata BWV 147_ 10. Choral_ _Jesus bleibet meine Freude.mp3", title: "Jesus bleibet meine Freude", artist: "J.S. Bach", tempo: "moderada", caracter: "jubiloso", instrumentacion: "coral", sections: ["misa", "index"] },
+          { file: "114. Herz und Mund und Tat und Leben, Cantata BWV 147_ 10. Choral_ _Jesus bleibet meine Freude.mp3", title: "Jesus bleibet meine Freude", artist: "J.S. Bach", tempo: "moderada", caracter: "jubiloso", instrumentacion: "coral", sections: ["misa", "oraciones"] },
+          { file: "141. Jesu, Joy of Man's Desiring, BWV 147.mp3", title: "Jesu, Joy of Man's Desiring", artist: "J.S. Bach", tempo: "moderada", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["oraciones", "novena"] },
+          { file: "89. Brockes Passion, HWV 48_ No. 1, Sinfonie.mp3", title: "Sinfonie (Brockes Passion)", artist: "G.F. Handel", tempo: "moderada", caracter: "sagrado", instrumentacion: "orquestal", sections: ["semana-santa", "via-crucis"] }
         ].map(convertTrack)
       },
       {
@@ -57,17 +134,18 @@ const AudioCatalog = (function() {
         tracks: [
           { file: "14. Pachelbel Canon in D.mp3", title: "Canon in D (Pachelbel)", artist: "Pachelbel", tempo: "lenta", caracter: "contemplativo", instrumentacion: "cuerda", sections: ["oraciones", "coronilla", "hora-de-la-misericordia", "santo-rosario", "novena"] },
           { file: "15. Canon in D.mp3", title: "Canon in D", artist: "Pachelbel", tempo: "lenta", caracter: "contemplativo", instrumentacion: "cuerda", sections: ["oraciones", "coronilla", "maria"] },
-          { file: "00. Violin Sonata No. 3 in C Major, BWV 1005 (Arr. for Piano by Víkingur Ólafsson)_ I. Adagio.mp3", title: "Violin Sonata No. 3", artist: "J.S. Bach", tempo: "lenta", caracter: "contemplativo", instrumentacion: "piano", sections: ["estudios-biblicos", "oraciones"] },
           { file: "11. Swan Lake, Op. 20a_ I. Scène.mp3", title: "Swan Lake - Scène", artist: "P.I. Tchaikovsky", tempo: "lenta", caracter: "contemplativo", instrumentacion: "orquestal", sections: ["santo-rosario", "maria"] },
           { file: "12. Shades and Shadows.mp3", title: "Shades and Shadows", artist: "Ambient", tempo: "lenta", caracter: "contemplativo", instrumentacion: "ambiente", sections: ["oraciones", "introduccion"] },
           { file: "13. The Essence.mp3", title: "The Essence", artist: "Ambient", tempo: "lenta", caracter: "contemplativo", instrumentacion: "ambiente", sections: ["oraciones", "quienes-somos"] },
           { file: "16. Sonata violino solo representativa in A Major_ III. Allemande.mp3", title: "Sonata Violino Solo - Allemande", artist: "H.I.F. Biber", tempo: "moderada", caracter: "contemplativo", instrumentacion: "cuerda", sections: ["estudios-biblicos"] },
           { file: "17. Sonata quarta in D Major_ I. Ciaccona.mp3", title: "Sonata Quarta - Ciaccona", artist: "D. Castello", tempo: "moderada", caracter: "sagrado", instrumentacion: "cuerda", sections: ["via-crucis"] },
-          { file: "18. Violin Sonata No. 1 in D Minor_ VI. Aria.mp3", title: "Violin Sonata No. 1 - Aria", artist: "J.S. Bach", tempo: "lenta", caracter: "contemplativo", instrumentacion: "cuerda", sections: ["oraciones"] }
+          { file: "18. Violin Sonata No. 1 in D Minor_ VI. Aria.mp3", title: "Violin Sonata No. 1 - Aria", artist: "J.S. Bach", tempo: "lenta", caracter: "contemplativo", instrumentacion: "cuerda", sections: ["oraciones"] },
+          { file: "131. Wesendonck Lieder, WWV 91_ I. Der Engel (Orch. Mottl).mp3", title: "Der Engel", artist: "R. Wagner", tempo: "lenta", caracter: "contemplativo", instrumentacion: "orquestal", sections: ["oraciones", "maria"] },
+          { file: "109. 4 Sacred Pieces (Quattro pezzi sacri)_ Laudi alla vergine Maria.mp3", title: "Laudi alla Vergine Maria", artist: "G. Puccini", tempo: "lenta", caracter: "mariano", instrumentacion: "coral", sections: ["maria", "oraciones"] }
         ].map(convertTrack)
       },
       {
-        category: "✨ Música de Gloria",
+        category: "✨ Música de Gloria - Vivaldi y Grandes Maestros",
         icon: "✨",
         tracks: [
           { file: "10. Spring (La Primavera) Op.8 No.1 E Major_ Allegro.mp3", title: "La Primavera (Spring)", artist: "A. Vivaldi", tempo: "rapida", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["novena", "noticias", "index"] },
@@ -82,22 +160,18 @@ const AudioCatalog = (function() {
         category: "🎬 Música Cinematográfica Sagrada",
         icon: "🎬",
         tracks: [
-          { file: "06. Braveheart-End Titles.mp3", title: "Braveheart - End Titles", artist: "James Horner", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["via-crucis", "consagracion"] },
-          { file: "00 .Braveheart-End Titles.mp3", title: "Braveheart - End Titles (Alt)", artist: "James Horner", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["via-crucis", "martires"] },
           { file: "27. Now We Are Free (Gladiator) - Instrumental Version.mp3", title: "Now We Are Free (Gladiator)", artist: "Hans Zimmer", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["quienes-somos", "index", "noticias"] },
           { file: "28. Now We Are Free (from _Gladiator_) - Piano Solo Version.mp3", title: "Now We Are Free - Piano", artist: "Hans Zimmer", tempo: "lenta", caracter: "epico", instrumentacion: "piano", sections: ["oraciones", "consagracion"] },
           { file: "29. Tennessee.mp3", title: "Tennessee", artist: "Hans Zimmer", tempo: "moderada", caracter: "epico", instrumentacion: "orquestal", sections: ["index", "quienes-somos"] },
-          { file: "30. Honor Him.mp3", title: "Honor Him", artist: "Hans Zimmer", tempo: "procesional", caracter: "epico", instrumentacion: "orquestal", sections: ["santos", "consagracion"] },
-          { file: "31. The Kiss.mp3", title: "The Kiss", artist: "James Horner", tempo: "lenta", caracter: "contemplativo", instrumentacion: "orquestal", sections: ["maria", "oraciones"] },
-          { file: "32. Elysium.mp3", title: "Elysium", artist: "James Horner", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["santos", "consagracion"] },
-          { file: "33. Evenstar.mp3", title: "Evenstar", artist: "Howard Shore", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["index", "espacio-jovenes"] },
-          { file: "55. A Gift Of A Thistle.mp3", title: "A Gift of a Thistle", artist: "James Horner", tempo: "lenta", caracter: "epico", instrumentacion: "celta", sections: ["maria", "devociones-marianas"] },
+          { file: "81 .Braveheart-End Titles.mp3", title: "Braveheart - End Titles", artist: "James Horner", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["via-crucis", "consagracion"] },
+          { file: "97. Braveheart-End Titles.mp3", title: "Braveheart - End Titles (Alt)", artist: "James Horner", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["via-crucis", "martires"] },
           { file: "56. For The Love Of A Princess.mp3", title: "For the Love of a Princess", artist: "James Horner", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["maria", "virgen-lujan"] },
           { file: "57. Murron's Burial.mp3", title: "Murron's Burial", artist: "James Horner", tempo: "lenta", caracter: "penitencial", instrumentacion: "orquestal", sections: ["via-crucis", "oraciones"] },
           { file: "58. Revenge [Braveheart - Original Sound Track].mp3", title: "Revenge (Braveheart)", artist: "James Horner", tempo: "rapida", caracter: "epico", instrumentacion: "orquestal", sections: ["martires", "consagracion"] },
           { file: "59. The Battle Of Stirling [Braveheart - Original Sound Track].mp3", title: "The Battle of Stirling", artist: "James Horner", tempo: "rapida", caracter: "epico", instrumentacion: "orquestal", sections: ["noticias", "index"] },
           { file: "60. The Princess Pleads For Wallace's Life.mp3", title: "The Princess Pleads for Wallace", artist: "James Horner", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["maria", "oraciones"] },
-          { file: "61.The Secret Wedding.mp3", title: "The Secret Wedding", artist: "James Horner", tempo: "moderada", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["noticias", "galeria"] }
+          { file: "61.The Secret Wedding.mp3", title: "The Secret Wedding", artist: "James Horner", tempo: "moderada", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["noticias", "galeria"] },
+          { file: "55. A Gift Of A Thistle.mp3", title: "A Gift of a Thistle", artist: "James Horner", tempo: "lenta", caracter: "epico", instrumentacion: "celta", sections: ["maria", "devociones-marianas"] }
         ].map(convertTrack)
       },
       {
@@ -112,9 +186,8 @@ const AudioCatalog = (function() {
           { file: "49. Aphelion.mp3", title: "Aphelion", artist: "Hans Zimmer", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["index", "oraciones"] },
           { file: "50. Winter Is Here.mp3", title: "Winter is Here", artist: "Ramin Djawadi", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["index", "invierno"] },
           { file: "42. No Sacrifice, No Victory.mp3", title: "No Sacrifice, No Victory", artist: "Steve Jablonsky", tempo: "rapida", caracter: "epico", instrumentacion: "orquestal", sections: ["consagracion", "martires"] },
-          { file: "41. Pact Sworn in Blood.mp3", title: "Pact Sworn in Blood", artist: "Inon Zur", tempo: "moderada", caracter: "epico", instrumentacion: "orquestal", sections: ["consagracion", "oraciones"] },
           { file: "44. Promentory.mp3", title: "Promentory (Last of the Mohicans)", artist: "Trevor Jones", tempo: "procesional", caracter: "epico", instrumentacion: "orquestal", sections: ["index", "quienes-somos"] },
-          { file: "46. Blackheart.mp3", "title": "Blackheart", artist: "Inon Zur", tempo: "rapida", caracter: "epico", instrumentacion: "orquestal", sections: ["martires"] },
+          { file: "46. Blackheart.mp3", title: "Blackheart", artist: "Inon Zur", tempo: "rapida", caracter: "epico", instrumentacion: "orquestal", sections: ["martires"] },
           { file: "47. Goodbye Brother.mp3", title: "Goodbye Brother", artist: "Inon Zur", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["oraciones", "san-francisco"] },
           { file: "48. Optimus.mp3", title: "Optimus", artist: "Steve Jablonsky", tempo: "rapida", caracter: "epico", instrumentacion: "orquestal", sections: ["quienes-somos", "noticias"] }
         ].map(convertTrack)
@@ -148,15 +221,21 @@ const AudioCatalog = (function() {
         ].map(convertTrack)
       },
       {
-        category: "❤️ Divina Misericordia",
+        category: "❤️ Divina Misericordia - Oraciones y Devociones",
         icon: "❤️",
         tracks: [
           { file: "24. Vía Crucis - Para Orar.mp3", title: "Vía Crucis - Para Orar", artist: "Devoción", tempo: "lenta", caracter: "penitencial", instrumentacion: "orquestal", sections: ["via-crucis"] },
           { file: "25. Novena Divine Inspiration.mp3", title: "Novena Divine Inspiration", artist: "Oración", tempo: "lenta", caracter: "contemplativo", instrumentacion: "orquestal", sections: ["novena", "oraciones"] },
           { file: "26. Hora de la Coronilla de la Divina Misericordia - Instrumental.mp3", title: "Hora de la Coronilla", artist: "Divina Misericordia", tempo: "lenta", caracter: "contemplativo", instrumentacion: "orquestal", sections: ["hora-de-la-misericordia", "coronilla"] },
-          { file: "00. Salve Regina.mp3", title: "Salve Regina", artist: "Canto Gregoriano", tempo: "lenta", caracter: "mariano", instrumentacion: "gregoriano", sections: ["maria", "virgen-lujan", "virgen-caacupe", "devociones-marianas"] },
-          { file: "00. Himno a San José.mp3", title: "Himno a San José", artist: "Dedicación", tempo: "moderada", caracter: "sagrado", instrumentacion: "coral", sections: ["san-jose", "san-jose-dormido"] },
-          { file: "00. Messiah, HWV 56, Pt. 2_ No. 44, Chorus. Hallelujah, for the Lord God Omnipotent Reigneth.mp3", title: "Hallelujah (Messiah)", artist: "G.F. Handel", tempo: "rapida", caracter: "jubiloso", instrumentacion: "coral", sections: ["index", "noticias", "consagracion", "pascoa"] }
+          { file: "82. Ave Maria.mp3", title: "Ave Maria", artist: "Canto Gregoriano", tempo: "lenta", caracter: "mariano", instrumentacion: "gregoriano", sections: ["maria", "virgen-lujan"] },
+          { file: "111. Ave Maria.mp3", title: "Ave Maria", artist: "Canto Gregoriano", tempo: "lenta", caracter: "mariano", instrumentacion: "gregoriano", sections: ["maria", "oraciones"] },
+          { file: "112. Ave Maria.mp3", title: "Ave Maria", artist: "Coro de la Catedral", tempo: "lenta", caracter: "mariano", instrumentacion: "coral", sections: ["maria", "virgen-caacupe"] },
+          { file: "121. Ave Maria.mp3", title: "Ave Maria", artist: "Voces Sacras", tempo: "lenta", caracter: "mariano", instrumentacion: "gregoriano", sections: ["maria", "virgen-lujan"] },
+          { file: "125. Ave Maria, CG 89a (After J.S. Bach_ Prelude in C Major, BWV 846).mp3", title: "Ave Maria", artist: "Canto Gregoriano", tempo: "lenta", caracter: "mariano", instrumentacion: "gregoriano", sections: ["maria", "oraciones"] },
+          { file: "126. Ave Maria, D. 839.mp3", title: "Ave Maria", artist: "Franz Schubert", tempo: "lenta", caracter: "mariano", instrumentacion: "coral", sections: ["maria", "virgen-lujan"] },
+          { file: "142. Ave Maria, dolce Maria.mp3", title: "Ave Maria, dolce Maria", artist: "Canto Gregoriano", tempo: "lenta", caracter: "mariano", instrumentacion: "gregoriano", sections: ["maria", "devociones-marianas"] },
+          { file: "143. Ave Maria.mp3", title: "Ave Maria", artist: "Coro Mariano", tempo: "lenta", caracter: "mariano", instrumentacion: "coral", sections: ["maria", "virgen-caacupe"] },
+          { file: "144. Ave Maria (Duet With Placido Domingo) (with Plácido Domingo).mp3", title: "Ave Maria (Dueto)", artist: "Plácido Domingo", tempo: "lenta", caracter: "mariano", instrumentacion: "coral", sections: ["maria", "oraciones"] }
         ].map(convertTrack)
       }
     ];
@@ -191,11 +270,15 @@ const AudioCatalog = (function() {
   }
 
   return {
-    version: "2.0",
-    lastUpdated: "2026-03-31",
-    totalTracks: 70,
+    version: "4.0",
+    lastUpdated: "2026-04-02",
+    totalTracks: 0,
     getCategories: getCategories,
     getTrackBySection: getTrackBySection,
     getAllSections: getAllSections
   };
 })();
+
+// Actualizar contador de canciones
+AudioCatalog.totalTracks = AudioCatalog.getCategories().reduce((acc, cat) => acc + cat.tracks.length, 0);
+console.log('🎵 AudioCatalog cargado con', AudioCatalog.totalTracks, 'canciones');

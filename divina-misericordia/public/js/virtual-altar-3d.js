@@ -1,14 +1,39 @@
 /**
- * Altar Virtual 3D - Experiencia inmersiva de espacio sagrado
- * Three.js con OrbitControls y audio sincrónico
+ * Altar Virtual 3D - Experiencia Inmersiva de Espacio Sagrado
+ * Three.js con shaders avanzados e interactividad completa
+ * Versión optimizada y corregida
  */
 (function() {
   'use strict';
 
-  // Cargar Three.js y OrbitControls si no existen
-  const loadThreeJS = () => {
-    return new Promise((resolve) => {
-      if (typeof THREE !== 'undefined') {
+  let THREE = window.THREE;
+  let scene, camera, renderer, controls;
+  let altarGroup, crossGroup, candles = [], flowers = [];
+  let isInitialized = false;
+  let animationId = null;
+  let audioContext = null;
+  let isAdorationMode = false;
+
+  const verses = [
+    'Jn 3:16 - "Porque tanto amó Dios al mundo que dio a su Hijo único"',
+    'Jn 1:1 - "En el principio existía la Palabra"',
+    'Jn 1:14 - "La Palabra se hizo carne"',
+    'Lc 22:19 - "Esto es mi cuerpo que se da por vosotros"',
+    'Lc 22:20 - "Esta copa es la nueva alianza en mi sangre"',
+    'Mt 26:26 - "Tomad y comed, esto es mi cuerpo"',
+    'Jn 6:54 - "El que come mi carne y bebe mi sangre tiene vida eterna"',
+    'Mt 28:20 - "Yo estaré con ustedes todos los días"',
+    'Sal 23:1 - "El Señor es mi pastor, nada me falta"',
+    'Sal 23:4 - "Aunque marche por valle de sombra muerte, no temeré"'
+  ];
+
+  const candleStates = [true, true, true, true];
+
+  // Cargar THREE.js si no existe
+  function loadThreeJS() {
+    return new Promise((resolve, reject) => {
+      if (window.THREE && window.THREE.OrbitControls) {
+        THREE = window.THREE;
         resolve();
         return;
       }
@@ -20,721 +45,761 @@
         // Cargar OrbitControls
         const orbitScript = document.createElement('script');
         orbitScript.src = 'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js';
-        orbitScript.onload = resolve;
+        orbitScript.onload = () => {
+          THREE = window.THREE;
+          resolve();
+        };
+        orbitScript.onerror = reject;
         document.head.appendChild(orbitScript);
       };
+      threeScript.onerror = reject;
       document.head.appendChild(threeScript);
     });
-  };
+  }
 
-  const Altar3D = {
-    container: null,
-    scene: null,
-    camera: null,
-    renderer: null,
-    controls: null,
-    altar: null,
-    cross: null,
-    candles: [],
-    flowers: [],
-    altarCloth: null,
-    audioContext: null,
-    ambientAudio: null,
-    isPlaying: false,
-    isAutoRotate: false,
-    isVisible: false,
-    audioInitialized: false,
+  // Inicializar escena
+  function initScene() {
+    const container = document.getElementById('altar-3d-container');
+    if (!container) {
+      console.error('Contenedor no encontrado');
+      return false;
+    }
 
-    /**
-     * Inicializar Altar 3D
-     */
-    async init(containerSelector = '#altar-3d-container') {
-      await loadThreeJS();
+    // Crear escena
+    scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x050d1a);
+    scene.fog = new THREE.Fog(0x050d1a, 3, 15);
 
-      this.container = document.querySelector(containerSelector);
-      if (!this.container) {
-        this.createContainer(containerSelector);
-      }
+    // Cámara
+    const aspect = container.clientWidth / container.clientHeight;
+    camera = new THREE.PerspectiveCamera(60, aspect, 0.1, 100);
+    camera.position.set(0, 1.5, 3.5);
 
-      this.createScene();
-      this.createAltar();
-      this.createCross();
-      this.createCandles();
-      this.createFlowers();
-      this.createAltarCloth();
-      this.setupLights();
-      this.setupControls();
-      this.setupInteractions();
-      this.setupVisibilityObserver();
-      this.animate();
+    // Renderer
+    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.2;
+    container.appendChild(renderer.domElement);
 
-      console.log('✝ Altar Virtual 3D inicializado');
-    },
+    // Controls
+    if (THREE.OrbitControls) {
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.08;
+      controls.minDistance = 1.5;
+      controls.maxDistance = 6;
+      controls.maxPolarAngle = Math.PI / 2 + 0.2;
+      controls.target.set(0, 0.5, 0);
+      controls.autoRotateSpeed = 0.5;
+    }
 
-    /**
-     * Crear contenedor si no existe
-     */
-    createContainer(selector) {
-      const hero = document.querySelector('.hero, section');
-      if (hero) {
-        this.container = document.createElement('div');
-        this.container.id = selector.replace('#', '');
-        this.container.style.cssText = 'position:relative;width:100%;height:100vh;';
-        hero.parentNode.insertBefore(this.container, hero.nextSibling);
-      }
-    },
+    // Evento resize
+    window.addEventListener('resize', onResize);
 
-    /**
-     * Crear escena Three.js
-     */
-    createScene() {
-      this.scene = new THREE.Scene();
-      this.scene.background = new THREE.Color(0x050814);
-      this.scene.fog = new THREE.FogExp2(0x050814, 0.02);
+    return true;
+  }
 
-      // Cámara
-      this.camera = new THREE.PerspectiveCamera(45, this.container.clientWidth / this.container.clientHeight, 0.1, 1000);
-      this.camera.position.set(0, 2, 8);
+  // Configurar luces
+  function setupLights() {
+    // Luz ambiental
+    const ambient = new THREE.AmbientLight(0x404060, 0.5);
+    scene.add(ambient);
 
-      // Renderizador
-      this.renderer = new THREE.WebGLRenderer({ antialias: true });
-      this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
-      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      this.renderer.shadowMap.enabled = true;
-      this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    // Luz principal
+    const mainLight = new THREE.DirectionalLight(0xfff5e0, 0.8);
+    mainLight.position.set(5, 8, 5);
+    mainLight.castShadow = true;
+    mainLight.shadow.mapSize.width = 1024;
+    mainLight.shadow.mapSize.height = 1024;
+    mainLight.shadow.camera.near = 0.5;
+    mainLight.shadow.camera.far = 30;
+    scene.add(mainLight);
 
-      this.container.appendChild(this.renderer.domElement);
+    // Luz fill
+    const fillLight = new THREE.DirectionalLight(0x8888ff, 0.3);
+    fillLight.position.set(-5, 3, -5);
+    scene.add(fillLight);
 
-      // Resize
-      window.addEventListener('resize', () => this.onResize());
-    },
+    // Spot para cruz
+    const spot = new THREE.SpotLight(0xffdd88, 0.6);
+    spot.position.set(0, 6, 2);
+    spot.angle = Math.PI / 5;
+    spot.penumbra = 0.4;
+    spot.target.position.set(0, 0.5, 0);
+    scene.add(spot);
+    scene.add(spot.target);
+  }
 
-    /**
-     * Crear mesa del altar
-     */
-    createAltar() {
-      // Mesa de altar - cubo allongado
-      const geometry = new THREE.BoxGeometry(4, 0.8, 2);
-      
-      // Textura procedimental de mármol
-      const canvas = document.createElement('canvas');
-      canvas.width = 512;
-      canvas.height = 512;
-      const ctx = canvas.getContext('2d');
-      
-      // Fondo mármol
-      ctx.fillStyle = '#f5f5f0';
-      ctx.fillRect(0, 0, 512, 512);
-      
-      // Vetas
-      ctx.strokeStyle = 'rgba(180, 180, 180, 0.3)';
-      ctx.lineWidth = 2;
-      for (let i = 0; i < 20; i++) {
-        ctx.beginPath();
-        ctx.moveTo(Math.random() * 512, Math.random() * 512);
-        ctx.quadraticCurveTo(
-          Math.random() * 512, Math.random() * 512,
-          Math.random() * 512, Math.random() * 512
-        );
-        ctx.stroke();
-      }
+  // Crear altar base
+  function createAltar() {
+    altarGroup = new THREE.Group();
 
-      const texture = new THREE.CanvasTexture(canvas);
-      const material = new THREE.MeshStandardMaterial({
-        map: texture,
-        roughness: 0.3,
-        metalness: 0.1
-      });
+    // Mesa del altar
+    const tableGeom = new THREE.BoxGeometry(3.5, 0.25, 1.6);
+    const tableMat = new THREE.MeshStandardMaterial({
+      color: 0x1a1208,
+      roughness: 0.4,
+      metalness: 0.1
+    });
+    const table = new THREE.Mesh(tableGeom, tableMat);
+    table.position.y = 0.125;
+    table.receiveShadow = true;
+    altarGroup.add(table);
 
-      this.altar = new THREE.Mesh(geometry, material);
-      this.altar.position.y = -0.5;
-      this.altar.receiveShadow = true;
-      this.altar.castShadow = true;
-      this.scene.add(this.altar);
-    },
+    // Panel frontal
+    const frontGeom = new THREE.BoxGeometry(3.4, 0.3, 0.04);
+    const frontMat = new THREE.MeshStandardMaterial({
+      color: 0x2a1810,
+      roughness: 0.5,
+      metalness: 0.2
+    });
+    const front = new THREE.Mesh(frontGeom, frontMat);
+    front.position.set(0, 0.15, 0.82);
+    altarGroup.add(front);
 
-    /**
-     * Crear cruz
-     */
-    createCross() {
-      const crossGroup = new THREE.Group();
+    // Borde dorado
+    const goldGeom = new THREE.BoxGeometry(3.5, 0.02, 0.02);
+    const goldMat = new THREE.MeshStandardMaterial({
+      color: 0xd4af37,
+      metalness: 0.9,
+      roughness: 0.15,
+      emissive: 0x221100,
+      emissiveIntensity: 0.3
+    });
+    const gold = new THREE.Mesh(goldGeom, goldMat);
+    gold.position.set(0, 0.265, 0.82);
+    altarGroup.add(gold);
 
-      // Material emissive para luz propia
-      const crossMaterial = new THREE.MeshStandardMaterial({
+    // Paño rojo
+    const clothGeom = new THREE.BoxGeometry(3.3, 0.06, 1.4);
+    const clothMat = new THREE.MeshStandardMaterial({
+      color: 0x8b0000,
+      roughness: 0.85,
+      metalness: 0
+    });
+    const cloth = new THREE.Mesh(clothGeom, clothMat);
+    cloth.position.set(0, 0.28, 0);
+    altarGroup.add(cloth);
+
+    scene.add(altarGroup);
+  }
+
+  // Crear cruz
+  function createCross() {
+    crossGroup = new THREE.Group();
+
+    const woodMat = new THREE.MeshStandardMaterial({
+      color: 0x6b3a1f,
+      roughness: 0.7,
+      metalness: 0.05
+    });
+
+    // Poste vertical
+    const postGeom = new THREE.CylinderGeometry(0.04, 0.055, 1.4, 12);
+    const post = new THREE.Mesh(postGeom, woodMat);
+    post.position.y = 0.7;
+    post.castShadow = true;
+    crossGroup.add(post);
+
+    // Brazo horizontal
+    const armGeom = new THREE.CylinderGeometry(0.035, 0.045, 0.8, 12);
+    const arm = new THREE.Mesh(armGeom, woodMat.clone());
+    arm.rotation.z = Math.PI / 2;
+    arm.position.y = 1.15;
+    arm.castShadow = true;
+    crossGroup.add(arm);
+
+    // Cuerpo de Cristo (simplificado)
+    const bodyGeom = new THREE.CylinderGeometry(0.05, 0.04, 0.35, 8);
+    const bodyMat = new THREE.MeshStandardMaterial({
+      color: 0xe8dcc8,
+      roughness: 0.75
+    });
+    const body = new THREE.Mesh(bodyGeom, bodyMat);
+    body.position.set(0, 0.85, 0.04);
+    body.rotation.x = Math.PI / 8;
+    body.castShadow = true;
+    crossGroup.add(body);
+
+    // Cabeza
+    const headGeom = new THREE.SphereGeometry(0.055, 8, 8);
+    const head = new THREE.Mesh(headGeom, bodyMat);
+    head.position.set(0, 1.1, 0.04);
+    crossGroup.add(head);
+
+    // Piernas
+    const legGeom = new THREE.CylinderGeometry(0.025, 0.03, 0.18, 6);
+    const leftLeg = new THREE.Mesh(legGeom, bodyMat);
+    leftLeg.position.set(-0.04, 0.6, 0.04);
+    leftLeg.rotation.z = 0.35;
+    crossGroup.add(leftLeg);
+
+    const rightLeg = new THREE.Mesh(legGeom, bodyMat.clone());
+    rightLeg.position.set(0.04, 0.6, 0.04);
+    rightLeg.rotation.z = -0.35;
+    crossGroup.add(rightLeg);
+
+    //userData para interacción
+    crossGroup.userData = { name: 'cross' };
+    crossGroup.position.set(0, 0.55, 0);
+    crossGroup.scale.set(1.2, 1.2, 1.2);
+
+    scene.add(crossGroup);
+  }
+
+  // Crear velas
+  function createCandles() {
+    const positions = [
+      { x: -1.1, z: 0.3 },
+      { x: 1.1, z: 0.3 },
+      { x: -1.1, z: -0.2 },
+      { x: 1.1, z: -0.2 }
+    ];
+
+    positions.forEach((pos, index) => {
+      // Portavela
+      const holderGeom = new THREE.CylinderGeometry(0.08, 0.1, 0.06, 16);
+      const holderMat = new THREE.MeshStandardMaterial({
         color: 0xd4af37,
-        emissive: 0xd4af37,
-        emissiveIntensity: 0.3,
-        roughness: 0.4,
-        metalness: 0.6
+        metalness: 0.9,
+        roughness: 0.2
+      });
+      const holder = new THREE.Mesh(holderGeom, holderMat);
+      holder.position.set(pos.x, 0.31, pos.z);
+      scene.add(holder);
+
+      // Vela
+      const candleGeom = new THREE.CylinderGeometry(0.045, 0.055, 0.4, 12);
+      const candleMat = new THREE.MeshStandardMaterial({
+        color: 0xfffef5,
+        roughness: 0.9
+      });
+      const candle = new THREE.Mesh(candleGeom, candleMat);
+      candle.position.set(pos.x, 0.18, pos.z);
+      candle.castShadow = true;
+      scene.add(candle);
+
+      // Llama con shader
+      const flameGeom = new THREE.ConeGeometry(0.035, 0.12, 8);
+      const flameMat = new THREE.ShaderMaterial({
+        uniforms: {
+          uTime: { value: 0 },
+          uLit: { value: 1.0 }
+        },
+        vertexShader: `
+          varying vec2 vUv;
+          uniform float uTime;
+          void main() {
+            vUv = uv;
+            vec3 pos = position;
+            float wave = sin(uTime * 12.0 + pos.y * 8.0) * 0.01;
+            pos.x += wave;
+            pos.z += wave * 0.5;
+            float flicker = sin(uTime * 20.0) * 0.008;
+            pos.y += flicker;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+          }
+        `,
+        fragmentShader: `
+          varying vec2 vUv;
+          uniform float uTime;
+          uniform float uLit;
+          void main() {
+            vec3 core = vec3(1.0, 0.95, 0.85);
+            vec3 mid = vec3(1.0, 0.65, 0.25);
+            vec3 outer = vec3(1.0, 0.25, 0.05);
+            float dist = length(vUv - 0.5) * 2.0;
+            vec3 color = mix(core, mid, dist);
+            color = mix(color, outer, smoothstep(0.3, 1.0, dist));
+            float alpha = (1.0 - dist * 0.8) * uLit;
+            float glow = (1.0 - dist) * 0.4 * uLit;
+            gl_FragColor = vec4(color + glow, alpha);
+          }
+        `,
+        transparent: true,
+        side: THREE.DoubleSide,
+        depthWrite: false
       });
 
-      // Columna vertical
-      const verticalGeom = new THREE.BoxGeometry(0.15, 1.5, 0.15);
-      const vertical = new THREE.Mesh(verticalGeom, crossMaterial);
-      vertical.position.y = 1.5;
-      crossGroup.add(vertical);
+      const flame = new THREE.Mesh(flameGeom, flameMat);
+      flame.position.set(pos.x, 0.44, pos.z);
+      flame.userData = { name: 'flame', candleIndex: index, isLit: true };
+      candles.push(flame);
+      scene.add(flame);
 
-      // Barra horizontal
-      const horizontalGeom = new THREE.BoxGeometry(0.8, 0.1, 0.1);
-      const horizontal = new THREE.Mesh(horizontalGeom, crossMaterial);
-      horizontal.position.y = 1.9;
-      crossGroup.add(horizontal);
+      // Luz de vela
+      const light = new THREE.PointLight(0xffaa33, 0.6, 2.5);
+      light.position.set(pos.x, 0.48, pos.z);
+      light.castShadow = true;
+      light.userData = { name: 'candleLight', candleIndex: index };
+      candles.push(light);
+      scene.add(light);
+    });
+  }
 
-      // Base
-      const baseGeom = new THREE.BoxGeometry(0.3, 0.1, 0.3);
-      const base = new THREE.Mesh(baseGeom, crossMaterial);
-      base.position.y = 0.65;
-      crossGroup.add(base);
+  // Crear flores
+  function createFlowers() {
+    const configs = [
+      { x: -1.35, z: -0.3, color: 0xff69b4 },
+      { x: 1.35, z: -0.3, color: 0xffffff },
+      { x: -1.35, z: 0.1, color: 0xffb6c1 },
+      { x: 1.35, z: 0.1, color: 0xe6e6fa }
+    ];
 
-      crossGroup.position.set(0, 0.9, 0);
-      crossGroup.userData.name = 'cross';
-      this.cross = crossGroup;
-      this.scene.add(crossGroup);
-    },
+    configs.forEach((cfg, index) => {
+      const group = new THREE.Group();
 
-    /**
-     * Crear velas
-     */
-    createCandles() {
-      const candlePositions = [
-        { x: -1.2, z: 0.3 },
-        { x: 1.2, z: 0.3 }
-      ];
+      // Tallo
+      const stemGeom = new THREE.CylinderGeometry(0.012, 0.015, 0.35, 6);
+      const stemMat = new THREE.MeshStandardMaterial({ color: 0x228b22 });
+      const stem = new THREE.Mesh(stemGeom, stemMat);
+      stem.position.y = 0.175;
+      group.add(stem);
 
-      candlePositions.forEach((pos, index) => {
-        // Vela
-        const candleGeom = new THREE.CylinderGeometry(0.08, 0.1, 0.6, 16);
-        const candleMat = new THREE.MeshStandardMaterial({
-          color: 0xfff8e7,
-          roughness: 0.8
-        });
-        const candle = new THREE.Mesh(candleGeom, candleMat);
-        candle.position.set(pos.x, 0.25, pos.z);
-        candle.castShadow = true;
-        this.scene.add(candle);
-
-        // Llama (cono con shader)
-        const flameGeom = new THREE.ConeGeometry(0.06, 0.15, 8);
-        const flameMat = new THREE.ShaderMaterial({
-          uniforms: {
-            uTime: { value: 0 }
-          },
-          vertexShader: `
-            varying vec2 vUv;
-            uniform float uTime;
-            void main() {
-              vUv = uv;
-              vec3 pos = position;
-              // Animación de llama
-              pos.x += sin(uTime * 10.0 + pos.y * 5.0) * 0.02;
-              gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-            }
-          `,
-          fragmentShader: `
-            varying vec2 vUv;
-            uniform float uTime;
-            void main() {
-              float gradient = 1.0 - vUv.y;
-              vec3 color = mix(vec3(1.0, 0.5, 0.0), vec3(1.0, 0.9, 0.5), gradient);
-              float alpha = 1.0 - vUv.y * 0.5;
-              gl_FragColor = vec4(color, alpha);
-            }
-          `,
-          transparent: true,
-          side: THREE.DoubleSide
-        });
-        const flame = new THREE.Mesh(flameGeom, flameMat);
-        flame.position.set(pos.x, 0.65, pos.z);
-        flame.userData.isFlame = true;
-        flame.userData.candleIndex = index;
-        this.candles.push(flame);
-        this.scene.add(flame);
-
-        // PointLight para cada vela
-        const candleLight = new THREE.PointLight(0xffaa33, 0.5, 3);
-        candleLight.position.set(pos.x, 0.7, pos.z);
-        candleLight.castShadow = true;
-        candleLight.userData.candleIndex = index;
-        candleLight.visible = true;
-        this.scene.add(candleLight);
-        this.candles.push(candleLight);
-      });
-    },
-
-    /**
-     * Crear flores
-     */
-    createFlowers() {
-      const flowerPositions = [
-        { x: -1.5, z: -0.5 },
-        { x: 1.5, z: -0.5 }
-      ];
-
-      flowerPositions.forEach((pos, index) => {
-        // Tallos
-        const stemGeom = new THREE.CylinderGeometry(0.02, 0.02, 0.4, 8);
-        const stemMat = new THREE.MeshStandardMaterial({ color: 0x228b22 });
-        const stem = new THREE.Mesh(stemGeom, stemMat);
-        stem.position.set(pos.x, 0.3, pos.z);
-        this.scene.add(stem);
-
-        // Flores (esferas simplificadas)
-        const flowerGeom = new THREE.SphereGeometry(0.12, 8, 8);
-        const flowerMat = new THREE.MeshStandardMaterial({
-          color: index === 0 ? 0xff69b4 : 0xffb6c1,
+      // Pétalos
+      for (let i = 0; i < 6; i++) {
+        const angle = (i / 6) * Math.PI * 2;
+        const petalGeom = new THREE.SphereGeometry(0.06, 6, 6);
+        petalGeom.scale(1, 0.25, 1);
+        const petalMat = new THREE.MeshStandardMaterial({
+          color: cfg.color,
           roughness: 0.6,
           transparent: true,
           opacity: 0.9
         });
-        const flower = new THREE.Mesh(flowerGeom, flowerMat);
-        flower.position.set(pos.x, 0.55, pos.z);
-        flower.userData.name = 'flower';
-        flower.userData.flowerIndex = index;
-        flower.userData.originalPos = { x: pos.x, y: 0.55, z: pos.z };
-        this.flowers.push(flower);
-        this.scene.add(flower);
+        const petal = new THREE.Mesh(petalGeom, petalMat);
+        petal.position.set(Math.cos(angle) * 0.045, 0.35, Math.sin(angle) * 0.045);
+        group.add(petal);
+      }
+
+      // Centro
+      const centerGeom = new THREE.SphereGeometry(0.03, 6, 6);
+      const centerMat = new THREE.MeshStandardMaterial({ color: 0xffd700, metalness: 0.3 });
+      const center = new THREE.Mesh(centerGeom, centerMat);
+      center.position.y = 0.35;
+      group.add(center);
+
+      group.position.set(cfg.x, 0.31, cfg.z);
+      group.userData = { name: 'flower', flowerIndex: index };
+      flowers.push(group);
+      scene.add(group);
+    });
+  }
+
+  // Crear Biblia
+  function createBible() {
+    const group = new THREE.Group();
+
+    // Cover
+    const coverGeom = new THREE.BoxGeometry(0.4, 0.06, 0.28);
+    const coverMat = new THREE.MeshStandardMaterial({
+      color: 0x1a0a0a,
+      roughness: 0.8
+    });
+    const cover = new THREE.Mesh(coverGeom, coverMat);
+    cover.castShadow = true;
+    group.add(cover);
+
+    // Páginas
+    const pagesGeom = new THREE.BoxGeometry(0.36, 0.04, 0.24);
+    const pagesMat = new THREE.MeshStandardMaterial({ color: 0xfffef0 });
+    const pages = new THREE.Mesh(pagesGeom, pagesMat);
+    pages.position.y = 0.005;
+    group.add(pages);
+
+    // Cruz dorada
+    const crossV = new THREE.BoxGeometry(0.06, 0.045, 0.008);
+    const crossMat = new THREE.MeshStandardMaterial({
+      color: 0xd4af37,
+      metalness: 0.8,
+      roughness: 0.2
+    });
+    const vBar = new THREE.Mesh(crossV, crossMat);
+    vBar.position.set(0, 0, 0.144);
+    group.add(vBar);
+
+    const crossH = new THREE.BoxGeometry(0.03, 0.015, 0.008);
+    const hBar = new THREE.Mesh(crossH, crossMat);
+    hBar.position.set(0, 0.015, 0.144);
+    group.add(hBar);
+
+    group.position.set(-0.5, 0.34, -0.15);
+    group.userData = { name: 'bible' };
+    scene.add(group);
+  }
+
+  // Crear agua bendita
+  function createHolyWater() {
+    const fontGeom = new THREE.CylinderGeometry(0.05, 0.055, 0.12, 12);
+    const fontMat = new THREE.MeshStandardMaterial({
+      color: 0xd4af37,
+      metalness: 0.9,
+      roughness: 0.15
+    });
+    const font = new THREE.Mesh(fontGeom, fontMat);
+    font.position.set(0.8, 0.37, -0.4);
+    font.userData = { name: 'holyWater' };
+    scene.add(font);
+
+    const waterGeom = new THREE.CylinderGeometry(0.04, 0.04, 0.08, 12);
+    const waterMat = new THREE.MeshStandardMaterial({
+      color: 0x88ccff,
+      transparent: true,
+      opacity: 0.5,
+      roughness: 0.1
+    });
+    const water = new THREE.Mesh(waterGeom, waterMat);
+    water.position.set(0.8, 0.37, -0.4);
+    scene.add(water);
+  }
+
+  // Configurar interacciones
+  function setupInteractions() {
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+
+    renderer.domElement.addEventListener('click', (event) => {
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObjects(scene.children, true);
+
+      if (intersects.length === 0) return;
+
+      let obj = intersects[0].object;
+      while (obj && (!obj.userData || !obj.userData.name)) {
+        obj = obj.parent;
+      }
+
+      if (!obj || !obj.userData?.name) return;
+
+      const name = obj.userData.name;
+
+      if (name === 'cross') {
+        onCrossClick();
+      } else if (name === 'flame') {
+        onCandleClick(obj.userData.candleIndex);
+      } else if (name === 'flower') {
+        onFlowerClick(obj.userData.flowerIndex);
+      } else if (name === 'bible') {
+        onBibleClick();
+      } else if (name === 'holyWater') {
+        onHolyWaterClick();
+      }
+    });
+
+    // Doble clic para reset
+    renderer.domElement.addEventListener('dblclick', () => {
+      if (controls) {
+        camera.position.set(0, 1.5, 3.5);
+        controls.target.set(0, 0.5, 0);
+      }
+    });
+  }
+
+  // Manejadores de clicks
+  function onCrossClick() {
+    // Efecto visual
+    crossGroup.children.forEach(child => {
+      if (child.material?.emissive) {
+        child.material.emissive = new THREE.Color(0xffdd44);
+        child.material.emissiveIntensity = 0.4;
+      }
+    });
+
+    setTimeout(() => {
+      crossGroup.children.forEach(child => {
+        if (child.material?.emissive) {
+          child.material.emissiveIntensity = 0;
+        }
       });
-    },
+    }, 1500);
 
-    /**
-     * Crear pano del altar
-     */
-    createAltarCloth() {
-      const clothGeom = new THREE.PlaneGeometry(3.5, 1.8);
-      const clothMat = new THREE.MeshStandardMaterial({
-        color: 0x8b0000,
-        roughness: 0.7,
-        side: THREE.DoubleSide
-      });
+    // Versículo
+    const verse = verses[Math.floor(Math.random() * verses.length)];
+    showModal(verse, '✝ Versículo del Día');
+    playChime();
+  }
 
-      this.altarCloth = new THREE.Mesh(clothGeom, clothMat);
-      this.altarCloth.rotation.x = -Math.PI / 2;
-      this.altarCloth.position.set(0, 0.01, 0);
-      this.scene.add(this.altarCloth);
-    },
+  function onCandleClick(index) {
+    const flame = candles.find(c => c.userData?.candleIndex === index && c.userData?.name === 'flame');
+    const light = candles.find(c => c.userData?.candleIndex === index && c.userData?.name === 'candleLight');
 
-    /**
-     * Configurar luces
-     */
-    setupLights() {
-      // Luz ambiental
-      const ambient = new THREE.AmbientLight(0x404060, 0.4);
-      this.scene.add(ambient);
+    if (!flame || !light) return;
 
-      // Luz de ventana (azul-blanco desde arriba)
-      const windowLight = new THREE.DirectionalLight(0xaaccff, 0.6);
-      windowLight.position.set(0, 10, 2);
-      windowLight.castShadow = true;
-      windowLight.shadow.mapSize.width = 1024;
-      windowLight.shadow.mapSize.height = 1024;
-      this.scene.add(windowLight);
+    candleStates[index] = !candleStates[index];
+    const isLit = candleStates[index];
 
-      // Luz suave frontal
-      const frontLight = new THREE.DirectionalLight(0xffffff, 0.3);
-      frontLight.position.set(0, 2, 10);
-      this.scene.add(frontLight);
-    },
+    flame.material.uniforms.uLit.value = isLit ? 1.0 : 0.0;
+    light.intensity = isLit ? 0.6 : 0;
 
-    /**
-     * Configurar controles de órbita
-     */
-    setupControls() {
-      if (typeof THREE.OrbitControls === 'undefined') return;
+    showToast(isLit ? 'La vela se enciende... 🔥' : 'La vela se apaga... ✨');
+    
+    if (isLit) playFlameSound();
+  }
 
-      this.controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
-      this.controls.enableDamping = true;
-      this.controls.dampingFactor = 0.05;
-      this.controls.enableZoom = false;
-      this.controls.enablePan = false;
-      this.controls.minPolarAngle = Math.PI / 3;
-      this.controls.maxPolarAngle = Math.PI / 2;
-      this.controls.minAzimuthAngle = -Math.PI / 4;
-      this.controls.maxAzimuthAngle = Math.PI / 4;
-      this.controls.autoRotate = false;
-      this.controls.autoRotateSpeed = 0.5;
-    },
+  function onFlowerClick(index) {
+    const flower = flowers[index];
+    if (!flower) return;
 
-    /**
-     * Configurar interacciones click
-     */
-    setupInteractions() {
-      const raycaster = new THREE.Raycaster();
-      const mouse = new THREE.Vector2();
+    playChime();
 
-      this.renderer.domElement.addEventListener('click', (event) => {
-        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    // Animación de ascenso
+    const startY = flower.position.y;
+    const startTime = Date.now();
 
-        raycaster.setFromCamera(mouse, this.camera);
-        const intersects = raycaster.intersectObjects(this.scene.children, true);
+    function animateFlower() {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / 2500, 1);
 
-        intersects.forEach(intersect => {
-          const obj = intersect.object;
+      flower.position.y = startY + progress * 2.5;
+      flower.position.x += Math.sin(progress * Math.PI * 3) * 0.003;
+      flower.rotation.y += 0.02;
 
-          // Click en cruz
-          if (obj.userData.name === 'cross') {
-            this.animateCrossGlow();
-          }
-
-          // Click en vela
-          if (obj.userData.isFlame) {
-            this.toggleCandle(obj.userData.candleIndex);
-          }
-
-          // Click en flor
-          if (obj.userData.name === 'flower') {
-            this.offerFlowers(obj.userData.flowerIndex);
-          }
-        });
-      });
-    },
-
-    /**
-     * Animación de resplandor de cruz
-     */
-    animateCrossGlow() {
-      const originalEmissive = this.cross.children[0].material.emissiveIntensity;
-      
-      // Aumentar brillo
-      this.cross.children.forEach(child => {
-        if (child.material.emissive) {
-          child.material.emissiveIntensity = 1;
+      flower.traverse(child => {
+        if (child.material?.opacity !== undefined) {
+          child.material.opacity = 1 - progress;
         }
       });
 
-      // Mostrar cita
-      this.showCitation('"Yo estaba en el jardín y tenía una misión que cumplir..." - Juan 18:1');
+      if (progress < 1) {
+        requestAnimationFrame(animateFlower);
+      } else {
+        flower.visible = false;
+      }
+    }
 
-      // Restaurar
+    animateFlower();
+
+    const msgs = [
+      'Has ofrecido estas flores a María 💐',
+      'María acepta tu ofrenda con amor 🌸',
+      'Tu devoción sube hacia el cielo ✨'
+    ];
+    showToast(msgs[Math.floor(Math.random() * msgs.length)]);
+  }
+
+  function onBibleClick() {
+    const verse = verses[Math.floor(Math.random() * verses.length)];
+    showModal(verse, '📖 Sagrada Escritura');
+    playChime();
+  }
+
+  function onHolyWaterClick() {
+    playWaterSound();
+    showToast('Te has santificado con agua bendita ✨');
+  }
+
+  // Mostrar modal
+  function showModal(text, title) {
+    const existing = document.querySelector('.altar-modal');
+    if (existing) existing.remove();
+
+    const modal = document.createElement('div');
+    modal.className = 'altar-modal';
+    modal.innerHTML = `
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Cerrar">&times;</button>
+        <h3 class="modal-title">${title}</h3>
+        <p class="modal-text">${text}</p>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    // Estilos del modal
+    const style = document.createElement('style');
+    style.textContent = `
+      .altar-modal { position: fixed; inset: 0; z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 1rem; animation: fadeIn 0.3s; }
+      .modal-backdrop { position: absolute; inset: 0; background: rgba(5,13,26,0.92); }
+      .modal-content { position: relative; background: linear-gradient(135deg, #1a0a0a, #0d1a2a); border: 2px solid #d4af37; border-radius: 12px; padding: 2rem; max-width: 500px; text-align: center; box-shadow: 0 0 40px rgba(212,175,55,0.4); animation: modalIn 0.4s; }
+      .modal-title { color: #d4af37; font-family: 'Cinzel', serif; margin-bottom: 1rem; font-size: 1.4rem; }
+      .modal-text { color: #f4e2a1; font-size: 1.1rem; font-style: italic; line-height: 1.6; }
+      .modal-close { position: absolute; top: 0.75rem; right: 0.75rem; width: 32px; height: 32px; background: transparent; border: 1px solid rgba(212,175,55,0.4); border-radius: 50%; color: #f4e2a1; font-size: 1.25rem; cursor: pointer; transition: all 0.2s; }
+      .modal-close:hover { background: rgba(212,175,55,0.2); border-color: #d4af37; }
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes modalIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+    `;
+    document.head.appendChild(style);
+
+    modal.querySelector('.modal-backdrop').addEventListener('click', () => modal.remove());
+    modal.querySelector('.modal-close').addEventListener('click', () => modal.remove());
+  }
+
+  // Mostrar toast
+  function showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'altar-toast';
+    toast.textContent = message;
+    
+    const style = document.createElement('style');
+    style.textContent = `
+      .altar-toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #1a0a0a, #0d1a2a); border: 1px solid #d4af37; color: #f4e2a1; padding: 0.75rem 1.5rem; border-radius: 8px; font-size: 0.95rem; z-index: 10001; animation: toastIn 0.3s, toastOut 0.3s 2.7s forwards; }
+      @keyframes toastIn { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+      @keyframes toastOut { from { opacity: 1; } to { opacity: 0; } }
+    `;
+    document.head.appendChild(style);
+    document.body.appendChild(toast);
+
+    setTimeout(() => toast.remove(), 3000);
+  }
+
+  // Audio
+  function initAudio() {
+    if (audioContext) return;
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  }
+
+  function playChime() {
+    initAudio();
+    const freqs = [523.25, 659.25, 783.99];
+    freqs.forEach((freq, i) => {
       setTimeout(() => {
-        this.cross.children.forEach(child => {
-          if (child.material.emissive) {
-            child.material.emissiveIntensity = originalEmissive;
-          }
-        });
-      }, 2000);
-    },
+        const osc = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioContext.currentTime);
+        gain.gain.setValueAtTime(0.06, audioContext.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 2.5);
+        osc.connect(gain);
+        gain.connect(audioContext.destination);
+        osc.start();
+        osc.stop(audioContext.currentTime + 2.5);
+      }, i * 120);
+    });
+  }
 
-    /**
-     * Mostrar cita del Evangelista
-     */
-    showCitation(text) {
-      const citation = document.createElement('div');
-      citation.style.cssText = `
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-family: 'Cinzel', serif;
-        font-size: 1rem;
-        color: #f4e2a1;
-        background: rgba(5,13,26,0.95);
-        padding: 1.5rem 2rem;
-        border-radius: 8px;
-        border: 1px solid rgba(212,175,55,0.5);
-        text-align: center;
-        max-width: 400px;
-        animation: citationFade 4s ease-out forwards;
-        z-index: 10000;
-      `;
-      citation.textContent = text;
-      document.body.appendChild(citation);
+  function playFlameSound() {
+    initAudio();
+    const osc = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(350, audioContext.currentTime);
+    osc.frequency.linearRampToValueAtTime(420, audioContext.currentTime + 0.2);
+    gain.gain.setValueAtTime(0.08, audioContext.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.8);
+    osc.connect(gain);
+    gain.connect(audioContext.destination);
+    osc.start();
+    osc.stop(audioContext.currentTime + 0.8);
+  }
 
-      // Animación
-      if (!document.getElementById('citation-style')) {
-        const style = document.createElement('style');
-        style.id = 'citation-style';
-        style.textContent = `
-          @keyframes citationFade {
-            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-            20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-            70% { opacity: 1; }
-            100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
-          }
-        `;
-        document.head.appendChild(style);
+  function playWaterSound() {
+    initAudio();
+    for (let i = 0; i < 4; i++) {
+      setTimeout(() => {
+        const osc = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(700 + Math.random() * 300, audioContext.currentTime);
+        gain.gain.setValueAtTime(0.04, audioContext.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.4);
+        osc.connect(gain);
+        gain.connect(audioContext.destination);
+        osc.start();
+        osc.stop(audioContext.currentTime + 0.4);
+      }, i * 80);
+    }
+  }
+
+  // Resize
+  function onResize() {
+    const container = document.getElementById('altar-3d-container');
+    if (!container || !camera || !renderer) return;
+    
+    camera.aspect = container.clientWidth / container.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.clientWidth, container.clientHeight);
+  }
+
+  // Animación principal
+  function animate() {
+    animationId = requestAnimationFrame(animate);
+
+    const time = performance.now() * 0.001;
+
+    // Actualizar llamas
+    candles.forEach(candle => {
+      if (candle.material?.uniforms?.uTime) {
+        candle.material.uniforms.uTime.value = time;
       }
+    });
 
-      setTimeout(() => citation.remove(), 4000);
-    },
+    // Modo adoración
+    if (controls && isAdorationMode) {
+      controls.autoRotate = true;
+    }
 
-    /**
-     * Alternar vela encendida/apagada
-     */
-    toggleCandle(index) {
-      // Buscar la luz de esta vela
-      const light = this.scene.children.find(child => 
-        child.userData && child.userData.candleIndex === index && 
-        child.type === 'PointLight'
-      );
+    if (controls) {
+      controls.update();
+    }
 
-      if (light) {
-        light.visible = !light.visible;
-        
-        // Sonido de vela
-        if (light.visible) {
-          this.playCandleSound();
-        }
-      }
+    renderer.render(scene, camera);
+  }
 
-      // Ocultar/mostrar llama
-      const flame = this.candles.find(c => 
-        c.userData && c.userData.candleIndex === index && c.userData.isFlame
-      );
-      if (flame) {
-        flame.visible = light.visible;
-      }
-    },
-
-    /**
-     * Ofrecer flores a María
-     */
-    offerFlowers(flowerIndex) {
-      const flower = this.flowers[flowerIndex];
-      if (!flower) return;
-
-      // Animación de ascenso en espiral
-      const startY = flower.position.y;
-      const duration = 3000;
-      const startTime = Date.now();
-
-      const animate = () => {
-        const elapsed = Date.now() - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-
-        // Ascenso con espiral
-        flower.position.y = startY + progress * 3;
-        flower.position.x = flower.userData.originalPos.x + Math.sin(progress * Math.PI * 4) * 0.3;
-        flower.position.z = flower.userData.originalPos.z + Math.cos(progress * Math.PI * 4) * 0.3;
-        flower.material.opacity = 1 - progress;
-
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        } else {
-          flower.visible = false;
-        }
-      };
-
-      animate();
-
-      // Sonido de campanilla
-      this.playBellSound();
-
-      // Mensaje
-      this.showCitation('Has ofrecido estas flores a María, Madre del cielo');
-    },
-
-    /**
-     * Configurar observador de visibilidad
-     */
-    setupVisibilityObserver() {
-      const observer = new IntersectionObserver((entries) => {
-        this.isVisible = entries[0].isIntersecting;
-        if (this.isVisible) {
-          this.resume();
-        } else {
-          this.pause();
-        }
-      }, { threshold: 0.5 });
-
-      observer.observe(this.container);
-    },
-
-    /**
-     * Inicializar audio
-     */
-    initAudio() {
-      if (this.audioInitialized) return;
-      
-      this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      this.audioInitialized = true;
-    },
-
-    /**
-     * Reproducir audio ambiental
-     */
-    playAmbient() {
-      this.initAudio();
-      if (this.ambientAudio || this.isPlaying) return;
-
-      // Crear oscilador para sonido ambiente de catedral
-      const oscillator = this.audioContext.createOscillator();
-      const gainNode = this.audioContext.createGain();
-
-      oscillator.type = 'sine';
-      oscillator.frequency.setValueAtTime(110, this.audioContext.currentTime);
-      
-      // Múltiples armónicos para efecto de catedral
-      const osc2 = this.audioContext.createOscillator();
-      osc2.type = 'sine';
-      osc2.frequency.setValueAtTime(165, this.audioContext.currentTime);
-
-      const gain2 = this.audioContext.createGain();
-      gain2.gain.setValueAtTime(0.05, this.audioContext.currentTime);
-      gainNode.gain.setValueAtTime(0.08, this.audioContext.currentTime);
-
-      // Efecto de reverberación simple
-      const convolver = this.audioContext.createConvolver();
-      // (simplificado sin impulso)
-
-      oscillator.connect(gainNode);
-      osc2.connect(gain2);
-      gainNode.connect(this.audioContext.destination);
-      gain2.connect(this.audioContext.destination);
-
-      oscillator.start();
-      osc2.start();
-
-      this.ambientAudio = { oscillator, osc2, gainNode };
-      this.isPlaying = true;
-    },
-
-    /**
-     * Sonido de vela (crackling)
-     */
-    playCandleSound() {
-      this.initAudio();
-      
-      // Crear ruido para crackling
-      const bufferSize = this.audioContext.sampleRate * 0.5;
-      const buffer = this.audioContext.createBuffer(1, bufferSize, this.audioContext.sampleRate);
-      const data = buffer.getChannelData(0);
-      
-      for (let i = 0; i < bufferSize; i++) {
-        data[i] = Math.random() * 2 - 1;
-      }
-
-      const noise = this.audioContext.createBufferSource();
-      noise.buffer = buffer;
-
-      const gain = this.audioContext.createGain();
-      gain.gain.setValueAtTime(0.05, this.audioContext.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, this.audioContext.currentTime + 0.3);
-
-      noise.connect(gain);
-      gain.connect(this.audioContext.destination);
-      noise.start();
-    },
-
-    /**
-     * Sonido de campanilla
-     */
-    playBellSound() {
-      this.initAudio();
-      
-      const osc = this.audioContext.createOscillator();
-      const gain = this.audioContext.createGain();
-
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(880, this.audioContext.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(440, this.audioContext.currentTime + 1);
-
-      gain.gain.setValueAtTime(0.15, this.audioContext.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, this.audioContext.currentTime + 2);
-
-      osc.connect(gain);
-      gain.connect(this.audioContext.destination);
-
-      osc.start();
-      osc.stop(this.audioContext.currentTime + 2);
-    },
-
-    /**
-     * Modo adoración (cámara automática)
-     */
-    toggleAdoration() {
-      if (this.controls) {
-        this.isAutoRotate = !this.isAutoRotate;
-        this.controls.autoRotate = this.isAutoRotate;
-        
-        if (this.isAutoRotate && !this.isPlaying) {
-          this.playAmbient();
-        }
+  //API pública
+  window.Altar3D = {
+    toggleAdoration: function() {
+      isAdorationMode = !isAdorationMode;
+      if (controls) {
+        controls.autoRotate = isAdorationMode;
       }
     },
-
-    /**
-     * Pausar renderizado
-     */
-    pause() {
-      this.renderer.setAnimationLoop(null);
+    toggleCandle: function(index) {
+      onCandleClick(index);
     },
-
-    /**
-     * Reanudar renderizado
-     */
-    resume() {
-      this.renderer.setAnimationLoop(() => this.animate());
-    },
-
-    /**
-     * 节流 en modo bajo consumo
-     */
-    throttle() {
-      // Reducir calidad de sombras y limitar fps
-      if (this.renderer) {
-        this.renderer.setPixelRatio(1);
-        this.scene.traverse(obj => {
-          if (obj.isMesh && obj.material) {
-            obj.material.needsUpdate = true;
-          }
-        });
-      }
-    },
-
-    /**
-     * Animación principal
-     */
-    animate() {
-      if (!this.isVisible) return;
-
-      const time = Date.now() * 0.001;
-
-      // Actualizar llamas
-      this.candles.forEach(candle => {
-        if (candle.userData.isFlame && candle.material.uniforms) {
-          candle.material.uniforms.uTime.value = time;
-        }
-      });
-
-      if (this.controls) {
-        this.controls.update();
-      }
-
-      this.renderer.render(this.scene, this.camera);
-    },
-
-    /**
-     * Resize handler
-     */
-    onResize() {
-      this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
-      this.camera.updateProjectionMatrix();
-      this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
-    },
-
-    /**
-     * Limpiar recursos
-     */
-    dispose() {
-      this.pause();
-      if (this.renderer) {
-        this.renderer.dispose();
-      }
-      if (this.audioContext) {
-        this.audioContext.close();
+    resetCamera: function() {
+      if (camera && controls) {
+        camera.position.set(0, 1.5, 3.5);
+        controls.target.set(0, 0.5, 0);
       }
     }
   };
 
-  // Auto-inicializar
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      // No inicializar automáticamente, solo bajo demanda
-      window.Altar3D = Altar3D;
-    });
-  } else {
-    window.Altar3D = Altar3D;
+  // Inicializar
+  async function init() {
+    try {
+      console.log('✝ Cargando THREE.js...');
+      await loadThreeJS();
+      
+      console.log('✝ Iniciando escena...');
+      if (!initScene()) return;
+      
+      console.log('✝ Creando altar...');
+      setupLights();
+      createAltar();
+      createCross();
+      createCandles();
+      createFlowers();
+      createBible();
+      createHolyWater();
+      setupInteractions();
+      
+      console.log('✝ Iniciando animación...');
+      animate();
+      
+      isInitialized = true;
+      console.log('✝ Altar Virtual 3D listo!');
+      
+      // Ocultar loader
+      const loader = document.getElementById('viewer-loader');
+      if (loader) loader.style.display = 'none';
+      
+    } catch (error) {
+      console.error('✝ Error al inicializar:', error);
+    }
   }
 
+  // Iniciar cuando DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();

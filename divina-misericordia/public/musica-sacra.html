@@ -1013,17 +1013,30 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
   position: fixed; z-index: 1000;
   width: 50px; height: 50px;
   border-radius: 50%;
-  background: rgba(0,0,0,0.6);
+  background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(20,10,40,0.8) 100%);
   border: 2px solid var(--gold);
   display: flex; align-items: center; justify-content: center;
   cursor: pointer;
   transition: all 0.3s;
   backdrop-filter: blur(8px);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3), inset 0 0 15px rgba(212, 175, 55, 0.1);
+  animation: scrollPulse 2s ease-in-out infinite;
 }
-.scroll-btn:hover { background: rgba(212,175,55,0.3); }
-.scroll-btn svg { width: 24px; height: 24px; stroke: var(--gold); stroke-width: 2; fill: none; }
+.scroll-btn:hover { 
+  background: linear-gradient(135deg, rgba(212,175,55,0.3) 0%, rgba(40,20,60,0.5) 100%);
+  border-color: var(--gold-light);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.6), inset 0 0 20px rgba(212, 175, 55, 0.2);
+  transform: scale(1.1);
+}
+.scroll-btn svg { width: 24px; height: 24px; stroke: var(--gold); stroke-width: 2.5; fill: none; }
+.scroll-btn:hover svg { stroke: var(--gold-light); }
 .scroll-up { top: 120px; right: 20px; }
 .scroll-down { bottom: 30px; right: 20px; }
+
+@keyframes scrollPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3), inset 0 0 15px rgba(212, 175, 55, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.5), inset 0 0 20px rgba(212, 175, 55, 0.2); }
+}
 
 @media (hover: none) { .cursor-cruz { display: none; } body { cursor: default; } }
 @media (max-width: 768px) {
