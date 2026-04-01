@@ -71,9 +71,8 @@ body {
   position: absolute;
   opacity: 0;
   pointer-events: none;
-  animation: danceNote linear infinite, colorShift 8s ease-in-out infinite;
-  filter: blur(0px);
-  will-change: transform, opacity, color, filter;
+  animation: danceNote linear infinite;
+  will-change: transform, opacity;
 }
 
 /* Musical trail effect - afterglow */
@@ -1030,8 +1029,8 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 }
 .scroll-btn svg { width: 24px; height: 24px; stroke: var(--gold); stroke-width: 2.5; fill: none; }
 .scroll-btn:hover svg { stroke: var(--gold-light); }
-.scroll-up { top: 120px; right: 20px; }
-.scroll-down { bottom: 30px; right: 20px; }
+.scroll-up { top: 80px; right: 20px; }
+.scroll-down { bottom: 90px; right: 20px; }
 
 @keyframes scrollPulse {
   0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3), inset 0 0 15px rgba(212, 175, 55, 0.1); }
@@ -1378,20 +1377,25 @@ function toggleMenu() {
 function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 function scrollToDown() { window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); }
 
+// Cursor personalizado desactivado por rendimiento
+// El cursor nativo será más rápido
+document.body.style.cursor = 'default';
 const cursor = document.getElementById('cursor');
-let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
-document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; }, { passive: true });
-function animateCursor() {
-  cursorX += (mouseX - cursorX) * 0.15;
-  cursorY += (mouseY - cursorY) * 0.15;
-  cursor.style.left = cursorX + 'px';
-  cursor.style.top = cursorY + 'px';
-  requestAnimationFrame(animateCursor);
-}
-animateCursor();
+if(cursor) cursor.style.display = 'none';
+
+// Eliminar listener de cursor lento
+// document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; }, { passive: true });
+// function animateCursor() {
+//   cursorX += (mouseX - cursorX) * 0.15;
+//   cursorY += (mouseY - cursorY) * 0.15;
+//   cursor.style.left = cursorX + 'px';
+//   cursor.style.top = cursorY + 'px';
+//   requestAnimationFrame(animateCursor);
+// }
+// animateCursor();
 document.querySelectorAll('a, button, .track-card').forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+  // Eliminado hover de cursor por rendimiento
+  el.style.cursor = 'pointer';
 });
 
 document.addEventListener('DOMContentLoaded', initLibrary);

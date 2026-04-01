@@ -380,12 +380,14 @@
      * Detener completamente
      */
     stop() {
+      console.log('[AudioPlayer] Stop llamado, estado actual:', this.state.status);
       this.audio.pause();
       this.audio.currentTime = 0;
       this.state.progress = 0;
       this.state.currentTime = 0;
       this.updateProgress(0);
       this.setState('stopped');
+      console.log('[AudioPlayer] Stop completado, nuevo estado:', this.state.status);
     }
 
     /**
