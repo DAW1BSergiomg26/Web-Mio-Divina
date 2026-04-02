@@ -975,7 +975,11 @@ document.addEventListener('mouseover', e => {
 <!-- PWA -->
 <link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#050d1a">
-<script src="js/reproductor-sagrado.js"></script>
+<!-- Audio Player Premium -->
+<link rel="stylesheet" href="css/audio-player.css">
+<script src="js/audio-player.js"></script>
+<script src="js/audio-catalog.js"></script>
+<script src="js/universal-audio-adapter.js"></script>
 <script>
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(reg=>console.log('SW registered')).catch(e=>console.log('SW error'));
