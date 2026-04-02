@@ -333,6 +333,14 @@ footer p { color:var(--text-muted); margin:5px 0; font-size:0.9rem; }
 }
 .scroll-up { top: 120px; right: 20px; }
 .scroll-down { bottom: 30px; right: 20px; }
+
+@keyframes scrollPulse {
+    0%, 100% { box-shadow: 0 0 15px rgba(212,175,55,0.4); }
+    50% { box-shadow: 0 0 25px rgba(212,175,55,0.7); }
+}
+
+/* Eliminar definiciones antiguas conflictivas */
+.scroll-up::before, .scroll-down::before { display: none !important; }
 @keyframes scrollPulse {
     0%, 100% { box-shadow: 0 0 15px rgba(212,175,55,0.5), 0 0 30px rgba(212,175,55,0.2); }
     50% { box-shadow: 0 0 25px rgba(212,175,55,0.8), 0 0 50px rgba(212,175,55,0.4), 0 0 70px rgba(212,175,55,0.2); }
@@ -822,8 +830,12 @@ footer p { color:var(--text-muted); margin:5px 0; font-size:0.9rem; }
 
 </main>
 
-<div class="scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})"></div>
-<div class="scroll-down" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})"></div>
+<button class="scroll-btn scroll-up" aria-label="Subir" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<button class="scroll-btn scroll-down" aria-label="Bajar" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+</button>
 
 <!-- ========== FOOTER CON BORDE DORADO RESPLANDECIENTE ========== -->
 <div class="footer-menu" style="position: relative; overflow: hidden;">

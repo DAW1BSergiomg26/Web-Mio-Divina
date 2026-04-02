@@ -584,8 +584,12 @@ A través de los enlaces a la Santa Sede encontrarás el magisterio del Papa, lo
 
 </main>
 
-<div class="scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})"></div>
-<div class="scroll-down" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})"></div>
+<button class="scroll-btn scroll-up" aria-label="Subir" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+<button class="scroll-btn scroll-down" aria-label="Bajar" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">
+  <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+</button>
 
 <div class="footer-menu" style="position: relative; overflow: hidden;">
   <div class="sacred-glow-border"></div>
