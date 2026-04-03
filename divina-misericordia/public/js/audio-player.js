@@ -39,7 +39,12 @@
         isMinimized: false,
         progress: 0,
         duration: 0,
-        currentTime: 0
+        currentTime: 0,
+        // Nuevos estados
+        shuffle: false,
+        repeat: 'none', // none, one, all
+        favorites: [],
+        history: []
       };
 
       // Audio element
@@ -753,3 +758,99 @@ toastStyle.textContent = `
   }
 `;
 document.head.appendChild(toastStyle);
+
+/**
+ * Funciones adicionales: Shuffle, Repeat, Favoritos
+ */
+
+// Shuffle
+AudioPlayerPremium.prototype.toggleShuffle = function() {
+  this.state.shuffle = !this.state.shuffle;
+  const btn = document.querySelector('.icon-shuffle');
+  if (btn) {
+    btn.style.color = this.state.shuffle ? '#d4af37' : 'inherit';
+  }
+  this.showToast(this.state.shuffle ? 'Aleatorio activado' : 'Aleatorio desactivado');
+};
+
+// Repeat
+AudioPlayerPremium.prototype.toggleRepeat = function() {
+  const modes = ['none', 'one', 'all'];
+  const currentIndex = modes.indexOf(this.state.repeat);
+  this.state.repeat = modes[(currentIndex + 1) % modes.length];
+  
+  const repeatBtn = document.querySelector('.icon-repeat');
+  const repeatOneBtn = document.querySelector('.icon-repeat-one');
+  
+  if (this.state.repeat === 'none') {
+    if (repeatBtn) repeatBtn.style.color = 'inherit';
+    if (repeatOneBtn) repeatOneBtn.style.display = 'none';
+    this.showToast('Repetición desactivada');
+  } else if (this.state.repeat === 'one') {
+    if (repeatBtn) repeatBtn.style.display = 'none';
+    if (repeatOneBtn) repeatOneBtn.style.display = 'block';
+    this.showToast('Repetir una');
+  } else {
+    if (repeatBtn) repeatBtn.style.display = 'block';
+    if (repeatOneBtn) repeatOneBtn.style.display = 'none';
+    if (repeatBtn) repeatBtn.style.color = '#d4af37';
+    this.showToast('Repetir todo');
+  }
+};
+
+// Favoritos
+AudioPlayerPremium.prototype.toggleFavorite = function() {
+  if (!this.state.currentTrack) return;
+  
+  const trackId = this.state.currentTrack.src;
+  const favIndex = this.state.favorites.indexOf(trackId);
+  
+  if (favIndex > -1) {
+    this.state.favorites.splice(favIndex, 1);
+    this.showToast('Eliminado de favoritos');
+  } else {
+    this.state.favorites.push(trackId);
+    this.showToast('Añadido a favoritos');
+  }
+  
+  const favBtn = document.querySelector('.icon-fav');
+  const favActiveBtn = document.querySelector('.icon-fav-active');
+  if (favBtn && favActiveBtn) {
+    if (favIndex > -1) {
+      favBtn.style.display = 'block';
+      favActiveBtn.style.display = 'none';
+    } else {
+      favBtn.style.display = 'none';
+      favActiveBtn.style.display = 'block';
+    }
+  }
+};
+
+// Modificar función next para shuffle y repeat
+const originalNext = AudioPlayerPremium.prototype.next;
+AudioPlayerPremium.prototype.next = function() {
+  if (this.state.repeat === 'one') {
+    this.audio.currentTime = 0;
+    this.audio.play();
+    return;
+  }
+  
+  if (this.state.shuffle && this.allTracks && this.allTracks.length > 0) {
+    const randomIndex = Math.floor(Math.random() * this.allTracks.length);
+    const track = this.allTracks[randomIndex];
+    this.loadTrack(track, track._category, true);
+    return;
+  }
+  
+  originalNext.call(this);
+};
+
+// Modificar función prev
+const originalPrev = AudioPlayerPremium.prototype.prev;
+AudioPlayerPremium.prototype.prev = function() {
+  if (this.audio.currentTime > 3) {
+    this.audio.currentTime = 0;
+    return;
+  }
+  originalPrev.call(this);
+};

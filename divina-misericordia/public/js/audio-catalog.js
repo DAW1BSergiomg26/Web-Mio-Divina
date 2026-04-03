@@ -1,7 +1,7 @@
 /**
  * Audio Catalog - Catálogo Completo de Música Sacra
  * Sistema de Curaduría Musical para Divina Misericordia
- * Total: 145 pistas
+ * Total: 181 pistas (actualizado)
  */
 
 const AudioCatalog = (function() {
@@ -47,17 +47,17 @@ const AudioCatalog = (function() {
           { file: "87. Santa Faustina, Himno Moderno.mp3", title: "Santa Faustina - Himno", artist: "Dedicación", tempo: "moderada", caracter: "sagrado", instrumentacion: "coral", sections: ["santa-faustina", "divina-misericordia"] },
           { file: "119. Pregária.mp3", title: "Pregária", artist: "Canto Devocional", tempo: "lenta", caracter: "contemplativo", instrumentacion: "coral", sections: ["oraciones", "novena"] },
           { file: "120. Repentir.mp3", title: "Repentir", artist: "Canto Devocional", tempo: "lenta", caracter: "penitencial", instrumentacion: "coral", sections: ["via-crucis", "oraciones"] },
-          { file: "88. Violin Sonata No. 3 in C Major, BWV 1005 (Arr. for Piano by Víkingur Ólafsson)_ I. Adagio.mp3", title: "Violin Sonata No. 3 - Adagio", artist: "J.S. Bach", tempo: "lenta", caracter: "contemplativo", instrumentacion: "piano", sections: ["estudios-biblicos", "oraciones"] }
+          { file: "158. Violin Sonata No. 3 in C Major, BWV 1005 (Arr. for Piano by Víkingur Ólafsson)_ I. Adagio.mp3", title: "Violin Sonata No. 3 - Adagio", artist: "J.S. Bach", tempo: "lenta", caracter: "contemplativo", instrumentacion: "piano", sections: ["estudios-biblicos", "oraciones"] }
         ].map(convertTrack)
       },
       {
         category: "🇦🇷 Devociones Marianas - Virgen de Luján",
         icon: "🇦🇷",
         tracks: [
+          { file: "99. Virgencita de Lujan.mp3", title: "Virgencita de Luján", artist: "Canto Devocional", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-lujan", "oraciones"] },
           { file: "100. Virgencita de Lujan.mp3", title: "Virgencita de Luján", artist: "Canto Popular", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-lujan", "maria"] },
           { file: "101. Virgencita de Lujan.mp3", title: "Virgencita de Luján", artist: "Canto Popular", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-lujan", "devociones-marianas"] },
           { file: "102. Virgencita de Luján.mp3", title: "Virgencita de Luján", artist: "Coro Parroquial", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-lujan", "oraciones"] },
-          { file: "99. Virgencita de Lujan.mp3", title: "Virgencita de Luján", artist: "Canto Devocional", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-lujan", "oraciones"] },
           { file: "98. Virgen India.mp3", title: "Virgen India", artist: "Canto Devocional", tempo: "lenta", caracter: "mariano", instrumentacion: "coral", sections: ["maria", "virgen-caacupe"] },
           { file: "86. Salve Regina.mp3", title: "Salve Regina", artist: "Canto Gregoriano", tempo: "lenta", caracter: "mariano", instrumentacion: "gregoriano", sections: ["maria", "virgen-lujan", "virgen-caacupe", "devociones-marianas"] }
         ].map(convertTrack)
@@ -66,14 +66,13 @@ const AudioCatalog = (function() {
         category: "🇵🇾 Devociones Marianas - Virgen de Caacupé",
         icon: "🇵🇾",
         tracks: [
+          { file: "151. Virgencita de Caacupe - Viky Codas.mp3", title: "Virgencita de Caacupé", artist: "Viky Codas", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "devociones-marianas"] },
+          { file: "150. Virgencita de Caacupe - Odilio Roman.mp3", title: "Virgencita de Caacupé", artist: "Odilio Roman", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "maria"] },
+          { file: "149. Virgencita de Caacupe - Los Tres Sudamericanos.mp3", title: "Virgencita de Caacupé", artist: "Los Tres Sudamericanos", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "oraciones"] },
           { file: "74. Virgencita de Caacupe - Edgar Galeano.mp3", title: "Virgencita de Caacupé", artist: "Edgar Galeano", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "devociones-marianas"] },
           { file: "75. Virgencita De Caacupe - Francisco Russo.mp3", title: "Virgencita de Caacupé", artist: "Francisco Russo", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "maria"] },
           { file: "76. Virgencita de Caacupe - Grupo Coral (3).mp3", title: "Virgencita de Caacupé", artist: "Grupo Coral", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "maria"] },
-          { file: "77. Virgencita de Caacupé - Las Paraguayas.mp3", title: "Virgencita de Caacupé", artist: "Las Paraguayas", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "devociones-marianas"] },
-          { file: "78. Virgencita de Caacupe - Los Tres Sudamericanos.mp3", title: "Virgencita de Caacupé", artist: "Los Tres Sudamericanos", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "oraciones"] },
-          { file: "79. Virgencita de Caacupe - Odilio Roman.mp3", title: "Virgencita de Caacupé", artist: "Odilio Roman", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "maria"] },
-          { file: "80. Virgencita de Caacupe - Viky Codas.mp3", title: "Virgencita de Caacupé", artist: "Viky Codas", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "devociones-marianas"] },
-          { file: "145. Tupasy Ka'akuppe - Las Paraguayas.mp3", title: "Tupasy Ka'akupë", artist: "Las Paraguayas", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "maria"] }
+          { file: "145. Tupâsy Ka'akupépe - Las Paraguayas.mp3", title: "Tupasy Ka'akupë", artist: "Las Paraguayas", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "maria"] }
         ].map(convertTrack)
       },
       {
@@ -85,8 +84,8 @@ const AudioCatalog = (function() {
           { file: "115. Panis Angelicus.mp3", title: "Panis Angelicus", artist: "C. Franck", tempo: "lenta", caracter: "sagrado", instrumentacion: "coral", sections: ["misa", "eucaristia"] },
           { file: "117. Panis Angelicus.mp3", title: "Panis Angelicus", artist: "Cesar Franck", tempo: "lenta", caracter: "sagrado", instrumentacion: "coral", sections: ["misa", "oraciones"] },
           { file: "128. Panis Angelicus, FWV 61.mp3", title: "Panis Angelicus", artist: "C. Franck", tempo: "lenta", caracter: "sagrado", instrumentacion: "coral", sections: ["eucaristia", "misa"] },
+          { file: "155. Messiah, HWV 56, Pt. 2_ No. 44, Chorus. Hallelujah, for the Lord God Omnipotent Reigneth.mp3", title: "Hallelujah (Messiah)", artist: "G.F. Handel", tempo: "rapida", caracter: "jubiloso", instrumentacion: "coral", sections: ["misa", "pascoa", "navidad"] },
           { file: "116. Messiah _ Part 2_ 42. Chorus_ _Hallelujah.mp3", title: "Hallelujah", artist: "G.F. Handel", tempo: "rapida", caracter: "jubiloso", instrumentacion: "coral", sections: ["misa", "pascoa", "navidad"] },
-          { file: "85. Messiah, HWV 56, Pt. 2_ No. 44, Chorus. Hallelujah, for the Lord God Omnipotent Reigneth.mp3", title: "Hallelujah (Messiah)", artist: "G.F. Handel", tempo: "rapida", caracter: "jubiloso", instrumentacion: "coral", sections: ["misa", "pascoa", "navidad"] },
           { file: "127. Ave verum corpus, K. 618.mp3", title: "Ave Verum Corpus", artist: "W.A. Mozart", tempo: "lenta", caracter: "sagrado", instrumentacion: "coral", sections: ["eucaristia", "oraciones"] },
           { file: "124. Sancta Maria.mp3", title: "Sancta Maria", artist: "Canto Gregoriano", tempo: "lenta", caracter: "mariano", instrumentacion: "gregoriano", sections: ["maria", "oraciones"] },
           { file: "122. Pietà, Signore.mp3", title: "Pietà, Signore", artist: "Canto Gregoriano", tempo: "lenta", caracter: "penitencial", instrumentacion: "gregoriano", sections: ["via-crucis", "oraciones"] },
@@ -134,7 +133,7 @@ const AudioCatalog = (function() {
         tracks: [
           { file: "14. Pachelbel Canon in D.mp3", title: "Canon in D (Pachelbel)", artist: "Pachelbel", tempo: "lenta", caracter: "contemplativo", instrumentacion: "cuerda", sections: ["oraciones", "coronilla", "hora-de-la-misericordia", "santo-rosario", "novena"] },
           { file: "15. Canon in D.mp3", title: "Canon in D", artist: "Pachelbel", tempo: "lenta", caracter: "contemplativo", instrumentacion: "cuerda", sections: ["oraciones", "coronilla", "maria"] },
-          { file: "11. Swan Lake, Op. 20a_ I. Scène.mp3", title: "Swan Lake - Scène", artist: "P.I. Tchaikovsky", tempo: "lenta", caracter: "contemplativo", instrumentacion: "orquestal", sections: ["santo-rosario", "maria"] },
+          { file: "161. Swan Lake, Op. 20a_ I. Scène.mp3", title: "Swan Lake - Scène", artist: "P.I. Tchaikovsky", tempo: "lenta", caracter: "contemplativo", instrumentacion: "orquestal", sections: ["santo-rosario", "maria"] },
           { file: "12. Shades and Shadows.mp3", title: "Shades and Shadows", artist: "Ambient", tempo: "lenta", caracter: "contemplativo", instrumentacion: "ambiente", sections: ["oraciones", "introduccion"] },
           { file: "13. The Essence.mp3", title: "The Essence", artist: "Ambient", tempo: "lenta", caracter: "contemplativo", instrumentacion: "ambiente", sections: ["oraciones", "quienes-somos"] },
           { file: "16. Sonata violino solo representativa in A Major_ III. Allemande.mp3", title: "Sonata Violino Solo - Allemande", artist: "H.I.F. Biber", tempo: "moderada", caracter: "contemplativo", instrumentacion: "cuerda", sections: ["estudios-biblicos"] },
@@ -163,7 +162,12 @@ const AudioCatalog = (function() {
           { file: "27. Now We Are Free (Gladiator) - Instrumental Version.mp3", title: "Now We Are Free (Gladiator)", artist: "Hans Zimmer", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["quienes-somos", "index", "noticias"] },
           { file: "28. Now We Are Free (from _Gladiator_) - Piano Solo Version.mp3", title: "Now We Are Free - Piano", artist: "Hans Zimmer", tempo: "lenta", caracter: "epico", instrumentacion: "piano", sections: ["oraciones", "consagracion"] },
           { file: "29. Tennessee.mp3", title: "Tennessee", artist: "Hans Zimmer", tempo: "moderada", caracter: "epico", instrumentacion: "orquestal", sections: ["index", "quienes-somos"] },
-          { file: "81 .Braveheart-End Titles.mp3", title: "Braveheart - End Titles", artist: "James Horner", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["via-crucis", "consagracion"] },
+          { file: "30. Honor Him.mp3", title: "Honor Him", artist: "Hans Zimmer", tempo: "procesional", caracter: "epico", instrumentacion: "orquestal", sections: ["martires", "consagracion"] },
+          { file: "31. The Kiss.mp3", title: "The Kiss", artist: "James Horner", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["maria", "oraciones"] },
+          { file: "32. Elysium.mp3", title: "Elysium", artist: "James Horner", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["oraciones", "consagracion"] },
+          { file: "33. Evenstar.mp3", title: "Evenstar", artist: "Howard Shore", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["maria", "oraciones"] },
+          { file: "41. Pact Sworn in Blood.mp3", title: "Pact Sworn in Blood", artist: "Two Steps From Hell", tempo: "rapida", caracter: "epico", instrumentacion: "orquestal", sections: ["consagracion", "martires"] },
+          { file: "81. Braveheart-End Titles.mp3", title: "Braveheart - End Titles", artist: "James Horner", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["via-crucis", "consagracion"] },
           { file: "97. Braveheart-End Titles.mp3", title: "Braveheart - End Titles (Alt)", artist: "James Horner", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["via-crucis", "martires"] },
           { file: "56. For The Love Of A Princess.mp3", title: "For the Love of a Princess", artist: "James Horner", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["maria", "virgen-lujan"] },
           { file: "57. Murron's Burial.mp3", title: "Murron's Burial", artist: "James Horner", tempo: "lenta", caracter: "penitencial", instrumentacion: "orquestal", sections: ["via-crucis", "oraciones"] },
@@ -237,6 +241,40 @@ const AudioCatalog = (function() {
           { file: "143. Ave Maria.mp3", title: "Ave Maria", artist: "Coro Mariano", tempo: "lenta", caracter: "mariano", instrumentacion: "coral", sections: ["maria", "virgen-caacupe"] },
           { file: "144. Ave Maria (Duet With Placido Domingo) (with Plácido Domingo).mp3", title: "Ave Maria (Dueto)", artist: "Plácido Domingo", tempo: "lenta", caracter: "mariano", instrumentacion: "coral", sections: ["maria", "oraciones"] }
         ].map(convertTrack)
+      },
+      {
+        category: "🎹 Música Clásica Adicional",
+        icon: "🎹",
+        tracks: [
+          { file: "147. Conquest of Paradise.mp3", title: "Conquest of Paradise", artist: "Vangelis", tempo: "procesional", caracter: "epico", instrumentacion: "orquestal", sections: ["index", "consagracion"] },
+          { file: "148. Por un Puñado de Dólares (From _Per un Pugno Di Dollari.mp3", title: "Por un Puñado de Dólares", artist: "Ennio Morricone", tempo: "moderada", caracter: "epico", instrumentacion: "orquestal", sections: ["index"] },
+          { file: "152. La Conquista del Oeste I (From _How The West Was Won.mp3", title: "La Conquista del Oeste", artist: "Leonard Rosenman", tempo: "procesional", caracter: "epico", instrumentacion: "orquestal", sections: ["noticias"] },
+          { file: "153. Main Title_ De Guella _ The Green Leaves of Summer.mp3", title: "The Green Leaves of Summer", artist: "Alex North", tempo: "moderada", caracter: "epico", instrumentacion: "orquestal", sections: ["index"] },
+          { file: "154. The Ludlows (From _Legends Of The Fall_ Soundtrack).mp3", title: "The Ludlows", artist: "James Horner", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["oraciones", "maria"] },
+          { file: "156. The Mission.mp3", title: "The Mission", artist: "Ennio Morricone", tempo: "lenta", caracter: "epico", instrumentacion: "orquestal", sections: ["misa", "oraciones"] },
+          { file: "157. The Ecstasy of Gold - L'Estasi Dell'oro.mp3", title: "The Ecstasy of Gold", artist: "Ennio Morricone", tempo: "procesional", caracter: "epico", instrumentacion: "orquestal", sections: ["consagracion"] },
+          { file: "159. The Good, The Bad And The Ugly - 2004 Remaster.mp3", title: "The Good, The Bad and The Ugly", artist: "Ennio Morricone", tempo: "rapida", caracter: "epico", instrumentacion: "orquestal", sections: ["noticias"] },
+          { file: "160. The Ecstasy of Gold - L'Estasi Dell'oro.mp3", title: "The Ecstasy of Gold", artist: "Ennio Morricone", tempo: "procesional", caracter: "epico", instrumentacion: "orquestal", sections: ["consagracion", "index"] },
+          { file: "162. Swan Lake, Op. 20a_ II. Valse.mp3", title: "Swan Lake - Valse", artist: "P.I. Tchaikovsky", tempo: "moderada", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["maria", "galeria"] },
+          { file: "163. Swan Lake, Op. 20a_ III. Danse des cygnes.mp3", title: "Swan Lake - Danse des Cygnes", artist: "P.I. Tchaikovsky", tempo: "lenta", caracter: "contemplativo", instrumentacion: "orquestal", sections: ["oraciones", "maria"] },
+          { file: "164. Swan Lake, Op. 20a_ IV. Pas d'action andantino quasi moderato.mp3", title: "Swan Lake - Pas d'Action", artist: "P.I. Tchaikovsky", tempo: "moderada", caracter: "contemplativo", instrumentacion: "orquestal", sections: ["oraciones"] },
+          { file: "165. Swan Lake, Op. 20a_ V. Czardas_ Danse hongroise.mp3", title: "Swan Lake - Czardas", artist: "P.I. Tchaikovsky", tempo: "rapida", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["galeria", "noticias"] },
+          { file: "166. Swan Lake, Op. 20a_ VI. Danse rspagnole.mp3", title: "Swan Lake - Danse Espagnole", artist: "P.I. Tchaikovsky", tempo: "rapida", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["galeria"] },
+          { file: "167. The Nutcracker, Op. 71_ Miniature Overture.mp3", title: "The Nutcracker - Overture", artist: "P.I. Tchaikovsky", tempo: "rapida", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["navidad", "index"] },
+          { file: "168. Swan Lake, Op. 20a_ VII. Danse napolitaine.mp3", title: "Swan Lake - Danse Napolitaine", artist: "P.I. Tchaikovsky", tempo: "rapida", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["galeria"] },
+          { file: "169. Swan Lake, Op. 20a_ VIII. Mazurka.mp3", title: "Swan Lake - Mazurka", artist: "P.I. Tchaikovsky", tempo: "moderada", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["galeria"] },
+          { file: "170. The Sleeping Beauty, Op. 66a_ I. Introduction_spotdown.org.mp3", title: "The Sleeping Beauty - Introduction", artist: "P.I. Tchaikovsky", tempo: "lenta", caracter: "contemplativo", instrumentacion: "orquestal", sections: ["oraciones"] },
+          { file: "171. The Sleeping Beauty, Op. 66a_ II. Adagio.mp3", title: "The Sleeping Beauty - Adagio", artist: "P.I. Tchaikovsky", tempo: "lenta", caracter: "contemplativo", instrumentacion: "orquestal", sections: ["oraciones", "maria"] },
+          { file: "172. The Sleeping Beauty, Op. 66a_ III. Pas de caractère.mp3", title: "The Sleeping Beauty - Pas de Caractère", artist: "P.I. Tchaikovsky", tempo: "moderada", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["galeria"] },
+          { file: "173. The Nutcracker, Op. 71, Act I_ The Decoration of the Christmas Tree.mp3", title: "The Nutcracker - Christmas Tree", artist: "P.I. Tchaikovsky", tempo: "rapida", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["navidad", "index"] },
+          { file: "174. The Nutcracker, Op. 71, Act I_ March.mp3", title: "The Nutcracker - March", artist: "P.I. Tchaikovsky", tempo: "rapida", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["navidad", "index"] },
+          { file: "175. The Nutcracker, Op. 71, Act I_ Children's Galop and Entry of the Parents.mp3", title: "The Nutcracker - Galop", artist: "P.I. Tchaikovsky", tempo: "rapida", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["navidad"] },
+          { file: "176. The Nutcracker, Op. 71, Act I_ Arrival of Drosselmeyer.mp3", title: "The Nutcracker - Arrival of Drosselmeyer", artist: "P.I. Tchaikovsky", tempo: "moderada", caracter: "epico", instrumentacion: "orquestal", sections: ["navidad"] },
+          { file: "177. The Nutcracker, Op. 71, Act I_ Grandfather's Dance.mp3", title: "The Nutcracker - Grandfather's Dance", artist: "P.I. Tchaikovsky", tempo: "rapida", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["navidad"] },
+          { file: "178. The Sleeping Beauty, Op. 66a_ IV. Panorama.mp3", title: "The Sleeping Beauty - Panorama", artist: "P.I. Tchaikovsky", tempo: "lenta", caracter: "contemplativo", instrumentacion: "orquestal", sections: ["oraciones"] },
+          { file: "179. The Nutcracker, Op. 71, Act I_ Clara and the Nutcracker.mp3", title: "The Nutcracker - Clara and the Nutcracker", artist: "P.I. Tchaikovsky", tempo: "moderada", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["navidad"] },
+          { file: "180. The Sleeping Beauty, Op. 66a_ V. Waltz.mp3", title: "The Sleeping Beauty - Waltz", artist: "P.I. Tchaikovsky", tempo: "moderada", caracter: "jubiloso", instrumentacion: "orquestal", sections: ["galeria", "index"] }
+        ].map(convertTrack)
       }
     ];
   }
@@ -270,8 +308,8 @@ const AudioCatalog = (function() {
   }
 
   return {
-    version: "4.0",
-    lastUpdated: "2026-04-02",
+    version: "5.0",
+    lastUpdated: "2026-04-03",
     totalTracks: 0,
     getCategories: getCategories,
     getTrackBySection: getTrackBySection,
@@ -279,6 +317,5 @@ const AudioCatalog = (function() {
   };
 })();
 
-// Actualizar contador de canciones
 AudioCatalog.totalTracks = AudioCatalog.getCategories().reduce((acc, cat) => acc + cat.tracks.length, 0);
 console.log('🎵 AudioCatalog cargado con', AudioCatalog.totalTracks, 'canciones');
