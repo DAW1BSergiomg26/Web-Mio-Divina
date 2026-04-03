@@ -199,12 +199,26 @@ header button{background:linear-gradient(135deg,var(--gold-dark),var(--gold));bo
 </header>
 <div class="container">
 <div class="sidebar">
-<h3>PÁGINAS PRINCIPALES</h3>
+<h3>🏠 PRINCIPALES</h3>
 <ul id="pageList"></ul>
-<h3 style="margin-top:15px;">OTRAS DEVOCIONES</h3>
+
+<h3>🌹 MARÍA Y VIRGENES</h3>
+<ul id="pageListMaria"></ul>
+
+<h3>📿 SANTO ROSARIO</h3>
+<ul id="pageListRosario"></ul>
+
+<h3>✨ OTRAS DEVOCIONES</h3>
 <ul id="pageListDevociones"></ul>
-<h3 style="margin-top:15px;">SANTOS PAPAS</h3>
+
+<h3>🙏 ORACIONES ESPECIALES</h3>
+<ul id="pageListOraciones"></ul>
+
+<h3>👑 SANTOS PAPAS</h3>
 <ul id="pageListPapas"></ul>
+
+<h3>🎵 MÚSICA Y EXTRAS</h3>
+<ul id="pageListMultimedia"></ul>
 </div>
 <div class="main-content">
 <div class="loading" id="loadingMsg">⏳ Guardando cambios en el servidor...</div>
@@ -234,91 +248,96 @@ header button{background:linear-gradient(135deg,var(--gold-dark),var(--gold));bo
 </div>
 </div>
 <script>
-// Categorías de páginas
+// PÁGINAS PRINCIPALES
 const mainPages = [
   {file:'index.html',name:'🏠 Inicio',desc:'Página principal'},
   {file:'quienes-somos.html',name:'👥 Quiénes Somos',desc:'Nosotros'},
-  {file:'corona.html',name:'⛪ Corona',desc:'Corona de la DM'},
   {file:'coronilla.html',name:'📿 Coronilla',desc:'Coronilla DM'},
   {file:'novena.html',name:'🕯️ Novena',desc:'Novena DM'},
-  {file:'via-crucis.html',name:'✝️ Vía Crucis',desc:'Camino de la Cruz'},
-  {file:'santa-faustina.html',name:'🌸 Santa Faustina',desc:'Apóstol DM'},
   {file:'hora-de-la-misericordia.html',name:'⏰ Hora de la Misericordia',desc:'3 PM'},
+  {file:'santa-faustina.html',name:'🌸 Santa Faustina',desc:'Apóstol DM'},
+  {file:'consagracion.html',name:'🎀 Consagración DM',desc:'Total'},
+  {file:'oraciones.html',name:'🙏 Oraciones',desc:'Colección'},
+  {file:'los-rayos.html',name:'⚡ Los Rayos',desc:'Efecto'},
+  {file:'introduccion.html',name:'📖 Introducción',desc:'Intro'},
+  {file:'via-crucis.html',name:'✝️ Vía Crucis',desc:'Camino de la Cruz'},
   {file:'estudios-biblicos.html',name:'📖 Estudios Bíblicos',desc:'Fe y razón'},
-  {file:'maria.html',name:'🌹 María',desc:'Devoción'},
+  {file:'galeria.html',name:'🖼️ Galería',desc:'Imágenes'},
+  {file:'testimonios.html',name:'💬 Testimonios',desc:'Experiencias'},
+  {file:'noticias.html',name:'📰 Noticias',desc:'Actualidad'},
+  {file:'espacio-jovenes.html',name:'🌟 Espacio Jóvenes',desc:'Jóvenes'},
+  {file:'contacto.html',name:'📧 Contacto',desc:'Formulario'},
+  {file:'enlaces.html',name:'🔗 Enlaces',desc:'Recursos'},
+  {file:'lecturas-recomendadas.html',name:'📚 Lecturas',desc:'Recomendadas'},
+  {file:'lugares-de-culto.html',name:'⛪ Lugares de Culto',desc:'Santuarios'}
+];
+
+// MARÍA Y VIRGENES
+const mariaPages = [
+  {file:'maria.html',name:'🌹 María',desc:'Madre de Dios'},
   {file:'virgen-caacupe.html',name:'🇵🇾 Virgen Caacupé',desc:'Patrona Paraguay'},
   {file:'virgen-lujan.html',name:'🇦🇷 Virgen de Luján',desc:'Patrona Argentina'},
-  {file:'introduccion.html',name:'📖 Introducción',desc:'Intro'},
-  {file:'enlaces.html',name:'🔗 Enlaces',desc:'Enlaces'},
-  {file:'noticias.html',name:'📰 Noticias',desc:'Noticias'},
-  {file:'contacto.html',name:'📧 Contacto',desc:'Formulario'},
-  {file:'galeria.html',name:'🖼️ Galería',desc:'Imágenes'},
-  {file:'oraciones.html',name:'🙏 Oraciones',desc:'Colección'},
-  {file:'santo-rosario.html',name:'📿 Santo Rosario',desc:'Rosario completo'},
-  {file:'misterios-gozosos.html',name:'🌟 Misterios Gozosos',desc:'Lunes/Sábado'},
-  {file:'misterios-dolorosos.html',name:'💔 Misterios Dolorosos',desc:'Martes/Viernes'},
-  {file:'misterios-luminosos.html',name:'💡 Misterios Luminosos',desc:'Jueves'},
-  {file:'misterios-de-gloria.html',name:'✨ Misterios de Gloria',desc:'Miércoles/Domingo'},
-  {file:'lecturas-recomendadas.html',name:'📚 Lecturas',desc:'Recomendadas'},
-  {file:'espacio-jovenes.html',name:'🌟 Espacio Jóvenes',desc:'Jóvenes'},
-  {file:'musica-sacra.html',name:'🎵 Música Sacra',desc:'Música'},
-  {file:'oracion-del-estudiante.html',name:'📖 Oración Estudiante',desc:'Estudiantes'},
-  {file:'oracion-san-miguel.html',name:'⚔️ San Miguel',desc:'Arcángel'},
-  {file:'oracion-san-antonio.html',name:'🕯️ San Antonio',desc:'Padua'},
-  {file:'oracion-san-pancracio.html',name:'🛡️ San Pancracio',desc:'Martir'},
-  {file:'obras-de-misericordia.html',name:'🤲 Obras de Misericordia',desc:'Caridad'},
-  {file:'consagracion.html',name:'🎀 Consagración DM',desc:'Total'},
-  {file:'lugares-de-culto.html',name:'⛪ Lugares de Culto',desc:'Santuarios'},
+  {file:'maria-auxiliadora.html',name:'🌺 María Auxiliadora',desc:'Devoción'},
   {file:'la-santina.html',name:'🌊 La Santina',desc:'Cuba'},
   {file:'devociones-marianas.html',name:'🕊️ Devociones Marianas',desc:'Vírgenes'}
 ];
 
+// ROSARIO
+const rosarioPages = [
+  {file:'santo-rosario.html',name:'📿 Santo Rosario',desc:'Rosario completo'},
+  {file:'misterios-gozosos.html',name:'🌟 Misterios Gozosos',desc:'Lunes/Sábado'},
+  {file:'misterios-dolorosos.html',name:'💔 Misterios Dolorosos',desc:'Martes/Viernes'},
+  {file:'misterios-luminosos.html',name:'💡 Misterios Luminosos',desc:'Jueves'},
+  {file:'misterios-de-gloria.html',name:'✨ Misterios de Gloria',desc:'Miércoles/Domingo'}
+];
+
+// OTRAS DEVOCIONES
 const devocionesPages = [
   {file:'otras-devociones.html',name:'✨ Otras Devociones',desc:'Sección principal'},
-  {file:'divino-nino-jesus.html',name:'👶 Divino Niño Jesús',desc:'Devoción'},
-  {file:'san-jose-dormido.html',name:'😴 San José Dormido',desc:'Devoción'},
-  {file:'san-judas-tadeo.html',name:'🕊️ San Judas Tadeo',desc:'Devoción'},
-  {file:'san-cayetano.html',name:'🔥 San Cayetano',desc:'Devoción'},
-  {file:'consagracion-sagrado-corazon.html',name:'❤️ Sagrado Corazón',desc:'Consagración'},
-  {file:'santa-francisca-romana.html',name:'🌹 Santa Francisca Romana',desc:'Esposa, Madre y Fundadora'},
-  {file:'oracion-eucharistia.html',name:'📿 Jesús Eucaristía',desc:'Oración Eucarística'},
-  {file:'maria-auxiliadora.html',name:'🌺 María Auxiliadora',desc:'Devoción'},
-  {file:'san-sanson.html',name:'🦁 Sansón',desc:'Devoción bíblica'},
-  {file:'san-benito.html',name:'✝ San Benito',desc:'Patrón de Europa'},
-  {file:'oracion-santa-cruz.html',name:'✝ Santa Cruz',desc:'Oración'},
-  {file:'san-francisco.html',name:'🕊️ San Francisco',desc:'Patrón de Italia'},
-  {file:'cruz-del-perdon.html',name:'✝ Cruz del Perdón',desc:'Devoción'},
+  {file:'divino-nino-jesus.html',name:'👶 Divino Niño Jesús',desc:'20 Julio'},
   {file:'san-jose.html',name:'👑 San José',desc:'Esposo de María'},
-  {file:'medalla-milagrosa.html',name:'🪙 Medalla Milagrosa',desc:'María Ayuda'}
+  {file:'san-jose-dormido.html',name:'😴 San José Dormido',desc:'Devoción del Papa'},
+  {file:'san-judas-tadeo.html',name:'🕊️ San Judas Tadeo',desc:'Causas imposibles'},
+  {file:'san-cayetano.html',name:'🔥 San Cayetano',desc:'Divina providencia'},
+  {file:'san-benito.html',name:'✝ San Benito',desc:'Patrón de Europa'},
+  {file:'san-francisco.html',name:'🕊️ San Francisco de Asís',desc:'Patrón de Italia'},
+  {file:'san-sanson.html',name:'🦁 Sansón',desc:'Fortaleza bíblica'},
+  {file:'consagracion-sagrado-corazon.html',name:'❤️ Sagrado Corazón',desc:'Consagración'},
+  {file:'santa-francisca-romana.html',name:'🌹 Santa Francisca Romana',desc:'Fundadora'},
+  {file:'oracion-eucharistia.html',name:'📿 Jesús Eucaristía',desc:'Sagrario'},
+  {file:'oracion-santa-cruz.html',name:'✝ Santa Cruz',desc:'Protección'},
+  {file:'cruz-del-perdon.html',name:'✝ Cruz del Perdón',desc:'Brazo caído'},
+  {file:'medalla-milagrosa.html',name:'🪙 Medalla Milagrosa',desc:'María Ayuda'},
+  {file:'obras-de-misericordia.html',name:'🤲 Obras de Misericordia',desc:'Caridad'}
 ];
 
-const devocionesPages = [
-{file:'otras-devociones.html',name:'✨ Otras Devociones',desc:'Sección principal'},
-{file:'divino-nino-jesus.html',name:'👶 Divino Niño Jesús',desc:'Devoción'},
-{file:'san-jose-dormido.html',name:'😴 San José Dormido',desc:'Devoción'},
-{file:'san-judas-tadeo.html',name:'🕊️ San Judas Tadeo',desc:'Devoción'},
-{file:'san-cayetano.html',name:'🔥 San Cayetano',desc:'Devoción'},
-{file:'consagracion-sagrado-corazon.html',name:'❤️ Sagrado Corazón',desc:'Consagración'},
-{file:'santa-francisca-romana.html',name:'🌹 Santa Francisca Romana',desc:'Esposa, Madre y Fundadora'},
-{file:'oracion-eucharistia.html',name:'📿 Jesús Eucaristía',desc:'Oración Eucarística'},
-{file:'maria-auxiliadora.html',name:'🌺 María Auxiliadora',desc:'Devoción'},
-{file:'san-sanson.html',name:'🦁 Sansón',desc:'Devoción bíblica'},
-{file:'san-benito.html',name:'✝ San Benito',desc:'Patrón de Europa'},
-{file:'oracion-santa-cruz.html',name:'✝ Santa Cruz',desc:'Oración'},
-{file:'san-francisco.html',name:'🕊️ San Francisco',desc:'Patrón de Italia'},
-{file:'cruz-del-perdon.html',name:'✝ Cruz del Perdón',desc:'Devoción'},
-{file:'san-jose.html',name:'👑 San José',desc:'Esposo de María'}
+// ORACIONES ESPECIALES
+const oracionesPages = [
+  {file:'oracion-del-estudiante.html',name:'📖 Oración del Estudiante',desc:'Estudios'},
+  {file:'oracion-san-miguel.html',name:'⚔️ San Miguel Arcángel',desc:'Príncipe celestial'},
+  {file:'oracion-san-antonio.html',name:'🕯️ San Antonio de Padua',desc:'Milagros'},
+  {file:'oracion-san-pancracio.html',name:'🛡️ San Pancracio',desc:'Trabajo y dinero'}
 ];
 
+// SANTOS PAPAS
 const papasPages = [
-{file:'ss-leon-xiv.html',name:'👑 S.S. León XIV',desc:'Papa'},
-{file:'ss-francisco.html',name:'📖 S.S. Francisco',desc:'Papa'},
-{file:'ss-benedicto-xvi.html',name:'🔵 S.S. Benedicto XVI',desc:'Papa'},
-{file:'ss-juan-pablo-ii.html',name:'⚪ S.S. Juan Pablo II',desc:'Papa'}
+  {file:'ss-leon-xiv.html',name:'👑 S.S. León XIV',desc:'Papa actual'},
+  {file:'ss-francisco.html',name:'📖 S.S. Francisco',desc:'Papa'},
+  {file:'ss-benedicto-xvi.html',name:'🔵 S.S. Benedicto XVI',desc:'Papa emérito'},
+  {file:'ss-juan-pablo-ii.html',name:'⚪ S.S. Juan Pablo II',desc:'San Juan Pablo'}
 ];
 
-// Todas las páginas combinadas (para compatibilidad)
-const pages = [...mainPages, ...devocionesPages, ...papasPages, {file:'los-rayos.html',name:'⚡ Los Rayos',desc:'Efecto'}];
+// MÚSICA Y MULTIMEDIA
+const multimediaPages = [
+  {file:'musica-sacra.html',name:'🎵 Música Sacra',desc:'145 pistas'},
+  {file:'el-altar.html',name:'⛪ El Altar 3D',desc:'Altar virtual'},
+  {file:'admin_panel.html',name:'⚙️ Panel Admin',desc:'Administración'},
+  {file:'404.html',name:'❓ Página 404',desc:'No encontrada'},
+  {file:'offline.html',name:'📡 Sin conexión',desc:'Offline'}
+];
+
+// Todas las páginas combinadas
+const pages = [...mainPages, ...mariaPages, ...rosarioPages, ...devocionesPages, ...oracionesPages, ...papasPages, ...multimediaPages];
 
 let currentPage = '';
 let originalContent = '';
@@ -341,6 +360,24 @@ li.onclick = () => loadPage(p);
 listMain.appendChild(li);
 });
 
+// Poblar lista de María
+const listMaria = document.getElementById('pageListMaria');
+mariaPages.forEach(p => {
+const li = document.createElement('li');
+li.textContent = p.name;
+li.onclick = () => loadPage(p);
+listMaria.appendChild(li);
+});
+
+// Poblar lista de Rosario
+const listRosario = document.getElementById('pageListRosario');
+rosarioPages.forEach(p => {
+const li = document.createElement('li');
+li.textContent = p.name;
+li.onclick = () => loadPage(p);
+listRosario.appendChild(li);
+});
+
 // Poblar lista de devociones
 const listDevociones = document.getElementById('pageListDevociones');
 devocionesPages.forEach(p => {
@@ -350,6 +387,15 @@ li.onclick = () => loadPage(p);
 listDevociones.appendChild(li);
 });
 
+// Poblar lista de oraciones
+const listOraciones = document.getElementById('pageListOraciones');
+oracionesPages.forEach(p => {
+const li = document.createElement('li');
+li.textContent = p.name;
+li.onclick = () => loadPage(p);
+listOraciones.appendChild(li);
+});
+
 // Poblar lista de papas
 const listPapas = document.getElementById('pageListPapas');
 papasPages.forEach(p => {
@@ -357,6 +403,15 @@ const li = document.createElement('li');
 li.textContent = p.name;
 li.onclick = () => loadPage(p);
 listPapas.appendChild(li);
+});
+
+// Poblar lista multimedia
+const listMultimedia = document.getElementById('pageListMultimedia');
+multimediaPages.forEach(p => {
+const li = document.createElement('li');
+li.textContent = p.name;
+li.onclick = () => loadPage(p);
+listMultimedia.appendChild(li);
 });
 
 // Cargar primera página
@@ -375,7 +430,7 @@ if(event && event.target){
 event.target.closest('li').classList.add('active');
 }else{
 // Si se llama programáticamente, buscar en todas las listas
-document.querySelectorAll('#pageList li, #pageListDevociones li, #pageListPapas li').forEach(li => {
+document.querySelectorAll('.sidebar li').forEach(li => {
 if(li.textContent === page.name) li.classList.add('active');
 });
 }
