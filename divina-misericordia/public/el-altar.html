@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Divina Misericordia — Santuario Virtual 3D</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <script type="importmap">
 {
   "imports": {
@@ -14,160 +13,88 @@
   }
 }
 </script>
-
-<!-- Fallback if importmap not supported -->
-<script nomodule>
-  alert('Tu navegador no soporta ES Modules. Por favor usa un navegador moderno.');
-</script>
-
 <style>
+:root{--gold:#d4a820;--gold-bright:#f0c040;--dark:#0a0812;--deep:#030508;--wood:#5a3a1a;--glow:#ffd866}
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --gold:#f0c060;--gold2:#d4a820;--gold3:#b8860b;
-  --divine:#fffef5;--deep:#030810;--mystic:#120820;
-  --amber:#ff8c20;--rose:#e8a8c0;--stone:#8a7a6a;
-  --blue:#3060c0;--violet:#601890;
-}
-html,body{width:100%;height:100%;overflow:hidden;background:var(--deep);font-family:'EB Garamond',serif;color:var(--divine)}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--deep);font-family:'Cormorant Garamond',serif;color:#f5f0e8}
 canvas{display:block;position:fixed;inset:0}
 
-/* LOADING */
-#loading{
-  position:fixed;inset:0;z-index:9999;
-  background:var(--deep);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;
-  transition:opacity 1.5s ease;
-}
+#loading{position:fixed;inset:0;z-index:9999;background:var(--deep);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;transition:opacity 1.5s}
 #loading.gone{opacity:0;pointer-events:none}
-.load-icon{font-size:3.5rem;animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{text-shadow:0 0 15px var(--gold),0 0 30px var(--amber);transform:scale(1)}
-50%{text-shadow:0 0 40px var(--gold),0 0 80px var(--amber);transform:scale(1.05)}}
-.load-title{font-family:'Cinzel Decorative',serif;font-size:1.6rem;color:var(--gold);letter-spacing:.25em;text-align:center;text-shadow:0 0 20px rgba(240,192,96,.4)}
-.load-quote{font-size:.9rem;color:rgba(240,192,96,.5);letter-spacing:.15em;font-style:italic;text-align:center}
-.load-bar-wrap{width:280px;height:2px;background:rgba(255,255,255,.08);border-radius:1px;overflow:hidden}
-.load-bar{height:100%;width:0;background:linear-gradient(90deg,var(--gold3),var(--gold),var(--amber));box-shadow:0 0 12px var(--gold);transition:width .4s ease}
-.load-msg{font-size:.75rem;color:rgba(240,192,96,.45);letter-spacing:.3em;text-transform:uppercase}
+.load-title{font-family:'Cinzel Decorative',serif;font-size:2rem;color:var(--gold);letter-spacing:.2em}
+.load-msg{font-size:.8rem;color:var(--gold);opacity:.6;letter-spacing:.15em}
 
-/* HUD TOP */
-#hud{
-  position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2rem;
-  background:linear-gradient(180deg,rgba(3,8,16,.85) 0%,transparent 100%);
-  display:flex;align-items:center;justify-content:space-between;pointer-events:none;
-}
+#hud{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2rem;background:linear-gradient(180deg,rgba(3,8,16,.85) 0%,transparent 100%);display:flex;align-items:center;justify-content:space-between;pointer-events:none}
 .hud-brand{display:flex;flex-direction:column;gap:.15rem}
 .hud-title{font-family:'Cinzel Decorative',serif;font-size:1rem;color:var(--gold);letter-spacing:.18em;text-shadow:0 0 20px rgba(240,192,96,.4)}
 .hud-sub{font-size:.65rem;color:rgba(240,192,96,.45);letter-spacing:.35em;text-transform:uppercase}
 .hud-right{display:flex;flex-direction:column;align-items:flex-end;gap:.15rem}
 #clock{font-family:'Cinzel Decorative',serif;font-size:.9rem;color:rgba(240,192,96,.6)}
 
-/* BOTTOM BAR */
-#bar{
-  position:fixed;bottom:0;left:0;right:0;z-index:100;height:4.5rem;
-  background:linear-gradient(0deg,rgba(3,8,16,.92) 0%,transparent 100%);
-  display:flex;align-items:center;justify-content:center;gap:1rem;padding:0 1.5rem;
-}
-.btn{
-  background:rgba(240,192,96,.07);border:1px solid rgba(240,192,96,.22);
-  color:var(--gold);padding:.45rem 1.1rem;border-radius:2rem;
-  font-family:'EB Garamond',serif;font-size:.82rem;letter-spacing:.08em;
-  cursor:pointer;transition:all .3s;backdrop-filter:blur(10px);
-  white-space:nowrap;
-}
+#bar{position:fixed;bottom:0;left:0;right:0;z-index:100;height:4.5rem;background:linear-gradient(0deg,rgba(3,8,16,.92) 0%,transparent 100%);display:flex;align-items:center;justify-content:center;gap:1rem;padding:0 1.5rem}
+.btn{background:rgba(240,192,96,.07);border:1px solid rgba(240,192,96,.22);color:var(--gold);padding:.45rem 1.1rem;border-radius:2rem;font-family:'Cormorant Garamond',serif;font-size:.82rem;letter-spacing:.08em;cursor:pointer;transition:all .3s;backdrop-filter:blur(10px);white-space:nowrap}
 .btn:hover{background:rgba(240,192,96,.18);border-color:var(--gold);box-shadow:0 0 18px rgba(240,192,96,.25)}
+.btn.active{background:rgba(240,192,96,.35);border-color:var(--gold-bright)}
 
-/* ROSARY */
-#rosary{
-  position:fixed;right:1.8rem;top:50%;transform:translateY(-50%);
-  z-index:100;display:flex;flex-direction:column;align-items:center;gap:.4rem;
-}
-.bead{
-  width:11px;height:11px;border-radius:50%;
-  background:rgba(240,192,96,.15);border:1px solid rgba(240,192,96,.28);
-  cursor:pointer;transition:all .3s;
-}
+.ui-panel{position:fixed;bottom:70px;left:50%;transform:translateX(-50%);display:flex;gap:8px;flex-wrap:wrap;justify-content:center;z-index:100;max-width:90%}
+.ui-panel button{background:rgba(20,12,8,.85);border:1px solid rgba(212,168,32,.4);color:var(--gold);padding:10px 18px;border-radius:25px;font-family:'Cormorant Garamond',serif;font-size:.85rem;cursor:pointer;transition:all .3s;backdrop-filter:blur(10px)}
+.ui-panel button:hover{background:rgba(212,168,32,.2);border-color:var(--gold-bright);transform:translateY(-2px)}
+.ui-panel button.active{background:rgba(212,168,32,.35);border-color:var(--gold-bright)}
+.ui-panel .master-btn{background:rgba(180,80,20,.7);border-color:rgba(255,150,50,.6)}
+
+#rosary{position:fixed;right:1.8rem;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;align-items:center;gap:.4rem}
+.bead{width:11px;height:11px;border-radius:50%;background:rgba(240,192,96,.15);border:1px solid rgba(240,192,96,.28);cursor:pointer;transition:all .3s}
 .bead:hover{transform:scale(1.3);border-color:var(--gold)}
 .bead.lit{background:var(--gold);box-shadow:0 0 8px var(--gold),0 0 16px rgba(240,192,96,.4)}
-.bead-label{
-  font-size:.55rem;color:rgba(240,192,96,.35);letter-spacing:.08em;
-  text-transform:uppercase;margin-top:.3rem;
-  writing-mode:vertical-rl;text-orientation:mixed;
-}
+.bead-label{font-size:.55rem;color:rgba(240,192,96,.35);letter-spacing:.08em;text-transform:uppercase;margin-top:.3rem;writing-mode:vertical-rl;text-orientation:mixed}
 
-/* HINT */
-#hint{
-  position:fixed;bottom:5.5rem;left:50%;transform:translateX(-50%);z-index:100;
-  background:rgba(3,8,16,.8);border:1px solid rgba(240,192,96,.25);
-  padding:.45rem 1.4rem;border-radius:3rem;font-size:.78rem;color:var(--gold);
-  letter-spacing:.08em;pointer-events:none;opacity:0;transition:opacity .4s;
-  backdrop-filter:blur(12px);white-space:nowrap;
-}
+#hint{position:fixed;bottom:5.5rem;left:50%;transform:translateX(-50%);z-index:100;background:rgba(3,8,16,.8);border:1px solid rgba(240,192,96,.25);padding:.45rem 1.4rem;border-radius:3rem;font-size:.78rem;color:var(--gold);letter-spacing:.08em;opacity:0;transition:opacity .5s}
 #hint.show{opacity:1}
 
-/* TOAST */
-#toast{
-  position:fixed;top:5rem;left:50%;transform:translateX(-50%) translateY(-1.5rem);
-  z-index:200;background:rgba(18,8,32,.92);
-  border:1px solid rgba(240,192,96,.35);padding:.7rem 1.8rem;
-  border-radius:3rem;color:var(--gold);font-size:.88rem;letter-spacing:.06em;
-  pointer-events:none;opacity:0;transition:all .4s;backdrop-filter:blur(12px);
-  white-space:nowrap;box-shadow:0 0 30px rgba(240,192,96,.15);
-}
+#toast{position:fixed;top:5rem;left:50%;transform:translateX(-50%) translateY(-1.5rem);z-index:200;background:rgba(18,8,32,.92);border:1px solid rgba(240,192,96,.35);padding:.7rem 1.8rem;border-radius:3rem;color:var(--gold);font-size:.88rem;letter-spacing:.06em;pointer-events:none;opacity:0;transition:all .4s;backdrop-filter:blur(12px);white-space:nowrap}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
-/* MODAL */
-#modal{
-  position:fixed;inset:0;z-index:500;
-  display:flex;align-items:center;justify-content:center;
-  pointer-events:none;opacity:0;transition:opacity .5s;
-}
+#verse-display{position:fixed;top:80px;left:50%;transform:translateX(-50%);z-index:50;text-align:center;opacity:0;transition:opacity .8s;pointer-events:none}
+#verse-display.show{opacity:1}
+#verse-display .verse-text{font-family:'Cinzel Decorative',serif;font-size:1.1rem;color:var(--gold-bright);text-shadow:0 0 20px rgba(240,192,96,.5),0 0 40px rgba(240,192,96,.3);letter-spacing:.05em;max-width:600px;line-height:1.6}
+#verse-display .verse-ref{font-size:.8rem;color:rgba(212,168,32,.7);margin-top:.5rem;letter-spacing:.1em}
+
+#cross-text{position:fixed;top:120px;left:50%;transform:translateX(-50%);z-index:45;font-family:'Cinzel Decorative',serif;font-size:.9rem;color:var(--gold-bright);text-shadow:0 0 15px var(--gold),0 0 30px rgba(240,192,96,.4);letter-spacing:.15em;opacity:.9;white-space:nowrap}
+
+#debug-panel{position:fixed;top:10px;left:10px;background:rgba(0,0,0,.8);padding:10px;border-radius:8px;font-size:11px;color:#0f0;font-family:monospace;z-index:1000;max-width:280px;display:none}
+#debug-panel.show{display:block}
+#debug-panel .error{color:#f55}
+#debug-panel .warn{color:#ff0}
+#debug-panel .info{color:#0ff}
+
+#modal{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .5s}
 #modal.show{opacity:1;pointer-events:all}
 .modal-bg{position:absolute;inset:0;background:rgba(3,8,16,.88);backdrop-filter:blur(10px)}
-.modal-card{
-  position:relative;z-index:1;
-  background:linear-gradient(135deg,rgba(20,8,40,.97) 0%,rgba(3,8,16,.99) 100%);
-  border:1px solid rgba(240,192,96,.3);border-radius:1.2rem;
-  padding:2.8rem 2.5rem;max-width:480px;width:90%;text-align:center;
-  box-shadow:0 0 60px rgba(240,192,96,.12),0 0 120px rgba(96,24,144,.08),inset 0 0 30px rgba(240,192,96,.03);
-}
+.modal-card{position:relative;z-index:1;background:linear-gradient(135deg,rgba(20,8,40,.97) 0%,rgba(3,8,16,.99) 100%);border:1px solid rgba(240,192,96,.3);border-radius:1.2rem;padding:2.8rem 2.5rem;max-width:480px;width:90%;text-align:center;box-shadow:0 0 60px rgba(240,192,96,.12)}
 .modal-icon{font-size:2.8rem;margin-bottom:1rem;display:block;animation:float 3s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 .modal-title{font-family:'Cinzel Decorative',serif;color:var(--gold);font-size:1rem;letter-spacing:.12em;margin-bottom:1.4rem}
 .modal-text{font-size:.98rem;line-height:1.85;color:rgba(255,254,245,.82);font-style:italic;margin-bottom:1.5rem}
 .modal-blessing{font-size:.85rem;color:rgba(240,192,96,.75);letter-spacing:.06em;margin-bottom:1.8rem}
-.modal-close{
-  background:rgba(240,192,96,.1);border:1px solid rgba(240,192,96,.4);
-  color:var(--gold);padding:.65rem 2rem;border-radius:2rem;
-  font-family:'EB Garamond',serif;font-size:.88rem;
-  cursor:pointer;transition:all .3s;letter-spacing:.1em;
-}
+.modal-close{background:rgba(240,192,96,.1);border:1px solid rgba(240,192,96,.4);color:var(--gold);padding:.65rem 2rem;border-radius:2rem;font-family:'Cormorant Garamond',serif;font-size:.88rem;cursor:pointer;transition:all .3s;letter-spacing:.1em}
 .modal-close:hover{background:rgba(240,192,96,.22);box-shadow:0 0 20px rgba(240,192,96,.3)}
-
-/* OBJECT NAME HOVER */
-#objname{
-  position:fixed;bottom:6.5rem;left:50%;transform:translateX(-50%);z-index:100;
-  background:rgba(3,8,16,.75);border:1px solid rgba(240,192,96,.15);
-  padding:.3rem 1rem;border-radius:2rem;font-size:.72rem;color:rgba(240,192,96,.6);
-  pointer-events:none;opacity:0;transition:opacity .2s;backdrop-filter:blur(8px);
-}
-#objname.show{opacity:1}
+#debug-panel.show{display:block}
+#debug-panel .error{color:#f55}
+#debug-panel .warn{color:#ff0}
+#debug-panel .info{color:#0ff}
 </style>
 </head>
 <body>
 
-<!-- LOADING -->
 <div id="loading">
-  <div class="load-icon">✝</div>
-  <div class="load-title">Divina Misericordia</div>
-  <div class="load-quote">«Jesús, confío en Ti»</div>
-  <div class="load-bar-wrap"><div class="load-bar" id="lbar"></div></div>
-  <div class="load-msg" id="lmsg">Iniciando Santuario...</div>
+  <div class="load-title">⛪ Divina Misericordia</div>
+  <div class="load-msg">Preparando experiencia sagrada...</div>
 </div>
 
-<!-- HUD -->
 <div id="hud">
   <div class="hud-brand">
     <div class="hud-title">✝ Divina Misericordia</div>
-    <div class="hud-sub">Santuario Virtual · Experiencia Sagrada</div>
+    <div class="hud-sub">Santuario Virtual ✨ Experiencia Sagrada</div>
   </div>
   <div class="hud-right">
     <div id="clock"></div>
@@ -175,29 +102,16 @@ canvas{display:block;position:fixed;inset:0}
   </div>
 </div>
 
-<!-- BAR -->
-<div id="bar">
-  <button class="btn" onclick="app.toggleAudio()">🎵 Música Sacra</button>
-  <button class="btn" onclick="app.showPrayer('daily')">📿 Oración del Día</button>
-  <button class="btn" onclick="app.resetCam()">🏛️ Santuario</button>
-  <button class="btn" onclick="app.toggleParts()">✨ Partículas</button>
-  <button class="btn" onclick="app.toggleBloom()">🌟 Bloom</button>
+<div id="cross-text">"Este es Mi Hijo, escuchadle"</div>
+
+<div id="verse-display">
+  <div class="verse-text"></div>
+  <div class="verse-ref"></div>
 </div>
 
-<!-- ROSARY -->
-<div id="rosary">
-  <div class="bead-label">Rosario</div>
-  <div id="beads"></div>
-</div>
+<div class="hint" id="hint">🖱️ Explora el santuario - Haz clic en los objetos sagrados</div>
 
-<!-- HINT -->
-<div id="hint">🖱 Toca los objetos sagrados para orar</div>
-
-<!-- TOAST -->
 <div id="toast"></div>
-
-<!-- OBJECT NAME -->
-<div id="objname"></div>
 
 <!-- MODAL -->
 <div id="modal">
@@ -207,1179 +121,278 @@ canvas{display:block;position:fixed;inset:0}
     <div class="modal-title" id="mtitle">Oración</div>
     <div class="modal-text" id="mtext"></div>
     <div class="modal-blessing" id="mblessing"></div>
-    <button class="modal-close" onclick="app.closeModal()">Amén 🙏</button>
+    <button class="modal-close" onclick="app.closeModal()">Amén ✝️</button>
   </div>
 </div>
 
+<div class="ui-panel" id="ui-panel">
+  <button onclick="app.toggleMusic()" id="btn-music">🎵 Música</button>
+  <button onclick="app.toggleCandle(1)" id="btn-candle1">🕯️ Vela 1</button>
+  <button onclick="app.toggleCandle(2)" id="btn-candle2">🕯️ Vela 2</button>
+  <button onclick="app.toggleCandle(3)" id="btn-candle3">🕯️ Vela 3</button>
+  <button onclick="app.toggleCandle(4)" id="btn-candle4">🕯️ Vela 4</button>
+  <button onclick="app.toggleAllCandles()" class="master-btn" id="btn-all">🔥 Todas</button>
+  <button onclick="app.showRandomVerse()" id="btn-bible">📖 Biblia</button>
+  <button onclick="app.resetSanctuary()" id="btn-reset">🔄 Reiniciar</button>
+</div>
+
+<div id="bar">
+  <button class="btn" onclick="app.showPrayer('daily')">📿 Oración del Día</button>
+  <button class="btn" onclick="app.toggleParts()">✨ Partículas</button>
+  <button class="btn" onclick="app.toggleBloom()">🌟 Bloom</button>
+  <button class="btn" onclick="app.resetCam()">🏛️ Santuario</button>
+</div>
+
+<div id="rosary">
+  <div class="bead-label">Rosario</div>
+  <div id="beads"></div>
+</div>
+
+<div id="debug-panel"></div>
+
 <script type="module">
-import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
-import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
-import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
-import { GammaCorrectionShader } from 'three/addons/shaders/GammaCorrectionShader.js';
+import*as THREE from'three';
+import{OrbitControls}from'three/addons/controls/OrbitControls.js';
+import{EffectComposer}from'three/addons/postprocessing/EffectComposer.js';
+import{RenderPass}from'three/addons/postprocessing/RenderPass.js';
+import{UnrealBloomPass}from'three/addons/postprocessing/UnrealBloomPass.js';
+import{ShaderPass}from'three/addons/postprocessing/ShaderPass.js';
+import{GammaCorrectionShader}from'three/addons/shaders/GammaCorrectionShader.js';
 
-// ═══════════════════════════════════════════════════════
-//  DIVINA MISERICORDIA — AAA Sacred 3D Experience
-//  Versión Cinematográfica · Nivel Dios
-// ═══════════════════════════════════════════════════════
+const VERSES=[
+{text:"El Señor es mi pastor, nada me faltará.",ref:"Salmo 23:1"},
+{text:"Confía en Dios y Él te guiará.",ref:"Proverbios 3:5"},
+{text:"La luz brilla en las tinieblas, y las tinieblas no la acogieron.",ref:"Juan 1:5"},
+{text:"Dios es amor.",ref:"Juan 4:8"},
+{text:"Yo estoy con vosotros todos los días.",ref:"Mateo 28:20"},
+{text:"El que cree en mí tendrá vida eterna.",ref:"Juan 6:47"},
+{text:"Sed perfectos como vuestro Padre celestial es perfecto.",ref:"Mateo 5:48"},
+{text:"Amaos unos a otros como yo os he amado.",ref:"Juan 15:12"},
+{text:"No temáis, yo estoy con vosotros.",ref:"Isaías 41:10"},
+{text:"Benditos los misericordiosos, porque ellos alcanzarán misericordia.",ref:"Mateo 5:7"},
+{text:"La paz os dejo, mi paz os doy.",ref:"Juan 14:27"},
+{text:"Yo soy el camino, la verdad y la vida.",ref:"Juan 14:6"},
+{text:"Donde están dos o tres congregados en mi nombre, allí estoy yo.",ref:"Mateo 18:20"},
+{text:"Pedid y se os dará; buscad y encontraréis.",ref:"Mateo 7:7"},
+{text:"El Espíritu Santo os enseñará todo.",ref:"Lucas 12:12"},
+{text:"Soy la luz del mundo; quien me sigue tendrá luz.",ref:"Juan 8:12"},
+{text:"Bienaventurados los limpios de corazón, porque ellos verán a Dios.",ref:"Mateo 5:8"},
+{text:"Mi yoke es suave y mi carga ligera.",ref:"Mateo 11:30"},
+{text:"Todo lo que pidáis en oración, creed que lo recibiréis.",ref:"Marcos 11:24"},
+{text:"El amor todo lo sufre, todo lo cree, todo lo espera.",ref:"1 Corintios 13:7"}
+];
 
-console.log('✝ DivineExperience: Iniciando...');
-
-// Global error handler
-window.addEventListener('error', (e) => {
-  console.error('Error global:', e.message, e.filename, e.lineno);
-});
-
-window.addEventListener('unhandledrejection', (e) => {
-  console.error('Promesa rechazada:', e.reason);
-});
-
-const PRAYERS = {
-  cross:   { icon:'✝️', title:'Oración ante la Santa Cruz',
-    text:'Señor mío Jesucristo, Dios y Hombre verdadero, en Ti confío con todo mi corazón. Por Tu sangre preciosa derramada en esta Cruz, ten misericordia de mí, pecador. Que Tu sacrificio sea mi salvación y Tu resurrección mi esperanza eterna.',
-    blessing:'✝️ La paz de Cristo sea contigo hoy y siempre' },
-  candle:  { icon:'🕯️', title:'Ofrenda de Luz',
-    text:'Enciendo esta vela como signo de mi fe viva. Que su llama sea imagen de Tu luz divina que ilumina mis tinieblas. Jesucristo, Luz del Mundo, ilumina mi camino. Jesús, confío en Ti.',
-    blessing:'🕯️ Que tu luz ilumine cada paso de tu camino' },
-  flower:  { icon:'🌹', title:'Ofrenda a la Santísima Virgen',
-    text:'Santísima Virgen María, Madre de Dios y Madre nuestra, acepta estas flores como ofrenda de mi amor y devoción. Intercede por mí y por todos los que me son queridos ante Tu Hijo Jesucristo.',
-    blessing:'🌹 Ave María, llena eres de gracia. El Señor es contigo' },
-  water:   { icon:'💧', title:'Agua Bendita',
-    text:'Con esta agua bendita recuerdo mi Bautismo y mi consagración a Cristo. Purifica mi alma de todo pecado, aleja de mí todo mal, y concédeme la gracia de permanecer siempre unido a Ti.',
-    blessing:'💧 Que el agua santa te limpie, proteja y bendiga' },
-  incense: { icon:'🌿', title:'Incienso Sagrado',
-    text:'Como el humo de este incienso asciende suavemente hacia Ti, Oh Señor, así también suba a Tu presencia el perfume de mi oración. Acepta el sacrificio de mis labios que Te alaban.',
-    blessing:'🙏 Que tu oración suba hasta el trono de Dios' },
-  daily:   { icon:'☀️', title:'Oración del Día',
-    text:'Divina Misericordia, Corazón de Jesús, en Ti confío. Que este nuevo día sea santificado por Tu gracia, guiado por Tu luz, y ofrecido a Tu mayor gloria. Que la paz de Dios, que supera todo entendimiento, guarde mi corazón y mi mente.',
-    blessing:'✨ Que este día esté lleno de la gracia de Dios' }
+const PRAYERS={
+  daily:{icon:'✝️',title:'Oración del Día',text:'Divina Misericordia, Corazón de Jesús, en Ti confío. Que este nuevo día sea santificado por Tu gracia, guiada por Tu luz, y ofrecida a Tu mayor gloria.',blessing:'✝ Que este día esté lleno de la gracia de Dios'},
+  candle:{icon:'🕯️',title:'Ofrenda de Luz',text:'Enciendo esta vela como signo de mi fe viva. Que su llama sea imagen de Tu luz divina que ilumina mis tinieblas.',blessing:'🕯️ Que tu luz ilumine cada paso de tu camino'},
+  flower:{icon:'🌹',title:'Ofrenda a la Virgen',text:'Santísima Virgen María, Madre de Dios y Madre nuestra, acepta estas flores como ofrenda de mi amor y devoción.',blessing:'🌹 Ave María, llena eres de gracia'},
+  water:{icon:'💧',title:'Agua Bendita',text:'Con esta agua bendita recuerdo mi Bautismo y mi consagración a Cristo. Purifica mi alma de todo pecado.',blessing:'💧 Que el agua santa te limpie y bendiga'},
+  incense:{icon:'🌫️',title:'Incienso Sagrado',text:'Como el humo de este incienso asciende suavemente hacia Ti, así también suba a Tu presencia el perfume de mi oración.',blessing:'🌫️ Que tu oración suba hasta el trono de Dios'},
+  sacrament:{icon:'🍞',title:'Adoración Eucarística',text:'Jesús mío, oculto en el Santísimo Sacramento, te adoro con todo mi ser. Eres la Misericordia encarnada, el amor de Dios hecho pan.',blessing:'🍞 Jesús en Ti confío'}
 };
 
-// ─────────────────────────────────────────────────────
-//  TEXTURE FACTORIES
-// ─────────────────────────────────────────────────────
-function mkCanvas(w=512,h=512){ const c=document.createElement('canvas'); c.width=w; c.height=h; return [c,c.getContext('2d')]; }
-
-function woodTex(){
-  const [c,x]=mkCanvas(512,512);
-  const g=x.createLinearGradient(0,0,512,0);
-  g.addColorStop(0,'#6b4226');g.addColorStop(.3,'#8b5a2b');g.addColorStop(.7,'#6b4226');g.addColorStop(1,'#7a4a28');
-  x.fillStyle=g; x.fillRect(0,0,512,512);
-  for(let i=0;i<90;i++){
-    x.strokeStyle=`rgba(${40+~~(Math.random()*40)},${20+~~(Math.random()*20)},${5+~~(Math.random()*10)},${.15+Math.random()*.2})`;
-    x.lineWidth=.5+Math.random()*2.5; x.beginPath();
-    let cx=0,cy=Math.random()*512;
-    x.moveTo(cx,cy);
-    while(cx<512){ cx+=25+Math.random()*20; cy+=(Math.random()-.5)*12; x.lineTo(cx,cy); }
-    x.stroke();
+class DebugSystem{
+  constructor(app){this.app=app;this.panel=document.getElementById('debug-panel');this.errors=[];this.startTime=Date.now();this.log('🧪 DebugSystem iniciado','info');}
+  log(msg,type='info'){
+    const time=((Date.now()-this.startTime)/1000).toFixed(1);
+    const line=document.createElement('div');
+    line.className=type;line.textContent=`[${time}s] ${msg}`;
+    this.panel.appendChild(line);
+    if(type==='error'){this.errors.push(msg);console.error(msg);}
+    else console.log(`[Debug] ${msg}`);
   }
-  for(let k=0;k<4;k++){
-    const kx=Math.random()*512,ky=Math.random()*512;
-    for(let r=25;r>0;r--){
-      x.strokeStyle=`rgba(30,15,5,${.15-r*.005})`;x.lineWidth=1;
-      x.beginPath();x.ellipse(kx,ky,r*2.2,r*.7,.25,0,Math.PI*2);x.stroke();
-    }
+  checkScene(){
+    let ok=true;
+    if(!this.app.scene){this.log('❌ scene no inicializada','error');ok=false;}
+    if(!this.app.camera){this.log('❌ camera no inicializada','error');ok=false;}
+    if(!this.app.renderer){this.log('❌ renderer no inicializado','error');ok=false;}
+    if(ok)this.log('✅ Scene, camera, renderer OK','info');
+    return ok;
   }
-  const t=new THREE.CanvasTexture(c); t.wrapS=t.wrapT=THREE.RepeatWrapping; return t;
+  checkLights(){
+    const lights=this.app.scene?.children.filter(c=>c.isLight)||[];
+    this.log(`💡 ${lights.length} luces activas`,'info');
+  }
+  show(){this.panel.classList.add('show');}
+  hide(){this.panel.classList.remove('show');}
+  reset(){this.log('🔄 Reiniciando Santuario...','warn');location.reload();}
 }
 
-function stoneTex(dark=false){
-  const [c,x]=mkCanvas(512,512);
-  x.fillStyle=dark?'#15120e':'#1e1a14'; x.fillRect(0,0,512,512);
-  for(let i=0;i<20000;i++){
-    const v=~~(Math.random()*35+(dark?15:25));
-    x.fillStyle=`rgb(${v},${v-2},${v-4})`;
-    x.fillRect(Math.random()*512,Math.random()*512,Math.random()*2,Math.random()*2);
-  }
-  x.strokeStyle=dark?'rgba(0,0,0,.45)':'rgba(0,0,0,.3)'; x.lineWidth=2;
-  const tw=128,th=64;
-  for(let row=0;row<=512/th;row++){
-    for(let col=0;col<=512/tw+1;col++){
-      const off=(row%2)*(tw/2);
-      x.strokeRect(col*tw+off,row*th,tw,th);
-    }
-  }
-  const t=new THREE.CanvasTexture(c); t.wrapS=t.wrapT=THREE.RepeatWrapping; return t;
-}
-
-function marbleTex(){
-  const [c,x]=mkCanvas(512,512);
-  x.fillStyle='#c8c0b4'; x.fillRect(0,0,512,512);
-  for(let v=0;v<15;v++){
-    x.strokeStyle=`rgba(${100+~~(Math.random()*80)},${90+~~(Math.random()*60)},${70+~~(Math.random()*50)},${.2+Math.random()*.4})`;
-    x.lineWidth=.5+Math.random()*2.5; x.beginPath();
-    let px=Math.random()*512,py=0; x.moveTo(px,py);
-    while(py<512){ px+=(Math.random()-.5)*50; py+=15+Math.random()*25; x.lineTo(px,py); }
-    x.stroke();
-  }
-  const t=new THREE.CanvasTexture(c); t.wrapS=t.wrapT=THREE.RepeatWrapping; return t;
-}
-
-function stainedGlass(){
-  const [c,x]=mkCanvas(512,512);
-  x.fillStyle='#000'; x.fillRect(0,0,512,512);
-  const colors=['#cc2010','#ee8020','#eecc00','#1888aa','#8820cc','#cc3060','#eeaa20'];
-  const cx=256,cy=256;
-  for(let s=0;s<12;s++){
-    const a=(s/12)*Math.PI*2,na=((s+1)/12)*Math.PI*2;
-    for(let r=1;r<=5;r++){
-      x.fillStyle=colors[(s+r)%colors.length]+'dd';
-      x.beginPath(); x.moveTo(cx,cy);
-      x.arc(cx,cy,r*40+5,a,na); x.closePath(); x.fill();
-    }
-  }
-  x.strokeStyle='#0a0808'; x.lineWidth=3.5;
-  for(let s=0;s<12;s++){
-    const a=(s/12)*Math.PI*2;
-    x.beginPath(); x.moveTo(cx,cy);
-    x.lineTo(cx+Math.cos(a)*210,cy+Math.sin(a)*210); x.stroke();
-  }
-  for(let r=1;r<=5;r++){ x.beginPath(); x.arc(cx,cy,r*40+5,0,Math.PI*2); x.stroke(); }
-  const cross_g=x; cross_g.strokeStyle='rgba(255,240,200,.3)'; cross_g.lineWidth=1;
-  const t=new THREE.CanvasTexture(c); return t;
-}
-
-function flameTex(){
-  const [c,x]=mkCanvas(64,128);
-  const g=x.createRadialGradient(32,85,1,32,72,36);
-  g.addColorStop(0,'rgba(255,255,200,1)');
-  g.addColorStop(.25,'rgba(255,170,30,.9)');
-  g.addColorStop(.6,'rgba(255,50,0,.5)');
-  g.addColorStop(1,'rgba(0,0,0,0)');
-  x.fillStyle=g; x.fillRect(0,0,64,128);
-  return new THREE.CanvasTexture(c);
-}
-
-function glowTex(color=[1,.8,.3]){
-  const [c,x]=mkCanvas(128,128);
-  const g=x.createRadialGradient(64,64,2,64,64,64);
-  g.addColorStop(0,`rgba(${~~(color[0]*255)},${~~(color[1]*255)},${~~(color[2]*255)},1)`);
-  g.addColorStop(.3,`rgba(${~~(color[0]*255)},${~~(color[1]*255)},${~~(color[2]*255)},.6)`);
-  g.addColorStop(1,'rgba(0,0,0,0)');
-  x.fillStyle=g; x.fillRect(0,0,128,128);
-  return new THREE.CanvasTexture(c);
-}
-
-// ─────────────────────────────────────────────────────
-//  MAIN CLASS
-// ─────────────────────────────────────────────────────
-class DivineExperience {
+class DivineExperience{
   constructor(){
-    this.clock=new THREE.Clock();
-    this.clickables=[];
-    this.candles=[];
-    this.showParts=true;
-    this.showBloom=true;
-    this.audioOn=false;
-    this.audioCtx=null;
-    this.rosaryN=0;
-    this.hovered=null;
-    this.mouseV=new THREE.Vector2();
-    this.raycaster=new THREE.Raycaster();
-    this._textures={};
-    this._init();
-    this._buildScene();
-    this._buildParticles();
-    this._buildUI();
-    this._setupEvents();
-    this._loadingAnim();
-    this._loop();
+    this.clock=new THREE.Clock();this.mouseV=new THREE.Vector2();this.raycaster=new THREE.Raycaster();this.clickables=[];this.showParts=true;this.showBloom=true;this.rosaryN=0;
+    this._init();this._buildScene();this._buildParticles();this._buildUI();this._setupEvents();this._loadingAnim();this._loop();
+    this.debugSystem=new DebugSystem(this);this.debugSystem.checkScene();this.debugSystem.checkLights();
   }
-
-  // ── INIT ──────────────────────────────────────────
   _init(){
-    console.log('✝ _init: Starting renderer...');
-    try {
     this.renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});
-    this.renderer.setSize(innerWidth,innerHeight);
-    this.renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-    this.renderer.shadowMap.enabled=true;
-    this.renderer.shadowMap.type=THREE.PCFSoftShadowMap;
-    this.renderer.outputColorSpace=THREE.LinearSRGBColorSpace;
-    document.body.appendChild(this.renderer.domElement);
-    console.log('✝ Renderer creado');
-
-    this.scene=new THREE.Scene();
-    this.scene.fog=new THREE.FogExp2(0x020608,.028);
-
-    this.camera=new THREE.PerspectiveCamera(58,innerWidth/innerHeight,.1,200);
-    this.camera.position.set(0,3.8,9.5);
-
+    this.renderer.setSize(innerWidth,innerHeight);this.renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+    this.renderer.shadowMap.enabled=true;this.renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+    this.renderer.outputColorSpace=THREE.LinearSRGBColorSpace;document.body.appendChild(this.renderer.domElement);
+    this.scene=new THREE.Scene();this.scene.fog=new THREE.FogExp2(0x020608,.028);
+    this.camera=new THREE.PerspectiveCamera(58,innerWidth/innerHeight,.1,200);this.camera.position.set(0,3.8,9.5);
     this.controls=new OrbitControls(this.camera,this.renderer.domElement);
-    this.controls.target.set(0,2.2,0);
-    this.controls.minDistance=3;this.controls.maxDistance=16;
+    this.controls.target.set(0,2.2,0);this.controls.minDistance=3;this.controls.maxDistance=16;
     this.controls.maxPolarAngle=Math.PI*.78;this.controls.minPolarAngle=.05;
-    this.controls.enableDamping=true;this.controls.dampingFactor=.055;
-    this.controls.update();
-
-    // Post-processing
-    this.composer=new EffectComposer(this.renderer);
-    this.composer.addPass(new RenderPass(this.scene,this.camera));
+    this.controls.enableDamping=true;this.controls.dampingFactor=.055;this.controls.update();
+    this.composer=new EffectComposer(this.renderer);this.composer.addPass(new RenderPass(this.scene,this.camera));
     this.bloomPass=new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight),1.1,.55,.18);
-    this.composer.addPass(this.bloomPass);
-    this.composer.addPass(new ShaderPass(GammaCorrectionShader));
-    console.log('✝ Post-processing configurado');
-    } catch(e) {
-      console.error('✝ Error en _init:', e);
-    }
+    this.composer.addPass(this.bloomPass);this.composer.addPass(new ShaderPass(GammaCorrectionShader));
   }
-
-  // ── SCENE ─────────────────────────────────────────
-  _buildScene(){
-    this._initTextures();
-    this._buildLights();
-    this._buildCathedral();
-    this._buildAltar();
-    this._buildCross();
-    this._buildCandles();
-    this._buildFlowers();
-    this._buildHolyWater();
-    this._buildIncense();
-    this._buildGodRays();
-  }
-
   _initTextures(){
-    this._textures.wood=woodTex();
-    this._textures.stone=stoneTex(true);
-    this._textures.floor=stoneTex(false);
-    this._textures.marble=marbleTex();
-    this._textures.glass=stainedGlass();
-    this._textures.flame=flameTex();
-    this._textures.glow=glowTex([1,.85,.3]);
-    this._textures.glowBlue=glowTex([.4,.6,1]);
+    const mkCanvas=(w=512,h=512)=>{const c=document.createElement('canvas');c.width=w;c.height=h;return[c,c.getContext('2d')];};
+    const woodTex=()=>{const[c,x]=mkCanvas();const g=x.createLinearGradient(0,0,512,0);g.addColorStop(0,'#6b4226');g.addColorStop(.5,'#8b5a2b');g.addColorStop(1,'#6b4226');x.fillStyle=g;x.fillRect(0,0,512,512);return new THREE.CanvasTexture(c);};
+    const stoneTex=(dark=false)=>{const[c,x]=mkCanvas();x.fillStyle=dark?'#15120e':'#1e1a14';x.fillRect(0,0,512,512);for(let i=0;i<20000;i++){const v=~~(Math.random()*(dark?15:25)+25);x.fillStyle=`rgb(${v},${v-2},${v-4})`;x.fillRect(Math.random()*512,Math.random()*512,Math.random()*2,Math.random()*2);}return new THREE.CanvasTexture(c);};
+    const marbleTex=()=>{const[c,x]=mkCanvas();x.fillStyle='#c8c0b4';x.fillRect(0,0,512,512);for(let v=0;v<15;v++){x.strokeStyle=`rgba(${100+~~(Math.random()*80)},${90+~~(Math.random()*60)},${70+~~(Math.random()*50)},${.3+Math.random()*.3})`;x.lineWidth=.5+Math.random()*2.5;x.beginPath();let px=Math.random()*512,py=0;x.moveTo(px,py);while(py<512){px+=(Math.random()-.5)*50;py+=15+Math.random()*25;x.lineTo(px,py);}x.stroke();}return new THREE.CanvasTexture(c);};
+    const flameTex=()=>{const[c,x]=mkCanvas(64,128);const g=x.createRadialGradient(32,85,1,32,72,36);g.addColorStop(0,'rgba(255,255,200,1)');g.addColorStop(.25,'rgba(255,170,30,.9)');g.addColorStop(.6,'rgba(255,50,0,.5)');g.addColorStop(1,'rgba(0,0,0,0)');x.fillStyle=g;x.fillRect(0,0,64,128);return new THREE.CanvasTexture(c);};
+    const glowTex=(c=[1,.8,.3])=>{const[c,x]=mkCanvas(128,128);const g=x.createRadialGradient(64,64,2,64,64,64);g.addColorStop(0,`rgba(${~~(c[0]*255)},${~~(c[1]*255)},${~~(c[2]*255)},1)`);g.addColorStop(.3,`rgba(${~~(c[0]*255)},${~~(c[1]*255)},${~~(c[2]*255)},.6)`);g.addColorStop(1,'rgba(0,0,0,0)');x.fillStyle=g;x.fillRect(0,0,128,128);return new THREE.CanvasTexture(c);};
+    this._textures={wood:woodTex(),stone:stoneTex(true),floor:stoneTex(false),marble:marbleTex(),flame:flameTex(),glow:glowTex([1,.85,.3])};
   }
-
   _buildLights(){
-    // Sky/ground hemisphere
     this.scene.add(new THREE.HemisphereLight(0x18102a,0x060308,.7));
-
-    // Main divine directional light (from above)
-    this.divineDir=new THREE.DirectionalLight(0xffe8a0,2.8);
-    this.divineDir.position.set(0,15,6);
-    this.divineDir.castShadow=true;
-    this.divineDir.shadow.mapSize.setScalar(2048);
-    const sc=this.divineDir.shadow.camera;
-    sc.left=-12;sc.right=12;sc.top=12;sc.bottom=-12;sc.near=.5;sc.far=55;
-    this.divineDir.shadow.bias=-.001;
+    this.divineDir=new THREE.DirectionalLight(0xffe8a0,2.8);this.divineDir.position.set(0,15,6);
+    this.divineDir.castShadow=true;this.divineDir.shadow.mapSize.setScalar(2048);
+    const sc=this.divineDir.shadow.camera;sc.left=-12;sc.right=12;sc.top=12;sc.bottom=-12;sc.near=.5;sc.far=55;
     this.scene.add(this.divineDir);
-
-    // Rim light (mystical blue-violet behind altar)
-    this.rimLight=new THREE.PointLight(0x6040ff,2,18);
-    this.rimLight.position.set(0,6,-5);
-    this.scene.add(this.rimLight);
-
-    // Warm fill left
-    const warmLight = new THREE.PointLight(0xff8030, 0.8, 22);
-    warmLight.position.set(-7, 5, 5);
-    this.scene.add(warmLight);
-    // Cool fill right
-    const coolLight = new THREE.PointLight(0x3060cc, 0.5, 22);
-    coolLight.position.set(7, 5, 5);
-    this.scene.add(coolLight);
-
-    // Cross spotlight from above
-    this.crossSpot=new THREE.SpotLight(0xfff0c0,3.5,22,Math.PI/9,.35,1.2);
-    this.crossSpot.position.set(0,13,3);
-    this.crossSpot.target.position.set(0,2.5,0);
-    this.crossSpot.castShadow=true;
-    this.crossSpot.shadow.mapSize.setScalar(1024);
-    this.scene.add(this.crossSpot,this.crossSpot.target);
-
-    // Stained glass colored lights
-    const glassLight1 = new THREE.PointLight(0x9040ff, 1.8, 20);
-    glassLight1.position.set(0, 7, -3.5);
-    this.scene.add(glassLight1);
-    const glassLight2 = new THREE.PointLight(0xff4040, 0.6, 15);
-    glassLight2.position.set(-4, 6, -3);
-    this.scene.add(glassLight2);
-    const glassLight3 = new THREE.PointLight(0x4080ff, 0.6, 15);
-    glassLight3.position.set(4, 6, -3);
-    this.scene.add(glassLight3);
+    this.rimLight=new THREE.PointLight(0x6040ff,2,18);this.rimLight.position.set(0,6,-5);this.scene.add(this.rimLight);
+    const warmLight=new THREE.PointLight(0xff8030,.8,22);warmLight.position.set(-7,5,5);this.scene.add(warmLight);
+    const coolLight=new THREE.PointLight(0x3060cc,.5,22);coolLight.position.set(7,5,5);this.scene.add(coolLight);
   }
-
   _buildCathedral(){
-    const T=this._textures;
-    T.stone.repeat.set(5,5); T.floor.repeat.set(10,10); T.marble.repeat.set(2,4);
-
-    const mkMat=(map,rough=.9,metal=.05,col=0xaaaaaa)=>new THREE.MeshStandardMaterial({map,roughness:rough,metalness:metal,color:col});
-
-    const floorMat=mkMat(T.floor,.65,.08,0xb0a898);
-    const wallMat=mkMat(T.stone,.95,.04,0x887766);
-    const ceilMat=mkMat(T.stone,1,0,0x443322);
-    const marbleMat=mkMat(T.marble,.25,.12,0xddd0c0);
-
-    // Floor
-    const floor=new THREE.Mesh(new THREE.PlaneGeometry(32,20),floorMat);
-    floor.rotation.x=-Math.PI/2; floor.receiveShadow=true;
-    this.scene.add(floor);
-
-    // Back wall
-    const bw=new THREE.Mesh(new THREE.PlaneGeometry(18,16),wallMat);
-    bw.position.set(0,8,-5.8); bw.receiveShadow=true; this.scene.add(bw);
-
-    // Side walls
-    [-9,9].forEach((x,i)=>{
-      const w=new THREE.Mesh(new THREE.PlaneGeometry(20,16),wallMat);
-      w.position.set(x,8,3); w.rotation.y=(i===0?1:-1)*Math.PI/2; w.receiveShadow=true;
-      this.scene.add(w);
-    });
-
-    // Ceiling
-    const ceil=new THREE.Mesh(new THREE.PlaneGeometry(32,20),ceilMat);
-    ceil.rotation.x=Math.PI/2; ceil.position.y=16; this.scene.add(ceil);
-
-    // Stained glass window
-    const glassMat=new THREE.MeshBasicMaterial({map:T.glass,transparent:true,opacity:.9,side:THREE.DoubleSide});
-    const win=new THREE.Mesh(new THREE.PlaneGeometry(5,6),glassMat);
-    win.position.set(0,7.5,-5.75); this.scene.add(win);
-
-    // Window frame
-    const frameMat=new THREE.MeshStandardMaterial({color:0x221810,roughness:.9,metalness:.1});
-    const frame=new THREE.Mesh(new THREE.BoxGeometry(5.3,.18,.1),frameMat);
-    [[0,5.5-5.75/2],[0,10.5-5.75/2]].forEach(([y])=>{
-      const f2=frame.clone(); f2.position.set(0,5.5,-5.7); this.scene.add(f2);
-    });
-    const fv=new THREE.Mesh(new THREE.BoxGeometry(.18,6,.1),frameMat);
-    [-2.5,2.5,0].forEach(x=>{ const f=fv.clone(); f.position.set(x,7.5,-5.7); this.scene.add(f); });
-    const fh=new THREE.Mesh(new THREE.BoxGeometry(5.3,.18,.1),frameMat);
-    [4.5,10.5].forEach(y=>{ const f=fh.clone(); f.position.set(0,y,-5.7); this.scene.add(f); });
-
-    // Columns
-    const colPositions=[[-5,-2.5],[5,-2.5],[-5,4.5],[5,4.5]];
-    colPositions.forEach(([cx,cz])=>{
-      // Column shaft
-      const col=new THREE.Mesh(new THREE.CylinderGeometry(.38,.44,14,20),marbleMat);
-      col.position.set(cx,7,cz); col.castShadow=true; col.receiveShadow=true; this.scene.add(col);
-      // Capital
-      const cap=new THREE.Mesh(new THREE.BoxGeometry(1.1,.35,1.1),marbleMat);
-      cap.position.set(cx,14.18,cz); this.scene.add(cap);
-      // Base
-      const base=new THREE.Mesh(new THREE.BoxGeometry(1.1,.35,1.1),marbleMat);
-      base.position.set(cx,.18,cz); this.scene.add(base);
-      // Flutes (decorative lines)
-      for(let f=0;f<12;f++){
-        const a=(f/12)*Math.PI*2;
-        const flute=new THREE.Mesh(new THREE.CylinderGeometry(.025,.025,13.5,6),
-          new THREE.MeshStandardMaterial({color:0xbbb0a0,roughness:.3,metalness:.1}));
-        flute.position.set(cx+Math.cos(a)*.36,7,cz+Math.sin(a)*.36);
-        this.scene.add(flute);
-      }
-    });
-
-    // Steps in front of altar
-    const stepMat=new THREE.MeshStandardMaterial({map:T.marble,roughness:.4,metalness:.1,color:0xccc0b8});
-    [0,1,2].forEach(s=>{
-      const step=new THREE.Mesh(new THREE.BoxGeometry(6,.12-s*.02,1),stepMat);
-      step.position.set(0,.06+s*.14,s*.55+.55);
-      step.receiveShadow=true; step.castShadow=true; this.scene.add(step);
-    });
-
-    // Kneeler rail
-    const kneelMat=new THREE.MeshStandardMaterial({color:0x5a3a1b,roughness:.8});
-    const kneeler=new THREE.Mesh(new THREE.BoxGeometry(5,.08,.25),kneelMat);
-    kneeler.position.set(0,.04,2.5); this.scene.add(kneeler);
-
-    // Candelabra floor stands
-    const goldMat=new THREE.MeshStandardMaterial({color:0xd4a820,roughness:.1,metalness:.92,emissive:0x3a2000,emissiveIntensity:.2});
-    [-3.5,3.5].forEach(x=>{
-      const stand=new THREE.Mesh(new THREE.CylinderGeometry(.04,.08,1.6,8),goldMat);
-      stand.position.set(x,.8,-1); stand.castShadow=true; this.scene.add(stand);
-      const plate=new THREE.Mesh(new THREE.CylinderGeometry(.25,.2,.06,16),goldMat);
-      plate.position.set(x,1.63,-1); this.scene.add(plate);
-      // Floor candle lights
-      const fl=new THREE.PointLight(0xff8030,.8,6);
-      fl.position.set(x,2,-1); this.scene.add(fl);
-      this._floorCandleLights=this._floorCandleLights||[];
-      this._floorCandleLights.push(fl);
-    });
+    const T=this._textures;T.stone.repeat.set(5,5);T.floor.repeat.set(10,10);T.marble.repeat.set(2,4);
+    const mkMat=(map,rough=.9,metal=.05)=>new THREE.MeshStandardMaterial({map,roughness:rough,metalness:metal});
+    const floorMat=mkMat(T.floor,.65,.08);const wallMat=mkMat(T.stone,.95,.04);const ceilMat=mkMat(T.stone,1,0);const marbleMat=mkMat(T.marble,.25,.12);
+    const floor=new THREE.Mesh(new THREE.PlaneGeometry(32,20),floorMat);floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;this.scene.add(floor);
+    const bw=new THREE.Mesh(new THREE.PlaneGeometry(18,16),wallMat);bw.position.set(0,8,-5.8);bw.receiveShadow=true;this.scene.add(bw);
+    [-9,9].forEach((x,i)=>{const w=new THREE.Mesh(new THREE.PlaneGeometry(20,16),wallMat);w.position.set(x,8,3);w.rotation.y=(i===0?1:-1)*Math.PI/2;w.receiveShadow=true;this.scene.add(w);});
+    const ceil=new THREE.Mesh(new THREE.PlaneGeometry(32,20),ceilMat);ceil.rotation.x=Math.PI/2;ceil.position.y=16;this.scene.add(ceil);
+    const colPositions=[[-5,-2.5],[5,-2.5],[-5,4.5],[5,4.5]];colPositions.forEach(([cx,cz])=>{const col=new THREE.Mesh(new THREE.CylinderGeometry(.38,.44,14,20),marbleMat);col.position.set(cx,7,cz);col.castShadow=true;this.scene.add(col);const cap=new THREE.Mesh(new THREE.BoxGeometry(1.1,.35,1.1),marbleMat);cap.position.set(cx,14.18,cz);this.scene.add(cap);const base=new THREE.Mesh(new THREE.BoxGeometry(1.1,.35,1.1),marbleMat);base.position.set(cx,.18,cz);this.scene.add(base);});
+    const stepMat=mkMat(T.marble,.4,.1);[0,1,2].forEach(s=>{const step=new THREE.Mesh(new THREE.BoxGeometry(6,.12-s*.02,1),stepMat);step.position.set(0,.06+s*.14,s*.55+.55);step.receiveShadow=true;this.scene.add(step);});
   }
-
   _buildAltar(){
-    const T=this._textures;
-    T.marble.repeat.set(3,2);
-    const altMat=new THREE.MeshStandardMaterial({map:T.marble,roughness:.2,metalness:.15,color:0xddd0c0});
-    const goldMat=new THREE.MeshStandardMaterial({color:0xc8a010,roughness:.05,metalness:.98,emissive:0x4a3600,emissiveIntensity:.4});
-
-    // Altar body
-    const body=new THREE.Mesh(new THREE.BoxGeometry(5.2,1.05,1.5),altMat);
-    body.position.set(0,.53,0); body.castShadow=true; body.receiveShadow=true; this.scene.add(body);
-    const top=new THREE.Mesh(new THREE.BoxGeometry(5.4,.12,1.65),altMat);
-    top.position.set(0,1.12,0); top.castShadow=true; this.scene.add(top);
-
-    // Gold trim
-    const goldTrim=new THREE.Mesh(new THREE.BoxGeometry(5.5,.06,1.7),goldMat);
-    goldTrim.position.set(0,1.19,0); this.scene.add(goldTrim);
-    // Altar front panel decorative gold
-    const frontGold=new THREE.Mesh(new THREE.BoxGeometry(4.8,.65,.04),goldMat);
-    frontGold.position.set(0,.65,.78); this.scene.add(frontGold);
-
-    // Tabernacle (central)
-    const tab=new THREE.Mesh(new THREE.BoxGeometry(1.1,1.3,.9),goldMat);
-    tab.position.set(0,1.77,-.1); tab.castShadow=true; this.scene.add(tab);
-    const tabDome=new THREE.Mesh(new THREE.SphereGeometry(.62,16,8,0,Math.PI*2,0,Math.PI/2),goldMat);
-    tabDome.position.set(0,2.42,-.1); this.scene.add(tabDome);
-    // Tabernacle cross
-    const tCross=this._mkCross(.28,.55,goldMat);
-    tCross.position.set(0,1.77,.46); this.scene.add(tCross);
-    // Tabernacle glow
-    const tabLight=new THREE.PointLight(0xffd060,1.5,5);
-    tabLight.position.set(0,2,1); this.scene.add(tabLight);
-    this._tabLight=tabLight;
+    const T=this._textures;T.marble.repeat.set(3,2);const altMat=new THREE.MeshStandardMaterial({map:T.marble,roughness:.2,metalness:.15,color:0xddd0c0});const goldMat=new THREE.MeshStandardMaterial({color:0xc8a010,roughness:.05,metalness:.98,emissive:0x4a3600,emissiveIntensity:.4});
+    const body=new THREE.Mesh(new THREE.BoxGeometry(5.2,1.05,1.5),altMat);body.position.set(0,.53,0);body.castShadow=true;body.receiveShadow=true;this.scene.add(body);
+    const top=new THREE.Mesh(new THREE.BoxGeometry(5.4,.12,1.65),altMat);top.position.set(0,1.12,0);top.castShadow=true;this.scene.add(top);
+    const goldTrim=new THREE.Mesh(new THREE.BoxGeometry(5.5,.06,1.7),goldMat);goldTrim.position.set(0,1.19,0);this.scene.add(goldTrim);
+    const tab=new THREE.Mesh(new THREE.BoxGeometry(1.1,1.3,.9),goldMat);tab.position.set(0,1.77,-.1);tab.castShadow=true;this.scene.add(tab);
+    const tabDome=new THREE.Mesh(new THREE.SphereGeometry(.62,16,8,0,Math.PI*2,0,Math.PI/2),goldMat);tabDome.position.set(0,2.42,-.1);this.scene.add(tabDome);
+    const tCross=this._mkCross(.28,.55,goldMat);tCross.position.set(0,1.77,.46);this.scene.add(tCross);
   }
-
-  _mkCross(w,h,mat){
-    const g=new THREE.Group();
-    const vb = new THREE.Mesh(new THREE.BoxGeometry(w*.28,h,w*.1), mat);
-    vb.castShadow = true;
-    g.add(vb);
-    const hb=new THREE.Mesh(new THREE.BoxGeometry(w,h*.28,w*.1),mat);
-    hb.position.y=h*.18; hb.castShadow=true; g.add(hb);
-    return g;
+  _mkCross(w,h,mat){const g=new THREE.Group();const vb=new THREE.Mesh(new THREE.BoxGeometry(w*.28,h,w*.1),mat);vb.castShadow=true;g.add(vb);const hb=new THREE.Mesh(new THREE.BoxGeometry(w,h*.28,w*.1),mat);hb.position.y=h*.18;hb.castShadow=true;g.add(hb);return g;}
+  _buildScene(){this._initTextures();this._buildLights();this._buildCathedral();this._buildAltar();this._buildSacrament();this._buildHostShader();this._buildCandles();this._buildFlowers();this._buildHolyWater();this._buildIncense();this._buildGodRays();}
+  _buildSacrament(){
+    const goldMat=new THREE.MeshStandardMaterial({color:0xFFD700,metalness:0.95,roughness:0.15,emissive:0xAA7700,emissiveIntensity:0.3});
+    const hostMat=new THREE.MeshStandardMaterial({color:0xFFFFF0,metalness:0.0,roughness:0.6,emissive:0xFFFFCC,emissiveIntensity:0.5});
+    const haloMat=new THREE.MeshBasicMaterial({color:0xFFEE88,transparent:true,opacity:0.18,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide});
+    const group=new THREE.Group();
+    const base=new THREE.Mesh(new THREE.CylinderGeometry(0.35,0.5,0.12,32),goldMat);base.position.y=-1.6;group.add(base);
+    const node=new THREE.Mesh(new THREE.SphereGeometry(0.18,16,16,0,Math.PI*2,0,Math.PI/2),goldMat);node.position.y=-1.42;group.add(node);
+    const stem=new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.09,1.4,16),goldMat);stem.position.y=-0.7;group.add(stem);
+    const luna=new THREE.Mesh(new THREE.TorusGeometry(0.28,0.04,8,32),goldMat);luna.position.y=0.0;group.add(luna);
+    const disc=new THREE.Mesh(new THREE.CylinderGeometry(0.28,0.28,0.04,32),goldMat);disc.position.y=0.0;group.add(disc);
+    const rayCount=24;const rays=new THREE.Group();rays.position.y=0.0;
+    for(let i=0;i<rayCount;i++){const angle=(i/rayCount)*Math.PI*2;const isLong=i%2===0;const rayLength=isLong?0.9:0.55;const rayWidth=isLong?0.03:0.02;const rayGeo=new THREE.BoxGeometry(rayWidth,rayLength,0.02);const ray=new THREE.Mesh(rayGeo,goldMat);ray.position.set(Math.sin(angle)*(0.32+rayLength/2),Math.cos(angle)*(0.32+rayLength/2),0);ray.rotation.z=-angle;rays.add(ray);}
+    group.add(rays);
+    const hostGeo=new THREE.CircleGeometry(0.22,48);const host=new THREE.Mesh(hostGeo,hostMat);host.position.set(0,0.0,0.03);host.userData={type:'sacrament'};this.clickables.push(host);group.add(host);
+    const halo=new THREE.Mesh(new THREE.SphereGeometry(1.4,32,32),haloMat);halo.position.y=0.0;group.add(halo);
+    const light=new THREE.PointLight(0xFFEE88,2.5,8,2);light.position.set(0,0.1,0.5);group.add(light);
+    group.position.set(0,0.2,0);this.scene.add(group);
+    const sacParticlesCount=280;const sacPos=new Float32Array(sacParticlesCount*3);const sacSpeeds=new Float32Array(sacParticlesCount);const sacOffsets=new Float32Array(sacParticlesCount);
+    for(let i=0;i<sacParticlesCount;i++){const theta=Math.random()*Math.PI*2;const r=0.4+Math.random()*3.5;sacPos[i*3]=Math.cos(theta)*r;sacPos[i*3+1]=(Math.random()-0.5)*4.0;sacPos[i*3+2]=Math.sin(theta)*r;sacSpeeds[i]=0.003+Math.random()*0.007;sacOffsets[i]=Math.random()*Math.PI*2;}
+    const sacGeo=new THREE.BufferGeometry();sacGeo.setAttribute('position',new THREE.BufferAttribute(sacPos,3));sacGeo.userData={speeds:sacSpeeds,offsets:sacOffsets,COUNT:sacParticlesCount,HEIGHT:4.0};
+    this.sacramentParticles=new THREE.Points(sacGeo,new THREE.PointsMaterial({color:0xFFEE99,size:0.04,transparent:true,opacity:0.7,blending:THREE.AdditiveBlending,depthWrite:false,sizeAttenuation:true}));
+    this.scene.add(this.sacramentParticles);this.sacrament={group,rays,halo,light,host};
   }
-
-  _buildCross(){
-    const woodMat=new THREE.MeshStandardMaterial({
-      map:this._textures.wood,roughness:.82,metalness:.05,color:0x8b5a2b
+  _buildHostShader(){
+    if(!this.sacrament||!this.sacrament.host)return;
+    this.hostMaterial=new THREE.ShaderMaterial({
+      uniforms:{time:{value:0},centerColor:{value:new THREE.Color(1,1,0.92)},edgeColor:{value:new THREE.Color(0.95,0.82,0.45)},pulseSpeed:{value:0.7},fresnelPower:{value:2.5}},
+      vertexShader:`varying vec2 vUv;varying vec3 vNormal;void main(){vUv=uv;vNormal=normalize(normalMatrix*normal);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}`,
+      fragmentShader:`uniform float time;uniform vec3 centerColor;uniform vec3 edgeColor;uniform float pulseSpeed;uniform float fresnelPower;varying vec2 vUv;varying vec3 vNormal;void main(){float dist=length(vUv-vec2(0.5));float radial=1.0-smoothstep(0.0,0.5,dist);float pulse=0.75+0.15*sin(time*pulseSpeed)+0.10*sin(time*pulseSpeed*2.3);float fresnel=pow(1.0-abs(dot(vNormal,vec3(0.0,0.0,1.0))),fresnelPower);vec3 color=mix(edgeColor,centerColor,radial*pulse);color+=fresnel*vec3(1.0,0.98,0.85)*0.4;gl_FragColor=vec4(color,0.88+0.12*pulse);}`,
+      transparent:true,depthWrite:false,side:THREE.DoubleSide
     });
-
-    const cg=new THREE.Group();
-
-    // Vertical beam with bevel approximation
-    const vb=new THREE.Mesh(new THREE.BoxGeometry(.32,5.2,.32),woodMat);
-    vb.castShadow=true; vb.receiveShadow=true;
-    vb.userData.type='cross'; this.clickables.push(vb);
-
-    // Horizontal beam
-    const hb=new THREE.Mesh(new THREE.BoxGeometry(3.2,.32,.32),woodMat);
-    hb.position.y=1.4; hb.castShadow=true; hb.receiveShadow=true;
-    hb.userData.type='cross'; this.clickables.push(hb);
-
-    cg.add(vb,hb);
-
-    // INRI plaque
-    const inriMat=new THREE.MeshStandardMaterial({color:0xd4b840,roughness:.35,metalness:.6,emissive:0x2a1a00,emissiveIntensity:.3});
-    const inri=new THREE.Mesh(new THREE.BoxGeometry(.95,.25,.06),inriMat);
-    inri.position.set(0,2.72,.22); cg.add(inri);
-
-    // Crown of thorns (torus)
-    const thornMat=new THREE.MeshStandardMaterial({color:0x5a3a18,roughness:.95,metalness:.02});
-    const thorn=new THREE.Mesh(new THREE.TorusGeometry(.24,.03,8,28),thornMat);
-    thorn.position.set(0,2.22,.2); thorn.rotation.x=Math.PI/5; cg.add(thorn);
-
-    // Corpus (simplified but dignified)
-    this._addCorpus(cg);
-
-    // Nails (gold)
-    const nailMat=new THREE.MeshStandardMaterial({color:0xa88030,roughness:.2,metalness:.85});
-    [[-1.55,1.4,0],[1.55,1.4,0],[0,-1.0,0]].forEach(([x,y,z])=>{
-      const nail=new THREE.Mesh(new THREE.CylinderGeometry(.025,.02,.25,8),nailMat);
-      nail.position.set(x,y,z+.2); nail.rotation.z=x===0?0:Math.PI/2;
-      cg.add(nail);
-    });
-
-    // Halo glow behind cross (emissive disc)
-    const haloMat=new THREE.MeshBasicMaterial({color:0xfff8e0,transparent:true,opacity:.06,side:THREE.BackSide,depthWrite:false,blending:THREE.AdditiveBlending});
-    this.haloMesh=new THREE.Mesh(new THREE.SphereGeometry(2.8,32,32),haloMat);
-    this.haloMesh.position.set(0,3,-2.8);
-    this.scene.add(this.haloMesh);
-
-    // Gold halo ring
-    const haloRing=new THREE.Mesh(new THREE.TorusGeometry(1.2,.04,12,64),new THREE.MeshStandardMaterial({color:0xf0c040,roughness:.05,metalness:.98,emissive:0x8a6000,emissiveIntensity:.8}));
-    haloRing.position.set(0,2.22,.15); cg.add(haloRing);
-
-    cg.position.set(0,3,-2.8);
-    this.crossGroup=cg;
-    this.scene.add(cg);
+    this.sacrament.host.material=this.hostMaterial;
   }
-
-  _addCorpus(parent){
-    const skin=new THREE.MeshStandardMaterial({color:0xdaad7a,roughness:.88,metalness:0});
-    const cloth=new THREE.MeshStandardMaterial({color:0xf0e8d0,roughness:.1,metalness:0});
-
-    // Body
-    const body=new THREE.Mesh(new THREE.CylinderGeometry(.13,.11,.85,10),skin);
-    body.position.set(0,.75,.2); parent.add(body);
-
-    // Head
-    const head=new THREE.Mesh(new THREE.SphereGeometry(.2,14,14),skin);
-    head.position.set(0,1.95,.2); parent.add(head);
-
-    // Arms
-    [-1,1].forEach(side=>{
-      const arm=new THREE.Mesh(new THREE.CylinderGeometry(.065,.055,1.18,8),skin);
-      arm.position.set(side*.52,1.4,.2);
-      arm.rotation.z=side*(Math.PI/2-.22);
-      parent.add(arm);
-      // Hands
-      const hand=new THREE.Mesh(new THREE.SphereGeometry(.085,8,8),skin);
-      hand.position.set(side*1.08,1.35,.2);
-      parent.add(hand);
-    });
-
-    // Loincloth
-    const loin=new THREE.Mesh(new THREE.BoxGeometry(.38,.38,.06),cloth);
-    loin.position.set(0,.36,.25); parent.add(loin);
-
-    // Legs
-    [-1,1].forEach(side=>{
-      const leg=new THREE.Mesh(new THREE.CylinderGeometry(.075,.065,.7,8),skin);
-      leg.position.set(side*.06,.05,.2); leg.rotation.z=side*.05;
-      parent.add(leg);
-    });
+  _ensureAudioCtx(){if(this._audioCtx)return true;try{this._audioCtx=new(window.AudioContext||window.webkitAudioContext)();return true;}catch{return false;}}
+  _playSacredBell(){
+    if(!this._ensureAudioCtx())return;
+    const ctx=this._audioCtx;const master=ctx.createGain();master.gain.setValueAtTime(0.28,ctx.currentTime);master.connect(ctx.destination);
+    const delay=ctx.createDelay(1.5);const feedback=ctx.createGain();delay.delayTime.setValueAtTime(0.22,ctx.currentTime);feedback.gain.setValueAtTime(0.28,ctx.currentTime);delay.connect(feedback);feedback.connect(delay);master.connect(delay);
+    [{freq:523.25,gain:1.0,decay:2.8},{freq:659.25,gain:0.6,decay:2.2},{freq:784.00,gain:0.4,decay:1.8},{freq:1046.5,gain:0.25,decay:1.4},{freq:1318.5,gain:0.15,decay:1.0}].forEach(({freq,gain,decay})=>{const osc=ctx.createOscillator();const env=ctx.createGain();osc.type='sine';osc.frequency.setValueAtTime(freq,ctx.currentTime);env.gain.setValueAtTime(gain,ctx.currentTime);env.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+decay);osc.connect(env);env.connect(master);osc.start(ctx.currentTime);osc.stop(ctx.currentTime+decay);});
   }
-
   _buildCandles(){
-    const waxMat=new THREE.MeshStandardMaterial({color:0xfffbe2,roughness:.95,metalness:0});
-    const goldMat=new THREE.MeshStandardMaterial({color:0xd4a820,roughness:.08,metalness:.96,emissive:0x3a2000,emissiveIntensity:.3});
-    const fTex=this._textures.flame;
-    const gTex=this._textures.glow;
-
+    const waxMat=new THREE.MeshStandardMaterial({color:0xfffbe2,roughness:.95,metalness:0});const goldMat=new THREE.MeshStandardMaterial({color:0xd4a820,roughness:.08,metalness:.96,emissive:0x3a2000,emissiveIntensity:.3});
+    const fTex=this._textures.flame;const gTex=this._textures.glow;
     const positions=[[-1.8,1.18,.45],[-.7,1.18,.6],[.7,1.18,.6],[1.8,1.18,.45]];
-
-    positions.forEach((pos,i)=>{
-      const g=new THREE.Group();
-
-      // Holder
-      const holder = new THREE.Mesh(new THREE.CylinderGeometry(.13,.16,.18,16), goldMat);
-      holder.position.set(0, 0, 0);
-      holder.castShadow = true;
-      g.add(holder);
-      // Plate under holder
-      const plate = new THREE.Mesh(new THREE.CylinderGeometry(.2,.2,.03,16), goldMat);
-      plate.position.set(0, -0.07, 0);
-      g.add(plate);
-
-      // Candle body
-      const body=new THREE.Mesh(new THREE.CylinderGeometry(.085,.095,1.3,16),waxMat);
-      body.position.y=.74; body.castShadow=true; body.receiveShadow=true;
-      g.add(body);
-
-      // Wax drips (3 per candle)
-      for(let d=0;d<4;d++){
-        const a=Math.random()*Math.PI*2, r=.075;
-        const drip=new THREE.Mesh(new THREE.SphereGeometry(.022,6,6),waxMat);
-        drip.position.set(Math.cos(a)*r,.22+Math.random()*.55,Math.sin(a)*r);
-        drip.scale.y=.4; g.add(drip);
-      }
-
-      // Wick
-      const wk=new THREE.Mesh(new THREE.CylinderGeometry(.005,.005,.1,4),new THREE.MeshStandardMaterial({color:0x2a2010}));
-      wk.position.y=1.44; g.add(wk);
-
-      // Flame sprite
-      const flameSpr=new THREE.Sprite(new THREE.SpriteMaterial({map:fTex,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,opacity:.95}));
-      flameSpr.scale.set(.22,.44,1); flameSpr.position.y=1.66; g.add(flameSpr);
-
-      // Glow halo around flame
-      const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:gTex,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,opacity:.5}));
-      halo.scale.set(.6,.6,1); halo.position.y=1.66; g.add(halo);
-
-      // Point light
-      const light=new THREE.PointLight(0xff8828,1.4,5.5);
-      light.position.y=1.7; g.add(light);
-
-      g.position.set(...pos);
-      g.userData={type:'candle',flame:light,flameSpr,halo,isOn:true,idx:i};
-      body.userData=g.userData; body.userData.parent=g;
-
-      this.scene.add(g);
-      this.clickables.push(body);
-      this.candles.push(g);
-    });
+    positions.forEach((pos,i)=>{const g=new THREE.Group();const holder=new THREE.Mesh(new THREE.CylinderGeometry(.13,.16,.18,16),goldMat);holder.position.set(0,0,0);holder.castShadow=true;g.add(holder);const plate=new THREE.Mesh(new THREE.CylinderGeometry(.2,.2,.03,16),goldMat);plate.position.set(0,-0.07,0);g.add(plate);const body=new THREE.Mesh(new THREE.CylinderGeometry(.085,.095,1.3,16),waxMat);body.position.y=.74;body.castShadow=true;body.receiveShadow=true;g.add(body);for(let d=0;d<4;d++){const a=Math.random()*Math.PI*2,r=.075;const drip=new THREE.Mesh(new THREE.SphereGeometry(.022,6,6),waxMat);drip.position.set(Math.cos(a)*r,.22+Math.random()*.55,Math.sin(a)*r);drip.scale.y=.4;g.add(drip);}const wk=new THREE.Mesh(new THREE.CylinderGeometry(.005,.005,.1,4),new THREE.MeshStandardMaterial({color:0x2a2010}));wk.position.y=1.44;g.add(wk);const flameSpr=new THREE.Sprite(new THREE.SpriteMaterial({map:fTex,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,opacity:.95}));flameSpr.scale.set(.22,.44,1);flameSpr.position.y=1.66;g.add(flameSpr);const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:gTex,transparent:true,blending:THREE.AdditiveBlending,depthWrite:false,opacity:.5}));halo.scale.set(.6,.6,1);halo.position.y=1.66;g.add(halo);const light=new THREE.PointLight(0xff8828,1.4,5.5);light.position.y=1.7;g.add(light);g.position.set(...pos);g.userData={type:'candle',flame:light,flameSpr,halo,isOn:true,idx:i};body.userData=g.userData;body.userData.parent=g;this.scene.add(g);this.clickables.push(body);this.candles.push(g);});
   }
-
   _buildFlowers(){
-    const petalMat=new THREE.MeshStandardMaterial({color:0xff5577,roughness:.9,metalness:0,emissive:0x440011,emissiveIntensity:.08,side:THREE.DoubleSide});
-    const innerMat=new THREE.MeshStandardMaterial({color:0xff3060,roughness:.9,metalness:0,emissive:0x330010,emissiveIntensity:.1,side:THREE.DoubleSide});
-    const stemMat=new THREE.MeshStandardMaterial({color:0x2d601a,roughness:.9});
-    const centerMat=new THREE.MeshStandardMaterial({color:0xffe840,roughness:.7,emissive:0x302000,emissiveIntensity:.25});
-
-    const fg=new THREE.Group();
-
-    const rosePositions=[[-2.6,1.18,.45],[-2.3,1.22,.65],[-2.8,1.18,.55],[-2.45,1.2,.35],[-2.7,1.18,.72],[-2.55,1.22,.55]];
-
-    rosePositions.forEach(pos=>{
-      const rose=new THREE.Group();
-      // Stem
-      const stem=new THREE.Mesh(new THREE.CylinderGeometry(.015,.022,.42,6),stemMat);
-      stem.position.y=.21; rose.add(stem);
-
-      // Outer petals (8)
-      for(let p=0;p<8;p++){
-        const a=(p/8)*Math.PI*2;
-        const petal=new THREE.Mesh(new THREE.SphereGeometry(.09,8,8),petalMat);
-        petal.position.set(Math.cos(a)*.12,.43,Math.sin(a)*.12);
-        petal.scale.set(.75,.38,.95); rose.add(petal);
-      }
-      // Middle petals (5)
-      for(let p=0;p<5;p++){
-        const a=(p/5)*Math.PI*2+.4;
-        const petal=new THREE.Mesh(new THREE.SphereGeometry(.07,8,8),innerMat);
-        petal.position.set(Math.cos(a)*.065,.455,Math.sin(a)*.065);
-        petal.scale.set(.65,.42,.75); rose.add(petal);
-      }
-      // Inner petals (3)
-      for(let p=0;p<3;p++){
-        const a=(p/3)*Math.PI*2;
-        const petal=new THREE.Mesh(new THREE.SphereGeometry(.055,8,8),innerMat);
-        petal.position.set(Math.cos(a)*.04,.47,Math.sin(a)*.04);
-        petal.scale.set(.5,.5,.6); rose.add(petal);
-      }
-      // Center
-      const center = new THREE.Mesh(new THREE.SphereGeometry(.038,8,8),centerMat);
-      center.position.set(0, .488, 0);
-      rose.add(center);
-      // Leaves
-      for(let l=0;l<3;l++){
-        const la=(l/3)*Math.PI*2;
-        const leaf=new THREE.Mesh(new THREE.SphereGeometry(.06,6,6),stemMat);
-        leaf.position.set(Math.cos(la)*.1,.28+l*.06,Math.sin(la)*.1);
-        leaf.scale.set(.5,.2,.8); rose.add(leaf);
-      }
-
-      rose.position.set(...pos);
-      rose.rotation.y=Math.random()*Math.PI*2;
-      fg.add(rose);
-    });
-
-    // Greenery (stems bundle)
-    for(let b=0;b<8;b++){
-      const bs=new THREE.Mesh(new THREE.CylinderGeometry(.01,.015,.3+Math.random()*.2,4),stemMat);
-      bs.position.set(-2.5+(Math.random()-.5)*.4,1.18+(Math.random()*.1),.55+(Math.random()-.5)*.25);
-      fg.add(bs);
-    }
-
-    this.scene.add(fg);
-    this.flowerGroup=fg;
-    fg.traverse(m=>{ if(m.isMesh){ m.userData.type='flower'; this.clickables.push(m); }});
+    const petalMat=new THREE.MeshStandardMaterial({color:0xff5577,roughness:.9,metalness:0,emissive:0x440011,emissiveIntensity:.08,side:THREE.DoubleSide});const innerMat=new THREE.MeshStandardMaterial({color:0xff3060,roughness:.9,metalness:0,emissive:0x330010,emissiveIntensity:.1,side:THREE.DoubleSide});const stemMat=new THREE.MeshStandardMaterial({color:0x2d601a,roughness:.9});const centerMat=new THREE.MeshStandardMaterial({color:0xffe840,roughness:.7,emissive:0x302000,emissiveIntensity:.25});const fg=new THREE.Group();const rosePositions=[[-2.6,1.18,.45],[-2.3,1.22,.65],[-2.8,1.18,.55],[-2.45,1.2,.35],[-2.7,1.18,.72],[-2.55,1.22,.55]];
+    rosePositions.forEach(pos=>{const rose=new THREE.Group();const stem=new THREE.Mesh(new THREE.CylinderGeometry(.015,.022,.42,6),stemMat);stem.position.y=.21;rose.add(stem);for(let p=0;p<8;p++){const a=(p/8)*Math.PI*2;const petal=new THREE.Mesh(new THREE.SphereGeometry(.09,8,8),petalMat);petal.position.set(Math.cos(a)*.12,.43,Math.sin(a)*.12);petal.scale.set(.75,.38,.95);rose.add(petal);}for(let p=0;p<5;p++){const a=(p/5)*Math.PI*2+.4;const petal=new THREE.Mesh(new THREE.SphereGeometry(.07,8,8),innerMat);petal.position.set(Math.cos(a)*.065,.455,Math.sin(a)*.065);petal.scale.set(.65,.42,.75);rose.add(petal);}const center=new THREE.Mesh(new THREE.SphereGeometry(.038,8,8),centerMat);center.position.set(0,.488,0);rose.add(center);rose.position.set(...pos);rose.rotation.y=Math.random()*Math.PI*2;fg.add(rose);});for(let b=0;b<8;b++){const bs=new THREE.Mesh(new THREE.CylinderGeometry(.01,.015,.3+Math.random()*.2,4),stemMat);bs.position.set(-2.5+(Math.random()-.5)*.4,1.18+(Math.random()*.1),.55+(Math.random()-.5)*.25);fg.add(bs);}this.scene.add(fg);this.flowerGroup=fg;fg.traverse(m=>{if(m.isMesh){m.userData.type='flower';this.clickables.push(m);}});
   }
-
   _buildHolyWater(){
-    const fg=new THREE.Group();
-    const stoneM=new THREE.MeshStandardMaterial({map:this._textures.marble,roughness:.35,metalness:.12,color:0xeee8e0});
-
-    // Pedestal
-    const ped=new THREE.Mesh(new THREE.CylinderGeometry(.4,.55,.9,16),stoneM);
-    ped.position.y=.45; ped.castShadow=true; ped.receiveShadow=true; fg.add(ped);
-
-    // Bowl
-    const bowl=new THREE.Mesh(new THREE.SphereGeometry(.62,32,16,0,Math.PI*2,0,Math.PI/2),stoneM);
-    bowl.position.y=.9; bowl.rotation.x=Math.PI; bowl.castShadow=true; fg.add(bowl);
-
-    // Inner bowl rim
-    const rim=new THREE.Mesh(new THREE.TorusGeometry(.62,.04,8,32),stoneM);
-    rim.position.y=.92; fg.add(rim);
-
-    // Water canvas
-    const wc=document.createElement('canvas'); wc.width=wc.height=256;
-    this._waterCtx=wc.getContext('2d');
-    this._waterTex=new THREE.CanvasTexture(wc);
-    this._drawWater(0);
-
-    const waterMat=new THREE.MeshStandardMaterial({map:this._waterTex,transparent:true,opacity:.82,roughness:.04,metalness:.35,color:0x60b0ff,side:THREE.FrontSide});
-    const ws=new THREE.Mesh(new THREE.CircleGeometry(.58,32),waterMat);
-    ws.position.y=.94; ws.rotation.x=-Math.PI/2;
-    ws.userData.type='water'; this.clickables.push(ws); fg.add(ws);
-    this._waterSurface=ws;
-
-    // Water glow
-    const wLight=new THREE.PointLight(0x4090ff,.8,4);
-    wLight.position.set(0,.8,0); fg.add(wLight);
-    this._waterLight=wLight;
-
-    fg.position.set(2.8,1.18,.45);
-    this.scene.add(fg);
+    const fg=new THREE.Group();const stoneM=new THREE.MeshStandardMaterial({map:this._textures.marble,roughness:.35,metalness:.12,color:0xeee8e0});const ped=new THREE.Mesh(new THREE.CylinderGeometry(.4,.55,.9,16),stoneM);ped.position.y=.45;ped.castShadow=true;ped.receiveShadow=true;fg.add(ped);const bowl=new THREE.Mesh(new THREE.SphereGeometry(.62,32,16,0,Math.PI*2,0,Math.PI/2),stoneM);bowl.position.y=.9;bowl.rotation.x=Math.PI;bowl.castShadow=true;fg.add(bowl);const rim=new THREE.Mesh(new THREE.TorusGeometry(.62,.04,8,32),stoneM);rim.position.y=.92;fg.add(rim);const wc=document.createElement('canvas');wc.width=wc.height=256;this._waterCtx=wc.getContext('2d');this._waterTex=new THREE.CanvasTexture(wc);this._drawWater(0);const waterMat=new THREE.MeshStandardMaterial({map:this._waterTex,transparent:true,opacity:.82,roughness:.04,metalness:.35,color:0x60b0ff,side:THREE.FrontSide});const ws=new THREE.Mesh(new THREE.CircleGeometry(.58,32),waterMat);ws.position.y=.94;ws.rotation.x=-Math.PI/2;ws.userData.type='water';this.clickables.push(ws);fg.add(ws);this._waterSurface=ws;const wLight=new THREE.PointLight(0x4090ff,.8,4);wLight.position.set(0,.8,0);fg.add(wLight);this._waterLight=wLight;fg.position.set(2.8,1.18,.45);this.scene.add(fg);
   }
-
-  _drawWater(t){
-    const x=this._waterCtx,w=256,h=256,cx=128,cy=128;
-    x.clearRect(0,0,w,h);
-    const g=x.createRadialGradient(cx,cy,0,cx,cy,128);
-    g.addColorStop(0,'rgba(140,210,255,.92)');
-    g.addColorStop(.4,'rgba(80,160,240,.75)');
-    g.addColorStop(1,'rgba(40,100,200,.55)');
-    x.fillStyle=g; x.fillRect(0,0,w,h);
-    // Caustic-like shimmer
-    for(let i=0;i<5;i++){
-      const px=cx+Math.cos(t+i*1.26)*35,py=cy+Math.sin(t*.7+i*1.26)*30;
-      const sg=x.createRadialGradient(px,py,0,px,py,30);
-      sg.addColorStop(0,'rgba(255,255,255,.18)');sg.addColorStop(1,'rgba(255,255,255,0)');
-      x.fillStyle=sg; x.fillRect(0,0,w,h);
-    }
-    // Ripples
-    for(let r=0;r<4;r++){
-      const rad=((t*.4+r*.25)%1)*115;
-      const al=1-rad/115;
-      x.strokeStyle=`rgba(255,255,255,${al*.4})`; x.lineWidth=1.5;
-      x.beginPath(); x.arc(cx,cy,rad,0,Math.PI*2); x.stroke();
-    }
-    if(this._waterTex) this._waterTex.needsUpdate=true;
-  }
-
-  _buildIncense(){
-    const g=new THREE.Group();
-    const bMat=new THREE.MeshStandardMaterial({color:0x907030,roughness:.2,metalness:.8,emissive:0x2a1500,emissiveIntensity:.2});
-    const braz=new THREE.Mesh(new THREE.SphereGeometry(.17,14,14),bMat);
-    braz.scale.y=.65; braz.position.y=.11; braz.castShadow=true;
-    braz.userData.type='incense'; this.clickables.push(braz);
-
-    const stand2=new THREE.Mesh(new THREE.CylinderGeometry(.04,.06,.22,8),bMat);
-    g.add(stand2,braz);
-
-    // Coals glow
-    const coal=new THREE.Mesh(new THREE.SphereGeometry(.1,8,8),new THREE.MeshBasicMaterial({color:0xff4400,transparent:true,opacity:.7}));
-    coal.scale.y=.4; coal.position.y=.11;
-    g.add(coal); this._coalMesh=coal;
-    const cLight=new THREE.PointLight(0xff6020,.9,3.5);
-    cLight.position.y=.2; g.add(cLight); this._incLight=cLight;
-
-    g.position.set(-3.2,1.18,.2);
-    this.scene.add(g);
-  }
-
-  _buildGodRays(){
-    const rayMat=new THREE.MeshBasicMaterial({color:0xfff8d0,transparent:true,opacity:.025,side:THREE.DoubleSide,depthWrite:false,blending:THREE.AdditiveBlending});
-    this._rays=[];
-    for(let i=0;i<8;i++){
-      const a=(i/8)*Math.PI*.5-.25*Math.PI;
-      const ray=new THREE.Mesh(new THREE.ConeGeometry(2+Math.random()*.8,11,4,1,true),rayMat.clone());
-      ray.position.set(Math.sin(a)*2.5,12.5,-1.5);
-      ray.rotation.x=Math.PI; ray.rotation.y=a;
-      ray.userData.phase=i*.88;
-      this.scene.add(ray);
-      this._rays.push(ray);
-    }
-  }
-
-  // ── PARTICLES ─────────────────────────────────────
-  _buildParticles(){
-    this._buildDivineLight();
-    this._buildSmoke();
-    this._buildDust();
-    this._buildStars();
-  }
-
-  _mkParticleSystem(count,initFn,matParams){
-    const pos=new Float32Array(count*3), ph=new Float32Array(count);
-    for(let i=0;i<count;i++){ initFn(pos,ph,i); }
-    const geo=new THREE.BufferGeometry();
-    geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
-    const mat=new THREE.PointsMaterial(matParams);
-    const sys=new THREE.Points(geo,mat);
-    this.scene.add(sys);
-    return {mesh:sys,pos,ph,count};
-  }
-
-  _buildDivineLight(){
-    this._divine=this._mkParticleSystem(2500,(pos,ph,i)=>{
-      const a=Math.random()*Math.PI*2,r=Math.random()*3.5;
-      pos[i*3]=Math.cos(a)*r; pos[i*3+1]=Math.random()*14; pos[i*3+2]=Math.sin(a)*r-2.5;
-      ph[i]=Math.random()*Math.PI*2;
-    },{size:.07,color:0xffd060,transparent:true,opacity:.65,blending:THREE.AdditiveBlending,depthWrite:false,sizeAttenuation:true});
-  }
-
-  _buildSmoke(){
-    this._smoke=this._mkParticleSystem(500,(pos,ph,i)=>{
-      pos[i*3]=-3.2+(Math.random()-.5)*.3;
-      pos[i*3+1]=1.3+Math.random()*5;
-      pos[i*3+2]=.2+(Math.random()-.5)*.25;
-      ph[i]=Math.random()*Math.PI*2;
-    },{size:.18,color:0xbbbbaa,transparent:true,opacity:.2,blending:THREE.NormalBlending,depthWrite:false});
-  }
-
-  _buildDust(){
-    this._dust=this._mkParticleSystem(600,(pos,ph,i)=>{
-      pos[i*3]=(Math.random()-.5)*14; pos[i*3+1]=Math.random()*10; pos[i*3+2]=(Math.random()-.5)*10;
-      ph[i]=Math.random()*Math.PI*2;
-    },{size:.035,color:0xffd080,transparent:true,opacity:.45,blending:THREE.AdditiveBlending,depthWrite:false});
-  }
-
-  _buildStars(){
-    // Floating sacred orbs
-    this._stars=this._mkParticleSystem(200,(pos,ph,i)=>{
-      const a=Math.random()*Math.PI*2,r=1+Math.random()*4;
-      pos[i*3]=Math.cos(a)*r; pos[i*3+1]=1+Math.random()*10; pos[i*3+2]=Math.sin(a)*r-3;
-      ph[i]=Math.random()*Math.PI*2;
-    },{size:.12,color:0xffffff,transparent:true,opacity:.4,blending:THREE.AdditiveBlending,depthWrite:false});
-  }
-
-  // ── UI ─────────────────────────────────────────────
+  _drawWater(t){const x=this._waterCtx,w=256,h=256,cx=128,cy=128;x.clearRect(0,0,w,h);const g=x.createRadialGradient(cx,cy,0,cx,cy,128);g.addColorStop(0,'rgba(140,210,255,.92)');g.addColorStop(.4,'rgba(80,160,240,.75)');g.addColorStop(1,'rgba(40,100,200,.55)');x.fillStyle=g;x.fillRect(0,0,w,h);for(let i=0;i<5;i++){const px=cx+Math.cos(t+i*1.26)*35,py=cy+Math.sin(t*.7+i*1.26)*30;const sg=x.createRadialGradient(px,py,0,px,py,30);sg.addColorStop(0,'rgba(255,255,255,.18)');sg.addColorStop(1,'rgba(255,255,255,0)');x.fillStyle=sg;x.fillRect(0,0,w,h);}for(let r=0;r<4;r++){const rad=((t*.4+r*.25)%1)*115;const al=1-rad/115;x.strokeStyle=`rgba(255,255,255,${al*.4})`;x.lineWidth=1.5;x.beginPath();x.arc(cx,cy,rad,0,Math.PI*2);x.stroke();}if(this._waterTex)this._waterTex.needsUpdate=true;}
+  _buildIncense(){const g=new THREE.Group();const bMat=new THREE.MeshStandardMaterial({color:0x907030,roughness:.2,metalness:.8,emissive:0x2a1500,emissiveIntensity:.2});const braz=new THREE.Mesh(new THREE.SphereGeometry(.17,14,14),bMat);braz.scale.y=.65;braz.position.y=.11;braz.castShadow=true;braz.userData.type='incense';this.clickables.push(braz);const stand2=new THREE.Mesh(new THREE.CylinderGeometry(.04,.06,.22,8),bMat);g.add(stand2,braz);const coal=new THREE.Mesh(new THREE.SphereGeometry(.1,8,8),new THREE.MeshBasicMaterial({color:0xff4400,transparent:true,opacity:.7}));coal.scale.y=.4;coal.position.y=.11;g.add(coal);this._coalMesh=coal;const cLight=new THREE.PointLight(0xff6020,.9,3.5);cLight.position.y=.2;g.add(cLight);this._incLight=cLight;g.position.set(-3.2,1.18,.2);this.scene.add(g);}
+  _buildGodRays(){const rayMat=new THREE.MeshBasicMaterial({color:0xfff8d0,transparent:true,opacity:.025,side:THREE.DoubleSide,depthWrite:false,blending:THREE.AdditiveBlending});this._rays=[];for(let i=0;i<8;i++){const a=(i/8)*Math.PI*.5-.25*Math.PI;const ray=new THREE.Mesh(new THREE.ConeGeometry(2+Math.random()*.8,11,4,1,true),rayMat.clone());ray.position.set(Math.sin(a)*2.5,12.5,-1.5);ray.rotation.x=Math.PI;ray.rotation.y=a;ray.userData.phase=i*.88;this.scene.add(ray);this._rays.push(ray);}}
+  _buildParticles(){this._buildDivineLight();this._buildSmoke();this._buildDust();this._buildStars();}
+  _mkParticleSystem(count,initFn,matParams){const pos=new Float32Array(count*3),ph=new Float32Array(count);for(let i=0;i<count;i++){initFn(pos,ph,i);}const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.BufferAttribute(pos,3));const mat=new THREE.PointsMaterial(matParams);const sys=new THREE.Points(geo,mat);this.scene.add(sys);return{mesh:sys,pos,ph,count};}
+  _buildDivineLight(){this._divine=this._mkParticleSystem(2500,(pos,ph,i)=>{const a=Math.random()*Math.PI*2,r=Math.random()*3.5;pos[i*3]=Math.cos(a)*r;pos[i*3+1]=Math.random()*14;pos[i*3+2]=Math.sin(a)*r-2.5;ph[i]=Math.random()*Math.PI*2;},{size:.07,color:0xffd060,transparent:true,opacity:.65,blending:THREE.AdditiveBlending,depthWrite:false,sizeAttenuation:true});}
+  _buildSmoke(){this._smoke=this._mkParticleSystem(500,(pos,ph,i)=>{pos[i*3]=-3.2+(Math.random()-.5)*.3;pos[i*3+1]=1.3+Math.random()*5;pos[i*3+2]=.2+(Math.random()-.5)*.25;ph[i]=Math.random()*Math.PI*2;},{size:.18,color:0xbbbbaa,transparent:true,opacity:.2,blending:THREE.NormalBlending,depthWrite:false});}
+  _buildDust(){this._dust=this._mkParticleSystem(600,(pos,ph,i)=>{pos[i*3]=(Math.random()-.5)*14;pos[i*3+1]=Math.random()*10;pos[i*3+2]=(Math.random()-.5)*10;ph[i]=Math.random()*Math.PI*2;},{size:.035,color:0xffd080,transparent:true,opacity:.45,blending:THREE.AdditiveBlending,depthWrite:false});}
+  _buildStars(){this._stars=this._mkParticleSystem(200,(pos,ph,i)=>{const a=Math.random()*Math.PI*2,r=1+Math.random()*4;pos[i*3]=Math.cos(a)*r;pos[i*3+1]=1+Math.random()*10;pos[i*3+2]=Math.sin(a)*r-3;ph[i]=Math.random()*Math.PI*2;},{size:.12,color:0xffffff,transparent:true,opacity:.4,blending:THREE.AdditiveBlending,depthWrite:false});}
   _buildUI(){
-    // Rosary beads
-    const beads=document.getElementById('beads');
-    this._beads=[];
-    for(let i=0;i<10;i++){
-      const b=document.createElement('div');
-      b.className='bead';
-      b.addEventListener('click',()=>this._onBead(i));
-      beads.appendChild(b);
-      this._beads.push(b);
-    }
-
-    this._updateClock();
-    setInterval(()=>this._updateClock(),30000);
-
-    // Show hint
-    setTimeout(()=>{
-      const h=document.getElementById('hint'); h.classList.add('show');
-      setTimeout(()=>h.classList.remove('show'),4500);
-    },2500);
+    const beads=document.getElementById('beads');this._beads=[];for(let i=0;i<10;i++){const b=document.createElement('div');b.className='bead';b.addEventListener('click',()=>this._onBead(i));beads.appendChild(b);this._beads.push(b);}
+    this._updateClock();setInterval(()=>this._updateClock(),30000);setTimeout(()=>{const h=document.getElementById('hint');h.classList.add('show');setTimeout(()=>h.classList.remove('show'),4500);},2500);
   }
-
-  _updateClock(){
-    const n=new Date(),h=n.getHours().toString().padStart(2,'0'),m=n.getMinutes().toString().padStart(2,'0');
-    document.getElementById('clock').textContent=`${h}:${m}`;
-  }
-
-  _onBead(i){
-    this.rosaryN=i+1;
-    this._beads.forEach((b,j)=>b.classList.toggle('lit',j<this.rosaryN));
-    if(!this.audioCtx) this._initAudio();
-    this._playBell(.5);
-    if(this.rosaryN===10){
-      this.toast('🙏 Decena completada — Dios te bendiga');
-      setTimeout(()=>{ this._beads.forEach(b=>b.classList.remove('lit')); this.rosaryN=0; },2200);
-    }
-  }
-
-  // ── EVENTS ─────────────────────────────────────────
+  _updateClock(){const n=new Date(),h=n.getHours().toString().padStart(2,'0'),m=n.getMinutes().toString().padStart(2,'0');document.getElementById('clock').textContent=`${h}:${m}`;}
+  _onBead(i){this.rosaryN=i+1;this._beads.forEach((b,j)=>b.classList.toggle('lit',j<this.rosaryN));if(!this._audioCtx)this._initAudio();this._playBell(.5);if(this.rosaryN===10){this.toast('🙏 Decena completada — Dios te bendiga');setTimeout(()=>{this._beads.forEach(b=>b.classList.remove('lit'));this.rosaryN=0;},2200);}}
   _setupEvents(){
-    window.addEventListener('resize',()=>{
-      this.camera.aspect=innerWidth/innerHeight;
-      this.camera.updateProjectionMatrix();
-      this.renderer.setSize(innerWidth,innerHeight);
-      this.composer.setSize(innerWidth,innerHeight);
-    });
-
-    window.addEventListener('click',e=>{
-      if(e.target.closest('#bar,#rosary,#modal')) return;
-      this.mouseV.set((e.clientX/innerWidth)*2-1,-(e.clientY/innerHeight)*2+1);
-      this.raycaster.setFromCamera(this.mouseV,this.camera);
-      const hits=this.raycaster.intersectObjects(this.clickables,true);
-      if(hits.length) this._onClick(hits[0].object,hits[0].point);
-    });
-
-    window.addEventListener('mousemove',e=>{
-      this.mouseV.set((e.clientX/innerWidth)*2-1,-(e.clientY/innerHeight)*2+1);
-      this.raycaster.setFromCamera(this.mouseV,this.camera);
-      const hits=this.raycaster.intersectObjects(this.clickables,true);
-      const on=document.getElementById('objname');
-      if(hits.length){
-        const type=hits[0].object.userData.type||'';
-        const names={cross:'Cruz de Cristo',candle:'Vela Votiva',flower:'Rosas — Virgen María',water:'Agua Bendita',incense:'Incensario'};
-        on.textContent=names[type]||''; on.classList.toggle('show',!!names[type]);
-        document.body.style.cursor='pointer';
-      } else {
-        on.classList.remove('show'); document.body.style.cursor='default';
-      }
-    });
+    window.addEventListener('resize',()=>{this.camera.aspect=innerWidth/innerHeight;this.camera.updateProjectionMatrix();this.renderer.setSize(innerWidth,innerHeight);this.composer.setSize(innerWidth,innerHeight);});
+    window.addEventListener('click',e=>{if(e.target.closest('#bar,#rosary,.ui-panel'))return;this.mouseV.set((e.clientX/innerWidth)*2-1,-(e.clientY/innerHeight)*2+1);this.raycaster.setFromCamera(this.mouseV,this.camera);const hits=this.raycaster.intersectObjects(this.clickables,true);if(hits.length)this._onClick(hits[0].object,hits[0].point);});
   }
-
-  _onClick(obj,pt){
-    if(!this.audioCtx) this._initAudio();
-    this._spawnBurst(pt);
-
-    const type=obj.userData.type;
-    if(!type) return;
-
-    if(type==='candle'){
-      this._toggleCandle(obj.userData);
-      return;
-    }
-
-    const prayers={cross:'cross',flower:'flower',water:'water',incense:'sacrament'};
-    if(prayers[type]) this.showPrayer(prayers[type]);
-
-    if(type==='sacrament'){
-      this._flashSacrament();
-      return;
-    }
-
-    if(type==='cross'){
-      this._flashCross();
-      this._playBell();
-    }
-    if(type==='water'){
-      this._waterRipple=0;
-      this.toast('💧 Agua bendita — recuerda tu Bautismo');
-    }
-    if(type==='flower'){
-      this._animateFlowers();
-      this.toast('🌹 Ofrenda aceptada por la Santísima Virgen');
-    }
-  }
-
-  _toggleCandle(d){
-    const p=d.parent||d;
-    if(!p.userData) return;
-    p.userData.isOn=!p.userData.isOn;
-    const on=p.userData.isOn;
-    p.userData.flame.intensity=on?1.4:0;
-    p.userData.flameSpr.material.opacity=on?.95:0;
-    p.userData.halo.material.opacity=on?.5:0;
-    if(on){ this.showPrayer('candle'); this._playBell(.7); }
-    else this.toast('🕯️ Vela apagada');
-  }
-
-  _flashCross(){
-    let t=0;
-    const tick=()=>{
-      t+=.06; if(t>Math.PI*2) return;
-      this.bloomPass.strength=1.1+Math.sin(t*5)*1.2;
-      if(this.haloMesh) this.haloMesh.material.opacity=.06+Math.sin(t*5)*.14;
-      requestAnimationFrame(tick);
-    };
-    tick();
-  }
-
-  _flashSacrament(){
-    if(!this.sacrament||!this.bloomPass)return;
-    const originalBloom=this.bloomPass.strength;
-    const originalIntensity=this.sacrament.light.intensity;
-    const peakBloom=originalBloom+2.2;
-    const peakIntensity=originalIntensity+3.5;
-    const duration=900;
-    const start=performance.now();
-    const animate=(now)=>{
-      const elapsed=now-start;
-      const progress=Math.min(elapsed/duration,1.0);
-      const eased=1-Math.pow(1-progress,3);
-      this.bloomPass.strength=peakBloom-(peakBloom-originalBloom)*eased;
-      this.sacrament.light.intensity=peakIntensity-(peakIntensity-originalIntensity)*eased;
-      if(progress<1.0){
-        requestAnimationFrame(animate);
-      }else{
-        this.bloomPass.strength=originalBloom;
-        this.sacrament.light.intensity=originalIntensity;
-      }
-    };
-    requestAnimationFrame(animate);
-    this._playSacredBell();
-  }
-
-  _animateFlowers(){
-    let t=0;
-    const fg=this.flowerGroup;
-    const tick=()=>{
-      t+=.12; fg.scale.setScalar(1+Math.sin(t)*.06);
-      if(t<Math.PI) requestAnimationFrame(tick);
-      else fg.scale.setScalar(1);
-    };
-    tick();
-  }
-
-  _spawnBurst(pt){
-    const cnt=50, pos=new Float32Array(cnt*3), vel=[];
-    for(let i=0;i<cnt;i++){
-      pos[i*3]=pt.x; pos[i*3+1]=pt.y; pos[i*3+2]=pt.z;
-      vel.push({vx:(Math.random()-.5)*4,vy:Math.random()*3+.5,vz:(Math.random()-.5)*4,life:1});
-    }
-    const geo=new THREE.BufferGeometry();
-    geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
-    const mat=new THREE.PointsMaterial({size:.1,color:0xffe060,transparent:true,opacity:1,blending:THREE.AdditiveBlending,depthWrite:false});
-    const mesh=new THREE.Points(geo,mat);
-    this.scene.add(mesh);
-    let age=0;
-    const tick=()=>{
-      age+=.016;
-      const p=geo.attributes.position.array;
-      vel.forEach((v,i)=>{ v.vx*=.98;v.vz*=.98; p[i*3]+=v.vx*.016; p[i*3+1]+=v.vy*.016-9.8*.016*age; p[i*3+2]+=v.vz*.016; v.life-=.016*1.5; });
-      geo.attributes.position.needsUpdate=true;
-      mat.opacity=Math.max(0,vel[0].life);
-      if(vel[0].life>0) requestAnimationFrame(tick);
-      else this.scene.remove(mesh);
-    };
-    requestAnimationFrame(tick);
-  }
-
-  // ── AUDIO ──────────────────────────────────────────
-  _initAudio(){
-    try{
-      this.audioCtx=new(window.AudioContext||window.webkitAudioContext)();
-      this.masterGain=this.audioCtx.createGain(); this.masterGain.gain.value=0;
-      this.masterGain.connect(this.audioCtx.destination);
-    }catch(e){}
-  }
-
-  toggleAudio(){
-    if(!this.audioCtx) this._initAudio();
-    if(!this.audioCtx) return;
-    this.audioOn=!this.audioOn;
-    if(this.audioOn){ this._startAmbient(); this.toast('🎵 Música sacra activada — «Kyrie Eleison»'); }
-    else{ this.masterGain.gain.setTargetAtTime(0,this.audioCtx.currentTime,.5); this.toast('🎵 Música pausada'); }
-  }
-
-  _startAmbient(){
-    if(!this.audioCtx) return;
-    const mkOsc=(freq,det,gain,type='sine')=>{
-      const o=this.audioCtx.createOscillator();
-      const g=this.audioCtx.createGain();
-      const f=this.audioCtx.createBiquadFilter();
-      o.type=type; o.frequency.value=freq; o.detune.value=det;
-      f.type='lowpass'; f.frequency.value=1200; f.Q.value=.8;
-      g.gain.value=gain;
-      o.connect(f); f.connect(g); g.connect(this.masterGain);
-      o.start(); return o;
-    };
-    // Dorian mode sacred chord
-    mkOsc(65.41,0,.18);mkOsc(98,0,.14);mkOsc(130.81,0,.12);
-    mkOsc(174.61,4,.10);mkOsc(196,0,.08);mkOsc(261.63,-3,.07);
-    mkOsc(392,2,.05,'triangle');
-    this.masterGain.gain.setTargetAtTime(.28,this.audioCtx.currentTime,2);
-  }
-
-  _playBell(vol=1){
-    if(!this.audioCtx) return;
-    const o=this.audioCtx.createOscillator();
-    const g=this.audioCtx.createGain();
-    const f=this.audioCtx.createBiquadFilter();
-    f.type='bandpass'; f.frequency.value=880; f.Q.value=8;
-    o.type='sine'; o.frequency.value=880;
-    g.gain.setValueAtTime(.3*vol,this.audioCtx.currentTime);
-    g.gain.exponentialRampToValueAtTime(.001,this.audioCtx.currentTime+2.5);
-    o.connect(f); f.connect(g); g.connect(this.audioCtx.destination);
-    o.start(); o.stop(this.audioCtx.currentTime+2.5);
-  }
-
-  // ── MODAL & UI ACTIONS ─────────────────────────────
-  showPrayer(type){
-    const d=PRAYERS[type]; if(!d) return;
-    document.getElementById('micon').textContent=d.icon;
-    document.getElementById('mtitle').textContent=d.title;
-    document.getElementById('mtext').textContent=d.text;
-    document.getElementById('mblessing').textContent=d.blessing;
-    document.getElementById('modal').classList.add('show');
-  }
-  closeModal(){ document.getElementById('modal').classList.remove('show'); }
-  toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(this._toastT); this._toastT=setTimeout(()=>t.classList.remove('show'),3200); }
-
-  resetCam(){
-    const sp=this.camera.position.clone(),st=this.controls.target.clone();
-    const ep=new THREE.Vector3(0,3.8,9.5),et=new THREE.Vector3(0,2.2,0);
-    let t=0;
-    const a=()=>{ t+=.03; this.camera.position.lerpVectors(sp,ep,Math.min(1,t)); this.controls.target.lerpVectors(st,et,Math.min(1,t)); this.controls.update(); if(t<1) requestAnimationFrame(a); };
-    requestAnimationFrame(a);
-  }
-
-  toggleParts(){ this.showParts=!this.showParts; [this._divine,this._smoke,this._dust,this._stars].forEach(p=>{ if(p) p.mesh.visible=this.showParts; }); this.toast(this.showParts?'✨ Partículas divinas activadas':'✨ Partículas desactivadas'); }
-  toggleBloom(){ this.showBloom=!this.showBloom; this.bloomPass.strength=this.showBloom?1.1:0; this.toast(this.showBloom?'🌟 Bloom divino activado':'🌟 Bloom desactivado'); }
-
-  // ── LOADING ────────────────────────────────────────
-  _loadingAnim(){
-    const steps=[[20,'Construyendo el Santuario...'],[40,'Encendiendo velas sagradas...'],[60,'Invocando la Luz Divina...'],[80,'Preparando las partículas...'],[100,'✝ Bienvenido al Santuario']];
-    const bar=document.getElementById('lbar'),msg=document.getElementById('lmsg');
-    let i=0;
-    const next=()=>{
-      if(i>=steps.length){ setTimeout(()=>document.getElementById('loading').classList.add('gone'),700); return; }
-      const [pct,text]=steps[i++]; bar.style.width=pct+'%'; msg.textContent=text;
-      setTimeout(next,450);
-    };
-    next();
-  }
-
-  // ── ANIMATION LOOP ─────────────────────────────────
+  _onClick(obj,pt){if(!this.audioCtx)this._initAudio();this._spawnBurst(pt);const type=obj.userData.type;if(!type)return;if(type==='candle'){this._toggleCandle(obj.userData);return;}const prayers={sacrament:'sacrament',flower:'flower',water:'water',incense:'incense'};if(prayers[type])this.showPrayer(prayers[type]);if(type==='sacrament'){this._flashSacrament();return;}if(type==='water'){this._waterRipple=0;this.toast('💧 Agua bendita — recuerda tu Bautismo');}}
+  _toggleCandle(d){const p=d.parent||d;if(!p.userData)return;const on=p.userData.isOn=!p.userData.isOn;p.userData.flame.intensity=on?1.4:0;p.userData.flameSpr.material.opacity=on?.95:0;p.userData.halo.material.opacity=on?.5:0;if(on){this.showPrayer('candle');this._playBell(.7);}else this.toast('🕯️ Vela apagada');}
+  _flashSacrament(){if(!this.sacrament||!this.bloomPass)return;const originalBloom=this.bloomPass.strength;const originalIntensity=this.sacrament.light.intensity;const peakBloom=originalBloom+2.2;const peakIntensity=originalIntensity+3.5;const duration=900;const start=performance.now();const animate=(now)=>{const elapsed=now-start;const progress=Math.min(elapsed/duration,1.0);const eased=1-Math.pow(1-progress,3);this.bloomPass.strength=peakBloom-(peakBloom-originalBloom)*eased;this.sacrament.light.intensity=peakIntensity-(peakIntensity-originalIntensity)*eased;if(progress<1.0){requestAnimationFrame(animate);}else{this.bloomPass.strength=originalBloom;this.sacrament.light.intensity=originalIntensity;}};requestAnimationFrame(animate);this._playSacredBell();}
+  _flashCross(){let t=0;const tick=()=>{t+=.06;if(t>Math.PI*2)return;this.bloomPass.strength=1.1+Math.sin(t*5)*1.2;if(this.haloMesh)this.haloMesh.material.opacity=.06+Math.sin(t*5)*.14;requestAnimationFrame(tick);};tick();}
+  _animateFlowers(){let t=0;const fg=this.flowerGroup;const tick=()=>{t+=.12;fg.scale.setScalar(1+Math.sin(t)*.06);if(t<Math.PI)requestAnimationFrame(tick);else fg.scale.setScalar(1);};tick();}
+  _spawnBurst(pt){const cnt=50,pos=new Float32Array(cnt*3),vel=[];for(let i=0;i<cnt;i++){const a=Math.random()*Math.PI*2,s=0.05+Math.random()*0.1;pos[i*3]=pt.x;pos[i*3+1]=pt.y;pos[i*3+2]=pt.z;vel.push({x:Math.cos(a)*s,y:Math.random()*s,z:Math.sin(a)*s,life:1});}const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.BufferAttribute(pos,3));const mat=new THREE.PointsMaterial({color:0xffdd88,size:.05,transparent:true,opacity:.8,blending:THREE.AdditiveBlending});const burst=new THREE.Points(geo,mat);this.scene.add(burst);let life=0;const animate=()=>{life+=.02;if(life>=1){this.scene.remove(burst);return;}for(let i=0;i<cnt;i++){pos[i*3]+=vel[i].x;pos[i*3+1]+=vel[i].y;pos[i*3+2]+=vel[i].z;vel[i].y-=.002;}geo.attributes.position.needsUpdate=true;mat.opacity=1-life;requestAnimationFrame(animate);};animate();}
+  _initAudio(){this._initAudioCalled=true;}
+  _playBell(vol=.5){if(!this._audioCtx){try{this._audioCtx=new(window.AudioContext||window.webkitAudioContext)();}catch{return;}}const ctx=this._audioCtx;const master=ctx.createGain();master.gain.value=vol;master.connect(ctx.destination);[523.25,659.25,784].forEach((f,i)=>{const osc=ctx.createOscillator();const env=ctx.createGain();osc.type='sine';osc.frequency.value=f;env.gain.setValueAtTime(.3,ctx.currentTime);env.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+2);osc.connect(env);env.connect(master);osc.start(ctx.currentTime+i*.1);osc.stop(ctx.currentTime+2);});}
+  _loadingAnim(){const bar=document.getElementById('lbar');if(bar)bar.style.width='100%';setTimeout(()=>{document.getElementById('loading').classList.add('gone');},1500);}
   _loop(){
-    requestAnimationFrame(()=>this._loop());
-    const delta=this.clock.getDelta();
-    const T=this.clock.getElapsedTime();
-
-    this.controls.update();
-    this._drawWater(T);
-
-    // ── Candle flicker
-    this.candles.forEach((c,i)=>{
-      if(!c.userData.isOn) return;
-      const fl=.78+Math.sin(T*9+i*2.4)*.1+Math.sin(T*17+i)*.06+(Math.random()-.5)*.07;
-      c.userData.flame.intensity=fl*1.6;
-      const sw=.18+Math.random()*.06, sh=.38+Math.sin(T*14+i)*.05;
-      c.userData.flameSpr.scale.set(sw,sh,1);
-      c.userData.halo.scale.setScalar(.5+fl*.3);
-    });
-
-    // ── Divine particles (rising)
-    if(this.showParts && this._divine){
-      const p=this._divine.pos;
-      for(let i=0;i<this._divine.count;i++){
-        p[i*3+1]+=.009+Math.sin(this._divine.ph[i]+T)*.004;
-        p[i*3]+=Math.sin(T*.6+this._divine.ph[i])*.003;
-        if(p[i*3+1]>14){ p[i*3+1]=0; const a=Math.random()*Math.PI*2,r=Math.random()*3.5; p[i*3]=Math.cos(a)*r; p[i*3+2]=Math.sin(a)*r-2.5; }
-      }
-      this._divine.mesh.geometry.attributes.position.needsUpdate=true;
-    }
-
-    // ── Smoke rising
-    if(this.showParts && this._smoke){
-      const p=this._smoke.pos;
-      for(let i=0;i<this._smoke.count;i++){
-        p[i*3+1]+=.014; p[i*3]+=Math.sin(T*.9+this._smoke.ph[i])*.005;
-        if(p[i*3+1]>7){ p[i*3+1]=1.3; p[i*3]=-3.2+(Math.random()-.5)*.3; p[i*3+2]=.2+(Math.random()-.5)*.25; }
-      }
-      this._smoke.mesh.geometry.attributes.position.needsUpdate=true;
-      this._smoke.mesh.material.opacity=.15+Math.sin(T*.4)*.07;
-    }
-
-    // ── Floating dust
-    if(this.showParts && this._dust){
-      const p=this._dust.pos;
-      for(let i=0;i<this._dust.count;i++){
-        p[i*3+1]+=Math.sin(T*.35+this._dust.ph[i])*.005;
-        p[i*3]+=Math.sin(T*.2+this._dust.ph[i]*1.4)*.003;
-        p[i*3+2]+=Math.cos(T*.18+this._dust.ph[i])*.003;
-      }
-      this._dust.mesh.geometry.attributes.position.needsUpdate=true;
-    }
-
-    // ── Sacred orbs pulse
-    if(this.showParts && this._stars){
-      const p=this._stars.pos;
-      for(let i=0;i<this._stars.count;i++){
-        p[i*3]+=Math.sin(T*.25+this._stars.ph[i])*.004;
-        p[i*3+1]+=Math.sin(T*.18+this._stars.ph[i]*1.2)*.003;
-        p[i*3+2]+=Math.cos(T*.22+this._stars.ph[i])*.004;
-      }
-      this._stars.mesh.geometry.attributes.position.needsUpdate=true;
-      this._stars.mesh.material.opacity=.25+Math.sin(T*.7)*.15;
-    }
-
-    // ── God rays animate
-    if(this._rays) this._rays.forEach(r=>{ r.material.opacity=.015+Math.sin(T*.6+r.userData.phase)*.018; });
-
-    // ── Divine light breathing
-    this.divineDir.intensity=2.6+Math.sin(T*.35)*.35;
-    this.rimLight.intensity=1.8+Math.sin(T*.7)*.6;
-    if(this._tabLight) this._tabLight.intensity=1.3+Math.sin(T*1.2)*.5;
-    if(this._incLight) this._incLight.intensity=.8+Math.sin(T*2.5)*.4;
-    if(this._coalMesh) this._coalMesh.material.opacity=.6+Math.sin(T*2.5)*.2;
-    if(this._floorCandleLights) this._floorCandleLights.forEach((l,i)=>{ l.intensity=.7+Math.sin(T*8+i*3)*.15+(Math.random()-.5)*.07; });
-
-    // ── Halo and bloom breathe
-    if(this.haloMesh) this.haloMesh.material.opacity=.05+Math.sin(T*1.3)*.03;
-    if(this.showBloom) this.bloomPass.strength=1.0+Math.sin(T*.9)*.2;
-
-    // ── Cross group subtle float
-    if(this.crossGroup) this.crossGroup.position.y=3+Math.sin(T*.5)*.03;
-
-    // ── Flower sway
-    if(this.flowerGroup) this.flowerGroup.rotation.z=Math.sin(T*.4)*.015;
-
-    // ── Water light pulse
-    if(this._waterLight) this._waterLight.intensity=.7+Math.sin(T*1.8)*.35;
-
+    requestAnimationFrame(()=>this._loop());const delta=this.clock.getDelta();const T=this.clock.getElapsedTime();this.controls.update();this._drawWater(T);
+    this.candles.forEach((c,i)=>{if(!c.userData.isOn)return;const fl=.78+Math.sin(T*9+i*2.4)*.1+Math.sin(T*17+i)*.06+(Math.random()-.5)*.07;c.userData.flame.intensity=fl*1.6;const sw=.18+Math.random()*.06,sh=.38+Math.sin(T*14+i)*.05;c.userData.flameSpr.scale.set(sw,sh,1);c.userData.halo.scale.setScalar(.5+fl*.3);});
+    if(this.showParts&&this._divine){const p=this._divine.pos;for(let i=0;i<this._divine.count;i++){p[i*3+1]+=.009+Math.sin(this._divine.ph[i]+T)*.004;p[i*3]+=Math.sin(T*.6+this._divine.ph[i])*.003;if(p[i*3+1]>14){p[i*3+1]=0;const a=Math.random()*Math.PI*2,r=Math.random()*3.5;p[i*3]=Math.cos(a)*r;p[i*3+2]=Math.sin(a)*r-2.5;}}this._divine.mesh.geometry.attributes.position.needsUpdate=true;}
+    if(this.showParts&&this._smoke){const p=this._smoke.pos;for(let i=0;i<this._smoke.count;i++){p[i*3+1]+=.014;p[i*3]+=Math.sin(T*.9+this._smoke.ph[i])*.005;if(p[i*3+1]>7){p[i*3+1]=1.3;p[i*3]=-3.2+(Math.random()-.5)*.3;p[i*3+2]=.2+(Math.random()-.5)*.25;}}this._smoke.mesh.geometry.attributes.position.needsUpdate=true;this._smoke.mesh.material.opacity=.15+Math.sin(T*.4)*.07;}
+    if(this.showParts&&this._dust){const p=this._dust.pos;for(let i=0;i<this._dust.count;i++){p[i*3+1]+=Math.sin(T*.35+this._dust.ph[i])*.005;p[i*3]+=Math.sin(T*.2+this._dust.ph[i]*1.4)*.003;p[i*3+2]+=Math.cos(T*.18+this._dust.ph[i])*.003;}this._dust.mesh.geometry.attributes.position.needsUpdate=true;}
+    if(this.showParts&&this._stars){const p=this._stars.pos;for(let i=0;i<this._stars.count;i++){p[i*3]+=Math.sin(T*.25+this._stars.ph[i])*.004;p[i*3+1]+=Math.sin(T*.18+this._stars.ph[i]*1.2)*.003;p[i*3+2]+=Math.cos(T*.22+this._stars.ph[i])*.004;}this._stars.mesh.geometry.attributes.position.needsUpdate=true;this._stars.mesh.material.opacity=.25+Math.sin(T*.7)*.15;}
+    if(this._rays)this._rays.forEach(r=>{r.material.opacity=.015+Math.sin(T*.6+r.userData.phase)*.018;});
+    this.divineDir.intensity=2.6+Math.sin(T*.35)*.35;this.rimLight.intensity=1.8+Math.sin(T*.7)*.6;
+    if(this._tabLight)this._tabLight.intensity=1.3+Math.sin(T*1.2)*.5;if(this._incLight)this._incLight.intensity=.8+Math.sin(T*2.5)*.4;if(this._coalMesh)this._coalMesh.material.opacity=.6+Math.sin(T*2.5)*.2;
+    if(this.haloMesh)this.haloMesh.material.opacity=.05+Math.sin(T*1.3)*.03;if(this.showBloom)this.bloomPass.strength=1.0+Math.sin(T*.9)*.2;if(this.flowerGroup)this.flowerGroup.rotation.z=Math.sin(T*.4)*.015;if(this._waterLight)this._waterLight.intensity=.7+Math.sin(T*1.8)*.35;
+    if(this.sacrament){this.sacrament.rays.rotation.z+=0.0008;const pulse=0.13+0.07*Math.sin(T*1.1)+0.04*Math.sin(T*2.7);this.sacrament.halo.material.opacity=pulse;this.sacrament.light.intensity=2.5+0.8*Math.sin(T*0.9);}
+    if(this.hostMaterial)this.hostMaterial.uniforms.time.value=T;
+    if(this.sacramentParticles){const pos=this.sacramentParticles.geometry.attributes.position;const{speeds,offsets,COUNT,HEIGHT}=this.sacramentParticles.geometry.userData;for(let i=0;i<COUNT;i++){pos.array[i*3+1]+=speeds[i];if(pos.array[i*3+1]>HEIGHT/2)pos.array[i*3+1]=-HEIGHT/2;pos.array[i*3]+=Math.sin(T*0.4+offsets[i])*0.0004;pos.array[i*3+2]+=Math.cos(T*0.3+offsets[i])*0.0004;}pos.needsUpdate=true;this.sacramentParticles.material.opacity=0.55+0.2*Math.sin(T*0.5);}
     this.composer.render(delta);
   }
+  toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+  showPrayer(key){const p=PRAYERS[key];if(!p)return;document.getElementById('mtext').textContent=p.text;document.getElementById('mblessing').textContent=p.blessing;document.getElementById('mtitle').textContent=p.title;document.getElementById('micon').textContent=p.icon;document.getElementById('modal').classList.add('show');}
+  closeModal(){document.getElementById('modal').classList.remove('show');}
+  resetCam(){this.camera.position.set(0,3.8,9.5);this.controls.target.set(0,2.2,0);this.controls.update();this.toast('🏛️ Vista del santuario');}
+  toggleParts(){this.showParts=!this.showParts;[this._divine,this._smoke,this._dust,this._stars].forEach(p=>{if(p)p.mesh.visible=this.showParts;});this.toast(this.showParts?'✨ Partículas activadas':'✨ Partículas desactivadas');}
+  toggleBloom(){this.showBloom=!this.showBloom;this.bloomPass.strength=this.showBloom?1.1:0;this.toast(this.showBloom?'🌟 Bloom activado':'🌟 Bloom desactivado');}
+  toggleMusic(){if(!this._musicCtx){try{this._musicCtx=new(window.AudioContext||window.webkitAudioContext)();this._musicMaster=this._musicCtx.createGain();this._musicMaster.gain.value=0;this._musicMaster.connect(this._musicCtx.destination);this._startAmbientMusic();}catch{return;}}this._musicOn=!this._musicOn;if(this._musicOn){this._musicMaster.gain.linearRampToValueAtTime(.25,this._musicCtx.currentTime+2);}else{this._musicMaster.gain.linearRampToValueAtTime(0,this._musicCtx.currentTime+1);}document.getElementById('btn-music').classList.toggle('active',this._musicOn);}
+  _startAmbientMusic(){const notes=[261.63,329.63,392,523.25,659.25];const playChord=()=>{if(!this._musicOn)return;notes.forEach((freq,i)=>{const osc=this._musicCtx.createOscillator();const env=this._musicCtx.createGain();osc.type='sine';osc.frequency.value=freq;env.gain.setValueAtTime(0,this._musicCtx.currentTime);env.gain.linearRampToValueAtTime(.06,this._musicCtx.currentTime+.5);env.gain.exponentialRampToValueAtTime(.001,this._musicCtx.currentTime+4);osc.connect(env);env.connect(this._musicMaster);osc.start();osc.stop(this._musicCtx.currentTime+4);});setTimeout(playChord,4000+Math.random()*2000);};playChord();}
+  toggleCandle(idx){const c=this.candles[idx-1];if(!c)return;c.userData.isOn=!c.userData.isOn;const on=c.userData.isOn;c.userData.flame.intensity=on?1.4:0;c.userData.flameSpr.visible=on;c.userData.halo.visible=on;document.getElementById(`btn-candle${idx}`).classList.toggle('active',on);}
+  toggleAllCandles(){const anyOn=this.candles.some(c=>c.userData.isOn);this.candles.forEach((c,i)=>{c.userData.isOn=!anyOn;c.userData.flame.intensity=c.userData.isOn?1.4:0;c.userData.flameSpr.visible=c.userData.isOn;c.userData.halo.visible=c.userData.isOn;document.getElementById(`btn-candle${i+1}`).classList.toggle('active',c.userData.isOn);});document.getElementById('btn-all').classList.toggle('active',!anyOn);}
+  showRandomVerse(){const v=VERSES[Math.floor(Math.random()*VERSES.length)];const disp=document.getElementById('verse-display');disp.querySelector('.verse-text').textContent=v.text;disp.querySelector('.verse-ref').textContent=v.ref;disp.classList.add('show');if(this.sacrament)this.sacrament.light.intensity=4;setTimeout(()=>{disp.classList.remove('show');if(this.sacrament)this.sacrament.light.intensity=2.5;},6000);}
+  resetSanctuary(){location.reload();}
 }
 
-// ── GLOBAL ──────────────────────────────────────────
-console.log('✝ Iniciando aplicación...');
-
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('✝ DOM cargado, creando aplicación...');
-  const app = new DivineExperience();
-  window.app = app;
-  console.log('✝ Aplicación creada:', app);
-});
+const app=new DivineExperience();window.app=app;
 </script>
 </body>
 </html>
+// ✅ SANTUARIO DIVINO AAA — Construido con amor y precisión por OpenCode
