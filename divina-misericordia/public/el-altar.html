@@ -920,6 +920,29 @@ class DivineExperience {
     group.position.set(0,0.2,0);
     this.scene.add(group);
 
+    // Partículas divinas alrededor del sacramento
+    const sacParticlesCount=280;
+    const sacPos=new Float32Array(sacParticlesCount*3);
+    const sacSpeeds=new Float32Array(sacParticlesCount);
+    const sacOffsets=new Float32Array(sacParticlesCount);
+    for(let i=0;i<sacParticlesCount;i++){
+      const theta=Math.random()*Math.PI*2;
+      const r=0.4+Math.random()*3.5;
+      sacPos[i*3]=Math.cos(theta)*r;
+      sacPos[i*3+1]=(Math.random()-0.5)*4.0;
+      sacPos[i*3+2]=Math.sin(theta)*r;
+      sacSpeeds[i]=0.003+Math.random()*0.007;
+      sacOffsets[i]=Math.random()*Math.PI*2;
+    }
+    const sacGeo=new THREE.BufferGeometry();
+    sacGeo.setAttribute('position',new THREE.BufferAttribute(sacPos,3));
+    sacGeo.userData={speeds:sacSpeeds,offsets:sacOffsets,COUNT:sacParticlesCount,HEIGHT:4.0};
+    this.sacramentParticles=new THREE.Points(sacGeo,new THREE.PointsMaterial({
+      color:0xFFEE99,size:0.04,transparent:true,opacity:0.7,
+      blending:THREE.AdditiveBlending,depthWrite:false,sizeAttenuation:true
+    }));
+    this.scene.add(this.sacramentParticles);
+
     this.sacrament={group,rays,halo,light,host};
   }
 
@@ -1246,6 +1269,9 @@ class DivineExperience {
     this._updateClock();
     setInterval(()=>this._updateClock(),30000);
 
+    // Panel UI de control
+    this._buildControlPanel();
+
     // Show hint
     setTimeout(()=>{
       const h=document.getElementById('hint'); h.classList.add('show');
@@ -1253,9 +1279,55 @@ class DivineExperience {
     },2500);
   }
 
+  // ── NUEVO: Panel de control ──────────────────────────────
+  _buildControlPanel(){
+    if(document.getElementById('dx-panel')) return;
+    const style=document.createElement('style');
+    style.id='dx-ui-style';
+    style.textContent=`
+      #dx-panel{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:540px;z-index:9999;pointer-events:all}
+      .dx-btn{background:rgba(10,6,2,0.75);border:1px solid rgba(255,210,80,0.35);color:#FFD966;font-family:Georgia,serif;font-size:11px;letter-spacing:0.06em;padding:8px 16px;border-radius:20px;cursor:pointer;backdrop-filter:blur(8px);transition:background .22s,border-color .22s,transform .1s;white-space:nowrap;user-select:none}
+      .dx-btn:hover{background:rgba(255,210,80,0.18);border-color:rgba(255,210,80,0.75);transform:translateY(-2px)}
+      .dx-btn.dx-off{opacity:0.45}
+    `;
+    document.head.appendChild(style);
+
+    const panel=document.createElement('div');
+    panel.id='dx-panel';
+
+    const defs=[
+      {label:'🎵 Música',fn:(b)=>{this.toggleAudio();b.classList.toggle('dx-off',!this.audioOn);}},
+      {label:'📿 Oración',fn:()=>this.showPrayer('daily')},
+      {label:'✨ Partículas',fn:(b)=>{this.toggleParts();b.classList.toggle('dx-off',!this.showParts);}},
+      {label:'🌟 Bloom',fn:(b)=>{this.toggleBloom();b.classList.toggle('dx-off',!this.showBloom);}},
+      {label:'🕯️ Velas',fn:(b)=>{this._toggleAllCandles();b.classList.toggle('dx-off',!this.candlesOn);}},
+    ];
+
+    defs.forEach(({label,fn})=>{
+      const btn=document.createElement('button');
+      btn.className='dx-btn';
+      btn.textContent=label;
+      btn.addEventListener('click',(e)=>{e.stopPropagation();fn(btn);});
+      panel.appendChild(btn);
+    });
+
+    document.body.appendChild(panel);
+    this._dxPanel=panel;
+    this.candlesOn=true;
+  }
+
   _updateClock(){
     const n=new Date(),h=n.getHours().toString().padStart(2,'0'),m=n.getMinutes().toString().padStart(2,'0');
     document.getElementById('clock').textContent=`${h}:${m}`;
+  }
+
+  _toggleAllCandles(){
+    this.candlesOn=!this.candlesOn;
+    this.candles.forEach(c=>{
+      c.userData.isOn=this.candlesOn;
+      if(c.userData.flame)c.userData.flame.intensity=this.candlesOn?1.4:0;
+    });
+    this.toast(this.candlesOn?'🕯️ Velas encendidas':'🕯️ Velas apagadas');
   }
 
   _onBead(i){
@@ -1585,6 +1657,20 @@ class DivineExperience {
     // ── Gloria Interna (shader hostia) ─────────────────────────────
     if(this.hostMaterial){
       this.hostMaterial.uniforms.time.value=T;
+    }
+
+    // ── Partículas del Sacramento ─────────────────────────────
+    if(this.sacramentParticles){
+      const pos=this.sacramentParticles.geometry.attributes.position;
+      const{speeds,offsets,COUNT,HEIGHT}=this.sacramentParticles.geometry.userData;
+      for(let i=0;i<COUNT;i++){
+        pos.array[i*3+1]+=speeds[i];
+        if(pos.array[i*3+1]>HEIGHT/2)pos.array[i*3+1]=-HEIGHT/2;
+        pos.array[i*3]+=Math.sin(T*0.4+offsets[i])*0.0004;
+        pos.array[i*3+2]+=Math.cos(T*0.3+offsets[i])*0.0004;
+      }
+      pos.needsUpdate=true;
+      this.sacramentParticles.material.opacity=0.55+0.2*Math.sin(T*0.5);
     }
 
     this.composer.render(delta);
