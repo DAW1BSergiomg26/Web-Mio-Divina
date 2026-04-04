@@ -151,6 +151,14 @@ canvas{display:block;position:fixed;inset:0}
 <div id="debug-panel"></div>
 
 <script type="module">
+// Esperar a que Three.js esté disponible
+window.addEventListener('error',(e)=>{
+  console.error('Error global:',e.message);
+  if(e.message.includes('THREE')||e.message.includes('import')||e.message.includes('module')){
+    document.getElementById('loading').innerHTML='<div class="load-title" style="color:#f55">Error cargando Three.js</div><div class="load-msg">Verifica tu conexión a internet</div>';
+  }
+});
+
 import*as THREE from'three';
 import{OrbitControls}from'three/addons/controls/OrbitControls.js';
 import{EffectComposer}from'three/addons/postprocessing/EffectComposer.js';
@@ -158,6 +166,8 @@ import{RenderPass}from'three/addons/postprocessing/RenderPass.js';
 import{UnrealBloomPass}from'three/addons/postprocessing/UnrealBloomPass.js';
 import{ShaderPass}from'three/addons/postprocessing/ShaderPass.js';
 import{GammaCorrectionShader}from'three/addons/shaders/GammaCorrectionShader.js';
+
+console.log('Modulos Three.js cargados');
 
 const VERSES=[
 {text:"El Señor es mi pastor, nada me faltará.",ref:"Salmo 23:1"},
@@ -220,9 +230,11 @@ class DebugSystem{
 
 class DivineExperience{
   constructor(){
+    try{
     this.clock=new THREE.Clock();this.mouseV=new THREE.Vector2();this.raycaster=new THREE.Raycaster();this.clickables=[];this.showParts=true;this.showBloom=true;this.rosaryN=0;
     this._init();this._buildScene();this._buildParticles();this._buildUI();this._setupEvents();this._loadingAnim();this._loop();
     this.debugSystem=new DebugSystem(this);this.debugSystem.checkScene();this.debugSystem.checkLights();
+    }catch(e){console.error('Error en constructor:',e);document.getElementById('loading').innerHTML='<div class="load-title" style="color:#f55">Error al cargar</div><div class="load-msg">'+e.message+'</div>';}
   }
   _init(){
     this.renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});
