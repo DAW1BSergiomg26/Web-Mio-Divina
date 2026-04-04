@@ -436,12 +436,102 @@ class DivineExperience {
     this._buildCathedral();
     this._buildAltar();
     this._buildSacrament();
+    this._buildHostShader();
     this._buildCandles();
     this._buildFlowers();
     this._buildHolyWater();
     this._buildIncense();
     this._buildGodRays();
   }
+
+  // ── NUEVO: Shader Gloria Interna hostia ─────────────────────
+  _buildHostShader(){
+    if(!this.sacrament||!this.sacrament.host)return;
+    this.hostMaterial=new THREE.ShaderMaterial({
+      uniforms:{
+        time:{value:0},
+        centerColor:{value:new THREE.Color(1,1,0.92)},
+        edgeColor:{value:new THREE.Color(0.95,0.82,0.45)},
+        pulseSpeed:{value:0.7},
+        fresnelPower:{value:2.5}
+      },
+      vertexShader:`
+        varying vec2 vUv;
+        varying vec3 vNormal;
+        void main(){
+          vUv=uv;
+          vNormal=normalize(normalMatrix*normal);
+          gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);
+        }
+      `,
+      fragmentShader:`
+        uniform float time;
+        uniform vec3 centerColor;
+        uniform vec3 edgeColor;
+        uniform float pulseSpeed;
+        uniform float fresnelPower;
+        varying vec2 vUv;
+        varying vec3 vNormal;
+        void main(){
+          float dist=length(vUv-vec2(0.5));
+          float radial=1.0-smoothstep(0.0,0.5,dist);
+          float pulse=0.75+0.15*sin(time*pulseSpeed)+0.10*sin(time*pulseSpeed*2.3);
+          float fresnel=pow(1.0-abs(dot(vNormal,vec3(0.0,0.0,1.0))),fresnelPower);
+          vec3 color=mix(edgeColor,centerColor,radial*pulse);
+          color+=fresnel*vec3(1.0,0.98,0.85)*0.4;
+          gl_FragColor=vec4(color,0.88+0.12*pulse);
+        }
+      `,
+      transparent:true,depthWrite:false,side:THREE.DoubleSide
+    });
+    this.sacrament.host.material=this.hostMaterial;
+  }
+
+  // ── NUEVO: Campana sagrada sintética ────────────────────────
+  _ensureAudioCtx(){
+    if(this._audioCtx)return true;
+    try{this._audioCtx=new(window.AudioContext||window.webkitAudioContext)();return true;}catch{return false;}
+  }
+
+  _playSacredBell(){
+    if(!this._ensureAudioCtx())return;
+    const ctx=this._audioCtx;
+    const master=ctx.createGain();
+    master.gain.setValueAtTime(0.28,ctx.currentTime);
+    master.connect(ctx.destination);
+    const delay=ctx.createDelay(1.5);
+    const feedback=ctx.createGain();
+    delay.delayTime.setValueAtTime(0.22,ctx.currentTime);
+    feedback.gain.setValueAtTime(0.28,ctx.currentTime);
+    delay.connect(feedback);
+    feedback.connect(delay);
+    master.connect(delay);
+    [
+      {freq:523.25,gain:1.0,decay:2.8},
+      {freq:659.25,gain:0.6,decay:2.2},
+      {freq:784.00,gain:0.4,decay:1.8},
+      {freq:1046.5,gain:0.25,decay:1.4},
+      {freq:1318.5,gain:0.15,decay:1.0}
+    ].forEach(({freq,gain,decay})=>{
+      const osc=ctx.createOscillator();
+      const env=ctx.createGain();
+      osc.type='sine';
+      osc.frequency.setValueAtTime(freq,ctx.currentTime);
+      env.gain.setValueAtTime(gain,ctx.currentTime);
+      env.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+decay);
+      osc.connect(env);
+      env.connect(master);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime+decay);
+    });
+  }
+
+  _initAudio(){
+    // Audio se crea lazily en _ensureAudioCtx
+  }
+
+  // ── ELIMINADO: _buildCross ──
+  // ── ELIMINADO: _addCorpus ──
 
   _initTextures(){
     this._textures.wood=woodTex();
@@ -859,6 +949,7 @@ class DivineExperience {
       }
     };
     requestAnimationFrame(animate);
+    this._playSacredBell();
   }
 
   // ── ELIMINADO: _buildCross ──
@@ -1489,6 +1580,11 @@ class DivineExperience {
 
       // Variación suave de la luz
       this.sacrament.light.intensity=2.5+0.8*Math.sin(t*0.9);
+    }
+
+    // ── Gloria Interna (shader hostia) ─────────────────────────────
+    if(this.hostMaterial){
+      this.hostMaterial.uniforms.time.value=T;
     }
 
     this.composer.render(delta);
