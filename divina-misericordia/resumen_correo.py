@@ -11,96 +11,110 @@ PASSWORD = "orqu qkzr skzt gsye"
 ahora = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
 
 contenido = f"""
-══════════════════════════════════════════════════════════════════
+═════════════════════════════════════════════════════════════════
         📋 RESUMEN - WEB DIVINA MISERICORDIA
-══════════════════════════════════════════════════════════════════
+═════════════════════════════════════════════════════════════════
 
 Fecha: {ahora}
 
-─────────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────────────--
 ✅ ÚLTIMO COMMIT SUBIDO A GITHUB
-─────────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────────────--
 
-fase2-total: refactor: integrate AAA systems into el-altar.html
-Rama: https://github.com/DAW1BSergiomg26/Web-Mio-Divina/tree/fase2-total
+Mensaje: Crucifix clickable en todas las páginas + navegación en altar
+Rama: main
+Rama de recuperación: El-Altar-Divino
+URL GitHub: https://github.com/DAW1BSergiomg26/Web-Mio-Divina
 
-─────────────────────────────────────────────────────────────────
-🎯 INTEGRACIÓN AAA EN EL-ALTAR.HTML
-─────────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────────────--
+🎯 CAMBIOS REALIZADOS
+────────────────────────────────────────────────────────────────--
 
-Se han integrado todos los sistemas AAA a la sección existente 
-"el-altar.html" (nuestra página del Altar 3D):
+1. 🔧 CRUCIFIX CLICKABLE EN TODAS LAS PÁGINAS (52 archivos)
+   
+   ANTES:
+   - El crucifijo en el footer era un elemento <div> no clickable
+   - Mostraba "+" como contenido
+   - No tenía ningún enlace
 
-1. 🎵 SISTEMA DE MÚSICA
-   - Web Audio API synthesis (sin archivos externos)
-   - Notas de arpa heavenly en loop
-   - Toggle con botón UI
-   - Fade in/out suave
+   DESPUÉS:
+   - Ahora es un elemento <a> clickable que enlaza a el-altar.html
+   - Muestra el símbolo ✝ (cruz)
+   - Tiene atributo title="Adorar al Santísimo"
+   - Animación de heartbeat (pulso cardiaco)
+   - Efecto hover con escala 1.15 y brillo intensificado
 
-2. 🕯️ SISTEMA DE 4 VELAS MEJORADO
-   - 4 velas independientes (Vela 1-4)
-   - Botón "Todas" para toggle global
-   - Cada vela tiene su propia llama + luz PointLight
-   - Flicker realista con fases aleatorias
+   Archivos actualizados (52):
+   - consagracion.html, contacto.html, coronilla.html, cruz-del-perdon.html
+   - devociones-marianas.html, divino-nino-jesus.html, enlaces.html
+   - espacio-jovenes.html, galeria.html, hora-de-la-misericordia.html
+   - introduccion.html, la-santina.html, lecturas-recomendadas.html
+   - los-rayos.html, lugares-de-culto.html, maria-auxiliadora.html
+   - maria.html, medalla-milagrosa.html, misterios-de-gloria.html
+   - misterios-dolorosos.html, misterios-gozosos.html, misterios-luminosos.html
+   - musica-sacra.html, noticias.html, novena.html, obras-de-misericordia.html
+   - oracion-del-estudiante.html, oracion-eucharistia.html
+   - oracion-san-antonio.html, oracion-san-miguel.html
+   - oracion-san-pancracio.html, oracion-santa-cruz.html, oraciones.html
+   - otras-devociones.html, quienes-somos.html, san-benito.html
+   - san-cayetano.html, san-francisco.html, san-jose-dormido.html
+   - san-jose.html, san-judas-tadeo.html, san-sanson.html
+   - santa-faustina.html, santa-francisca-romana.html, santo-rosario.html
+   - ss-benedicto-xvi.html, ss-francisco.html, ss-juan-pablo-ii.html
+   - ss-leon-xiv.html, via-crucis.html, virgen-caacupe.html, virgen-lujan.html
 
-3. 📖 BIBLIA INTERACTIVA
-   - 20 versículos poderosos en display flotante
-   - Iluminación pulsante al mostrar versículo
-   - Auto-ocultar después de 6 segundos
+2. 🧭 BOTONES DE NAVEGACIÓN EN el-altar.html
+   
+   ANTES:
+   - La página del Altar 3D no tenía navegación
+   - No había forma de volver a otras páginas
 
-4. 🧪 DEBUG SYSTEM
-   - Autodiagnóstico en tiempo real
-   - Logs de scene, camera, renderer, luces
-   - Botón "Reiniciar" para reload completo
+   DESPUÉS:
+   - Botón "Inicio" → ./index.html
+   - Botón "Volver" → ./hora-de-la-misericordia.html
+   - Botón "Siguiente" → ./musica-sacra.html
 
-5. ✝️ TEXTO DIVINO
-   - "Este es Mi Hijo, escuchadle" siempre visible sobre la cruz
+3. ✨ MEJORAS EN index.html
+   
+   - Crucifijo más grande (4.5rem vs 3.5rem)
+   - Animación heartbeat a 1.2s
+   - Efecto hover con scale(1.15) y brillo intensificado
+   - Ya era clickable (enlazaba a el-altar.html)
 
-─────────────────────────────────────────────────────────────────
-🎛️ UI PANEL ACTUALIZADO
-─────────────────────────────────────────────────────────────────
+4. 💾 RAMA DE RECUPERACIÓN CREADA
+   
+   - Nueva rama: "El-Altar-Divino"
+   - Guarda el estado actual de la web
+   - Para recuperar: git checkout El-Altar-Divino
+   - URL: https://github.com/DAW1BSergiomg26/Web-Mio-Divina/tree/El-Altar-Divino
 
-Nuevo panel de control en el-altar.html:
-- 🎵 Música (toggle música ambiental)
-- 🕯️ Vela 1, 2, 3, 4 (toggle individual)
-- 🔥 Todas (toggle todas las velas)
-- 📖 Biblia (mostrar versículo aleatorio)
-- 🔄 Reiniciar (reload de la página)
+────────────────────────────────────────────────────────────────--
+🌐 ENLACES IMPORTANTES
+────────────────────────────────────────────────────────────────--
 
-Barra inferior existente:
-- 📿 Oración del Día
-- ✨ Partículas
-- 🌟 Bloom
-- 🏛️ Santuario (reset camera)
+Web: http://localhost:3001
+Altar 3D: http://localhost:3001/el-altar.html
+GitHub principal: https://github.com/DAW1BSergiomg26/Web-Mio-Divina/tree/main
+Rama recuperación: https://github.com/DAW1BSergiomg26/Web-Mio-Divina/tree/El-Altar-Divino
 
-─────────────────────────────────────────────────────────────────
-🌐 ENLACES
-─────────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────────────--
+📝 NOTAS
+────────────────────────────────────────────────────────────────--
 
-Web: http://localhost:3002
-Altar 3D: http://localhost:3002/el-altar.html
-GitHub: https://github.com/DAW1BSergiomg26/Web-Mio-Divina
-Rama: fase2-total
+- El servidor ahora corre en puerto 3001 (no 3002)
+- Se eliminó el archivo santuario-divino.html (ya no necesario)
+- Los cambios han sido probados y funcionan correctamente
+- Para revertir cambios: git checkout El-Altar-Divino
 
-─────────────────────────────────────────────────────────────────
-💻 COMANDOS
-─────────────────────────────────────────────────────────────────
-
-# Iniciar servidor
-cd C:\\Users\\astur\\Desktop\\Web Mio Divina\\divina-misericordia
-node index.js
-
-# Servidor ejecuta en puerto 3002
-
-══════════════════════════════════════════════════════════════════
+═════════════════════════════════════════════════════════════════
         ASOCIACIÓN APÓSTOLES DE LA DIVINA MISERICORDIA
-══════════════════════════════════════════════════════════════════
+═════════════════════════════════════════════════════════════════
 """
 
 msg = MIMEMultipart()
 msg["From"] = REMITENTE
 msg["To"] = DESTINATARIO
-msg["Subject"] = f"Integración AAA en el-altar.html - {ahora}"
+msg["Subject"] = f"Cambios web Divina Misericordia - {ahora}"
 msg.attach(MIMEText(contenido, "plain", "utf-8"))
 
 server = smtplib.SMTP("smtp.gmail.com", 587)
