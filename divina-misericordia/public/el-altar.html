@@ -645,26 +645,55 @@ class DivineExperience {
   }
 
   _buildSacrament(){
+    // MATERIALES - Oro pulido de alta calidad PBR
     const goldMat = new THREE.MeshStandardMaterial({
       color: 0xFFD700,
-      metalness: 0.95,
-      roughness: 0.15,
-      emissive: 0xAA7700,
+      metalness: 0.98,
+      roughness: 0.08,
+      emissive: 0x332200,
+      emissiveIntensity: 0.15
+    });
+
+    const goldBrightMat = new THREE.MeshStandardMaterial({
+      color: 0xFFEE88,
+      metalness: 1.0,
+      roughness: 0.03,
+      emissive: 0xFFDD44,
       emissiveIntensity: 0.3
     });
 
-    const hostMat = new THREE.MeshStandardMaterial({
-      color: 0xFFFFF0,
-      metalness: 0.0,
-      roughness: 0.6,
-      emissive: 0xFFFFCC,
-      emissiveIntensity: 0.5
+    const goldDarkMat = new THREE.MeshStandardMaterial({
+      color: 0xB8860B,
+      metalness: 0.95,
+      roughness: 0.15,
+      emissive: 0x221100,
+      emissiveIntensity: 0.1
     });
 
+    const hostMat = new THREE.MeshStandardMaterial({
+      color: 0xFFFFF8,
+      metalness: 0.0,
+      roughness: 0.35,
+      emissive: 0xFFFFDD,
+      emissiveIntensity: 0.8
+    });
+
+    // Luna de cristal con luz divina interior
+    const lunaMat = new THREE.MeshStandardMaterial({
+      color: 0xFFFFEE,
+      metalness: 0.0,
+      roughness: 0.1,
+      transparent: true,
+      opacity: 0.85,
+      emissive: 0xFFEE88,
+      emissiveIntensity: 1.2
+    });
+
+    // Halo etéreo dorado
     const haloMat = new THREE.MeshBasicMaterial({
       color: 0xFFEE88,
       transparent: true,
-      opacity: 0.18,
+      opacity: 0.12,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
       side: THREE.DoubleSide
@@ -672,75 +701,321 @@ class DivineExperience {
 
     const group = new THREE.Group();
 
-    const baseGeo = new THREE.CylinderGeometry(0.35, 0.5, 0.12, 32);
-    const base = new THREE.Mesh(baseGeo, goldMat);
+    // ========== BASE - Pie ornamentado con grabados barrocos ==========
+    const baseBottom = new THREE.CylinderGeometry(0.55, 0.6, 0.08, 32);
+    const base = new THREE.Mesh(baseBottom, goldDarkMat);
     base.position.y = 0;
+    base.castShadow = true;
     group.add(base);
 
-    const nodeGeo = new THREE.SphereGeometry(0.18, 16, 16, 0, Math.PI * 2, 0, Math.PI / 2);
+    // Base media decorativa
+    const baseMid = new THREE.CylinderGeometry(0.48, 0.52, 0.06, 32);
+    const baseMidMesh = new THREE.Mesh(baseMid, goldMat);
+    baseMidMesh.position.y = 0.07;
+    baseMidMesh.castShadow = true;
+    group.add(baseMidMesh);
+
+    // Anillos decorativos en la base
+    for(let i = 0; i < 4; i++) {
+      const ringGeo = new THREE.TorusGeometry(0.42 - i * 0.04, 0.018, 12, 48);
+      const ring = new THREE.Mesh(ringGeo, goldBrightMat);
+      ring.position.y = 0.04 - i * 0.02;
+      ring.rotation.x = Math.PI / 2;
+      group.add(ring);
+    }
+
+    // Base superior de la custodia
+    const baseTop = new THREE.CylinderGeometry(0.38, 0.42, 0.05, 32);
+    const baseTopMesh = new THREE.Mesh(baseTop, goldMat);
+    baseTopMesh.position.y = 0.13;
+    baseTopMesh.castShadow = true;
+    group.add(baseTopMesh);
+
+    // ========== NODO CENTRAL - Esfera decorativa ==========
+    const nodeGeo = new THREE.SphereGeometry(0.2, 32, 32);
     const node = new THREE.Mesh(nodeGeo, goldMat);
-    node.position.y = 0.18;
+    node.position.y = 0.22;
+    node.castShadow = true;
     group.add(node);
 
-    const stemGeo = new THREE.CylinderGeometry(0.06, 0.09, 0.9, 16);
+    // Anillo bajo el nodo
+    const nodeRingGeo = new THREE.TorusGeometry(0.22, 0.022, 12, 48);
+    const nodeRing = new THREE.Mesh(nodeRingGeo, goldBrightMat);
+    nodeRing.position.y = 0.15;
+    nodeRing.rotation.x = Math.PI / 2;
+    group.add(nodeRing);
+
+    // Detalles del nodo - pequeñas esferas
+    for(let i = 0; i < 8; i++) {
+      const angle = (i / 8) * Math.PI * 2;
+      const detailGeo = new THREE.SphereGeometry(0.035, 16, 16);
+      const detail = new THREE.Mesh(detailGeo, goldBrightMat);
+      detail.position.set(
+        Math.sin(angle) * 0.18,
+        0.22,
+        Math.cos(angle) * 0.18
+      );
+      group.add(detail);
+    }
+
+    // ========== VARITA - Pilar central ornamentado ==========
+    const stemGeo = new THREE.CylinderGeometry(0.065, 0.095, 1.0, 24);
     const stem = new THREE.Mesh(stemGeo, goldMat);
-    stem.position.y = 0.65;
+    stem.position.y = 0.72;
+    stem.castShadow = true;
     group.add(stem);
 
-    const lunaGeo = new THREE.TorusGeometry(0.28, 0.04, 8, 32);
-    const luna = new THREE.Mesh(lunaGeo, goldMat);
-    luna.position.y = 1.15;
+    // Anillos decorativos en el pilar
+    const stemRings = [0.45, 0.65, 0.85, 1.0];
+    stemRings.forEach((y, i) => {
+      const stemRingGeo = new THREE.TorusGeometry(0.085 - i * 0.008, 0.015, 12, 32);
+      const stemRing = new THREE.Mesh(stemRingGeo, goldBrightMat);
+      stemRing.position.y = y;
+      stemRing.rotation.x = Math.PI / 2;
+      group.add(stemRing);
+    });
+
+    // Decoraciones verticales en el pilar
+    for(let i = 0; i < 8; i++) {
+      const angle = (i / 8) * Math.PI * 2;
+      const ridgeGeo = new THREE.BoxGeometry(0.012, 0.9, 0.012);
+      const ridge = new THREE.Mesh(ridgeGeo, goldDarkMat);
+      ridge.position.set(
+        Math.sin(angle) * 0.075,
+        0.72,
+        Math.cos(angle) * 0.075
+      );
+      group.add(ridge);
+    }
+
+    // ========== COPA - Copa que sostiene la hostia ==========
+    const cupGeo = new THREE.CylinderGeometry(0.3, 0.2, 0.18, 32);
+    const cup = new THREE.Mesh(cupGeo, goldMat);
+    cup.position.y = 1.32;
+    cup.castShadow = true;
+    group.add(cup);
+
+    // Copa - parte superior
+    const cupTopGeo = new THREE.CylinderGeometry(0.32, 0.3, 0.04, 32);
+    const cupTop = new THREE.Mesh(cupTopGeo, goldBrightMat);
+    cupTop.position.y = 1.41;
+    group.add(cupTop);
+
+    // Copa - borde interior
+    const cupInnerGeo = new THREE.TorusGeometry(0.22, 0.025, 12, 32);
+    const cupInner = new THREE.Mesh(cupInnerGeo, goldDarkMat);
+    cupInner.position.y = 1.38;
+    cupInner.rotation.x = Math.PI / 2;
+    group.add(cupInner);
+
+    // ========== LUNA - Arco central de cristal ==========
+    const lunaGeo = new THREE.TorusGeometry(0.28, 0.05, 16, 48);
+    const luna = new THREE.Mesh(lunaGeo, goldBrightMat);
+    luna.position.y = 1.42;
     group.add(luna);
 
-    const discGeo = new THREE.CylinderGeometry(0.28, 0.28, 0.04, 32);
-    const disc = new THREE.Mesh(discGeo, goldMat);
-    disc.position.y = 1.15;
-    group.add(disc);
+    // Luna - segunda línea decorativa
+    const luna2Geo = new THREE.TorusGeometry(0.26, 0.025, 12, 40);
+    const luna2 = new THREE.Mesh(luna2Geo, goldMat);
+    luna2.position.y = 1.42;
+    group.add(luna2);
 
-    const rayCount = 24;
+    // Cristal de la luna - brillo interior
+    const lunaGlassGeo = new THREE.CircleGeometry(0.24, 48);
+    const lunaGlass = new THREE.Mesh(lunaGlassGeo, lunaMat);
+    lunaGlass.position.set(0, 1.42, 0.025);
+    group.add(lunaGlass);
+
+    // ========== RAYOS - Corona radial dorada ==========
+    const rayCount = 48;
     const rays = new THREE.Group();
-    rays.position.y = 1.15;
+    rays.position.y = 1.42;
 
     for (let i = 0; i < rayCount; i++) {
       const angle = (i / rayCount) * Math.PI * 2;
-      const isLong = i % 2 === 0;
-      const rayLength = isLong ? 0.9 : 0.55;
-      const rayWidth  = isLong ? 0.03 : 0.02;
+      const isLong = i % 4 === 0;
+      const isMedium = i % 4 === 1;
+      const isShort = i % 4 === 2;
+      const rayLength = isLong ? 1.2 : (isMedium ? 0.85 : (isShort ? 0.55 : 0.35));
+      const rayWidth = isLong ? 0.04 : (isMedium ? 0.03 : 0.022);
 
-      const rayGeo = new THREE.BoxGeometry(rayWidth, rayLength, 0.02);
-      const ray = new THREE.Mesh(rayGeo, goldMat);
+      const rayGeo = new THREE.BoxGeometry(rayWidth, rayLength, 0.018);
+      const ray = new THREE.Mesh(rayGeo, goldBrightMat);
 
+      const radius = 0.38 + rayLength / 2;
       ray.position.set(
-        Math.sin(angle) * (0.32 + rayLength / 2),
-        Math.cos(angle) * (0.32 + rayLength / 2),
+        Math.sin(angle) * radius,
+        Math.cos(angle) * radius,
         0
       );
       ray.rotation.z = -angle;
       rays.add(ray);
+
+      // Puntas decorativas en los rayos largos
+      if(isLong) {
+        const tipGeo = new THREE.ConeGeometry(0.025, 0.06, 6);
+        const tip = new THREE.Mesh(tipGeo, goldBrightMat);
+        const tipRadius = 0.38 + rayLength + 0.03;
+        tip.position.set(
+          Math.sin(angle) * tipRadius,
+          Math.cos(angle) * tipRadius,
+          0
+        );
+        tip.rotation.z = -angle + Math.PI;
+        rays.add(tip);
+      }
     }
     group.add(rays);
 
-    const hostGeo = new THREE.CircleGeometry(0.22, 48);
+    // ========== ESTRELLA - Adorno superior ==========
+    const starGeo = new THREE.OctahedronGeometry(0.07, 1);
+    const star = new THREE.Mesh(starGeo, goldBrightMat);
+    star.position.y = 1.58;
+    star.rotation.y = Math.PI / 4;
+    group.add(star);
+
+    // Corona de la estrella
+    const starCrownGeo = new THREE.TorusGeometry(0.09, 0.015, 8, 32);
+    const starCrown = new THREE.Mesh(starCrownGeo, goldBrightMat);
+    starCrown.position.y = 1.58;
+    starCrown.rotation.x = Math.PI / 2;
+    group.add(starCrown);
+
+    // ========== HOSTIA - El Cuerpo de Cristo ==========
+    const hostGeo = new THREE.CylinderGeometry(0.22, 0.22, 0.022, 48);
     const host = new THREE.Mesh(hostGeo, hostMat);
-    host.position.set(0, 1.15, 0.03);
+    host.position.y = 1.42;
+    host.rotation.x = Math.PI / 2;
     host.userData.type = 'sacrament';
     host.userData.label = 'Santísimo Sacramento';
     this.clickables.push(host);
     group.add(host);
 
-    const haloGeo = new THREE.SphereGeometry(1.4, 32, 32);
+    // Hostia - relieve decorativo (IMagen)
+    const hostReliefGeo = new THREE.TorusGeometry(0.14, 0.012, 8, 32);
+    const hostRelief = new THREE.Mesh(hostReliefGeo, new THREE.MeshStandardMaterial({
+      color: 0xFFFFE8,
+      emissive: 0xFFEEAA,
+      emissiveIntensity: 0.4
+    }));
+    hostRelief.position.y = 1.42;
+    hostRelief.rotation.x = Math.PI / 2;
+    group.add(hostRelief);
+
+    // Hostia - cruz vertical
+    const crossVGeo = new THREE.BoxGeometry(0.025, 0.08, 0.008);
+    const crossV = new THREE.Mesh(crossVGeo, new THREE.MeshStandardMaterial({
+      color: 0xFFFFDD,
+      emissive: 0xFFEE88,
+      emissiveIntensity: 0.5
+    }));
+    crossV.position.set(0, 1.42, 0.015);
+    group.add(crossV);
+
+    // Hostia - cruz horizontal
+    const crossHGeo = new THREE.BoxGeometry(0.06, 0.025, 0.008);
+    const crossH = new THREE.Mesh(crossHGeo, new THREE.MeshStandardMaterial({
+      color: 0xFFFFDD,
+      emissive: 0xFFEE88,
+      emissiveIntensity: 0.5
+    }));
+    crossH.position.set(0, 1.42, 0.015);
+    group.add(crossH);
+
+    // ========== HALO - Aureola divina ==========
+    const haloGeo = new THREE.SphereGeometry(2.2, 48, 48);
     const halo = new THREE.Mesh(haloGeo, haloMat);
-    halo.position.y = 1.15;
+    halo.position.y = 1.42;
     group.add(halo);
 
-    const light = new THREE.PointLight(0xFFEE88, 2.5, 8, 2);
-    light.position.set(0, 1.25, 0.5);
+    // Segundo halo - más pequeño e íntimo
+    const halo2Geo = new THREE.SphereGeometry(1.2, 32, 32);
+    const halo2Mat = new THREE.MeshBasicMaterial({
+      color: 0xFFFFAA,
+      transparent: true,
+      opacity: 0.18,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      side: THREE.DoubleSide
+    });
+    const halo2 = new THREE.Mesh(halo2Geo, halo2Mat);
+    halo2.position.y = 1.42;
+    group.add(halo2);
+
+    // Tercer halo - brillo muy cercano
+    const halo3Geo = new THREE.SphereGeometry(0.7, 24, 24);
+    const halo3Mat = new THREE.MeshBasicMaterial({
+      color: 0xFFFFFF,
+      transparent: true,
+      opacity: 0.12,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      side: THREE.DoubleSide
+    });
+    const halo3 = new THREE.Mesh(halo3Geo, halo3Mat);
+    halo3.position.y = 1.42;
+    group.add(halo3);
+
+    // ========== ILUMINACIÓN DIVINA ==========
+    // Luz principal del Sacramento
+    const light = new THREE.PointLight(0xFFEE88, 5, 15, 2);
+    light.position.set(0, 1.5, 1.0);
     group.add(light);
 
+    // Luz secundaria
+    const light2 = new THREE.PointLight(0xFFDD44, 2.5, 10, 2);
+    light2.position.set(0, 1.9, 0.3);
+    group.add(light2);
+
+    // Luz de la luna - brillo interior
+    const lunaLight = new THREE.PointLight(0xFFFFAA, 3, 4, 2);
+    lunaLight.position.set(0, 1.42, 0);
+    group.add(lunaLight);
+
+    // ========== PARTÍCULAS DE POLVO DIVINO ==========
+    this._createDivineDust(group);
+
+    // Posicionar todo sobre el altar
     group.position.set(0, 1.18, 0);
     this.scene.add(group);
 
-    this.sacrament = { group, rays, halo, light, host };
+    this.sacrament = { group, rays, halo, halo2, halo3, light, light2, lunaLight, host };
+  }
+
+  _createDivineDust(parent){
+    const dustCount = 80;
+    const dustGeo = new THREE.BufferGeometry();
+    const positions = new Float32Array(dustCount * 3);
+    const sizes = new Float32Array(dustCount);
+
+    for(let i = 0; i < dustCount; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const radius = 0.5 + Math.random() * 2;
+      const height = 1.0 + Math.random() * 1.5;
+
+      positions[i * 3] = Math.sin(angle) * radius;
+      positions[i * 3 + 1] = height;
+      positions[i * 3 + 2] = Math.cos(angle) * radius;
+
+      sizes[i] = 0.008 + Math.random() * 0.015;
+    }
+
+    dustGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    dustGeo.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+    const dustMat = new THREE.PointsMaterial({
+      color: 0xFFEE88,
+      size: 0.02,
+      transparent: true,
+      opacity: 0.6,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      sizeAttenuation: true
+    });
+
+    const dust = new THREE.Points(dustGeo, dustMat);
+    dust.userData.isDust = true;
+    parent.add(dust);
   }
 
   _buildCandles(){
@@ -1387,9 +1662,26 @@ class DivineExperience {
     // ── Animación del Sacramento
     if(this.sacrament){
       this.sacrament.rays.rotation.z += 0.0008;
-      const pulse = 0.13 + 0.07 * Math.sin(T * 1.1) + 0.04 * Math.sin(T * 2.7);
+      const pulse = 0.12 + 0.06 * Math.sin(T * 1.1) + 0.03 * Math.sin(T * 2.7);
       this.sacrament.halo.material.opacity = pulse;
-      this.sacrament.light.intensity = 2.5 + 0.8 * Math.sin(T * 0.9);
+      this.sacrament.halo2.material.opacity = 0.15 + 0.05 * Math.sin(T * 1.3);
+      this.sacrament.halo3.material.opacity = 0.1 + 0.04 * Math.sin(T * 1.7);
+      this.sacrament.light.intensity = 4.5 + 1.2 * Math.sin(T * 0.9);
+      this.sacrament.lunaLight.intensity = 2.5 + 1.0 * Math.sin(T * 1.2);
+    }
+
+    // ── Polvo divino alrededor del Sacramento
+    if(this.showParts && this.sacrament && this.sacrament.group){
+      this.sacrament.group.children.forEach(child => {
+        if(child.userData.isDust){
+          child.rotation.y += 0.0003;
+          const positions = child.geometry.attributes.position.array;
+          for(let i = 0; i < positions.length; i += 3){
+            positions[i + 1] += Math.sin(T * 0.5 + i) * 0.001;
+          }
+          child.geometry.attributes.position.needsUpdate = true;
+        }
+      });
     }
 
     this.composer.render(delta);
