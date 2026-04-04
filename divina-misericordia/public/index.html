@@ -1331,15 +1331,48 @@ footer.main-footer::before {
   pointer-events: none;
 }
 footer.main-footer .cross-glow {
-  font-size:3.5rem; 
+  font-size:4.5rem; 
   color:var(--gold);
   text-shadow: 
     0 0 30px rgba(212,175,55,0.8), 
     0 0 60px rgba(212,175,55,0.5),
-    0 0 100px rgba(212,175,55,0.3);
+    0 0 100px rgba(212,175,55,0.3),
+    0 0 150px rgba(255,100,50,0.4);
   margin-bottom:15px; 
-  animation: crossPulse 2.5s ease-in-out infinite;
+  animation: heartBeat 1.2s ease-in-out infinite;
   position: relative;
+  cursor: pointer;
+  transition: transform 0.3s;
+  display: inline-block;
+  text-decoration: none;
+}
+footer.main-footer .cross-glow:hover {
+  transform: scale(1.15);
+  text-shadow: 
+    0 0 40px rgba(212,175,55,1), 
+    0 0 80px rgba(212,175,55,0.7),
+    0 0 120px rgba(255,100,50,0.5),
+    0 0 180px rgba(255,100,50,0.3);
+}
+footer.main-footer .cross-glow::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: crossAura 1.2s ease-in-out infinite;
+}
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  15% { transform: scale(1.12); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.08); }
+  60% { transform: scale(1); }
+  100% { transform: scale(1); }
 }
 footer.main-footer .cross-glow::before {
   content: '';
@@ -2216,7 +2249,7 @@ function toggleVideo() {
 </div>
 
 <footer class="main-footer sacred-footer">
-  <div class="cross-glow">+</div>
+  <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">✝</a>
   <p class="tagline">Jesús, En Vos Confío</p>
   <p>© 2026 — Portal de la Divina Misericordia</p>
 </footer>
