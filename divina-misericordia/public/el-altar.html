@@ -437,7 +437,7 @@ class DivineExperience {
     this._buildLights();
     this._buildCathedral();
     this._buildAltar();
-    this._buildCross();
+    this._buildSacrament();
     this._buildCandles();
     this._buildFlowers();
     this._buildHolyWater();
@@ -644,95 +644,103 @@ class DivineExperience {
     return g;
   }
 
-  _buildCross(){
-    const woodMat=new THREE.MeshStandardMaterial({
-      map:this._textures.wood,roughness:.82,metalness:.05,color:0x8b5a2b
+  _buildSacrament(){
+    const goldMat = new THREE.MeshStandardMaterial({
+      color: 0xFFD700,
+      metalness: 0.95,
+      roughness: 0.15,
+      emissive: 0xAA7700,
+      emissiveIntensity: 0.3
     });
 
-    const cg=new THREE.Group();
-
-    // Vertical beam with bevel approximation
-    const vb=new THREE.Mesh(new THREE.BoxGeometry(.32,5.2,.32),woodMat);
-    vb.castShadow=true; vb.receiveShadow=true;
-    vb.userData.type='cross'; this.clickables.push(vb);
-
-    // Horizontal beam
-    const hb=new THREE.Mesh(new THREE.BoxGeometry(3.2,.32,.32),woodMat);
-    hb.position.y=1.4; hb.castShadow=true; hb.receiveShadow=true;
-    hb.userData.type='cross'; this.clickables.push(hb);
-
-    cg.add(vb,hb);
-
-    // INRI plaque
-    const inriMat=new THREE.MeshStandardMaterial({color:0xd4b840,roughness:.35,metalness:.6,emissive:0x2a1a00,emissiveIntensity:.3});
-    const inri=new THREE.Mesh(new THREE.BoxGeometry(.95,.25,.06),inriMat);
-    inri.position.set(0,2.72,.22); cg.add(inri);
-
-    // Crown of thorns (torus)
-    const thornMat=new THREE.MeshStandardMaterial({color:0x5a3a18,roughness:.95,metalness:.02});
-    const thorn=new THREE.Mesh(new THREE.TorusGeometry(.24,.03,8,28),thornMat);
-    thorn.position.set(0,2.22,.2); thorn.rotation.x=Math.PI/5; cg.add(thorn);
-
-    // Corpus (simplified but dignified)
-    this._addCorpus(cg);
-
-    // Nails (gold)
-    const nailMat=new THREE.MeshStandardMaterial({color:0xa88030,roughness:.2,metalness:.85});
-    [[-1.55,1.4,0],[1.55,1.4,0],[0,-1.0,0]].forEach(([x,y,z])=>{
-      const nail=new THREE.Mesh(new THREE.CylinderGeometry(.025,.02,.25,8),nailMat);
-      nail.position.set(x,y,z+.2); nail.rotation.z=x===0?0:Math.PI/2;
-      cg.add(nail);
+    const hostMat = new THREE.MeshStandardMaterial({
+      color: 0xFFFFF0,
+      metalness: 0.0,
+      roughness: 0.6,
+      emissive: 0xFFFFCC,
+      emissiveIntensity: 0.5
     });
 
-    // Halo glow behind cross (emissive disc)
-    const haloMat=new THREE.MeshBasicMaterial({color:0xfff8e0,transparent:true,opacity:.06,side:THREE.BackSide,depthWrite:false,blending:THREE.AdditiveBlending});
-    this.haloMesh=new THREE.Mesh(new THREE.SphereGeometry(2.8,32,32),haloMat);
-    this.haloMesh.position.set(0,3,-2.8);
-    this.scene.add(this.haloMesh);
-
-    // Gold halo ring
-    const haloRing=new THREE.Mesh(new THREE.TorusGeometry(1.2,.04,12,64),new THREE.MeshStandardMaterial({color:0xf0c040,roughness:.05,metalness:.98,emissive:0x8a6000,emissiveIntensity:.8}));
-    haloRing.position.set(0,2.22,.15); cg.add(haloRing);
-
-    cg.position.set(0,3,-2.8);
-    this.crossGroup=cg;
-    this.scene.add(cg);
-  }
-
-  _addCorpus(parent){
-    const skin=new THREE.MeshStandardMaterial({color:0xdaad7a,roughness:.88,metalness:0});
-    const cloth=new THREE.MeshStandardMaterial({color:0xf0e8d0,roughness:.1,metalness:0});
-
-    // Body
-    const body=new THREE.Mesh(new THREE.CylinderGeometry(.13,.11,.85,10),skin);
-    body.position.set(0,.75,.2); parent.add(body);
-
-    // Head
-    const head=new THREE.Mesh(new THREE.SphereGeometry(.2,14,14),skin);
-    head.position.set(0,1.95,.2); parent.add(head);
-
-    // Arms
-    [-1,1].forEach(side=>{
-      const arm=new THREE.Mesh(new THREE.CylinderGeometry(.065,.055,1.18,8),skin);
-      arm.position.set(side*.52,1.4,.2);
-      arm.rotation.z=side*(Math.PI/2-.22);
-      parent.add(arm);
-      // Hands
-      const hand=new THREE.Mesh(new THREE.SphereGeometry(.085,8,8),skin);
-      hand.position.set(side*1.08,1.35,.2);
-      parent.add(hand);
+    const haloMat = new THREE.MeshBasicMaterial({
+      color: 0xFFEE88,
+      transparent: true,
+      opacity: 0.18,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      side: THREE.DoubleSide
     });
 
-    // Loincloth
-    const loin=new THREE.Mesh(new THREE.BoxGeometry(.38,.38,.06),cloth);
-    loin.position.set(0,.36,.25); parent.add(loin);
+    const group = new THREE.Group();
 
-    // Legs
-    [-1,1].forEach(side=>{
-      const leg=new THREE.Mesh(new THREE.CylinderGeometry(.075,.065,.7,8),skin);
-      leg.position.set(side*.06,.05,.2); leg.rotation.z=side*.05;
-      parent.add(leg);
-    });
+    const baseGeo = new THREE.CylinderGeometry(0.35, 0.5, 0.12, 32);
+    const base = new THREE.Mesh(baseGeo, goldMat);
+    base.position.y = -1.6;
+    group.add(base);
+
+    const nodeGeo = new THREE.SphereGeometry(0.18, 16, 16, 0, Math.PI * 2, 0, Math.PI / 2);
+    const node = new THREE.Mesh(nodeGeo, goldMat);
+    node.position.y = -1.42;
+    group.add(node);
+
+    const stemGeo = new THREE.CylinderGeometry(0.06, 0.09, 1.4, 16);
+    const stem = new THREE.Mesh(stemGeo, goldMat);
+    stem.position.y = -0.7;
+    group.add(stem);
+
+    const lunaGeo = new THREE.TorusGeometry(0.28, 0.04, 8, 32);
+    const luna = new THREE.Mesh(lunaGeo, goldMat);
+    luna.position.y = 0.0;
+    group.add(luna);
+
+    const discGeo = new THREE.CylinderGeometry(0.28, 0.28, 0.04, 32);
+    const disc = new THREE.Mesh(discGeo, goldMat);
+    disc.position.y = 0.0;
+    group.add(disc);
+
+    const rayCount = 24;
+    const rays = new THREE.Group();
+    rays.position.y = 0.0;
+
+    for (let i = 0; i < rayCount; i++) {
+      const angle = (i / rayCount) * Math.PI * 2;
+      const isLong = i % 2 === 0;
+      const rayLength = isLong ? 0.9 : 0.55;
+      const rayWidth  = isLong ? 0.03 : 0.02;
+
+      const rayGeo = new THREE.BoxGeometry(rayWidth, rayLength, 0.02);
+      const ray = new THREE.Mesh(rayGeo, goldMat);
+
+      ray.position.set(
+        Math.sin(angle) * (0.32 + rayLength / 2),
+        Math.cos(angle) * (0.32 + rayLength / 2),
+        0
+      );
+      ray.rotation.z = -angle;
+      rays.add(ray);
+    }
+    group.add(rays);
+
+    const hostGeo = new THREE.CircleGeometry(0.22, 48);
+    const host = new THREE.Mesh(hostGeo, hostMat);
+    host.position.set(0, 0.0, 0.03);
+    host.userData.type = 'sacrament';
+    host.userData.label = 'Santísimo Sacramento';
+    this.clickables.push(host);
+    group.add(host);
+
+    const haloGeo = new THREE.SphereGeometry(1.4, 32, 32);
+    const halo = new THREE.Mesh(haloGeo, haloMat);
+    halo.position.y = 0.0;
+    group.add(halo);
+
+    const light = new THREE.PointLight(0xFFEE88, 2.5, 8, 2);
+    light.position.set(0, 0.1, 0.5);
+    group.add(light);
+
+    group.position.set(0, 0.2, 0);
+    this.scene.add(group);
+
+    this.sacrament = { group, rays, halo, light, host };
   }
 
   _buildCandles(){
@@ -1094,6 +1102,12 @@ class DivineExperience {
       return;
     }
 
+    if(type==='sacrament'){
+      this.showPrayer('daily');
+      this._flashSacrament();
+      return;
+    }
+
     const prayers={cross:'cross',flower:'flower',water:'water',incense:'incense'};
     if(prayers[type]) this.showPrayer(prayers[type]);
 
@@ -1132,6 +1146,34 @@ class DivineExperience {
       requestAnimationFrame(tick);
     };
     tick();
+  }
+
+  _flashSacrament(){
+    if(!this.sacrament || !this.bloomPass) return;
+
+    const originalBloom    = this.bloomPass.strength;
+    const originalIntensity = this.sacrament.light.intensity;
+    const peakBloom        = originalBloom + 2.2;
+    const peakIntensity    = originalIntensity + 3.5;
+    const duration         = 900;
+    const start            = performance.now();
+
+    const animate = (now) => {
+      const elapsed  = now - start;
+      const progress = Math.min(elapsed / duration, 1.0);
+      const eased = 1 - Math.pow(1 - progress, 3);
+
+      this.bloomPass.strength    = peakBloom    - (peakBloom    - originalBloom)    * eased;
+      this.sacrament.light.intensity = peakIntensity - (peakIntensity - originalIntensity) * eased;
+
+      if(progress < 1.0){
+        requestAnimationFrame(animate);
+      }else{
+        this.bloomPass.strength        = originalBloom;
+        this.sacrament.light.intensity = originalIntensity;
+      }
+    };
+    requestAnimationFrame(animate);
   }
 
   _animateFlowers(){
@@ -1341,6 +1383,14 @@ class DivineExperience {
 
     // ── Water light pulse
     if(this._waterLight) this._waterLight.intensity=.7+Math.sin(T*1.8)*.35;
+
+    // ── Animación del Sacramento
+    if(this.sacrament){
+      this.sacrament.rays.rotation.z += 0.0008;
+      const pulse = 0.13 + 0.07 * Math.sin(T * 1.1) + 0.04 * Math.sin(T * 2.7);
+      this.sacrament.halo.material.opacity = pulse;
+      this.sacrament.light.intensity = 2.5 + 0.8 * Math.sin(T * 0.9);
+    }
 
     this.composer.render(delta);
   }
