@@ -254,10 +254,7 @@ const PRAYERS = {
     blessing:'🙏 Que tu oración suba hasta el trono de Dios' },
   daily:   { icon:'☀️', title:'Oración del Día',
     text:'Divina Misericordia, Corazón de Jesús, en Ti confío. Que este nuevo día sea santificado por Tu gracia, guiado por Tu luz, y ofrecido a Tu mayor gloria. Que la paz de Dios, que supera todo entendimiento, guarde mi corazón y mi mente.',
-    blessing:'✨ Que este día esté lleno de la gracia de Dios' },
-  sacrament:{ icon:'🍞', title:'Adoración al Santísimo',
-    text:'Jesús mío,-hidden in the Most Blessed Sacrament, te adoro con todo mi ser. En Ti confi o con toda mi alma. Eres la Misericordia incarnada, el amor de Dios hecho pan. Permanezco ante Ti en silencio adorandoTu presencia real.',
-    blessing:'🍞 Jesús en Ti confi o. Que Tu Cuerpo Sagrada me guarde' }
+    blessing:'✨ Que este día esté lleno de la gracia de Dios' }
 };
 
 // ─────────────────────────────────────────────────────
@@ -435,103 +432,13 @@ class DivineExperience {
     this._buildLights();
     this._buildCathedral();
     this._buildAltar();
-    this._buildSacrament();
-    this._buildHostShader();
+    this._buildCross();
     this._buildCandles();
     this._buildFlowers();
     this._buildHolyWater();
     this._buildIncense();
     this._buildGodRays();
   }
-
-  // ── NUEVO: Shader Gloria Interna hostia ─────────────────────
-  _buildHostShader(){
-    if(!this.sacrament||!this.sacrament.host)return;
-    this.hostMaterial=new THREE.ShaderMaterial({
-      uniforms:{
-        time:{value:0},
-        centerColor:{value:new THREE.Color(1,1,0.92)},
-        edgeColor:{value:new THREE.Color(0.95,0.82,0.45)},
-        pulseSpeed:{value:0.7},
-        fresnelPower:{value:2.5}
-      },
-      vertexShader:`
-        varying vec2 vUv;
-        varying vec3 vNormal;
-        void main(){
-          vUv=uv;
-          vNormal=normalize(normalMatrix*normal);
-          gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);
-        }
-      `,
-      fragmentShader:`
-        uniform float time;
-        uniform vec3 centerColor;
-        uniform vec3 edgeColor;
-        uniform float pulseSpeed;
-        uniform float fresnelPower;
-        varying vec2 vUv;
-        varying vec3 vNormal;
-        void main(){
-          float dist=length(vUv-vec2(0.5));
-          float radial=1.0-smoothstep(0.0,0.5,dist);
-          float pulse=0.75+0.15*sin(time*pulseSpeed)+0.10*sin(time*pulseSpeed*2.3);
-          float fresnel=pow(1.0-abs(dot(vNormal,vec3(0.0,0.0,1.0))),fresnelPower);
-          vec3 color=mix(edgeColor,centerColor,radial*pulse);
-          color+=fresnel*vec3(1.0,0.98,0.85)*0.4;
-          gl_FragColor=vec4(color,0.88+0.12*pulse);
-        }
-      `,
-      transparent:true,depthWrite:false,side:THREE.DoubleSide
-    });
-    this.sacrament.host.material=this.hostMaterial;
-  }
-
-  // ── NUEVO: Campana sagrada sintética ────────────────────────
-  _ensureAudioCtx(){
-    if(this._audioCtx)return true;
-    try{this._audioCtx=new(window.AudioContext||window.webkitAudioContext)();return true;}catch{return false;}
-  }
-
-  _playSacredBell(){
-    if(!this._ensureAudioCtx())return;
-    const ctx=this._audioCtx;
-    const master=ctx.createGain();
-    master.gain.setValueAtTime(0.28,ctx.currentTime);
-    master.connect(ctx.destination);
-    const delay=ctx.createDelay(1.5);
-    const feedback=ctx.createGain();
-    delay.delayTime.setValueAtTime(0.22,ctx.currentTime);
-    feedback.gain.setValueAtTime(0.28,ctx.currentTime);
-    delay.connect(feedback);
-    feedback.connect(delay);
-    master.connect(delay);
-    [
-      {freq:523.25,gain:1.0,decay:2.8},
-      {freq:659.25,gain:0.6,decay:2.2},
-      {freq:784.00,gain:0.4,decay:1.8},
-      {freq:1046.5,gain:0.25,decay:1.4},
-      {freq:1318.5,gain:0.15,decay:1.0}
-    ].forEach(({freq,gain,decay})=>{
-      const osc=ctx.createOscillator();
-      const env=ctx.createGain();
-      osc.type='sine';
-      osc.frequency.setValueAtTime(freq,ctx.currentTime);
-      env.gain.setValueAtTime(gain,ctx.currentTime);
-      env.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+decay);
-      osc.connect(env);
-      env.connect(master);
-      osc.start(ctx.currentTime);
-      osc.stop(ctx.currentTime+decay);
-    });
-  }
-
-  _initAudio(){
-    // Audio se crea lazily en _ensureAudioCtx
-  }
-
-  // ── ELIMINADO: _buildCross ──
-  // ── ELIMINADO: _addCorpus ──
 
   _initTextures(){
     this._textures.wood=woodTex();
@@ -822,165 +729,6 @@ class DivineExperience {
       parent.add(leg);
     });
   }
-
-  // ── NUEVO: _buildSacrament ──
-  _buildSacrament(){
-    // Material dorado PBR
-    const goldMat=new THREE.MeshStandardMaterial({
-      color:0xFFD700,metalness:0.95,roughness:0.15,emissive:0xAA7700,emissiveIntensity:0.3
-    });
-
-    // Material hostia (blanco nacarado)
-    const hostMat=new THREE.MeshStandardMaterial({
-      color:0xFFFFF0,metalness:0.0,roughness:0.6,emissive:0xFFFFCC,emissiveIntensity:0.5
-    });
-
-    // Material halo (aditivo, semi-transparente)
-    const haloMat=new THREE.MeshBasicMaterial({
-      color:0xFFEE88,transparent:true,opacity:0.18,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide
-    });
-
-    const group=new THREE.Group();
-
-    // BASE — pie de la custodia
-    const baseGeo=new THREE.CylinderGeometry(0.35,0.5,0.12,32);
-    const base=new THREE.Mesh(baseGeo,goldMat);
-    base.position.y=-1.6;
-    group.add(base);
-
-    // NODO central del pie (semiesfera decorativa)
-    const nodeGeo=new THREE.SphereGeometry(0.18,16,16,0,Math.PI*2,0,Math.PI/2);
-    const node=new THREE.Mesh(nodeGeo,goldMat);
-    node.position.y=-1.42;
-    group.add(node);
-
-    // PILAR vertical
-    const stemGeo=new THREE.CylinderGeometry(0.06,0.09,1.4,16);
-    const stem=new THREE.Mesh(stemGeo,goldMat);
-    stem.position.y=-0.7;
-    group.add(stem);
-
-    // LUNA (soporte del disco)
-    const lunaGeo=new THREE.TorusGeometry(0.28,0.04,8,32);
-    const luna=new THREE.Mesh(lunaGeo,goldMat);
-    luna.position.y=0.0;
-    group.add(luna);
-
-    // DISCO central (viril)
-    const discGeo=new THREE.CylinderGeometry(0.28,0.28,0.04,32);
-    const disc=new THREE.Mesh(discGeo,goldMat);
-    disc.position.y=0.0;
-    group.add(disc);
-
-    // Rayos radiales
-    const rayCount=24;
-    const rays=new THREE.Group();
-    rays.position.y=0.0;
-
-    for(let i=0;i<rayCount;i++){
-      const angle=(i/rayCount)*Math.PI*2;
-      const isLong=i%2===0;
-      const rayLength=isLong?0.9:0.55;
-      const rayWidth=isLong?0.03:0.02;
-
-      const rayGeo=new THREE.BoxGeometry(rayWidth,rayLength,0.02);
-      const ray=new THREE.Mesh(rayGeo,goldMat);
-
-      ray.position.set(
-        Math.sin(angle)*(0.32+rayLength/2),
-        Math.cos(angle)*(0.32+rayLength/2),
-        0
-      );
-      ray.rotation.z=-angle;
-      rays.add(ray);
-    }
-    group.add(rays);
-
-    // Hostia (interactiva)
-    const hostGeo=new THREE.CircleGeometry(0.22,48);
-    const host=new THREE.Mesh(hostGeo,hostMat);
-    host.position.set(0,0.0,0.03);
-
-    host.userData.type='sacrament';
-    host.userData.label='Santísimo Sacramento';
-    this.clickables.push(host);
-    group.add(host);
-
-    // Halo esférico
-    const haloGeo=new THREE.SphereGeometry(1.4,32,32);
-    const halo=new THREE.Mesh(haloGeo,haloMat);
-    halo.position.y=0.0;
-    group.add(halo);
-
-    // Luz puntual divina
-    const light=new THREE.PointLight(0xFFEE88,2.5,8,2);
-    light.position.set(0,0.1,0.5);
-    group.add(light);
-
-    group.position.set(0,0.2,0);
-    this.scene.add(group);
-
-    // Partículas divinas alrededor del sacramento
-    const sacParticlesCount=280;
-    const sacPos=new Float32Array(sacParticlesCount*3);
-    const sacSpeeds=new Float32Array(sacParticlesCount);
-    const sacOffsets=new Float32Array(sacParticlesCount);
-    for(let i=0;i<sacParticlesCount;i++){
-      const theta=Math.random()*Math.PI*2;
-      const r=0.4+Math.random()*3.5;
-      sacPos[i*3]=Math.cos(theta)*r;
-      sacPos[i*3+1]=(Math.random()-0.5)*4.0;
-      sacPos[i*3+2]=Math.sin(theta)*r;
-      sacSpeeds[i]=0.003+Math.random()*0.007;
-      sacOffsets[i]=Math.random()*Math.PI*2;
-    }
-    const sacGeo=new THREE.BufferGeometry();
-    sacGeo.setAttribute('position',new THREE.BufferAttribute(sacPos,3));
-    sacGeo.userData={speeds:sacSpeeds,offsets:sacOffsets,COUNT:sacParticlesCount,HEIGHT:4.0};
-    this.sacramentParticles=new THREE.Points(sacGeo,new THREE.PointsMaterial({
-      color:0xFFEE99,size:0.04,transparent:true,opacity:0.7,
-      blending:THREE.AdditiveBlending,depthWrite:false,sizeAttenuation:true
-    }));
-    this.scene.add(this.sacramentParticles);
-
-    this.sacrament={group,rays,halo,light,host};
-  }
-
-  _flashSacrament(){
-    if(!this.sacrament||!this.bloomPass)return;
-
-    const originalBloom=this.bloomPass.strength;
-    const originalIntensity=this.sacrament.light.intensity;
-    const peakBloom=originalBloom+2.2;
-    const peakIntensity=originalIntensity+3.5;
-    const duration=900;
-    const start=performance.now();
-
-    const animate=(now)=>{
-      const elapsed=now-start;
-      const progress=Math.min(elapsed/duration,1.0);
-      const eased=1-Math.pow(1-progress,3);
-
-      this.bloomPass.strength=peakBloom-(peakBloom-originalBloom)*eased;
-      this.sacrament.light.intensity=peakIntensity-(peakIntensity-originalIntensity)*eased;
-
-      if(progress<1.0){
-        requestAnimationFrame(animate);
-      }else{
-        this.bloomPass.strength=originalBloom;
-        this.sacrament.light.intensity=originalIntensity;
-      }
-    };
-    requestAnimationFrame(animate);
-    this._playSacredBell();
-  }
-    };
-    requestAnimationFrame(animate);
-    this._playSacredBell();
-  }
-
-  // ── ELIMINADO: _buildCross ──
-  // ── ELIMINADO: _addCorpus ──
 
   _buildCandles(){
     const waxMat=new THREE.MeshStandardMaterial({color:0xfffbe2,roughness:.95,metalness:0});
@@ -1273,9 +1021,6 @@ class DivineExperience {
     this._updateClock();
     setInterval(()=>this._updateClock(),30000);
 
-    // Panel UI de control
-    this._buildControlPanel();
-
     // Show hint
     setTimeout(()=>{
       const h=document.getElementById('hint'); h.classList.add('show');
@@ -1283,55 +1028,9 @@ class DivineExperience {
     },2500);
   }
 
-  // ── NUEVO: Panel de control ──────────────────────────────
-  _buildControlPanel(){
-    if(document.getElementById('dx-panel')) return;
-    const style=document.createElement('style');
-    style.id='dx-ui-style';
-    style.textContent=`
-      #dx-panel{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:10px;flex-wrap:wrap;justify-content:center;max-width:540px;z-index:9999;pointer-events:all}
-      .dx-btn{background:rgba(10,6,2,0.75);border:1px solid rgba(255,210,80,0.35);color:#FFD966;font-family:Georgia,serif;font-size:11px;letter-spacing:0.06em;padding:8px 16px;border-radius:20px;cursor:pointer;backdrop-filter:blur(8px);transition:background .22s,border-color .22s,transform .1s;white-space:nowrap;user-select:none}
-      .dx-btn:hover{background:rgba(255,210,80,0.18);border-color:rgba(255,210,80,0.75);transform:translateY(-2px)}
-      .dx-btn.dx-off{opacity:0.45}
-    `;
-    document.head.appendChild(style);
-
-    const panel=document.createElement('div');
-    panel.id='dx-panel';
-
-    const defs=[
-      {label:'🎵 Música',fn:(b)=>{this.toggleAudio();b.classList.toggle('dx-off',!this.audioOn);}},
-      {label:'📿 Oración',fn:()=>this.showPrayer('daily')},
-      {label:'✨ Partículas',fn:(b)=>{this.toggleParts();b.classList.toggle('dx-off',!this.showParts);}},
-      {label:'🌟 Bloom',fn:(b)=>{this.toggleBloom();b.classList.toggle('dx-off',!this.showBloom);}},
-      {label:'🕯️ Velas',fn:(b)=>{this._toggleAllCandles();b.classList.toggle('dx-off',!this.candlesOn);}},
-    ];
-
-    defs.forEach(({label,fn})=>{
-      const btn=document.createElement('button');
-      btn.className='dx-btn';
-      btn.textContent=label;
-      btn.addEventListener('click',(e)=>{e.stopPropagation();fn(btn);});
-      panel.appendChild(btn);
-    });
-
-    document.body.appendChild(panel);
-    this._dxPanel=panel;
-    this.candlesOn=true;
-  }
-
   _updateClock(){
     const n=new Date(),h=n.getHours().toString().padStart(2,'0'),m=n.getMinutes().toString().padStart(2,'0');
     document.getElementById('clock').textContent=`${h}:${m}`;
-  }
-
-  _toggleAllCandles(){
-    this.candlesOn=!this.candlesOn;
-    this.candles.forEach(c=>{
-      c.userData.isOn=this.candlesOn;
-      if(c.userData.flame)c.userData.flame.intensity=this.candlesOn?1.4:0;
-    });
-    this.toast(this.candlesOn?'🕯️ Velas encendidas':'🕯️ Velas apagadas');
   }
 
   _onBead(i){
@@ -1390,15 +1089,16 @@ class DivineExperience {
       return;
     }
 
-    const prayers={cross:'cross',flower:'flower',water:'water',incense:'incense',sacrament:'sacrament'};
+    const prayers={cross:'cross',flower:'flower',water:'water',incense:'sacrament'};
     if(prayers[type]) this.showPrayer(prayers[type]);
+
+    if(type==='sacrament'){
+      this._flashSacrament();
+      return;
+    }
 
     if(type==='cross'){
       this._flashCross();
-      this._playBell();
-    }
-    if(type==='sacrament'){
-      this._flashSacrament();
       this._playBell();
     }
     if(type==='water'){
@@ -1432,6 +1132,31 @@ class DivineExperience {
       requestAnimationFrame(tick);
     };
     tick();
+  }
+
+  _flashSacrament(){
+    if(!this.sacrament||!this.bloomPass)return;
+    const originalBloom=this.bloomPass.strength;
+    const originalIntensity=this.sacrament.light.intensity;
+    const peakBloom=originalBloom+2.2;
+    const peakIntensity=originalIntensity+3.5;
+    const duration=900;
+    const start=performance.now();
+    const animate=(now)=>{
+      const elapsed=now-start;
+      const progress=Math.min(elapsed/duration,1.0);
+      const eased=1-Math.pow(1-progress,3);
+      this.bloomPass.strength=peakBloom-(peakBloom-originalBloom)*eased;
+      this.sacrament.light.intensity=peakIntensity-(peakIntensity-originalIntensity)*eased;
+      if(progress<1.0){
+        requestAnimationFrame(animate);
+      }else{
+        this.bloomPass.strength=originalBloom;
+        this.sacrament.light.intensity=originalIntensity;
+      }
+    };
+    requestAnimationFrame(animate);
+    this._playSacredBell();
   }
 
   _animateFlowers(){
@@ -1641,41 +1366,6 @@ class DivineExperience {
 
     // ── Water light pulse
     if(this._waterLight) this._waterLight.intensity=.7+Math.sin(T*1.8)*.35;
-
-    // ── Animación del Sacramento ─────────────────────────────
-    if(this.sacrament){
-      const t=T;
-      const dt=delta;
-
-      // Rotación lenta de los rayos (litúrgica)
-      this.sacrament.rays.rotation.z+=0.0008;
-
-      // Pulso orgánico del halo
-      const pulse=0.13+0.07*Math.sin(t*1.1)+0.04*Math.sin(t*2.7);
-      this.sacrament.halo.material.opacity=pulse;
-
-      // Variación suave de la luz
-      this.sacrament.light.intensity=2.5+0.8*Math.sin(t*0.9);
-    }
-
-    // ── Gloria Interna (shader hostia) ─────────────────────────────
-    if(this.hostMaterial){
-      this.hostMaterial.uniforms.time.value=T;
-    }
-
-    // ── Partículas del Sacramento ─────────────────────────────
-    if(this.sacramentParticles){
-      const pos=this.sacramentParticles.geometry.attributes.position;
-      const{speeds,offsets,COUNT,HEIGHT}=this.sacramentParticles.geometry.userData;
-      for(let i=0;i<COUNT;i++){
-        pos.array[i*3+1]+=speeds[i];
-        if(pos.array[i*3+1]>HEIGHT/2)pos.array[i*3+1]=-HEIGHT/2;
-        pos.array[i*3]+=Math.sin(T*0.4+offsets[i])*0.0004;
-        pos.array[i*3+2]+=Math.cos(T*0.3+offsets[i])*0.0004;
-      }
-      pos.needsUpdate=true;
-      this.sacramentParticles.material.opacity=0.55+0.2*Math.sin(T*0.5);
-    }
 
     this.composer.render(delta);
   }
