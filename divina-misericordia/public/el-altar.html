@@ -254,7 +254,10 @@ const PRAYERS = {
     blessing:'🙏 Que tu oración suba hasta el trono de Dios' },
   daily:   { icon:'☀️', title:'Oración del Día',
     text:'Divina Misericordia, Corazón de Jesús, en Ti confío. Que este nuevo día sea santificado por Tu gracia, guiado por Tu luz, y ofrecido a Tu mayor gloria. Que la paz de Dios, que supera todo entendimiento, guarde mi corazón y mi mente.',
-    blessing:'✨ Que este día esté lleno de la gracia de Dios' }
+    blessing:'✨ Que este día esté lleno de la gracia de Dios' },
+  sacrament:{ icon:'🍞', title:'Adoración al Santísimo',
+    text:'Jesús mío,-hidden in the Most Blessed Sacrament, te adoro con todo mi ser. En Ti confi o con toda mi alma. Eres la Misericordia incarnada, el amor de Dios hecho pan. Permanezco ante Ti en silencio adorandoTu presencia real.',
+    blessing:'🍞 Jesús en Ti confi o. Que Tu Cuerpo Sagrada me guarde' }
 };
 
 // ─────────────────────────────────────────────────────
@@ -432,7 +435,7 @@ class DivineExperience {
     this._buildLights();
     this._buildCathedral();
     this._buildAltar();
-    this._buildCross();
+    this._buildSacrament();
     this._buildCandles();
     this._buildFlowers();
     this._buildHolyWater();
@@ -729,6 +732,137 @@ class DivineExperience {
       parent.add(leg);
     });
   }
+
+  // ── NUEVO: _buildSacrament ──
+  _buildSacrament(){
+    // Material dorado PBR
+    const goldMat=new THREE.MeshStandardMaterial({
+      color:0xFFD700,metalness:0.95,roughness:0.15,emissive:0xAA7700,emissiveIntensity:0.3
+    });
+
+    // Material hostia (blanco nacarado)
+    const hostMat=new THREE.MeshStandardMaterial({
+      color:0xFFFFF0,metalness:0.0,roughness:0.6,emissive:0xFFFFCC,emissiveIntensity:0.5
+    });
+
+    // Material halo (aditivo, semi-transparente)
+    const haloMat=new THREE.MeshBasicMaterial({
+      color:0xFFEE88,transparent:true,opacity:0.18,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide
+    });
+
+    const group=new THREE.Group();
+
+    // BASE — pie de la custodia
+    const baseGeo=new THREE.CylinderGeometry(0.35,0.5,0.12,32);
+    const base=new THREE.Mesh(baseGeo,goldMat);
+    base.position.y=-1.6;
+    group.add(base);
+
+    // NODO central del pie (semiesfera decorativa)
+    const nodeGeo=new THREE.SphereGeometry(0.18,16,16,0,Math.PI*2,0,Math.PI/2);
+    const node=new THREE.Mesh(nodeGeo,goldMat);
+    node.position.y=-1.42;
+    group.add(node);
+
+    // PILAR vertical
+    const stemGeo=new THREE.CylinderGeometry(0.06,0.09,1.4,16);
+    const stem=new THREE.Mesh(stemGeo,goldMat);
+    stem.position.y=-0.7;
+    group.add(stem);
+
+    // LUNA (soporte del disco)
+    const lunaGeo=new THREE.TorusGeometry(0.28,0.04,8,32);
+    const luna=new THREE.Mesh(lunaGeo,goldMat);
+    luna.position.y=0.0;
+    group.add(luna);
+
+    // DISCO central (viril)
+    const discGeo=new THREE.CylinderGeometry(0.28,0.28,0.04,32);
+    const disc=new THREE.Mesh(discGeo,goldMat);
+    disc.position.y=0.0;
+    group.add(disc);
+
+    // Rayos radiales
+    const rayCount=24;
+    const rays=new THREE.Group();
+    rays.position.y=0.0;
+
+    for(let i=0;i<rayCount;i++){
+      const angle=(i/rayCount)*Math.PI*2;
+      const isLong=i%2===0;
+      const rayLength=isLong?0.9:0.55;
+      const rayWidth=isLong?0.03:0.02;
+
+      const rayGeo=new THREE.BoxGeometry(rayWidth,rayLength,0.02);
+      const ray=new THREE.Mesh(rayGeo,goldMat);
+
+      ray.position.set(
+        Math.sin(angle)*(0.32+rayLength/2),
+        Math.cos(angle)*(0.32+rayLength/2),
+        0
+      );
+      ray.rotation.z=-angle;
+      rays.add(ray);
+    }
+    group.add(rays);
+
+    // Hostia (interactiva)
+    const hostGeo=new THREE.CircleGeometry(0.22,48);
+    const host=new THREE.Mesh(hostGeo,hostMat);
+    host.position.set(0,0.0,0.03);
+
+    host.userData.type='sacrament';
+    host.userData.label='Santísimo Sacramento';
+    this.clickables.push(host);
+    group.add(host);
+
+    // Halo esférico
+    const haloGeo=new THREE.SphereGeometry(1.4,32,32);
+    const halo=new THREE.Mesh(haloGeo,haloMat);
+    halo.position.y=0.0;
+    group.add(halo);
+
+    // Luz puntual divina
+    const light=new THREE.PointLight(0xFFEE88,2.5,8,2);
+    light.position.set(0,0.1,0.5);
+    group.add(light);
+
+    group.position.set(0,0.2,0);
+    this.scene.add(group);
+
+    this.sacrament={group,rays,halo,light,host};
+  }
+
+  _flashSacrament(){
+    if(!this.sacrament||!this.bloomPass)return;
+
+    const originalBloom=this.bloomPass.strength;
+    const originalIntensity=this.sacrament.light.intensity;
+    const peakBloom=originalBloom+2.2;
+    const peakIntensity=originalIntensity+3.5;
+    const duration=900;
+    const start=performance.now();
+
+    const animate=(now)=>{
+      const elapsed=now-start;
+      const progress=Math.min(elapsed/duration,1.0);
+      const eased=1-Math.pow(1-progress,3);
+
+      this.bloomPass.strength=peakBloom-(peakBloom-originalBloom)*eased;
+      this.sacrament.light.intensity=peakIntensity-(peakIntensity-originalIntensity)*eased;
+
+      if(progress<1.0){
+        requestAnimationFrame(animate);
+      }else{
+        this.bloomPass.strength=originalBloom;
+        this.sacrament.light.intensity=originalIntensity;
+      }
+    };
+    requestAnimationFrame(animate);
+  }
+
+  // ── ELIMINADO: _buildCross ──
+  // ── ELIMINADO: _addCorpus ──
 
   _buildCandles(){
     const waxMat=new THREE.MeshStandardMaterial({color:0xfffbe2,roughness:.95,metalness:0});
@@ -1089,11 +1223,15 @@ class DivineExperience {
       return;
     }
 
-    const prayers={cross:'cross',flower:'flower',water:'water',incense:'incense'};
+    const prayers={cross:'cross',flower:'flower',water:'water',incense:'incense',sacrament:'sacrament'};
     if(prayers[type]) this.showPrayer(prayers[type]);
 
     if(type==='cross'){
       this._flashCross();
+      this._playBell();
+    }
+    if(type==='sacrament'){
+      this._flashSacrament();
       this._playBell();
     }
     if(type==='water'){
@@ -1336,6 +1474,22 @@ class DivineExperience {
 
     // ── Water light pulse
     if(this._waterLight) this._waterLight.intensity=.7+Math.sin(T*1.8)*.35;
+
+    // ── Animación del Sacramento ─────────────────────────────
+    if(this.sacrament){
+      const t=T;
+      const dt=delta;
+
+      // Rotación lenta de los rayos (litúrgica)
+      this.sacrament.rays.rotation.z+=0.0008;
+
+      // Pulso orgánico del halo
+      const pulse=0.13+0.07*Math.sin(t*1.1)+0.04*Math.sin(t*2.7);
+      this.sacrament.halo.material.opacity=pulse;
+
+      // Variación suave de la luz
+      this.sacrament.light.intensity=2.5+0.8*Math.sin(t*0.9);
+    }
 
     this.composer.render(delta);
   }
