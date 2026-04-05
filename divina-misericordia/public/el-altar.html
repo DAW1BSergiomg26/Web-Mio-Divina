@@ -503,6 +503,7 @@ class DivineExperience {
     this._buildHolyWater();
     this._buildIncense();
     this._buildGodRays();
+    this._buildRosary3D();
   }
 
   _initTextures(){
@@ -1296,6 +1297,958 @@ class DivineExperience {
   }
 
   // ══════════════════════════════════════════════════
+  //  ROSARY SYSTEM ULTRA INTERACTIVO
+  // ══════════════════════════════════════════════════
+  _createRosaryBead(radius = 0.025, isLarge = false) {
+    const geo = new THREE.SphereGeometry(radius, 16, 12);
+    const posAttr = geo.attributes.position;
+    
+    for (let i = 0; i < posAttr.count; i++) {
+      let x = posAttr.getX(i);
+      let y = posAttr.getY(i);
+      let z = posAttr.getZ(i);
+      
+      y *= 0.7;
+      if (isLarge) {
+        x *= 1.1;
+        z *= 1.1;
+      }
+      
+      posAttr.setXYZ(i, x, y, z);
+    }
+    
+    geo.computeVertexNormals();
+    return geo;
+  }
+
+  _createCrucifix() {
+    const group = new THREE.Group();
+    
+    const goldMat = new THREE.MeshStandardMaterial({
+      color: 0xD4AF37,
+      roughness: 0.3,
+      metalness: 0.8
+    });
+    
+    const vBar = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.008, 0.008, 0.12, 8),
+      goldMat
+    );
+    vBar.position.y = 0.04;
+    group.add(vBar);
+    
+    const hBar = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.006, 0.006, 0.06, 8),
+      goldMat
+    );
+    hBar.position.set(0, 0.08, 0);
+    hBar.rotation.z = Math.PI / 2;
+    group.add(hBar);
+    
+    const corpusGeo = new THREE.SphereGeometry(0.015, 8, 6);
+    const corpusMat = new THREE.MeshStandardMaterial({
+      color: 0x8B0000,
+      roughness: 0.5,
+      metalness: 0.1
+    });
+    const corpus = new THREE.Mesh(corpusGeo, corpusMat);
+    corpus.position.set(0, 0.06, 0.01);
+    corpus.scale.set(1, 1.3, 0.5);
+    group.add(corpus);
+    
+    const ringGeo = new THREE.TorusGeometry(0.015, 0.004, 6, 12);
+    const ring = new THREE.Mesh(ringGeo, goldMat);
+    ring.position.y = -0.06;
+    ring.rotation.x = Math.PI / 2;
+    group.add(ring);
+    
+    return group;
+  }
+
+  _createLink() {
+    const geo = new THREE.TorusGeometry(0.012, 0.003, 6, 8);
+    const mat = new THREE.MeshStandardMaterial({
+      color: 0xD4AF37,
+      roughness: 0.3,
+      metalness: 0.8
+    });
+    return new THREE.Mesh(geo, mat);
+  }
+
+  _buildRosary3D() {
+    const rosaryGroup = new THREE.Group();
+    
+    this._rosaryData = {
+      currentBead: 0,
+      currentDecade: 0,
+      currentMystery: 0,
+      prayerIndex: 0,
+      inIntroMode: true,
+      lastActivityTime: Date.now(),
+      idleWarningShown: false,
+      mysteries: [
+        { name: 'Misterios Gozosos', color: '#FFB6C1', mysteries: [
+          { name: 'La Anunciación', text: 'El Ángel Gabriel anuncia a María que será Madre de Dios.' },
+          { name: 'La Visitación', text: 'María visita a su prima Isabel.' },
+          { name: 'El Nacimiento de Jesús', text: 'Jesús nace en Belén.' },
+          { name: 'La Presentación', text: 'Jesús es presentado en el Templo.' },
+          { name: 'El Niño Jesús perdido y hallado', text: 'Los padres encuentran a Jesús en el Templo.' }
+        ]},
+        { name: 'Misterios Dolorosos', color: '#8B0000', mysteries: [
+          { name: 'La Oración en el Huerto', text: 'Jesús ora en el Huerto de los Olivos.' },
+          { name: 'La Flagelación', text: 'Jesús es flagelado.' },
+          { name: 'La Coronación de Espinas', text: 'Jesús es coronado de espinas.' },
+          { name: 'El Vía Crucis', text: 'Jesús carga su cruz.' },
+          { name: 'La Crucifixión', text: 'Jesús muere en la cruz.' }
+        ]},
+        { name: 'Misterios Gloriosos', color: '#FFD700', mysteries: [
+          { name: 'La Resurrección', text: 'Jesús resucita.' },
+          { name: 'La Ascensión', text: 'Jesús asciende al Cielo.' },
+          { name: 'La Venida del Espíritu Santo', text: 'El Espíritu Santo viene sobre los apóstoles.' },
+          { name: 'La Asunción', text: 'María es asumida al Cielo.' },
+          { name: 'La Coronación de María', text: 'María es coronada Reina del Cielo.' }
+        ]},
+        { name: 'Misterios Luminosos', color: '#6495ED', mysteries: [
+          { name: 'El Bautismo en el Jordán', text: 'Jesús es bautizado por Juan.' },
+          { name: 'Las Bodas de Caná', text: 'Jesús transforma el agua en vino.' },
+          { name: 'El anuncio del Reino', text: 'Jesús predica la Buena Nueva.' },
+          { name: 'La Transfiguración', text: 'Jesús se transfigura ante los apóstoles.' },
+          { name: 'La Eucaristía', text: 'Jesús instituye la Eucaristía.' }
+        ]}
+      ],
+      introPrayers: [
+        { name: 'Señal de la Cruz', text: 'En el nombre del Padre, del Hijo y del Espíritu Santo. Amén.' },
+        { name: 'Credo', text: 'Creo en Dios Padre todopoderoso, creador del cielo y de la tierra. Creo en Jesucristo su único Hijo nuestro Señor, que fue concebido por obra y gracia del Espíritu Santo, nació de Santa María Virgen, sufrió bajo Poncio Pilato, fue crucificado, muerto y sepulto, descendió a los infiernos, al tercer día resucitó, subió a los cielos, está sentado a la derecha de Dios Padre todopoderoso, desde allí ha de venir a juzgar a vivos y muertos. Creo en el Espíritu Santo, la santa Iglesia católica, la comunión de los santos, el perdón de los pecados, la resurrección de la carne y la vida eterna. Amén.' },
+        { name: 'Padre Nuestro', text: 'Padre nuestro que estás en el cielo, santificado sea tu nombre, venga a nosotros tu reino, hágase tu voluntad así en la tierra como en el cielo. Danos hoy nuestro pan de cada día, perdona nuestras ofensas como también nosotros perdonamos a los que nos ofenden, y no nos dejes caer en la tentación, sino líbranos del mal. Amén.' },
+        { name: 'Ave María', text: 'Dios te salve María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros pecadores ahora y en la hora de nuestra muerte. Amén.' },
+        { name: 'Ave María', text: 'Dios te salve María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros pecadores ahora y en la hora de nuestra muerte. Amén.' },
+        { name: 'Ave María', text: 'Dios te salve María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros pecadores ahora y en la hora de nuestra muerte. Amén.' },
+        { name: 'Gloria', text: 'Gloria al Padre, al Hijo y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.' }
+      ],
+      prayers: [
+        { name: 'Ave María', text: 'Dios te salve María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros pecadores ahora y en la hora de nuestra muerte. Amén.' },
+        { name: 'Gloria', text: 'Gloria al Padre, al Hijo y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.' },
+        { name: 'Jaculatoria', text: 'Oh Jesús mío, perdónanos y libranos del fuego del infierno. Amén.' }
+      ],
+      stage: 'intro',
+      beads: [],
+      activeBead: null,
+      isPaused: false,
+      lastClickTime: 0
+    };
+    
+    const woodMat = new THREE.MeshStandardMaterial({
+      color: 0x4A2810,
+      roughness: 0.6,
+      metalness: 0.05
+    });
+    
+    const nacarMat = new THREE.MeshStandardMaterial({
+      color: 0xFFFAF0,
+      roughness: 0.3,
+      metalness: 0.1,
+      emissive: 0xFFFFF0,
+      emissiveIntensity: 0.05
+    });
+    
+    const beadMat = nacarMat;
+    const largeBeadMat = woodMat;
+    
+    let beadIndex = 0;
+    const linkSpacing = 0.055;
+    
+    const crucifix = this._createCrucifix();
+    crucifix.position.set(-0.1, 0, 0);
+    rosaryGroup.add(crucifix);
+    
+    const startLink = this._createLink();
+    startLink.position.set(-0.08, 0, 0);
+    startLink.rotation.y = Math.PI / 2;
+    rosaryGroup.add(startLink);
+    
+    const largeBeadCount = 5;
+    for (let i = 0; i < largeBeadCount; i++) {
+      const largeBead = new THREE.Mesh(this._createRosaryBead(0.035, true), largeBeadMat.clone());
+      largeBead.position.x = -0.05 + i * linkSpacing;
+      largeBead.userData = { type: 'rosaryBead', index: beadIndex, isLarge: true };
+      largeBead.userData.prayer = this._rosaryData.prayers[i < 1 ? 0 : (i < 3 ? 1 : 2)];
+      largeBead.userData.onClick = () => this._handleRosaryBeadClick(largeBead);
+      rosaryGroup.add(largeBead);
+      this._rosaryData.beads.push(largeBead);
+      this.clickables.push(largeBead);
+      beadIndex++;
+      
+      if (i < largeBeadCount - 1) {
+        const link = this._createLink();
+        link.position.x = -0.035 + i * linkSpacing + linkSpacing / 2;
+        link.rotation.y = Math.PI / 2;
+        rosaryGroup.add(link);
+      }
+    }
+    
+    for (let d = 0; d < 4; d++) {
+      const dividerLink = this._createLink();
+      dividerLink.position.x = 0.22 + d * 0.22;
+      dividerLink.rotation.y = Math.PI / 2;
+      rosaryGroup.add(dividerLink);
+      
+      const separatorBead = new THREE.Mesh(this._createRosaryBead(0.03, false), beadMat.clone());
+      separatorBead.position.x = 0.235 + d * 0.22;
+      separatorBead.userData = { type: 'rosaryBead', index: beadIndex, isLarge: false };
+      separatorBead.userData.prayer = this._rosaryData.prayers[1];
+      separatorBead.userData.onClick = () => this._handleRosaryBeadClick(separatorBead);
+      rosaryGroup.add(separatorBead);
+      this._rosaryData.beads.push(separatorBead);
+      this.clickables.push(separatorBead);
+      beadIndex++;
+      
+      for (let i = 0; i < 10; i++) {
+        const smallBead = new THREE.Mesh(this._createRosaryBead(0.022, false), beadMat.clone());
+        smallBead.position.x = 0.255 + d * 0.22 + i * linkSpacing;
+        smallBead.userData = { type: 'rosaryBead', index: beadIndex, isLarge: false };
+        smallBead.userData.prayer = this._rosaryData.prayers[1];
+        smallBead.userData.onClick = () => this._handleRosaryBeadClick(smallBead);
+        rosaryGroup.add(smallBead);
+        this._rosaryData.beads.push(smallBead);
+        this.clickables.push(smallBead);
+        beadIndex++;
+      }
+    }
+    
+    const endLink = this._createLink();
+    endLink.position.x = 1.2;
+    endLink.rotation.y = Math.PI / 2;
+    rosaryGroup.add(endLink);
+    
+    const medal = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.04, 0.04, 0.01, 16),
+      new THREE.MeshStandardMaterial({ color: 0xD4AF37, roughness: 0.3, metalness: 0.8 })
+    );
+    medal.position.x = 1.22;
+    medal.rotation.z = Math.PI / 2;
+    rosaryGroup.add(medal);
+    
+    rosaryGroup.position.set(1.8, 1.15, 0.4);
+    rosaryGroup.rotation.x = -Math.PI / 6;
+    rosaryGroup.rotation.z = Math.PI / 8;
+    
+    this.scene.add(rosaryGroup);
+    this.rosaryGroup = rosaryGroup;
+    
+    this._createRosaryParticles();
+    
+    this._buildRosaryUI();
+  }
+
+  _createRosaryParticles() {
+    const particleCount = 50;
+    const positions = new Float32Array(particleCount * 3);
+    const velocities = [];
+    
+    for (let i = 0; i < particleCount; i++) {
+      positions[i * 3] = 1.8 + (Math.random() - 0.5) * 1.2;
+      positions[i * 3 + 1] = 1.15 + Math.random() * 0.7;
+      positions[i * 3 + 2] = 0.4 + (Math.random() - 0.5) * 0.6;
+      velocities.push({
+        x: (Math.random() - 0.5) * 0.002,
+        y: Math.random() * 0.003 + 0.001,
+        z: (Math.random() - 0.5) * 0.002
+      });
+    }
+    
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    
+    const material = new THREE.PointsMaterial({
+      color: 0xFFD700,
+      size: 0.025,
+      transparent: true,
+      opacity: 0.7,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false
+    });
+    
+    this._rosaryParticles = new THREE.Points(geometry, material);
+    this._rosaryParticleVelocities = velocities;
+    this.scene.add(this._rosaryParticles);
+  }
+
+  _animateRosaryParticles(t) {
+    if (!this._rosaryParticles) return;
+    
+    const positions = this._rosaryParticles.geometry.attributes.position.array;
+    const velocities = this._rosaryParticleVelocities;
+    
+    for (let i = 0; i < velocities.length; i++) {
+      positions[i * 3] += velocities[i].x + Math.sin(t + i) * 0.0005;
+      positions[i * 3 + 1] += velocities[i].y;
+      positions[i * 3 + 2] += velocities[i].z + Math.cos(t + i) * 0.0005;
+      
+      if (positions[i * 3 + 1] > 2.2) {
+        positions[i * 3] = 2.5 + (Math.random() - 0.5) * 1.5;
+        positions[i * 3 + 1] = 1.2;
+        positions[i * 3 + 2] = 0.3 + (Math.random() - 0.5) * 0.8;
+      }
+    }
+    
+    this._rosaryParticles.geometry.attributes.position.needsUpdate = true;
+    this._rosaryParticles.material.opacity = 0.5 + Math.sin(t * 2) * 0.2;
+  }
+
+  _handleRosaryBeadClick(bead) {
+    const now = Date.now();
+    if (now - this._rosaryData.lastClickTime < 400) return;
+    this._rosaryData.lastClickTime = now;
+    this._rosaryData.lastActivityTime = now;
+    this._rosaryData.idleWarningShown = false;
+    
+    if (this._rosaryData.isPaused) return;
+    
+    if (bead.userData.lit) return;
+    bead.userData.lit = true;
+    bead.material.emissive = new THREE.Color(0xFFD700);
+    bead.material.emissiveIntensity = 0.35;
+    
+    this._rosaryData.activeBead = bead;
+    this._rosaryData.currentBead = bead.userData.index + 1;
+    
+    let prayer;
+    let prayerName;
+    
+    if (this._rosaryData.inIntroMode) {
+      const introIdx = Math.min(this._rosaryData.currentBead - 1, this._rosaryData.introPrayers.length - 1);
+      prayer = this._rosaryData.introPrayers[introIdx];
+      prayerName = prayer.name;
+      
+      if (this._rosaryData.currentBead >= 7) {
+        this._rosaryData.inIntroMode = false;
+        this._rosaryData.prayerIndex = 0;
+        this._rosaryData.currentDecade = 0;
+        this.toast('📖 Ahora comienza el primer misterio: 10 Ave Marías');
+      }
+    } else {
+      const posEnDecena = (this._rosaryData.currentBead - 7) % 10;
+      
+      if (posEnDecena === 0 || posEnDecena === 1 || posEnDecena === 2 || posEnDecena === 3 || posEnDecena === 4 ||
+          posEnDecena === 5 || posEnDecena === 6 || posEnDecena === 7 || posEnDecena === 8) {
+        prayer = this._rosaryData.prayers[0];
+        prayerName = `Ave María #${posEnDecena + 1}`;
+      } else if (posEnDecena === 9) {
+        prayer = this._rosaryData.prayers[1];
+        prayerName = 'Gloria';
+      }
+      
+      const totalDecenas = Math.floor((this._rosaryData.currentBead - 7) / 10);
+      if (totalDecenas > this._rosaryData.currentDecade && posEnDecena === 9) {
+        this._rosaryData.currentDecade = totalDecenas;
+        this._completeDecade();
+      }
+    }
+    
+    if (!prayer) {
+      prayer = this._rosaryData.prayers[2];
+      prayerName = 'Jaculatoria';
+    }
+    
+    this._showPrayerText(prayer.text, prayerName);
+    this._speakPrayer(prayer.text);
+    
+    if (this.sacrament && this.sacrament.light) {
+      this.sacrament.light.intensity += 0.2;
+      setTimeout(() => {
+        if (this.sacrament && this.sacrament.light) {
+          this.sacrament.light.intensity -= 0.2;
+        }
+      }, 600);
+    }
+    
+    if (this._rosaryParticles) {
+      this._rosaryParticles.material.opacity = 1;
+      setTimeout(() => {
+        if (this._rosaryParticles) {
+          this._rosaryParticles.material.opacity = 0.7;
+        }
+      }, 500);
+    }
+    
+    this._animateBeadBounce(bead);
+    this._updateRosaryUI();
+    
+    if (this._rosaryData.currentBead >= 59) {
+      this._completeRosary();
+    }
+  }
+
+  _checkIdleStatus() {
+    const now = Date.now();
+    const idleTime = now - this._rosaryData.lastActivityTime;
+    
+    if (idleTime > 8000 && !this._rosaryData.idleWarningShown && !this._rosaryData.isPaused && this._rosaryData.currentBead > 0) {
+      this._rosaryData.idleWarningShown = true;
+      this._speakPrayer('¿Continuamos, hijo mío?');
+      this.toast('⏳ ¿Continuamos rezando?');
+    }
+  }
+
+  _completeRosary() {
+    this._speakPrayer('Amén. Que la Eucaristía te acompañe siempre. El Rosario ha terminado. Que la Virgen María te bendiga.');
+    
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse at center, rgba(60,20,80,0.98), rgba(20,5,30,0.98));
+      border: 3px solid #FFD700;
+      border-radius: 25px;
+      padding: 40px 60px;
+      text-align: center;
+      z-index: 10000;
+      font-family: 'Cinzel Decorative', serif;
+      box-shadow: 0 0 80px rgba(255,215,0,0.5), inset 0 0 40px rgba(255,215,0,0.1);
+      animation: holyGlow 1s ease;
+    `;
+    
+    notification.innerHTML = `
+      <h1 style="color: #FFD700; margin: 0 0 20px 0; font-size: 2rem;">🎉 Rosario Completado</h1>
+      <p style="color: #FFFAF0; font-size: 1.2rem; line-height: 1.8;">
+        Amén.<br>
+        Que la Eucaristía te acompañe siempre.<br>
+        La Virgen María te bendiga.
+      </p>
+      <p style="color: #D4AF37; margin-top: 25px; font-style: italic; font-size: 1rem;">
+        "El Rosario es el arma más poderosa contra el infierno"
+      </p>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    if (this.sacrament) {
+      this.sacrament.light.intensity += 2;
+      this.bloomPass.strength += 1.5;
+    }
+    
+    setTimeout(() => {
+      notification.style.transition = 'opacity 2s ease';
+      notification.style.opacity = '0';
+      setTimeout(() => {
+        notification.remove();
+        if (this.sacrament) {
+          this.sacrament.light.intensity -= 2;
+          this.bloomPass.strength -= 1.5;
+        }
+      }, 2000);
+    }, 8000);
+    
+    this.toast('🎉 Has completado el Santo Rosario');
+  }
+
+  _animateBeadBounce(bead) {
+    const originalY = bead.position.y;
+    let t = 0;
+    const animate = () => {
+      t += 0.15;
+      bead.position.y = originalY + Math.sin(t) * 0.008;
+      if (t < Math.PI) {
+        requestAnimationFrame(animate);
+      } else {
+        bead.position.y = originalY;
+      }
+    };
+    animate();
+  }
+
+  _completeDecade() {
+    const decade = Math.floor(this._rosaryData.currentBead / 10) - 1;
+    const mystery = this._rosaryData.mysteries[this._rosaryData.currentMystery].mysteries[decade];
+    
+    this._rosaryData.currentDecade = decade + 1;
+    
+    this.toast(`🕰️ Misterio: ${mystery.name}`);
+    
+    this._showMysteryNotification(mystery);
+  }
+
+  _showMysteryNotification(mystery) {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(135deg, rgba(30,10,60,0.95), rgba(60,20,80,0.9));
+      border: 2px solid #D4AF37;
+      border-radius: 20px;
+      padding: 30px 50px;
+      text-align: center;
+      z-index: 10000;
+      font-family: 'Cinzel Decorative', serif;
+      box-shadow: 0 0 50px rgba(212,175,55,0.4);
+      animation: mysteryAppear 0.5s ease;
+    `;
+    
+    notification.innerHTML = `
+      <h2 style="color: #D4AF37; margin: 0 0 15px 0; font-size: 1.5rem;">${mystery.name}</h2>
+      <p style="color: #FFFAF0; font-size: 1rem; line-height: 1.6;">${mystery.text}</p>
+      <p style="color: #D4AF37; margin-top: 20px; font-style: italic;">Contemplemos este misterio...</p>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      notification.style.transition = 'opacity 1s ease';
+      notification.style.opacity = '0';
+      setTimeout(() => notification.remove(), 1000);
+    }, 5000);
+  }
+
+  _showPrayerText(text, prayerName) {
+    const existing = document.getElementById('prayer-text-overlay');
+    if (existing) existing.remove();
+    
+    const overlay = document.createElement('div');
+    overlay.id = 'prayer-text-overlay';
+    overlay.style.cssText = `
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(20, 10, 40, 0.9);
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      border-radius: 15px;
+      padding: 20px 40px;
+      max-width: 600px;
+      text-align: center;
+      z-index: 5000;
+      font-family: 'EB Garamond', serif;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+    `;
+    
+    overlay.innerHTML = `
+      <h3 style="color: #D4AF37; margin: 0 0 10px 0; font-size: 1.2rem;">${prayerName}</h3>
+      <p style="color: #FFFAF0; font-size: 1rem; line-height: 1.6;">${text}</p>
+    `;
+    
+    document.body.appendChild(overlay);
+    
+    setTimeout(() => {
+      overlay.style.transition = 'opacity 1s ease';
+      overlay.style.opacity = '0';
+      setTimeout(() => overlay.remove(), 1000);
+    }, 4000);
+  }
+
+  _speakPrayer(text) {
+    if (!('speechSynthesis' in window)) return;
+    
+    window.speechSynthesis.cancel();
+    
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'es-ES';
+    utterance.rate = 0.85;
+    utterance.pitch = 0.9;
+    
+    window.speechSynthesis.speak(utterance);
+  }
+
+  _buildRosaryUI() {
+    const ui = document.createElement('div');
+    ui.id = 'rosary-ui';
+    ui.style.cssText = `
+      position: fixed;
+      bottom: 5rem;
+      right: 20px;
+      left: auto;
+      background: linear-gradient(180deg, rgba(3,8,16,0.88) 0%, rgba(3,8,16,0.75) 100%);
+      border: 1px solid rgba(240,192,96,0.15);
+      border-radius: 15px 15px 8px 8px;
+      padding: 0;
+      z-index: 2000;
+      font-family: 'EB Garamond', serif;
+      min-width: 260px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4), 0 -2px 15px rgba(240,192,96,0.05);
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(8px);
+    `;
+
+    const tab = document.createElement('div');
+    tab.id = 'rosary-tab';
+    tab.style.cssText = `
+      display: none;
+      position: fixed;
+      bottom: 5rem;
+      right: 20px;
+      left: auto;
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(180deg, rgba(3,8,16,.88) 0%, rgba(3,8,16,.75) 100%);
+      border: 1px solid rgba(240,192,96,.15);
+      border-radius: 50%;
+      z-index: 1999;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(240,192,96,.08);
+      transition: all 0.3s ease;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      backdrop-filter: blur(12px);
+    `;
+    tab.innerHTML = '📿';
+    tab.title = 'Abrir panel del Rosario';
+    tab.onclick = () => this._toggleRosaryUIPanel();
+    document.body.appendChild(tab);
+    this._rosaryTab = tab;
+
+    ui.innerHTML = `
+      <div style="padding: 15px 15px 10px 15px; border-bottom: 1px solid rgba(212,175,55,0.2);">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="color: #D4AF37; font-size: 1.1rem; font-family: 'Cinzel Decorative', serif;">
+            📿 Santo Rosario
+          </div>
+          <button id="btn-collapse" style="background:none; border:none; color:#D4AF37; font-size:1.2rem; cursor:pointer; padding:0;">✕</button>
+        </div>
+      </div>
+      <div style="padding: 8px 15px;">
+        <button id="btn-como-rezar" style="width:100%; padding: 10px; background: rgba(240,192,96,.07); border: 1px solid rgba(240,192,96,.2); color: #f0c060; border-radius: 2rem; cursor: pointer; font-family: 'EB Garamond', serif; font-size: 0.9rem; letter-spacing: 0.07em; backdrop-filter: blur(12px); transition: all 0.28s cubic-bezier(.4,0,.2,1);">📖 ¿Cómo rezar el Santo Rosario?</button>
+      </div>
+      <div id="mystery-name" style="color: #FFFAF0; font-size: 0.95rem; padding: 10px 15px 5px;">
+        Selecciona un grupo de misterios
+      </div>
+      <div id="prayer-name" style="color: #AAAAAA; font-size: 0.85rem; padding: 0 15px 10px;">
+        --
+      </div>
+      <div style="padding: 0 15px 10px;">
+        <button id="btn-gozosos" style="width:48%; padding: 8px; background: rgba(212,175,55,0.15); border: 1px solid #D4AF37; color: #D4AF37; border-radius: 8px; cursor: pointer; font-family: 'EB Garamond', serif;">
+          <div>Gozosos</div>
+          <div style="font-size: 0.6rem; color: rgba(212,175,55,0.6); margin-top: 2px;">Lun y Sáb</div>
+        </button>
+        <button id="btn-dolorosos" style="width:48%; padding: 8px; background: rgba(139,0,0,0.2); border: 1px solid #8B0000; color: #FFAAAB; border-radius: 8px; cursor: pointer; font-family: 'EB Garamond', serif;">
+          <div>Dolorosos</div>
+          <div style="font-size: 0.6rem; color: rgba(255,170,171,0.6); margin-top: 2px;">Mar y Vie</div>
+        </button>
+      </div>
+      <div style="padding: 0 15px 10px;">
+        <button id="btn-gloriosos" style="width:48%; padding: 8px; background: rgba(255,215,0,0.15); border: 1px solid #FFD700; color: #FFD700; border-radius: 8px; cursor: pointer; font-family: 'EB Garamond', serif;">
+          <div>Gloriosos</div>
+          <div style="font-size: 0.6rem; color: rgba(255,215,0,0.6); margin-top: 2px;">Mié y Dom</div>
+        </button>
+        <button id="btn-luminosos" style="width:48%; padding: 8px; background: rgba(100,149,237,0.2); border: 1px solid #6495ED; color: #ADD8E6; border-radius: 8px; cursor: pointer; font-family: 'EB Garamond', serif;">
+          <div>Luminosos</div>
+          <div style="font-size: 0.6rem; color: rgba(173,216,230,0.6); margin-top: 2px;">Jueves</div>
+        </button>
+      </div>
+      <div id="mystery-today-panel" style="padding: 5px 15px 8px; text-align: center; background: rgba(240,192,96,.04); border-radius: 5px; margin: 0 15px 8px;"></div>
+      <div id="mystery-list" style="display: none; padding: 10px 15px; border-top: 1px solid rgba(212,175,55,0.2); max-height: 200px; overflow-y: auto;">
+      </div>
+      <div style="padding: 10px 15px; border-top: 1px solid rgba(212,175,55,0.2);">
+        <div style="color: #AAAAAA; font-size: 0.8rem; margin-bottom: 5px;">
+          Cuenta: <span id="bead-count" style="color: #FFFAF0;">0</span> / 59
+        </div>
+        <div style="background: rgba(255,255,255,0.1); border-radius: 5px; height: 6px; margin-bottom: 12px;">
+          <div id="progress-bar" style="background: linear-gradient(90deg, #D4AF37, #FFD700); height: 100%; border-radius: 5px; width: 0%; transition: width 0.3s ease;"></div>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button id="btn-pause" style="flex:1; padding: 10px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: #FFFAF0; border-radius: 8px; cursor: pointer; font-family: 'EB Garamond', serif;">⏸ Pausar</button>
+          <button id="btn-reset" style="flex:1; padding: 10px; background: rgba(255,100,100,0.15); border: 1px solid rgba(255,100,100,0.4); color: #FFAAAA; border-radius: 8px; cursor: pointer; font-family: 'EB Garamond', serif;">🔄 Reiniciar</button>
+        </div>
+      </div>
+      <div style="color: #888888; font-size: 0.75rem; padding: 10px 15px; text-align: center;">
+        Haz clic en las cuentas del rosario 3D para rezar
+      </div>
+    `;
+    
+    document.body.appendChild(ui);
+    this._rosaryUIPanel = ui;
+    
+    document.getElementById('btn-collapse').onclick = () => this._toggleRosaryUIPanel();
+    document.getElementById('btn-como-rezar').onclick = () => this._showComoRezar();
+    document.getElementById('btn-gozosos').onclick = () => this._selectMysteryGroup(0);
+    document.getElementById('btn-dolorosos').onclick = () => this._selectMysteryGroup(1);
+    document.getElementById('btn-gloriosos').onclick = () => this._selectMysteryGroup(2);
+    document.getElementById('btn-luminosos').onclick = () => this._selectMysteryGroup(3);
+    document.getElementById('btn-pause').onclick = () => this._toggleRosaryPause();
+    document.getElementById('btn-reset').onclick = () => this._resetRosary();
+    
+    const dayOfWeek = new Date().getDay();
+    const mysteryMap = {
+      0: { name: 'Gloriosos', color: '#FFD700' },
+      1: { name: 'Gozosos', color: '#FFB6C1' },
+      2: { name: 'Dolorosos', color: '#FFAAAB' },
+      3: { name: 'Gloriosos', color: '#FFD700' },
+      4: { name: 'Luminosos', color: '#ADD8E6' },
+      5: { name: 'Dolorosos', color: '#FFAAAB' },
+      6: { name: 'Gozosos', color: '#FFB6C1' }
+    };
+    const today = mysteryMap[dayOfWeek];
+    const todayEl = document.getElementById('mystery-today-panel');
+    if (todayEl) {
+      todayEl.innerHTML = `<span style="color: rgba(255,255,255,.5); font-size: 0.7rem;">Hoy: </span><span style="color: ${today.color}; font-weight: bold; font-size: 0.75rem;">${today.name}</span>`;
+    }
+  }
+
+  _showComoRezar() {
+    const modal = document.createElement('div');
+    modal.id = 'como-rezar-modal';
+    modal.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(0deg, rgba(3,8,16,.96) 0%, rgba(3,8,16,.85) 100%);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(14px);
+      animation: fadeIn 0.3s ease;
+    `;
+    
+    modal.innerHTML = `
+      <div style="
+        background: linear-gradient(0deg, rgba(3,8,16,.97) 0%, rgba(3,8,16,.92) 100%);
+        border: 1px solid rgba(240,192,96,.22);
+        border-radius: 20px;
+        max-width: 550px;
+        width: 90%;
+        max-height: 85vh;
+        overflow-y: auto;
+        padding: 30px;
+        font-family: 'EB Garamond', serif;
+        box-shadow: 0 0 30px rgba(240,192,96,.08), inset 0 0 40px rgba(240,192,96,.02);
+        position: relative;
+      ">
+        <button id="btn-cerrar-como-rezar" style="
+          position: absolute;
+          top: 15px;
+          right: 20px;
+          background: none;
+          border: none;
+          color: #f0c060;
+          font-size: 1.5rem;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        ">✕</button>
+        
+        <h2 style="color: #f0c060; font-family: 'Cinzel Decorative', serif; font-size: 1.4rem; margin: 0 0 20px 0; text-align: center; text-shadow: 0 0 20px rgba(240,192,96,.3);">
+          📿 Cómo rezar el Santo Rosario
+        </h2>
+        
+        <div style="color: rgba(255,254,245,.85); font-size: 1rem; line-height: 1.7;">
+          <div style="margin-bottom: 18px;">
+            <h3 style="color: #f0c060; font-size: 1.1rem; margin: 0 0 8px 0;">🙏 Paso 1: Señal de la Cruz</h3>
+            <p style="margin: 0; color: rgba(255,255,255,.7);">En el nombre del Padre, del Hijo y del Espíritu Santo. Amén.</p>
+          </div>
+          
+          <div style="margin-bottom: 18px;">
+            <h3 style="color: #f0c060; font-size: 1.1rem; margin: 0 0 8px 0;">📜 Paso 2: El Credo</h3>
+            <p style="margin: 0; color: rgba(255,255,255,.7);">Profesión de fe. Se reza en la primera cuenta grande.</p>
+          </div>
+          
+          <div style="margin-bottom: 18px;">
+            <h3 style="color: #f0c060; font-size: 1.1rem; margin: 0 0 8px 0;">🙏 Paso 3: Padre Nuestro</h3>
+            <p style="margin: 0; color: rgba(255,255,255,.7);">Se reza en la siguiente cuenta grande.</p>
+          </div>
+          
+          <div style="margin-bottom: 18px;">
+            <h3 style="color: #f0c060; font-size: 1.1rem; margin: 0 0 8px 0;">🌹 Paso 4: 3 Ave Marías</h3>
+            <p style="margin: 0; color: rgba(255,255,255,.7);">Tres cuentas pequeñas. Se piden las virtudes de fe, esperanza y caridad.</p>
+          </div>
+          
+          <div style="margin-bottom: 18px;">
+            <h3 style="color: #f0c060; font-size: 1.1rem; margin: 0 0 8px 0;">⭐ Paso 5: Gloria</h3>
+            <p style="margin: 0; color: rgba(255,255,255,.7);">Gloria al Padre, al Hijo y al Espíritu Santo...</p>
+          </div>
+          
+          <div style="margin-bottom: 18px; padding: 12px; background: rgba(240,192,96,.06); border-radius: 10px; border: 1px solid rgba(240,192,96,.15);">
+            <h3 style="color: #f0c060; font-size: 1.1rem; margin: 0 0 8px 0;">📖 Paso 6: Los Misterios</h3>
+            <p style="margin: 0 0 8px 0; color: rgba(255,255,255,.7);">Elige un grupo de misterios (Gozosos, Dolorosos, Gloriosos o Luminosos). Cada grupo tiene 5 misterios:</p>
+            <ul style="margin: 0; padding-left: 20px; color: rgba(255,255,255,.7);">
+              <li>1 Padre Nuestro (cuenta grande)</li>
+              <li>10 Ave Marías (cuentas pequeñas)</li>
+              <li>1 Gloria</li>
+              <li>1 Jaculatoria: "Oh Jesús mío, perdónanos..."</li>
+            </ul>
+          </div>
+          
+          <div style="margin-bottom: 18px; padding: 12px; background: rgba(240,192,96,.06); border-radius: 10px; border: 1px solid rgba(240,192,96,.15);">
+            <h3 style="color: #f0c060; font-size: 1.1rem; margin: 0 0 10px 0;">📅 Misterios según el día</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+              <div style="padding: 6px 8px; background: rgba(255,255,255,.03); border-radius: 6px; border-left: 3px solid #FFB6C1;">
+                <div style="color: #FFB6C1; font-size: 0.75rem; font-weight: bold;">Lunes y Sábado</div>
+                <div style="color: rgba(255,255,255,.7); font-size: 0.8rem;">Gozosos</div>
+              </div>
+              <div style="padding: 6px 8px; background: rgba(255,255,255,.03); border-radius: 6px; border-left: 3px solid #8B0000;">
+                <div style="color: #FFAAAB; font-size: 0.75rem; font-weight: bold;">Martes y Viernes</div>
+                <div style="color: rgba(255,255,255,.7); font-size: 0.8rem;">Dolorosos</div>
+              </div>
+              <div style="padding: 6px 8px; background: rgba(255,255,255,.03); border-radius: 6px; border-left: 3px solid #FFD700;">
+                <div style="color: #FFD700; font-size: 0.75rem; font-weight: bold;">Miércoles y Domingo</div>
+                <div style="color: rgba(255,255,255,.7); font-size: 0.8rem;">Gloriosos</div>
+              </div>
+              <div style="padding: 6px 8px; background: rgba(255,255,255,.03); border-radius: 6px; border-left: 3px solid #6495ED;">
+                <div style="color: #ADD8E6; font-size: 0.75rem; font-weight: bold;">Jueves</div>
+                <div style="color: rgba(255,255,255,.7); font-size: 0.8rem;">Luminosos</div>
+              </div>
+            </div>
+            <div id="mystery-today" style="margin-top: 10px; padding: 8px; background: rgba(240,192,96,.08); border-radius: 8px; text-align: center;"></div>
+          </div>
+          
+          <div style="margin-bottom: 18px;">
+            <h3 style="color: #f0c060; font-size: 1.1rem; margin: 0 0 8px 0;">🎯 Cómo usar este Rosario 3D</h3>
+            <ul style="margin: 0; padding-left: 20px; color: rgba(255,255,255,.7);">
+              <li>Haz clic en cada cuenta dorada para avanzar</li>
+              <li>Cada cuenta muestra la oración correspondiente</li>
+              <li>La voz te guía leyendo cada oración</li>
+              <li>Al completar un misterio verás una notificación especial</li>
+            </ul>
+          </div>
+          
+          <div style="text-align: center; padding: 15px; background: rgba(240,192,96,.05); border-radius: 10px; border: 1px solid rgba(240,192,96,.1);">
+            <p style="color: #f0c060; font-style: italic; margin: 0; font-size: 1.05rem;">
+              "El Rosario es el arma más poderosa contra el infierno"<br>
+              <span style="font-size: 0.85rem; color: rgba(255,255,255,.5);">— San Pío de Pietrelcina</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    const dayOfWeek = new Date().getDay();
+    const mysteryMap = {
+      0: { name: 'Gloriosos', color: '#FFD700' },
+      1: { name: 'Gozosos', color: '#FFB6C1' },
+      2: { name: 'Dolorosos', color: '#FFAAAB' },
+      3: { name: 'Gloriosos', color: '#FFD700' },
+      4: { name: 'Luminosos', color: '#ADD8E6' },
+      5: { name: 'Dolorosos', color: '#FFAAAB' },
+      6: { name: 'Gozosos', color: '#FFB6C1' }
+    };
+    const today = mysteryMap[dayOfWeek];
+    const todayEl = document.getElementById('mystery-today');
+    if (todayEl) {
+      todayEl.innerHTML = `<span style="color: rgba(255,255,255,.6); font-size: 0.85rem;">Hoy toca: </span><span style="color: ${today.color}; font-weight: bold; font-size: 0.95rem;">${today.name}</span>`;
+    }
+    
+    document.getElementById('btn-cerrar-como-rezar').onclick = () => {
+      modal.style.transition = 'opacity 0.3s ease';
+      modal.style.opacity = '0';
+      setTimeout(() => modal.remove(), 300);
+    };
+    
+    modal.onclick = (e) => {
+      if (e.target === modal) {
+        modal.style.transition = 'opacity 0.3s ease';
+        modal.style.opacity = '0';
+        setTimeout(() => modal.remove(), 300);
+      }
+    };
+  }
+
+  _toggleRosaryUIPanel() {
+    const ui = this._rosaryUIPanel;
+    const tab = this._rosaryTab;
+    
+    if (ui.style.display === 'none') {
+      ui.style.display = 'block';
+      ui.style.opacity = '1';
+      tab.style.display = 'none';
+    } else {
+      ui.style.display = 'none';
+      tab.style.display = 'flex';
+    }
+  }
+
+  _showMysteryList(groupIndex) {
+    const listContainer = document.getElementById('mystery-list');
+    const group = this._rosaryData.mysteries[groupIndex];
+    const color = group.color;
+    
+    listContainer.style.display = 'block';
+    listContainer.innerHTML = `<div style="color: ${color}; font-size: 0.9rem; margin-bottom: 8px; font-family: 'Cinzel Decorative', serif;">${group.name}</div>`;
+    
+    group.mysteries.forEach((mystery, idx) => {
+      const btn = document.createElement('div');
+      btn.style.cssText = `
+        padding: 8px 10px;
+        margin: 4px 0;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(212,175,55,0.2);
+        border-radius: 8px;
+        color: #FFFAF0;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      `;
+      btn.textContent = `${idx + 1}. ${mystery.name}`;
+      btn.onmouseenter = () => {
+        btn.style.background = 'rgba(212,175,55,0.15)';
+        btn.style.borderColor = color;
+      };
+      btn.onmouseleave = () => {
+        btn.style.background = 'rgba(255,255,255,0.05)';
+        btn.style.borderColor = 'rgba(212,175,55,0.2)';
+      };
+      btn.onclick = () => {
+        this._showMysteryNotification(mystery);
+      };
+      listContainer.appendChild(btn);
+    });
+  }
+
+  _selectMysteryGroup(groupIndex) {
+    this._rosaryData.currentMystery = groupIndex;
+    const groupName = this._rosaryData.mysteries[groupIndex].name;
+    document.getElementById('mystery-name').textContent = groupName;
+    this._showMysteryList(groupIndex);
+    this.toast(`📿 ${groupName} seleccionado`);
+  }
+
+  _toggleRosaryPause() {
+    this._rosaryData.isPaused = !this._rosaryData.isPaused;
+    const btn = document.getElementById('btn-pause');
+    btn.textContent = this._rosaryData.isPaused ? '▶ Reanudar' : '⏸ Pausar';
+  }
+
+  _resetRosary() {
+    this._rosaryData.currentBead = 0;
+    this._rosaryData.currentDecade = 0;
+    this._rosaryData.activeBead = null;
+    
+    this._rosaryData.beads.forEach(bead => {
+      bead.material.emissiveIntensity = bead.userData.isLarge ? 0.02 : 0.05;
+    });
+    
+    this._updateRosaryUI();
+    this.toast('🔄 Rosario reiniciado');
+  }
+
+  _updateRosaryUI() {
+    const count = this._rosaryData.currentBead;
+    document.getElementById('bead-count').textContent = count;
+    document.getElementById('progress-bar').style.width = (count / 59 * 100) + '%';
+    
+    if (this._rosaryData.activeBead && this._rosaryData.activeBead.userData.prayer) {
+      document.getElementById('prayer-name').textContent = this._rosaryData.activeBead.userData.prayer.name;
+    }
+  }
+
+  _animateRosary(t) {
+    if (!this.rosaryGroup) return;
+    
+    this.rosaryGroup.traverse(child => {
+      if (child.userData.type === 'rosaryBead') {
+        const sway = Math.sin(t * 0.5 + child.position.x * 2) * 0.003;
+        child.rotation.z = sway;
+      }
+    });
+  }
+
+  // ══════════════════════════════════════════════════
   //  AGUA BENDITA con shader avanzado
   // ══════════════════════════════════════════════════
   _buildHolyWater(){
@@ -2018,6 +2971,9 @@ class DivineExperience {
     this._drawWater(T);
     this._tickFSM(performance.now());
     this._animateRoses(T);
+    this._animateRosary(T);
+    this._animateRosaryParticles(T);
+    this._checkIdleStatus();
 
     // ── Velas con flicker orgánico (4 frecuencias) ──
     this.candles.forEach((c,i)=>{
@@ -2196,5 +3152,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   window.app = app;
 });
 </script>
+
+// ✅ ROSARIO INTERACTIVO ULTRA — Cuentas clickeables + Sistema de Misterios para el Santo Sagrario
 </body>
 </html>
