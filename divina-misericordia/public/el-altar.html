@@ -259,6 +259,7 @@ import { UnrealBloomPass }     from 'three/addons/postprocessing/UnrealBloomPass
 import { ShaderPass }          from 'three/addons/postprocessing/ShaderPass.js';
 import { SSAOPass }             from 'three/addons/postprocessing/SSAOPass.js';
 import { OutputPass }           from 'three/addons/postprocessing/OutputPass.js';
+import { RGBELoader }           from 'three/addons/loaders/RGBELoader.js';
 import { GammaCorrectionShader } from 'three/addons/shaders/GammaCorrectionShader.js';
 
 // ═══════════════════════════════════════════════════════
@@ -452,8 +453,8 @@ class DivineExperience {
       this.renderer.shadowMap.enabled  = true;
       this.renderer.shadowMap.type     = THREE.PCFSoftShadowMap;
       this.renderer.outputColorSpace   = THREE.LinearSRGBColorSpace;
-      this.renderer.toneMapping        = THREE.CineonToneMapping;
-      this.renderer.toneMappingExposure = 1.15;
+      this.renderer.toneMapping        = THREE.ACESFilmicToneMapping;
+      this.renderer.toneMappingExposure = 1.2;
       document.body.appendChild(this.renderer.domElement);
 
       this.scene = new THREE.Scene();
@@ -529,11 +530,14 @@ class DivineExperience {
   }
 
   _buildLights(){
+    // Crear Environment Map procedural para reflexiones HDR
+    this._createEnvironmentMap();
+    
     // Hemisferico cielo/suelo
     this.scene.add(new THREE.HemisphereLight(0x18102a, 0x060308, 0.7));
 
-    // Luz direccional divina (desde arriba)
-    this.divineDir = new THREE.DirectionalLight(0xffe8a0, 2.8);
+    // Luz direccional divina (desde arriba) - intensidad HDR
+    this.divineDir = new THREE.DirectionalLight(0xffe8a0, 3.5);
     this.divineDir.position.set(0, 15, 6);
     this.divineDir.castShadow = true;
     this.divineDir.shadow.mapSize.setScalar(2048);
@@ -542,32 +546,90 @@ class DivineExperience {
     this.divineDir.shadow.bias = -0.001;
     this.scene.add(this.divineDir);
 
-    // Luz de contorno (azul-violeta)
-    this.rimLight = new THREE.PointLight(0x6040ff, 2, 18);
+    // Luz de contorno (azul-violeta) - intensidad HDR
+    this.rimLight = new THREE.PointLight(0x6040ff, 2.5, 18);
     this.rimLight.position.set(0, 6, -5);
     this.scene.add(this.rimLight);
 
-    // Luces de relleno
-    const warmLight = new THREE.PointLight(0xff8030, 0.8, 22);
+    // Luces de relleno - warm/cool
+    const warmLight = new THREE.PointLight(0xff8030, 1.0, 22);
     warmLight.position.set(-7, 5, 5);
     this.scene.add(warmLight);
-    const coolLight = new THREE.PointLight(0x3060cc, 0.5, 22);
+    const coolLight = new THREE.PointLight(0x3060cc, 0.6, 22);
     coolLight.position.set(7, 5, 5);
     this.scene.add(coolLight);
 
     // Foco sobre el altar
-    this.crossSpot = new THREE.SpotLight(0xfff0c0, 3.5, 22, Math.PI/9, .35, 1.2);
+    this.crossSpot = new THREE.SpotLight(0xfff0c0, 4.0, 22, Math.PI/9, .35, 1.2);
     this.crossSpot.position.set(0, 13, 3);
     this.crossSpot.target.position.set(0, 2.5, 0);
     this.crossSpot.castShadow = true;
     this.crossSpot.shadow.mapSize.setScalar(1024);
     this.scene.add(this.crossSpot, this.crossSpot.target);
 
-    // Luces de vitral
-    this.scene.add(new THREE.PointLight(0x9040ff, 1.8, 20).position.set(0,7,-3.5) && new THREE.PointLight(0x9040ff,1.8,20));
-    const gl1 = new THREE.PointLight(0x9040ff,1.8,20); gl1.position.set(0,7,-3.5); this.scene.add(gl1);
-    const gl2 = new THREE.PointLight(0xff4040,0.6,15); gl2.position.set(-4,6,-3); this.scene.add(gl2);
-    const gl3 = new THREE.PointLight(0x4080ff,0.6,15); gl3.position.set(4,6,-3);  this.scene.add(gl3);
+    // Luces de vitral - colores vibrantes HDR
+    const gl1 = new THREE.PointLight(0x9040ff, 2.2, 20); gl1.position.set(0,7,-3.5); this.scene.add(gl1);
+    const gl2 = new THREE.PointLight(0xff4040, 0.8, 15); gl2.position.set(-4,6,-3); this.scene.add(gl2);
+    const gl3 = new THREE.PointLight(0x4080ff, 0.8, 15); gl3.position.set(4,6,-3);  this.scene.add(gl3);
+  }
+
+  _createEnvironmentMap() {
+    // Crear PMREM environment map procedural
+    const size = 256;
+    const data = new Float32Array(size * size * 4);
+    
+    for (let y = 0; y < size; y++) {
+      for (let x = 0; x < size; x++) {
+        const i = (y * size + x) * 4;
+        
+        // UV normalizados
+        const u = x / size;
+        const v = y / size;
+        
+        // Ángulo spherical
+        const theta = u * Math.PI * 2;
+        const phi = v * Math.PI;
+        
+        // Base: cielo oscuro de catedral
+        let r = 0.02, g = 0.02, b = 0.04;
+        
+        // Vitral en la parte superior (simula luz de ventanas)
+        if (v > 0.7) {
+          const windowPos = Math.sin(theta * 4) * 0.5 + 0.5;
+          if (windowPos > 0.3 && windowPos < 0.7) {
+            // Colores de vitral
+            const colorIndex = Math.floor(theta * 3) % 3;
+            if (colorIndex === 0) { r = 0.8; g = 0.2; b = 0.3; }
+            else if (colorIndex === 1) { r = 0.2; g = 0.5; b = 0.9; }
+            else { r = 0.9; g = 0.6; b = 0.2; }
+          }
+        }
+        
+        // Luz divine desde arriba
+        if (phi < 0.3) {
+          r += 1.2 * (1 - phi / 0.3);
+          g += 1.0 * (1 - phi / 0.3);
+          b += 0.6 * (1 - phi / 0.3);
+        }
+        
+        // Altar brillante en el centro
+        if (Math.abs(theta - Math.PI * 0.5) < 0.3 && phi > 0.4 && phi < 0.6) {
+          r += 0.8; g += 0.7; b += 0.4;
+        }
+        
+        data[i] = r;
+        data[i + 1] = g;
+        data[i + 2] = b;
+        data[i + 3] = 1.0;
+      }
+    }
+    
+    // Crear texture
+    const texture = new THREE.DataTexture(data, size, size, THREE.RGBAFormat, THREE.FloatType);
+    texture.mapping = THREE.EquirectangularReflectionMapping;
+    texture.needsUpdate = true;
+    
+    this.scene.environment = texture;
   }
 
   _buildCathedral(){
@@ -578,6 +640,11 @@ class DivineExperience {
     const wallMat =mkMat(T.stone,.95,.04,0x887766);
     const ceilMat =mkMat(T.stone,1,0,0x443322);
     const marbleMat=mkMat(T.marble,.25,.12,0xddd0c0);
+    // Agregar environment map a mármol para reflexiones
+    if (this.scene.environment) {
+      marbleMat.envMap = this.scene.environment;
+      marbleMat.envMapIntensity = 0.3;
+    }
 
     // Suelo
     const floor=new THREE.Mesh(new THREE.PlaneGeometry(32,20),floorMat);
@@ -684,22 +751,28 @@ class DivineExperience {
   //  SACRAMENTO — Custodia Eucarística
   // ══════════════════════════════════════════════════
   _buildSacrament(){
+    const envMap = this.scene.environment;
+    
     const goldMat = new THREE.MeshStandardMaterial({
       color:0xFFD700, metalness:0.98, roughness:0.08,
-      emissive:0x332200, emissiveIntensity:0.15
+      emissive:0x332200, emissiveIntensity:0.15,
+      envMap: envMap, envMapIntensity: 1.5
     });
     const goldBrightMat = new THREE.MeshStandardMaterial({
       color:0xFFEE88, metalness:1.0, roughness:0.03,
-      emissive:0xFFDD44, emissiveIntensity:0.3
+      emissive:0xFFDD44, emissiveIntensity:0.3,
+      envMap: envMap, envMapIntensity: 2.0
     });
     const goldDarkMat = new THREE.MeshStandardMaterial({
       color:0xB8860B, metalness:0.95, roughness:0.15,
-      emissive:0x221100, emissiveIntensity:0.1
+      emissive:0x221100, emissiveIntensity:0.1,
+      envMap: envMap, envMapIntensity: 1.2
     });
     const lunaMat = new THREE.MeshStandardMaterial({
       color:0xFFFFEE, metalness:0.0, roughness:0.1,
       transparent:true, opacity:0.85,
-      emissive:0xFFEE88, emissiveIntensity:1.2
+      emissive:0xFFEE88, emissiveIntensity:1.2,
+      envMap: envMap, envMapIntensity: 0.8
     });
     const haloMat = new THREE.MeshBasicMaterial({
       color:0xFFEE88, transparent:true, opacity:0.12,
