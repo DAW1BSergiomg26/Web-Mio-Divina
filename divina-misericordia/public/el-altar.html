@@ -257,6 +257,8 @@ import { EffectComposer }      from 'three/addons/postprocessing/EffectComposer.
 import { RenderPass }          from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass }     from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { ShaderPass }          from 'three/addons/postprocessing/ShaderPass.js';
+import { SSAOPass }             from 'three/addons/postprocessing/SSAOPass.js';
+import { OutputPass }           from 'three/addons/postprocessing/OutputPass.js';
 import { GammaCorrectionShader } from 'three/addons/shaders/GammaCorrectionShader.js';
 
 // ═══════════════════════════════════════════════════════
@@ -408,9 +410,26 @@ class DivineExperience {
     this._bloomBase      = 0.15;
     this._bloomTarget    = 0.35;
     this.sacramentGlow   = { time: 0, targetReached: false };
+    // Estado del altar vivo
+    this._altarLightIntensity = 0.5;
+    this._altarLightTarget = 0.5;
+    this._altarParticlesMax = 20;
+    // Estado de efectos activos
+    this._activeEffects = [];
+    this._maxEffects = 5;
+    this._lightBoostTime = 0;
+    this._lastInteractionTime = 0;
     // Estado litúrgico (FSM simple)
     this._state          = 'IDLE';   // IDLE | PRAYER | TRANSCENDENCE
     this._stateTime      = 0;
+    
+    // Optimización: detectar dispositivo móvil
+    this._isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    // Reducir partículas en móvil para mejor rendimiento
+    this._particleScale = this._isMobile ? 0.35 : 1.0;
+    // Throttling para raycasting
+    this._lastRaycast = 0;
+    this._raycastThrottle = this._isMobile ? 100 : 50;
 
     this._init();
     this._buildScene();
@@ -453,15 +472,27 @@ class DivineExperience {
       this.controls.dampingFactor  = 0.05;
       this.controls.update();
 
-      // Post-processing
+      // Post-processing con SSAO para sombras suaves
       this.composer = new EffectComposer(this.renderer);
       this.composer.addPass(new RenderPass(this.scene, this.camera));
+      
+      // SSAO - Ambient Occlusion para profundidad
+      this.ssaoPass = new SSAOPass(this.scene, this.camera, innerWidth, innerHeight);
+      this.ssaoPass.kernelRadius = 16;
+      this.ssaoPass.minDistance = 0.005;
+      this.ssaoPass.maxDistance = 0.1;
+      this.ssaoPass.output = SSAOPass.OUTPUT.Default;
+      this.composer.addPass(this.ssaoPass);
+      
+      // Bloom para efecto divino
       this.bloomPass = new UnrealBloomPass(
         new THREE.Vector2(innerWidth, innerHeight),
         this._bloomBase, 0.55, 0.18
       );
       this.composer.addPass(this.bloomPass);
-      this.composer.addPass(new ShaderPass(GammaCorrectionShader));
+      
+      // Output pass para color management correcto
+      this.composer.addPass(new OutputPass());
 
     } catch(e) {
       console.error('✝ Error en _init:', e);
@@ -980,7 +1011,7 @@ class DivineExperience {
   }
 
   // ══════════════════════════════════════════════════
-  //  AGUA BENDITA
+  //  AGUA BENDITA con shader avanzado
   // ══════════════════════════════════════════════════
   _buildHolyWater(){
     const fg=new THREE.Group();
@@ -993,51 +1024,131 @@ class DivineExperience {
     const rim=new THREE.Mesh(new THREE.TorusGeometry(.62,.04,8,32),stoneM);
     rim.position.y=.92; fg.add(rim);
 
-    const wc=document.createElement('canvas'); wc.width=wc.height=256;
-    this._waterCtx=wc.getContext('2d');
-    this._waterTex=new THREE.CanvasTexture(wc);
-    this._drawWater(0);
-
-    const waterMat=new THREE.MeshStandardMaterial({
-      map:this._waterTex,transparent:true,opacity:.82,roughness:.04,metalness:.35,
-      color:0x60b0ff,side:THREE.FrontSide
+    // Generar normal map procedural para agua
+    const waterNormalMap = this._createWaterNormalMap();
+    
+    // Shader de agua avanzado con reflexiones
+    this._waterMaterial = new THREE.ShaderMaterial({
+      uniforms: {
+        uTime: { value: 0 },
+        uNormalMap: { value: waterNormalMap },
+        uColor: { value: new THREE.Color(0x4090ff) },
+        uOpacity: { value: 0.85 }
+      },
+      vertexShader: `
+        varying vec2 vUv;
+        varying vec3 vNormal;
+        varying vec3 vViewPosition;
+        void main() {
+          vUv = uv;
+          vNormal = normalize(normalMatrix * normal);
+          vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+          vViewPosition = -mvPosition.xyz;
+          gl_Position = projectionMatrix * mvPosition;
+        }
+      `,
+      fragmentShader: `
+        uniform float uTime;
+        uniform sampler2D uNormalMap;
+        uniform vec3 uColor;
+        uniform float uOpacity;
+        varying vec2 vUv;
+        varying vec3 vNormal;
+        varying vec3 vViewPosition;
+        
+        void main() {
+          vec2 uv = vUv;
+          
+          // Ondas animadas
+          float wave1 = sin(uv.x * 10.0 + uTime * 1.5) * 0.02;
+          float wave2 = sin(uv.y * 8.0 + uTime * 1.2) * 0.02;
+          float wave3 = sin((uv.x + uv.y) * 6.0 + uTime * 0.8) * 0.015;
+          
+          // sampling normal map con desplazamiento
+          vec3 normal = texture2D(uNormalMap, uv + vec2(wave1, wave2)).rgb;
+          normal = normalize(normal * 2.0 - 1.0);
+          
+          // Reflexión fake
+          vec3 viewDir = normalize(vViewPosition);
+          float fresnel = pow(1.0 - max(dot(vNormal, viewDir), 0.0), 3.0);
+          
+          // Brillo especular
+          vec3 lightDir = normalize(vec3(0.5, 1.0, 0.5));
+          vec3 halfDir = normalize(lightDir + viewDir);
+          float spec = pow(max(dot(normal, halfDir), 0.0), 64.0);
+          
+          // Color final
+          vec3 color = uColor;
+          color += vec3(1.0) * spec * 0.6;
+          color += vec3(0.8, 0.9, 1.0) * fresnel * 0.3;
+          
+          // Anillo de ondas
+          float dist = length(uv - 0.5);
+          float ring = sin(dist * 20.0 - uTime * 2.0) * 0.5 + 0.5;
+          ring *= smoothstep(0.5, 0.2, dist);
+          color += vec3(0.3, 0.5, 0.7) * ring * 0.15;
+          
+          gl_FragColor = vec4(color, uOpacity);
+        }
+      `,
+      transparent: true,
+      side: THREE.FrontSide
     });
-    const ws=new THREE.Mesh(new THREE.CircleGeometry(.58,32),waterMat);
-    ws.position.y=.94; ws.rotation.x=-Math.PI/2;
-    ws.userData.type='water'; this.clickables.push(ws); fg.add(ws);
-    this._waterSurface=ws;
 
-    const wLight=new THREE.PointLight(0x4090ff,.8,4);
-    wLight.position.set(0,.8,0); fg.add(wLight);
-    this._waterLight=wLight;
+    const ws = new THREE.Mesh(new THREE.CircleGeometry(.58, 64), this._waterMaterial);
+    ws.position.y = .94;
+    ws.rotation.x = -Math.PI / 2;
+    ws.userData.type = 'water';
+    this.clickables.push(ws);
+    fg.add(ws);
+    this._waterSurface = ws;
 
-    fg.position.set(2.8,1.18,.45);
+    const wLight = new THREE.PointLight(0x4090ff, .8, 4);
+    wLight.position.set(0, .8, 0);
+    fg.add(wLight);
+    this._waterLight = wLight;
+
+    fg.position.set(2.8, 1.18, .45);
     this.scene.add(fg);
   }
 
-  _drawWater(t){
-    const x=this._waterCtx,w=256,h=256,cx=128,cy=128;
-    x.clearRect(0,0,w,h);
-    const g=x.createRadialGradient(cx,cy,0,cx,cy,128);
-    g.addColorStop(0,'rgba(140,210,255,.92)');
-    g.addColorStop(.4,'rgba(80,160,240,.75)');
-    g.addColorStop(1,'rgba(40,100,200,.55)');
-    x.fillStyle=g; x.fillRect(0,0,w,h);
-    for(let i=0;i<5;i++){
-      const px=cx+Math.cos(t+i*1.26)*35,py=cy+Math.sin(t*.7+i*1.26)*30;
-      const sg=x.createRadialGradient(px,py,0,px,py,30);
-      sg.addColorStop(0,'rgba(255,255,255,.18)'); sg.addColorStop(1,'rgba(255,255,255,0)');
-      x.fillStyle=sg; x.fillRect(0,0,w,h);
+  _createWaterNormalMap() {
+    const size = 256;
+    const canvas = document.createElement('canvas');
+    canvas.width = size;
+    canvas.height = size;
+    const ctx = canvas.getContext('2d');
+    
+    // Fondo neutral (normal pointing up)
+    ctx.fillStyle = '#8080ff';
+    ctx.fillRect(0, 0, size, size);
+    
+    // Agregar ruido para detalle
+    const imageData = ctx.getImageData(0, 0, size, size);
+    const data = imageData.data;
+    
+    for (let i = 0; i < data.length; i += 4) {
+      const noise = (Math.random() - 0.5) * 30;
+      data[i] = Math.max(0, Math.min(255, 128 + noise));
+      data[i + 1] = Math.max(0, Math.min(255, 128 + noise));
+      data[i + 2] = Math.max(0, Math.min(255, 255 + noise * 0.5));
     }
-    for(let r=0;r<4;r++){
-      const rad=((t*.4+r*.25)%1)*115, al=1-rad/115;
-      x.strokeStyle=`rgba(255,255,255,${al*.4})`; x.lineWidth=1.5;
-      x.beginPath(); x.arc(cx,cy,rad,0,Math.PI*2); x.stroke();
-    }
-    if(this._waterTex) this._waterTex.needsUpdate=true;
+    
+    ctx.putImageData(imageData, 0, 0);
+    
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+    return texture;
   }
 
-  // ══════════════════════════════════════════════════
+  _drawWater(t){
+    // Ya no se usa canvas - el shader maneja la animación
+    if (this._waterMaterial) {
+      this._waterMaterial.uniforms.uTime.value = t;
+    }
+  }
+
+  // ═══════════════════════════════════════════════════
   //  INCENSARIOS (2 braziers flanqueando el altar)
   // ══════════════════════════════════════════════════
   _buildIncense(){
@@ -1097,26 +1208,27 @@ class DivineExperience {
   }
 
   // ══════════════════════════════════════════════════
-  //  PARTÍCULAS
+  //  PARTÍCULAS (optimizadas para móvil)
   // ══════════════════════════════════════════════════
   _buildParticles(){
-    this._divine = this._mkPSys(2500,(p,ph,i)=>{
+    const scale = this._particleScale;
+    this._divine = this._mkPSys(Math.floor(2500 * scale),(p,ph,i)=>{
       const a=Math.random()*Math.PI*2,r=Math.random()*3.5;
       p[i*3]=Math.cos(a)*r; p[i*3+1]=Math.random()*14; p[i*3+2]=Math.sin(a)*r-2.5;
       ph[i]=Math.random()*Math.PI*2;
     },{size:.07,color:0xffd060,transparent:true,opacity:.65,blending:THREE.AdditiveBlending,depthWrite:false,sizeAttenuation:true});
 
-    this._smoke = this._mkPSys(500,(p,ph,i)=>{
+    this._smoke = this._mkPSys(Math.floor(500 * scale),(p,ph,i)=>{
       p[i*3]=-3.2+(Math.random()-.5)*.3; p[i*3+1]=1.3+Math.random()*5;
       p[i*3+2]=.2+(Math.random()-.5)*.25; ph[i]=Math.random()*Math.PI*2;
     },{size:.18,color:0xbbbbaa,transparent:true,opacity:.2,blending:THREE.NormalBlending,depthWrite:false});
 
-    this._dust = this._mkPSys(600,(p,ph,i)=>{
+    this._dust = this._mkPSys(Math.floor(600 * scale),(p,ph,i)=>{
       p[i*3]=(Math.random()-.5)*14; p[i*3+1]=Math.random()*10; p[i*3+2]=(Math.random()-.5)*10;
       ph[i]=Math.random()*Math.PI*2;
     },{size:.035,color:0xffd080,transparent:true,opacity:.45,blending:THREE.AdditiveBlending,depthWrite:false});
 
-    this._stars = this._mkPSys(200,(p,ph,i)=>{
+    this._stars = this._mkPSys(Math.floor(200 * scale),(p,ph,i)=>{
       const a=Math.random()*Math.PI*2,r=1+Math.random()*4;
       p[i*3]=Math.cos(a)*r; p[i*3+1]=1+Math.random()*10; p[i*3+2]=Math.sin(a)*r-3;
       ph[i]=Math.random()*Math.PI*2;
@@ -1221,6 +1333,10 @@ class DivineExperience {
     });
 
     window.addEventListener('mousemove',e=>{
+      const now = Date.now();
+      if (now - this._lastRaycast < this._raycastThrottle) return;
+      this._lastRaycast = now;
+      
       this.mouseV.set((e.clientX/innerWidth)*2-1,-(e.clientY/innerHeight)*2+1);
       this.raycaster.setFromCamera(this.mouseV,this.camera);
       const hits=this.raycaster.intersectObjects(this.clickables,true);
@@ -1238,6 +1354,7 @@ class DivineExperience {
 
   _onClick(obj,pt){
     this._spawnBurst(pt);
+    this._onUserInteraction();
     const type=obj.userData.type;
     if(!type) return;
 
@@ -1340,9 +1457,65 @@ class DivineExperience {
       vel.forEach((v,i)=>{ v.vx*=.97;v.vz*=.97; p[i*3]+=v.vx*.016; p[i*3+1]+=v.vy*.016-9.8*.016*age; p[i*3+2]+=v.vz*.016; v.life-=.025; });
       geo.attributes.position.needsUpdate=true;
       mat.opacity=Math.max(0,vel[0].life);
-      if(vel[0].life>0) requestAnimationFrame(tick); else this.scene.remove(mesh);
+      if(vel[0].life>0) requestAnimationFrame(tick); else {
+        this.scene.remove(mesh);
+        geo.dispose();
+        mat.dispose();
+      }
     };
     requestAnimationFrame(tick);
+  }
+
+  _onUserInteraction(){
+    const now = Date.now();
+    if (now - this._lastInteractionTime < 300) {
+      return;
+    }
+    this._lastInteractionTime = now;
+
+    this._altarLightIntensity = Math.min(this._altarLightIntensity + 0.05, 1.0);
+    this._lightBoostTime = 2.0;
+    this._triggerSoftGlow();
+    
+    if ((this._activeEffectsCount || 0) >= this._maxEffects) {
+      return;
+    }
+    this._spawnLightRay(2000);
+  }
+
+  _triggerSoftGlow(){
+    if(this._tabLight) {
+      this._tabLight.intensity = 3.0;
+    }
+  }
+
+  _spawnLightRay(duration = 2000){
+    this._activeEffectsCount = (this._activeEffectsCount || 0) + 1;
+    
+    const geo = new THREE.CylinderGeometry(0.02, 0.15, 3, 8);
+    const mat = new THREE.MeshBasicMaterial({
+      color: 0xFFD700,
+      transparent: true,
+      opacity: 0,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false
+    });
+    const rayo = new THREE.Mesh(geo, mat);
+    rayo.position.set(
+      (Math.random() - 0.5) * 2,
+      4,
+      (Math.random() - 0.5) * 2 - 1
+    );
+    this.scene.add(rayo);
+    this._activeEffects.push({ mesh: rayo, type: 'light_ray', age: 0, duration: duration });
+    
+    setTimeout(() => {
+      this.scene.remove(rayo);
+      geo.dispose();
+      mat.dispose();
+      this._activeEffectsCount = Math.max(0, this._activeEffectsCount - 1);
+      this._activeEffects = this._activeEffects.filter(ef => ef.mesh !== rayo);
+    }, duration);
   }
 
   // ══════════════════════════════════════════════════
@@ -1639,6 +1812,37 @@ class DivineExperience {
       }
       pos.needsUpdate=true;
       this.aura.material.opacity=.52+.2*Math.sin(T*.5);
+    }
+
+    // ── Altar Vivo: pulso de luz suave ──
+    if(this.divineDir) {
+      const boost = this._lightBoostTime > 0 ? this._altarLightIntensity : 0;
+      const pulse = 0.5 + 0.05 * Math.sin(T * 0.5) + boost;
+      this.divineDir.intensity = pulse * 2.8;
+    }
+    if(this._lightBoostTime > 0) this._lightBoostTime -= delta;
+
+    // ── Efectos de luz (rayos) ──
+    this._activeEffects = this._activeEffects.filter(ef => {
+      ef.age += delta;
+      const durationSec = (ef.duration || 2000) / 1000;
+      if(ef.mesh && ef.mesh.material) {
+        if(ef.type === 'light_ray') {
+          const life = Math.min(ef.age / durationSec, 1);
+          ef.mesh.material.opacity = life < 0.2 ? life * 5 : (1 - life) * 1.25;
+          ef.mesh.position.y -= delta * 0.5;
+        }
+      }
+      if(ef.age > durationSec) {
+        if(ef.mesh) this.scene.remove(ef.mesh);
+        return false;
+      }
+      return true;
+    });
+
+    // Restaurar intensidad del tabLight
+    if(this._tabLight && this._tabLight.intensity > 1.5) {
+      this._tabLight.intensity = 1.5 + (this._tabLight.intensity - 1.5) * 0.95;
     }
 
     this.composer.render(delta);
