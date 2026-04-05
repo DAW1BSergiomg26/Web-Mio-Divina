@@ -1026,179 +1026,169 @@ class DivineExperience {
 
   // ══════════════════════════════════════════════════
   // ═══════════════════════════════════════════════════
-  //  ROSA REALISTA PROFESIONAL
+  //  ROSA CINEMATOGRÁFICA PERFECTA
   // ═══════════════════════════════════════════════════
   _createRealisticRose(options = {}) {
     const {
       color = 0x8B0000,
       size = 1.0,
-      layers = 5,
+      layers = 4,
       animated = true
     } = options;
 
     const rose = new THREE.Group();
-    
-    // Variación de color por pétalo
-    const colorBase = new THREE.Color(color);
-    const getPetalColor = (layer, totalLayers) => {
-      const variation = (Math.random() - 0.5) * 0.1;
-      const lightness = 0.3 + (layer / totalLayers) * 0.2;
-      const newColor = colorBase.clone();
-      newColor.offsetHSL(0, variation * 0.5, variation * 0.3);
-      return newColor;
+    const roseColor = new THREE.Color(color);
+
+    // Función para obtener color con variación hacia negro en centro
+    const getPetalColor = (layerIndex, totalLayers, isInner = false) => {
+      const layerRatio = layerIndex / totalLayers;
+      const baseColor = roseColor.clone();
+      
+      if (isInner || layerIndex === 0) {
+        baseColor.offsetHSL(0, 0.3, -0.4);
+      } else if (layerIndex < totalLayers / 2) {
+        baseColor.offsetHSL(0, 0.1, -0.15);
+      }
+      
+      return baseColor;
     };
 
-    // Material de pétalo realista
-    const createPetalMaterial = (layer, totalLayers) => {
-      const col = getPetalColor(layer, totalLayers);
+    // Material de pétalo con iluminación cinematográfica
+    const createPetalMaterial = (layerIndex, totalLayers, isInner = false) => {
+      const col = getPetalColor(layerIndex, totalLayers, isInner);
       return new THREE.MeshStandardMaterial({
         color: col,
-        roughness: 0.45 + Math.random() * 0.15,
-        metalness: 0.02,
-        emissive: col,
-        emissiveIntensity: 0.05,
+        roughness: 0.55,
+        metalness: 0.0,
+        emissive: col.clone().multiplyScalar(0.15),
+        emissiveIntensity: 0.1,
         side: THREE.DoubleSide,
-        transparent: true,
-        opacity: 0.95
+        flatShading: false
       });
     };
 
-    // Crear pétalo deformed
-    const createPetal = (width, height, layer, totalLayers) => {
-      // Geometría personalizada de pétalo
-      const shape = new THREE.Shape();
-      shape.moveTo(0, 0);
-      
-      // Forma de pétalo ovalado/lágrima
-      shape.bezierCurveTo(width * 0.3, height * 0.3, width * 0.7, height * 0.7, width * 0.5, height);
-      shape.bezierCurveTo(width * 0.3, height * 0.85, -width * 0.3, height * 0.85, -width * 0.5, height);
-      shape.bezierCurveTo(-width * 0.7, height * 0.7, -width * 0.3, height * 0.3, 0, 0);
-      
-      const geo = new THREE.ShapeGeometry(shape, 12);
-      
-      // Deformar vértices para curvatura natural
+    // Crear pétalo como disco aplanado con curvatura
+    const createPetalGeometry = (radius, angle, layerIndex) => {
+      const geo = new THREE.CircleGeometry(radius, 16, 0, Math.PI * 2);
       const positions = geo.attributes.position;
+      
       for (let i = 0; i < positions.count; i++) {
         const x = positions.getX(i);
         const y = positions.getY(i);
+        const dist = Math.sqrt(x * x + y * y);
         
-        // Curvatura hacia afuera en bordes
-        const distFromCenter = Math.sqrt(x * x + y * y);
-        const curveAmount = Math.pow(distFromCenter / height, 2) * 0.15;
+        const bendAmount = Math.pow(dist / radius, 2) * 0.3;
+        const waveAmount = Math.sin(angle * 3 + dist * 5) * 0.05;
         
-        // Torsión leve en Z
-        const twistAmount = (y / height) * 0.1 * (Math.random() - 0.5);
-        
-        // Aplicar deformación
-        positions.setZ(i, curveAmount + twistAmount);
+        positions.setZ(i, bendAmount + waveAmount);
       }
       
       geo.computeVertexNormals();
-      
       return geo;
     };
 
-    // Crear capas de pétalos
-    const layerConfig = [
-      { count: 5, width: 0.08, height: 0.12, yOffset: 0, angleSpread: 0.3, tilt: 0.3 },   // Centro
-      { count: 8, width: 0.12, height: 0.18, yOffset: 0.02, angleSpread: 0.5, tilt: 0.4 },
-      { count: 10, width: 0.15, height: 0.25, yOffset: 0.04, angleSpread: 0.7, tilt: 0.5 },
-      { count: 12, width: 0.18, height: 0.32, yOffset: 0.06, angleSpread: 0.9, tilt: 0.6 },
-      { count: 15, width: 0.22, height: 0.4, yOffset: 0.08, angleSpread: 1.2, tilt: 0.7 }   // Exterior
-    ];
+    // Construir capas de pétalos desde el centro hacia afuera
+    const createRose = () => {
+      const petalConfigs = [
+        { count: 5, radius: 0.06, y: 0.0, tilt: 0.1, radiusScale: 1.0 },
+        { count: 8, radius: 0.09, y: 0.02, tilt: 0.25, radiusScale: 1.1 },
+        { count: 10, radius: 0.12, y: 0.04, tilt: 0.4, radiusScale: 1.2 },
+        { count: 12, radius: 0.15, y: 0.06, tilt: 0.55, radiusScale: 1.3 }
+      ];
 
-    layerConfig.slice(0, layers).forEach((layer, layerIndex) => {
-      const material = createPetalMaterial(layerIndex, layers);
-      
-      for (let i = 0; i < layer.count; i++) {
-        const geo = createPetal(layer.width * size, layer.height * size, layerIndex, layers);
-        const petal = new THREE.Mesh(geo, material);
+      petalConfigs.slice(0, layers).forEach((config, layerIndex) => {
+        const isInner = layerIndex === 0;
+        const mat = createPetalMaterial(layerIndex, layers, isInner);
         
-        // Rotación progresiva en espiral (Fibonacci)
-        const angle = (i / layer.count) * Math.PI * 2 + layerIndex * 0.3;
-        const layerRotation = layerIndex * 0.15;
-        
-        // Posición con variación orgánica
-        const radius = layer.yOffset * 2 + Math.random() * 0.01;
-        petal.position.x = Math.cos(angle) * radius;
-        petal.position.z = Math.sin(angle) * radius;
-        petal.position.y = layer.yOffset;
-        
-        // Rotación del pétalo
-        petal.rotation.y = angle + layerRotation;
-        petal.rotation.x = layer.tilt + (Math.random() - 0.5) * 0.1;
-        petal.rotation.z = (Math.random() - 0.5) * 0.15;
-        
-        // Escala con variación orgánica
-        const scaleVar = 0.9 + Math.random() * 0.2;
-        petal.scale.setScalar(scaleVar * size);
-        
-        petal.castShadow = true;
-        rose.add(petal);
-      }
-    });
+        for (let i = 0; i < config.count; i++) {
+          const angle = (i / config.count) * Math.PI * 2 + layerIndex * 0.2;
+          const actualRadius = config.radius * config.radiusScale * size;
+          
+          const petalGeo = createPetalGeometry(actualRadius, angle, layerIndex);
+          const petal = new THREE.Mesh(petalGeo, mat);
+          
+          const spiralOffset = layerIndex * 0.15;
+          petal.position.set(
+            Math.cos(angle + spiralOffset) * 0.02,
+            config.y * size,
+            Math.sin(angle + spiralOffset) * 0.02
+          );
+          
+          petal.rotation.x = -Math.PI / 2 + config.tilt + (Math.random() - 0.5) * 0.1;
+          petal.rotation.z = angle + (Math.random() - 0.5) * 0.15;
+          
+          petal.scale.setScalar(size * (0.85 + Math.random() * 0.15));
+          petal.castShadow = true;
+          
+          rose.add(petal);
+        }
+      });
 
-    // Centro de la rosa (compacto y oscuro)
-    const centerMat = new THREE.MeshStandardMaterial({
-      color: 0x4A0000,
-      roughness: 0.5,
-      metalness: 0.01,
-      emissive: 0x200000,
-      emissiveIntensity: 0.1
-    });
-    const centerGeo = new THREE.SphereGeometry(0.04 * size, 8, 8);
-    const center = new THREE.Mesh(centerGeo, centerMat);
-    center.position.y = 0.01;
-    rose.add(center);
+      // Centro compacto de la rosa
+      const centerMat = new THREE.MeshStandardMaterial({
+        color: 0x200000,
+        roughness: 0.6,
+        metalness: 0.0,
+        emissive: 0x100000,
+        emissiveIntensity: 0.2
+      });
+      const centerGeo = new THREE.SphereGeometry(0.025 * size, 8, 8);
+      const center = new THREE.Mesh(centerGeo, centerMat);
+      center.position.y = 0.01 * size;
+      center.scale.y = 0.6;
+      rose.add(center);
+    };
 
-    // Tallo
+    createRose();
+
+    // Tallo natural
     const stemMat = new THREE.MeshStandardMaterial({
-      color: 0x2D5A27,
-      roughness: 0.8,
+      color: 0x1A3D1A,
+      roughness: 0.7,
       metalness: 0.0
     });
-    const stemGeo = new THREE.CylinderGeometry(0.012 * size, 0.018 * size, 0.5 * size, 8);
+    const stemGeo = new THREE.CylinderGeometry(0.008 * size, 0.012 * size, 0.4 * size, 8);
     const stem = new THREE.Mesh(stemGeo, stemMat);
-    stem.position.y = -0.25 * size;
-    stem.rotation.x = (Math.random() - 0.5) * 0.1;
+    stem.position.set(0, -0.2 * size, 0);
+    stem.rotation.x = 0.1 + (Math.random() - 0.5) * 0.1;
     stem.castShadow = true;
     rose.add(stem);
 
-    // Hojas
+    // Hoja natural
     const leafMat = new THREE.MeshStandardMaterial({
-      color: 0x3D7A37,
-      roughness: 0.6,
+      color: 0x2D5A27,
+      roughness: 0.65,
       metalness: 0.0,
       side: THREE.DoubleSide
     });
-
-    const createLeaf = (yPos, side) => {
-      const leafShape = new THREE.Shape();
-      leafShape.moveTo(0, 0);
-      leafShape.bezierCurveTo(0.03, 0.02, 0.06, 0.04, 0.08, 0.08);
-      leafShape.bezierCurveTo(0.06, 0.12, 0.02, 0.1, 0, 0.08);
-      leafShape.bezierCurveTo(-0.02, 0.1, -0.06, 0.12, -0.08, 0.08);
-      leafShape.bezierCurveTo(-0.06, 0.04, -0.03, 0.02, 0, 0);
-      
-      const leafGeo = new THREE.ShapeGeometry(leafShape, 8);
+    
+    const createLeaf = (yPos, rotY) => {
+      const leafGeo = new THREE.CircleGeometry(0.06 * size, 8);
       const leaf = new THREE.Mesh(leafGeo, leafMat);
-      
-      leaf.position.y = yPos * size;
-      leaf.position.x = side * 0.06 * size;
-      leaf.rotation.y = side * 0.5;
-      leaf.rotation.x = 0.3;
-      leaf.scale.set(0.8 + Math.random() * 0.4, 0.8 + Math.random() * 0.4, 1);
-      
+      leaf.position.set(0.04 * size, yPos * size, 0);
+      leaf.rotation.set(0.4, rotY, 0.2);
+      leaf.scale.set(1.2, 0.6, 1);
       return leaf;
     };
+    
+    rose.add(createLeaf(-0.12, 0.5));
+    rose.add(createLeaf(-0.18, -0.6));
 
-    rose.add(createLeaf(-0.15, 1));
-    rose.add(createLeaf(-0.2, -1));
+    // Luz warm lateral para bordes
+    const warmLight = new THREE.PointLight(0xFFAA66, 0.3, 0.5);
+    warmLight.position.set(0.15 * size, 0.1 * size, 0);
+    rose.add(warmLight);
 
-    // Animación de respiración opcional
+    // Rim light para perfilar
+    const rimLight = new THREE.PointLight(0xFFEEEE, 0.2, 0.4);
+    rimLight.position.set(-0.1 * size, 0.05 * size, 0.1 * size);
+    rose.add(rimLight);
+
+    // Animación sutil
     if (animated) {
       rose.userData.breathOffset = Math.random() * Math.PI * 2;
-      rose.userData.breathSpeed = 0.3 + Math.random() * 0.3;
+      rose.userData.breathSpeed = 0.5 + Math.random() * 0.3;
+      rose.userData.originalScale = size;
     }
 
     return rose;
@@ -1209,22 +1199,35 @@ class DivineExperience {
   _buildFlowers(){
     const fg = new THREE.Group();
     
-    // Posiciones y colores para rosas realistas
     const roseConfigs = [
       { pos: [-2.65, 1.18, 0.48], color: 0x8B0000, size: 1.0 },
-      { pos: [-2.35, 1.21, 0.62], color: 0xB22222, size: 0.95 },
-      { pos: [-2.75, 1.18, 0.58], color: 0xDC143C, size: 1.05 },
-      { pos: [-2.48, 1.2, 0.38], color: 0xA00000, size: 0.9 },
+      { pos: [-2.35, 1.21, 0.62], color: 0x8B0000, size: 0.95 },
+      { pos: [-2.75, 1.18, 0.58], color: 0x8B0000, size: 1.05 },
+      { pos: [-2.48, 1.2, 0.38], color: 0x8B0000, size: 0.9 },
       { pos: [-2.68, 1.18, 0.7], color: 0x8B0000, size: 0.92 },
-      { pos: [-2.55, 1.22, 0.52], color: 0xCD5C5C, size: 1.02 },
-      { pos: [-2.42, 1.19, 0.52], color: 0xB22222, size: 0.88 },
-      { pos: [-2.72, 1.19, 0.42], color: 0xDC143C, size: 0.98 },
+      { pos: [-2.55, 1.22, 0.52], color: 0x8B0000, size: 1.02 },
+      { pos: [-2.42, 1.19, 0.52], color: 0x8B0000, size: 0.88 },
+      { pos: [-2.72, 1.19, 0.42], color: 0x8B0000, size: 0.98 },
     ];
 
     roseConfigs.forEach(({ pos, color, size }) => {
-      const rose = this._createRealisticRose({ color, size, layers: 5, animated: true });
+      const rose = this._createRealisticRose({ color, size, layers: 4, animated: true });
       rose.position.set(...pos);
       rose.rotation.y = Math.random() * Math.PI * 2;
+      
+      rose.traverse(child => {
+        if (child.isMesh) {
+          child.userData.type = 'flower';
+          this.clickables.push(child);
+        }
+      });
+      
+      fg.add(rose);
+    });
+
+    this.scene.add(fg);
+    this.flowerGroup = fg;
+  }
       
       // Agregar interactividad
       rose.traverse(child => {
