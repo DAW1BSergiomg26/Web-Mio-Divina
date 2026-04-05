@@ -1240,43 +1240,7 @@ class DivineExperience {
     this.scene.add(fg);
     this.flowerGroup = fg;
   }
-      const petalMat=mk(col.petal);
-      const innerMat=mk(col.inner,.45,.12);
-      const centerMat=mk(col.center,.35,.15);
-      const stemMat=new THREE.MeshStandardMaterial({color:0x2D5A27,roughness:.75});
 
-      const rose=new THREE.Group();
-      const stem=new THREE.Mesh(new THREE.CylinderGeometry(.012,.018,.45,6),stemMat);
-      stem.position.y=.225; rose.add(stem);
-
-      const layers=[
-        {count:12,r:.11,y:.44,sx:.8,sy:.35,sz:.95,m:petalMat},
-        {count:10,r:.09,y:.455,sx:.7,sy:.38,sz:.85,m:petalMat},
-        {count:8, r:.07,y:.465,sx:.6,sy:.42,sz:.75,m:innerMat},
-        {count:6, r:.05,y:.475,sx:.55,sy:.45,sz:.7,m:innerMat},
-        {count:4, r:.035,y:.485,sx:.5,sy:.5,sz:.65,m:centerMat},
-      ];
-      layers.forEach(l=>{
-        for(let p=0;p<l.count;p++){
-          const a=(p/l.count)*Math.PI*2+Math.random()*.2;
-          const petal=new THREE.Mesh(new THREE.SphereGeometry(l.r,10,8),l.m);
-          petal.position.set(Math.cos(a)*l.r,l.y,Math.sin(a)*l.r);
-          petal.scale.set(l.sx,l.sy,l.sz);
-          petal.rotation.set((Math.random()-.5)*.3,a,(Math.random()-.5)*.3+.4);
-          rose.add(petal);
-        }
-      });
-      const center=new THREE.Mesh(new THREE.SphereGeometry(.032,10,8),centerMat);
-      center.position.y=.492; rose.add(center);
-
-      rose.position.set(...pos); rose.rotation.y=Math.random()*Math.PI*2; rose.scale.setScalar(sc);
-      fg.add(rose);
-    });
-
-    this.scene.add(fg);
-    this.flowerGroup=fg;
-    fg.traverse(m=>{ if(m.isMesh){ m.userData.type='flower'; m.castShadow=true; this.clickables.push(m); } });
-  }
 
   // ══════════════════════════════════════════════════
   //  AGUA BENDITA con shader avanzado
