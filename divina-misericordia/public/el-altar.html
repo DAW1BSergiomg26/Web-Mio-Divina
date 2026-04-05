@@ -257,9 +257,6 @@ import { EffectComposer }      from 'three/addons/postprocessing/EffectComposer.
 import { RenderPass }          from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass }     from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { ShaderPass }          from 'three/addons/postprocessing/ShaderPass.js';
-import { SSAOPass }             from 'three/addons/postprocessing/SSAOPass.js';
-import { OutputPass }           from 'three/addons/postprocessing/OutputPass.js';
-import { RGBELoader }           from 'three/addons/loaders/RGBELoader.js';
 import { GammaCorrectionShader } from 'three/addons/shaders/GammaCorrectionShader.js';
 
 // ═══════════════════════════════════════════════════════
@@ -453,8 +450,8 @@ class DivineExperience {
       this.renderer.shadowMap.enabled  = true;
       this.renderer.shadowMap.type     = THREE.PCFSoftShadowMap;
       this.renderer.outputColorSpace   = THREE.LinearSRGBColorSpace;
-      this.renderer.toneMapping        = THREE.ACESFilmicToneMapping;
-      this.renderer.toneMappingExposure = 1.2;
+      this.renderer.toneMapping        = THREE.CineonToneMapping;
+      this.renderer.toneMappingExposure = 1.15;
       document.body.appendChild(this.renderer.domElement);
 
       this.scene = new THREE.Scene();
@@ -473,17 +470,9 @@ class DivineExperience {
       this.controls.dampingFactor  = 0.05;
       this.controls.update();
 
-      // Post-processing con SSAO para sombras suaves
+      // Post-processing básico para mejor compatibilidad
       this.composer = new EffectComposer(this.renderer);
       this.composer.addPass(new RenderPass(this.scene, this.camera));
-      
-      // SSAO - Ambient Occlusion para profundidad
-      this.ssaoPass = new SSAOPass(this.scene, this.camera, innerWidth, innerHeight);
-      this.ssaoPass.kernelRadius = 16;
-      this.ssaoPass.minDistance = 0.005;
-      this.ssaoPass.maxDistance = 0.1;
-      this.ssaoPass.output = SSAOPass.OUTPUT.Default;
-      this.composer.addPass(this.ssaoPass);
       
       // Bloom para efecto divino
       this.bloomPass = new UnrealBloomPass(
@@ -492,8 +481,8 @@ class DivineExperience {
       );
       this.composer.addPass(this.bloomPass);
       
-      // Output pass para color management correcto
-      this.composer.addPass(new OutputPass());
+      // Gamma correction para color correcto
+      this.composer.addPass(new ShaderPass(GammaCorrectionShader));
 
     } catch(e) {
       console.error('✝ Error en _init:', e);
@@ -530,14 +519,11 @@ class DivineExperience {
   }
 
   _buildLights(){
-    // Crear Environment Map procedural para reflexiones HDR
-    this._createEnvironmentMap();
-    
     // Hemisferico cielo/suelo
     this.scene.add(new THREE.HemisphereLight(0x18102a, 0x060308, 0.7));
 
-    // Luz direccional divina (desde arriba) - intensidad HDR
-    this.divineDir = new THREE.DirectionalLight(0xffe8a0, 3.5);
+    // Luz direccional divina (desde arriba)
+    this.divineDir = new THREE.DirectionalLight(0xffe8a0, 2.8);
     this.divineDir.position.set(0, 15, 6);
     this.divineDir.castShadow = true;
     this.divineDir.shadow.mapSize.setScalar(2048);
@@ -546,90 +532,32 @@ class DivineExperience {
     this.divineDir.shadow.bias = -0.001;
     this.scene.add(this.divineDir);
 
-    // Luz de contorno (azul-violeta) - intensidad HDR
-    this.rimLight = new THREE.PointLight(0x6040ff, 2.5, 18);
+    // Luz de contorno (azul-violeta)
+    this.rimLight = new THREE.PointLight(0x6040ff, 2, 18);
     this.rimLight.position.set(0, 6, -5);
     this.scene.add(this.rimLight);
 
-    // Luces de relleno - warm/cool
-    const warmLight = new THREE.PointLight(0xff8030, 1.0, 22);
+    // Luces de relleno
+    const warmLight = new THREE.PointLight(0xff8030, 0.8, 22);
     warmLight.position.set(-7, 5, 5);
     this.scene.add(warmLight);
-    const coolLight = new THREE.PointLight(0x3060cc, 0.6, 22);
+    const coolLight = new THREE.PointLight(0x3060cc, 0.5, 22);
     coolLight.position.set(7, 5, 5);
     this.scene.add(coolLight);
 
     // Foco sobre el altar
-    this.crossSpot = new THREE.SpotLight(0xfff0c0, 4.0, 22, Math.PI/9, .35, 1.2);
+    this.crossSpot = new THREE.SpotLight(0xfff0c0, 3.5, 22, Math.PI/9, .35, 1.2);
     this.crossSpot.position.set(0, 13, 3);
     this.crossSpot.target.position.set(0, 2.5, 0);
     this.crossSpot.castShadow = true;
     this.crossSpot.shadow.mapSize.setScalar(1024);
     this.scene.add(this.crossSpot, this.crossSpot.target);
 
-    // Luces de vitral - colores vibrantes HDR
-    const gl1 = new THREE.PointLight(0x9040ff, 2.2, 20); gl1.position.set(0,7,-3.5); this.scene.add(gl1);
-    const gl2 = new THREE.PointLight(0xff4040, 0.8, 15); gl2.position.set(-4,6,-3); this.scene.add(gl2);
-    const gl3 = new THREE.PointLight(0x4080ff, 0.8, 15); gl3.position.set(4,6,-3);  this.scene.add(gl3);
-  }
-
-  _createEnvironmentMap() {
-    // Crear PMREM environment map procedural
-    const size = 256;
-    const data = new Float32Array(size * size * 4);
-    
-    for (let y = 0; y < size; y++) {
-      for (let x = 0; x < size; x++) {
-        const i = (y * size + x) * 4;
-        
-        // UV normalizados
-        const u = x / size;
-        const v = y / size;
-        
-        // Ángulo spherical
-        const theta = u * Math.PI * 2;
-        const phi = v * Math.PI;
-        
-        // Base: cielo oscuro de catedral
-        let r = 0.02, g = 0.02, b = 0.04;
-        
-        // Vitral en la parte superior (simula luz de ventanas)
-        if (v > 0.7) {
-          const windowPos = Math.sin(theta * 4) * 0.5 + 0.5;
-          if (windowPos > 0.3 && windowPos < 0.7) {
-            // Colores de vitral
-            const colorIndex = Math.floor(theta * 3) % 3;
-            if (colorIndex === 0) { r = 0.8; g = 0.2; b = 0.3; }
-            else if (colorIndex === 1) { r = 0.2; g = 0.5; b = 0.9; }
-            else { r = 0.9; g = 0.6; b = 0.2; }
-          }
-        }
-        
-        // Luz divine desde arriba
-        if (phi < 0.3) {
-          r += 1.2 * (1 - phi / 0.3);
-          g += 1.0 * (1 - phi / 0.3);
-          b += 0.6 * (1 - phi / 0.3);
-        }
-        
-        // Altar brillante en el centro
-        if (Math.abs(theta - Math.PI * 0.5) < 0.3 && phi > 0.4 && phi < 0.6) {
-          r += 0.8; g += 0.7; b += 0.4;
-        }
-        
-        data[i] = r;
-        data[i + 1] = g;
-        data[i + 2] = b;
-        data[i + 3] = 1.0;
-      }
-    }
-    
-    // Crear texture
-    const texture = new THREE.DataTexture(data, size, size, THREE.RGBAFormat, THREE.FloatType);
-    texture.mapping = THREE.EquirectangularReflectionMapping;
-    texture.needsUpdate = true;
-    
-    this.scene.environment = texture;
+    // Luces de vitral
+    this.scene.add(new THREE.PointLight(0x9040ff, 1.8, 20).position.set(0,7,-3.5) && new THREE.PointLight(0x9040ff,1.8,20));
+    const gl1 = new THREE.PointLight(0x9040ff,1.8,20); gl1.position.set(0,7,-3.5); this.scene.add(gl1);
+    const gl2 = new THREE.PointLight(0xff4040,0.6,15); gl2.position.set(-4,6,-3); this.scene.add(gl2);
+    const gl3 = new THREE.PointLight(0x4080ff,0.6,15); gl3.position.set(4,6,-3);  this.scene.add(gl3);
   }
 
   _buildCathedral(){
@@ -640,11 +568,6 @@ class DivineExperience {
     const wallMat =mkMat(T.stone,.95,.04,0x887766);
     const ceilMat =mkMat(T.stone,1,0,0x443322);
     const marbleMat=mkMat(T.marble,.25,.12,0xddd0c0);
-    // Agregar environment map a mármol para reflexiones
-    if (this.scene.environment) {
-      marbleMat.envMap = this.scene.environment;
-      marbleMat.envMapIntensity = 0.3;
-    }
 
     // Suelo
     const floor=new THREE.Mesh(new THREE.PlaneGeometry(32,20),floorMat);
@@ -751,28 +674,22 @@ class DivineExperience {
   //  SACRAMENTO — Custodia Eucarística
   // ══════════════════════════════════════════════════
   _buildSacrament(){
-    const envMap = this.scene.environment;
-    
     const goldMat = new THREE.MeshStandardMaterial({
       color:0xFFD700, metalness:0.98, roughness:0.08,
-      emissive:0x332200, emissiveIntensity:0.15,
-      envMap: envMap, envMapIntensity: 1.5
+      emissive:0x332200, emissiveIntensity:0.15
     });
     const goldBrightMat = new THREE.MeshStandardMaterial({
       color:0xFFEE88, metalness:1.0, roughness:0.03,
-      emissive:0xFFDD44, emissiveIntensity:0.3,
-      envMap: envMap, envMapIntensity: 2.0
+      emissive:0xFFDD44, emissiveIntensity:0.3
     });
     const goldDarkMat = new THREE.MeshStandardMaterial({
       color:0xB8860B, metalness:0.95, roughness:0.15,
-      emissive:0x221100, emissiveIntensity:0.1,
-      envMap: envMap, envMapIntensity: 1.2
+      emissive:0x221100, emissiveIntensity:0.1
     });
     const lunaMat = new THREE.MeshStandardMaterial({
       color:0xFFFFEE, metalness:0.0, roughness:0.1,
       transparent:true, opacity:0.85,
-      emissive:0xFFEE88, emissiveIntensity:1.2,
-      envMap: envMap, envMapIntensity: 0.8
+      emissive:0xFFEE88, emissiveIntensity:1.2
     });
     const haloMat = new THREE.MeshBasicMaterial({
       color:0xFFEE88, transparent:true, opacity:0.12,
@@ -1025,171 +942,63 @@ class DivineExperience {
   }
 
   // ══════════════════════════════════════════════════
-  // ═══════════════════════════════════════════════════
-  //  ROSAS REALISTAS SIMPLES Y HERMOSAS
-  // ═══════════════════════════════════════════════════
-  _createRealisticRose(options = {}) {
-    const {
-      color = 0x8B0000,
-      size = 1.0,
-      animated = true
-    } = options;
-
-    const rose = new THREE.Group();
-
-    // Material de pétalo aterciopelado
-    const petalMat = new THREE.MeshStandardMaterial({
-      color: color,
-      roughness: 0.7,
-      metalness: 0.0,
-      emissive: 0x200000,
-      emissiveIntensity: 0.08,
-      side: THREE.DoubleSide
-    });
-
-    // Centro de la rosa
-    const centerMat = new THREE.MeshStandardMaterial({
-      color: 0x180000,
-      roughness: 0.8,
-      metalness: 0.0,
-      emissive: 0x100000,
-      emissiveIntensity: 0.15
-    });
-
-    // Crear capas de pétalos
-    const layers = [
-      { count: 8, r: 0.06, y: 0.02, sx: 1, sy: 0.8, sz: 1 },
-      { count: 10, r: 0.09, y: 0.035, sx: 1.1, sy: 0.9, sz: 1.1 },
-      { count: 12, r: 0.12, y: 0.05, sx: 1.2, sy: 1, sz: 1.2 },
-      { count: 14, r: 0.15, y: 0.065, sx: 1.3, sy: 1.1, sz: 1.3 }
-    ];
-
-    layers.forEach((layer, li) => {
-      for (let i = 0; i < layer.count; i++) {
-        const angle = (i / layer.count) * Math.PI * 2 + li * 0.4;
-        const petal = new THREE.Mesh(
-          new THREE.SphereGeometry(layer.r * size, 12, 8),
-          petalMat
-        );
-        
-        petal.position.set(
-          Math.cos(angle) * layer.r * 0.3 * size,
-          layer.y * size,
-          Math.sin(angle) * layer.r * 0.3 * size
-        );
-        
-        petal.scale.set(layer.sx * size, layer.sy * size, layer.sz * size);
-        petal.rotation.set(
-          (Math.random() - 0.5) * 0.3,
-          angle + Math.random() * 0.3,
-          (Math.random() - 0.5) * 0.3 + 0.5
-        );
-        
-        petal.castShadow = true;
-        rose.add(petal);
-      }
-    });
-
-    // Centro compacto
-    const center = new THREE.Mesh(
-      new THREE.SphereGeometry(0.03 * size, 8, 8),
-      centerMat
-    );
-    center.position.y = 0.01 * size;
-    center.scale.y = 0.5;
-    rose.add(center);
-
-    // Tallo
-    const stemMat = new THREE.MeshStandardMaterial({
-      color: 0x1A3D1A,
-      roughness: 0.7,
-      metalness: 0.0
-    });
-    const stem = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.008 * size, 0.012 * size, 0.35 * size, 8),
-      stemMat
-    );
-    stem.position.set(0, -0.18 * size, 0);
-    stem.castShadow = true;
-    rose.add(stem);
-
-    // Hojas simples
-    const leafMat = new THREE.MeshStandardMaterial({
-      color: 0x2D5A27,
-      roughness: 0.65,
-      metalness: 0.0,
-      side: THREE.DoubleSide
-    });
-    
-    [-0.1, -0.16].forEach((y, i) => {
-      const leaf = new THREE.Mesh(
-        new THREE.SphereGeometry(0.05 * size, 6, 4),
-        leafMat
-      );
-      leaf.position.set(i === 0 ? 0.04 : -0.04, y * size, 0);
-      leaf.scale.set(1.5, 0.5, 1);
-      leaf.rotation.set(0.3, i === 0 ? 0.5 : -0.5, 0.2);
-      rose.add(leaf);
-    });
-
-    if (animated) {
-      rose.userData.breathOffset = Math.random() * Math.PI * 2;
-      rose.userData.breathSpeed = 0.5 + Math.random() * 0.3;
-    }
-
-    return rose;
-  }
-
   //  FLORES
   // ══════════════════════════════════════════════════
   _buildFlowers(){
-    const fg = new THREE.Group();
-    
-    const roseConfigs = [
-      { pos: [-2.65, 1.18, 0.48], color: 0x8B0000, size: 1.0 },
-      { pos: [-2.35, 1.21, 0.62], color: 0x8B0000, size: 0.95 },
-      { pos: [-2.75, 1.18, 0.58], color: 0x8B0000, size: 1.05 },
-      { pos: [-2.48, 1.2, 0.38], color: 0x8B0000, size: 0.9 },
-      { pos: [-2.68, 1.18, 0.7], color: 0x8B0000, size: 0.92 },
-      { pos: [-2.55, 1.22, 0.52], color: 0x8B0000, size: 1.02 },
-      { pos: [-2.42, 1.19, 0.52], color: 0x8B0000, size: 0.88 },
-      { pos: [-2.72, 1.19, 0.42], color: 0x8B0000, size: 0.98 },
+    const fg=new THREE.Group();
+    const roseColors=[
+      {petal:0xFFF8F0,inner:0xFFFAF5,center:0xFFFFF8,leaf:0x98B080},
+      {petal:0xFFB6C1,inner:0xFF69B4,center:0xFFC0CB,leaf:0x7A9A60},
+      {petal:0xDC143C,inner:0xFF2040,center:0xFF3040,leaf:0x6B8E50},
+      {petal:0xFFDAC1,inner:0xFFB7A5,center:0xFFE4E1,leaf:0xA4B878},
+    ];
+    const rosePos=[
+      {pos:[-2.65,1.18,.48],ci:0,sc:1.0},{pos:[-2.35,1.21,.62],ci:1,sc:.95},
+      {pos:[-2.75,1.18,.58],ci:2,sc:1.05},{pos:[-2.48,1.2,.38],ci:3,sc:.9},
+      {pos:[-2.68,1.18,.7],ci:0,sc:.92},{pos:[-2.55,1.22,.52],ci:1,sc:1.02},
+      {pos:[-2.42,1.19,.52],ci:2,sc:.88},{pos:[-2.72,1.19,.42],ci:3,sc:.98},
     ];
 
-    roseConfigs.forEach(({ pos, color, size }) => {
-      const rose = this._createRealisticRose({ color, size, animated: true });
-      rose.position.set(...pos);
-      rose.rotation.y = Math.random() * Math.PI * 2;
-      
-      rose.traverse(child => {
-        if (child.isMesh) {
-          child.userData.type = 'flower';
-          this.clickables.push(child);
+    rosePos.forEach(({pos,ci,sc})=>{
+      const col=roseColors[ci];
+      const mk=(c,rough=.55,ei=.08)=>new THREE.MeshStandardMaterial({color:c,roughness:rough,metalness:.02,emissive:c,emissiveIntensity:ei});
+      const petalMat=mk(col.petal);
+      const innerMat=mk(col.inner,.45,.12);
+      const centerMat=mk(col.center,.35,.15);
+      const stemMat=new THREE.MeshStandardMaterial({color:0x2D5A27,roughness:.75});
+
+      const rose=new THREE.Group();
+      const stem=new THREE.Mesh(new THREE.CylinderGeometry(.012,.018,.45,6),stemMat);
+      stem.position.y=.225; rose.add(stem);
+
+      const layers=[
+        {count:12,r:.11,y:.44,sx:.8,sy:.35,sz:.95,m:petalMat},
+        {count:10,r:.09,y:.455,sx:.7,sy:.38,sz:.85,m:petalMat},
+        {count:8, r:.07,y:.465,sx:.6,sy:.42,sz:.75,m:innerMat},
+        {count:6, r:.05,y:.475,sx:.55,sy:.45,sz:.7,m:innerMat},
+        {count:4, r:.035,y:.485,sx:.5,sy:.5,sz:.65,m:centerMat},
+      ];
+      layers.forEach(l=>{
+        for(let p=0;p<l.count;p++){
+          const a=(p/l.count)*Math.PI*2+Math.random()*.2;
+          const petal=new THREE.Mesh(new THREE.SphereGeometry(l.r,10,8),l.m);
+          petal.position.set(Math.cos(a)*l.r,l.y,Math.sin(a)*l.r);
+          petal.scale.set(l.sx,l.sy,l.sz);
+          petal.rotation.set((Math.random()-.5)*.3,a,(Math.random()-.5)*.3+.4);
+          rose.add(petal);
         }
       });
-      
+      const center=new THREE.Mesh(new THREE.SphereGeometry(.032,10,8),centerMat);
+      center.position.y=.492; rose.add(center);
+
+      rose.position.set(...pos); rose.rotation.y=Math.random()*Math.PI*2; rose.scale.setScalar(sc);
       fg.add(rose);
     });
 
     this.scene.add(fg);
-    this.flowerGroup = fg;
+    this.flowerGroup=fg;
+    fg.traverse(m=>{ if(m.isMesh){ m.userData.type='flower'; m.castShadow=true; this.clickables.push(m); } });
   }
-      
-      // Agregar interactividad
-      rose.traverse(child => {
-        if (child.isMesh) {
-          child.userData.type = 'flower';
-          this.clickables.push(child);
-        }
-      });
-      
-      fg.add(rose);
-    });
-
-    this.scene.add(fg);
-    this.flowerGroup = fg;
-  }
-
 
   // ══════════════════════════════════════════════════
   //  AGUA BENDITA con shader avanzado
@@ -1930,16 +1739,8 @@ class DivineExperience {
       r.material.opacity=.012+Math.sin(T*.55+r.userData.phase)*.016;
     });
 
-    // ── Rosas realistas (respiración suave) ──
-    if (this.flowerGroup) {
-      this.flowerGroup.children.forEach(rose => {
-        if (rose.userData.breathOffset !== undefined) {
-          const breath = Math.sin(T * rose.userData.breathSpeed + rose.userData.breathOffset);
-          rose.scale.setScalar(rose.scale.x * (1 + breath * 0.015));
-        }
-      });
-      this.flowerGroup.rotation.z = Math.sin(T * 0.4) * 0.014;
-    }
+    // ── Flores (meceo suave) ──
+    if(this.flowerGroup) this.flowerGroup.rotation.z=Math.sin(T*.4)*.014;
 
     // ── Agua ──
     if(this._waterLight) this._waterLight.intensity=.7+Math.sin(T*1.8)*.35;
