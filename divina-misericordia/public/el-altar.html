@@ -942,9 +942,304 @@ class DivineExperience {
   }
 
   // ══════════════════════════════════════════════════
-  //  FLORES
+  //  ROSE SYSTEM - Rosas Hiperrealistas para el Altar
   // ══════════════════════════════════════════════════
+  _createOrganicPetal(shapeType = 'outer') {
+    const petalGeo = new THREE.SphereGeometry(1, 16, 12);
+    const posAttr = petalGeo.attributes.position;
+    
+    for (let i = 0; i < posAttr.count; i++) {
+      let x = posAttr.getX(i);
+      let y = posAttr.getY(i);
+      let z = posAttr.getZ(i);
+      
+      if (shapeType === 'outer') {
+        y *= 0.15;
+        x *= 1.0 + Math.pow(z, 2) * 0.8;
+        z = z * 0.6 + Math.sign(z) * 0.1;
+        x *= 1.2;
+      } else if (shapeType === 'inner') {
+        y *= 0.12;
+        x *= 0.85;
+        z = z * 0.5 + Math.sign(z) * 0.08;
+      } else if (shapeType === 'center') {
+        y *= 0.08;
+        x *= 0.6;
+        z *= 0.4;
+      }
+      
+      posAttr.setXYZ(i, x, y, z);
+    }
+    
+    petalGeo.computeVertexNormals();
+    return petalGeo;
+  }
+
+  _createRoseMaterial(petalType = 'outer') {
+    const colors = {
+      outer: { color: 0x8B0000, emissive: 0x330000, roughness: 0.65, metalness: 0.08 },
+      inner: { color: 0xA01020, emissive: 0x440000, roughness: 0.55, metalness: 0.06 },
+      center: { color: 0x6B0000, emissive: 0x220000, roughness: 0.45, metalness: 0.04 }
+    };
+    const c = colors[petalType];
+    return new THREE.MeshStandardMaterial({
+      color: c.color,
+      emissive: c.emissive,
+      emissiveIntensity: 0.15,
+      roughness: c.roughness,
+      metalness: c.metalness,
+      side: THREE.DoubleSide
+    });
+  }
+
+  _createSingleRose(openness = 0.7, colorVariation = 0) {
+    const rose = new THREE.Group();
+    
+    const stemMat = new THREE.MeshStandardMaterial({
+      color: 0x1A4D1A,
+      roughness: 0.75,
+      metalness: 0.02
+    });
+    
+    const stemHeight = 0.4 + Math.random() * 0.15;
+    const stemCurve = (Math.random() - 0.5) * 0.08;
+    const stemGeo = new THREE.CylinderGeometry(0.012, 0.018, stemHeight, 6);
+    const stem = new THREE.Mesh(stemGeo, stemMat);
+    stem.position.y = stemHeight / 2;
+    stem.rotation.z = stemCurve;
+    rose.add(stem);
+    
+    const spineMat = new THREE.MeshStandardMaterial({
+      color: 0x2D602D,
+      roughness: 0.7,
+      metalness: 0.02
+    });
+    
+    const spineCount = 3 + Math.floor(Math.random() * 3);
+    for (let s = 0; s < spineCount; s++) {
+      const spineGeo = new THREE.ConeGeometry(0.008, 0.025, 4);
+      const spine = new THREE.Mesh(spineGeo, spineMat);
+      const spineY = 0.08 + Math.random() * (stemHeight - 0.15);
+      spine.position.set(
+        0.018 + Math.random() * 0.005,
+        spineY,
+        (Math.random() - 0.5) * 0.015
+      );
+      spine.rotation.z = -0.5 - Math.random() * 0.4;
+      spine.rotation.y = Math.random() * Math.PI * 2;
+      rose.add(spine);
+    }
+    
+    const leafMat = new THREE.MeshStandardMaterial({
+      color: 0x2D5A27 + (Math.random() - 0.5) * 0x101010,
+      roughness: 0.7,
+      metalness: 0.02,
+      side: THREE.DoubleSide
+    });
+    
+    const leafCount = 2 + Math.floor(Math.random() * 2);
+    for (let l = 0; l < leafCount; l++) {
+      const leafGeo = new THREE.SphereGeometry(1, 8, 6);
+      const posAttr = leafGeo.attributes.position;
+      for (let i = 0; i < posAttr.count; i++) {
+        let x = posAttr.getX(i);
+        let y = posAttr.getY(i);
+        let z = posAttr.getZ(i);
+        y *= 0.08;
+        x *= 0.5 + Math.random() * 0.1;
+        z *= 1.5 + Math.random() * 0.3;
+        posAttr.setXYZ(i, x, y, z);
+      }
+      leafGeo.computeVertexNormals();
+      const leaf = new THREE.Mesh(leafGeo, leafMat);
+      const leafY = 0.1 + Math.random() * 0.15;
+      leaf.position.set(
+        (Math.random() - 0.5) * 0.06,
+        leafY,
+        (Math.random() - 0.5) * 0.02
+      );
+      leaf.rotation.set(
+        (Math.random() - 0.5) * 0.6,
+        Math.random() * Math.PI * 2,
+        (Math.random() - 0.5) * 0.6
+      );
+      leaf.scale.setScalar(0.08 + Math.random() * 0.03);
+      rose.add(leaf);
+    }
+    
+    const outerPetals = Math.floor(10 + Math.random() * 4);
+    const innerPetals = Math.floor(8 + Math.random() * 3);
+    const innermostPetals = Math.floor(6 + Math.random() * 2);
+    
+    const outerMat = this._createRoseMaterial('outer');
+    const innerMat = this._createRoseMaterial('inner');
+    const centerMat = this._createRoseMaterial('center');
+    
+    for (let p = 0; p < outerPetals; p++) {
+      const angle = (p / outerPetals) * Math.PI * 2 + Math.random() * 0.3;
+      const petal = new THREE.Mesh(this._createOrganicPetal('outer'), outerMat);
+      const radius = 0.08 + Math.random() * 0.02;
+      petal.position.set(
+        Math.cos(angle) * radius,
+        stemHeight + 0.02,
+        Math.sin(angle) * radius
+      );
+      petal.rotation.set(
+        (Math.random() - 0.5) * 0.4 + 0.3,
+        angle,
+        (Math.random() - 0.5) * 0.3 + 0.5
+      );
+      petal.scale.setScalar(0.12 + Math.random() * 0.02);
+      petal.userData.isPetal = true;
+      rose.add(petal);
+    }
+    
+    for (let p = 0; p < innerPetals; p++) {
+      const angle = (p / innerPetals) * Math.PI * 2 + Math.random() * 0.4;
+      const petal = new THREE.Mesh(this._createOrganicPetal('inner'), innerMat);
+      const radius = 0.055 + Math.random() * 0.015;
+      petal.position.set(
+        Math.cos(angle) * radius,
+        stemHeight + 0.025,
+        Math.sin(angle) * radius
+      );
+      petal.rotation.set(
+        (Math.random() - 0.5) * 0.5 + 0.5,
+        angle,
+        (Math.random() - 0.5) * 0.4 + 0.6
+      );
+      petal.scale.setScalar(0.09 + Math.random() * 0.015);
+      petal.userData.isPetal = true;
+      rose.add(petal);
+    }
+    
+    for (let p = 0; p < innermostPetals; p++) {
+      const angle = (p / innermostPetals) * Math.PI * 2 + Math.random() * 0.5;
+      const petal = new THREE.Mesh(this._createOrganicPetal('center'), centerMat);
+      const radius = 0.03 + Math.random() * 0.01;
+      petal.position.set(
+        Math.cos(angle) * radius,
+        stemHeight + 0.03,
+        Math.sin(angle) * radius
+      );
+      petal.rotation.set(
+        (Math.random() - 0.5) * 0.6 + 0.7,
+        angle,
+        (Math.random() - 0.5) * 0.5 + 0.8
+      );
+      petal.scale.setScalar(0.06 + Math.random() * 0.01);
+      petal.userData.isPetal = true;
+      rose.add(petal);
+    }
+    
+    const centerBud = new THREE.Mesh(
+      new THREE.SphereGeometry(0.025, 8, 6),
+      centerMat
+    );
+    centerBud.position.y = stemHeight + 0.035;
+    rose.add(centerBud);
+    
+    rose.userData.isRose = true;
+    rose.userData.swayOffset = Math.random() * Math.PI * 2;
+    rose.userData.swaySpeed = 0.3 + Math.random() * 0.3;
+    
+    return rose;
+  }
+
+  _createBouquet21() {
+    const bouquet = new THREE.Group();
+    
+    const vaseMat = new THREE.MeshStandardMaterial({
+      color: 0xD4AF37,
+      roughness: 0.35,
+      metalness: 0.6
+    });
+    
+    const vaseGeo = new THREE.CylinderGeometry(0.15, 0.2, 0.35, 16);
+    const vase = new THREE.Mesh(vaseGeo, vaseMat);
+    vase.position.y = 0.175;
+    vase.castShadow = true;
+    bouquet.add(vase);
+    
+    const vaseRimGeo = new THREE.TorusGeometry(0.15, 0.02, 8, 24);
+    const vaseRim = new THREE.Mesh(vaseRimGeo, vaseMat);
+    vaseRim.position.y = 0.35;
+    vaseRim.rotation.x = Math.PI / 2;
+    bouquet.add(vaseRim);
+    
+    const ribbonMat = new THREE.MeshStandardMaterial({
+      color: 0xFFFFF8,
+      roughness: 0.5,
+      metalness: 0.02
+    });
+    
+    const ribbonGeo = new THREE.TorusGeometry(0.16, 0.015, 6, 24);
+    const ribbon = new THREE.Mesh(ribbonGeo, ribbonMat);
+    ribbon.position.y = 0.28;
+    bouquet.add(ribbon);
+    
+    const rosePositions = [];
+    for (let i = 0; i < 21; i++) {
+      const layer = i < 7 ? 0 : (i < 14 ? 1 : 2);
+      const layerOffset = layer * 0.08;
+      const angle = (i / 21) * Math.PI * 2 + layer * 0.3;
+      const radius = 0.06 + layer * 0.03 + Math.random() * 0.04;
+      const height = 0.35 + layerOffset + Math.random() * 0.06;
+      const openness = i < 3 ? 0.3 + Math.random() * 0.2 : 
+                       i < 6 ? 0.5 + Math.random() * 0.2 : 
+                       0.7 + Math.random() * 0.2;
+      
+      rosePositions.push({
+        x: Math.cos(angle) * radius,
+        y: height,
+        z: Math.sin(angle) * radius,
+        openness: openness,
+        scale: 0.7 + Math.random() * 0.4
+      });
+    }
+    
+    rosePositions.forEach((pos, idx) => {
+      const rose = this._createSingleRose(pos.openness);
+      rose.position.set(pos.x, pos.y, pos.z);
+      rose.rotation.y = Math.random() * Math.PI * 2;
+      rose.scale.setScalar(pos.scale);
+      bouquet.add(rose);
+    });
+    
+    return bouquet;
+  }
+
   _buildFlowers(){
+    const bouquet = this._createBouquet21();
+    bouquet.position.set(-2.5, 1.18, 0.5);
+    this.scene.add(bouquet);
+    this.flowerGroup = bouquet;
+    
+    const roseLight = new THREE.PointLight(0xFFD700, 0.6, 3);
+    roseLight.position.set(-2.5, 1.6, 0.7);
+    this.scene.add(roseLight);
+    this._roseLight = roseLight;
+    
+    const roseSpot = new THREE.SpotLight(0xFFE4B5, 0.4, 4, Math.PI / 6, 0.5);
+    roseSpot.position.set(-2.5, 2.5, 1);
+    roseSpot.target.position.set(-2.5, 1.3, 0.5);
+    this.scene.add(roseSpot);
+    this.scene.add(roseSpot.target);
+    this._roseSpot = roseSpot;
+    
+    bouquet.traverse(child => {
+      if (child.isMesh) {
+        child.userData.type = 'flower';
+        child.castShadow = true;
+        this.clickables.push(child);
+      }
+    });
+  }
+
+  // ══════════════════════════════════════════════════
+  //  FLORES ORIGINALES (respaldo)
+  // ══════════════════════════════════════════════════
+  _buildFlowersBackup(){
     const fg=new THREE.Group();
     const roseColors=[
       {petal:0xFFF8F0,inner:0xFFFAF5,center:0xFFFFF8,leaf:0x98B080},
@@ -1135,6 +1430,25 @@ class DivineExperience {
     // Ya no se usa canvas - el shader maneja la animación
     if (this._waterMaterial) {
       this._waterMaterial.uniforms.uTime.value = t;
+    }
+  }
+
+  _animateRoses(t) {
+    if (!this.flowerGroup) return;
+    
+    this.flowerGroup.traverse(child => {
+      if (child.userData.isRose && child.userData.swayOffset !== undefined) {
+        const sway = Math.sin(t * child.userData.swaySpeed + child.userData.swayOffset) * 0.015;
+        child.rotation.x = sway;
+        child.rotation.z = sway * 0.5;
+      }
+    });
+    
+    if (this._roseLight) {
+      this._roseLight.intensity = 0.5 + Math.sin(t * 0.8) * 0.15 + Math.sin(t * 1.3) * 0.08;
+    }
+    if (this._roseSpot) {
+      this._roseSpot.intensity = 0.35 + Math.sin(t * 0.6 + 1) * 0.1;
     }
   }
 
@@ -1422,10 +1736,41 @@ class DivineExperience {
   }
 
   _animateFlowers(){
-    let t=0; const fg=this.flowerGroup;
-    const tick=()=>{
-      t+=.12; fg.scale.setScalar(1+Math.sin(t)*.06);
-      if(t<Math.PI) requestAnimationFrame(tick); else fg.scale.setScalar(1);
+    if (!this.flowerGroup) return;
+    
+    const fg = this.flowerGroup;
+    let t = 0;
+    let roseGlow = null;
+    
+    fg.traverse(child => {
+      if (child.isMesh && child.material && child.material.emissive) {
+        child.userData.originalEmissive = child.material.emissive.clone();
+        child.userData.originalEmissiveIntensity = child.material.emissiveIntensity || 0.15;
+      }
+    });
+    
+    const tick = () => {
+      t += 0.05;
+      const glowIntensity = Math.sin(t) * 0.5 + 0.5;
+      
+      fg.traverse(child => {
+        if (child.isMesh && child.material && child.material.emissive) {
+          const gold = new THREE.Color(0xFFD700);
+          child.material.emissive.copy(gold);
+          child.material.emissiveIntensity = 0.3 + glowIntensity * 0.5;
+        }
+      });
+      
+      if (t < Math.PI * 2) {
+        requestAnimationFrame(tick);
+      } else {
+        fg.traverse(child => {
+          if (child.isMesh && child.material && child.userData.originalEmissive) {
+            child.material.emissive.copy(child.userData.originalEmissive);
+            child.material.emissiveIntensity = child.userData.originalEmissiveIntensity;
+          }
+        });
+      }
     };
     tick();
   }
@@ -1672,6 +2017,7 @@ class DivineExperience {
     this.controls.update();
     this._drawWater(T);
     this._tickFSM(performance.now());
+    this._animateRoses(T);
 
     // ── Velas con flicker orgánico (4 frecuencias) ──
     this.candles.forEach((c,i)=>{
