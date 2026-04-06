@@ -257,9 +257,6 @@ import { EffectComposer }      from 'three/addons/postprocessing/EffectComposer.
 import { RenderPass }          from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass }     from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { ShaderPass }          from 'three/addons/postprocessing/ShaderPass.js';
-import { SSAOPass }             from 'three/addons/postprocessing/SSAOPass.js';
-import { OutputPass }           from 'three/addons/postprocessing/OutputPass.js';
-import { RGBELoader }           from 'three/addons/loaders/RGBELoader.js';
 import { GammaCorrectionShader } from 'three/addons/shaders/GammaCorrectionShader.js';
 
 // ═══════════════════════════════════════════════════════
@@ -453,8 +450,8 @@ class DivineExperience {
       this.renderer.shadowMap.enabled  = true;
       this.renderer.shadowMap.type     = THREE.PCFSoftShadowMap;
       this.renderer.outputColorSpace   = THREE.LinearSRGBColorSpace;
-      this.renderer.toneMapping        = THREE.ACESFilmicToneMapping;
-      this.renderer.toneMappingExposure = 1.2;
+      this.renderer.toneMapping        = THREE.CineonToneMapping;
+      this.renderer.toneMappingExposure = 1.15;
       document.body.appendChild(this.renderer.domElement);
 
       this.scene = new THREE.Scene();
@@ -473,17 +470,9 @@ class DivineExperience {
       this.controls.dampingFactor  = 0.05;
       this.controls.update();
 
-      // Post-processing con SSAO para sombras suaves
+      // Post-processing básico para mejor compatibilidad
       this.composer = new EffectComposer(this.renderer);
       this.composer.addPass(new RenderPass(this.scene, this.camera));
-      
-      // SSAO - Ambient Occlusion para profundidad
-      this.ssaoPass = new SSAOPass(this.scene, this.camera, innerWidth, innerHeight);
-      this.ssaoPass.kernelRadius = 16;
-      this.ssaoPass.minDistance = 0.005;
-      this.ssaoPass.maxDistance = 0.1;
-      this.ssaoPass.output = SSAOPass.OUTPUT.Default;
-      this.composer.addPass(this.ssaoPass);
       
       // Bloom para efecto divino
       this.bloomPass = new UnrealBloomPass(
@@ -492,8 +481,8 @@ class DivineExperience {
       );
       this.composer.addPass(this.bloomPass);
       
-      // Output pass para color management correcto
-      this.composer.addPass(new OutputPass());
+      // Gamma correction para color correcto
+      this.composer.addPass(new ShaderPass(GammaCorrectionShader));
 
     } catch(e) {
       console.error('✝ Error en _init:', e);
@@ -514,6 +503,7 @@ class DivineExperience {
     this._buildHolyWater();
     this._buildIncense();
     this._buildGodRays();
+    this._buildRosary3D();
   }
 
   _initTextures(){
@@ -530,14 +520,11 @@ class DivineExperience {
   }
 
   _buildLights(){
-    // Crear Environment Map procedural para reflexiones HDR
-    this._createEnvironmentMap();
-    
     // Hemisferico cielo/suelo
     this.scene.add(new THREE.HemisphereLight(0x18102a, 0x060308, 0.7));
 
-    // Luz direccional divina (desde arriba) - intensidad HDR
-    this.divineDir = new THREE.DirectionalLight(0xffe8a0, 3.5);
+    // Luz direccional divina (desde arriba)
+    this.divineDir = new THREE.DirectionalLight(0xffe8a0, 2.8);
     this.divineDir.position.set(0, 15, 6);
     this.divineDir.castShadow = true;
     this.divineDir.shadow.mapSize.setScalar(2048);
@@ -546,90 +533,32 @@ class DivineExperience {
     this.divineDir.shadow.bias = -0.001;
     this.scene.add(this.divineDir);
 
-    // Luz de contorno (azul-violeta) - intensidad HDR
-    this.rimLight = new THREE.PointLight(0x6040ff, 2.5, 18);
+    // Luz de contorno (azul-violeta)
+    this.rimLight = new THREE.PointLight(0x6040ff, 2, 18);
     this.rimLight.position.set(0, 6, -5);
     this.scene.add(this.rimLight);
 
-    // Luces de relleno - warm/cool
-    const warmLight = new THREE.PointLight(0xff8030, 1.0, 22);
+    // Luces de relleno
+    const warmLight = new THREE.PointLight(0xff8030, 0.8, 22);
     warmLight.position.set(-7, 5, 5);
     this.scene.add(warmLight);
-    const coolLight = new THREE.PointLight(0x3060cc, 0.6, 22);
+    const coolLight = new THREE.PointLight(0x3060cc, 0.5, 22);
     coolLight.position.set(7, 5, 5);
     this.scene.add(coolLight);
 
     // Foco sobre el altar
-    this.crossSpot = new THREE.SpotLight(0xfff0c0, 4.0, 22, Math.PI/9, .35, 1.2);
+    this.crossSpot = new THREE.SpotLight(0xfff0c0, 3.5, 22, Math.PI/9, .35, 1.2);
     this.crossSpot.position.set(0, 13, 3);
     this.crossSpot.target.position.set(0, 2.5, 0);
     this.crossSpot.castShadow = true;
     this.crossSpot.shadow.mapSize.setScalar(1024);
     this.scene.add(this.crossSpot, this.crossSpot.target);
 
-    // Luces de vitral - colores vibrantes HDR
-    const gl1 = new THREE.PointLight(0x9040ff, 2.2, 20); gl1.position.set(0,7,-3.5); this.scene.add(gl1);
-    const gl2 = new THREE.PointLight(0xff4040, 0.8, 15); gl2.position.set(-4,6,-3); this.scene.add(gl2);
-    const gl3 = new THREE.PointLight(0x4080ff, 0.8, 15); gl3.position.set(4,6,-3);  this.scene.add(gl3);
-  }
-
-  _createEnvironmentMap() {
-    // Crear PMREM environment map procedural
-    const size = 256;
-    const data = new Float32Array(size * size * 4);
-    
-    for (let y = 0; y < size; y++) {
-      for (let x = 0; x < size; x++) {
-        const i = (y * size + x) * 4;
-        
-        // UV normalizados
-        const u = x / size;
-        const v = y / size;
-        
-        // Ángulo spherical
-        const theta = u * Math.PI * 2;
-        const phi = v * Math.PI;
-        
-        // Base: cielo oscuro de catedral
-        let r = 0.02, g = 0.02, b = 0.04;
-        
-        // Vitral en la parte superior (simula luz de ventanas)
-        if (v > 0.7) {
-          const windowPos = Math.sin(theta * 4) * 0.5 + 0.5;
-          if (windowPos > 0.3 && windowPos < 0.7) {
-            // Colores de vitral
-            const colorIndex = Math.floor(theta * 3) % 3;
-            if (colorIndex === 0) { r = 0.8; g = 0.2; b = 0.3; }
-            else if (colorIndex === 1) { r = 0.2; g = 0.5; b = 0.9; }
-            else { r = 0.9; g = 0.6; b = 0.2; }
-          }
-        }
-        
-        // Luz divine desde arriba
-        if (phi < 0.3) {
-          r += 1.2 * (1 - phi / 0.3);
-          g += 1.0 * (1 - phi / 0.3);
-          b += 0.6 * (1 - phi / 0.3);
-        }
-        
-        // Altar brillante en el centro
-        if (Math.abs(theta - Math.PI * 0.5) < 0.3 && phi > 0.4 && phi < 0.6) {
-          r += 0.8; g += 0.7; b += 0.4;
-        }
-        
-        data[i] = r;
-        data[i + 1] = g;
-        data[i + 2] = b;
-        data[i + 3] = 1.0;
-      }
-    }
-    
-    // Crear texture
-    const texture = new THREE.DataTexture(data, size, size, THREE.RGBAFormat, THREE.FloatType);
-    texture.mapping = THREE.EquirectangularReflectionMapping;
-    texture.needsUpdate = true;
-    
-    this.scene.environment = texture;
+    // Luces de vitral
+    this.scene.add(new THREE.PointLight(0x9040ff, 1.8, 20).position.set(0,7,-3.5) && new THREE.PointLight(0x9040ff,1.8,20));
+    const gl1 = new THREE.PointLight(0x9040ff,1.8,20); gl1.position.set(0,7,-3.5); this.scene.add(gl1);
+    const gl2 = new THREE.PointLight(0xff4040,0.6,15); gl2.position.set(-4,6,-3); this.scene.add(gl2);
+    const gl3 = new THREE.PointLight(0x4080ff,0.6,15); gl3.position.set(4,6,-3);  this.scene.add(gl3);
   }
 
   _buildCathedral(){
@@ -640,11 +569,6 @@ class DivineExperience {
     const wallMat =mkMat(T.stone,.95,.04,0x887766);
     const ceilMat =mkMat(T.stone,1,0,0x443322);
     const marbleMat=mkMat(T.marble,.25,.12,0xddd0c0);
-    // Agregar environment map a mármol para reflexiones
-    if (this.scene.environment) {
-      marbleMat.envMap = this.scene.environment;
-      marbleMat.envMapIntensity = 0.3;
-    }
 
     // Suelo
     const floor=new THREE.Mesh(new THREE.PlaneGeometry(32,20),floorMat);
@@ -751,28 +675,22 @@ class DivineExperience {
   //  SACRAMENTO — Custodia Eucarística
   // ══════════════════════════════════════════════════
   _buildSacrament(){
-    const envMap = this.scene.environment;
-    
     const goldMat = new THREE.MeshStandardMaterial({
       color:0xFFD700, metalness:0.98, roughness:0.08,
-      emissive:0x332200, emissiveIntensity:0.15,
-      envMap: envMap, envMapIntensity: 1.5
+      emissive:0x332200, emissiveIntensity:0.15
     });
     const goldBrightMat = new THREE.MeshStandardMaterial({
       color:0xFFEE88, metalness:1.0, roughness:0.03,
-      emissive:0xFFDD44, emissiveIntensity:0.3,
-      envMap: envMap, envMapIntensity: 2.0
+      emissive:0xFFDD44, emissiveIntensity:0.3
     });
     const goldDarkMat = new THREE.MeshStandardMaterial({
       color:0xB8860B, metalness:0.95, roughness:0.15,
-      emissive:0x221100, emissiveIntensity:0.1,
-      envMap: envMap, envMapIntensity: 1.2
+      emissive:0x221100, emissiveIntensity:0.1
     });
     const lunaMat = new THREE.MeshStandardMaterial({
       color:0xFFFFEE, metalness:0.0, roughness:0.1,
       transparent:true, opacity:0.85,
-      emissive:0xFFEE88, emissiveIntensity:1.2,
-      envMap: envMap, envMapIntensity: 0.8
+      emissive:0xFFEE88, emissiveIntensity:1.2
     });
     const haloMat = new THREE.MeshBasicMaterial({
       color:0xFFEE88, transparent:true, opacity:0.12,
@@ -1025,171 +943,1310 @@ class DivineExperience {
   }
 
   // ══════════════════════════════════════════════════
-  // ═══════════════════════════════════════════════════
-  //  ROSAS REALISTAS SIMPLES Y HERMOSAS
-  // ═══════════════════════════════════════════════════
-  _createRealisticRose(options = {}) {
-    const {
-      color = 0x8B0000,
-      size = 1.0,
-      animated = true
-    } = options;
+  //  ROSE SYSTEM - Rosas Hiperrealistas para el Altar
+  // ══════════════════════════════════════════════════
+  _createOrganicPetal(shapeType = 'outer') {
+    const petalGeo = new THREE.SphereGeometry(1, 16, 12);
+    const posAttr = petalGeo.attributes.position;
+    
+    for (let i = 0; i < posAttr.count; i++) {
+      let x = posAttr.getX(i);
+      let y = posAttr.getY(i);
+      let z = posAttr.getZ(i);
+      
+      if (shapeType === 'outer') {
+        y *= 0.15;
+        x *= 1.0 + Math.pow(z, 2) * 0.8;
+        z = z * 0.6 + Math.sign(z) * 0.1;
+        x *= 1.2;
+      } else if (shapeType === 'inner') {
+        y *= 0.12;
+        x *= 0.85;
+        z = z * 0.5 + Math.sign(z) * 0.08;
+      } else if (shapeType === 'center') {
+        y *= 0.08;
+        x *= 0.6;
+        z *= 0.4;
+      }
+      
+      posAttr.setXYZ(i, x, y, z);
+    }
+    
+    petalGeo.computeVertexNormals();
+    return petalGeo;
+  }
 
-    const rose = new THREE.Group();
-
-    // Material de pétalo aterciopelado
-    const petalMat = new THREE.MeshStandardMaterial({
-      color: color,
-      roughness: 0.7,
-      metalness: 0.0,
-      emissive: 0x200000,
-      emissiveIntensity: 0.08,
+  _createRoseMaterial(petalType = 'outer') {
+    const colors = {
+      outer: { color: 0x8B0000, emissive: 0x330000, roughness: 0.65, metalness: 0.08 },
+      inner: { color: 0xA01020, emissive: 0x440000, roughness: 0.55, metalness: 0.06 },
+      center: { color: 0x6B0000, emissive: 0x220000, roughness: 0.45, metalness: 0.04 }
+    };
+    const c = colors[petalType];
+    return new THREE.MeshStandardMaterial({
+      color: c.color,
+      emissive: c.emissive,
+      emissiveIntensity: 0.15,
+      roughness: c.roughness,
+      metalness: c.metalness,
       side: THREE.DoubleSide
     });
+  }
 
-    // Centro de la rosa
-    const centerMat = new THREE.MeshStandardMaterial({
-      color: 0x180000,
-      roughness: 0.8,
-      metalness: 0.0,
-      emissive: 0x100000,
-      emissiveIntensity: 0.15
-    });
-
-    // Crear capas de pétalos
-    const layers = [
-      { count: 8, r: 0.06, y: 0.02, sx: 1, sy: 0.8, sz: 1 },
-      { count: 10, r: 0.09, y: 0.035, sx: 1.1, sy: 0.9, sz: 1.1 },
-      { count: 12, r: 0.12, y: 0.05, sx: 1.2, sy: 1, sz: 1.2 },
-      { count: 14, r: 0.15, y: 0.065, sx: 1.3, sy: 1.1, sz: 1.3 }
-    ];
-
-    layers.forEach((layer, li) => {
-      for (let i = 0; i < layer.count; i++) {
-        const angle = (i / layer.count) * Math.PI * 2 + li * 0.4;
-        const petal = new THREE.Mesh(
-          new THREE.SphereGeometry(layer.r * size, 12, 8),
-          petalMat
-        );
-        
-        petal.position.set(
-          Math.cos(angle) * layer.r * 0.3 * size,
-          layer.y * size,
-          Math.sin(angle) * layer.r * 0.3 * size
-        );
-        
-        petal.scale.set(layer.sx * size, layer.sy * size, layer.sz * size);
-        petal.rotation.set(
-          (Math.random() - 0.5) * 0.3,
-          angle + Math.random() * 0.3,
-          (Math.random() - 0.5) * 0.3 + 0.5
-        );
-        
-        petal.castShadow = true;
-        rose.add(petal);
-      }
-    });
-
-    // Centro compacto
-    const center = new THREE.Mesh(
-      new THREE.SphereGeometry(0.03 * size, 8, 8),
-      centerMat
-    );
-    center.position.y = 0.01 * size;
-    center.scale.y = 0.5;
-    rose.add(center);
-
-    // Tallo
+  _createSingleRose(openness = 0.7, colorVariation = 0) {
+    const rose = new THREE.Group();
+    
     const stemMat = new THREE.MeshStandardMaterial({
-      color: 0x1A3D1A,
-      roughness: 0.7,
-      metalness: 0.0
+      color: 0x1A4D1A,
+      roughness: 0.75,
+      metalness: 0.02
     });
-    const stem = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.008 * size, 0.012 * size, 0.35 * size, 8),
-      stemMat
-    );
-    stem.position.set(0, -0.18 * size, 0);
-    stem.castShadow = true;
+    
+    const stemHeight = 0.4 + Math.random() * 0.15;
+    const stemCurve = (Math.random() - 0.5) * 0.08;
+    const stemGeo = new THREE.CylinderGeometry(0.012, 0.018, stemHeight, 6);
+    const stem = new THREE.Mesh(stemGeo, stemMat);
+    stem.position.y = stemHeight / 2;
+    stem.rotation.z = stemCurve;
     rose.add(stem);
-
-    // Hojas simples
+    
+    const spineMat = new THREE.MeshStandardMaterial({
+      color: 0x2D602D,
+      roughness: 0.7,
+      metalness: 0.02
+    });
+    
+    const spineCount = 3 + Math.floor(Math.random() * 3);
+    for (let s = 0; s < spineCount; s++) {
+      const spineGeo = new THREE.ConeGeometry(0.008, 0.025, 4);
+      const spine = new THREE.Mesh(spineGeo, spineMat);
+      const spineY = 0.08 + Math.random() * (stemHeight - 0.15);
+      spine.position.set(
+        0.018 + Math.random() * 0.005,
+        spineY,
+        (Math.random() - 0.5) * 0.015
+      );
+      spine.rotation.z = -0.5 - Math.random() * 0.4;
+      spine.rotation.y = Math.random() * Math.PI * 2;
+      rose.add(spine);
+    }
+    
     const leafMat = new THREE.MeshStandardMaterial({
-      color: 0x2D5A27,
-      roughness: 0.65,
-      metalness: 0.0,
+      color: 0x2D5A27 + (Math.random() - 0.5) * 0x101010,
+      roughness: 0.7,
+      metalness: 0.02,
       side: THREE.DoubleSide
     });
     
-    [-0.1, -0.16].forEach((y, i) => {
-      const leaf = new THREE.Mesh(
-        new THREE.SphereGeometry(0.05 * size, 6, 4),
-        leafMat
+    const leafCount = 2 + Math.floor(Math.random() * 2);
+    for (let l = 0; l < leafCount; l++) {
+      const leafGeo = new THREE.SphereGeometry(1, 8, 6);
+      const posAttr = leafGeo.attributes.position;
+      for (let i = 0; i < posAttr.count; i++) {
+        let x = posAttr.getX(i);
+        let y = posAttr.getY(i);
+        let z = posAttr.getZ(i);
+        y *= 0.08;
+        x *= 0.5 + Math.random() * 0.1;
+        z *= 1.5 + Math.random() * 0.3;
+        posAttr.setXYZ(i, x, y, z);
+      }
+      leafGeo.computeVertexNormals();
+      const leaf = new THREE.Mesh(leafGeo, leafMat);
+      const leafY = 0.1 + Math.random() * 0.15;
+      leaf.position.set(
+        (Math.random() - 0.5) * 0.06,
+        leafY,
+        (Math.random() - 0.5) * 0.02
       );
-      leaf.position.set(i === 0 ? 0.04 : -0.04, y * size, 0);
-      leaf.scale.set(1.5, 0.5, 1);
-      leaf.rotation.set(0.3, i === 0 ? 0.5 : -0.5, 0.2);
+      leaf.rotation.set(
+        (Math.random() - 0.5) * 0.6,
+        Math.random() * Math.PI * 2,
+        (Math.random() - 0.5) * 0.6
+      );
+      leaf.scale.setScalar(0.08 + Math.random() * 0.03);
       rose.add(leaf);
-    });
-
-    if (animated) {
-      rose.userData.breathOffset = Math.random() * Math.PI * 2;
-      rose.userData.breathSpeed = 0.5 + Math.random() * 0.3;
     }
-
+    
+    const outerPetals = Math.floor(10 + Math.random() * 4);
+    const innerPetals = Math.floor(8 + Math.random() * 3);
+    const innermostPetals = Math.floor(6 + Math.random() * 2);
+    
+    const outerMat = this._createRoseMaterial('outer');
+    const innerMat = this._createRoseMaterial('inner');
+    const centerMat = this._createRoseMaterial('center');
+    
+    for (let p = 0; p < outerPetals; p++) {
+      const angle = (p / outerPetals) * Math.PI * 2 + Math.random() * 0.3;
+      const petal = new THREE.Mesh(this._createOrganicPetal('outer'), outerMat);
+      const radius = 0.08 + Math.random() * 0.02;
+      petal.position.set(
+        Math.cos(angle) * radius,
+        stemHeight + 0.02,
+        Math.sin(angle) * radius
+      );
+      petal.rotation.set(
+        (Math.random() - 0.5) * 0.4 + 0.3,
+        angle,
+        (Math.random() - 0.5) * 0.3 + 0.5
+      );
+      petal.scale.setScalar(0.12 + Math.random() * 0.02);
+      petal.userData.isPetal = true;
+      rose.add(petal);
+    }
+    
+    for (let p = 0; p < innerPetals; p++) {
+      const angle = (p / innerPetals) * Math.PI * 2 + Math.random() * 0.4;
+      const petal = new THREE.Mesh(this._createOrganicPetal('inner'), innerMat);
+      const radius = 0.055 + Math.random() * 0.015;
+      petal.position.set(
+        Math.cos(angle) * radius,
+        stemHeight + 0.025,
+        Math.sin(angle) * radius
+      );
+      petal.rotation.set(
+        (Math.random() - 0.5) * 0.5 + 0.5,
+        angle,
+        (Math.random() - 0.5) * 0.4 + 0.6
+      );
+      petal.scale.setScalar(0.09 + Math.random() * 0.015);
+      petal.userData.isPetal = true;
+      rose.add(petal);
+    }
+    
+    for (let p = 0; p < innermostPetals; p++) {
+      const angle = (p / innermostPetals) * Math.PI * 2 + Math.random() * 0.5;
+      const petal = new THREE.Mesh(this._createOrganicPetal('center'), centerMat);
+      const radius = 0.03 + Math.random() * 0.01;
+      petal.position.set(
+        Math.cos(angle) * radius,
+        stemHeight + 0.03,
+        Math.sin(angle) * radius
+      );
+      petal.rotation.set(
+        (Math.random() - 0.5) * 0.6 + 0.7,
+        angle,
+        (Math.random() - 0.5) * 0.5 + 0.8
+      );
+      petal.scale.setScalar(0.06 + Math.random() * 0.01);
+      petal.userData.isPetal = true;
+      rose.add(petal);
+    }
+    
+    const centerBud = new THREE.Mesh(
+      new THREE.SphereGeometry(0.025, 8, 6),
+      centerMat
+    );
+    centerBud.position.y = stemHeight + 0.035;
+    rose.add(centerBud);
+    
+    rose.userData.isRose = true;
+    rose.userData.swayOffset = Math.random() * Math.PI * 2;
+    rose.userData.swaySpeed = 0.3 + Math.random() * 0.3;
+    
     return rose;
   }
 
-  //  FLORES
-  // ══════════════════════════════════════════════════
-  _buildFlowers(){
-    const fg = new THREE.Group();
+  _createBouquet21() {
+    const bouquet = new THREE.Group();
     
-    const roseConfigs = [
-      { pos: [-2.65, 1.18, 0.48], color: 0x8B0000, size: 1.0 },
-      { pos: [-2.35, 1.21, 0.62], color: 0x8B0000, size: 0.95 },
-      { pos: [-2.75, 1.18, 0.58], color: 0x8B0000, size: 1.05 },
-      { pos: [-2.48, 1.2, 0.38], color: 0x8B0000, size: 0.9 },
-      { pos: [-2.68, 1.18, 0.7], color: 0x8B0000, size: 0.92 },
-      { pos: [-2.55, 1.22, 0.52], color: 0x8B0000, size: 1.02 },
-      { pos: [-2.42, 1.19, 0.52], color: 0x8B0000, size: 0.88 },
-      { pos: [-2.72, 1.19, 0.42], color: 0x8B0000, size: 0.98 },
+    const vaseMat = new THREE.MeshStandardMaterial({
+      color: 0xD4AF37,
+      roughness: 0.35,
+      metalness: 0.6
+    });
+    
+    const vaseGeo = new THREE.CylinderGeometry(0.15, 0.2, 0.35, 16);
+    const vase = new THREE.Mesh(vaseGeo, vaseMat);
+    vase.position.y = 0.175;
+    vase.castShadow = true;
+    bouquet.add(vase);
+    
+    const vaseRimGeo = new THREE.TorusGeometry(0.15, 0.02, 8, 24);
+    const vaseRim = new THREE.Mesh(vaseRimGeo, vaseMat);
+    vaseRim.position.y = 0.35;
+    vaseRim.rotation.x = Math.PI / 2;
+    bouquet.add(vaseRim);
+    
+    const ribbonMat = new THREE.MeshStandardMaterial({
+      color: 0xFFFFF8,
+      roughness: 0.5,
+      metalness: 0.02
+    });
+    
+    const ribbonGeo = new THREE.TorusGeometry(0.16, 0.015, 6, 24);
+    const ribbon = new THREE.Mesh(ribbonGeo, ribbonMat);
+    ribbon.position.y = 0.28;
+    bouquet.add(ribbon);
+    
+    const rosePositions = [];
+    for (let i = 0; i < 21; i++) {
+      const layer = i < 7 ? 0 : (i < 14 ? 1 : 2);
+      const layerOffset = layer * 0.08;
+      const angle = (i / 21) * Math.PI * 2 + layer * 0.3;
+      const radius = 0.06 + layer * 0.03 + Math.random() * 0.04;
+      const height = 0.35 + layerOffset + Math.random() * 0.06;
+      const openness = i < 3 ? 0.3 + Math.random() * 0.2 : 
+                       i < 6 ? 0.5 + Math.random() * 0.2 : 
+                       0.7 + Math.random() * 0.2;
+      
+      rosePositions.push({
+        x: Math.cos(angle) * radius,
+        y: height,
+        z: Math.sin(angle) * radius,
+        openness: openness,
+        scale: 0.7 + Math.random() * 0.4
+      });
+    }
+    
+    rosePositions.forEach((pos, idx) => {
+      const rose = this._createSingleRose(pos.openness);
+      rose.position.set(pos.x, pos.y, pos.z);
+      rose.rotation.y = Math.random() * Math.PI * 2;
+      rose.scale.setScalar(pos.scale);
+      bouquet.add(rose);
+    });
+    
+    return bouquet;
+  }
+
+  _buildFlowers(){
+    const bouquet = this._createBouquet21();
+    bouquet.position.set(-2.5, 1.18, 0.5);
+    this.scene.add(bouquet);
+    this.flowerGroup = bouquet;
+    
+    const roseLight = new THREE.PointLight(0xFFD700, 0.6, 3);
+    roseLight.position.set(-2.5, 1.6, 0.7);
+    this.scene.add(roseLight);
+    this._roseLight = roseLight;
+    
+    const roseSpot = new THREE.SpotLight(0xFFE4B5, 0.4, 4, Math.PI / 6, 0.5);
+    roseSpot.position.set(-2.5, 2.5, 1);
+    roseSpot.target.position.set(-2.5, 1.3, 0.5);
+    this.scene.add(roseSpot);
+    this.scene.add(roseSpot.target);
+    this._roseSpot = roseSpot;
+    
+    bouquet.traverse(child => {
+      if (child.isMesh) {
+        child.userData.type = 'flower';
+        child.castShadow = true;
+        this.clickables.push(child);
+      }
+    });
+  }
+
+  // ══════════════════════════════════════════════════
+  //  FLORES ORIGINALES (respaldo)
+  // ══════════════════════════════════════════════════
+  _buildFlowersBackup(){
+    const fg=new THREE.Group();
+    const roseColors=[
+      {petal:0xFFF8F0,inner:0xFFFAF5,center:0xFFFFF8,leaf:0x98B080},
+      {petal:0xFFB6C1,inner:0xFF69B4,center:0xFFC0CB,leaf:0x7A9A60},
+      {petal:0xDC143C,inner:0xFF2040,center:0xFF3040,leaf:0x6B8E50},
+      {petal:0xFFDAC1,inner:0xFFB7A5,center:0xFFE4E1,leaf:0xA4B878},
+    ];
+    const rosePos=[
+      {pos:[-2.65,1.18,.48],ci:0,sc:1.0},{pos:[-2.35,1.21,.62],ci:1,sc:.95},
+      {pos:[-2.75,1.18,.58],ci:2,sc:1.05},{pos:[-2.48,1.2,.38],ci:3,sc:.9},
+      {pos:[-2.68,1.18,.7],ci:0,sc:.92},{pos:[-2.55,1.22,.52],ci:1,sc:1.02},
+      {pos:[-2.42,1.19,.52],ci:2,sc:.88},{pos:[-2.72,1.19,.42],ci:3,sc:.98},
     ];
 
-    roseConfigs.forEach(({ pos, color, size }) => {
-      const rose = this._createRealisticRose({ color, size, animated: true });
-      rose.position.set(...pos);
-      rose.rotation.y = Math.random() * Math.PI * 2;
-      
-      rose.traverse(child => {
-        if (child.isMesh) {
-          child.userData.type = 'flower';
-          this.clickables.push(child);
+    rosePos.forEach(({pos,ci,sc})=>{
+      const col=roseColors[ci];
+      const mk=(c,rough=.55,ei=.08)=>new THREE.MeshStandardMaterial({color:c,roughness:rough,metalness:.02,emissive:c,emissiveIntensity:ei});
+      const petalMat=mk(col.petal);
+      const innerMat=mk(col.inner,.45,.12);
+      const centerMat=mk(col.center,.35,.15);
+      const stemMat=new THREE.MeshStandardMaterial({color:0x2D5A27,roughness:.75});
+
+      const rose=new THREE.Group();
+      const stem=new THREE.Mesh(new THREE.CylinderGeometry(.012,.018,.45,6),stemMat);
+      stem.position.y=.225; rose.add(stem);
+
+      const layers=[
+        {count:12,r:.11,y:.44,sx:.8,sy:.35,sz:.95,m:petalMat},
+        {count:10,r:.09,y:.455,sx:.7,sy:.38,sz:.85,m:petalMat},
+        {count:8, r:.07,y:.465,sx:.6,sy:.42,sz:.75,m:innerMat},
+        {count:6, r:.05,y:.475,sx:.55,sy:.45,sz:.7,m:innerMat},
+        {count:4, r:.035,y:.485,sx:.5,sy:.5,sz:.65,m:centerMat},
+      ];
+      layers.forEach(l=>{
+        for(let p=0;p<l.count;p++){
+          const a=(p/l.count)*Math.PI*2+Math.random()*.2;
+          const petal=new THREE.Mesh(new THREE.SphereGeometry(l.r,10,8),l.m);
+          petal.position.set(Math.cos(a)*l.r,l.y,Math.sin(a)*l.r);
+          petal.scale.set(l.sx,l.sy,l.sz);
+          petal.rotation.set((Math.random()-.5)*.3,a,(Math.random()-.5)*.3+.4);
+          rose.add(petal);
         }
       });
-      
+      const center=new THREE.Mesh(new THREE.SphereGeometry(.032,10,8),centerMat);
+      center.position.y=.492; rose.add(center);
+
+      rose.position.set(...pos); rose.rotation.y=Math.random()*Math.PI*2; rose.scale.setScalar(sc);
       fg.add(rose);
     });
 
     this.scene.add(fg);
-    this.flowerGroup = fg;
+    this.flowerGroup=fg;
+    fg.traverse(m=>{ if(m.isMesh){ m.userData.type='flower'; m.castShadow=true; this.clickables.push(m); } });
   }
+
+  // ══════════════════════════════════════════════════
+  //  ROSARY SYSTEM ULTRA INTERACTIVO
+  // ══════════════════════════════════════════════════
+  _createRosaryBead(radius = 0.025, isLarge = false) {
+    const geo = new THREE.SphereGeometry(radius, 16, 12);
+    const posAttr = geo.attributes.position;
+    
+    for (let i = 0; i < posAttr.count; i++) {
+      let x = posAttr.getX(i);
+      let y = posAttr.getY(i);
+      let z = posAttr.getZ(i);
       
-      // Agregar interactividad
-      rose.traverse(child => {
-        if (child.isMesh) {
-          child.userData.type = 'flower';
-          this.clickables.push(child);
-        }
-      });
+      y *= 0.7;
+      if (isLarge) {
+        x *= 1.1;
+        z *= 1.1;
+      }
       
-      fg.add(rose);
+      posAttr.setXYZ(i, x, y, z);
+    }
+    
+    geo.computeVertexNormals();
+    return geo;
+  }
+
+  _createCrucifix() {
+    const group = new THREE.Group();
+    
+    const goldMat = new THREE.MeshStandardMaterial({
+      color: 0xD4AF37,
+      roughness: 0.3,
+      metalness: 0.8
     });
-
-    this.scene.add(fg);
-    this.flowerGroup = fg;
+    
+    const vBar = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.008, 0.008, 0.12, 8),
+      goldMat
+    );
+    vBar.position.y = 0.04;
+    group.add(vBar);
+    
+    const hBar = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.006, 0.006, 0.06, 8),
+      goldMat
+    );
+    hBar.position.set(0, 0.08, 0);
+    hBar.rotation.z = Math.PI / 2;
+    group.add(hBar);
+    
+    const corpusGeo = new THREE.SphereGeometry(0.015, 8, 6);
+    const corpusMat = new THREE.MeshStandardMaterial({
+      color: 0x8B0000,
+      roughness: 0.5,
+      metalness: 0.1
+    });
+    const corpus = new THREE.Mesh(corpusGeo, corpusMat);
+    corpus.position.set(0, 0.06, 0.01);
+    corpus.scale.set(1, 1.3, 0.5);
+    group.add(corpus);
+    
+    const ringGeo = new THREE.TorusGeometry(0.015, 0.004, 6, 12);
+    const ring = new THREE.Mesh(ringGeo, goldMat);
+    ring.position.y = -0.06;
+    ring.rotation.x = Math.PI / 2;
+    group.add(ring);
+    
+    return group;
   }
 
+  _createLink() {
+    const geo = new THREE.TorusGeometry(0.012, 0.003, 6, 8);
+    const mat = new THREE.MeshStandardMaterial({
+      color: 0xD4AF37,
+      roughness: 0.3,
+      metalness: 0.8
+    });
+    return new THREE.Mesh(geo, mat);
+  }
+
+  _buildRosary3D() {
+    const rosaryGroup = new THREE.Group();
+    
+    this._rosaryData = {
+      currentBead: 0,
+      currentDecade: 0,
+      currentMystery: 0,
+      prayerIndex: 0,
+      inIntroMode: true,
+      lastActivityTime: Date.now(),
+      idleWarningShown: false,
+      mysteries: [
+        { name: 'Misterios Gozosos', color: '#FFB6C1', mysteries: [
+          { name: 'La Anunciación', text: 'El Ángel Gabriel anuncia a María que será Madre de Dios.' },
+          { name: 'La Visitación', text: 'María visita a su prima Isabel.' },
+          { name: 'El Nacimiento de Jesús', text: 'Jesús nace en Belén.' },
+          { name: 'La Presentación', text: 'Jesús es presentado en el Templo.' },
+          { name: 'El Niño Jesús perdido y hallado', text: 'Los padres encuentran a Jesús en el Templo.' }
+        ]},
+        { name: 'Misterios Dolorosos', color: '#8B0000', mysteries: [
+          { name: 'La Oración en el Huerto', text: 'Jesús ora en el Huerto de los Olivos.' },
+          { name: 'La Flagelación', text: 'Jesús es flagelado.' },
+          { name: 'La Coronación de Espinas', text: 'Jesús es coronado de espinas.' },
+          { name: 'El Vía Crucis', text: 'Jesús carga su cruz.' },
+          { name: 'La Crucifixión', text: 'Jesús muere en la cruz.' }
+        ]},
+        { name: 'Misterios Gloriosos', color: '#FFD700', mysteries: [
+          { name: 'La Resurrección', text: 'Jesús resucita.' },
+          { name: 'La Ascensión', text: 'Jesús asciende al Cielo.' },
+          { name: 'La Venida del Espíritu Santo', text: 'El Espíritu Santo viene sobre los apóstoles.' },
+          { name: 'La Asunción', text: 'María es asumida al Cielo.' },
+          { name: 'La Coronación de María', text: 'María es coronada Reina del Cielo.' }
+        ]},
+        { name: 'Misterios Luminosos', color: '#6495ED', mysteries: [
+          { name: 'El Bautismo en el Jordán', text: 'Jesús es bautizado por Juan.' },
+          { name: 'Las Bodas de Caná', text: 'Jesús transforma el agua en vino.' },
+          { name: 'El anuncio del Reino', text: 'Jesús predica la Buena Nueva.' },
+          { name: 'La Transfiguración', text: 'Jesús se transfigura ante los apóstoles.' },
+          { name: 'La Eucaristía', text: 'Jesús instituye la Eucaristía.' }
+        ]}
+      ],
+      introPrayers: [
+        { name: 'Señal de la Cruz', text: 'En el nombre del Padre, del Hijo y del Espíritu Santo. Amén.' },
+        { name: 'Credo', text: 'Creo en Dios Padre todopoderoso, creador del cielo y de la tierra. Creo en Jesucristo su único Hijo nuestro Señor, que fue concebido por obra y gracia del Espíritu Santo, nació de Santa María Virgen, sufrió bajo Poncio Pilato, fue crucificado, muerto y sepulto, descendió a los infiernos, al tercer día resucitó, subió a los cielos, está sentado a la derecha de Dios Padre todopoderoso, desde allí ha de venir a juzgar a vivos y muertos. Creo en el Espíritu Santo, la santa Iglesia católica, la comunión de los santos, el perdón de los pecados, la resurrección de la carne y la vida eterna. Amén.' },
+        { name: 'Padre Nuestro', text: 'Padre nuestro que estás en el cielo, santificado sea tu nombre, venga a nosotros tu reino, hágase tu voluntad así en la tierra como en el cielo. Danos hoy nuestro pan de cada día, perdona nuestras ofensas como también nosotros perdonamos a los que nos ofenden, y no nos dejes caer en la tentación, sino líbranos del mal. Amén.' },
+        { name: 'Ave María', text: 'Dios te salve María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros pecadores ahora y en la hora de nuestra muerte. Amén.' },
+        { name: 'Ave María', text: 'Dios te salve María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros pecadores ahora y en la hora de nuestra muerte. Amén.' },
+        { name: 'Ave María', text: 'Dios te salve María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros pecadores ahora y en la hora de nuestra muerte. Amén.' },
+        { name: 'Gloria', text: 'Gloria al Padre, al Hijo y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.' }
+      ],
+      prayers: [
+        { name: 'Ave María', text: 'Dios te salve María, llena eres de gracia, el Señor es contigo. Bendita tú eres entre todas las mujeres y bendito es el fruto de tu vientre, Jesús. Santa María, Madre de Dios, ruega por nosotros pecadores ahora y en la hora de nuestra muerte. Amén.' },
+        { name: 'Gloria', text: 'Gloria al Padre, al Hijo y al Espíritu Santo. Como era en el principio, ahora y siempre, por los siglos de los siglos. Amén.' },
+        { name: 'Jaculatoria', text: 'Oh Jesús mío, perdónanos y libranos del fuego del infierno. Amén.' }
+      ],
+      stage: 'intro',
+      beads: [],
+      activeBead: null,
+      isPaused: false,
+      lastClickTime: 0
+    };
+    
+    const woodMat = new THREE.MeshStandardMaterial({
+      color: 0x4A2810,
+      roughness: 0.6,
+      metalness: 0.05
+    });
+    
+    const nacarMat = new THREE.MeshStandardMaterial({
+      color: 0xFFFAF0,
+      roughness: 0.3,
+      metalness: 0.1,
+      emissive: 0xFFFFF0,
+      emissiveIntensity: 0.05
+    });
+    
+    const beadMat = nacarMat;
+    const largeBeadMat = woodMat;
+    
+    let beadIndex = 0;
+    const linkSpacing = 0.055;
+    
+    const crucifix = this._createCrucifix();
+    crucifix.position.set(-0.1, 0, 0);
+    rosaryGroup.add(crucifix);
+    
+    const startLink = this._createLink();
+    startLink.position.set(-0.08, 0, 0);
+    startLink.rotation.y = Math.PI / 2;
+    rosaryGroup.add(startLink);
+    
+    const largeBeadCount = 5;
+    for (let i = 0; i < largeBeadCount; i++) {
+      const largeBead = new THREE.Mesh(this._createRosaryBead(0.035, true), largeBeadMat.clone());
+      largeBead.position.x = -0.05 + i * linkSpacing;
+      largeBead.userData = { type: 'rosaryBead', index: beadIndex, isLarge: true };
+      largeBead.userData.prayer = this._rosaryData.prayers[i < 1 ? 0 : (i < 3 ? 1 : 2)];
+      largeBead.userData.onClick = () => this._handleRosaryBeadClick(largeBead);
+      rosaryGroup.add(largeBead);
+      this._rosaryData.beads.push(largeBead);
+      this.clickables.push(largeBead);
+      beadIndex++;
+      
+      if (i < largeBeadCount - 1) {
+        const link = this._createLink();
+        link.position.x = -0.035 + i * linkSpacing + linkSpacing / 2;
+        link.rotation.y = Math.PI / 2;
+        rosaryGroup.add(link);
+      }
+    }
+    
+    for (let d = 0; d < 4; d++) {
+      const dividerLink = this._createLink();
+      dividerLink.position.x = 0.22 + d * 0.22;
+      dividerLink.rotation.y = Math.PI / 2;
+      rosaryGroup.add(dividerLink);
+      
+      const separatorBead = new THREE.Mesh(this._createRosaryBead(0.03, false), beadMat.clone());
+      separatorBead.position.x = 0.235 + d * 0.22;
+      separatorBead.userData = { type: 'rosaryBead', index: beadIndex, isLarge: false };
+      separatorBead.userData.prayer = this._rosaryData.prayers[1];
+      separatorBead.userData.onClick = () => this._handleRosaryBeadClick(separatorBead);
+      rosaryGroup.add(separatorBead);
+      this._rosaryData.beads.push(separatorBead);
+      this.clickables.push(separatorBead);
+      beadIndex++;
+      
+      for (let i = 0; i < 10; i++) {
+        const smallBead = new THREE.Mesh(this._createRosaryBead(0.022, false), beadMat.clone());
+        smallBead.position.x = 0.255 + d * 0.22 + i * linkSpacing;
+        smallBead.userData = { type: 'rosaryBead', index: beadIndex, isLarge: false };
+        smallBead.userData.prayer = this._rosaryData.prayers[1];
+        smallBead.userData.onClick = () => this._handleRosaryBeadClick(smallBead);
+        rosaryGroup.add(smallBead);
+        this._rosaryData.beads.push(smallBead);
+        this.clickables.push(smallBead);
+        beadIndex++;
+      }
+    }
+    
+    const endLink = this._createLink();
+    endLink.position.x = 1.2;
+    endLink.rotation.y = Math.PI / 2;
+    rosaryGroup.add(endLink);
+    
+    const medal = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.04, 0.04, 0.01, 16),
+      new THREE.MeshStandardMaterial({ color: 0xD4AF37, roughness: 0.3, metalness: 0.8 })
+    );
+    medal.position.x = 1.22;
+    medal.rotation.z = Math.PI / 2;
+    rosaryGroup.add(medal);
+    
+    rosaryGroup.position.set(1.8, 1.15, 0.4);
+    rosaryGroup.rotation.x = -Math.PI / 6;
+    rosaryGroup.rotation.z = Math.PI / 8;
+    
+    this.scene.add(rosaryGroup);
+    this.rosaryGroup = rosaryGroup;
+    
+    this._createRosaryParticles();
+    
+    this._buildRosaryUI();
+  }
+
+  _createRosaryParticles() {
+    const particleCount = 50;
+    const positions = new Float32Array(particleCount * 3);
+    const velocities = [];
+    
+    for (let i = 0; i < particleCount; i++) {
+      positions[i * 3] = 1.8 + (Math.random() - 0.5) * 1.2;
+      positions[i * 3 + 1] = 1.15 + Math.random() * 0.7;
+      positions[i * 3 + 2] = 0.4 + (Math.random() - 0.5) * 0.6;
+      velocities.push({
+        x: (Math.random() - 0.5) * 0.002,
+        y: Math.random() * 0.003 + 0.001,
+        z: (Math.random() - 0.5) * 0.002
+      });
+    }
+    
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    
+    const material = new THREE.PointsMaterial({
+      color: 0xFFD700,
+      size: 0.025,
+      transparent: true,
+      opacity: 0.7,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false
+    });
+    
+    this._rosaryParticles = new THREE.Points(geometry, material);
+    this._rosaryParticleVelocities = velocities;
+    this.scene.add(this._rosaryParticles);
+  }
+
+  _animateRosaryParticles(t) {
+    if (!this._rosaryParticles) return;
+    
+    const positions = this._rosaryParticles.geometry.attributes.position.array;
+    const velocities = this._rosaryParticleVelocities;
+    
+    for (let i = 0; i < velocities.length; i++) {
+      positions[i * 3] += velocities[i].x + Math.sin(t + i) * 0.0005;
+      positions[i * 3 + 1] += velocities[i].y;
+      positions[i * 3 + 2] += velocities[i].z + Math.cos(t + i) * 0.0005;
+      
+      if (positions[i * 3 + 1] > 2.2) {
+        positions[i * 3] = 2.5 + (Math.random() - 0.5) * 1.5;
+        positions[i * 3 + 1] = 1.2;
+        positions[i * 3 + 2] = 0.3 + (Math.random() - 0.5) * 0.8;
+      }
+    }
+    
+    this._rosaryParticles.geometry.attributes.position.needsUpdate = true;
+    this._rosaryParticles.material.opacity = 0.5 + Math.sin(t * 2) * 0.2;
+  }
+
+  _handleRosaryBeadClick(bead) {
+    const now = Date.now();
+    if (now - this._rosaryData.lastClickTime < 400) return;
+    this._rosaryData.lastClickTime = now;
+    this._rosaryData.lastActivityTime = now;
+    this._rosaryData.idleWarningShown = false;
+    
+    if (this._rosaryData.isPaused) return;
+    
+    if (bead.userData.lit) return;
+    bead.userData.lit = true;
+    bead.material.emissive = new THREE.Color(0xFFD700);
+    bead.material.emissiveIntensity = 0.35;
+    
+    this._rosaryData.activeBead = bead;
+    this._rosaryData.currentBead = bead.userData.index + 1;
+    
+    let prayer;
+    let prayerName;
+    
+    if (this._rosaryData.inIntroMode) {
+      const introIdx = Math.min(this._rosaryData.currentBead - 1, this._rosaryData.introPrayers.length - 1);
+      prayer = this._rosaryData.introPrayers[introIdx];
+      prayerName = prayer.name;
+      
+      if (this._rosaryData.currentBead >= 7) {
+        this._rosaryData.inIntroMode = false;
+        this._rosaryData.prayerIndex = 0;
+        this._rosaryData.currentDecade = 0;
+        this.toast('📖 Ahora comienza el primer misterio: 10 Ave Marías');
+      }
+    } else {
+      const posEnDecena = (this._rosaryData.currentBead - 7) % 10;
+      
+      if (posEnDecena === 0 || posEnDecena === 1 || posEnDecena === 2 || posEnDecena === 3 || posEnDecena === 4 ||
+          posEnDecena === 5 || posEnDecena === 6 || posEnDecena === 7 || posEnDecena === 8) {
+        prayer = this._rosaryData.prayers[0];
+        prayerName = `Ave María #${posEnDecena + 1}`;
+      } else if (posEnDecena === 9) {
+        prayer = this._rosaryData.prayers[1];
+        prayerName = 'Gloria';
+      }
+      
+      const totalDecenas = Math.floor((this._rosaryData.currentBead - 7) / 10);
+      if (totalDecenas > this._rosaryData.currentDecade && posEnDecena === 9) {
+        this._rosaryData.currentDecade = totalDecenas;
+        this._completeDecade();
+      }
+    }
+    
+    if (!prayer) {
+      prayer = this._rosaryData.prayers[2];
+      prayerName = 'Jaculatoria';
+    }
+    
+    this._showPrayerText(prayer.text, prayerName);
+    this._speakPrayer(prayer.text);
+    
+    if (this.sacrament && this.sacrament.light) {
+      this.sacrament.light.intensity += 0.2;
+      setTimeout(() => {
+        if (this.sacrament && this.sacrament.light) {
+          this.sacrament.light.intensity -= 0.2;
+        }
+      }, 600);
+    }
+    
+    if (this._rosaryParticles) {
+      this._rosaryParticles.material.opacity = 1;
+      setTimeout(() => {
+        if (this._rosaryParticles) {
+          this._rosaryParticles.material.opacity = 0.7;
+        }
+      }, 500);
+    }
+    
+    this._animateBeadBounce(bead);
+    this._updateRosaryUI();
+    
+    if (this._rosaryData.currentBead >= 59) {
+      this._completeRosary();
+    }
+  }
+
+  _checkIdleStatus() {
+    const now = Date.now();
+    const idleTime = now - this._rosaryData.lastActivityTime;
+    
+    if (idleTime > 8000 && !this._rosaryData.idleWarningShown && !this._rosaryData.isPaused && this._rosaryData.currentBead > 0) {
+      this._rosaryData.idleWarningShown = true;
+      this._speakPrayer('¿Continuamos, hijo mío?');
+      this.toast('⏳ ¿Continuamos rezando?');
+    }
+  }
+
+  _completeRosary() {
+    this._speakPrayer('Amén. Que la Eucaristía te acompañe siempre. El Rosario ha terminado. Que la Virgen María te bendiga.');
+    
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse at center, rgba(60,20,80,0.98), rgba(20,5,30,0.98));
+      border: 3px solid #FFD700;
+      border-radius: 25px;
+      padding: 40px 60px;
+      text-align: center;
+      z-index: 10000;
+      font-family: 'Cinzel Decorative', serif;
+      box-shadow: 0 0 80px rgba(255,215,0,0.5), inset 0 0 40px rgba(255,215,0,0.1);
+      animation: holyGlow 1s ease;
+    `;
+    
+    notification.innerHTML = `
+      <h1 style="color: #FFD700; margin: 0 0 20px 0; font-size: 2rem;">🎉 Rosario Completado</h1>
+      <p style="color: #FFFAF0; font-size: 1.2rem; line-height: 1.8;">
+        Amén.<br>
+        Que la Eucaristía te acompañe siempre.<br>
+        La Virgen María te bendiga.
+      </p>
+      <p style="color: #D4AF37; margin-top: 25px; font-style: italic; font-size: 1rem;">
+        "El Rosario es el arma más poderosa contra el infierno"
+      </p>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    if (this.sacrament) {
+      this.sacrament.light.intensity += 2;
+      this.bloomPass.strength += 1.5;
+    }
+    
+    setTimeout(() => {
+      notification.style.transition = 'opacity 2s ease';
+      notification.style.opacity = '0';
+      setTimeout(() => {
+        notification.remove();
+        if (this.sacrament) {
+          this.sacrament.light.intensity -= 2;
+          this.bloomPass.strength -= 1.5;
+        }
+      }, 2000);
+    }, 8000);
+    
+    this.toast('🎉 Has completado el Santo Rosario');
+  }
+
+  _animateBeadBounce(bead) {
+    const originalY = bead.position.y;
+    let t = 0;
+    const animate = () => {
+      t += 0.15;
+      bead.position.y = originalY + Math.sin(t) * 0.008;
+      if (t < Math.PI) {
+        requestAnimationFrame(animate);
+      } else {
+        bead.position.y = originalY;
+      }
+    };
+    animate();
+  }
+
+  _completeDecade() {
+    const decade = Math.floor(this._rosaryData.currentBead / 10) - 1;
+    const mystery = this._rosaryData.mysteries[this._rosaryData.currentMystery].mysteries[decade];
+    
+    this._rosaryData.currentDecade = decade + 1;
+    
+    this.toast(`🕰️ Misterio: ${mystery.name}`);
+    
+    this._showMysteryNotification(mystery);
+  }
+
+  _showMysteryNotification(mystery) {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(135deg, rgba(30,10,60,0.95), rgba(60,20,80,0.9));
+      border: 2px solid #D4AF37;
+      border-radius: 20px;
+      padding: 30px 50px;
+      text-align: center;
+      z-index: 10000;
+      font-family: 'Cinzel Decorative', serif;
+      box-shadow: 0 0 50px rgba(212,175,55,0.4);
+      animation: mysteryAppear 0.5s ease;
+    `;
+    
+    notification.innerHTML = `
+      <h2 style="color: #D4AF37; margin: 0 0 15px 0; font-size: 1.5rem;">${mystery.name}</h2>
+      <p style="color: #FFFAF0; font-size: 1rem; line-height: 1.6;">${mystery.text}</p>
+      <p style="color: #D4AF37; margin-top: 20px; font-style: italic;">Contemplemos este misterio...</p>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+      notification.style.transition = 'opacity 1s ease';
+      notification.style.opacity = '0';
+      setTimeout(() => notification.remove(), 1000);
+    }, 5000);
+  }
+
+  _showPrayerText(text, prayerName) {
+    const existing = document.getElementById('prayer-text-overlay');
+    if (existing) existing.remove();
+    
+    const overlay = document.createElement('div');
+    overlay.id = 'prayer-text-overlay';
+    overlay.style.cssText = `
+      position: fixed;
+      bottom: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(20, 10, 40, 0.9);
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      border-radius: 15px;
+      padding: 20px 40px;
+      max-width: 600px;
+      text-align: center;
+      z-index: 5000;
+      font-family: 'EB Garamond', serif;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+    `;
+    
+    overlay.innerHTML = `
+      <h3 style="color: #D4AF37; margin: 0 0 10px 0; font-size: 1.2rem;">${prayerName}</h3>
+      <p style="color: #FFFAF0; font-size: 1rem; line-height: 1.6;">${text}</p>
+    `;
+    
+    document.body.appendChild(overlay);
+    
+    setTimeout(() => {
+      overlay.style.transition = 'opacity 1s ease';
+      overlay.style.opacity = '0';
+      setTimeout(() => overlay.remove(), 1000);
+    }, 4000);
+  }
+
+  _speakPrayer(text) {
+    if (!('speechSynthesis' in window)) return;
+    
+    window.speechSynthesis.cancel();
+    
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'es-ES';
+    utterance.rate = 0.85;
+    utterance.pitch = 0.9;
+    
+    window.speechSynthesis.speak(utterance);
+  }
+
+  _buildRosaryUI() {
+    const ui = document.createElement('div');
+    ui.id = 'rosary-ui';
+    ui.style.cssText = `
+      position: fixed;
+      bottom: 5rem;
+      right: 20px;
+      left: auto;
+      background: linear-gradient(180deg, rgba(3,8,16,0.88) 0%, rgba(3,8,16,0.75) 100%);
+      border: 1px solid rgba(240,192,96,0.15);
+      border-radius: 15px 15px 8px 8px;
+      padding: 0;
+      z-index: 2000;
+      font-family: 'EB Garamond', serif;
+      min-width: 260px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4), 0 -2px 15px rgba(240,192,96,0.05);
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      backdrop-filter: blur(8px);
+    `;
+
+    const tab = document.createElement('div');
+    tab.id = 'rosary-tab';
+    tab.style.cssText = `
+      display: none;
+      position: fixed;
+      bottom: 5rem;
+      right: 20px;
+      left: auto;
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(180deg, rgba(3,8,16,.88) 0%, rgba(3,8,16,.75) 100%);
+      border: 1px solid rgba(240,192,96,.15);
+      border-radius: 50%;
+      z-index: 1999;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(240,192,96,.08);
+      transition: all 0.3s ease;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      backdrop-filter: blur(12px);
+    `;
+    tab.innerHTML = '📿';
+    tab.title = 'Abrir panel del Rosario';
+    tab.onclick = () => this._toggleRosaryUIPanel();
+    document.body.appendChild(tab);
+    this._rosaryTab = tab;
+
+    ui.innerHTML = `
+      <div style="padding: 15px 15px 10px 15px; border-bottom: 1px solid rgba(212,175,55,0.2);">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="color: #D4AF37; font-size: 1.1rem; font-family: 'Cinzel Decorative', serif;">
+            📿 Santo Rosario
+          </div>
+          <button id="btn-collapse" style="background:none; border:none; color:#D4AF37; font-size:1.2rem; cursor:pointer; padding:0;">✕</button>
+        </div>
+      </div>
+      <div style="padding: 8px 15px;">
+        <button id="btn-como-rezar" style="width:100%; padding: 10px; background: rgba(240,192,96,.07); border: 1px solid rgba(240,192,96,.2); color: #f0c060; border-radius: 2rem; cursor: pointer; font-family: 'EB Garamond', serif; font-size: 0.9rem; letter-spacing: 0.07em; backdrop-filter: blur(12px); transition: all 0.28s cubic-bezier(.4,0,.2,1);">📖 ¿Cómo rezar el Santo Rosario?</button>
+      </div>
+      <div id="mystery-name" style="color: #FFFAF0; font-size: 0.95rem; padding: 10px 15px 5px;">
+        Selecciona un grupo de misterios
+      </div>
+      <div id="prayer-name" style="color: #AAAAAA; font-size: 0.85rem; padding: 0 15px 10px;">
+        --
+      </div>
+      <div style="padding: 0 15px 10px;">
+        <button id="btn-gozosos" style="width:48%; padding: 8px; background: rgba(212,175,55,0.15); border: 1px solid #D4AF37; color: #D4AF37; border-radius: 8px; cursor: pointer; font-family: 'EB Garamond', serif;">
+          <div>Gozosos</div>
+          <div style="font-size: 0.6rem; color: rgba(212,175,55,0.6); margin-top: 2px;">Lun y Sáb</div>
+        </button>
+        <button id="btn-dolorosos" style="width:48%; padding: 8px; background: rgba(139,0,0,0.2); border: 1px solid #8B0000; color: #FFAAAB; border-radius: 8px; cursor: pointer; font-family: 'EB Garamond', serif;">
+          <div>Dolorosos</div>
+          <div style="font-size: 0.6rem; color: rgba(255,170,171,0.6); margin-top: 2px;">Mar y Vie</div>
+        </button>
+      </div>
+      <div style="padding: 0 15px 10px;">
+        <button id="btn-gloriosos" style="width:48%; padding: 8px; background: rgba(255,215,0,0.15); border: 1px solid #FFD700; color: #FFD700; border-radius: 8px; cursor: pointer; font-family: 'EB Garamond', serif;">
+          <div>Gloriosos</div>
+          <div style="font-size: 0.6rem; color: rgba(255,215,0,0.6); margin-top: 2px;">Mié y Dom</div>
+        </button>
+        <button id="btn-luminosos" style="width:48%; padding: 8px; background: rgba(100,149,237,0.2); border: 1px solid #6495ED; color: #ADD8E6; border-radius: 8px; cursor: pointer; font-family: 'EB Garamond', serif;">
+          <div>Luminosos</div>
+          <div style="font-size: 0.6rem; color: rgba(173,216,230,0.6); margin-top: 2px;">Jueves</div>
+        </button>
+      </div>
+      <div id="mystery-today-panel" style="padding: 5px 15px 8px; text-align: center; background: rgba(240,192,96,.04); border-radius: 5px; margin: 0 15px 8px;"></div>
+      <div id="mystery-list" style="display: none; padding: 10px 15px; border-top: 1px solid rgba(212,175,55,0.2); max-height: 200px; overflow-y: auto;">
+      </div>
+      <div style="padding: 10px 15px; border-top: 1px solid rgba(212,175,55,0.2);">
+        <div style="color: #AAAAAA; font-size: 0.8rem; margin-bottom: 5px;">
+          Cuenta: <span id="bead-count" style="color: #FFFAF0;">0</span> / 59
+        </div>
+        <div style="background: rgba(255,255,255,0.1); border-radius: 5px; height: 6px; margin-bottom: 12px;">
+          <div id="progress-bar" style="background: linear-gradient(90deg, #D4AF37, #FFD700); height: 100%; border-radius: 5px; width: 0%; transition: width 0.3s ease;"></div>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button id="btn-pause" style="flex:1; padding: 10px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); color: #FFFAF0; border-radius: 8px; cursor: pointer; font-family: 'EB Garamond', serif;">⏸ Pausar</button>
+          <button id="btn-reset" style="flex:1; padding: 10px; background: rgba(255,100,100,0.15); border: 1px solid rgba(255,100,100,0.4); color: #FFAAAA; border-radius: 8px; cursor: pointer; font-family: 'EB Garamond', serif;">🔄 Reiniciar</button>
+        </div>
+      </div>
+      <div style="color: #888888; font-size: 0.75rem; padding: 10px 15px; text-align: center;">
+        Haz clic en las cuentas del rosario 3D para rezar
+      </div>
+    `;
+    
+    document.body.appendChild(ui);
+    this._rosaryUIPanel = ui;
+    
+    document.getElementById('btn-collapse').onclick = () => this._toggleRosaryUIPanel();
+    document.getElementById('btn-como-rezar').onclick = () => this._showComoRezar();
+    document.getElementById('btn-gozosos').onclick = () => this._selectMysteryGroup(0);
+    document.getElementById('btn-dolorosos').onclick = () => this._selectMysteryGroup(1);
+    document.getElementById('btn-gloriosos').onclick = () => this._selectMysteryGroup(2);
+    document.getElementById('btn-luminosos').onclick = () => this._selectMysteryGroup(3);
+    document.getElementById('btn-pause').onclick = () => this._toggleRosaryPause();
+    document.getElementById('btn-reset').onclick = () => this._resetRosary();
+    
+    const dayOfWeek = new Date().getDay();
+    const mysteryMap = {
+      0: { name: 'Gloriosos', color: '#FFD700' },
+      1: { name: 'Gozosos', color: '#FFB6C1' },
+      2: { name: 'Dolorosos', color: '#FFAAAB' },
+      3: { name: 'Gloriosos', color: '#FFD700' },
+      4: { name: 'Luminosos', color: '#ADD8E6' },
+      5: { name: 'Dolorosos', color: '#FFAAAB' },
+      6: { name: 'Gozosos', color: '#FFB6C1' }
+    };
+    const today = mysteryMap[dayOfWeek];
+    const todayEl = document.getElementById('mystery-today-panel');
+    if (todayEl) {
+      todayEl.innerHTML = `<span style="color: rgba(255,255,255,.5); font-size: 0.7rem;">Hoy: </span><span style="color: ${today.color}; font-weight: bold; font-size: 0.75rem;">${today.name}</span>`;
+    }
+  }
+
+  _showComoRezar() {
+    const modal = document.createElement('div');
+    modal.id = 'como-rezar-modal';
+    modal.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(0deg, rgba(3,8,16,.96) 0%, rgba(3,8,16,.85) 100%);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(14px);
+      animation: fadeIn 0.3s ease;
+    `;
+    
+    modal.innerHTML = `
+      <div style="
+        background: linear-gradient(0deg, rgba(3,8,16,.97) 0%, rgba(3,8,16,.92) 100%);
+        border: 1px solid rgba(240,192,96,.22);
+        border-radius: 20px;
+        max-width: 550px;
+        width: 90%;
+        max-height: 85vh;
+        overflow-y: auto;
+        padding: 30px;
+        font-family: 'EB Garamond', serif;
+        box-shadow: 0 0 30px rgba(240,192,96,.08), inset 0 0 40px rgba(240,192,96,.02);
+        position: relative;
+      ">
+        <button id="btn-cerrar-como-rezar" style="
+          position: absolute;
+          top: 15px;
+          right: 20px;
+          background: none;
+          border: none;
+          color: #f0c060;
+          font-size: 1.5rem;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        ">✕</button>
+        
+        <h2 style="color: #f0c060; font-family: 'Cinzel Decorative', serif; font-size: 1.4rem; margin: 0 0 20px 0; text-align: center; text-shadow: 0 0 20px rgba(240,192,96,.3);">
+          📿 Cómo rezar el Santo Rosario
+        </h2>
+        
+        <div style="color: rgba(255,254,245,.85); font-size: 1rem; line-height: 1.7;">
+          <div style="margin-bottom: 18px;">
+            <h3 style="color: #f0c060; font-size: 1.1rem; margin: 0 0 8px 0;">🙏 Paso 1: Señal de la Cruz</h3>
+            <p style="margin: 0; color: rgba(255,255,255,.7);">En el nombre del Padre, del Hijo y del Espíritu Santo. Amén.</p>
+          </div>
+          
+          <div style="margin-bottom: 18px;">
+            <h3 style="color: #f0c060; font-size: 1.1rem; margin: 0 0 8px 0;">📜 Paso 2: El Credo</h3>
+            <p style="margin: 0; color: rgba(255,255,255,.7);">Profesión de fe. Se reza en la primera cuenta grande.</p>
+          </div>
+          
+          <div style="margin-bottom: 18px;">
+            <h3 style="color: #f0c060; font-size: 1.1rem; margin: 0 0 8px 0;">🙏 Paso 3: Padre Nuestro</h3>
+            <p style="margin: 0; color: rgba(255,255,255,.7);">Se reza en la siguiente cuenta grande.</p>
+          </div>
+          
+          <div style="margin-bottom: 18px;">
+            <h3 style="color: #f0c060; font-size: 1.1rem; margin: 0 0 8px 0;">🌹 Paso 4: 3 Ave Marías</h3>
+            <p style="margin: 0; color: rgba(255,255,255,.7);">Tres cuentas pequeñas. Se piden las virtudes de fe, esperanza y caridad.</p>
+          </div>
+          
+          <div style="margin-bottom: 18px;">
+            <h3 style="color: #f0c060; font-size: 1.1rem; margin: 0 0 8px 0;">⭐ Paso 5: Gloria</h3>
+            <p style="margin: 0; color: rgba(255,255,255,.7);">Gloria al Padre, al Hijo y al Espíritu Santo...</p>
+          </div>
+          
+          <div style="margin-bottom: 18px; padding: 12px; background: rgba(240,192,96,.06); border-radius: 10px; border: 1px solid rgba(240,192,96,.15);">
+            <h3 style="color: #f0c060; font-size: 1.1rem; margin: 0 0 8px 0;">📖 Paso 6: Los Misterios</h3>
+            <p style="margin: 0 0 8px 0; color: rgba(255,255,255,.7);">Elige un grupo de misterios (Gozosos, Dolorosos, Gloriosos o Luminosos). Cada grupo tiene 5 misterios:</p>
+            <ul style="margin: 0; padding-left: 20px; color: rgba(255,255,255,.7);">
+              <li>1 Padre Nuestro (cuenta grande)</li>
+              <li>10 Ave Marías (cuentas pequeñas)</li>
+              <li>1 Gloria</li>
+              <li>1 Jaculatoria: "Oh Jesús mío, perdónanos..."</li>
+            </ul>
+          </div>
+          
+          <div style="margin-bottom: 18px; padding: 12px; background: rgba(240,192,96,.06); border-radius: 10px; border: 1px solid rgba(240,192,96,.15);">
+            <h3 style="color: #f0c060; font-size: 1.1rem; margin: 0 0 10px 0;">📅 Misterios según el día</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+              <div style="padding: 6px 8px; background: rgba(255,255,255,.03); border-radius: 6px; border-left: 3px solid #FFB6C1;">
+                <div style="color: #FFB6C1; font-size: 0.75rem; font-weight: bold;">Lunes y Sábado</div>
+                <div style="color: rgba(255,255,255,.7); font-size: 0.8rem;">Gozosos</div>
+              </div>
+              <div style="padding: 6px 8px; background: rgba(255,255,255,.03); border-radius: 6px; border-left: 3px solid #8B0000;">
+                <div style="color: #FFAAAB; font-size: 0.75rem; font-weight: bold;">Martes y Viernes</div>
+                <div style="color: rgba(255,255,255,.7); font-size: 0.8rem;">Dolorosos</div>
+              </div>
+              <div style="padding: 6px 8px; background: rgba(255,255,255,.03); border-radius: 6px; border-left: 3px solid #FFD700;">
+                <div style="color: #FFD700; font-size: 0.75rem; font-weight: bold;">Miércoles y Domingo</div>
+                <div style="color: rgba(255,255,255,.7); font-size: 0.8rem;">Gloriosos</div>
+              </div>
+              <div style="padding: 6px 8px; background: rgba(255,255,255,.03); border-radius: 6px; border-left: 3px solid #6495ED;">
+                <div style="color: #ADD8E6; font-size: 0.75rem; font-weight: bold;">Jueves</div>
+                <div style="color: rgba(255,255,255,.7); font-size: 0.8rem;">Luminosos</div>
+              </div>
+            </div>
+            <div id="mystery-today" style="margin-top: 10px; padding: 8px; background: rgba(240,192,96,.08); border-radius: 8px; text-align: center;"></div>
+          </div>
+          
+          <div style="margin-bottom: 18px;">
+            <h3 style="color: #f0c060; font-size: 1.1rem; margin: 0 0 8px 0;">🎯 Cómo usar este Rosario 3D</h3>
+            <ul style="margin: 0; padding-left: 20px; color: rgba(255,255,255,.7);">
+              <li>Haz clic en cada cuenta dorada para avanzar</li>
+              <li>Cada cuenta muestra la oración correspondiente</li>
+              <li>La voz te guía leyendo cada oración</li>
+              <li>Al completar un misterio verás una notificación especial</li>
+            </ul>
+          </div>
+          
+          <div style="text-align: center; padding: 15px; background: rgba(240,192,96,.05); border-radius: 10px; border: 1px solid rgba(240,192,96,.1);">
+            <p style="color: #f0c060; font-style: italic; margin: 0; font-size: 1.05rem;">
+              "El Rosario es el arma más poderosa contra el infierno"<br>
+              <span style="font-size: 0.85rem; color: rgba(255,255,255,.5);">— San Pío de Pietrelcina</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    const dayOfWeek = new Date().getDay();
+    const mysteryMap = {
+      0: { name: 'Gloriosos', color: '#FFD700' },
+      1: { name: 'Gozosos', color: '#FFB6C1' },
+      2: { name: 'Dolorosos', color: '#FFAAAB' },
+      3: { name: 'Gloriosos', color: '#FFD700' },
+      4: { name: 'Luminosos', color: '#ADD8E6' },
+      5: { name: 'Dolorosos', color: '#FFAAAB' },
+      6: { name: 'Gozosos', color: '#FFB6C1' }
+    };
+    const today = mysteryMap[dayOfWeek];
+    const todayEl = document.getElementById('mystery-today');
+    if (todayEl) {
+      todayEl.innerHTML = `<span style="color: rgba(255,255,255,.6); font-size: 0.85rem;">Hoy toca: </span><span style="color: ${today.color}; font-weight: bold; font-size: 0.95rem;">${today.name}</span>`;
+    }
+    
+    document.getElementById('btn-cerrar-como-rezar').onclick = () => {
+      modal.style.transition = 'opacity 0.3s ease';
+      modal.style.opacity = '0';
+      setTimeout(() => modal.remove(), 300);
+    };
+    
+    modal.onclick = (e) => {
+      if (e.target === modal) {
+        modal.style.transition = 'opacity 0.3s ease';
+        modal.style.opacity = '0';
+        setTimeout(() => modal.remove(), 300);
+      }
+    };
+  }
+
+  _toggleRosaryUIPanel() {
+    const ui = this._rosaryUIPanel;
+    const tab = this._rosaryTab;
+    
+    if (ui.style.display === 'none') {
+      ui.style.display = 'block';
+      ui.style.opacity = '1';
+      tab.style.display = 'none';
+    } else {
+      ui.style.display = 'none';
+      tab.style.display = 'flex';
+    }
+  }
+
+  _showMysteryList(groupIndex) {
+    const listContainer = document.getElementById('mystery-list');
+    const group = this._rosaryData.mysteries[groupIndex];
+    const color = group.color;
+    
+    listContainer.style.display = 'block';
+    listContainer.innerHTML = `<div style="color: ${color}; font-size: 0.9rem; margin-bottom: 8px; font-family: 'Cinzel Decorative', serif;">${group.name}</div>`;
+    
+    group.mysteries.forEach((mystery, idx) => {
+      const btn = document.createElement('div');
+      btn.style.cssText = `
+        padding: 8px 10px;
+        margin: 4px 0;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(212,175,55,0.2);
+        border-radius: 8px;
+        color: #FFFAF0;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      `;
+      btn.textContent = `${idx + 1}. ${mystery.name}`;
+      btn.onmouseenter = () => {
+        btn.style.background = 'rgba(212,175,55,0.15)';
+        btn.style.borderColor = color;
+      };
+      btn.onmouseleave = () => {
+        btn.style.background = 'rgba(255,255,255,0.05)';
+        btn.style.borderColor = 'rgba(212,175,55,0.2)';
+      };
+      btn.onclick = () => {
+        this._showMysteryNotification(mystery);
+      };
+      listContainer.appendChild(btn);
+    });
+  }
+
+  _selectMysteryGroup(groupIndex) {
+    this._rosaryData.currentMystery = groupIndex;
+    const groupName = this._rosaryData.mysteries[groupIndex].name;
+    document.getElementById('mystery-name').textContent = groupName;
+    this._showMysteryList(groupIndex);
+    this.toast(`📿 ${groupName} seleccionado`);
+  }
+
+  _toggleRosaryPause() {
+    this._rosaryData.isPaused = !this._rosaryData.isPaused;
+    const btn = document.getElementById('btn-pause');
+    btn.textContent = this._rosaryData.isPaused ? '▶ Reanudar' : '⏸ Pausar';
+  }
+
+  _resetRosary() {
+    this._rosaryData.currentBead = 0;
+    this._rosaryData.currentDecade = 0;
+    this._rosaryData.activeBead = null;
+    
+    this._rosaryData.beads.forEach(bead => {
+      bead.material.emissiveIntensity = bead.userData.isLarge ? 0.02 : 0.05;
+    });
+    
+    this._updateRosaryUI();
+    this.toast('🔄 Rosario reiniciado');
+  }
+
+  _updateRosaryUI() {
+    const count = this._rosaryData.currentBead;
+    document.getElementById('bead-count').textContent = count;
+    document.getElementById('progress-bar').style.width = (count / 59 * 100) + '%';
+    
+    if (this._rosaryData.activeBead && this._rosaryData.activeBead.userData.prayer) {
+      document.getElementById('prayer-name').textContent = this._rosaryData.activeBead.userData.prayer.name;
+    }
+  }
+
+  _animateRosary(t) {
+    if (!this.rosaryGroup) return;
+    
+    this.rosaryGroup.traverse(child => {
+      if (child.userData.type === 'rosaryBead') {
+        const sway = Math.sin(t * 0.5 + child.position.x * 2) * 0.003;
+        child.rotation.z = sway;
+      }
+    });
+  }
 
   // ══════════════════════════════════════════════════
   //  AGUA BENDITA con shader avanzado
@@ -1326,6 +2383,25 @@ class DivineExperience {
     // Ya no se usa canvas - el shader maneja la animación
     if (this._waterMaterial) {
       this._waterMaterial.uniforms.uTime.value = t;
+    }
+  }
+
+  _animateRoses(t) {
+    if (!this.flowerGroup) return;
+    
+    this.flowerGroup.traverse(child => {
+      if (child.userData.isRose && child.userData.swayOffset !== undefined) {
+        const sway = Math.sin(t * child.userData.swaySpeed + child.userData.swayOffset) * 0.015;
+        child.rotation.x = sway;
+        child.rotation.z = sway * 0.5;
+      }
+    });
+    
+    if (this._roseLight) {
+      this._roseLight.intensity = 0.5 + Math.sin(t * 0.8) * 0.15 + Math.sin(t * 1.3) * 0.08;
+    }
+    if (this._roseSpot) {
+      this._roseSpot.intensity = 0.35 + Math.sin(t * 0.6 + 1) * 0.1;
     }
   }
 
@@ -1613,10 +2689,41 @@ class DivineExperience {
   }
 
   _animateFlowers(){
-    let t=0; const fg=this.flowerGroup;
-    const tick=()=>{
-      t+=.12; fg.scale.setScalar(1+Math.sin(t)*.06);
-      if(t<Math.PI) requestAnimationFrame(tick); else fg.scale.setScalar(1);
+    if (!this.flowerGroup) return;
+    
+    const fg = this.flowerGroup;
+    let t = 0;
+    let roseGlow = null;
+    
+    fg.traverse(child => {
+      if (child.isMesh && child.material && child.material.emissive) {
+        child.userData.originalEmissive = child.material.emissive.clone();
+        child.userData.originalEmissiveIntensity = child.material.emissiveIntensity || 0.15;
+      }
+    });
+    
+    const tick = () => {
+      t += 0.05;
+      const glowIntensity = Math.sin(t) * 0.5 + 0.5;
+      
+      fg.traverse(child => {
+        if (child.isMesh && child.material && child.material.emissive) {
+          const gold = new THREE.Color(0xFFD700);
+          child.material.emissive.copy(gold);
+          child.material.emissiveIntensity = 0.3 + glowIntensity * 0.5;
+        }
+      });
+      
+      if (t < Math.PI * 2) {
+        requestAnimationFrame(tick);
+      } else {
+        fg.traverse(child => {
+          if (child.isMesh && child.material && child.userData.originalEmissive) {
+            child.material.emissive.copy(child.userData.originalEmissive);
+            child.material.emissiveIntensity = child.userData.originalEmissiveIntensity;
+          }
+        });
+      }
     };
     tick();
   }
@@ -1863,6 +2970,10 @@ class DivineExperience {
     this.controls.update();
     this._drawWater(T);
     this._tickFSM(performance.now());
+    this._animateRoses(T);
+    this._animateRosary(T);
+    this._animateRosaryParticles(T);
+    this._checkIdleStatus();
 
     // ── Velas con flicker orgánico (4 frecuencias) ──
     this.candles.forEach((c,i)=>{
@@ -1930,16 +3041,8 @@ class DivineExperience {
       r.material.opacity=.012+Math.sin(T*.55+r.userData.phase)*.016;
     });
 
-    // ── Rosas realistas (respiración suave) ──
-    if (this.flowerGroup) {
-      this.flowerGroup.children.forEach(rose => {
-        if (rose.userData.breathOffset !== undefined) {
-          const breath = Math.sin(T * rose.userData.breathSpeed + rose.userData.breathOffset);
-          rose.scale.setScalar(rose.scale.x * (1 + breath * 0.015));
-        }
-      });
-      this.flowerGroup.rotation.z = Math.sin(T * 0.4) * 0.014;
-    }
+    // ── Flores (meceo suave) ──
+    if(this.flowerGroup) this.flowerGroup.rotation.z=Math.sin(T*.4)*.014;
 
     // ── Agua ──
     if(this._waterLight) this._waterLight.intensity=.7+Math.sin(T*1.8)*.35;
@@ -2049,5 +3152,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   window.app = app;
 });
 </script>
+
+// ✅ ROSARIO INTERACTIVO ULTRA — Cuentas clickeables + Sistema de Misterios para el Santo Sagrario
 </body>
 </html>

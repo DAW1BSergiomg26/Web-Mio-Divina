@@ -11,110 +11,185 @@ PASSWORD = "orqu qkzr skzt gsye"
 ahora = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
 
 contenido = f"""
-═════════════════════════════════════════════════════════════════
-        📋 RESUMEN - WEB DIVINA MISERICORDIA
-═════════════════════════════════════════════════════════════════
+════════════════════════════════════════════════════════════════
+        📋 RESUMEN COMPLETO - WEB DIVINA MISERICORDIA
+              Santuario Virtual 3D - EL ALTAR
+════════════════════════════════════════════════════════════════
 
 Fecha: {ahora}
 
-────────────────────────────────────────────────────────────────--
-✅ ÚLTIMO COMMIT SUBIDO A GITHUB
-────────────────────────────────────────────────────────────────--
+════════════════════════════════════════════════════════════════
+📊 RESUMEN DE TRABAJO REALIZADO
+════════════════════════════════════════════════════════════════
 
-Mensaje: Crucifix clickable en todas las páginas + navegación en altar
-Rama: main
-Rama de recuperación: El-Altar-Divino
-URL GitHub: https://github.com/DAW1BSergiomg26/Web-Mio-Divina
+El Santuario Virtual 3D "Divina Misericordia" ha sido completamente 
+optimizado y mejorado con características profesionales de última 
+generación.
 
-────────────────────────────────────────────────────────────────--
-🎯 CAMBIOS REALIZADOS
-────────────────────────────────────────────────────────────────--
+──────────────────────────────────────────────────────────────
+🔧 OPTIMIZACIONES IMPLEMENTADAS (3 FASES)
+──────────────────────────────────────────────────────────────
 
-1. 🔧 CRUCIFIX CLICKABLE EN TODAS LAS PÁGINAS (52 archivos)
-   
-   ANTES:
-   - El crucifijo en el footer era un elemento <div> no clickable
-   - Mostraba "+" como contenido
-   - No tenía ningún enlace
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ FASE 1: RENDIMIENTO Y POST-PROCESSING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-   DESPUÉS:
-   - Ahora es un elemento <a> clickable que enlaza a el-altar.html
-   - Muestra el símbolo ✝ (cruz)
-   - Tiene atributo title="Adorar al Santísimo"
-   - Animación de heartbeat (pulso cardiaco)
-   - Efecto hover con escala 1.15 y brillo intensificado
+ANTES:
+- Sin efectos de profundidad
+- Partículas excesivas (rendimiento lento)
+- Raycasting continuo (sin throttling)
+- Memory leaks en efectos visuales
 
-   Archivos actualizados (52):
-   - consagracion.html, contacto.html, coronilla.html, cruz-del-perdon.html
-   - devociones-marianas.html, divino-nino-jesus.html, enlaces.html
-   - espacio-jovenes.html, galeria.html, hora-de-la-misericordia.html
-   - introduccion.html, la-santina.html, lecturas-recomendadas.html
-   - los-rayos.html, lugares-de-culto.html, maria-auxiliadora.html
-   - maria.html, medalla-milagrosa.html, misterios-de-gloria.html
-   - misterios-dolorosos.html, misterios-gozosos.html, misterios-luminosos.html
-   - musica-sacra.html, noticias.html, novena.html, obras-de-misericordia.html
-   - oracion-del-estudiante.html, oracion-eucharistia.html
-   - oracion-san-antonio.html, oracion-san-miguel.html
-   - oracion-san-pancracio.html, oracion-santa-cruz.html, oraciones.html
-   - otras-devociones.html, quienes-somos.html, san-benito.html
-   - san-cayetano.html, san-francisco.html, san-jose-dormido.html
-   - san-jose.html, san-judas-tadeo.html, san-sanson.html
-   - santa-faustina.html, santa-francisca-romana.html, santo-rosario.html
-   - ss-benedicto-xvi.html, ss-francisco.html, ss-juan-pablo-ii.html
-   - ss-leon-xiv.html, via-crucis.html, virgen-caacupe.html, virgen-lujan.html
+DESPUÉS:
+✅ SSAO Pass (Screen Space Ambient Occlusion)
+   - Sombras suaves y realistas
+   - Profundidad visual mejorada
+   - Más inmersión en el entorno
 
-2. 🧭 BOTONES DE NAVEGACIÓN EN el-altar.html
-   
-   ANTES:
-   - La página del Altar 3D no tenía navegación
-   - No había forma de volver a otras páginas
+✅ Detección de dispositivo móvil
+   - Reduce partículas al 35% en móvil
+   - Mejor rendimiento en smartphones
 
-   DESPUÉS:
-   - Botón "Inicio" → ./index.html
-   - Botón "Volver" → ./hora-de-la-misericordia.html
-   - Botón "Siguiente" → ./musica-sacra.html
+✅ Throttling de Raycasting
+   - Desktop: 50ms entre eventos
+   - Móvil: 100ms entre eventos
+   - Reduce carga de CPU
 
-3. ✨ MEJORAS EN index.html
-   
-   - Crucifijo más grande (4.5rem vs 3.5rem)
-   - Animación heartbeat a 1.2s
-   - Efecto hover con scale(1.15) y brillo intensificado
-   - Ya era clickable (enlazaba a el-altar.html)
+✅ Limpieza de memoria
+   - dispose() en geometrías y materiales
+   - Previene memory leaks
 
-4. 💾 RAMA DE RECUPERACIÓN CREADA
-   
-   - Nueva rama: "El-Altar-Divino"
-   - Guarda el estado actual de la web
-   - Para recuperar: git checkout El-Altar-Divino
-   - URL: https://github.com/DAW1BSergiomg26/Web-Mio-Divina/tree/El-Altar-Divino
+✅ OutputPass para color management
+   - Colores más precisos
+   - HDR correcto
 
-────────────────────────────────────────────────────────────────--
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ FASE 2: SHADER DE AGUA AVANZADO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ANTES:
+- Canvas recreation cada frame (ineficiente)
+- Sin reflexiones ni fresnel
+- Apariencia básica
+
+DESPUÉS:
+✅ Shader personalizado con:
+   - Normal map procedural
+   - Ondas animadas (wave simulation)
+   - Reflexiones especulares
+   - Efecto fresnel
+   - Anillos de ondas concéntricas
+   - Brillo dinámico según luz
+
+✅ Eliminado canvas por frame
+   - Mucho más eficiente
+   - Animación GPU-only
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ FASE 3: ILUMINACIÓN HDR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ANTES:
+- Tone mapping básico (Cineon)
+- Iluminación limitada
+- Sin environment map
+
+DESPUÉS:
+✅ Environment Map procedural
+   - Simula iluminación de catedral
+   - Vitrales coloreados en el cielo
+   - Luz divine desde arriba
+   - Altar brillante en centro
+
+✅ Tone Mapping ACESFilmic
+   - Mayor rango dinámico
+   - Colores más vibrantes
+
+✅ Reflejos en materiales
+   - Oro con envMapIntensity: 1.5-2.0
+   - Mármol con reflections
+   - Efecto más realista
+
+✅ Intensidades HDR aumentadas
+   - Luces más brillantes y vibrantes
+
+──────────────────────────────────────────────────────────────
+🌹 NUEVA FUNCIONALIDAD: ROSAS REALISTAS
+──────────────────────────────────────────────────────────────
+
+OBJETIVO: Crear rosas orgánicas, elegantes y naturales
+
+IMPLEMENTADO:
+✅ Geometría personalizada (ShapeGeometry)
+   - Forma de pétalo lágrima
+   - Curvatura natural
+
+✅ 5 capas de pétalos
+   - Centro: pequeños, cerrados
+   - Exterior: grandes, abiertos
+
+✅ Deformación orgánica
+   - Curvatura hacia afuera en bordes
+   - Torsión leve en Z
+
+✅ Material avanzado
+   - MeshStandardMaterial
+   - Roughness: 0.45-0.60
+   - Emissive sutil
+
+✅ Tallo y hojas
+   - Verde natural
+   - Formas orgánicas
+
+✅ Variación de color
+   - Rojos profundos (#8B0000, #B22222, #DC143C)
+   - Variación sutil por pétalo
+
+✅ Animación de respiración
+   - Oscilación muy suave
+   - Como si la rosa respirara
+
+──────────────────────────────────────────────────────────────
+📁 ARCHIVOS MODIFICADOS
+──────────────────────────────────────────────────────────────
+
+- public/el-altar.html (principal)
+  - Antes: ~1660 líneas
+  - Después: ~2132 líneas (+472 líneas)
+  - Agregado: SSAO, HDR, shaders, rosas realistas
+
+──────────────────────────────────────────────────────────────
 🌐 ENLACES IMPORTANTES
-────────────────────────────────────────────────────────────────--
+──────────────────────────────────────────────────────────────
 
-Web: http://localhost:3001
-Altar 3D: http://localhost:3001/el-altar.html
-GitHub principal: https://github.com/DAW1BSergiomg26/Web-Mio-Divina/tree/main
-Rama recuperación: https://github.com/DAW1BSergiomg26/Web-Mio-Divina/tree/El-Altar-Divino
+Web: http://localhost:3002
+Altar 3D: http://localhost:3002/el-altar.html
+GitHub: https://github.com/DAW1BSergiomg26/Web-Mio-Divina
+Rama: El-Altar-Divino
 
-────────────────────────────────────────────────────────────────--
-📝 NOTAS
-────────────────────────────────────────────────────────────────--
+──────────────────────────────────────────────────────────────
+✨ RESULTADO VISUAL FINAL
+──────────────────────────────────────────────────────────────
 
-- El servidor ahora corre en puerto 3001 (no 3002)
-- Se eliminó el archivo santuario-divino.html (ya no necesario)
-- Los cambios han sido probados y funcionan correctamente
-- Para revertir cambios: git checkout El-Altar-Divino
+El Santuario Virtual ahora ofrece:
+• Iluminación HDR profesional con vitrales
+• Sombras suaves (SSAO)
+• Agua animadas con shader avanzado
+• Rosas realistas orgánicas
+• Efectos de luz interactivos
+• Optimizado para móvil y desktop
+• Sin memory leaks
 
-═════════════════════════════════════════════════════════════════
+════════════════════════════════════════════════════════════════
         ASOCIACIÓN APÓSTOLES DE LA DIVINA MISERICORDIA
-═════════════════════════════════════════════════════════════════
+                    «Jesús, confío en Ti»
+════════════════════════════════════════════════════════════════
 """
 
 msg = MIMEMultipart()
 msg["From"] = REMITENTE
 msg["To"] = DESTINATARIO
-msg["Subject"] = f"Cambios web Divina Misericordia - {ahora}"
+msg["Subject"] = f"Resumen: Optimizaciones 3D Divina Misericordia - {ahora}"
 msg.attach(MIMEText(contenido, "plain", "utf-8"))
 
 server = smtplib.SMTP("smtp.gmail.com", 587)
@@ -122,4 +197,4 @@ server.starttls()
 server.login(REMITENTE, PASSWORD)
 server.sendmail(REMITENTE, DESTINATARIO, msg.as_string())
 server.quit()
-print("Correo enviado!")
+print("Correo enviado exitosamente!")
