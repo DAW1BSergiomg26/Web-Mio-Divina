@@ -578,17 +578,53 @@ nav a.nav-otras-devociones::after {
   color: var(--gold-light);
   letter-spacing: 2px;
 }
-.cross {
-  font-size: 3.5rem;
-  color: #ffd700;
-  text-shadow:
-    0 0 20px #ffd700,
-    0 0 40px #ffb700,
-    0 0 60px #ff8c00,
-    0 0 80px #ffd700;
-  margin-bottom: 15px;
-  animation: crossPulse 1.5s ease-in-out infinite;
-  display: block;
+.main-footer .cross-glow {
+  font-size: 4.5rem; 
+  color: var(--gold);
+  text-shadow: 
+    0 0 30px rgba(212,175,55,0.8), 
+    0 0 60px rgba(212,175,55,0.5),
+    0 0 100px rgba(212,175,55,0.3),
+    0 0 150px rgba(255,100,50,0.4);
+  margin-bottom: 15px; 
+  animation: heartBeat 1.2s ease-in-out infinite;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s;
+  display: inline-block;
+  text-decoration: none;
+}
+.main-footer .cross-glow:hover {
+  transform: scale(1.15);
+  text-shadow: 
+    0 0 40px rgba(255,215,0,1), 
+    0 0 80px rgba(212,175,55,0.9),
+    0 0 120px rgba(212,175,55,0.6),
+    0 0 180px rgba(255,100,50,0.6);
+}
+.main-footer .cross-glow::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: crossBreath 3s ease-in-out infinite;
+  z-index: -1;
+}
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.08); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.05); }
+  60% { transform: scale(1); }
+}
+@keyframes crossBreath {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+  50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.8; }
 }
 @keyframes crossPulse {
   0%,100% {
@@ -1062,10 +1098,106 @@ nav a.nav-otras-devociones::after {
 
 <!-- ====== FOOTER PRINCIPAL ====== -->
 <footer class="main-footer sacred-footer">
-    <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">✝</a>
-    <p class="tagline">Jesús, En Vos Confío</p>
-    <p>© 2026 — Portal de la Divina Misericordia</p>
+  <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">✝</a>
+  <p class="tagline">Jesús, En Vos Confío</p>
+  <p>© 2026 — Portal de la Divina Misericordia</p>
 </footer>
+
+<!-- Golden Line Divine - Bella y Resplandeciente -->
+<div class="golden-divine-line">
+  <div class="line-glow"></div>
+  <div class="line-shine"></div>
+</div>
+
+<style>
+.golden-divine-line {
+  width: 100%;
+  max-width: 1000px;
+  height: 6px;
+  margin: 0 auto 50px;
+  position: relative;
+  border-radius: 3px;
+  overflow: visible;
+}
+.golden-divine-line::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, transparent 0%, #B8860B 5%, #D4AF37 15%, #FFD700 25%, #FFF8DC 35%, #FFD700 45%, #D4AF37 55%, #B8960C 65%, #D4AF37 75%, #FFD700 85%, #D4AF37 95%, transparent 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 15px rgba(255,215,0,0.8), 0 0 30px rgba(212,175,55,0.6), 0 0 50px rgba(212,175,55,0.4), 0 0 80px rgba(212,175,55,0.2);
+  animation: lineGlow 2s ease-in-out infinite;
+}
+@keyframes lineGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(255,215,0,0.7), 0 0 30px rgba(212,175,55,0.5), 0 0 50px rgba(212,175,55,0.3); filter: brightness(1); }
+  50% { box-shadow: 0 0 25px rgba(255,240,150,1), 0 0 50px rgba(255,215,0,0.8), 0 0 80px rgba(212,175,55,0.6), 0 0 120px rgba(212,175,55,0.3); filter: brightness(1.3); }
+}
+.line-glow {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), rgba(255,255,220,1), rgba(255,255,255,0.9), transparent);
+  border-radius: 1px;
+  filter: blur(1px);
+  animation: innerGlow 2.5s ease-in-out infinite;
+}
+@keyframes innerGlow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+.line-shine {
+  position: absolute;
+  top: 50%;
+  left: -50px;
+  right: 0;
+  height: 3px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), rgba(255,255,220,0.9), rgba(255,255,255,0.7), transparent);
+  border-radius: 3px;
+  animation: shineMove 3s ease-in-out infinite;
+  filter: blur(2px);
+}
+@keyframes shineMove {
+  0% { left: -50px; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { left: calc(100% + 50px); opacity: 0; }
+}
+.golden-divine-line::after {
+  content: '+';
+  position: absolute;
+  top: 50%;
+  right: -25px;
+  transform: translateY(-50%);
+  font-family: serif;
+  font-size: 1.8rem;
+  color: #D4AF37;
+  text-shadow: 0 0 10px rgba(255,215,0,1), 0 0 20px rgba(255,215,0,0.8), 0 0 35px rgba(255,215,0,0.5);
+  animation: crossLinePulse 2s ease-in-out infinite;
+}
+.golden-divine-line .cross-start {
+  position: absolute;
+  top: 50%;
+  left: -25px;
+  transform: translateY(-50%);
+  font-family: serif;
+  font-size: 1.8rem;
+  color: #D4AF37;
+  text-shadow: 0 0 10px rgba(255,215,0,1), 0 0 20px rgba(255,215,0,0.8), 0 0 35px rgba(255,215,0,0.5);
+  animation: crossLinePulse 2s ease-in-out infinite reverse;
+}
+@keyframes crossLinePulse {
+  0%, 100% { opacity: 0.7; transform: translateY(-50%) scale(1); text-shadow: 0 0 10px rgba(255,215,0,0.8), 0 0 20px rgba(255,215,0,0.5); }
+  50% { opacity: 1; transform: translateY(-50%) scale(1.15); text-shadow: 0 0 20px rgba(255,240,150,1), 0 0 40px rgba(255,215,0,0.9), 0 0 60px rgba(255,215,0,0.5); }
+}
+</style>
 
 <!-- ====== SCROLL BUTTONS ====== -->
 <button class="scroll-btn scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Subir al inicio" aria-label="Subir al inicio">
