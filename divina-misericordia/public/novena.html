@@ -291,10 +291,17 @@ footer .cross-glow {
   cursor: pointer;
   transition: transform 0.3s;
   display: inline-block;
-  text-decoration: none;
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  text-decoration-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  z-index: 10;
 }
 footer .cross-glow:hover {
   transform: scale(1.15);
+  text-decoration: none !important;
+}
   text-shadow: 
     0 0 40px rgba(255,215,0,1), 
     0 0 80px rgba(212,175,55,0.9),
