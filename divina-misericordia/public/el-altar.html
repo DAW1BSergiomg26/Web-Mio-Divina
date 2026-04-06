@@ -2952,11 +2952,22 @@ class DivineExperience {
     const bar=document.getElementById('lbar'), msg=document.getElementById('lmsg');
     let i=0;
     const next=()=>{
-      if(i>=steps.length){ setTimeout(()=>document.getElementById('loading').classList.add('gone'),800); return; }
+      if(i>=steps.length){ 
+        setTimeout(()=>document.getElementById('loading').classList.add('gone'),800); 
+        return; 
+      }
       const [pct,text]=steps[i++]; bar.style.width=pct+'%'; msg.textContent=text;
       setTimeout(next,480);
     };
     next();
+    // Timeout de seguridad: forzar ocultación después de 10 segundos
+    setTimeout(()=>{
+      const loadingEl = document.getElementById('loading');
+      if(loadingEl && !loadingEl.classList.contains('gone')){
+        console.warn('⚠ Timeout de carga - forzando ocultación');
+        loadingEl.classList.add('gone');
+      }
+    }, 10000);
   }
 
   // ══════════════════════════════════════════════════
