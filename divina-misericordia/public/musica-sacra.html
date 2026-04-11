@@ -1231,81 +1231,61 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 <!-- Audio Catalog ends here -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Primero: generar la biblioteca
+  
+  // 1. Generar biblioteca
   initLibrary();
   
-  // Segundo: verificar que AudioPlayerPremium esté disponible
-  console.log('[MusicaSacra] AudioPlayerPremium disponible:', typeof AudioPlayerPremium);
-  
-  // Si ya existe una instancia, limpiarla
-  if (AudioPlayerPremium.instance) {
-    AudioPlayerPremium.instance.stop();
+  // 2. Crear reproductor sagrado
+  try {
+    var player = AudioPlayerPremium({
+      defaultVolume: 0.7,
+      fadeDuration: 1500,
+      autoPlay: false
+    });
+    console.log('Reproductor creado:', player ? 'OK' : 'ERROR');
+  } catch(e) {
+    console.log('Error:', e);
   }
   
-  // Crear nueva instancia
-  const player = AudioPlayerPremium({
-    defaultVolume: 0.7,
-    fadeDuration: 1500,
-    autoPlay: false
-  });
-  
-  // Inicializar con la biblioteca
-  player.init && player.init(musicLibrary);
-  
-  console.log('[MusicaSacra] Reproductor inicializado:', !!player);
-  console.log('[MusicaSacra] Instancia global:', !!AudioPlayerPremium.instance);
-    
-    // Tercero: bindear eventos a las tarjetas
-    document.querySelectorAll('.track-card').forEach(function(el) {
-      el.style.cursor = 'pointer';
-      el.addEventListener('click', function(e) {
-        // Si el click fue en el botón de play, no hacer nada aquí
-        if (e.target.closest('.track-play-btn')) return;
+  // 3. Bindear clicks
+  document.querySelectorAll('.track-card').forEach(function(el) {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', function(e) {
+      if (e.target.closest('.track-play-btn')) return;
+      
+      var title = this.dataset.title;
+      var artist = this.dataset.artist;
+      var src = this.dataset.src;
+      var category = this.dataset.category;
+      
+      if (src) {
+        document.querySelectorAll('.track-card').forEach(function(c) {
+          c.classList.remove('playing', 'active', 'dimmed');
+        });
         
-        const title = this.dataset.title;
-        const artist = this.dataset.artist;
-        const src = this.dataset.src;
-        const category = this.dataset.category;
+        this.classList.add('active', 'playing');
         
-        console.log('[MusicaSacra] Click en pista:', title, src);
+        document.querySelectorAll('.track-card').forEach(function(c) {
+          if (c !== el) c.classList.add('dimmed');
+        });
         
-        if (src) {
-          // Quitar playing y dimmed de todas las tarjetas
-          document.querySelectorAll('.track-card').forEach(function(c) {
-            c.classList.remove('playing', 'active', 'dimmed');
-          });
-          
-          // Añadir playing y active a la pista seleccionada
-          this.classList.add('active', 'playing');
-          
-          // Sombrear las demás pistas
-          document.querySelectorAll('.track-card').forEach(function(c) {
-            if (c !== el) {
-              c.classList.add('dimmed');
-            }
-          });
-          
-          player.loadTrack({ title: title, artist: artist, src: src }, category, true);
+        if (AudioPlayerPremium.instance) {
+          AudioPlayerPremium.instance.loadTrack({ title: title, artist: artist, src: src }, category, true);
         }
-      });
+      }
     });
-    
-    // Bindear botón de play en cada tarjeta
-    document.querySelectorAll('.track-play-btn').forEach(function(btn) {
-      btn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const card = this.closest('.track-card');
-        const catIdx = parseInt(card.dataset.cat);
-        const trackIdx = parseInt(card.dataset.track);
-        
-        console.log('[MusicaSacra] Botón play:', catIdx, trackIdx);
-        
-        playTrack(catIdx, trackIdx);
-      });
-    });
-    
-    console.log('[MusicaSacra] Eventos vinculados a', document.querySelectorAll('.track-card').length, 'tarjetas');
   });
+  
+  // 4. Bindear botones
+  document.querySelectorAll('.track-play-btn').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var card = this.closest('.track-card');
+      playTrack(parseInt(card.dataset.cat), parseInt(card.dataset.track));
+    });
+  });
+  
+  console.log('Listo -', document.querySelectorAll('.track-card').length, 'pistas');
 });
 </script>
 
