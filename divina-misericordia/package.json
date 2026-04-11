@@ -1,16 +1,24 @@
 {
-  "name": "radiant-mercy",
+  "name": "divina-misericordia",
   "version": "1.0.0",
-  "description": "Radiant Mercy - Global Spiritual Community",
-  "main": "index.js",
+  "description": "Portal de la Divina Misericordia - Web Mio Divina",
+  "type": "module",
   "scripts": {
-    "start": "node index.js",
-    "dev": "node index.js"
+    "dev": "vite --port 3001",
+    "build": "vite build",
+    "preview": "vite preview --port 3001",
+    "lint": "eslint src/",
+    "test": "vitest",
+    "start": "node server/index.js"
   },
   "author": "Sergio Daniel",
   "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
     "axios": "^1.13.6"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0",
+    "eslint": "^9.0.0",
+    "vitest": "^3.0.0"
   }
 }
