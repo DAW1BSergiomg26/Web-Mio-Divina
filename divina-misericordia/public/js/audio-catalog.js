@@ -1,7 +1,7 @@
 /**
  * Audio Catalog - Catálogo Completo de Música Sacra
  * Sistema de Curaduría Musical para Divina Misericordia
- * Total: 181 pistas (actualizado)
+ * Total: 198 pistas (actualizado)
  */
 
 const AudioCatalog = (function() {
@@ -290,7 +290,9 @@ const AudioCatalog = (function() {
           { file: "191. Tú Eres el único Rey - una voz - tuyo, Hakuna Group Music, Aisha Ruah, Clara.H., Ecos Música, Hermanas Pobres, ignis, Javier Portela, Kénosis by RC, Maria Paola Or.mp3", title: "Tú Eres el Único Rey (Versión 2)", artist: "Varios Artistas", tempo: "moderada", caracter: "sagrado", instrumentacion: "coral", sections: ["misa", "noticias"] },
           { file: "192. Bendito sea Dios - Luispo, Servus Mariae.mp3", title: "Bendito sea Dios", artist: "Luispo/Servus Mariae", tempo: "lenta", caracter: "sagrado", instrumentacion: "coral", sections: ["oraciones", "misa"] },
           { file: "193. Nace la Verdad - Servus Mariae.mp3", title: "Nace la Verdad", artist: "Servus Mariae", tempo: "moderada", caracter: "jubiloso", instrumentacion: "coral", sections: ["navidad", "index", "noticias"] },
-          { file: "194. Surge Valent+¡a - Servus Mariae.mp3", title: "Surge Valentía", artist: "Servus Mariae", tempo: "moderada", caracter: "jubiloso", instrumentacion: "coral", sections: ["index", "noticias", "quienes-somos"] }
+          { file: "194. Surge Valent+¡a - Servus Mariae.mp3", title: "Surge Valentía", artist: "Servus Mariae", tempo: "moderada", caracter: "jubiloso", instrumentacion: "coral", sections: ["index", "noticias", "quienes-somos"] },
+          { file: "77. Virgencita de Caacupé - Las Paraguayas.mp3", title: "Virgencita de Caacupé", artist: "Las Paraguayas", tempo: "moderada", caracter: "mariano", instrumentacion: "coral", sections: ["virgen-caacupe", "maria", "devociones-marianas"] },
+          { file: "195. Give Me Jesus - Heavenly Piano Worship - Samy Galí.mp3", title: "Give Me Jesus - Heavenly Piano", artist: "Samy Galí", tempo: "lenta", caracter: "contemplativo", instrumentacion: "piano", sections: ["oraciones", "hora-de-la-misericordia", "santo-rosario"] }
         ].map(convertTrack)
       }
     ];
