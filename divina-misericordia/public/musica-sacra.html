@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es-ES">
 <head>
 <meta charset="UTF-8">
@@ -71,8 +71,9 @@ body {
   position: absolute;
   opacity: 0;
   pointer-events: none;
-  animation: danceNote linear infinite;
-  will-change: transform, opacity;
+  animation: danceNote linear infinite, colorShift 8s ease-in-out infinite;
+  filter: blur(0px);
+  will-change: transform, opacity, color, filter;
 }
 
 /* Musical trail effect - afterglow */
@@ -549,7 +550,7 @@ nav a:hover { background: rgba(111,168,220,0.15); color: var(--celestial-light);
   nav a { font-size: 1rem; width: 100%; padding: 12px; }
 }
 
-.main-content { padding: 150px 20px 120px; max-width: 1200px; margin: 0 auto; }
+.main-content { padding: 150px 20px 80px; max-width: 1200px; margin: 0 auto; }
 
 h1 {
   font-family: 'Cinzel Decorative', serif;
@@ -980,7 +981,6 @@ footer {
   text-align: center;
   border-top: 1px solid rgba(212,175,55,0.2);
   margin-top: 60px;
-  margin-bottom: 80px;
 }
 footer .cross {
   font-size: 2.5rem;
@@ -1030,8 +1030,8 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 }
 .scroll-btn svg { width: 24px; height: 24px; stroke: var(--gold); stroke-width: 2.5; fill: none; }
 .scroll-btn:hover svg { stroke: var(--gold-light); }
-.scroll-up { top: 80px; right: 20px; }
-.scroll-down { bottom: 90px; right: 20px; }
+.scroll-up { top: 120px; right: 20px; }
+.scroll-down { bottom: 30px; right: 20px; }
 
 @keyframes scrollPulse {
   0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3), inset 0 0 15px rgba(212, 175, 55, 0.1); }
@@ -1151,9 +1151,9 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 </div>
 
 <footer class="main-footer sacred-footer">
-    <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">✝</a>
-    <p class="tagline">Jesús, En Vos Confío</p>
-    <p>© 2026 — Portal de la Divina Misericordia</p>
+  <div class="cross-glow">+</div>
+  <p class="tagline">Jesús, En Vos Confío</p>
+  <p>© 2026 — Portal de la Divina Misericordia</p>
 </footer>
 
 <!-- El reproductor premium se inicializa desde audio-player.js -->
@@ -1224,95 +1224,251 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 
 <!-- Audio Catalog - debe cargarse primero -->
 <script src="js/audio-catalog.js"></script>
-<script src="js/audio-player.js"></script>
-
-<!-- Audio Section Manager -->
-<script src="js/audio-section-manager.js"></script>
-<!-- Audio Catalog ends here -->
 
 <script>
-// ==================== BIBLIOTECA DE MÚSICA ====================
-var musicLibrary = AudioCatalog ? AudioCatalog.getCategories() : [];
+// Usar catálogo centralizado
+const musicLibrary = AudioCatalog.getCategories();
 
-var currentAudio = null;
-var trackDurations = {};
+let currentAudio = null;
+let currentTrackIndex = null;
+let currentCategoryIndex = null;
+let isPlaying = false;
+let trackDurations = {};
 
-// ==================== INICIALIZAR BIBLIOTECA ====================
 function initLibrary() {
-  var library = document.getElementById('musicLibrary');
-  if (!library) return;
+  const library = document.getElementById('musicLibrary');
+  let trackNum = 1;
   
-  var trackNum = 1;
-  
-  musicLibrary.forEach(function(cat, catIdx) {
-    var tracksHtml = '';
-    
-    cat.tracks.forEach(function(track, trackIdx) {
-      var globalIdx = trackNum++;
-      tracksHtml += 
-        '<div class="track-card" data-title="' + track.title + '" data-artist="' + track.artist + '" data-src="' + track.src + '" data-category="' + cat.category + '" data-cat="' + catIdx + '" data-track="' + trackIdx + '">' +
-          '<div class="track-number">' + globalIdx + '</div>' +
-          '<button class="track-play-btn" onclick="event.stopPropagation(); playTrack(' + catIdx + ', ' + trackIdx + ')"></button>' +
-          '<div class="track-info">' +
-            '<div class="track-title">' + track.title + '</div>' +
-            '<div class="track-artist">' + track.artist + '</div>' +
-          '</div>' +
-          '<div class="track-duration" data-src="' + track.src + '">--:--</div>' +
-        '</div>';
+  musicLibrary.forEach((cat, catIdx) => {
+    let tracksHtml = '';
+    cat.tracks.forEach((track, trackIdx) => {
+      const globalIdx = trackNum++;
+      tracksHtml += `
+        <div class="track-card" data-title="${track.title}" data-artist="${track.artist}" data-src="${track.src}" data-category="${cat.category}" data-cat="${catIdx}" data-track="${trackIdx}">
+          <div class="track-number">${globalIdx}</div>
+          <button class="track-play-btn" onclick="event.stopPropagation(); playTrack(${catIdx}, ${trackIdx})"></button>
+          <div class="track-info">
+            <div class="track-title">${track.title}</div>
+            <div class="track-artist">${track.artist}</div>
+          </div>
+          <div class="track-duration" data-src="${track.src}">--:--</div>
+        </div>
+      `;
     });
     
-    library.innerHTML += 
-      '<div class="music-category">' +
-        '<div class="category-header">' +
-          '<span class="category-icon">' + cat.icon + '</span>' +
-          '<span class="category-title">' + cat.category + '</span>' +
-          '<span class="category-count">' + cat.tracks.length + ' pistas</span>' +
-        '</div>' +
-        '<div class="tracks-grid">' + tracksHtml + '</div>' +
-      '</div>';
+    library.innerHTML += `
+      <div class="music-category">
+        <div class="category-header">
+          <span class="category-icon">${cat.icon}</span>
+          <span class="category-title">${cat.category}</span>
+          <span class="category-count">${cat.tracks.length} pistas</span>
+        </div>
+        <div class="tracks-grid">${tracksHtml}</div>
+      </div>
+    `;
   });
   
-  // Cargar duraciones
-  document.querySelectorAll('.track-duration').forEach(function(el) {
-    var src = el.dataset.src;
-    var audio = new Audio(src);
-    audio.addEventListener('loadedmetadata', function() {
-      var mins = Math.floor(audio.duration / 60);
-      var secs = Math.floor(audio.duration % 60);
-      el.textContent = mins + ':' + secs.toString().padStart(2, '0');
+  document.querySelectorAll('.track-duration').forEach(el => {
+    const src = el.dataset.src;
+    const audio = new Audio(src);
+    audio.addEventListener('loadedmetadata', () => {
+      const mins = Math.floor(audio.duration / 60);
+      const secs = Math.floor(audio.duration % 60);
+      el.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
     });
   });
 }
 
-// ==================== REPRODUCIR PISTA ====================
-function playTrack(catIdx, trackIdx) {
-  var track = musicLibrary[catIdx].tracks[trackIdx];
-  var category = musicLibrary[catIdx].category;
+// Función global para reproducir pistas (debe estar disponible globalmente)
+window.playTrack = function(catIdx, trackIdx) {
+  const track = musicLibrary[catIdx].tracks[trackIdx];
+  const category = musicLibrary[catIdx].category;
   
-  console.log('Reproduciendo:', track.title);
+  console.log('[MusicaSacra] playTrack llamado:', track.title);
   
-  // Quitar active de todas
+  // Quitar playing y dimmed de todas las tarjetas
   document.querySelectorAll('.track-card').forEach(function(c) {
     c.classList.remove('playing', 'active', 'dimmed');
   });
   
-  // Activar esta
-  var card = document.querySelector('.track-card[data-cat="' + catIdx + '"][data-track="' + trackIdx + '"]');
+  // Añadir playing y active a la pista seleccionada
+  const card = document.querySelector('.track-card[data-cat="' + catIdx + '"][data-track="' + trackIdx + '"]');
   if (card) {
     card.classList.add('active', 'playing');
     
+    // Sombrear las demás pistas
     document.querySelectorAll('.track-card').forEach(function(c) {
-      if (c !== card) c.classList.add('dimmed');
+      if (c !== card) {
+        c.classList.add('dimmed');
+      }
     });
   }
   
-  // Cargar en reproductor
-  if (AudioPlayerPremium.instance) {
-    AudioPlayerPremium.instance.loadTrack(track, category, true);
+  // Usar el reproductor premium
+  const player = AudioPlayerPremium.getInstance();
+  if (player) {
+    player.loadTrack(track, category, true);
+  } else {
+    console.error('[MusicaSacra] Reproductor no inicializado');
+  }
+};
+
+function togglePlay() {
+  const player = AudioPlayerPremium.getInstance();
+  if (player) {
+    player.togglePlay();
   }
 }
 
-console.log('Biblioteca音乐:', musicLibrary.length, 'categorías');
+function updatePlayButton() {
+  // Ya no necesario con el nuevo reproductor
+}
+
+function showPlayerBar(track) {
+  // Ya no necesario con el nuevo reproductor
+}
+
+function prevTrack() {
+  const player = AudioPlayerPremium.getInstance();
+  if (player) {
+    player.prev();
+  }
+}
+
+function nextTrack() {
+  const player = AudioPlayerPremium.getInstance();
+  if (player) {
+    player.next();
+  }
+}
+
+function seekTrack(e) {
+  const player = AudioPlayerPremium.getInstance();
+  if (player) {
+    player.seek(e);
+  }
+}
+
+function setVolume(val) {
+  const player = AudioPlayerPremium.getInstance();
+  if (player) {
+    player.setVolume(val);
+  }
+}
+
+function toggleMute() {
+  const player = AudioPlayerPremium.getInstance();
+  if (player) {
+    player.toggleMute();
+  }
+}
+
+function formatTime(seconds) {
+  if (isNaN(seconds)) return '0:00';
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return m + ':' + (s < 10 ? '0' : '') + s;
+}
+
+function toggleMenu() {
+  document.getElementById('mainNav').classList.toggle('active');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+
+function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+function scrollToDown() { window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); }
+
+const cursor = document.getElementById('cursor');
+let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; }, { passive: true });
+function animateCursor() {
+  cursorX += (mouseX - cursorX) * 0.15;
+  cursorY += (mouseY - cursorY) * 0.15;
+  cursor.style.left = cursorX + 'px';
+  cursor.style.top = cursorY + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+document.querySelectorAll('a, button, .track-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+
+document.addEventListener('DOMContentLoaded', initLibrary);
+</script>
+
+<!-- Audio Player Premium -->
+<script src="js/audio-player.js"></script>
+
+<!-- Audio Section Manager -->
+<script src="js/audio-section-manager.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Primero: generar la biblioteca
+  initLibrary();
+  
+  // Segundo: después de generar, inicializar el reproductor
+  setTimeout(function() {
+    const player = AudioPlayerPremium.init(musicLibrary, {
+      defaultVolume: 0.7,
+      fadeDuration: 1500,
+      autoPlay: false
+    });
+    
+    console.log('[MusicaSacra] Reproductor inicializado');
+    
+    // Tercero: bindear eventos a las tarjetas
+    document.querySelectorAll('.track-card').forEach(function(el) {
+      el.style.cursor = 'pointer';
+      el.addEventListener('click', function(e) {
+        // Si el click fue en el botón de play, no hacer nada aquí
+        if (e.target.closest('.track-play-btn')) return;
+        
+        const title = this.dataset.title;
+        const artist = this.dataset.artist;
+        const src = this.dataset.src;
+        const category = this.dataset.category;
+        
+        console.log('[MusicaSacra] Click en pista:', title, src);
+        
+        if (src) {
+          // Quitar playing y dimmed de todas las tarjetas
+          document.querySelectorAll('.track-card').forEach(function(c) {
+            c.classList.remove('playing', 'active', 'dimmed');
+          });
+          
+          // Añadir playing y active a la pista seleccionada
+          this.classList.add('active', 'playing');
+          
+          // Sombrear las demás pistas
+          document.querySelectorAll('.track-card').forEach(function(c) {
+            if (c !== el) {
+              c.classList.add('dimmed');
+            }
+          });
+          
+          player.loadTrack({ title: title, artist: artist, src: src }, category, true);
+        }
+      });
+    });
+    
+    // Bindear botón de play en cada tarjeta
+    document.querySelectorAll('.track-play-btn').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const card = this.closest('.track-card');
+        const catIdx = parseInt(card.dataset.cat);
+        const trackIdx = parseInt(card.dataset.track);
+        
+        console.log('[MusicaSacra] Botón play:', catIdx, trackIdx);
+        
+        playTrack(catIdx, trackIdx);
+      });
+    });
+    
+    console.log('[MusicaSacra] Eventos vinculados a', document.querySelectorAll('.track-card').length, 'tarjetas');
+  }, 100);
+});
 </script>
 
 <!-- Geometría Sagrada -->
