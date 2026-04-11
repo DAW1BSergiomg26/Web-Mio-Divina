@@ -665,33 +665,113 @@ footer.main-footer {
     display: flex; flex-direction: column; align-items: center;
 }
 footer.main-footer .cross-glow {
-    font-size: 3rem; color: var(--lapacho-rosa);
-    text-shadow: 0 0 30px rgba(214,51,132,0.8), 0 0 60px rgba(46,139,87,0.4);
-    margin-bottom: 15px; animation: crossPulse 2.5s ease-in-out infinite;
+    font-size:4.5rem; 
+    color:var(--gold);
+    text-shadow: 
+      0 0 30px rgba(212,175,55,0.8), 
+      0 0 60px rgba(212,175,55,0.5),
+      0 0 100px rgba(212,175,55,0.3),
+      0 0 150px rgba(255,100,50,0.4);
+    margin-bottom:15px; 
+    animation: heartBeat 1.2s ease-in-out infinite;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s;
+    display: inline-block;
+    text-decoration: none;
+}
+footer.main-footer .cross-glow:hover {
+    transform: scale(1.15);
+    text-shadow: 
+      0 0 40px rgba(212,175,55,1), 
+      0 0 80px rgba(212,175,55,0.7),
+      0 0 120px rgba(255,100,50,0.5),
+      0 0 180px rgba(255,100,50,0.3);
+}
+footer.main-footer .cross-glow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: crossAura 1.2s ease-in-out infinite;
+}
+footer.main-footer .cross-glow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: crossAura 3s ease-in-out infinite;
+}
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.12); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.08); }
+    60% { transform: scale(1); }
+    100% { transform: scale(1); }
 }
 @keyframes crossPulse {
-    0%,100% { text-shadow: 0 0 30px rgba(214,51,132,0.8), 0 0 60px rgba(46,139,87,0.4); transform: scale(1); }
-    50% { text-shadow: 0 0 50px rgba(255,215,0,1), 0 0 100px rgba(214,51,132,0.6), 0 0 150px rgba(46,139,87,0.4); transform: scale(1.1); }
+    0%,100% { 
+      transform:scale(1); 
+    }
+    50%      { 
+      transform:scale(1.1); 
+    }
+}
+@keyframes crossAura {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.5); }
 }
 footer.main-footer p { color: var(--text-muted); margin: 5px 0; font-size: 0.95rem; }
 footer.main-footer .tagline { color: var(--lapacho-rosa); font-family: 'Cinzel', serif; font-size: 1.05rem; letter-spacing: 2px; }
 
 .scroll-btn {
-    width: 52px; height: 52px; border-radius: 50%;
-    background: rgba(0,0,0,0.7); border: 2px solid var(--lapacho-rosa);
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; animation: scrollPulse 2s ease-in-out infinite;
-    transition: all 0.3s ease; position: fixed; z-index: 1000;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.6);
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    animation: scrollPulse 2s ease-in-out infinite;
+    transition: all 0.3s ease;
+    position: fixed;
+    z-index: 1000;
     backdrop-filter: blur(8px);
 }
 .scroll-btn:hover {
-    background: rgba(214,51,132,0.3);
-    box-shadow: 0 0 30px rgba(214,51,132,0.8), 0 0 60px rgba(46,139,87,0.4);
+    background: rgba(212,175,55,0.35);
+    box-shadow: 0 0 25px rgba(212,175,55,0.8), 0 0 50px rgba(212,175,55,0.4), 0 0 70px rgba(212,175,55,0.2);
     transform: scale(1.1);
 }
-.scroll-btn svg { width: 24px; height: 24px; stroke: var(--lapacho-rosa); stroke-width: 2.5; fill: none; }
-.scroll-up { top: 120px; right: 20px; }
-.scroll-down { bottom: 30px; right: 20px; }
+.scroll-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--gold);
+    stroke-width: 2.5;
+    fill: none;
+    filter: drop-shadow(0 0 4px rgba(212,175,55,0.8));
+    transition: transform 0.2s ease;
+}
+.scroll-btn:hover svg {
+    transform: scale(1.15);
+    stroke: #fff5c0;
+    filter: drop-shadow(0 0 8px rgba(255,245,192,0.9));
+}
+.scroll-up { top: 96px; right: 20px; }
+.scroll-down { bottom: 16px; right: 20px; }
 @keyframes scrollPulse {
     0%,100% { box-shadow: 0 0 20px rgba(214,51,132,0.5), 0 0 40px rgba(46,139,87,0.2); }
     50% { box-shadow: 0 0 35px rgba(214,51,132,0.8), 0 0 70px rgba(46,139,87,0.4); }
@@ -1424,8 +1504,11 @@ footer.main-footer .tagline { color: var(--lapacho-rosa); font-family: 'Cinzel',
 
 </main>
 
-<!-- Golden Line -->
-<div class="golden-divine-line"></div>
+<!-- Golden Line Divine - Bella y Resplandeciente -->
+<div class="golden-divine-line">
+  <div class="line-glow"></div>
+  <div class="line-shine"></div>
+</div>
 
 <!-- Footer Menu -->
 <div class="footer-menu">

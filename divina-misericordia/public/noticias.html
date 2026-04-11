@@ -46,7 +46,6 @@
   --gold-glow: rgba(212,175,55,0.7);
   --transition: 0.3s ease;
 }
-
 /* ============================================
    RESET & BASE
    ============================================ */
@@ -60,7 +59,6 @@ body {
   overflow-x: hidden;
   cursor: none;
 }
-
 /* ============================================
    BACKGROUND
    ============================================ */
@@ -75,7 +73,6 @@ body {
   inset: 0;
   z-index: -1;
 }
-
 /* ============================================
    CUSTOM CURSOR
    ============================================ */
@@ -101,7 +98,6 @@ body {
 }
 .cursor-cruz.hover .cruz-normal { opacity: 0; }
 .cursor-cruz.hover .cruz-rayos { opacity: 1; }
-
 /* ============================================
    HEADER & NAV
    ============================================ */
@@ -123,7 +119,6 @@ header.scrolled {
   padding: 6px 30px;
   background: rgba(0,0,0,0.96);
 }
-
 .logo {
   font-family: 'Cinzel Decorative', serif;
   font-size: 1.25rem;
@@ -144,7 +139,6 @@ header.scrolled {
   border: 2px solid var(--border-gold);
 }
 .logo span { color: var(--white); }
-
 nav {
   display: flex;
   gap: 4px;
@@ -187,7 +181,6 @@ nav a.activo {
   background: rgba(212,175,55,0.18);
   box-shadow: 0 0 20px rgba(212,175,55,0.15);
 }
-
 /* OTRAS DEVOCIONES — special style */
 nav a.nav-otras-devociones {
   color: var(--celestial) !important;
@@ -213,7 +206,6 @@ nav a.nav-otras-devociones::after {
     transform: scale(1);
   }
 }
-
 /* Hamburger */
 .hamburger {
   display: none;
@@ -228,7 +220,6 @@ nav a.nav-otras-devociones::after {
   background: var(--gold);
   transition: 0.3s;
 }
-
 @media (max-width: 900px) {
   .hamburger { display: flex; }
   nav {
@@ -246,7 +237,6 @@ nav a.nav-otras-devociones::after {
   nav.active { display: flex; }
   nav a { font-size: 0.9rem; padding: 10px 16px; }
 }
-
 /* ============================================
    SEPARATOR WITH ANIMATED CROSS
    ============================================ */
@@ -293,7 +283,6 @@ nav a.nav-otras-devociones::after {
     transform: scale(1.06);
   }
 }
-
 /* ============================================
    MAIN CONTENT
    ============================================ */
@@ -305,7 +294,8 @@ nav a.nav-otras-devociones::after {
   text-align: center;
   margin-bottom: 20px;
   text-shadow: 0 0 30px rgba(212,175,55,0.5);
- margin-top: 20px; }
+  margin-top: 20px; 
+}
 .intro-text {
   font-size: 1.18rem;
   text-align: center;
@@ -378,122 +368,318 @@ nav a.nav-otras-devociones::after {
   max-width: 720px;
   line-height: 1.7;
 }
-
 /* ============================================
-   FOOTER
+   FOOTER (ESTILO EXACTO DEL ORIGINAL)
    ============================================ */
 .footer-menu {
-  background: rgba(0,0,0,0.5);
+  background: linear-gradient(145deg, rgba(0,0,0,0.6), rgba(10,22,40,0.7), rgba(0,0,0,0.5));
   border: 1px solid rgba(212,175,55,0.3);
-  border-radius: 15px;
-  padding: 25px;
-  margin: 30px auto;
-  max-width: 900px;
-  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 35px 30px;
+  margin: 50px auto;
+  max-width: 950px;
+  backdrop-filter: blur(15px);
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.4),
+    0 0 30px rgba(212,175,55,0.08);
   position: relative;
+  overflow: hidden;
+}
+.footer-menu::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent);
 }
 .footer-menu-title {
-  font-family: 'Cinzel', serif;
-  font-size: 1rem;
-  color: var(--gold-light);
-  text-align: center;
-  margin-bottom: 20px;
-  letter-spacing: 2px;
+  font-family:'Cinzel',serif; 
+  font-size:0.9rem; 
+  color:var(--gold-light);
+  text-align:center; 
+  margin-bottom:25px; 
+  letter-spacing:4px; 
+  text-transform:uppercase;
+  text-shadow: 0 0 20px rgba(212,175,55,0.3);
 }
-.footer-menu-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
+.footer-menu-links { 
+  display:flex; 
+  flex-wrap:wrap; 
+  justify-content:center; 
+  gap:12px; 
 }
 .footer-menu-links a {
-  color: var(--white);
-  text-decoration: none;
-  font-size: 0.85rem;
-  padding: 8px 16px;
-  border: 1px solid rgba(212,175,55,0.2);
-  border-radius: 25px;
-  transition: all 0.4s;
+  color:var(--text-muted); 
+  text-decoration:none; 
+  font-size:0.85rem;
+  padding:10px 20px; 
+  border:1px solid rgba(212,175,55,0.2); 
+  border-radius:30px;
+  transition: all 0.4s ease;
   background: rgba(255,255,255,0.02);
+  font-family:'EB Garamond',serif;
+  position: relative;
+  overflow: hidden;
+}
+.footer-menu-links a::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+  border-radius: 50%;
+}
+.footer-menu-links a:hover::before {
+  width: 200%;
+  height: 200%;
 }
 .footer-menu-links a:hover {
-  background: linear-gradient(135deg,rgba(76,195,255,0.3),rgba(255,107,122,0.3));
-  border-color: var(--gold);
-  color: var(--gold-light);
-  transform: scale(1.05);
-  box-shadow:
-    0 0 20px rgba(76,195,255,0.4),
-    0 0 30px rgba(255,107,122,0.3);
-}
-.footer-menu-links a.nav-otras-devociones {
-  color: var(--celestial) !important;
-  border-color: rgba(111,168,220,0.3);
+  background:rgba(212,175,55,0.15); 
+  border-color:rgba(212,175,55,0.5);
+  color:var(--gold-light); 
+  transform:translateY(-3px);
+  box-shadow: 0 5px 25px rgba(212,175,55,0.2), 0 0 40px rgba(212,175,55,0.1);
+  text-shadow: 0 0 15px rgba(212,175,55,0.5);
 }
 
+/* FOOTER PRINCIPAL + BORDE DORADO RESPLANDECIENTE */
 .main-footer {
-  background: rgba(0,0,0,0.6);
-  padding: 30px 20px;
-  text-align: center;
-  border-top: 1px solid rgba(212,175,55,0.2);
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(10,22,40,0.8));
+  padding:40px 20px;
+  text-align:center;
+  border-top: 2px solid rgba(212,175,55,0.3);
+  display:flex; 
+  flex-direction:column; 
+  align-items:center;
   position: relative;
 }
 .main-footer::before {
   content: '';
   position: absolute;
-  top: -3px;
+  top: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #b8960c, #d4af37, #f4e2a1, #d4af37, #b8960c);
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(212,175,55,0.05), transparent);
+  pointer-events: none;
 }
-.main-footer p {
-  color: rgba(250,247,240,0.7);
-  margin: 8px 0;
+.main-footer .cross-glow {
+  font-size:4.5rem;
+  color:var(--gold);
+  text-shadow:
+    0 0 30px rgba(212,175,55,0.8),
+    0 0 60px rgba(212,175,55,0.5),
+    0 0 100px rgba(212,175,55,0.3),
+    0 0 150px rgba(255,100,50,0.4);
+  margin-bottom:15px;
+  animation: heartBeat 1.2s ease-in-out infinite;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s;
+  display: inline-block;
+  text-decoration: none;
+}
+.main-footer .cross-glow:hover {
+  transform: scale(1.15);
+  text-shadow:
+    0 0 40px rgba(212,175,55,1),
+    0 0 80px rgba(212,175,55,0.7),
+    0 0 120px rgba(255,100,50,0.5),
+    0 0 180px rgba(255,100,50,0.3);
+}
+.main-footer .cross-glow::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: crossAura 1.2s ease-in-out infinite;
+}
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  15% { transform: scale(1.12); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.08); }
+  60% { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+@keyframes crossAura {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
+}
+.main-footer p { 
+  color:rgba(250,247,240,0.7); 
+  margin:5px 0; 
+  font-size:0.95rem; 
 }
 .main-footer .tagline {
-  font-family: 'Cinzel', serif;
-  font-size: 1.1rem;
-  color: var(--gold-light);
-  letter-spacing: 2px;
+  color:var(--gold); 
+  font-family:'Cinzel',serif;
+  font-size:1.05rem; 
+  letter-spacing:2px; 
+  margin-bottom:4px;
 }
-.cross {
-  font-size: 3.5rem;
-  color: #ffd700;
-  text-shadow:
-    0 0 20px #ffd700,
-    0 0 40px #ffb700,
-    0 0 60px #ff8c00,
-    0 0 80px #ffd700;
-  margin-bottom: 15px;
-  animation: crossPulse 1.5s ease-in-out infinite;
-  display: block;
+
+/* Golden Divine Line - Línea dorada luminosa debajo del footer */
+.golden-divine-line {
+  width: 100%;
+  max-width: 1000px;
+  height: 6px;
+  margin: 0 auto 50px;
+  position: relative;
+  border-radius: 3px;
+  overflow: visible;
 }
-@keyframes crossPulse {
-  0%,100% {
-    text-shadow:
-      0 0 20px #ffd700, 0 0 40px #ffb700,
-      0 0 60px #ff8c00, 0 0 80px #ffd700;
+.golden-divine-line::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 4px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg,
+    transparent 0%,
+    #B8860B 5%,
+    #D4AF37 15%,
+    #FFD700 25%,
+    #FFF8DC 35%,
+    #FFD700 45%,
+    #D4AF37 55%,
+    #B8960C 65%,
+    #D4AF37 75%,
+    #FFD700 85%,
+    #D4AF37 95%,
+    transparent 100%);
+  border-radius: 2px;
+  box-shadow:
+    0 0 15px rgba(255,215,0,0.8),
+    0 0 30px rgba(212,175,55,0.6),
+    0 0 50px rgba(212,175,55,0.4),
+    0 0 80px rgba(212,175,55,0.2);
+  animation: lineGlow 2s ease-in-out infinite;
+}
+@keyframes lineGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 15px rgba(255,215,0,0.7),
+      0 0 30px rgba(212,175,55,0.5),
+      0 0 50px rgba(212,175,55,0.3);
+    filter: brightness(1);
   }
   50% {
+    box-shadow:
+      0 0 25px rgba(255,240,150,1),
+      0 0 50px rgba(255,215,0,0.8),
+      0 0 80px rgba(212,175,55,0.6),
+      0 0 120px rgba(212,175,55,0.3);
+    filter: brightness(1.3);
+  }
+}
+.line-glow {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,0.8),
+    rgba(255,255,220,1),
+    rgba(255,255,255,0.9),
+    transparent
+  );
+  border-radius: 1px;
+  filter: blur(1px);
+  animation: innerGlow 2.5s ease-in-out infinite;
+}
+@keyframes innerGlow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+.line-shine {
+  position: absolute;
+  top: 50%;
+  left: -50px;
+  width: 100px;
+  height: 6px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,0.9),
+    rgba(255,250,200,1),
+    rgba(255,255,255,0.9),
+    transparent
+  );
+  border-radius: 3px;
+  animation: shineMove 3s ease-in-out infinite;
+  filter: blur(2px);
+}
+@keyframes shineMove {
+  0% { left: -50px; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { left: calc(100% + 50px); opacity: 0; }
+}
+.golden-divine-line::after {
+  content: '+';
+  position: absolute;
+  top: 50%;
+  right: -25px;
+  transform: translateY(-50%);
+  font-family: serif;
+  font-size: 1.8rem;
+  color: #D4AF37;
+  text-shadow:
+    0 0 10px rgba(255,215,0,1),
+    0 0 20px rgba(255,215,0,0.8),
+    0 0 35px rgba(255,215,0,0.5);
+  animation: crossLinePulse 2s ease-in-out infinite;
+}
+.golden-divine-line .cross-start {
+  position: absolute;
+  top: 50%;
+  left: -25px;
+  transform: translateY(-50%);
+  font-family: serif;
+  font-size: 1.8rem;
+  color: #D4AF37;
+  text-shadow:
+    0 0 10px rgba(255,215,0,1),
+    0 0 20px rgba(255,215,0,0.8),
+    0 0 35px rgba(255,215,0,0.5);
+  animation: crossLinePulse 2s ease-in-out infinite reverse;
+}
+@keyframes crossLinePulse {
+  0%, 100% {
+    opacity: 0.7;
+    transform: translateY(-50%) scale(1);
     text-shadow:
-      0 0 40px #ffd700, 0 0 80px #ffb700,
-      0 0 120px #ff8c00, 0 0 160px #ffd700;
+      0 0 10px rgba(255,215,0,0.8),
+      0 0 20px rgba(255,215,0,0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.15);
+    text-shadow:
+      0 0 20px rgba(255,240,150,1),
+      0 0 40px rgba(255,215,0,0.9),
+      0 0 60px rgba(255,215,0,0.5);
   }
 }
 
-@media (max-width: 600px) {
-  .footer-menu-links { gap: 10px; }
-  .footer-menu-links a { padding: 6px 12px; font-size: 0.75rem; }
-}
-
-/* ============================================
-   SCROLL BUTTONS
-   ============================================ */
+/* SCROLL BUTTONS */
 .scroll-btn {
   width: 52px;
   height: 52px;
@@ -512,10 +698,7 @@ nav a.nav-otras-devociones::after {
 }
 .scroll-btn:hover {
   background: rgba(212,175,55,0.35);
-  box-shadow:
-    0 0 25px rgba(212,175,55,0.8),
-    0 0 50px rgba(212,175,55,0.4),
-    0 0 70px rgba(212,175,55,0.2);
+  box-shadow: 0 0 25px rgba(212,175,55,0.8), 0 0 50px rgba(212,175,55,0.4), 0 0 70px rgba(212,175,55,0.2);
   transform: scale(1.1);
 }
 .scroll-btn svg {
@@ -535,17 +718,8 @@ nav a.nav-otras-devociones::after {
 .scroll-up { top: 120px; right: 20px; }
 .scroll-down { bottom: 30px; right: 20px; }
 @keyframes scrollPulse {
-  0%,100% {
-    box-shadow:
-      0 0 15px rgba(212,175,55,0.5),
-      0 0 30px rgba(212,175,55,0.2);
-  }
-  50% {
-    box-shadow:
-      0 0 25px rgba(212,175,55,0.8),
-      0 0 50px rgba(212,175,55,0.4),
-      0 0 70px rgba(212,175,55,0.2);
-  }
+  0%,100% { box-shadow: 0 0 15px rgba(212,175,55,0.5), 0 0 30px rgba(212,175,55,0.2); }
+  50% { box-shadow: 0 0 25px rgba(212,175,55,0.8), 0 0 50px rgba(212,175,55,0.4), 0 0 70px rgba(212,175,55,0.2); }
 }
 </style>
 </head>
@@ -561,8 +735,8 @@ nav a.nav-otras-devociones::after {
   ]
 }
 </script>
-<body>
 
+<body>
 <!-- ====== CUSTOM CURSOR ====== -->
 <div class="cursor-cruz" id="cursor">
   <svg class="cruz-normal" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
@@ -615,7 +789,7 @@ nav a.nav-otras-devociones::after {
     <img src="img/logo_divina_misericordia.jpg" alt="Logo Divina Misericordia" loading="lazy">
     Divina<span>Misericordia</span>
   </a>
-    <nav id="mainNav">
+  <nav id="mainNav">
     <a href="index.html">Inicio</a>
     <a href="quienes-somos.html">Quiénes Somos</a>
     <a href="introduccion.html">Introducción</a>
@@ -631,18 +805,13 @@ nav a.nav-otras-devociones::after {
     <a href="consagracion.html">Consagración</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
     <a href="musica-sacra.html">Música Sacra</a>
-    <a href="noticias.html">Noticias</a>
+    <a href="noticias.html" class="activo">Noticias</a>
     <a href="enlaces.html">Enlaces</a>
-    
-    
-    
-    
     <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
-        <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
+    <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
     <a href="estudios-biblicos.html">Estudios</a>
-        <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones ✦</a>
+    <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones ✦</a>
     <a href="contacto.html">Contacto</a>
-    
   </nav>
   <div class="hamburger" onclick="document.getElementById('mainNav').classList.toggle('active')">
     <span></span><span></span><span></span>
@@ -651,9 +820,7 @@ nav a.nav-otras-devociones::after {
 
 <!-- ====== MAIN CONTENT ====== -->
 <main class="main-content">
-
   <h1 class="page-title">Noticias de la Iglesia</h1>
-
   <p class="intro-text">
     Mantente informado sobre las últimas noticias de la Iglesia Católica relacionadas con la Divina Misericordia y otras devociones.
   </p>
@@ -663,6 +830,7 @@ nav a.nav-otras-devociones::after {
     <div class="separator-cruz">
       <div class="separator-linea"></div>
       <svg class="separator-cruz-svg" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg" aria-label="Cruz Divina Misericordia">
+        <!-- (SVG de la cruz se mantiene igual que en tu código) -->
         <defs>
           <radialGradient id="gc_s1" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stop-color="#fff9e0" stop-opacity="0.55"/>
@@ -733,15 +901,13 @@ nav a.nav-otras-devociones::after {
   <p class="quote-closing">
     Jesús, En Vos Confío.
   </p>
-
 </main>
 
 <!-- ====== FOOTER MENÚ ====== -->
-<div class="footer-menu" style="position: relative; overflow: hidden;">
-  <div class="sacred-glow-border"></div>
+<div class="footer-menu">
   <h3 class="footer-menu-title">Explora nuestra web</h3>
   <div class="footer-menu-links">
-        <a href="oraciones.html">Oraciones</a>
+    <a href="oraciones.html">Oraciones</a>
     <a href="via-crucis.html">Vía Crucis</a>
     <a href="maria.html">María</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
@@ -763,17 +929,24 @@ nav a.nav-otras-devociones::after {
     <a href="oracion-santa-cruz.html">Santa Cruz</a>
     <a href="san-francisco.html">San Francisco</a>
     <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
-        <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
-        <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones</a>
+    <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
+    <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones</a>
   </div>
 </div>
 
-<!-- ====== FOOTER PRINCIPAL ====== -->
-<footer class="main-footer sacred-footer">
-    <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">✝</a>
-    <p class="tagline">Jesús, En Vos Confío</p>
-    <p>© 2026 — Portal de la Divina Misericordia</p>
+<!-- ====== FOOTER PRINCIPAL + CRUZ + LÍNEA DORADA ====== -->
+<footer class="main-footer">
+  <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">✝</a>
+  <p class="tagline">Jesús, En Vos Confío</p>
+  <p>© 2026 — Portal de la Divina Misericordia</p>
 </footer>
+
+<!-- Golden Divine Line -->
+<div class="golden-divine-line">
+  <div class="line-glow"></div>
+  <div class="line-shine"></div>
+  <span class="cross-start">+</span>
+</div>
 
 <!-- ====== SCROLL BUTTONS ====== -->
 <button class="scroll-btn scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Subir al inicio" aria-label="Subir al inicio">
@@ -790,7 +963,6 @@ nav a.nav-otras-devociones::after {
   const canvas = document.getElementById('divine-canvas');
   const ctx = canvas.getContext('2d');
   let width, height, rays = [], particles = [];
-
   function resize(){
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
@@ -884,7 +1056,13 @@ nav a.nav-otras-devociones::after {
     if(shouldHover && !isHovering){ cursor.classList.add('hover'); isHovering=true; }
     else if(!shouldHover && isHovering){ cursor.classList.remove('hover'); isHovering=false; }
   }, {passive:true});
-  function animate(){ cursorX+=(mouseX-cursorX)*smoothing; cursorY+=(mouseY-cursorY)*smoothing; cursor.style.left=cursorX+'px'; cursor.style.top=cursorY+'px'; requestAnimationFrame(animate); }
+  function animate(){ 
+    cursorX+=(mouseX-cursorX)*smoothing; 
+    cursorY+=(mouseY-cursorY)*smoothing; 
+    cursor.style.left=cursorX+'px'; 
+    cursor.style.top=cursorY+'px'; 
+    requestAnimationFrame(animate); 
+  }
   animate();
 })();
 
