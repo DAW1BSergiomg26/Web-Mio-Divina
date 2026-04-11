@@ -1224,203 +1224,36 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 
 <!-- Audio Catalog - debe cargarse primero -->
 <script src="js/audio-catalog.js"></script>
-
-<script>
-// Usar catálogo centralizado
-const musicLibrary = AudioCatalog.getCategories();
-
-let currentAudio = null;
-let currentTrackIndex = null;
-let currentCategoryIndex = null;
-let isPlaying = false;
-let trackDurations = {};
-
-function initLibrary() {
-  const library = document.getElementById('musicLibrary');
-  let trackNum = 1;
-  
-  musicLibrary.forEach((cat, catIdx) => {
-    let tracksHtml = '';
-    cat.tracks.forEach((track, trackIdx) => {
-      const globalIdx = trackNum++;
-      tracksHtml += `
-        <div class="track-card" data-title="${track.title}" data-artist="${track.artist}" data-src="${track.src}" data-category="${cat.category}" data-cat="${catIdx}" data-track="${trackIdx}">
-          <div class="track-number">${globalIdx}</div>
-          <button class="track-play-btn" onclick="event.stopPropagation(); playTrack(${catIdx}, ${trackIdx})"></button>
-          <div class="track-info">
-            <div class="track-title">${track.title}</div>
-            <div class="track-artist">${track.artist}</div>
-          </div>
-          <div class="track-duration" data-src="${track.src}">--:--</div>
-        </div>
-      `;
-    });
-    
-    library.innerHTML += `
-      <div class="music-category">
-        <div class="category-header">
-          <span class="category-icon">${cat.icon}</span>
-          <span class="category-title">${cat.category}</span>
-          <span class="category-count">${cat.tracks.length} pistas</span>
-        </div>
-        <div class="tracks-grid">${tracksHtml}</div>
-      </div>
-    `;
-  });
-  
-  document.querySelectorAll('.track-duration').forEach(el => {
-    const src = el.dataset.src;
-    const audio = new Audio(src);
-    audio.addEventListener('loadedmetadata', () => {
-      const mins = Math.floor(audio.duration / 60);
-      const secs = Math.floor(audio.duration % 60);
-      el.textContent = `${mins}:${secs.toString().padStart(2, '0')}`;
-    });
-  });
-}
-
-// Función global para reproducir pistas (debe estar disponible globalmente)
-window.playTrack = function(catIdx, trackIdx) {
-  const track = musicLibrary[catIdx].tracks[trackIdx];
-  const category = musicLibrary[catIdx].category;
-  
-  console.log('[MusicaSacra] playTrack llamado:', track.title);
-  
-  // Quitar playing y dimmed de todas las tarjetas
-  document.querySelectorAll('.track-card').forEach(function(c) {
-    c.classList.remove('playing', 'active', 'dimmed');
-  });
-  
-  // Añadir playing y active a la pista seleccionada
-  const card = document.querySelector('.track-card[data-cat="' + catIdx + '"][data-track="' + trackIdx + '"]');
-  if (card) {
-    card.classList.add('active', 'playing');
-    
-    // Sombrear las demás pistas
-    document.querySelectorAll('.track-card').forEach(function(c) {
-      if (c !== card) {
-        c.classList.add('dimmed');
-      }
-    });
-  }
-  
-  // Usar el reproductor premium
-  const player = AudioPlayerPremium.getInstance();
-  if (player) {
-    player.loadTrack(track, category, true);
-  } else {
-    console.error('[MusicaSacra] Reproductor no inicializado');
-  }
-};
-
-function togglePlay() {
-  const player = AudioPlayerPremium.getInstance();
-  if (player) {
-    player.togglePlay();
-  }
-}
-
-function updatePlayButton() {
-  // Ya no necesario con el nuevo reproductor
-}
-
-function showPlayerBar(track) {
-  // Ya no necesario con el nuevo reproductor
-}
-
-function prevTrack() {
-  const player = AudioPlayerPremium.getInstance();
-  if (player) {
-    player.prev();
-  }
-}
-
-function nextTrack() {
-  const player = AudioPlayerPremium.getInstance();
-  if (player) {
-    player.next();
-  }
-}
-
-function seekTrack(e) {
-  const player = AudioPlayerPremium.getInstance();
-  if (player) {
-    player.seek(e);
-  }
-}
-
-function setVolume(val) {
-  const player = AudioPlayerPremium.getInstance();
-  if (player) {
-    player.setVolume(val);
-  }
-}
-
-function toggleMute() {
-  const player = AudioPlayerPremium.getInstance();
-  if (player) {
-    player.toggleMute();
-  }
-}
-
-function formatTime(seconds) {
-  if (isNaN(seconds)) return '0:00';
-  const m = Math.floor(seconds / 60);
-  const s = Math.floor(seconds % 60);
-  return m + ':' + (s < 10 ? '0' : '') + s;
-}
-
-function toggleMenu() {
-  document.getElementById('mainNav').classList.toggle('active');
-  document.getElementById('hamburger').classList.toggle('open');
-}
-
-function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
-function scrollToDown() { window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); }
-
-// Cursor personalizado desactivado por rendimiento
-// El cursor nativo será más rápido
-document.body.style.cursor = 'default';
-const cursor = document.getElementById('cursor');
-if(cursor) cursor.style.display = 'none';
-
-// Eliminar listener de cursor lento
-// document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; }, { passive: true });
-// function animateCursor() {
-//   cursorX += (mouseX - cursorX) * 0.15;
-//   cursorY += (mouseY - cursorY) * 0.15;
-//   cursor.style.left = cursorX + 'px';
-//   cursor.style.top = cursorY + 'px';
-//   requestAnimationFrame(animateCursor);
-// }
-// animateCursor();
-document.querySelectorAll('a, button, .track-card').forEach(el => {
-  // Eliminado hover de cursor por rendimiento
-  el.style.cursor = 'pointer';
-});
-
-document.addEventListener('DOMContentLoaded', initLibrary);
-</script>
-
-<!-- Audio Player Premium -->
 <script src="js/audio-player.js"></script>
 
-<!-- Audio Section Manager -->
+<!-- Audio Section Manager - puede ir después -->
 <script src="js/audio-section-manager.js"></script>
+<!-- Audio Catalog ends here -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   // Primero: generar la biblioteca
   initLibrary();
   
-  // Segundo: después de generar, inicializar el reproductor
-  setTimeout(function() {
-    const player = AudioPlayerPremium.init(musicLibrary, {
-      defaultVolume: 0.7,
-      fadeDuration: 1500,
-      autoPlay: false
-    });
-    
-    console.log('[MusicaSacra] Reproductor inicializado');
+  // Segundo: verificar que AudioPlayerPremium esté disponible
+  console.log('[MusicaSacra] AudioPlayerPremium disponible:', typeof AudioPlayerPremium);
+  
+  // Si ya existe una instancia, limpiarla
+  if (AudioPlayerPremium.instance) {
+    AudioPlayerPremium.instance.stop();
+  }
+  
+  // Crear nueva instancia
+  const player = AudioPlayerPremium({
+    defaultVolume: 0.7,
+    fadeDuration: 1500,
+    autoPlay: false
+  });
+  
+  // Inicializar con la biblioteca
+  player.init && player.init(musicLibrary);
+  
+  console.log('[MusicaSacra] Reproductor inicializado:', !!player);
+  console.log('[MusicaSacra] Instancia global:', !!AudioPlayerPremium.instance);
     
     // Tercero: bindear eventos a las tarjetas
     document.querySelectorAll('.track-card').forEach(function(el) {
@@ -1472,7 +1305,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     console.log('[MusicaSacra] Eventos vinculados a', document.querySelectorAll('.track-card').length, 'tarjetas');
-  }, 100);
+  });
 });
 </script>
 
