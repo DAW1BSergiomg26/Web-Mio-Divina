@@ -1226,67 +1226,93 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 <script src="js/audio-catalog.js"></script>
 <script src="js/audio-player.js"></script>
 
-<!-- Audio Section Manager - puede ir después -->
+<!-- Audio Section Manager -->
 <script src="js/audio-section-manager.js"></script>
 <!-- Audio Catalog ends here -->
+
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+// ==================== BIBLIOTECA DE MÚSICA ====================
+var musicLibrary = AudioCatalog ? AudioCatalog.getCategories() : [];
+
+var currentAudio = null;
+var trackDurations = {};
+
+// ==================== INICIALIZAR BIBLIOTECA ====================
+function initLibrary() {
+  var library = document.getElementById('musicLibrary');
+  if (!library) return;
   
-  // 1. Generar biblioteca
-  initLibrary();
+  var trackNum = 1;
   
-  // 2. Crear reproductor sagrado
-  try {
-    var player = AudioPlayerPremium({
-      defaultVolume: 0.7,
-      fadeDuration: 1500,
-      autoPlay: false
+  musicLibrary.forEach(function(cat, catIdx) {
+    var tracksHtml = '';
+    
+    cat.tracks.forEach(function(track, trackIdx) {
+      var globalIdx = trackNum++;
+      tracksHtml += 
+        '<div class="track-card" data-title="' + track.title + '" data-artist="' + track.artist + '" data-src="' + track.src + '" data-category="' + cat.category + '" data-cat="' + catIdx + '" data-track="' + trackIdx + '">' +
+          '<div class="track-number">' + globalIdx + '</div>' +
+          '<button class="track-play-btn" onclick="event.stopPropagation(); playTrack(' + catIdx + ', ' + trackIdx + ')"></button>' +
+          '<div class="track-info">' +
+            '<div class="track-title">' + track.title + '</div>' +
+            '<div class="track-artist">' + track.artist + '</div>' +
+          '</div>' +
+          '<div class="track-duration" data-src="' + track.src + '">--:--</div>' +
+        '</div>';
     });
-    console.log('Reproductor creado:', player ? 'OK' : 'ERROR');
-  } catch(e) {
-    console.log('Error:', e);
+    
+    library.innerHTML += 
+      '<div class="music-category">' +
+        '<div class="category-header">' +
+          '<span class="category-icon">' + cat.icon + '</span>' +
+          '<span class="category-title">' + cat.category + '</span>' +
+          '<span class="category-count">' + cat.tracks.length + ' pistas</span>' +
+        '</div>' +
+        '<div class="tracks-grid">' + tracksHtml + '</div>' +
+      '</div>';
+  });
+  
+  // Cargar duraciones
+  document.querySelectorAll('.track-duration').forEach(function(el) {
+    var src = el.dataset.src;
+    var audio = new Audio(src);
+    audio.addEventListener('loadedmetadata', function() {
+      var mins = Math.floor(audio.duration / 60);
+      var secs = Math.floor(audio.duration % 60);
+      el.textContent = mins + ':' + secs.toString().padStart(2, '0');
+    });
+  });
+}
+
+// ==================== REPRODUCIR PISTA ====================
+function playTrack(catIdx, trackIdx) {
+  var track = musicLibrary[catIdx].tracks[trackIdx];
+  var category = musicLibrary[catIdx].category;
+  
+  console.log('Reproduciendo:', track.title);
+  
+  // Quitar active de todas
+  document.querySelectorAll('.track-card').forEach(function(c) {
+    c.classList.remove('playing', 'active', 'dimmed');
+  });
+  
+  // Activar esta
+  var card = document.querySelector('.track-card[data-cat="' + catIdx + '"][data-track="' + trackIdx + '"]');
+  if (card) {
+    card.classList.add('active', 'playing');
+    
+    document.querySelectorAll('.track-card').forEach(function(c) {
+      if (c !== card) c.classList.add('dimmed');
+    });
   }
   
-  // 3. Bindear clicks
-  document.querySelectorAll('.track-card').forEach(function(el) {
-    el.style.cursor = 'pointer';
-    el.addEventListener('click', function(e) {
-      if (e.target.closest('.track-play-btn')) return;
-      
-      var title = this.dataset.title;
-      var artist = this.dataset.artist;
-      var src = this.dataset.src;
-      var category = this.dataset.category;
-      
-      if (src) {
-        document.querySelectorAll('.track-card').forEach(function(c) {
-          c.classList.remove('playing', 'active', 'dimmed');
-        });
-        
-        this.classList.add('active', 'playing');
-        
-        document.querySelectorAll('.track-card').forEach(function(c) {
-          if (c !== el) c.classList.add('dimmed');
-        });
-        
-        if (AudioPlayerPremium.instance) {
-          AudioPlayerPremium.instance.loadTrack({ title: title, artist: artist, src: src }, category, true);
-        }
-      }
-    });
-  });
-  
-  // 4. Bindear botones
-  document.querySelectorAll('.track-play-btn').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      var card = this.closest('.track-card');
-      playTrack(parseInt(card.dataset.cat), parseInt(card.dataset.track));
-    });
-  });
-  
-  console.log('Listo -', document.querySelectorAll('.track-card').length, 'pistas');
-});
+  // Cargar en reproductor
+  if (AudioPlayerPremium.instance) {
+    AudioPlayerPremium.instance.loadTrack(track, category, true);
+  }
+}
+
+console.log('Biblioteca音乐:', musicLibrary.length, 'categorías');
 </script>
 
 <!-- Geometría Sagrada -->
