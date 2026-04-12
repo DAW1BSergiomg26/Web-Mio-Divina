@@ -164,8 +164,17 @@
             </div>
             <div class="player-details">
               <div class="player-track-name">Selecciona una pista</div>
+              <div class="player-track-reason"></div>
               <div class="player-track-artist">Biblioteca Musical</div>
             </div>
+          </div>
+
+          <!-- Visualizador -->
+          <div class="player-visualizer">
+            <div class="audio-waves">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
           </div>
 
           <!-- Controles -->
@@ -211,6 +220,9 @@
             </button>
             <input type="range" class="volume-slider" min="0" max="1" step="0.05" value="${this.options.defaultVolume}" onchange="AudioPlayerPremium.instance.setVolume(this.value)" aria-label="Volumen">
           </div>
+
+          <!-- Recomendaciones -->
+          <div class="player-recommendations"></div>
         </div>
       `;
 
@@ -229,6 +241,7 @@
         container: this.container,
         toggle: this.container.querySelector('.player-toggle'),
         trackName: this.container.querySelector('.player-track-name'),
+        trackReason: this.container.querySelector('.player-track-reason'),
         artistName: this.container.querySelector('.player-track-artist'),
         artwork: this.container.querySelector('.player-artwork'),
         mainBtn: this.container.querySelector('.player-btn.main'),
@@ -242,7 +255,9 @@
         volumeBtn: this.container.querySelector('.volume-btn'),
         iconVolume: this.container.querySelector('.icon-volume'),
         iconMuted: this.container.querySelector('.icon-muted'),
-        volumeSlider: this.container.querySelector('.volume-slider')
+        volumeSlider: this.container.querySelector('.volume-slider'),
+        recommendations: this.container.querySelector('.player-recommendations'),
+        audioWaves: this.container.querySelector('.audio-waves')
       };
     }
 
@@ -310,6 +325,21 @@
         
         document.addEventListener('touchend', () => {
           isDragging = false;
+        });
+      }
+
+      // Recomendaciones clickables
+      if (this.elements.recommendations) {
+        this.elements.recommendations.addEventListener('click', (e) => {
+          const recItem = e.target.closest('.rec-item');
+          if (recItem) {
+            const src = recItem.dataset.src;
+            const file = recItem.dataset.file;
+            const track = window.AUDIO_CATALOG?.find(t => t.src === src);
+            if (track) {
+              this.playWithFadeSmart(src, track);
+            }
+          }
         });
       }
     }
@@ -388,9 +418,50 @@
       if (this.elements.trackName) {
         this.elements.trackName.textContent = track.title || 'Sin título';
       }
+      if (this.elements.trackReason) {
+        // Mostrar label (contextual) o reason
+        this.elements.trackReason.textContent = track.label || track.reason || '';
+        this.elements.trackReason.className = 'player-track-reason ' + (track.reason || '');
+      }
       if (this.elements.artistName) {
         this.elements.artistName.textContent = track.artist || category || 'Biblioteca Musical';
       }
+      
+      // Actualizar recomendaciones
+      this.updateRecommendations(track);
+    }
+
+    /**
+     * Actualizar recomendaciones dinámicas
+     */
+    updateRecommendations(currentTrack) {
+      if (!this.elements.recommendations || !window.AUDIO_CATALOG) return;
+      
+      const catalog = window.AUDIO_CATALOG;
+      const nextTracks = catalog
+        .filter(t => t.file !== currentTrack?.file)
+        .slice(0, 3);
+      
+      if (nextTracks.length === 0) {
+        this.elements.recommendations.innerHTML = '';
+        return;
+      }
+      
+      this.elements.recommendations.innerHTML = nextTracks.map(track => `
+        <div class="rec-item" data-src="${track.src}" data-file="${track.file}" title="${track.title}">
+          ${track.title}
+        </div>
+      `).join('');
+    }
+
+    /**
+     * Mostrar estado playing en UI
+     */
+    setPlayingVisual(isPlaying) {
+      if (this.elements.audioWaves) {
+        this.elements.audioWaves.classList.toggle('active', isPlaying);
+      }
+      document.body.classList.toggle('is-playing', isPlaying);
     }
 
     /**
@@ -738,6 +809,9 @@
       } else if (this.elements.progressBar) {
         this.elements.progressBar.classList.remove('loading');
       }
+
+      // Actualizar ondas de audio
+      this.setPlayingVisual(status === 'playing');
     }
 
     // ==================== EVENT HANDLERS ====================
