@@ -234,58 +234,34 @@
   }
 
   function trackEvent(type, payload) {
-    payload = payload || {};
-    
     switch (type) {
-      case 'page_view':
-        if (payload.section) {
-          state.lastSection = payload.section;
-          recordPageView(payload.section);
-        }
+      case "page_view":
+        state.visits[payload] = (state.visits[payload] || 0) + 1;
+        state.lastVisit = payload;
         break;
-        
-      case 'time_spent':
-        if (payload.section && payload.seconds > 0) {
-          if (!state.timeSpent[payload.section]) {
-            state.timeSpent[payload.section] = 0;
-          }
-          state.timeSpent[payload.section] += payload.seconds;
-          saveState();
-        }
+
+      case "audio_play":
+        state.audio[payload] = (state.audio[payload] || 0) + 1;
         break;
-        
-      case 'audio_play':
-        if (payload.trackId) {
-          trackAudioPlay(payload.trackId);
-        }
-        break;
-        
-      case 'rosary_step':
+
+      case "rosary":
         state.interactions.rosary++;
-        saveState();
-        generateProfile();
         break;
-        
-      case 'candle_lit':
+
+      case "candle":
         state.interactions.candles++;
-        saveState();
-        generateProfile();
         break;
-        
-      case 'prayer_complete':
+
+      case "prayer":
         state.interactions.prayers++;
-        saveState();
         break;
-        
-      case 'intention_shared':
+
+      case "intention":
         state.interactions.intentions++;
-        saveState();
-        generateProfile();
         break;
-        
-      default:
-        console.warn('[SpiritualProfile] Unknown event type:', type);
     }
+
+    saveState();
   }
 
   // ═══════════════════════════════════════════════════════════════
