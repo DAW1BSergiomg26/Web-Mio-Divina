@@ -276,93 +276,7 @@
     totalVisits: 0
   };
 
-  function calculateTotalVisits() {
-    return Object.values(state.visits).reduce((sum, v) => sum + v, 0);
-  }
-
-  function calculateTotalTime() {
-    return Object.values(state.timeSpent).reduce((sum, v) => sum + v, 0);
-  }
-
-  function calculateTotalAudioPlays() {
-    return Object.values(state.audio).reduce((sum, v) => sum + v, 0);
-  }
-
-  function calculateProfileType() {
-    const visits = Object.keys(state.visits);
-    const devocionalSections = ['coronilla', 'rosario', 'novena', 'hora-misericordia'];
-    const musicalSections = ['musica', 'multimedia'];
-    const contemplativoSections = ['inicio', 'divina-misericordia', 'maria'];
-    
-    let devocionalScore = 0;
-    let musicalScore = 0;
-    let contemplativoScore = 0;
-    
-    visits.forEach(section => {
-      if (devocionalSections.includes(section)) {
-        devocionalScore += state.visits[section];
-      }
-      if (musicalSections.includes(section)) {
-        musicalScore += state.visits[section];
-      }
-      if (contemplativoSections.includes(section)) {
-        contemplativoScore += state.visits[section];
-      }
-    });
-    
-    const audioPlays = calculateTotalAudioPlays();
-    musicalScore += audioPlays;
-    
-    const total = devocionalScore + musicalScore + contemplativoScore;
-    if (total === 0) return 'contemplativo';
-    
-    const devocionalRatio = devocionalScore / total;
-    const musicalRatio = musicalScore / total;
-    const { rosary, candles, intentions } = state.interactions;
-    const devocionalActions = rosary + candles + intentions;
-    
-    if (devocionalActions > 10 && musicalRatio < 0.3) {
-      return 'devocional';
-    }
-    if (audioPlays > 8 && audioPlays > devocionalActions) {
-      return 'musical';
-    }
-    if (devocionalActions > 3 && audioPlays > 3) {
-      return 'mixto';
-    }
-    
-    const avgTimePerVisit = calculateTotalVisits() > 0 
-      ? calculateTotalTime() / calculateTotalVisits() 
-      : 0;
-    
-    if (avgTimePerVisit > 120 && devocionalActions < 3) {
-      return 'contemplativo';
-    }
-    
-    return 'contemplativo';
-  }
-
-  function calculateActivityLevel() {
-    const dayMs = 24 * 60 * 60 * 1000;
-    const daysActive = state.createdAt 
-      ? Math.max(1, Math.floor((Date.now() - state.createdAt) / dayMs)) 
-      : 1;
-    
-    const visits = calculateTotalVisits();
-    const time = calculateTotalTime();
-    const visitsPerDay = visits / daysActive;
-    const timePerDay = time / daysActive;
-    
-    if (visitsPerDay > 5 || timePerDay > 300) {
-      return 'alto';
-    }
-    if (visitsPerDay > 2 || timePerDay > 60) {
-      return 'medio';
-    }
-    return 'bajo';
-  }
-
-  function getTopItems(obj, limit) {
+  function getTop(obj, limit = 3) {
     return Object.entries(obj)
       .sort((a, b) => b[1] - a[1])
       .slice(0, limit)
@@ -370,18 +284,29 @@
   }
 
   function generateProfile() {
-    const totalVisits = calculateTotalVisits();
-    
+    const totalTime = Object.values(state.timeSpent).reduce((a, b) => a + b, 0);
+    const totalAudio = Object.values(state.audio).reduce((a, b) => a + b, 0);
+    const { rosary, candles } = state.interactions;
+
+    let type = "mixto";
+
+    if (totalAudio > rosary + candles) type = "musical";
+    else if (rosary + candles > totalAudio) type = "devocional";
+    else if (totalTime > 600 && totalAudio < 3) type = "contemplativo";
+
     currentProfile = Object.freeze({
-      type: calculateProfileType(),
-      activityLevel: calculateActivityLevel(),
-      preferredSections: Object.freeze(getTopItems(state.visits, 5)),
-      preferredAudio: Object.freeze(getTopItems(state.audio, 5)),
-      totalVisits: totalVisits
+      type,
+      preferredSections: getTop(state.visits, 3),
+      preferredAudio: getTop(state.audio, 3),
+      activityLevel: totalTime > 1000 ? "alto" : totalTime > 300 ? "medio" : "bajo"
     });
-    
+
     saveState();
     return currentProfile;
+  }
+
+  function getProfile() {
+    return generateProfile();
   }
 
   // ═══════════════════════════════════════════════════════════════
