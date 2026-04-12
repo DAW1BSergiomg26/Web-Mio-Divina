@@ -202,6 +202,91 @@
     return allTracks[randomIndex];
   }
 
+  function determineReason(feastCats, sectionCats, profileCats) {
+    if (feastCats.length > 0) return 'liturgical';
+    if (sectionCats.length > 0) return 'section';
+    if (profileCats.length > 0) return 'profile';
+    return 'fallback';
+  }
+
+  function getTrackInfo(trackId) {
+    const trackNames = {
+      'gregoriano-1': 'Gregoriano Contemplativo',
+      'gregoriano-2': 'Canto Gregoriano II',
+      'gregoriano-3': 'Salmodia Gregoriana',
+      'gregoriano-4': 'Antífona Mariana',
+      'gregoriano-5': 'Pange Lingua',
+      'silencio-1': 'Silencio Orante',
+      'contemplativo-1': 'Meditación Contemplativa',
+      'misericordia-1': 'Coronilla de la Divina Misericordia',
+      'misericordia-2': 'Hora de la Misericordia',
+      'coronilla-1': 'Coronilla Completa',
+      'coronilla-2': 'Coronilla Breve',
+      'coronilla-3': 'Coronilla de la Mañana',
+      'rosario-1': 'Santo Rosario Completo',
+      'rosario-2': 'Misterios Gozosos',
+      'rosario-misterios': 'Misterios del Rosario',
+      'ave-maria-1': 'Ave María',
+      'salve-1': 'Salve Regina',
+      'magnificat-1': 'Magnificat',
+      'oracion-1': 'Oración de la Mañana',
+      'oracion-2': 'Oración de la Tarde',
+      'padre-nuestro-1': 'Padre Nuestro',
+      'adviento-1': 'Adviento: Espérame',
+      'adviento-2': 'Profecías de Adviento',
+      'espera-1': 'Tiempo de Espera',
+      'navidad-1': 'Noche de Paz',
+      'navidad-2': 'Los Ángeles Cantan',
+      'pascua-nazul': 'Aleluya Pascual',
+      'cuaresma-1': 'Camino de Cuaresma',
+      'cuaresma-2': 'Meditación Cuaresmal',
+      'reflexion-1': 'Momento de Reflexión',
+      'pasion-1': 'Música de Pasión',
+      'pasion-2': 'Vía Crucis',
+      'viacrucis-1': 'Stationes Crucis',
+      'pascual-1': 'Aleluya del Ángel',
+      'aleluya-1': 'Aleluya Pascual',
+      'resurreccion-1': 'El Señor Resucitó',
+      'penitencial-1': 'Salmo Penitencial',
+      'santo-1': 'Santo Santo Santo',
+      'miserere-1': 'Miserere Mei',
+      'alegre-1': 'Alegres Campanas',
+      'celebracion-1': 'Canto de Celebración',
+      'fiesta-1': 'Día de Fiesta',
+      'clasica-1': 'Música Clásica Sacra',
+      'clasica-2': 'Piezas de Órgano',
+      'mozart-1': 'Mozart: Requiem',
+      'bach-1': 'Bach: Coral'
+    };
+    
+    return trackNames[trackId] || trackId;
+  }
+
+  function getNextTrack(context = {}) {
+    const { currentTrack, reasonOverride } = context;
+    
+    const feastCats = getTodayFeastCategory();
+    const sectionCats = getSectionCategories();
+    const profileCats = getProfileCategories();
+    
+    const prioritizedCategories = mergeCategories(feastCats, sectionCats, profileCats);
+    
+    let reason = reasonOverride || determineReason(feastCats, sectionCats, profileCats);
+    
+    const trackId = selectTrack(prioritizedCategories);
+    
+    const src = `/mp3/${trackId}.mp3`;
+    const title = getTrackInfo(trackId);
+    
+    trackPlayed(trackId);
+    
+    return {
+      src,
+      title,
+      reason
+    };
+  }
+
   function getRecommendations(count = 3) {
     const feastCats = getTodayFeastCategory();
     const sectionCats = getSectionCategories();
@@ -354,6 +439,15 @@
     },
 
     /**
+     * Obtener siguiente pista con contexto
+     * @param {Object} context - Contexto { currentTrack, reasonOverride }
+     * @returns {Object} { src, title, reason }
+     */
+    getNextTrack: function(context) {
+      return getNextTrack(context);
+    },
+
+    /**
      * Establecer sección actual
      * @param {string} section - Nombre de la sección
      */
@@ -419,8 +513,21 @@
  * const recs = AudioIntelligence.getRecommendations(3);
  * console.log(recs); // ['gregoriano-1', 'misericordia-1', 'rosario-1']
  * 
- * // Establecer sección actual
+ * // Obtener siguiente pista con contexto
+ * const next = AudioIntelligence.getNextTrack({});
+ * console.log(next);
+ * // {
+ * //   src: '/mp3/gregoriano-1.mp3',
+ * //   title: 'Gregoriano Contemplativo',
+ * //   reason: 'section'
+ * // }
+ * 
+ * // Después de terminar una pista
+ * const afterTrack = AudioIntelligence.getNextTrack({ currentTrack: 'gregoriano-1' });
+ * 
+ * // Establecer sección actual (al entrar en sección)
  * AudioIntelligence.setCurrentSection('maria');
+ * const trackForSection = AudioIntelligence.getNextTrack({ reasonOverride: 'section' });
  * 
  * // Después de reproducir
  * AudioIntelligence.trackPlayed('gregoriano-1');
