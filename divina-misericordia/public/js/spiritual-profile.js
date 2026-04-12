@@ -115,11 +115,8 @@
 
   let state = loadState();
   let saveTimeout = null;
-  let session = {
-    currentSection: null,
-    sectionStartTime: null,
-    isTracking: false
-  };
+  let startTime = Date.now();
+  let currentSection = "inicio";
 
   function saveState() {
     clearTimeout(saveTimeout);
@@ -131,6 +128,20 @@
       }
     }, CONFIG.DEBOUNCE_TIME);
   }
+
+  function startTracking(section) {
+    currentSection = section;
+    startTime = Date.now();
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      const time = Math.floor((Date.now() - startTime) / 1000);
+      state.timeSpent[currentSection] =
+        (state.timeSpent[currentSection] || 0) + time;
+      saveState();
+    }
+  });
 
   // ═══════════════════════════════════════════════════════════════
   // UTILIDADES
@@ -169,18 +180,22 @@
     const path = window.location.pathname;
     const section = extractSectionFromPath(path);
     
-    if (section && section !== session.currentSection) {
+    if (section && section !== currentSection) {
       onSectionChange(section);
     }
   }
 
   function onSectionChange(newSection) {
-    if (session.currentSection && session.sectionStartTime) {
-      recordTimeSpent(session.currentSection);
+    if (currentSection && startTime) {
+      const duration = Date.now() - startTime;
+      if (duration >= CONFIG.MIN_TIME_TO_TRACK) {
+        const seconds = Math.floor(duration / 1000);
+        state.timeSpent[currentSection] = (state.timeSpent[currentSection] || 0) + seconds;
+      }
     }
 
-    session.currentSection = newSection;
-    session.sectionStartTime = Date.now();
+    currentSection = newSection;
+    startTime = Date.now();
     state.lastSection = newSection;
     recordPageView(newSection);
   }
@@ -191,21 +206,6 @@
     }
     state.visits[section]++;
     state.lastVisit = new Date().toISOString();
-    saveState();
-  }
-
-  function recordTimeSpent(section) {
-    if (!session.sectionStartTime) return;
-    
-    const duration = Date.now() - session.sectionStartTime;
-    if (duration < CONFIG.MIN_TIME_TO_TRACK) return;
-    
-    const seconds = Math.floor(duration / 1000);
-    
-    if (!state.timeSpent[section]) {
-      state.timeSpent[section] = 0;
-    }
-    state.timeSpent[section] += seconds;
     saveState();
   }
 
@@ -388,16 +388,19 @@
   // CONTROL DE SESIÓN
   // ═══════════════════════════════════════════════════════════════
 
-  function startTracking() {
+  function startTrackingFn() {
     detectCurrentSection();
-    session.isTracking = true;
   }
 
   function endTracking() {
-    if (session.currentSection && session.sectionStartTime) {
-      recordTimeSpent(session.currentSection);
+    if (currentSection && startTime) {
+      const duration = Date.now() - startTime;
+      if (duration >= CONFIG.MIN_TIME_TO_TRACK) {
+        const seconds = Math.floor(duration / 1000);
+        state.timeSpent[currentSection] = (state.timeSpent[currentSection] || 0) + seconds;
+        saveState();
+      }
     }
-    session.isTracking = false;
   }
 
   function bindEvents() {
@@ -407,15 +410,20 @@
       if (document.hidden) {
         endTracking();
       } else {
-        startTracking();
+        startTrackingFn();
       }
     });
     
     setInterval(detectCurrentSection, 5000);
     
     setInterval(function() {
-      if (session.currentSection && session.sectionStartTime) {
-        recordTimeSpent(session.currentSection);
+      if (currentSection && startTime) {
+        const duration = Date.now() - startTime;
+        if (duration >= CONFIG.MIN_TIME_TO_TRACK) {
+          const seconds = Math.floor(duration / 1000);
+          state.timeSpent[currentSection] = (state.timeSpent[currentSection] || 0) + seconds;
+          saveState();
+        }
       }
     }, CONFIG.SAVE_INTERVAL);
   }
