@@ -1,89 +1,87 @@
 /**
- * Sistema de Perfil Espiritual - Spiritual Profile
+ * Sistema de Perfil Espiritual - Spiritual Profile v2
  * Aprende del usuario y adapta la experiencia espiritual en tiempo real
- * Sin backend - todo basado en localStorage
+ * API pública para que otros módulos adapten UI, audio y contenido
  */
 (function() {
   'use strict';
 
   const SpiritualProfile = {
     config: {
-      storageKey: 'santuario_perfil',
-      sectionsKey: 'santuario_secciones',
-      audioKey: 'santuario_audio',
-      activityKey: 'santuario_actividad',
+      storageKey: 'santuario_perfil_v2',
       minTimeToTrack: 5000,
-      profileVersion: '1.0'
+      saveInterval: 30000
     },
+
+    data: {
+      visits: {},
+      timeSpent: {},
+      audio: {},
+      interactions: {
+        rosary: 0,
+        candles: 0,
+        prayers: 0,
+        intentions: 0
+      },
+      lastVisit: null
+    },
+
+    session: {
+      currentSection: null,
+      sectionStartTime: null,
+      isTracking: false
+    },
+
     profile: {
       type: 'contemplativo',
+      activityLevel: 'medio',
       preferredSections: [],
       preferredAudio: [],
-      activityLevel: 'medio',
-      lastVisit: null,
-      lastSection: null,
-      lastPrayer: null,
       totalVisits: 0,
       createdAt: null
     },
-    sessionData: {
-      currentSection: null,
-      sectionStartTime: null,
-      sectionsVisited: [],
-      audioPlayed: [],
-      rosaryCount: 0,
-      candleCount: 0,
-      prayersShared: 0
-    },
 
     init() {
-      this.loadProfile();
-      this.startSessionTracking();
+      this.loadData();
+      this.startTracking();
       this.bindEvents();
-      this.applyProfileToExperience();
-      this.renderContinuePath();
-      console.log('🧭 Spiritual Profile initialized:', this.profile.type);
+      this.recalculateProfile();
+      console.log('🧭 Spiritual Profile v2 initialized');
     },
 
-    loadProfile() {
+    loadData() {
       const saved = localStorage.getItem(this.config.storageKey);
       if (saved) {
-        const parsed = JSON.parse(saved);
-        this.profile = { ...this.profile, ...parsed };
+        this.data = { ...this.data, ...JSON.parse(saved) };
       } else {
-        this.profile.createdAt = Date.now();
-        this.saveProfile();
+        this.data.createdAt = Date.now();
+        this.saveData();
       }
     },
 
-    saveProfile() {
-      localStorage.setItem(this.config.storageKey, JSON.stringify(this.profile));
+    saveData() {
+      localStorage.setItem(this.config.storageKey, JSON.stringify(this.data));
     },
 
-    startSessionTracking() {
-      this.sessionData.sectionStartTime = Date.now();
-      this.trackCurrentSection();
+    startTracking() {
+      this.detectCurrentSection();
+      this.session.isTracking = true;
     },
 
-    trackCurrentSection() {
+    detectCurrentSection() {
       const path = window.location.pathname;
       const section = this.extractSectionFromPath(path);
       
-      if (section && section !== this.sessionData.currentSection) {
-        this.sessionData.currentSection = section;
-        this.sessionData.sectionStartTime = Date.now();
-        
-        if (!this.sessionData.sectionsVisited.includes(section)) {
-          this.sessionData.sectionsVisited.push(section);
-        }
+      if (section && section !== this.session.currentSection) {
+        this.onSectionChange(section);
       }
     },
 
     extractSectionFromPath(path) {
-      const cleanPath = path.replace(/^\//, '').replace(/\.html$/, '');
-      if (!cleanPath || cleanPath === 'index') return 'inicio';
+      const cleanPath = path.replace(/^\//, '').replace(/\.html$/, '') || 'index';
       
       const sectionMap = {
+        'index': 'inicio',
         'divina-misericordia': 'divina-misericordia',
         'coronilla': 'coronilla',
         'novena': 'novena',
@@ -104,132 +102,135 @@
       return sectionMap[cleanPath] || cleanPath;
     },
 
-    recordSectionVisit(section, duration) {
+    onSectionChange(newSection) {
+      if (this.session.currentSection && this.session.sectionStartTime) {
+        this.recordTimeSpent(this.session.currentSection);
+      }
+
+      this.session.currentSection = newSection;
+      this.session.sectionStartTime = Date.now();
+      this.recordPageView(newSection);
+    },
+
+    recordPageView(section) {
+      if (!this.data.visits[section]) {
+        this.data.visits[section] = 0;
+      }
+      this.data.visits[section]++;
+      this.data.lastVisit = new Date().toISOString();
+      
+      this.saveData();
+    },
+
+    recordTimeSpent(section) {
+      if (!this.session.sectionStartTime) return;
+      
+      const duration = Date.now() - this.session.sectionStartTime;
       if (duration < this.config.minTimeToTrack) return;
-
-      const sectionsData = JSON.parse(localStorage.getItem(this.config.sectionsKey) || '{}');
       
-      if (!sectionsData[section]) {
-        sectionsData[section] = { visits: 0, totalTime: 0 };
+      if (!this.data.timeSpent[section]) {
+        this.data.timeSpent[section] = 0;
       }
+      this.data.timeSpent[section] += Math.floor(duration / 1000);
       
-      sectionsData[section].visits++;
-      sectionsData[section].totalTime += duration;
-      
-      localStorage.setItem(this.config.sectionsKey, JSON.stringify(sectionsData));
+      this.saveData();
     },
 
-    recordAudioPlayed(trackId, trackData) {
-      const audioData = JSON.parse(localStorage.getItem(this.config.audioKey) || '[]');
-      
-      audioData.push({
-        id: trackId,
-        title: trackData.title || trackId,
-        playedAt: Date.now(),
-        section: this.sessionData.currentSection
-      });
-      
-      const maxAudioHistory = 100;
-      if (audioData.length > maxAudioHistory) {
-        audioData.slice(-maxAudioHistory);
+    trackAudioPlay(trackId) {
+      if (!this.data.audio[trackId]) {
+        this.data.audio[trackId] = 0;
       }
+      this.data.audio[trackId]++;
+      this.saveData();
       
-      localStorage.setItem(this.config.audioKey, JSON.stringify(audioData));
-      
-      if (!this.sessionData.audioPlayed.includes(trackId)) {
-        this.sessionData.audioPlayed.push(trackId);
-      }
+      this.recalculateProfile();
     },
 
-    recordRosaryUse() {
-      this.sessionData.rosaryCount++;
-      this.updateProfile();
+    trackRosaryStep() {
+      this.data.interactions.rosary++;
+      this.saveData();
+      this.recalculateProfile();
     },
 
-    recordCandleLit() {
-      this.sessionData.candleCount++;
-      this.updateProfile();
+    trackCandleLit() {
+      this.data.interactions.candles++;
+      this.saveData();
+      this.recalculateProfile();
     },
 
-    recordPrayerShared() {
-      this.sessionData.prayersShared++;
-      this.updateProfile();
+    trackPrayer() {
+      this.data.interactions.prayers++;
+      this.saveData();
     },
 
-    updateProfile() {
-      const sectionsData = JSON.parse(localStorage.getItem(this.config.sectionsKey) || '{}');
-      const audioData = JSON.parse(localStorage.getItem(this.config.audioKey) || '[]');
-      
-      const totalVisits = Object.values(sectionsData).reduce((sum, s) => sum + s.visits, 0);
-      const totalTime = Object.values(sectionsData).reduce((sum, s) => sum + s.totalTime, 0);
-      
-      const sortedSections = Object.entries(sectionsData)
-        .sort((a, b) => b[1].visits - a[1].visits)
-        .slice(0, 5)
-        .map(([name]) => name);
-      
-      const sortedAudio = this.getMostPlayedAudio(audioData, 5);
-      
-      this.profile.preferredSections = sortedSections;
-      this.profile.preferredAudio = sortedAudio;
-      this.profile.totalVisits = totalVisits + this.sessionData.sectionsVisited.length;
-      this.profile.lastVisit = Date.now();
-      this.profile.activityLevel = this.calculateActivityLevel(totalVisits, totalTime);
-      this.profile.type = this.calculateProfileType(sectionsData, audioData);
-      
-      this.saveProfile();
+    trackIntention() {
+      this.data.interactions.intentions++;
+      this.saveData();
+      this.recalculateProfile();
     },
 
-    getMostPlayedAudio(audioData, limit) {
-      const counts = {};
-      audioData.forEach(a => {
-        counts[a.id] = (counts[a.id] || 0) + 1;
-      });
+    recalculateProfile() {
+      const visits = Object.values(this.data.visits).reduce((a, b) => a + b, 0);
+      const time = Object.values(this.data.timeSpent).reduce((a, b) => a + b, 0);
       
-      return Object.entries(counts)
+      this.profile.totalVisits = visits;
+      this.profile.preferredSections = this.getTopSections(5);
+      this.profile.preferredAudio = this.getTopAudio(5);
+      this.profile.activityLevel = this.calculateActivityLevel(visits, time);
+      this.profile.type = this.calculateProfileType();
+      
+      this.saveData();
+    },
+
+    getTopSections(limit) {
+      return Object.entries(this.data.visits)
         .sort((a, b) => b[1] - a[1])
         .slice(0, limit)
-        .map(([id]) => id);
+        .map(([section]) => section);
     },
 
-    calculateActivityLevel(visits, time) {
-      const now = Date.now();
+    getTopAudio(limit) {
+      return Object.entries(this.data.audio)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, limit)
+        .map(([track]) => track);
+    },
+
+    calculateActivityLevel(visits, timeSeconds) {
       const dayMs = 24 * 60 * 60 * 1000;
-      const daysActive = this.profile.createdAt 
-        ? Math.max(1, Math.floor((now - this.profile.createdAt) / dayMs)) 
+      const daysActive = this.data.createdAt 
+        ? Math.max(1, Math.floor((Date.now() - this.data.createdAt) / dayMs)) 
         : 1;
       
       const visitsPerDay = visits / daysActive;
-      const timePerDay = time / daysActive;
+      const timePerDay = timeSeconds / daysActive;
       
-      if (visitsPerDay > 5 || timePerDay > 300000) return 'alto';
-      if (visitsPerDay > 2 || timePerDay > 60000) return 'medio';
+      if (visitsPerDay > 5 || timePerDay > 300) return 'alto';
+      if (visitsPerDay > 2 || timePerDay > 60) return 'medio';
       return 'bajo';
     },
 
-    calculateProfileType(sectionsData, audioData) {
-      const devocionalSections = ['coronilla', 'rosario', 'novena', 'hora-misericordia'];
-      const musicalSections = ['musica', 'multimedia'];
-      const contemplativoSections = ['divina-misericordia', 'maria', 'inicio'];
+    calculateProfileType() {
+      const devocional = ['coronilla', 'rosario', 'novena', 'hora-misericordia'];
+      const musical = ['musica', 'multimedia'];
+      const contemplativo = ['inicio', 'divina-misericordia', 'maria'];
       
-      let devocionalScore = 0;
-      let musicalScore = 0;
-      let contemplativoScore = 0;
+      let scores = { devocional: 0, musical: 0, contemplativo: 0 };
       
-      Object.keys(sectionsData).forEach(section => {
-        if (devocionalSections.includes(section)) devocionalScore += sectionsData[section].visits;
-        if (musicalSections.includes(section)) musicalScore += sectionsData[section].visits;
-        if (contemplativoSections.includes(section)) contemplativoScore += sectionsData[section].visits;
+      Object.keys(this.data.visits).forEach(section => {
+        if (devocional.includes(section)) scores.devocional += this.data.visits[section];
+        if (musical.includes(section)) scores.musical += this.data.visits[section];
+        if (contemplativo.includes(section)) scores.contemplativo += this.data.visits[section];
       });
       
-      const audioScore = audioData.length;
-      musicalScore += audioScore;
+      const audioCount = Object.values(this.data.audio).reduce((a, b) => a + b, 0);
+      scores.musical += audioCount;
       
-      const total = devocionalScore + musicalScore + contemplativoScore;
+      const total = scores.devocional + scores.musical + scores.contemplativo;
       if (total === 0) return 'contemplativo';
       
-      const devocionalRatio = devocionalScore / total;
-      const musicalRatio = musicalScore / total;
+      const devocionalRatio = scores.devocional / total;
+      const musicalRatio = scores.musical / total;
       
       if (devocionalRatio > 0.4) return 'devocional';
       if (musicalRatio > 0.4) return 'musical';
@@ -237,425 +238,108 @@
       return 'contemplativo';
     },
 
-    applyProfileToExperience() {
-      this.adaptAnimations();
-      this.highlightPreferredSections();
-      this.suggestMusicBasedOnProfile();
-    },
-
-    adaptAnimations() {
-      const profile = this.profile;
-      
-      let animationSpeed = 1;
-      let particleDensity = 'medium';
-      
-      if (profile.type === 'contemplativo') {
-        animationSpeed = 0.6;
-        particleDensity = 'low';
-      } else if (profile.type === 'devocional') {
-        animationSpeed = 0.8;
-        particleDensity = 'medium';
-      } else if (profile.type === 'musical') {
-        animationSpeed = 1.2;
-        particleDensity = 'high';
-      }
-      
-      document.documentElement.style.setProperty('--animation-speed', animationSpeed);
-      document.documentElement.style.setProperty('--particle-density', particleDensity);
-      
-      if (profile.activityLevel === 'bajo') {
-        this.reduceMotion();
-      }
-    },
-
-    reduceMotion() {
-      const style = document.createElement('style');
-      style.id = 'profile-motion-reduce';
-      style.textContent = `
-        *, *::before, *::after {
-          animation-duration: 0.01ms !important;
-          transition-duration: 0.01ms !important;
-        }
-      `;
-      if (!document.getElementById('profile-motion-reduce')) {
-        document.head.appendChild(style);
-      }
-    },
-
-    highlightPreferredSections() {
-      if (this.profile.preferredSections.length === 0) return;
-      
-      const navLinks = document.querySelectorAll('.main-nav a, nav a');
-      const preferred = this.profile.preferredSections.slice(0, 3);
-      
-      navLinks.forEach(link => {
-        const href = link.getAttribute('href') || '';
-        const section = this.extractSectionFromPath(href);
-        
-        if (preferred.includes(section)) {
-          link.classList.add('preferred-section');
-        }
-      });
-      
-      this.createHighlightStyles();
-    },
-
-    createHighlightStyles() {
-      if (document.getElementById('profile-highlight-styles')) return;
-      
-      const style = document.createElement('style');
-      style.id = 'profile-highlight-styles';
-      style.textContent = `
-        .preferred-section::after {
-          content: ' ·';
-          color: #d4af37;
-        }
-        .preferred-section {
-          position: relative;
-        }
-      `;
-      document.head.appendChild(style);
-    },
-
-    suggestMusicBasedOnProfile() {
-      const suggestions = this.getMusicSuggestions();
-      if (suggestions.length === 0) return;
-      
-      const audioPlayer = document.querySelector('.audio-player, #audio-player');
-      if (!audioPlayer) return;
-      
-      const suggestionContainer = document.createElement('div');
-      suggestionContainer.className = 'profile-music-suggestion';
-      suggestionContainer.innerHTML = `
-        <p>Basado en tu camino espiritual:</p>
-        <div class="suggestion-tracks">
-          ${suggestions.map(t => `
-            <button class="suggestion-track" data-track="${t.id}">
-              🎵 ${t.title}
-            </button>
-          `).join('')}
-        </div>
-      `;
-      
-      this.createSuggestionStyles();
-      
-      const existing = document.querySelector('.profile-music-suggestion');
-      if (!existing) {
-        audioPlayer.insertAdjacentElement('beforebegin', suggestionContainer);
-        
-        suggestionContainer.querySelectorAll('.suggestion-track').forEach(btn => {
-          btn.addEventListener('click', () => {
-            if (window.AudioController) {
-              window.AudioController.playTrack(btn.dataset.track);
-            }
-          });
-        });
-      }
-    },
-
-    getMusicSuggestions() {
-      const profile = this.profile;
-      const suggestions = [];
-      
-      const allTracks = {
-        'gregoriano-1': { title: 'Gregoriano Contemplativo', type: 'contemplativo' },
-        'misericordia-1': { title: 'Coronilla de la Misericordia', type: 'devocional' },
-        'rosario-1': { title: 'Santo Rosario', type: 'devocional' },
-        'advent-1': { title: 'Advent Meditación', type: 'contemplativo' },
-        'pasion-1': { title: 'Música de Pasión', type: 'penitencial' },
-        'pascua-1': { title: 'Aleluya Pascual', type: 'alegre' },
-        'marian-1': { title: 'Ave María', type: 'mariano' }
-      };
-      
-      if (profile.preferredAudio.length > 0) {
-        profile.preferredAudio.slice(0, 3).forEach(id => {
-          if (allTracks[id]) suggestions.push({ id, ...allTracks[id] });
-        });
-      }
-      
-      const typeMap = {
-        'contemplativo': 'gregoriano-1',
-        'devocional': 'misericordia-1',
-        'musical': 'rosario-1',
-        'mixto': 'marian-1'
-      };
-      
-      const defaultId = typeMap[profile.type];
-      if (defaultId && !suggestions.find(s => s.id === defaultId) && allTracks[defaultId]) {
-        suggestions.push({ id: defaultId, ...allTracks[defaultId] });
-      }
-      
-      return suggestions.slice(0, 3);
-    },
-
-    renderContinuePath() {
-      if (!this.profile.lastSection) return;
-      
-      let container = document.querySelector('.continue-path');
-      if (container) return;
-      
-      container = document.createElement('div');
-      container.className = 'continue-path';
-      
-      const lastSectionName = this.getSectionDisplayName(this.profile.lastSection);
-      const lastPrayerText = this.getLastPrayerText();
-      
-      container.innerHTML = `
-        <div class="continue-card">
-          <div class="continue-icon">🧭</div>
-          <div class="continue-content">
-            <h3>Continuar tu camino espiritual</h3>
-            <p>Última sección: <strong>${lastSectionName}</strong></p>
-            ${lastPrayerText ? `<p class="continue-prayer">${lastPrayerText}</p>` : ''}
-            <button class="continue-btn">Continuar</button>
-          </div>
-        </div>
-      `;
-      
-      this.createContinuePathStyles();
-      
-      const hero = document.querySelector('.hero, .main-hero, header');
-      if (hero) {
-        hero.insertAdjacentElement('afterend', container);
-      }
-      
-      container.querySelector('.continue-btn').addEventListener('click', () => {
-        this.navigateToLastSection();
-      });
-    },
-
-    getSectionDisplayName(section) {
-      const names = {
-        'inicio': 'Inicio',
-        'divina-misericordia': 'Divina Misericordia',
-        'coronilla': 'Coronilla',
-        'novena': 'Novena',
-        'hora-misericordia': 'Hora de la Misericordia',
-        'rosario': 'Santo Rosario',
-        'maria': 'María',
-        'caacupe': 'Virgen de Caacupé',
-        'lujan': 'Virgen de Luján',
-        'jose': 'San José',
-        'musica': 'Música Sacra',
-        'multimedia': 'Multimedia',
-        'oraciones': 'Oraciones',
-        'contacto': 'Contacto',
-        'blog': 'Blog',
-        'donar': 'Donar'
-      };
-      return names[section] || section;
-    },
-
-    getLastPrayerText() {
-      const rosary = localStorage.getItem('rosario_progreso');
-      const candle = localStorage.getItem('mis_velas');
-      
-      if (rosary) {
-        const data = JSON.parse(rosary);
-        if (data.currentHail > 0) {
-          return `Rosario: ${data.currentHail} Ave Marías`;
-        }
-      }
-      
-      if (candle) {
-        const candles = JSON.parse(candle);
-        if (candles.length > 0) {
-          return `Última vela encendida`;
-        }
-      }
-      
-      return null;
-    },
-
-    navigateToLastSection() {
-      const lastSection = this.profile.lastSection;
-      if (!lastSection) return;
-      
-      const sectionToPath = {
-        'inicio': '/index.html',
-        'divina-misericordia': '/divina-misericordia.html',
-        'coronilla': '/coronilla.html',
-        'novena': '/novena.html',
-        'hora-misericordia': '/hora-misericordia.html',
-        'rosario': '/rosario.html',
-        'maria': '/maria.html',
-        'caacupe': '/caacupe.html',
-        'lujan': '/lujan.html',
-        'jose': '/jose.html',
-        'musica': '/musica.html',
-        'multimedia': '/multimedia.html',
-        'oraciones': '/oraciones.html',
-        'contacto': '/contacto.html',
-        'blog': '/blog.html',
-        'donar': '/donar.html'
-      };
-      
-      const path = sectionToPath[lastSection] || '/index.html';
-      window.location.href = path;
-    },
-
-    createContinuePathStyles() {
-      if (document.getElementById('continue-path-styles')) return;
-      
-      const style = document.createElement('style');
-      style.id = 'continue-path-styles';
-      style.textContent = `
-        .continue-path {
-          max-width: 600px;
-          margin: 1rem auto;
-          padding: 0 1rem;
-        }
-        .continue-card {
-          display: flex;
-          align-items: center;
-          gap: 15px;
-          background: linear-gradient(135deg, rgba(20,18,15,0.9), rgba(35,30,25,0.9));
-          border: 1px solid rgba(212,175,55,0.3);
-          border-radius: 12px;
-          padding: 1rem 1.5rem;
-        }
-        .continue-icon {
-          font-size: 2rem;
-        }
-        .continue-content h3 {
-          font-family: 'Cinzel Decorative', serif;
-          color: #d4af37;
-          font-size: 1rem;
-          margin: 0 0 5px 0;
-        }
-        .continue-content p {
-          color: rgba(250,247,240,0.7);
-          font-size: 0.85rem;
-          margin: 3px 0;
-        }
-        .continue-content strong {
-          color: #faf7f0;
-        }
-        .continue-prayer {
-          font-style: italic;
-          color: #d4af37 !important;
-        }
-        .continue-btn {
-          background: rgba(212,175,55,0.2);
-          border: 1px solid rgba(212,175,55,0.4);
-          color: #faf7f0;
-          padding: 6px 16px;
-          border-radius: 20px;
-          font-size: 0.8rem;
-          cursor: pointer;
-          margin-top: 8px;
-          transition: all 0.3s;
-        }
-        .continue-btn:hover {
-          background: rgba(212,175,55,0.4);
-        }
-      `;
-      document.head.appendChild(style);
-    },
-
-    createSuggestionStyles() {
-      if (document.getElementById('profile-suggestion-styles')) return;
-      
-      const style = document.createElement('style');
-      style.id = 'profile-suggestion-styles';
-      style.textContent = `
-        .profile-music-suggestion {
-          background: rgba(212,175,55,0.1);
-          border-radius: 10px;
-          padding: 1rem;
-          margin-bottom: 1rem;
-        }
-        .profile-music-suggestion p {
-          color: rgba(250,247,240,0.7);
-          font-size: 0.85rem;
-          margin: 0 0 10px 0;
-        }
-        .suggestion-tracks {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 8px;
-        }
-        .suggestion-track {
-          background: rgba(212,175,55,0.2);
-          border: 1px solid rgba(212,175,55,0.3);
-          color: #faf7f0;
-          padding: 6px 12px;
-          border-radius: 15px;
-          font-size: 0.8rem;
-          cursor: pointer;
-          transition: all 0.2s;
-        }
-        .suggestion-track:hover {
-          background: rgba(212,175,55,0.4);
-          transform: scale(1.02);
-        }
-      `;
-      document.head.appendChild(style);
-    },
-
     bindEvents() {
       window.addEventListener('beforeunload', () => {
-        this.endSession();
+        this.endTracking();
       });
 
       document.addEventListener('visibilitychange', () => {
         if (document.hidden) {
-          this.endSession();
+          this.endTracking();
         } else {
-          this.startSessionTracking();
+          this.startTracking();
         }
       });
 
       setInterval(() => {
-        this.trackCurrentSection();
+        this.detectCurrentSection();
       }, 5000);
+
+      setInterval(() => {
+        if (this.session.currentSection && this.session.sectionStartTime) {
+          this.recordTimeSpent(this.session.currentSection);
+        }
+      }, this.config.saveInterval);
+
+      document.addEventListener('rosary-step', () => this.trackRosaryStep());
+      document.addEventListener('candle-lit', () => this.trackCandleLit());
+      document.addEventListener('prayer-complete', () => this.trackPrayer());
+      document.addEventListener('intention-shared', () => this.trackIntention());
     },
 
-    endSession() {
-      if (this.sessionData.currentSection && this.sessionData.sectionStartTime) {
-        const duration = Date.now() - this.sessionData.sectionStartTime;
-        this.recordSectionVisit(this.sessionData.currentSection, duration);
+    endTracking() {
+      if (this.session.currentSection && this.session.sectionStartTime) {
+        this.recordTimeSpent(this.session.currentSection);
       }
-      
-      this.profile.lastSection = this.sessionData.currentSection;
-      this.updateProfile();
+      this.session.isTracking = false;
+    },
+
+    getData() {
+      return JSON.parse(JSON.stringify(this.data));
     },
 
     getProfile() {
-      return { ...this.profile };
+      return {
+        type: this.profile.type,
+        activityLevel: this.profile.activityLevel,
+        preferredSections: this.profile.preferredSections,
+        preferredAudio: this.profile.preferredAudio,
+        totalVisits: this.profile.totalVisits
+      };
     },
 
-    resetProfile() {
-      localStorage.removeItem(this.config.storageKey);
-      localStorage.removeItem(this.config.sectionsKey);
-      localStorage.removeItem(this.config.audioKey);
-      localStorage.removeItem(this.config.activityKey);
+    getSuggestedAudio() {
+      const typeMap = {
+        'contemplativo': ['gregoriano-1', 'silencio-1', 'misericordia-1'],
+        'devocional': ['coronilla-1', 'rosario-1', 'novena-1'],
+        'musical': ['maria-1', 'gregoriano-1', 'musica-sacra-1'],
+        'mixto': ['misericordia-1', 'maria-1', 'rosario-1']
+      };
       
-      this.profile = {
-        type: 'contemplativo',
-        preferredSections: [],
-        preferredAudio: [],
-        activityLevel: 'medio',
+      const suggestions = typeMap[this.profile.type] || typeMap.contemplativo;
+      
+      return suggestions.filter(track => 
+        !this.profile.preferredAudio.includes(track)
+      ).slice(0, 3);
+    },
+
+    getAnimationConfig() {
+      const configs = {
+        contemplativo: { speed: 0.6, particles: 'low', motion: 'reduced' },
+        devocional: { speed: 0.8, particles: 'medium', motion: 'normal' },
+        musical: { speed: 1.2, particles: 'high', motion: 'normal' },
+        mixto: { speed: 1.0, particles: 'medium', motion: 'normal' }
+      };
+      
+      return configs[this.profile.type] || configs.contemplativo;
+    },
+
+    getContextualMessage() {
+      const messages = {
+        contemplativo: 'El silencio es oración. ¿Necesitas un momento de paz?',
+        devocional: 'La fe se fortalece con la práctica. ¿Quieres rezar?',
+        musical: 'La música eleva el alma. ¿Oyes alguna canción?',
+        mixto: 'Tu camino espiritual es único. ¿Qué te trae hoy?'
+      };
+      
+      return messages[this.profile.type] || messages.contemplativo;
+    },
+
+    reset() {
+      localStorage.removeItem(this.config.storageKey);
+      this.data = {
+        visits: {},
+        timeSpent: {},
+        audio: {},
+        interactions: { rosary: 0, candles: 0, prayers: 0, intentions: 0 },
         lastVisit: null,
-        lastSection: null,
-        lastPrayer: null,
-        totalVisits: 0,
         createdAt: Date.now()
       };
-      
-      this.saveProfile();
+      this.saveData();
       console.log('🧭 Profile reset');
-    },
-
-    updateLastPrayer(prayerType) {
-      this.profile.lastPrayer = {
-        type: prayerType,
-        at: Date.now()
-      };
-      this.saveProfile();
     }
   };
 
   window.SpiritualProfile = SpiritualProfile;
-  console.log('🧭 Spiritual Profile loaded');
+  console.log('🧭 Spiritual Profile v2 loaded');
 })();
