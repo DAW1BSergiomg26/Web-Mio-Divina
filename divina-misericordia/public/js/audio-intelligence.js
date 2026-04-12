@@ -167,7 +167,12 @@ function weightedRandom(tracks) {
   if (tracks.length === 0) return null;
   if (tracks.length === 1) return tracks[0];
 
-  // Filtrar recientemente reproducidas
+  // Usar pickTrack de audio-memory si está disponible
+  if (audioMemory && audioMemory.pickTrack) {
+    return audioMemory.pickTrack(tracks);
+  }
+
+  // Fallback: filtrar recientemente reproducidas
   const recent = state.lastPlayed.slice(0, 3);
   const available = tracks.filter(t => !recent.includes(t.file));
 

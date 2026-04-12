@@ -91,6 +91,14 @@ function getRecentTracks(n = 5) {
 }
 
 /**
+ * Obtener IDs de las últimas N pistas (para filtrado)
+ * @param {number} limit - Número de IDs a obtener
+ */
+function getRecentTrackIds(limit = 5) {
+  return state.history.slice(0, limit).map(t => t.file);
+}
+
+/**
  * Obtener historial completo
  */
 function getHistory() {
@@ -200,7 +208,7 @@ function getTimeSinceLastPlayed(file) {
 function canPlay(file, force = false) {
   if (force) return true;
   
-  const recentFiles = getRecentTracks(CONFIG.hardRuleSkip).map(t => t.file);
+  const recentFiles = getRecentTrackIds(CONFIG.hardRuleSkip);
   
   // HARD RULE
   if (recentFiles.includes(file)) {
@@ -211,11 +219,39 @@ function canPlay(file, force = false) {
   // TIME RULE
   const timeSince = getTimeSinceLastPlayed(file);
   if (timeSince < CONFIG.timeRuleMinutes * 60 * 1000 && getPlayCount(file) > 0) {
-    console.log('[AudioMemory] Bloqueado por TIME RULE:', file, '(", Math.round(timeSince/60000), "min)');
+    console.log('[AudioMemory] Bloqueado por TIME RULE:', file, '(', Math.round(timeSince/60000), 'min)');
     return false;
   }
   
   return true;
+}
+
+/**
+ * SELECCIÓN FINAL - pickTrack
+ * Función principal que combina filtrado y scoring
+ * @param {array} tracks - Array de pistas candidatas
+ * @returns {object} - Mejor pista seleccionada
+ */
+function pickTrack(tracks) {
+  if (!tracks || tracks.length === 0) return null;
+  
+  const recentIds = getRecentTrackIds(5);
+  
+  // Filtrar anti-repetición
+  let filtered = tracks.filter(track => !recentIds.includes(track.file));
+  
+  // Si no quedan pistas, usar las originales
+  if (filtered.length === 0) {
+    filtered = [...tracks];
+  }
+  
+  // Aplicar scoring
+  const scored = scoreTracks(filtered);
+  
+  // Ordenar por puntuación
+  scored.sort((a, b) => b._score - a._score);
+  
+  return scored[0] || null;
 }
 
 // ═══════════════════════════════════════════════════════════════════
@@ -324,12 +360,14 @@ function getFallbackTrack(catalog) {
 window.AudioMemory = {
   addToHistory,
   getRecentTracks,
+  getRecentTrackIds,
   getHistory,
   getPlayCount,
   getAllCounts,
   filterCandidates,
   scoreTracks,
   canPlay,
+  pickTrack,
   getNextTrackWithMemory,
   getState: () => ({ ...state }),
   clearHistory: () => {
@@ -342,8 +380,11 @@ window.AudioMemory = {
 // Alias para compatibilidad
 window.addToHistory = addToHistory;
 window.getRecentTracks = getRecentTracks;
+window.getRecentTrackIds = getRecentTrackIds;
 window.filterCandidates = filterCandidates;
+window.scoreTracks = scoreTracks;
 window.canPlay = canPlay;
+window.pickTrack = pickTrack;
 
 // ═══════════════════════════════════════════════════════════════════
 // EJEMPLOS DE USO

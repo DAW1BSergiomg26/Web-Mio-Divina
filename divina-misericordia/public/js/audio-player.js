@@ -24,6 +24,9 @@
       if (window.trackEvent) {
         trackEvent = window.trackEvent;
       }
+      if (window.AudioMemory) {
+        console.log('[AudioPlayer] AudioMemory disponible');
+      }
     } catch(e) {
       console.log('[AudioPlayer] Módulos de inteligencia no disponibles aún');
     }
@@ -593,8 +596,14 @@
             console.log('[AudioPlayer] trackEvent audio_play:', trackInfo.file);
           }
           
+          // AudioMemory: guardar reproducción
+          if (window.AudioMemory && window.AudioMemory.addToHistory) {
+            window.AudioMemory.addToHistory(trackInfo);
+            console.log('[AudioPlayer] addToHistory:', trackInfo.title);
+          }
+          
           // Actualizar estado
-          this.state.currentTrack = { src: src, title: trackInfo.title || 'Pista' };
+          this.state.currentTrack = { src: src, title: trackInfo.title || 'Pista', file: trackInfo.file };
           this.updateTrackInfo(this.state.currentTrack);
           this.setState('playing');
         }, duration);
@@ -609,7 +618,13 @@
           console.log('[AudioPlayer] trackEvent audio_play:', trackInfo.file);
         }
         
-        this.state.currentTrack = { src: src, title: trackInfo.title || 'Pista' };
+        // AudioMemory: guardar reproducción
+        if (window.AudioMemory && window.AudioMemory.addToHistory) {
+          window.AudioMemory.addToHistory(trackInfo);
+          console.log('[AudioPlayer] addToHistory:', trackInfo.title);
+        }
+        
+        this.state.currentTrack = { src: src, title: trackInfo.title || 'Pista', file: trackInfo.file };
         this.updateTrackInfo(this.state.currentTrack);
         this.setState('playing');
       }
@@ -629,6 +644,11 @@
       // Tracking
       if (trackEvent && track.file) {
         trackEvent('audio_play', track.file);
+      }
+      
+      // AudioMemory: guardar reproducción
+      if (window.AudioMemory && window.AudioMemory.addToHistory) {
+        window.AudioMemory.addToHistory(track);
       }
       
       this.state.currentTrack = track;
