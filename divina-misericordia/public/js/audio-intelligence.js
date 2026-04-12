@@ -10,6 +10,25 @@
 import { getProfile } from "./spiritual-profile.js";
 
 // ═══════════════════════════════════════════════════════════════════
+// INTEGRACIÓN CON AUDIO-MEMORY
+// ═══════════════════════════════════════════════════════════════════
+
+let audioMemory = null;
+
+function loadAudioMemory() {
+  try {
+    if (window.AudioMemory) {
+      audioMemory = window.AudioMemory;
+      console.log('[AudioIntelligence] AudioMemory cargado');
+    }
+  } catch(e) {
+    console.log('[AudioIntelligence] AudioMemory no disponible');
+  }
+}
+
+loadAudioMemory();
+
+// ═══════════════════════════════════════════════════════════════════
 // ESTADO
 // ═══════════════════════════════════════════════════════════════════
 
@@ -23,7 +42,7 @@ let state = {
 // GETNEXTTRACK - FUNCIÓN PRINCIPAL
 // ═══════════════════════════════════════════════════════════════════
 
-export function getNextTrack({ section, catalog, liturgy }) {
+export function getNextTrack({ section, catalog, liturgy, useMemory = true }) {
   const profile = getProfile();
 
   // Actualizar sección actual
@@ -31,34 +50,54 @@ export function getNextTrack({ section, catalog, liturgy }) {
     state.currentSection = section;
   }
 
+  // Obtener candidatos usando lógica original
+  let candidates = [];
+  
   // 1. Litúrgico
   const liturgicalTrack = findLiturgicalTrack(catalog, liturgy);
   if (liturgicalTrack) {
-    const result = { ...liturgicalTrack, reason: "liturgical" };
-    trackPlayed(liturgicalTrack.file, "liturgical");
-    return result;
+    candidates.push({ ...liturgicalTrack, reason: "liturgical" });
   }
 
   // 2. Sección
   const sectionTrack = findSectionTrack(catalog, section || state.currentSection);
   if (sectionTrack) {
-    const result = { ...sectionTrack, reason: "section" };
-    trackPlayed(sectionTrack.file, "section");
-    return result;
+    candidates.push({ ...sectionTrack, reason: "section" });
   }
 
   // 3. Perfil
   const profileTrack = findProfileTrack(catalog, profile);
   if (profileTrack) {
-    const result = { ...profileTrack, reason: "profile" };
-    trackPlayed(profileTrack.file, "profile");
-    return result;
+    candidates.push({ ...profileTrack, reason: "profile" });
   }
 
-  // 4. Fallback
-  const fallbackTrack = getRandomTrack(catalog);
-  const result = { ...fallbackTrack, reason: "fallback" };
-  trackPlayed(fallbackTrack.file, "fallback");
+  // 4. Fallback (añadir más opciones del catálogo)
+  if (candidates.length === 0 && catalog && catalog.length > 0) {
+    const randomTracks = catalog.slice(0, 5).map(t => ({ ...t, reason: "fallback" }));
+    candidates = [...candidates, ...randomTracks];
+  }
+
+  // Si hay candidatos, aplicar filtro de memoria
+  if (useMemory && audioMemory && audioMemory.filterCandidates && candidates.length > 0) {
+    const filtered = audioMemory.filterCandidates(candidates);
+    if (filtered && filtered.length > 0) {
+      const selected = filtered[0];
+      trackPlayed(selected.file, selected.reason);
+      return selected;
+    }
+  }
+
+  // Si no hay memoria o falló el filtro, usar el primer candidato
+  if (candidates.length > 0) {
+    const selected = candidates[0];
+    trackPlayed(selected.file, selected.reason);
+    return selected;
+  }
+
+  // Fallback final
+  const fallback = getRandomTrack(catalog);
+  const result = { ...fallback, reason: "fallback" };
+  trackPlayed(fallback.file, "fallback");
   return result;
 }
 
@@ -174,6 +213,14 @@ function trackPlayed(trackId, reason) {
   
   if (state.lastPlayed.length > 20) {
     state.lastPlayed = state.lastPlayed.slice(-20);
+  }
+  
+  // Sincronizar con AudioMemory
+  if (audioMemory && audioMemory.addToHistory) {
+    audioMemory.addToHistory({
+      file: trackId,
+      reason: reason
+    });
   }
 }
 
