@@ -10,6 +10,86 @@
 import { getProfile } from "./spiritual-profile.js";
 
 // ═══════════════════════════════════════════════════════════════════
+// INTEGRACIÓN CON SISTEMA LITÚRGICO
+// ═══════════════════════════════════════════════════════════════════
+
+let liturgicalModule = null;
+let feastDaysModule = null;
+
+function loadLiturgicalModules() {
+  try {
+    if (window.LiturgicalCalendar && window.LiturgicalCalendar.getCurrentLiturgicalTime) {
+      liturgicalModule = window.LiturgicalCalendar;
+      console.log('[AudioIntelligence] LiturgicalCalendar cargado');
+    }
+    if (window.FEAST_DAYS) {
+      feastDaysModule = window.FEAST_DAYS;
+      console.log('[AudioIntelligence] FEAST_DAYS cargado');
+    }
+  } catch(e) {
+    console.log('[AudioIntelligence] Módulos litúrgicos no disponibles');
+  }
+}
+
+loadLiturgicalModules();
+
+/**
+ * Obtener contexto litúrgico actual
+ */
+function getLiturgicalContext() {
+  const today = new Date();
+  let liturgy = null;
+  let feast = null;
+
+  if (liturgicalModule && liturgicalModule.getCurrentLiturgicalTime) {
+    liturgy = liturgicalModule.getCurrentLiturgicalTime(today);
+  }
+
+  if (feastDaysModule) {
+    feast = feastDaysModule.find(f =>
+      f.day === today.getDate() &&
+      f.month === today.getMonth() + 1
+    );
+  }
+
+  return { liturgy, feast };
+}
+
+/**
+ * Buscar pista para fiesta del día (TOP PRIORIDAD)
+ */
+function findFeastTrack(catalog, feast) {
+  if (!feast || !catalog) return null;
+
+  const track = catalog.find(track =>
+    track.tags?.includes(feast.category) ||
+    track.tags?.includes("solemnidad") ||
+    track.tags?.includes(feast.name?.toLowerCase())
+  );
+
+  if (track) {
+    return {
+      ...track,
+      reason: "feast",
+      label: `Hoy celebramos ${feast.name}`
+    };
+  }
+
+  return null;
+}
+
+/**
+ * Buscar pistas por tiempo litúrgico
+ */
+function findLiturgicalTracks(catalog, liturgy) {
+  if (!liturgy || !catalog || !liturgy.season) return [];
+
+  return catalog.filter(track =>
+    track.tags?.includes(liturgy.season)
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════════
 // INTEGRACIÓN CON AUDIO-MEMORY
 // ═══════════════════════════════════════════════════════════════════
 
@@ -45,59 +125,75 @@ let state = {
 export function getNextTrack({ section, catalog, liturgy, useMemory = true }) {
   const profile = getProfile();
 
+  // Obtener contexto litúrgico
+  const { liturgy: autoLiturgy, feast } = getLiturgicalContext();
+  const effectiveLiturgy = liturgy || autoLiturgy;
+
   // Actualizar sección actual
   if (section) {
     state.currentSection = section;
   }
 
-  // Obtener candidatos usando lógica original
   let candidates = [];
   
-  // 1. Litúrgico
-  const liturgicalTrack = findLiturgicalTrack(catalog, liturgy);
-  if (liturgicalTrack) {
-    candidates.push({ ...liturgicalTrack, reason: "liturgical" });
+  // 1. FIESTA DEL DÍA (TOP PRIORIDAD)
+  const feastTrack = findFeastTrack(catalog, feast);
+  if (feastTrack) {
+    trackPlayed(feastTrack.file, feastTrack.reason);
+    return feastTrack;
   }
 
-  // 2. Sección
-  const sectionTrack = findSectionTrack(catalog, section || state.currentSection);
-  if (sectionTrack) {
-    candidates.push({ ...sectionTrack, reason: "section" });
-  }
-
-  // 3. Perfil
-  const profileTrack = findProfileTrack(catalog, profile);
-  if (profileTrack) {
-    candidates.push({ ...profileTrack, reason: "profile" });
-  }
-
-  // 4. Fallback (añadir más opciones del catálogo)
-  if (candidates.length === 0 && catalog && catalog.length > 0) {
-    const randomTracks = catalog.slice(0, 5).map(t => ({ ...t, reason: "fallback" }));
-    candidates = [...candidates, ...randomTracks];
-  }
-
-  // Si hay candidatos, aplicar filtro de memoria
-  if (useMemory && audioMemory && audioMemory.filterCandidates && candidates.length > 0) {
-    const filtered = audioMemory.filterCandidates(candidates);
-    if (filtered && filtered.length > 0) {
-      const selected = filtered[0];
-      trackPlayed(selected.file, selected.reason);
-      return selected;
+  // 2. TIEMPO LITÚRGICO
+  const liturgicalTracks = findLiturgicalTracks(catalog, effectiveLiturgy);
+  if (liturgicalTracks.length > 0) {
+    // Usar pickTrack para seleccionar con anti-repetición
+    const selected = audioMemory && audioMemory.pickTrack 
+      ? audioMemory.pickTrack(liturgicalTracks)
+      : liturgicalTracks[Math.floor(Math.random() * liturgicalTracks.length)];
+    
+    if (selected) {
+      const result = {
+        ...selected,
+        reason: "liturgical",
+        label: effectiveLiturgy?.season ? `Tiempo de ${effectiveLiturgy.season}` : "Música litúrgica"
+      };
+      trackPlayed(selected.file, result.reason);
+      return result;
     }
   }
 
-  // Si no hay memoria o falló el filtro, usar el primer candidato
-  if (candidates.length > 0) {
-    const selected = candidates[0];
-    trackPlayed(selected.file, selected.reason);
-    return selected;
+  // 3. Sección
+  const sectionTrack = findSectionTrack(catalog, section || state.currentSection);
+  if (sectionTrack) {
+    const result = { ...sectionTrack, reason: "section" };
+    trackPlayed(sectionTrack.file, result.reason);
+    return result;
+  }
+
+  // 4. Perfil
+  const profileTrack = findProfileTrack(catalog, profile);
+  if (profileTrack) {
+    const result = { 
+      ...profileTrack, 
+      reason: "profile",
+      label: "Recomendada para tu momento de oración"
+    };
+    trackPlayed(profileTrack.file, result.reason);
+    return result;
+  }
+
+  // 5. Fallback (añadir más opciones del catálogo)
+  if (catalog && catalog.length > 0) {
+    const randomTrack = catalog[Math.floor(Math.random() * catalog.length)];
+    const result = { ...randomTrack, reason: "fallback" };
+    trackPlayed(randomTrack.file, result.reason);
+    return result;
   }
 
   // Fallback final
   const fallback = getRandomTrack(catalog);
   const result = { ...fallback, reason: "fallback" };
-  trackPlayed(fallback.file, "fallback");
+  trackPlayed(fallback.file, result.reason);
   return result;
 }
 
