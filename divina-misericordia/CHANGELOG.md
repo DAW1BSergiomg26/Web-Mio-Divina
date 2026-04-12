@@ -1,5 +1,55 @@
 # Changelog - Divina Misericordia
 
+## [2.5.0] - 2026-04-12
+
+### ETAPA 1: Auditoría y Arquitectura
+- Documentación completa del proyecto (AUDITORIA_PROYECTO.md)
+- Inventario de archivos: 68 páginas HTML, 6 CSS, 46 JS, 196 MP3
+- Identificación de problemas: reproductores duplicados, CSS inline, archivos faltantes
+- Plan de acción técnico propuesto
+
+### ETAPA 2: Sistema de Diseño Global (UI/UX) - Completado
+**Archivos creados/actualizados:**
+- `public/css/global.css` - Variables CSS completas, tokens de diseño, utilidades
+- `public/js/global-injector.js` - Script para inyectar estilos globalmente
+- `public/js/music-curation.js` - Mapeo de música por sección (42 secciones)
+
+**Componentes implementados:**
+- ✅ Cursor divino (cruz + rayos) con hover states
+- ✅ Flechas de navegación (scroll-up/down)
+- ✅ Línea luminosa post-footer (golden-divine-line)
+- ✅ Footer sagrado con cruz brillante
+- ✅ Menú superior con variaciones (marianas, caacupe, musica)
+
+**62 páginas HTML** ahora tienen el sistema global linkeado.
+
+### ETAPA 3: Setup de Build
+- `package.json` - Scripts: dev, build, preview, lint, test
+- `vite.config.js` - Configuración Vite (puerto 3001)
+
+### ETAPA 4: Audio Catalog Integration
+**Sistema de audio completo:**
+- `public/js/audio-catalog.js` - 192 pistas categorizadas
+- `public/js/audio-player.js` - Reproductor premium (856 líneas)
+- `public/css/audio-player.css` - UI premium (647 líneas)
+
+**Funcionalidades:**
+- ✅ Play/Pause/Stop/Resume, Anterior/Siguiente
+- ✅ Seekable progress bar (clic y arrastre)
+- ✅ Fade in/out (1.5s)
+- ✅ Lazy loading (preload=none)
+- ✅ Un solo contexto de audio activo
+
+### ETAPA 5: Curaduría Musical
+- 42 secciones mapeadas con pista principal y alternativa
+- Coherencia temática por devoción
+
+### Fixes Realizados
+- Añadido reproductor-sagrado.js a 8 páginas que no funcionaban
+- Sistema de audio unificado
+
+---
+
 ## [2.4.0] - 2026-03-31
 
 ### Added - Experiencias 3D y WebGL
