@@ -201,6 +201,19 @@ function getTimeSinceLastPlayed(file) {
 }
 
 /**
+ * Verificar si una pista es muy reciente (últimos 10 minutos)
+ * @param {string} file - ID de la pista
+ * @returns {boolean} - true si es muy reciente
+ */
+function isTooRecent(file) {
+  const entry = state.history.find(t => t.file === file);
+  if (!entry) return false;
+  
+  const TIME_LIMIT = 10 * 60 * 1000; // 10 minutos
+  return Date.now() - entry.timestamp < TIME_LIMIT;
+}
+
+/**
  * Verificar si una pista puede reproducirse
  * @param {string} file - ID de la pista
  * @param {boolean} force - Forzar reproducción ignorando reglas
@@ -237,8 +250,12 @@ function pickTrack(tracks) {
   
   const recentIds = getRecentTrackIds(5);
   
-  // Filtrar anti-repetición
-  let filtered = tracks.filter(track => !recentIds.includes(track.file));
+  // Filtrar anti-repetición: excluir últimas 5 Y pistas muy recientes (10 min)
+  let filtered = tracks.filter(track => {
+    const inRecent = recentIds.includes(track.file);
+    const tooRecent = isTooRecent(track.file);
+    return !inRecent && !tooRecent;
+  });
   
   // Si no quedan pistas, usar las originales
   if (filtered.length === 0) {
@@ -367,6 +384,8 @@ window.AudioMemory = {
   filterCandidates,
   scoreTracks,
   canPlay,
+  isTooRecent,
+  getTimeSinceLastPlayed,
   pickTrack,
   getNextTrackWithMemory,
   getState: () => ({ ...state }),
@@ -384,6 +403,8 @@ window.getRecentTrackIds = getRecentTrackIds;
 window.filterCandidates = filterCandidates;
 window.scoreTracks = scoreTracks;
 window.canPlay = canPlay;
+window.isTooRecent = isTooRecent;
+window.getTimeSinceLastPlayed = getTimeSinceLastPlayed;
 window.pickTrack = pickTrack;
 
 // ═══════════════════════════════════════════════════════════════════
