@@ -509,46 +509,49 @@
     module.exports = SpiritualProfile;
   } else {
     global.SpiritualProfile = SpiritualProfile;
+    
+    // Exponer funciones globales para uso directo
+    global.trackEvent = trackEvent;
+    global.startTracking = startTracking;
+    global.getProfile = getProfile;
+    global.getData = function() { return JSON.parse(JSON.stringify(state)); };
   }
 
 })(typeof window !== 'undefined' ? window : this);
 
 /**
  * ═══════════════════════════════════════════════════════════════════
- * EJEMPLOS DE INTEGRACIÓN
+ * EJEMPLOS DE INTEGRACIÓN REAL
  * ═══════════════════════════════════════════════════════════════════
  * 
- * // Inicializar (llamar una vez al cargar la página)
- * SpiritualProfile.init();
+ * // En el reproductor de audio:
+ * trackEvent("audio_play", trackName);
+ *   → state.audio[trackName]++
  * 
- * // Obtener perfil
- * const profile = SpiritualProfile.getProfile();
- * console.log(profile.type); // 'contemplativo' | 'devocional' | 'musical' | 'mixto'
- * console.log(profile.activityLevel); // 'bajo' | 'medio' | 'alto'
- * console.log(profile.preferredSections); // ['maria', 'coronilla', ...]
+ * // En velas:
+ * trackEvent("candle");
+ *   → state.interactions.candles++
  * 
- * // Obtener última sección
- * const lastSection = SpiritualProfile.getLastSection();
+ * // En el rosario:
+ * trackEvent("rosary");
+ *   → state.interactions.rosary++
  * 
- * // Obtener recomendaciones
- * const recs = SpiritualProfile.getRecommendations();
- * console.log(recs.sections); // [{ id: 'maria', name: 'María' }, ...]
- * console.log(recs.audio); // ['gregoriano-1', ...]
- * console.log(recs.actions); // ['Medita en silencio', ...]
+ * // En oraciones:
+ * trackEvent("prayer");
+ *   → state.interactions.prayers++
  * 
- * // Trackear eventos desde otros módulos
- * SpiritualProfile.trackEvent('audio_play', 'ave-maria.mp3');
- * SpiritualProfile.trackEvent('rosary');
- * SpiritualProfile.trackEvent('candle');
- * SpiritualProfile.trackEvent('prayer');
- * SpiritualProfile.trackEvent('intention');
+ * // En intenciones:
+ * trackEvent("intention");
+ *   → state.interactions.intentions++
  * 
- * // Iniciar tracking de sección
- * SpiritualProfile.trackEvent('page_view', 'inicio');
- * SpiritualProfile.startTracking('inicio');
+ * //跟踪页面访问:
+ * trackEvent("page_view", "maria");
+ *   → state.visits["maria"]++
  * 
- * // Configurar animaciones según perfil
- * const animConfig = SpiritualProfile.getAnimationConfig();
- * document.documentElement.style.setProperty('--anim-speed', animConfig.speed);
- * document.documentElement.style.setProperty('--particle-density', animConfig.particles);
+ * // Iniciar tracking de tiempo:
+ * startTracking("inicio");
+ * 
+ * // Obtener perfil:
+ * const profile = getProfile();
+ *   → { type, preferredSections, preferredAudio, activityLevel }
  */
