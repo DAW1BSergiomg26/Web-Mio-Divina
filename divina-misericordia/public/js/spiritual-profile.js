@@ -114,7 +114,7 @@
   }
 
   let state = loadState();
-  let pendingSave = null;
+  let saveTimeout = null;
   let session = {
     currentSection: null,
     sectionStartTime: null,
@@ -122,23 +122,14 @@
   };
 
   function saveState() {
-    if (pendingSave) {
-      clearTimeout(pendingSave);
-    }
-
-    const performSave = function() {
+    clearTimeout(saveTimeout);
+    saveTimeout = setTimeout(() => {
       try {
         localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(state));
       } catch (e) {
         console.warn('[SpiritualProfile] Error saving state:', e);
       }
-    };
-
-    if (typeof requestIdleCallback === 'function') {
-      requestIdleCallback(performSave, { timeout: 2000 });
-    } else {
-      pendingSave = setTimeout(performSave, CONFIG.DEBOUNCE_TIME);
-    }
+    }, CONFIG.DEBOUNCE_TIME);
   }
 
   // ═══════════════════════════════════════════════════════════════
