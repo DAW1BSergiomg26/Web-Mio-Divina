@@ -469,6 +469,14 @@
     },
 
     /**
+     * Iniciar tracking de sección
+     * @param {string} section - Nombre de la sección
+     */
+    startTracking: function(section) {
+      startTracking(section);
+    },
+
+    /**
      * Obtener datos crudos del estado
      * @returns {Object}
      */
@@ -529,10 +537,15 @@
  * console.log(recs.actions); // ['Medita en silencio', ...]
  * 
  * // Trackear eventos desde otros módulos
- * SpiritualProfile.trackEvent('audio_play', { trackId: 'ave-maria.mp3' });
- * SpiritualProfile.trackEvent('candle_lit', {});
- * SpiritualProfile.trackEvent('rosary_step', {});
- * SpiritualProfile.trackEvent('intention_shared', {});
+ * SpiritualProfile.trackEvent('audio_play', 'ave-maria.mp3');
+ * SpiritualProfile.trackEvent('rosary');
+ * SpiritualProfile.trackEvent('candle');
+ * SpiritualProfile.trackEvent('prayer');
+ * SpiritualProfile.trackEvent('intention');
+ * 
+ * // Iniciar tracking de sección
+ * SpiritualProfile.trackEvent('page_view', 'inicio');
+ * SpiritualProfile.startTracking('inicio');
  * 
  * // Configurar animaciones según perfil
  * const animConfig = SpiritualProfile.getAnimationConfig();
