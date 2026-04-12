@@ -35,7 +35,7 @@ export function getNextTrack({ section, catalog, liturgy }) {
   const liturgicalTrack = findLiturgicalTrack(catalog, liturgy);
   if (liturgicalTrack) {
     const result = { ...liturgicalTrack, reason: "liturgical" };
-    trackPlayed(liturgicalTrack.file);
+    trackPlayed(liturgicalTrack.file, "liturgical");
     return result;
   }
 
@@ -43,7 +43,7 @@ export function getNextTrack({ section, catalog, liturgy }) {
   const sectionTrack = findSectionTrack(catalog, section || state.currentSection);
   if (sectionTrack) {
     const result = { ...sectionTrack, reason: "section" };
-    trackPlayed(sectionTrack.file);
+    trackPlayed(sectionTrack.file, "section");
     return result;
   }
 
@@ -51,14 +51,14 @@ export function getNextTrack({ section, catalog, liturgy }) {
   const profileTrack = findProfileTrack(catalog, profile);
   if (profileTrack) {
     const result = { ...profileTrack, reason: "profile" };
-    trackPlayed(profileTrack.file);
+    trackPlayed(profileTrack.file, "profile");
     return result;
   }
 
   // 4. Fallback
   const fallbackTrack = getRandomTrack(catalog);
   const result = { ...fallbackTrack, reason: "fallback" };
-  trackPlayed(fallbackTrack.file);
+  trackPlayed(fallbackTrack.file, "fallback");
   return result;
 }
 

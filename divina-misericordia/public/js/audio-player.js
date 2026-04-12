@@ -8,7 +8,54 @@
 (function() {
   'use strict';
 
+  // ═══════════════════════════════════════════════════════════════════
+  // INTEGRACIÓN CON AUDIO INTELLIGENCE
+  // ═══════════════════════════════════════════════════════════════════
+  
+  let getNextTrack = null;
+  let trackEvent = null;
+  
+  // Cargar módulos de forma segura
+  (function loadIntelligenceModules() {
+    try {
+      if (window.getNextTrack) {
+        getNextTrack = window.getNextTrack;
+      }
+      if (window.trackEvent) {
+        trackEvent = window.trackEvent;
+      }
+    } catch(e) {
+      console.log('[AudioPlayer] Módulos de inteligencia no disponibles aún');
+    }
+  })();
+
   console.log('[AudioPlayerPremium] Cargando módulo...');
+
+  // ═══════════════════════════════════════════════════════════════════
+  // FUNCIÓN: onSectionChange - Cambio de sección inteligente
+  // ═══════════════════════════════════════════════════════════════════
+  
+  window.AudioPlayerOnSectionChange = function(section) {
+    if (!getNextTrack) {
+      console.log('[AudioPlayer] getNextTrack no disponible');
+      return;
+    }
+
+    const catalog = window.AUDIO_CATALOG || [];
+    const liturgy = window.LITURGY || {};
+
+    const track = getNextTrack({
+      section: section,
+      catalog: catalog,
+      liturgy: liturgy
+    });
+
+    if (track && window.AudioPlayerPremium.instance) {
+      const player = window.AudioPlayerPremium.instance;
+      player.playWithFadeSmart(track.src, track);
+      console.log('[AudioPlayer] Reproduciendo por sección:', track.title, '(reason:', track.reason + ')');
+    }
+  };
 
   /**
    * Clase principal del reproductor
@@ -526,6 +573,70 @@
     }
 
     /**
+     * Reproducir con fade profesional + tracking
+     * @param {string} src - URL del audio
+     * @param {object} trackInfo - Info de la pista (title, file, reason)
+     */
+    playWithFadeSmart(src, trackInfo = {}) {
+      const duration = 1500;
+      
+      if (this.state.status === 'playing') {
+        this.fadeOut(() => {
+          this.audio.src = src;
+          this.audio.load();
+          this.audio.play().catch(e => console.error('Error:', e));
+          this.fadeIn(duration);
+          
+          // Tracking de reproducción
+          if (trackEvent && trackInfo.file) {
+            trackEvent('audio_play', trackInfo.file);
+            console.log('[AudioPlayer] trackEvent audio_play:', trackInfo.file);
+          }
+          
+          // Actualizar estado
+          this.state.currentTrack = { src: src, title: trackInfo.title || 'Pista' };
+          this.updateTrackInfo(this.state.currentTrack);
+          this.setState('playing');
+        }, duration);
+      } else {
+        this.audio.src = src;
+        this.audio.load();
+        this.fadeIn(duration);
+        
+        // Tracking
+        if (trackEvent && trackInfo.file) {
+          trackEvent('audio_play', trackInfo.file);
+          console.log('[AudioPlayer] trackEvent audio_play:', trackInfo.file);
+        }
+        
+        this.state.currentTrack = { src: src, title: trackInfo.title || 'Pista' };
+        this.updateTrackInfo(this.state.currentTrack);
+        this.setState('playing');
+      }
+    }
+
+    /**
+     * Reproducir pista directamente (sin fade)
+     * @param {object} track - Objeto de pista {src, title, file}
+     */
+    playTrack(track) {
+      if (!track || !track.src) return;
+      
+      this.audio.src = track.src;
+      this.audio.load();
+      this.fadeIn();
+      
+      // Tracking
+      if (trackEvent && track.file) {
+        trackEvent('audio_play', track.file);
+      }
+      
+      this.state.currentTrack = track;
+      this.updateTrackInfo(track);
+      this.setState('playing');
+    }
+
+    /**
      * Mostrar reproductor
      */
     show() {
@@ -632,7 +743,24 @@
     }
 
     onEnded() {
-      // Auto-play next track
+      // Auto-play next track usando Audio Intelligence
+      if (getNextTrack) {
+        const catalog = window.AUDIO_CATALOG || [];
+        const liturgy = window.LITURGY || {};
+        
+        const nextTrack = getNextTrack({
+          catalog: catalog,
+          liturgy: liturgy
+        });
+        
+        if (nextTrack) {
+          this.playWithFadeSmart(nextTrack.src, nextTrack);
+          console.log('[AudioPlayer] Pista siguiente (reason:', nextTrack.reason + ')');
+          return;
+        }
+      }
+      
+      // Fallback: siguiente pista tradicional
       this.next();
     }
 
