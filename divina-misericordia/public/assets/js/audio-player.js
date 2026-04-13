@@ -123,6 +123,7 @@
       this.createUI();
       this.bindEvents();
       this.createFloatingToggle();
+      this.initBusListeners();
     }
 
     /**
@@ -262,21 +263,25 @@
     }
 
     /**
-     * Crear botón flotante
+     * Inicializar el bus de audio global para eventos de ducking
      */
-    createFloatingToggle() {
-      if (document.querySelector('.audio-player-toggle-float')) return;
+    initBusListeners() {
+      // Bajar volumen cuando se abre el compañero o suena el Ángelus
+      EventBus.on(SanctuaryEvents.COMPANION_OPENED, () => this.duckVolume(0.2));
+      EventBus.on(SanctuaryEvents.COMPANION_CLOSED, () => this.restoreVolume());
+      EventBus.on(SanctuaryEvents.ANGELUS_TIME, () => this.duckVolume(0.1));
+    },
 
-      const toggle = document.createElement('button');
-      toggle.className = 'audio-player-toggle-float';
-      toggle.innerHTML = `
-        <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
-        <span class="playing-badge">♫</span>
-      `;
-      toggle.onclick = () => this.show();
-      document.body.appendChild(toggle);
-      this.elements.floatingToggle = toggle;
-    }
+    duckVolume(targetVolume) {
+      if (!this.audio) return;
+      this.audio.volume = targetVolume;
+    },
+
+    restoreVolume() {
+      if (!this.audio) return;
+      this.audio.volume = this.state.volume;
+    },
+
 
     /**
      * Enlazar eventos
