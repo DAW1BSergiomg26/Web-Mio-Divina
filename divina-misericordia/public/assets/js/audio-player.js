@@ -345,14 +345,22 @@
     }
 
     /**
-     * Establecer biblioteca de música
+     * Establecer biblioteca de música (Lazy)
      */
     setLibrary(library) {
       this.library = library;
+      // No aplanamos todo el array al inicio para ahorrar memoria y CPU
+      this.allTracks = null; 
+    }
+
+    /**
+     * Obtener pista de forma eficiente (bajo demanda)
+     */
+    getAllTracks() {
+      if (this.allTracks) return this.allTracks;
       
-      // Aplanar biblioteca para navegación
       this.allTracks = [];
-      library.forEach(category => {
+      this.library.forEach(category => {
         category.tracks.forEach((track, index) => {
           this.allTracks.push({
             ...track,
@@ -362,6 +370,7 @@
           });
         });
       });
+      return this.allTracks;
     }
 
     /**
@@ -520,12 +529,13 @@
      * Pista anterior
      */
     prev() {
-      if (!this.allTracks || this.allTracks.length === 0) return;
+      const tracks = this.getAllTracks();
+      if (!tracks || tracks.length === 0) return;
       
       let newIndex = this.state.currentIndex - 1;
-      if (newIndex < 0) newIndex = this.allTracks.length - 1;
+      if (newIndex < 0) newIndex = tracks.length - 1;
       
-      const track = this.allTracks[newIndex];
+      const track = tracks[newIndex];
       this.loadTrack(track, track._category, true);
     }
 
@@ -533,12 +543,13 @@
      * Pista siguiente
      */
     next() {
-      if (!this.allTracks || this.allTracks.length === 0) return;
+      const tracks = this.getAllTracks();
+      if (!tracks || tracks.length === 0) return;
       
       let newIndex = this.state.currentIndex + 1;
-      if (newIndex >= this.allTracks.length) newIndex = 0;
+      if (newIndex >= tracks.length) newIndex = 0;
       
-      const track = this.allTracks[newIndex];
+      const track = tracks[newIndex];
       this.loadTrack(track, track._category, true);
     }
 
@@ -1057,9 +1068,10 @@ AudioPlayerPremium.prototype.next = function() {
     return;
   }
   
-  if (this.state.shuffle && this.allTracks && this.allTracks.length > 0) {
-    const randomIndex = Math.floor(Math.random() * this.allTracks.length);
-    const track = this.allTracks[randomIndex];
+  const tracks = this.getAllTracks();
+  if (this.state.shuffle && tracks && tracks.length > 0) {
+    const randomIndex = Math.floor(Math.random() * tracks.length);
+    const track = tracks[randomIndex];
     this.loadTrack(track, track._category, true);
     return;
   }

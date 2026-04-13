@@ -226,6 +226,10 @@
 
       this.createStyles();
 
+      const container = document.createElement('div');
+      container.className = 'accessibility-controls';
+      container.style.cssText = 'position:fixed; top:80px; right:20px; z-index:9999; display:flex; flex-direction:column; gap:10px;';
+
       const toggle = document.createElement('button');
       toggle.className = 'contemplative-toggle';
       toggle.innerHTML = `
@@ -234,12 +238,22 @@
       `;
       toggle.setAttribute('aria-pressed', this.isActive);
 
-      const header = document.querySelector('.main-header, header');
-      if (header) {
-        header.appendChild(toggle);
-      }
+      const savingToggle = document.createElement('button');
+      savingToggle.className = 'contemplative-toggle saving-toggle';
+      savingToggle.innerHTML = `
+        <span class="toggle-icon">🔋</span>
+        <span class="toggle-text">Ahorro Litúrgico</span>
+      `;
 
       toggle.addEventListener('click', () => this.toggle());
+      savingToggle.addEventListener('click', () => {
+        window.PerformanceManager.toggleSavingMode();
+        savingToggle.classList.toggle('active', window.PerformanceManager.isSavingMode);
+      });
+
+      container.appendChild(toggle);
+      container.appendChild(savingToggle);
+      document.body.appendChild(container);
     },
 
     updateToggleUI() {
