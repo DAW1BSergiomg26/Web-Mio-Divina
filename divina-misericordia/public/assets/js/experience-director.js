@@ -427,9 +427,13 @@
           color: #d4af37;
           font-weight: bold;
         }
-        .toast-angelus p {
-          font-style: italic;
+        .toast-spiritual-capsule {
+          border-color: #d4af37 !important;
+        }
+        .toast-spiritual-capsule p {
           color: #d4af37;
+          font-style: italic;
+          font-size: 1.1rem;
         }
         .toast-welcome p {
           color: #d4af37;
@@ -500,6 +504,21 @@
         this.state.isInCathedralMode = false;
       });
     },
+
+    getState() {
+      return { ...this.state };
+    },
+
+    destroy() {
+      if (this.state.timerInterval) {
+        clearInterval(this.state.timerInterval);
+      }
+    }
+  };
+
+  window.ExperienceDirector = ExperienceDirector;
+  console.log('🎬 Experience Director loaded');
+})();,
 
     getState() {
       return { ...this.state };

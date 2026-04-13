@@ -120,22 +120,19 @@
       style.id = 'contemplative-high-contrast';
       style.textContent = `
         body.high-contrast {
-          --text-primary: #ffffff;
-          --text-secondary: #f0f0f0;
-          --bg-primary: #000000;
-          --bg-secondary: #1a1a1a;
-          --accent-gold: #ffd700;
-          --border-color: #ffffff;
+          background-color: #000 !important;
+          color: #fff !important;
         }
         body.high-contrast a {
-          color: #ffff00;
-          text-decoration: underline;
+          color: #ff0 !important;
+          text-decoration: underline !important;
         }
-        body.high-contrast button {
-          border: 2px solid #ffffff;
+        body.high-contrast h1, body.high-contrast h2, body.high-contrast h3 {
+          color: #ffd700 !important;
         }
-        body.high-contrast .main-nav a {
-          color: #ffffff;
+        body.high-contrast .contemplative-toggle {
+          border-color: #ffd700 !important;
+          color: #fff !important;
         }
       `;
       document.head.appendChild(style);

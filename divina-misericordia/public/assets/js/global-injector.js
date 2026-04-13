@@ -1,64 +1,53 @@
 /**
  * ============================================================
- * Global Styles Injector
- * Inyecta los estilos globales automáticamente en todas las páginas
- * Sin duplicación - carga una sola vez
+ * Global Resources Injector
+ * Inyecta estilos y scripts globales automáticamente en todas las páginas
  * ============================================================
  */
 (function() {
   'use strict';
 
-  // Evitar duplicación
-  if (window.globalStylesInjected) return;
-  window.globalStylesInjected = true;
+  if (window.globalResourcesInjected) return;
+  window.globalResourcesInjected = true;
 
-  const GlobalStyles = {
+  const GlobalResources = {
     cssUrl: 'css/global.css',
-    loaded: false,
+    scriptUrl: 'assets/js/content-espiritual.js',
 
     init() {
       this.injectCSS();
+      this.injectScript();
     },
 
     async injectCSS() {
-      if (this.loaded) return;
-      
       try {
         const response = await fetch(this.cssUrl);
         if (!response.ok) throw new Error('CSS not found');
-        
         const css = await response.text();
-        
-        // Crear tag style
         const style = document.createElement('style');
         style.id = 'global-styles-injected';
         style.textContent = css;
-        
-        // Insertar al inicio del head
-        const firstStyle = document.querySelector('style');
-        if (firstStyle) {
-          firstStyle.parentNode.insertBefore(style, firstStyle);
-        } else {
-          document.head.appendChild(style);
-        }
-        
-        this.loaded = true;
-        console.log('[GlobalStyles] ✅ Inyectados correctamente');
-        
+        document.head.appendChild(style);
+        console.log('[GlobalResources] ✅ Estilos inyectados');
       } catch (err) {
-        console.error('[GlobalStyles] ❌ Error:', err.message);
+        console.error('[GlobalResources] ❌ Error CSS:', err.message);
       }
+    },
+
+    injectScript() {
+      const script = document.createElement('script');
+      script.src = this.scriptUrl;
+      script.async = true;
+      script.onload = () => console.log('[GlobalResources] ✅ Script inyectado');
+      document.head.appendChild(script);
     }
   };
 
-  // Inicializar cuando el DOM esté listo
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => GlobalStyles.init());
+    document.addEventListener('DOMContentLoaded', () => GlobalResources.init());
   } else {
-    GlobalStyles.init();
+    GlobalResources.init();
   }
 
-  // Exportar para uso global
-  window.GlobalStyles = GlobalStyles;
-
+  window.GlobalResources = GlobalResources;
 })();
