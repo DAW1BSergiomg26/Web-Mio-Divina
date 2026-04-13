@@ -39,8 +39,16 @@ def devops_flow():
         sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'tools'))
         import optimize_images
         optimize_images.optimize_and_convert()
+        
+        # 1.5 Auditoría SEO
+        import audit_seo
+        audit_seo.audit_seo()
+        if os.path.exists("reports/seo_audit.txt") and os.path.getsize("reports/seo_audit.txt") > 0:
+            with open("reports/seo_audit.txt", "r", encoding="utf-8") as f:
+                seo_report = f.read()
+                asyncio.run(send_telegram_message(f"⚠️ Reporte SEO generado con advertencias:\n{seo_report[:500]}"))
     except Exception as e:
-        asyncio.run(send_telegram_message(f"Error en optimización: {e}", is_error=True))
+        asyncio.run(send_telegram_message(f"Error en fase de optimización/SEO: {e}", is_error=True))
         return
 
     # 2. Git Status
@@ -53,11 +61,15 @@ def devops_flow():
         fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         if run_step(f'git commit -m "Auto-Deploy: {fecha}"', "Commit automático"):
             if run_step("git push origin main", "Push a GitHub"):
-                asyncio.run(send_telegram_message("Despliegue iniciado correctamente en Netlify."))
+                # 4. Despliegue Netlify
+                if run_step("netlify deploy --prod", "Desplegando en Netlify"):
+                    asyncio.run(send_telegram_message("✅ Web actualizada y desplegada con éxito en Netlify."))
+                else:
+                    asyncio.run(send_telegram_message("❌ Error en el despliegue de Netlify.", is_error=True))
             else:
-                asyncio.run(send_telegram_message("Error al hacer push a GitHub.", is_error=True))
+                asyncio.run(send_telegram_message("❌ Error al hacer push a GitHub.", is_error=True))
         else:
-            asyncio.run(send_telegram_message("Error al crear commit.", is_error=True))
+            asyncio.run(send_telegram_message("❌ Error al crear commit.", is_error=True))
 
 if __name__ == "__main__":
     devops_flow()
