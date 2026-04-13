@@ -1,0 +1,37 @@
+name: Despliegue Continuo a Firebase Hosting
+
+on:
+  push:
+    branches:
+      - main
+      - feat/ui-liturgical-context # Detectamos tu rama actual también
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Clonando Repositorio
+        uses: actions/checkout@v4
+
+      - name: 🐍 Configurando Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Instalando Dependencias
+        run: |
+          pip install Pillow python-dotenv
+
+      - name: ⚙️ Generando Build Optimizado (Nivel DIOS)
+        run: python tools/build_and_deploy.py
+        env:
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+
+      - name: 🚀 Desplegando a Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DIVINA_MISERICORDIA }}'
+          channelId: live
+          projectId: divina-misericordia-web
