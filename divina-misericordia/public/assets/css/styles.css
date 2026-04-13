@@ -778,3 +778,20 @@ ul.sidebar-list {
     min-width: 48px;
   }
 }
+
+/* Resaltado Premium Menú Nivel Dios */
+.nav-highlight-gold {
+    color: #d4af37 !important;
+    font-weight: bold !important;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 20px;
+    padding: 5px 15px !important;
+    margin: 0 5px;
+    transition: all 0.3s ease !important;
+}
+.nav-highlight-gold:hover {
+    background: rgba(212, 175, 55, 0.1);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+    transform: scale(1.05);
+}
+
