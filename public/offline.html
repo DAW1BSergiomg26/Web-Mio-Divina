@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es-ES">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sin ConexiÃ³n - Divina Misericordia</title>
+  <title>Sin Conexión - Divina Misericordia</title>
   <link rel="manifest" href="manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -163,9 +163,9 @@
 </head>
 <body>
   <div class="offline-container">
-    <div class="offline-symbol">âœï¸</div>
+    <div class="offline-symbol">✝️</div>
     
-    <h1>EstÃ¡s sin conexiÃ³n</h1>
+    <h1>Estás sin conexión</h1>
     <p class="message">
       Pero el santuario sigue contigo.<br>
       Tu fe no necesita internet.
@@ -178,30 +178,30 @@
     </div>
     
     <div class="quote-section">
-      <div class="quote-label">ðŸ“– Cita Espiritual</div>
-      <p class="quote-text" id="offline-quote">JesÃºs, en Vos confÃ­o.</p>
-      <p class="quote-author" id="offline-author">â€” Santa Faustina</p>
+      <div class="quote-label">📖 Cita Espiritual</div>
+      <p class="quote-text" id="offline-quote">Jesús, en Vos confío.</p>
+      <p class="quote-author" id="offline-author">— Santa Faustina</p>
     </div>
     
     <div class="actions">
-      <a href="/" class="action-btn">ðŸ  Volver al Inicio</a>
-      <button class="action-btn" onclick="window.location.reload()">ðŸ”„ Reintentar</button>
+      <a href="/" class="action-btn">🏠 Volver al Inicio</a>
+      <button class="action-btn" onclick="window.location.reload()">🔄 Reintentar</button>
     </div>
     
     <p class="offline-note">
-      Funciones offline disponibles: Rosario, Intenciones de oraciÃ³n, Cita del dÃ­a
+      Funciones offline disponibles: Rosario, Intenciones de oración, Cita del día
     </p>
   </div>
   
   <script>
-    // Cita offline desde cachÃ©
+    // Cita offline desde caché
     const quotes = [
-      { text: "JesÃºs, en Vos confÃ­o.", author: "Santa Faustina" },
-      { text: "La misericordia es el atributo mÃ¡s grande de Dios.", author: "Santa Faustina" },
+      { text: "Jesús, en Vos confío.", author: "Santa Faustina" },
+      { text: "La misericordia es el atributo más grande de Dios.", author: "Santa Faustina" },
       { text: "Dios no mira mis pecados, sino mi amor.", author: "Santa Faustina" },
       { text: "Soy instrumento de Tu misericordia.", author: "Santa Faustina" },
-      { text: "La oraciÃ³n es el arma del cristiano.", author: "San Francisco de Sales" },
-      { text: "Donde hay caridad, estÃ¡ Dios.", author: "San Francisco de AsÃ­s" },
+      { text: "La oración es el arma del cristiano.", author: "San Francisco de Sales" },
+      { text: "Donde hay caridad, está Dios.", author: "San Francisco de Asís" },
       { text: "La fe esperanza y caridad permanecen.", author: "San Pablo" }
     ];
     
@@ -210,7 +210,7 @@
     const quote = quotes[dayOfYear % quotes.length];
     
     document.getElementById('offline-quote').textContent = quote.text;
-    document.getElementById('offline-author').textContent = 'â€” ' + quote.author;
+    document.getElementById('offline-author').textContent = '— ' + quote.author;
   </script>
 
 <!-- PWA y Service Worker -->
@@ -224,7 +224,7 @@
 <script src="js/pwa-install.js"></script>
 <script src="js/notifications.js"></script>
 
-<!-- Sistema de Diseño Global -->
+<!-- Sistema de Dise�o Global -->
 <script src="js/system-init.js"></script>
 </body>
 </html>
