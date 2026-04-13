@@ -1,6 +1,30 @@
 # Datos del CMS (no subir a GitHub)
 data/
 
+# Dependencias
+node_modules/
+dist/
+build/
+
+# Logs y Temporales
+*.log
+$LOG
+temp_*.html
+test.js
+commits_temp.txt
+
+# Modelos y Pesados (No Web)
+blobs/
+manifests/
+
 # Archivos JSON específicos para web
 !public/manifest.json
 *.json
+
+# Entorno y Secretos
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
