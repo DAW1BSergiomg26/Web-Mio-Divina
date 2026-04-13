@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Música Sacra - Biblioteca de la Divina Misericordia</title>
+  <link rel="stylesheet" href="css/audio-player.css">
+  <link rel="stylesheet" href="musica-sacra.css">
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="music-notes-bg"></div>
+
+  <main id="ms-container">
+    <header class="ms-header">
+      <h1>Música Sacra</h1>
+      <p class="subtitle">Biblioteca de música para la oración</p>
+    </header>
+
+    <section class="ms-search" aria-label="Búsqueda">
+      <input 
+        type="search" 
+        id="ms-search-input" 
+        placeholder="Buscar himno o canción..." 
+        autocomplete="off"
+        aria-label="Buscar en la biblioteca"
+      >
+    </section>
+
+    <section class="ms-results" aria-label="Resultados">
+      <p id="ms-empty" class="hidden">No se encontraron resultados</p>
+      <ul id="ms-track-list" role="listbox"></ul>
+      <div id="ms-scroll-sentinel"></div>
+    </section>
+  </main>
+
+  <footer id="ms-player-bar" class="player-bar" aria-label="Reproductor">
+    <span id="ms-track-title" class="track-title"></span>
+    <div id="ms-progress-bar" class="progress-bar" role="slider" aria-label="Progreso">
+      <div id="ms-progress-fill" class="progress-fill"></div>
+    </div>
+    <span id="ms-current-time" class="time">0:00</span>
+    <span id="ms-duration" class="time">0:00</span>
+    
+    <div class="controls">
+      <button id="ms-prev-btn" aria-label="Anterior">⏮</button>
+      <button id="ms-play-btn" aria-label="Reproducir">▶</button>
+      <button id="ms-stop-btn" aria-label="Detener">⏹</button>
+      <button id="ms-next-btn" aria-label="Siguiente">⏭</button>
+    </div>
+  </footer>
+
+  <script src="assets/js/audio-catalog.js" defer></script>
+  <script src="assets/js/audio-player.js" defer></script>
+  <script src="musica-sacra.js" defer></script>
+</body>
+</html>
