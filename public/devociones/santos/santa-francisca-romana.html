@@ -1,0 +1,985 @@
+﻿<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santa Francisca Romana - Vida Completa, Fundadora de las Oblatas de Maria | Divina Misericordia</title>
+<meta name="description" content="Vida completa de Santa Francisca Romana. Esposa, madre, viuda y apostol seglar de Roma. Fundadora de las Oblatas de Maria, ejemplo de caridad y santidad matrimonial.">
+<meta name="keywords" content="Santa Francisca Romana, oblatas de maria, torre de los espejos, esposa santa, madre virtuosa, santa canonizada 1608, caridad romana, siglo XV, santa romana">
+<meta name="author" content="Asociacion Apostoles de la Divina Misericordia">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1a1520">
+<link rel="canonical" href="https://misericordiadejesus.es/santa-francisca-romana.html">
+<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://misericordiadejesus.es/santa-francisca-romana.html">
+<meta property="og:title" content="Santa Francisca Romana - Fundadora de las Oblatas de Maria">
+<meta property="og:description" content="La vida de Santa Francisca Romana, exemplo de santidad en el estado matrimonial.">
+<meta property="og:site_name" content="Divina Misericordia">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --white-lily: #f8f4f0;
+    --white-soft: #faf7f5;
+    --rose-light: #e8d4d4;
+    --rose-med: #d4a8a8;
+    --rose-dark: #a87070;
+    --gold-warm: #d4af37;
+    --gold-light: #f4e2a1;
+    --gold-glow: rgba(212,175,55,0.6);
+    --bg-deep: #1a1520;
+    --bg-mid: #251e28;
+    --text-main: rgba(248,244,240,0.9);
+    --text-muted: rgba(248,244,240,0.7);
+    --border-gold: rgba(212,175,55,0.25);
+    --glass-bg: rgba(255,255,255,0.03);
+    --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+    background:var(--bg-deep); color:var(--white-lily);
+    font-family:'EB Garamond',Georgia,serif;
+    line-height:1.85; overflow-x:hidden;
+}
+
+.bg { 
+    position:fixed; inset:0; 
+    background: radial-gradient(ellipse at 50% 30%,#2a2030 0%,#1a1520 50%,#0f0d12 100%); 
+    z-index:-2; 
+}
+#divine-canvas { position:fixed; inset:0; z-index:-1; opacity:0.5; }
+
+.progress-bar {
+    position:fixed; top:0; left:0; height:2px; width:0;
+    background:linear-gradient(to right,var(--rose-dark),var(--gold-warm),var(--gold-light));
+    z-index:1100; transition:width 0.1s linear;
+    box-shadow:0 0 8px rgba(212,175,55,0.6);
+}
+
+header {
+    position:fixed; width:100%;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:10px 30px;
+    background:rgba(0,0,0,0.88);
+    backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
+    z-index:1000; border-bottom:1px solid var(--border-gold);
+    transition:padding var(--transition);
+}
+header.scrolled { padding:6px 30px; background:rgba(0,0,0,0.96); }
+
+.logo {
+    font-family:'Cinzel Decorative',serif;
+    font-size:1.25rem; color:var(--gold-light);
+    text-decoration:none; display:flex; align-items:center; gap:12px;
+}
+.logo:hover { opacity:0.85; }
+.logo img { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--border-gold); }
+.logo span { color:var(--white-lily); }
+
+nav { display:flex; gap:4px; flex-wrap:wrap; justify-content:center; align-items:center; }
+nav a {
+    color:var(--rose-med); text-decoration:none;
+    font-family:'Cinzel',serif; font-size:0.78rem; letter-spacing:1px;
+    padding:8px 12px; border-radius:6px;
+    transition:all var(--transition); position:relative; white-space:nowrap;
+}
+nav a::after {
+    content:''; position:absolute; bottom:4px; left:50%;
+    transform:translateX(-50%) scaleX(0);
+    width:60%; height:1px; background:var(--gold-warm);
+    transition:transform var(--transition);
+}
+nav a:hover::after, nav a.activo::after { transform:translateX(-50%) scaleX(1); }
+nav a:hover, nav a.activo {
+    color:var(--gold-light);
+    background:rgba(212,175,55,0.12);
+    text-shadow:0 0 18px var(--gold-glow);
+}
+nav a.activo { background:rgba(212,175,55,0.18); }
+
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:10px; z-index:1100; }
+.hamburger span { width:26px; height:2px; background:var(--gold-warm); border-radius:2px; transition:all var(--transition); display:block; }
+.hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+.hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+@media (max-width:900px) {
+    .hamburger { display:flex; }
+    nav {
+        position:fixed; top:0; right:-100%;
+        width:min(320px,80vw); height:100dvh;
+        background:rgba(26,21,32,0.97);
+        backdrop-filter:blur(30px); -webkit-backdrop-filter:blur(30px);
+        flex-direction:column; align-items:flex-start; justify-content:flex-start;
+        padding:90px 30px 30px; gap:6px;
+        transition:right 0.4s cubic-bezier(0.4,0,0.2,1);
+        border-left:1px solid var(--border-gold); overflow-y:auto;
+    }
+    nav.active { right:0; }
+    nav a { font-size:1rem; width:100%; padding:12px 16px; border-radius:8px; }
+    nav a::after { display:none; }
+}
+
+.main-content { max-width:860px; margin:0 auto; padding: 180px 20px 80px; }
+
+.page-title {
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(1.8rem,5.5vw,3.2rem);
+    color:var(--white-lily); text-align:center; margin-bottom:12px;
+    text-shadow:0 0 40px rgba(212,175,55,0.4),0 0 80px rgba(212,175,55,0.2);
+    animation:titleReveal 1.2s ease forwards; opacity:0; line-height:1.3;
+ margin-top: 20px; }
+@keyframes titleReveal {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0); }
+}
+.subtitle-line {
+    text-align:center; font-family:'Cinzel',serif; font-size:0.75rem;
+    letter-spacing:4px; color:var(--gold-warm); text-transform:uppercase;
+    margin-bottom:35px; opacity:0.9;
+}
+
+.santa-img-container {
+    text-align:center;
+    margin: 30px auto 50px;
+    position: relative;
+    max-width: 400px;
+}
+.santa-img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 
+        0 0 40px rgba(212,175,55,0.3),
+        0 0 80px rgba(168,112,112,0.2),
+        0 20px 60px rgba(0,0,0,0.5);
+    border: 3px solid var(--gold-warm);
+    transition: all 0.5s ease;
+    animation: imgFloat 4s ease-in-out infinite;
+}
+.santa-img:hover {
+    transform: scale(1.03);
+    box-shadow: 
+        0 0 60px rgba(212,175,55,0.5),
+        0 0 100px rgba(168,112,112,0.3),
+        0 30px 80px rgba(0,0,0,0.6);
+}
+@keyframes imgFloat {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+.santa-fecha {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: var(--gold-warm);
+    text-align: center;
+    margin-top: 20px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px rgba(212,175,55,0.5);
+}
+
+.reveal { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease,transform 0.7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+.separator-wrap {
+    width:100%; margin:3rem auto;
+    display:flex; align-items:center; justify-content:center;
+}
+.separator-cruz {
+    display:flex; align-items:center; justify-content:center;
+    gap:0; width:100%; max-width:560px;
+}
+.separator-linea {
+    flex:1; height:1px;
+    background:linear-gradient(to right,transparent,rgba(212,175,55,0.55));
+}
+.separator-linea.right { background:linear-gradient(to left,transparent,rgba(212,175,55,0.55)); }
+.separator-cruz-svg {
+    flex-shrink:0; width:100px; height:100px;
+    animation:cruzBreath 3.5s ease-in-out infinite;
+}
+@keyframes cruzBreath {
+    0%,100% {
+        filter:drop-shadow(0 0 10px rgba(212,175,55,0.8)) drop-shadow(0 0 28px rgba(212,175,55,0.4));
+        transform:scale(1);
+    }
+    50% {
+        filter:drop-shadow(0 0 22px rgba(255,235,100,1)) drop-shadow(0 0 50px rgba(212,175,55,0.8)) drop-shadow(0 0 80px rgba(255,200,60,0.5));
+        transform:scale(1.06);
+    }
+}
+
+.timeline {
+    position:relative; padding-left:32px;
+    border-left:2px solid rgba(212,175,55,0.3);
+    margin:10px 0 10px;
+}
+.timeline-item {
+    position:relative; margin-bottom:26px; padding-left:18px;
+    transition:all var(--transition);
+}
+.timeline-item:last-child { margin-bottom:0; }
+.timeline-item::before {
+    content:'+'; position:absolute; left:-38px; top:2px;
+    color:var(--gold-warm); font-size:1.1rem;
+    text-shadow:0 0 8px var(--gold-glow);
+    transition:text-shadow var(--transition);
+}
+.timeline-item:hover::before { text-shadow:0 0 18px var(--gold-glow),0 0 35px rgba(212,175,55,0.5); }
+.timeline-item h3 {
+    font-family:'Cinzel',serif; font-size:1.1rem;
+    color:var(--white-lily); margin-bottom:8px;
+}
+.timeline-item p { color:var(--text-main); line-height:1.85; font-size:1.02rem; }
+
+.content-block {
+    background:var(--glass-bg); border:1px solid var(--border-gold);
+    border-radius:16px; padding:28px 32px; margin-bottom:24px;
+    transition:border-color var(--transition),box-shadow var(--transition);
+}
+.content-block:hover {
+    border-color:rgba(212,175,55,0.45);
+    box-shadow:0 0 30px rgba(212,175,55,0.08),0 8px 32px rgba(0,0,0,0.3);
+}
+.content-block h2 { font-family:'Cinzel',serif; font-size:1.2rem; color:var(--gold-light); margin-bottom:14px; letter-spacing:0.5px; }
+.content-block h3 { font-family:'Cinzel',serif; font-size:1rem; color:var(--rose-light); margin:18px 0 10px; }
+.content-block p  { color:var(--text-main); line-height:1.95; font-size:1.05rem; }
+.content-block ul { margin:14px 0 0 22px; color:var(--text-main); line-height:2.1; font-size:1.02rem; }
+.content-block li { margin-bottom:4px; }
+
+.quote {
+    background:linear-gradient(145deg,rgba(42,32,48,0.4),rgba(26,21,32,0.6));
+    border-left:3px solid var(--gold-warm); border-radius:0 14px 14px 0;
+    padding:22px 28px; margin:28px 0;
+    position:relative; overflow:hidden;
+}
+.quote::before {
+    content:'"'; position:absolute; top:-10px; left:10px;
+    font-size:8rem; color:rgba(212,175,55,0.06);
+    font-family:'EB Garamond',serif; line-height:1; pointer-events:none;
+}
+.quote-text   { font-size:1.1rem; line-height:2; color:var(--white-lily); font-style:italic; margin-bottom:10px; }
+.quote-source { font-family:'Cinzel',serif; font-size:0.8rem; color:var(--gold-warm); letter-spacing:1px; }
+
+.oracion-box {
+    background:linear-gradient(145deg,rgba(42,32,48,0.5),rgba(26,21,32,0.7));
+    border:1px solid rgba(212,175,55,0.3);
+    border-radius:16px; padding:28px; margin:28px 0;
+}
+.oracion-box h3 {
+    font-family:'Cinzel',serif; font-size:1.1rem; color:var(--gold-light);
+    text-align:center; margin-bottom:18px;
+}
+.oracion-box p {
+    color:var(--text-main); line-height:2; font-size:1.05rem;
+    text-align:center; font-style:italic;
+}
+
+.closing-text {
+    font-size:1.12rem; text-align:center; max-width:720px;
+    margin:30px auto 0; color:var(--text-main); font-style:italic; line-height:2;
+}
+
+.footer-menu {
+    background:rgba(0,0,0,0.5); border:1px solid var(--border-gold);
+    border-radius:16px; padding:28px; margin:40px auto; max-width:900px;
+    backdrop-filter:blur(10px);
+}
+.footer-menu-title {
+    font-family:'Cinzel',serif; font-size:0.85rem; color:var(--gold-light);
+    text-align:center; margin-bottom:20px; letter-spacing:3px; text-transform:uppercase;
+}
+.footer-menu-links { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+.footer-menu-links a {
+    color:var(--text-muted); text-decoration:none; font-size:0.82rem;
+    padding:7px 16px; border:1px solid rgba(212,175,55,0.15); border-radius:25px;
+    transition:all var(--transition); background:rgba(255,255,255,0.02);
+    font-family:'EB Garamond',serif;
+}
+.footer-menu-links a:hover {
+    background:rgba(212,175,55,0.12); border-color:rgba(212,175,55,0.4);
+    color:var(--gold-light); transform:translateY(-2px);
+    box-shadow:0 4px 16px rgba(212,175,55,0.15);
+}
+
+footer.main-footer {
+    background:rgba(0,0,0,0.6); padding:30px 20px;
+    text-align:center; border-top:1px solid var(--border-gold);
+    display:flex; flex-direction:column; align-items:center;
+}
+footer.main-footer .cross {
+    font-size:2.8rem; color:var(--gold-warm);
+    text-shadow:0 0 20px var(--gold-glow),0 0 40px rgba(212,175,55,0.3);
+    margin-bottom:12px; animation:crossPulse 2.5s ease-in-out infinite;
+}
+@keyframes crossPulse {
+    0%,100% { text-shadow:0 0 15px var(--gold-glow); transform:scale(1); }
+    50%      { text-shadow:0 0 35px var(--gold-glow),0 0 60px rgba(212,175,55,0.3); transform:scale(1.06); }
+}
+footer.main-footer p { color:var(--text-muted); margin:5px 0; font-size:0.95rem; }
+footer.main-footer .tagline { color:var(--gold-warm); font-family:'Cinzel',serif; font-size:1.05rem; letter-spacing:2px; margin-bottom:4px; }
+
+.scroll-btn {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: rgba(0,0,0,0.6); border: 2px solid var(--gold-warm);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; animation: scrollPulse 2s ease-in-out infinite;
+    transition: all 0.3s ease; position: fixed; z-index: 1000;
+    backdrop-filter: blur(8px);
+}
+.scroll-btn:hover {
+    background: rgba(212,175,55,0.35);
+    box-shadow: 0 0 25px rgba(212,175,55,0.8), 0 0 50px rgba(212,175,55,0.4);
+    transform: scale(1.1);
+}
+.scroll-btn svg { width: 24px; height: 24px; stroke: var(--gold-warm); stroke-width: 2.5; fill: none; }
+.scroll-up { top: 120px; right: 20px; }
+.scroll-down { bottom: 30px; right: 20px; }
+
+/* Rays of Light */
+.sacred-rays {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300vmax;
+    height: 300vmax;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.2;
+}
+.ray {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 60%;
+    transform-origin: bottom center;
+    overflow: visible;
+}
+.ray::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, 
+        rgba(245, 215, 122, 1) 0%,
+        rgba(212, 175, 55, 0.8) 30%,
+        rgba(168, 112, 112, 0.4) 55%,
+        rgba(255, 255, 255, 0.2) 75%,
+        transparent 100%);
+    animation: rayPulse 4s ease-in-out infinite;
+}
+.ray::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -5px;
+    width: 14px;
+    height: 100%;
+    background: linear-gradient(to top,
+        rgba(255, 229, 158, 0.5) 0%,
+        rgba(212, 175, 55, 0.3) 50%,
+        transparent 100%);
+    filter: blur(5px);
+}
+.ray:nth-child(1) { transform: translateY(-100%) rotate(0deg); animation-delay: 0s; }
+.ray:nth-child(2) { transform: translateY(-100%) rotate(20deg); animation-delay: 0.2s; }
+.ray:nth-child(3) { transform: translateY(-100%) rotate(40deg); animation-delay: 0.4s; }
+.ray:nth-child(4) { transform: translateY(-100%) rotate(60deg); animation-delay: 0.6s; }
+.ray:nth-child(5) { transform: translateY(-100%) rotate(80deg); animation-delay: 0.8s; }
+.ray:nth-child(6) { transform: translateY(-100%) rotate(100deg); animation-delay: 1s; }
+.ray:nth-child(7) { transform: translateY(-100%) rotate(120deg); animation-delay: 1.2s; }
+.ray:nth-child(8) { transform: translateY(-100%) rotate(140deg); animation-delay: 1.4s; }
+.ray:nth-child(9) { transform: translateY(-100%) rotate(160deg); animation-delay: 1.6s; }
+.ray:nth-child(10) { transform: translateY(-100%) rotate(180deg); animation-delay: 1.8s; }
+.ray:nth-child(11) { transform: translateY(-100%) rotate(200deg); animation-delay: 2s; }
+.ray:nth-child(12) { transform: translateY(-100%) rotate(220deg); animation-delay: 2.2s; }
+.ray:nth-child(13) { transform: translateY(-100%) rotate(240deg); animation-delay: 2.4s; }
+.ray:nth-child(14) { transform: translateY(-100%) rotate(260deg); animation-delay: 2.6s; }
+.ray:nth-child(15) { transform: translateY(-100%) rotate(280deg); animation-delay: 2.8s; }
+.ray:nth-child(16) { transform: translateY(-100%) rotate(300deg); animation-delay: 3s; }
+.ray:nth-child(17) { transform: translateY(-100%) rotate(320deg); animation-delay: 3.2s; }
+.ray:nth-child(18) { transform: translateY(-100%) rotate(340deg); animation-delay: 3.4s; }
+
+@keyframes rayPulse {
+    0%, 100% { opacity: 0.4; height: 70%; }
+    25% { opacity: 1; height: 100%; }
+    50% { opacity: 0.6; height: 85%; }
+    75% { opacity: 0.9; height: 95%; }
+}
+
+/* Floating Particles */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--gold-warm);
+    border-radius: 50%;
+    animation: floatParticle 15s linear infinite;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.8), 0 0 20px rgba(168, 112, 112, 0.4);
+}
+.particle:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 18s; }
+.particle:nth-child(2) { left: 10%; animation-delay: 2s; animation-duration: 22s; width: 3px; height: 3px; }
+.particle:nth-child(3) { left: 15%; animation-delay: 4s; animation-duration: 20s; }
+.particle:nth-child(4) { left: 20%; animation-delay: 1s; animation-duration: 25s; width: 5px; height: 5px; }
+.particle:nth-child(5) { left: 25%; animation-delay: 3s; animation-duration: 19s; }
+.particle:nth-child(6) { left: 30%; animation-delay: 5s; animation-duration: 23s; width: 3px; height: 3px; }
+.particle:nth-child(7) { left: 35%; animation-delay: 0.5s; animation-duration: 21s; }
+.particle:nth-child(8) { left: 40%; animation-delay: 2.5s; animation-duration: 24s; width: 5px; height: 5px; }
+.particle:nth-child(9) { left: 45%; animation-delay: 4.5s; animation-duration: 17s; }
+.particle:nth-child(10) { left: 50%; animation-delay: 1.5s; animation-duration: 26s; width: 3px; height: 3px; }
+.particle:nth-child(11) { left: 55%; animation-delay: 3.5s; animation-duration: 20s; }
+.particle:nth-child(12) { left: 60%; animation-delay: 0s; animation-duration: 22s; width: 5px; height: 5px; }
+.particle:nth-child(13) { left: 65%; animation-delay: 2s; animation-duration: 18s; }
+.particle:nth-child(14) { left: 70%; animation-delay: 4s; animation-duration: 25s; width: 3px; height: 3px; }
+.particle:nth-child(15) { left: 75%; animation-delay: 1s; animation-duration: 21s; }
+.particle:nth-child(16) { left: 80%; animation-delay: 3s; animation-duration: 24s; width: 5px; height: 5px; }
+.particle:nth-child(17) { left: 85%; animation-delay: 5s; animation-duration: 19s; }
+.particle:nth-child(18) { left: 90%; animation-delay: 2.5s; animation-duration: 23s; width: 3px; height: 3px; }
+.particle:nth-child(19) { left: 95%; animation-delay: 0.5s; animation-duration: 20s; }
+.particle:nth-child(20) { left: 3%; animation-delay: 4.5s; animation-duration: 27s; width: 5px; height: 5px; }
+
+@keyframes floatParticle {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    5% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+}
+
+/* Golden Line Before Footer */
+.golden-line-footer {
+    width: 100%;
+    max-width: 950px;
+    height: 5px;
+    margin: 0 auto 55px;
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        #E8C76A 8%,
+        #F5D77A 20%,
+        #FFE59E 35%,
+        #F5D77A 50%,
+        #D9A441 65%,
+        #E8C76A 80%,
+        transparent 100%);
+    border-radius: 3px;
+    box-shadow: 
+        0 0 30px rgba(212, 175, 55, 1),
+        0 0 60px rgba(168, 112, 112, 0.7),
+        0 0 100px rgba(212, 175, 55, 0.5);
+    animation: goldenShimmer 2.5s ease-in-out infinite;
+    position: relative;
+}
+@keyframes goldenShimmer {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.3); }
+}
+</style>
+</head>
+<body>
+
+<!-- Rays of Light -->
+<div class="sacred-rays">
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div>
+</div>
+
+<!-- Floating Particles -->
+<div class="particles">
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+</div>
+
+<div class="bg"></div>
+<canvas id="divine-canvas"></canvas>
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- ========== HEADER ========== -->
+<header id="mainHeader">
+    <a href="index.html" class="logo">
+        <img src="img/logo_divina_misericordia.webp" alt="Logo Divina Misericordia" loading="lazy">
+        Divina<span>Misericordia</span>
+    </a>
+    <nav id="mainNav">
+        <a href="index.html">Inicio</a>
+        <a href="quienes-somos.html">Quienes Somos</a>
+        <a href="introduccion.html">Introduccion</a>
+        <a href="santa-faustina.html">Santa Faustina</a>
+        <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
+        <a href="novena.html">Novena</a>
+        <a href="coronilla.html">Coronilla</a>
+        <a href="via-crucis.html">Via Crucis</a>
+        <a href="oraciones.html">Oraciones</a>
+        <a href="santo-rosario.html">Santo Rosario</a>
+        <a href="los-rayos.html">Los Rayos</a>
+        <a href="obras-de-misericordia.html">Obras de Misericordia</a>
+        <a href="lugares-de-culto.html">Lugares de Culto</a>
+        <a href="lecturas-recomendadas.html">Lecturas</a>
+        <a href="enlaces.html">Enlaces</a>
+        
+        
+        
+        
+        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+        <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
+    <a href="estudios-biblicos.html">Estudios</a>
+        <a href="otras-devociones.html" class="activo">Otras Devociones</a>
+        <a href="contacto.html">Contacto</a>
+    
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+
+<!-- ========== MAIN ========== -->
+<main class="main-content">
+
+    <h1 class="page-title">Santa Francisca Romana</h1>
+    <p class="subtitle-line">Esposa, Madre, Viuda y Apostol Seglar de Roma</p>
+
+    <div class="santa-img-container reveal">
+        <p class="santa-fecha reveal">Santa Francisca Romana<br>canonizada el 9 de mayo de 1608</p>
+    </div>
+
+    <div class="content-block reveal">
+        <p>Nacida en Roma en el ano 1384, Santa Francisca Romana es una de las santas mas admirables de la historia de la Iglesia Catolica. Su vida constituye un testimonio extraordinario de como la santidad puede florecer en medio de las mas complejas circunstancias de la vida familiar y social. Su ejemplo sigue inspirando a miles de familias catolicas alrededor del mundo, demostrando que la vocation matrimonial y la vida de santidad no son incompatibles, sino que pueden armonizarse de manera prodigiosa cuando se viven con fe profunda y entrega generosa.</p>
+        <p style="margin-top:16px;">Cada 9 de marzo, multitudes de peregrinos llegan a Roma para visitar su tumba en el templo que le ha sido consagrado y para acercarse al convento que ella misma fundo: la celebre "Torre de los Espejos", donde su memoria permanece viva y donde su intercesion sigue obrando prodigios para quienes la invocan con fe.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#fff5c0"/>
+                        <stop offset="50%" stop-color="#d4af37"/>
+                        <stop offset="100%" stop-color="#8a7000"/>
+                    </linearGradient>
+                    <filter id="cruzGlow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                </defs>
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="content-block reveal">
+        <h2>Una Niñez Privilegiada</h2>
+        <p>Francisca nacio en el seno de una familia senatorial romana que, segun las chronicons de la epoca, era una de las mas distinguidas y adineradas de la Ciudad Eterna. Sus padres, personas de profunda fe catolica, la criaron en el ambiente de la nobleza romana pero siempre rodeado de valores evangelicos. Desde la mas tierna infancia, la pequena mostro una vocation extraordinaria hacia la vida religiosa y contemplativa.</p>
+        <p style="margin-top:16px;">Su corazon infantil latia con fuerza por Jesus y por la vida consagrada. Sin embargo, la voluntad divina se manifestaria de una manera inesperada: cuando Francisca alcanzo la edad casadera, sus padres, ignorando su profunda vocation, le buscaronspouse de una familia igualmente distinguida y acaudalada. Contra su inclination mas profunda, Francisca obedecio y contrajo matrimonio, iniciando asi un capitulo de su vida que la Iglesia celebraria siglos despues como exemplo luminoso de santidad en el estado matrimonial.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="content-block reveal">
+        <h2>El Descubrimiento de la Vocacion Doble</h2>
+        <p>Los primeros anos de matrimonio fueron para Francisca una epoca de profunda turbacion espiritual. Amaba sinceramente a su esposo y cumplia con admirable dedication sus deberes conyugales, pero en su corazon llevaba siempre la nostalgia de la vida contemplativa. Un dia, su cuanada Vannossa, observandola pensativa y triste, le pregunto la causa de su melancolia.</p>
+        <p style="margin-top:16px;">Francisca le abrio su corazon y le confeso que sentia un llamado irresistible hacia la vida religiosa, pero que sus padres la habian orientado hacia el matrimonio. Para su sorpresa, Vannossa le conto que ella experimentaba los mismos sentimientos. Juntas concibieron un plan que cambiaria el curso de sus vidas: dedicarian todas sus energias a ser esposas y madres exemplares, pero al mismo tiempo dedicarian cada momento libre a la caridad, visitando hospitales, instruyendo a ninos y socorriendo a los mas necesitados.</p>
+        <p style="margin-top:16px;">Con el consentimiento de sus respectivos esposos, Francisca y Vannossa se lanzaron con entusiasmo a esta vocation double. Visitaban los hospitales donde los pobres recibian atencion medica,。那时候 ellas ofreccian no solo ayuda material sino sobre todo presencia espiritual, palabras de consuelo y伸手援助. La suegra de Francisca, inicialmente reacia a esta actividad, pronto reconocio los frutos admirables que su nuera obtenia en el hogar y en la sociedad.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="content-block reveal">
+        <h2>Una Caridad que Conquisto Corazones</h2>
+        <p>Roma entero comenzo a hablar de la esposa del noble Lanzolano, una joven noble que parecia tener un don especial para ganarse la simpata y el afecto de todos, especialmente de los mas Marginados. Los enfermos del hospital se sentian reconfortados con su presencia, los ninos pobres la esperaban ansiosos para recibir instruccion catechistica, y las familias necessitadas encontraban en ella una protecteur y guia.</p>
+        <p style="margin-top:16px;">Los chronicons de la epoca relatan que Francisca poseia un carisma singular: con solo estar presente, transmita paz y serenidad. Los historiadores eclesiasticos posteriores attribute este don a la accion del Espiritu Santo, que la hacia instrumento de su gracia para infinite almas. Era quizas el don de tears, tan frecuentemente mencionado en la tradition mistica cristiana como seal de una union intima con Dios.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="content-block reveal">
+        <h2>Madre de Familia y Mujer de Fe</h2>
+        <p>Durante los mas de treinta anos que duro su matrimonio, Francisca demostro ser una esposa ejemplar y una madre Dedicated a la educacion religiosa de sus hijos. Tuvo tres hijos, de los cuales dos murieron a temprana edad, partida que ella accept con resignacion Cristiana y que vivio como offerings agradable a Dios. Al hijo que sobrevivio lo crio con esmero extraordinary, guiandolo siempre por el camino de las virtudes, incluso cuando el ya era adulto y habia formado su propia familia.</p>
+        <p style="margin-top:16px;">Lo mas remarkable de su vida familiar fue su capacidad para lived simultaneously la vida de fe intensa con los mas exigentes deveres domesticos. Cuando estava en oracion y su marido la necessitaba para alguna labor del hogar, ella suspendia imediatamente su colloquio con Dios y se dedicaba a lo que su esposo precisaba. Hay registros que mencionan que, en algunas ocasiones, tuvo que interrumpir su oracion hasta cinco veces seguidas, y siempre lo hizo con alegria y sin murmurar. "Muy buena es la oracion", decia con humility, "pero la mujer casada debe conceder la maxima importancia a sus deveres conyugales".</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="content-block reveal">
+        <h2>Las Pruebas que Forjaron su Santidad</h2>
+        <p>Dios, que llamaba a Francisca a高度的 santidad, permitio que atravesara circunstancias extraordinariamente difficiles. En primer lugar, el cisma de Aviñon y los conflictos politicos que desgarraban a Italia en aquella epoca trajeron consigo una guerra civil en Roma. Lanzolano, su esposo, havia сторонник del Papa, y cuando los inimigos del Sumo Pontifice prevailcieron, la familia de Francisca fue despojada violentamente de todas sus propiedades.</p>
+        <p style="margin-top:16px;">De la opulencia pasaron a la miseria ms profunda. Francisca tuvo que abandonar sus hermosas casas y trasladarse a una casona viejisima en los arrabales de Roma. Para mantener el hospital que havia fundado y seguir atendiendo a los pobres, salia ella misma a pedir limosna de puerta en puerta. Esta vida de pobreza y privaciones duro muchos anos, durante los cuales她也 padecинфекцион一系列病痛 que la postraron en el lecho por longos periodos.</p>
+        <p style="margin-top:16px;">Ademas de estas pruebas externas, Francisca tuvo que enfrentar intensas tentaciones espirituales. Pero su response siempre era la misma: oracion constante, mortificacion voluntaria y una actividad incesante en favor del projimo. Sabia que estaba almacando tesoros en el cielo, y esta conviction le daba fuerzas para soportar todo con paz y hasta con alegria.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="content-block reveal">
+        <h2>La Prueba de la Nuera</h2>
+        <p>Cuando su unico hijo superviviente contrajo matrimonio, Francisca penso que finalmente tendria un poco de paz. Pero la Divina Providencia le reserved otra prueba: la joven que se caso con su hijo era extremadamente hermosa pero de caracter difficile y criticona. Desde el primer momento, esta nuera se dedico a amargarle la vida a Francisca, burlandose de sus practicas de piedad, de sus caridades y de todo lo que hacia.</p>
+        <p style="margin-top:16px;">Francisca, con una patience heroica, soportaba todas las impertinencias sin jamais responder con palabra descortés. Cuando pior, la nuera contrajo una enfermedad grave que la postro en cama. Entonces Francisca, olvidando todo el mal que havia recibido, se dedication con zeal extraordinario a asistirla. Le preparaba la comida con sus propias manos, le mudaba la ropa de cama, le proporcionaba medicines y, sobre todo, la atencibaum espiritual con reflexiones piadosas y oraciones.</p>
+        <p style="margin-top:16px;">El milagro se produjo de manera inesperada: la nuera sanó de su enfermedad fisica y, lo que era aun mas maravilloso, quedo completamente curada de su amargura y antipatia hacia su suegra. En adelante, se convirtio en su mas ferviente admiradora y amiga, reconociendo publicly que havia encontrado en Francisca a la madre que nunca havia tenido.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="content-block reveal">
+        <h2>Los Milagros y el Don de Consejo</h2>
+        <p>La fama de santidad de Francisca crecio de tal manera que multitudes acudian a ella para pedirle que intercediera por ellos ante Dios. Los cronistas de la epoca relatan miracles impressionantes: enfermos incurables quedaban sanados, malos espiritus eran expulsados de personas atormentadas, pero sobre todo, Francisca tena el don singular de reconciliar a enemigos morttales.</p>
+        <p style="margin-top:16px;">Familias enteras que llevavan anos sin hablarse, vecinos que se odiaban a muerte, todo un barrio en conflicto, todos encontraban en Francisca a una mediadora infalible. Sus palabras, marcadas por la sabiduria del Espiritu Santo, llegaban al corazon de los mas endurecidos y lograban lo que parecia imposible. El don de consejo, una de las siete gracias del Espiritu Santo, se habia derramado sobre ella de manera particolare.</p>
+        <p style="margin-top:16px;">Francisca mantenia una comunicacion constante con su angel de la guarda, con quien decia dialogary recibir orientaciones para las almas que acudian a ella. Esta pratica mistica, tan presente en la tradition cattolica de los grandes misticos, era para Francisca una realidad cotidiana que sostenia su vida espiritual y alimentaba su apostolado.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="content-block reveal">
+        <h2>Fundacion de las Oblatas de Maria</h2>
+        <p>La obra mas importante de Santa Francisca Romana fue la fundacion de la comunidad de las "Oblatas de Maria". Estas eran religiosas seglares, mujeres casadas o viudas que, sin renunciar a su estado, se dedicaban a works de misericordia espiritual y corporal. Vestian como senoras respetables de la epoca, sin habito especial que las distinguiera, porque la santidad no necesita внешних signos.</p>
+        <p style="margin-top:16px;">La casa principal de esta comunidad se establishcio en un edificio historique de Roma llamado "Torre de los Espejos", nombre que evoca la figura de Maria Santisima, espejo de toda perfeccion. Este convento sigue existiendo hoy en dia y permanece como testimonio vivo de la obra de Francisca.</p>
+        <p style="margin-top:16px;">Cuando Francisca quedo viuda, entro ella misma a formar parte de la comunidad que havia fundado. Las religiosas, por vote unanime, la eligieron Superiora General, cargo que accepto con humility y que desempeño hasta su muerte. Desde entonces tom el nombre por el qual es conocida universally: Francisca Romana.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="content-block reveal">
+        <h2>Heroismo en Tiempos de Epidemia</h2>
+        <p>Cuando las epidemias asolaban a Roma, y muchos huian aterrorizados de los focos de infection, Francisca se lanzaba al centro del peligro. Ella misma transportaba a los enfermos al hospital, los atendia personally, les lavaba la ropa y la remendaba cuando era necesario. Pero su celo pastoral iba mas alla: como en tiempo de contagio era casi imposible encontrar sacerdotes disponibles para la confesion de los moribundos, ella mesma organizaba y pagaba de su bolsillo un grupo de sacerdotes que se dedicaban exclusivamente a atender espiritualmente a los enfermos.</p>
+        <p style="margin-top:16px;">Su vida de mortificacion impressionaba a quienes la conhecian: ayunaba a pan y agua durante largos periodos, dedicaba largas horas a la oracion y meditation, y Dios, correspondiendo a tanto amor, le concessia favores misticos extraordinarios: extasis frecuentes, visiones celestiales y una sabiduria practica que asombraba a todos.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="quote reveal">
+        <p class="quote-text">Francisca llegue a tal grado de amabilidad en su trato, que bastaba tratar con ella una sola vez para quedar ya amigos para siempre. A las personas que sabia que hablaban mal de ella, les prodigaba mayor amabilidad.</p>
+        <p class="quote-source">Vidas de los Santos, Ed. Popular</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="content-block reveal">
+        <h2>Su Santidad de Trato</h2>
+        <p>Uno de los aspect ms surpreendentes de la santidad de Francisca era su trato personal. Quienes la conhecian decia que, despues de hablar con ella aunque fuera una sola vez, se sentian como si la conociesen de siempre. Tenia el don de hacer sentir a cada persona importante y valorada, como si fuera la unica en el mundo.</p>
+        <p style="margin-top:16px;">A quienes sabia que hablaban mal de ella, les prodigaba mas atencion y amabilidad que a los demas, siguiendo el consejo evangelico de amar a los enemigos y hacer bien a los que nos injurian. Esta pratica constante de la virtud la fue perfeccionando hasta hacer de ella un modelo acabado de cristiana perfecta.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="content-block reveal">
+        <h2>La Muerte Gloriosa</h2>
+        <p>El 9 de marzo de 1440, Francisca se encontraba gravemente enferma. Sus hernanas de la comunidad la asistian con affetto, sabiendo que su partida estaba proxima. De repente, su rostro comenzo a brillar con una luz sobrenatural, mistica, que illumination toda la habitacion.</p>
+        <p style="margin-top:16px;">Con una voz clara y serene, pronuncis sus ultimas palabras: "El angel del Senor me manda que lo siga hacia las alturas". Luego, sin ningun signo de agonia, sin el menor gesto de dolor, su alma partio hacia el Cielo. Su rostro permaneceria luminoso y sereno, como si estuviera dulcemente dormida.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="content-block reveal">
+        <h2>Funerales que Conmovieron a Roma</h2>
+        <p>La noticia de la muerte de Francisca se extiende rapida por toda Roma. Hacia el convento se directivo una multitude innumerable: los pobres a quienes havia socorrido, los enfermos que havia visitado, las familias que havia reconciliado, todos querian honrar por ultima vez a quien havia sido su madre espiritual.</p>
+        <p style="margin-top:16px;">Los historiadores de la epoca escriben que "toda la ciudad de Roma se movilizo" para asistir a los funerales. Muchos llevaban a sus enfermos para que, tocando el cadaver de la santa, recibieran la curacion por su intercesion. Los miracles se multiplicaban junto alcadaver, aumentando el tempano de gente que deseaba acercarse.</p>
+        <p style="margin-top:16px;">Fue sepultada en la iglesia parro-quial del barrio, pero la fama de milagros que ocurran junto a su tumba hizo que el templo passara a llamarse "Iglesia de Santa Francisca Romana", nombre que conserva hasta nuestros dias.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="content-block reveal">
+        <h2>Canonizacion y Peregrinacion del 9 de Marzo</h2>
+        <p>En recognition a tan extraordinarias virtudes y milagros, la Iglesia Catolica la canoniz solemnemente el 9 de mayo de 1608. Desde entonces, su culto se ha extendido por todo el mundo catolico, especialmente entre las familias que buscan exemplos de santidad matrimonial.</p>
+        <p style="margin-top:16px;">Cada 9 de marzo, como hemos mencionado, llegan a Roma numerosos peregrinos para venerar sus reliquias y pedir su intercesion. Llegan con necesidades de todo tipo: parejas que necesitan reconciliarse, familias que buscan paz en el hogar, madres que desean fortaleza para educar a sus hijos, enfermos que esperan curacion.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="oracion-box reveal">
+        <h3>Oracion a Santa Francisca Romana</h3>
+        <p>Oh Dios, que concediste a Santa Francisca Romana la gracia de alcanzar la santidad en medio de los deberes del estado matrimonial, concedenos, por su intercesion, la gracia de santificar nuestro hogar con el fuego de tu amor y de cumplir con alegra cada uno de nuestros deberes familiares y profesionales.</p>
+        <p style="margin-top:16px;">Santa Francisca, que conociste las alegrias y las penas de la vida familiar, ruiega por las esposas y madres que hoy enfrentan dificultades en su hogar. Ensennales a poner a Dios en el centro de su familia, a amar a sus esposos con entrega verdadera, a educar a sus hijos en la fe catolica y a servir generosamente a los mas necesitados.</p>
+        <p style="margin-top:16px;">Tu que supiste reconciliarte con tu nuera a traves del amor y la paciencia, ayudanos a perdonar a quienes nos han ofendido y a ser instrumentos de paz en nuestros hogares y comunidades.</p>
+        <p style="margin-top:16px;">Francisca, esposa fiel, madre amorosa, viuda pia, religiosa exemplar, ruega por nosotros. Amén.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="quote reveal">
+        <p class="quote-text">"Que las gentes comentan sus muchas buenas obras."</p>
+        <p class="quote-source">Proverbios 31, Santa Biblia</p>
+    </div>
+
+    <p class="closing-text reveal">Santa Francisca Romana, ruega al buen Dios por nosotros, para que sepamos cumplir cada dia nuestros deberes conyugales y familiares con la misma entrega y amor que tu demostraste. Concdenos la gracia de santificar nuestra vida matrimonial y de hacer de nuestro hogar un传的 santurario de fe, esperanza y caridad. Amén.</p>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- Footer Menu -->
+    <div class="footer-menu reveal">
+        <p class="footer-menu-title">Explorar Mas Devociones</p>
+        <div class="footer-menu-links">
+            <a href="santa-faustina.html">Santa Faustina</a>
+            <a href="maria.html">Santa Maria</a>
+            <a href="san-jose.html">San Jose</a>
+            <a href="san-judas-tadeo.html">San Judas Tadeo</a>
+            <a href="san-benito.html">San Benito</a>
+            <a href="san-francisco.html">San Francisco de Asis</a>
+            <a href="divino-nino-jesus.html">Divino Nino Jesus</a>
+            <a href="via-crucis.html">Via Crucis</a>
+            <a href="novena.html">Novena</a>
+            <a href="oraciones.html">Oraciones</a>
+        </div>
+    </div>
+
+</main>
+
+<!-- Golden Line Before Footer -->
+<div class="golden-line-footer"></div>
+
+<!-- ========== FOOTER ========== -->
+<footer class="main-footer sacred-footer">
+    <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">✝</a>
+    <p class="tagline">Jesús, En Vos Confío</p>
+    <p>© 2026 — Portal de la Divina Misericordia</p>
+</footer>
+
+<!-- Scroll Buttons -->
+<button class="scroll-btn scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Subir">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+<button class="scroll-btn scroll-down" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})" aria-label="Bajar">
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+
+<script>
+// Force reveal all content (fallback in case of cache issues)
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        document.querySelectorAll('.reveal').forEach(function(el) {
+            el.classList.add('visible');
+        });
+    }, 500);
+});
+
+// Progress bar
+window.addEventListener('scroll',()=>{
+    const bar=document.getElementById('progressBar');
+    const h=document.documentElement;
+    bar.style.width=((h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';
+});
+// Header scroll
+window.addEventListener('scroll',()=>{
+    document.getElementById('mainHeader').classList.toggle('scrolled',window.scrollY>50);
+});
+// Reveal
+const reveal=document.querySelectorAll('.reveal');
+const ro=new IntersectionObserver((e)=>{
+    e.forEach(el=>{ if(el.isIntersecting){ el.classList.add('visible'); } });
+},{threshold:0.12});
+reveal.forEach(el=>ro.observe(el));
+// Hamburger
+document.getElementById('hamburger').addEventListener('click',function(){
+    this.classList.toggle('open');
+    document.getElementById('mainNav').classList.toggle('active');
+});
+// Divine canvas
+(function(){
+    const c=document.getElementById('divine-canvas'),x=c.getContext('2d');
+    let w,h,p=[];
+    function rs(){w=c.width=innerWidth;h=c.height=innerHeight;}
+    function init(){p=[];for(let i=0;i<80;i++)p.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+0.5,vx:(Math.random()-0.5)*0.3,vy:-Math.random()*0.5-0.2,o:Math.random()});}
+    function dr(){
+        x.clearRect(0,0,w,h);
+        p.forEach((pt,i)=>{
+            pt.x+=pt.vx;pt.y+=pt.vy;pt.o+=0.002;
+            if(pt.y<-10)pt.y=h+10;
+            if(pt.x<0||pt.x>w)pt.vx*=-1;
+            x.beginPath();x.arc(pt.x,pt.y,pt.r,0,Math.PI*2);
+            x.fillStyle=`rgba(212,175,55,${Math.min(pt.o,0.6)})`;x.fill();
+            if(pt.o>0.5){x.beginPath();x.arc(pt.x,pt.y,pt.r*2,0,Math.PI*2);x.fillStyle=`rgba(212,175,55,${pt.o*0.15})`;x.fill();}
+        });
+        requestAnimationFrame(dr);
+    }
+    window.addEventListener('resize',()=>{rs();init();});
+    rs();init();dr();
+})();
+</script>
+
+
+<!-- Sistema de Diseño Global -->
+<script src="js/system-init.js"></script>
+</body>
+</html>

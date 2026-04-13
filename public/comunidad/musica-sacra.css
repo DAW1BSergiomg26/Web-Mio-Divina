@@ -1,0 +1,64 @@
+:root {
+  --gold: #d4af37;
+  --blue-deep: #050d1a;
+  --white: #faf7f0;
+}
+
+.sacred-library {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--blue-deep);
+  min-height: 100vh;
+}
+
+.search-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--gold);
+  color: var(--white);
+  font-family: inherit;
+}
+
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+
+.filter-btn.active, .filter-btn:hover {
+  background: var(--gold);
+  color: var(--blue-deep);
+}
+
+.tracks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.track-card {
+  padding: 1.5rem;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.track-card:hover { transform: translateY(-5px); border-color: var(--gold); }

@@ -1,0 +1,272 @@
+/* Música Sacra - Estilos Modernos */
+
+/* Variables */
+:root {
+  --ms-bg: #050d1a;
+  --ms-bg-light: #0a1628;
+  --ms-gold: #d4af37;
+  --ms-gold-light: #f4e2a1;
+  --ms-white: #faf7f0;
+  --ms-text: rgba(250, 247, 240, 0.8);
+  --ms-text-muted: rgba(250, 247, 240, 0.5);
+  --ms-transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset y base */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: var(--ms-bg);
+  color: var(--ms-white);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Fondo */
+.bg {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, #1a3a6e 0%, var(--ms-bg-light) 40%, var(--ms-bg) 100%);
+  z-index: -2;
+}
+
+.music-notes-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: 
+    radial-gradient(ellipse at 30% 20%, rgba(212,175,55,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(111,168,220,0.06) 0%, transparent 50%);
+}
+
+/* Contenedor principal */
+#ms-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  padding-bottom: 120px;
+}
+
+/* Header */
+.ms-header {
+  text-align: center;
+  padding: 30px 0;
+}
+
+.ms-header h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  color: var(--ms-gold);
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+  margin-bottom: 8px;
+}
+
+.ms-header .subtitle {
+  font-size: 1rem;
+  color: var(--ms-text-muted);
+  font-style: italic;
+}
+
+/* Buscador */
+.ms-search {
+  margin-bottom: 24px;
+}
+
+#ms-search-input {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 1.1rem;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 8px;
+  color: var(--ms-white);
+  transition: var(--ms-transition);
+}
+
+#ms-search-input:focus {
+  outline: none;
+  border-color: var(--ms-gold);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+#ms-search-input::placeholder {
+  color: var(--ms-text-muted);
+}
+
+/* Lista de pistas */
+.ms-results {
+  min-height: 200px;
+}
+
+#ms-empty {
+  text-align: center;
+  padding: 40px;
+  color: var(--ms-text-muted);
+  font-style: italic;
+}
+
+#ms-track-list {
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+#ms-track-list li {
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--ms-transition);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#ms-track-list li:hover {
+  background: rgba(212, 175, 55, 0.1);
+  border-color: rgba(212, 175, 55, 0.3);
+  transform: translateX(4px);
+}
+
+#ms-track-list .track-title {
+  font-weight: 600;
+  color: var(--ms-white);
+}
+
+#ms-track-list .track-artist {
+  color: var(--ms-gold);
+  font-size: 0.9rem;
+}
+
+#ms-track-list .track-meta {
+  color: var(--ms-text-muted);
+  font-size: 0.85rem;
+}
+
+/* Reproductor */
+.player-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 22, 40, 0.98);
+  border-top: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 100;
+}
+
+.player-bar .track-title {
+  font-weight: 600;
+  min-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Progress bar */
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--ms-gold);
+  border-radius: 3px;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.time {
+  font-size: 0.85rem;
+  color: var(--ms-text-muted);
+  font-family: monospace;
+  min-width: 40px;
+}
+
+/* Controles */
+.controls {
+  display: flex;
+  gap: 8px;
+}
+
+.controls button {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 50%;
+  color: var(--ms-white);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--ms-transition);
+}
+
+.controls button:hover {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: var(--ms-gold);
+}
+
+.controls button:active {
+  transform: scale(0.95);
+}
+
+/* Utilitarios */
+.hidden {
+  display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  #ms-container {
+    padding: 12px;
+    padding-bottom: 100px;
+  }
+
+  .ms-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .player-bar {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px 12px;
+  }
+
+  .player-bar .track-title {
+    order: 1;
+    width: 100%;
+    min-width: unset;
+    margin-bottom: 4px;
+  }
+
+  .progress-bar {
+    order: 2;
+    flex: 1 1 100%;
+  }
+
+  .controls {
+    order: 3;
+  }
+
+  .time {
+    display: none;
+  }
+}

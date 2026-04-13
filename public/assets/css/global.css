@@ -1,0 +1,803 @@
+/* Modo Lectura Accesible */
+.contemplative-mode {
+  --line-height-read: 2.2 !important;
+  --font-size-base: 1.25rem !important;
+}
+
+body.contemplative-mode {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-read);
+}
+
+body.contemplative-mode p,
+body.contemplative-mode li,
+body.contemplative-mode a {
+  line-height: var(--line-height-read);
+}
+
+  /* Colores dorados */
+  --gold:        #d4af37;
+  --gold-light:  #f4e2a1;
+  --gold-dark:   #b8960c;
+  --gold-glow:   rgba(212,175,55,0.6);
+  
+  /* Colores azules profundos */
+  --blue-deep:   #050d1a;
+  --blue-mid:    #0a1628;
+  --blue-light:  #173a6a;
+  
+  /* Colores básicos */
+  --white:       #faf7f0;
+  --crimson:     #8b0000;
+  --celestial:   #6fa8dc;
+  
+  /* Texto */
+  --text-main:   rgba(250,247,240,0.9);
+  --text-muted:  rgba(250,247,240,0.7);
+  
+  /* Bordes y fondos */
+  --border-gold: rgba(212,175,55,0.25);
+  --glass-bg:    rgba(255,255,255,0.03);
+  
+  /* Transiciones */
+  --transition:  0.35s cubic-bezier(0.4,0,0.2,1);
+  
+  /* Z-index */
+  --z-header:    1000;
+  --z-cursor:    9999;
+  --z-overlay:   900;
+  --z-modal:     2000;
+  
+  /* Variables de color litúrgico (se actualizan dinámicamente) */
+  --liturgical-color: #d4af37;
+  --liturgical-color-light: #f4d87a;
+  --liturgical-color-dark: #a68920;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  background:var(--blue-deep);
+  color:var(--white);
+  font-family:'EB Garamond',Georgia,serif;
+  line-height:1.85;
+  overflow-x:hidden;
+  cursor:none;
+}
+
+/* Skip Link para Accesibilidad */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--blue-deep);
+  padding: 12px 24px;
+  border-radius: 0 0 8px 8px;
+  font-weight: bold;
+  z-index: 10000;
+  transition: top 0.3s;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--celestial);
+  box-shadow: 0 0 20px var(--gold-glow);
+}
+
+/* =============================================
+   BACKGROUND - Base
+   ============================================= */
+.bg { 
+  position:fixed; inset:0; 
+  background: linear-gradient(135deg, #050d1a 0%, #0a1628 25%, #0f1d38 50%, #0a1628 75%, #050d1a 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  z-index:-2; 
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+#divine-canvas { position:fixed; inset:0; z-index:-1; opacity:0.85; }
+
+/* Aura divina */
+.divine-aura {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 200vmax;
+  height: 200vmax;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, 
+    rgba(212,175,55,0.03) 0%, 
+    rgba(147,112,219,0.02) 30%, 
+    rgba(30,58,110,0.02) 50%,
+    transparent 70%);
+  animation: auraRotate 30s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+@keyframes auraRotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* =============================================
+   PROGRESS BAR
+   ============================================= */
+.progress-bar {
+  position:fixed; top:0; left:0; height:2px; width:0;
+  background:linear-gradient(to right, var(--gold-dark), var(--gold), var(--gold-light));
+  z-index:1100; transition:width 0.1s linear;
+  box-shadow:0 0 8px var(--gold-glow);
+}
+
+/* =============================================
+   HEADER & NAV - Sistema Global
+   ============================================= */
+header {
+  position:fixed; width:100%;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 30px;
+  background:rgba(0,0,0,0.88);
+  backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
+  z-index:var(--z-header);
+  border-bottom:1px solid var(--border-gold);
+  transition:padding var(--transition);
+}
+header.scrolled { padding:6px 30px; background:rgba(0,0,0,0.96); }
+
+.logo {
+  font-family:'Cinzel Decorative',serif;
+  font-size:1.25rem; color:var(--gold-light);
+  text-decoration:none; display:flex; align-items:center; gap:12px;
+  flex-shrink:0; transition:opacity var(--transition);
+}
+.logo:hover { opacity:0.85; }
+.logo img { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--border-gold); }
+.logo span { color:var(--white); }
+
+nav { display:flex; gap:4px; flex-wrap:wrap; justify-content:center; align-items:center; }
+nav a {
+  color:var(--gold); text-decoration:none;
+  font-family:'Cinzel',serif; font-size:0.78rem; letter-spacing:1px;
+  padding:8px 12px; border-radius:6px;
+  transition:all var(--transition); position:relative; white-space:nowrap;
+}
+nav a::after {
+  content:''; position:absolute; bottom:4px; left:50%;
+  transform:translateX(-50%) scaleX(0);
+  width:60%; height:1px; background:var(--gold);
+  transition:transform var(--transition);
+}
+nav a:hover::after, nav a.activo::after { transform:translateX(-50%) scaleX(1); }
+nav a:hover, nav a.activo {
+  color:var(--gold-light);
+  background:rgba(212,175,55,0.12);
+  text-shadow:0 0 18px var(--gold-glow);
+}
+nav a.activo { background:rgba(212,175,55,0.18); box-shadow:0 0 20px rgba(212,175,55,0.15); }
+
+/* OTRAS DEVOCIONES - Special Style */
+nav a.nav-otras-devociones {
+  color: var(--celestial) !important;
+  animation: heartbeat-glow 2s ease-in-out infinite;
+}
+nav a.nav-otras-devociones::after { background: var(--celestial) !important; }
+@keyframes heartbeat-glow {
+  0%, 100% { 
+    text-shadow: 0 0 5px rgba(111,168,220,0.5), 0 0 10px rgba(111,168,220,0.3);
+    transform: scale(1);
+  }
+  14% { 
+    text-shadow: 0 0 15px rgba(111,168,220,0.8), 0 0 25px rgba(111,168,220,0.5), 0 0 35px rgba(111,168,220,0.3);
+    transform: scale(1.02);
+  }
+  28%, 70% { 
+    text-shadow: 0 0 5px rgba(111,168,220,0.5), 0 0 10px rgba(111,168,220,0.3);
+    transform: scale(1);
+  }
+}
+nav a.nav-otras-devociones:hover {
+  color: #e81c1c !important;
+  background: rgba(232, 28, 28, 0.15);
+  text-shadow: 0 0 20px rgba(232, 28, 28, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+  animation: none;
+  box-shadow: 0 0 25px rgba(232, 28, 28, 0.4);
+}
+
+/* Botón Caacupé */
+nav a.caacupe-btn { color: #4ade80 !important; }
+nav a.caacupe-btn::after { background: #4ade80 !important; }
+nav a.caacupe-btn:hover {
+  background: rgba(74, 222, 128, 0.15);
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
+}
+
+/* Botón Devociones Marianas */
+nav a.devociones-btn { color: #f472b6 !important; }
+nav a.devociones-btn::after { background: #f472b6 !important; }
+nav a.devociones-btn:hover {
+  background: rgba(244, 114, 182, 0.15);
+  box-shadow: 0 0 20px rgba(244, 114, 182, 0.3);
+}
+
+/* Hamburger */
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:none; padding:10px; z-index:1100; }
+.hamburger span { width:26px; height:2px; background:var(--gold); border-radius:2px; transition:all var(--transition); display:block; }
+.hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+.hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+@media (max-width:900px) {
+  .hamburger { display:flex; }
+  nav {
+    position:fixed; top:0; right:-100%;
+    width:min(320px,80vw); height:100dvh;
+    background:rgba(5,13,26,0.97);
+    backdrop-filter:blur(30px); -webkit-backdrop-filter:blur(30px);
+    flex-direction:column; align-items:flex-start; justify-content:flex-start;
+    padding:90px 30px 30px; gap:6px;
+    transition:right 0.4s cubic-bezier(0.4,0,0.2,1);
+    border-left:1px solid var(--border-gold);
+    overflow-y:auto;
+  }
+  nav.active { right:0; }
+  nav a { font-size:1rem; width:100%; padding:12px 16px; border-radius:8px; }
+  nav a::after { display:none; }
+}
+
+/* =============================================
+   CURSOR DIVINO - Sistema Global
+   ============================================= */
+.cursor-cruz {
+  position: fixed;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  width: 36px;
+  height: 36px;
+  transform: translate(-50%, -50%);
+  will-change: left, top, transform;
+}
+.cursor-cruz svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 8px rgba(255,215,0,0.95)) drop-shadow(0 0 16px rgba(212,175,55,0.8)) drop-shadow(0 0 25px rgba(184,150,12,0.5));
+}
+.cursor-cruz.hover { transform: translate(-50%, -50%) scale(1.4); }
+.cursor-cruz.hover svg {
+  filter: 
+    drop-shadow(0 0 12px rgba(255,215,0,1))
+    drop-shadow(0 0 24px rgba(212,175,55,0.95))
+    drop-shadow(0 0 40px rgba(220,50,50,0.6))
+    drop-shadow(0 0 55px rgba(255,255,255,0.4));
+  animation: divinePulse 0.6s ease-in-out infinite;
+}
+@keyframes divinePulse {
+  0%, 100% { 
+    filter: 
+      drop-shadow(0 0 10px rgba(255,215,0,1))
+      drop-shadow(0 0 20px rgba(212,175,55,0.9))
+      drop-shadow(0 0 35px rgba(220,50,50,0.5))
+      drop-shadow(0 0 50px rgba(255,255,255,0.3));
+  }
+  50% { 
+    filter: 
+      drop-shadow(0 0 15px rgba(255,240,150,1))
+      drop-shadow(0 0 30px rgba(212,175,55,1))
+      drop-shadow(0 0 50px rgba(220,50,50,0.8))
+      drop-shadow(0 0 70px rgba(255,255,255,0.6));
+  }
+}
+.cursor-cruz.on-button { transform: translate(-50%, -50%) scale(1.6); }
+.cursor-cruz.on-button svg {
+  filter: 
+    drop-shadow(0 0 15px rgba(255,240,150,1))
+    drop-shadow(0 0 30px rgba(212,175,55,1))
+    drop-shadow(0 0 50px rgba(220,50,50,0.9))
+    drop-shadow(0 0 70px rgba(255,200,200,0.7))
+    drop-shadow(0 0 90px rgba(255,255,255,0.5));
+  animation: divineMax 0.4s ease-in-out infinite;
+}
+@keyframes divineMax {
+  0%, 100% { 
+    filter: 
+      drop-shadow(0 0 15px rgba(255,240,150,1))
+      drop-shadow(0 0 30px rgba(212,175,55,1))
+      drop-shadow(0 0 50px rgba(220,50,50,0.9))
+      drop-shadow(0 0 70px rgba(255,200,200,0.7));
+  }
+  50% { 
+    filter: 
+      drop-shadow(0 0 20px rgba(255,255,255,1))
+      drop-shadow(0 0 40px rgba(255,240,150,1))
+      drop-shadow(0 0 60px rgba(212,175,55,1))
+      drop-shadow(0 0 80px rgba(255,200,200,0.9));
+  }
+}
+.cursor-cruz::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 55px;
+  height: 55px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(212,175,55,0.4) 0%, rgba(212,175,55,0.2) 40%, transparent 70%);
+  border-radius: 50%;
+  animation: auraBrillo 2s ease-in-out infinite;
+}
+@keyframes auraBrillo {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
+}
+.cursor-cruz .cruz-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.cursor-cruz.hover { transform: translate(-50%, -50%) scale(1.6); }
+.cursor-cruz.hover::before {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(255,60,60,0.5) 0%, rgba(220,30,30,0.3) 40%, transparent 70%);
+  animation: auraRoja 0.8s ease-in-out infinite;
+}
+@keyframes auraRoja {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+.cursor-cruz.hover .cruz-normal { opacity: 0; }
+.cursor-cruz.hover .cruz-hover { opacity: 1; filter: drop-shadow(0 0 10px rgba(255,80,80,1)) drop-shadow(0 0 20px rgba(220,30,30,0.9)) drop-shadow(0 0 35px rgba(180,20,20,0.7)); }
+
+@media (hover:none) { .cursor-cruz { display:none; } body { cursor:default; } }
+
+/* =============================================
+   SCROLL BUTTONS - Sistema Global
+   ============================================= */
+.scroll-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  animation: scrollPulse 2s ease-in-out infinite;
+  transition: all 0.3s ease;
+  position: fixed;
+  z-index: var(--z-header);
+  backdrop-filter: blur(8px);
+}
+.scroll-btn:hover {
+  background: rgba(212,175,55,0.35);
+  box-shadow: 0 0 25px rgba(212,175,55,0.8), 0 0 50px rgba(212,175,55,0.4), 0 0 70px rgba(212,175,55,0.2);
+  transform: scale(1.1);
+}
+.scroll-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--gold);
+  stroke-width: 2.5;
+  fill: none;
+  filter: drop-shadow(0 0 4px rgba(212,175,55,0.8));
+  transition: transform 0.2s ease;
+}
+.scroll-btn:hover svg {
+  transform: scale(1.15);
+  stroke: #fff5c0;
+  filter: drop-shadow(0 0 8px rgba(255,245,192,0.9));
+}
+.scroll-up { top: 120px; right: 20px; }
+.scroll-down { bottom: 30px; right: 20px; }
+@keyframes scrollPulse {
+  0%, 100% { box-shadow: 0 0 15px rgba(212,175,55,0.5), 0 0 30px rgba(212,175,55,0.2); }
+  50% { box-shadow: 0 0 25px rgba(212,175,55,0.8), 0 0 50px rgba(212,175,55,0.4), 0 0 70px rgba(212,175,55,0.2); }
+}
+
+/* Scroll buttons con color dinámico */
+.scroll-btn.scroll-marianas {
+  border-color: #f472b6;
+}
+.scroll-btn.scroll-marianas svg {
+  stroke: #f472b6;
+  filter: drop-shadow(0 0 4px rgba(244,114,182,0.8));
+}
+.scroll-btn.scroll-marianas:hover {
+  background: rgba(244,114,182,0.35);
+  box-shadow: 0 0 25px rgba(244,114,182,0.8), 0 0 50px rgba(244,114,182,0.4);
+}
+.scroll-btn.scroll-caacupe {
+  border-color: #4ade80;
+}
+.scroll-btn.scroll-caacupe svg {
+  stroke: #4ade80;
+  filter: drop-shadow(0 0 4px rgba(74,222,128,0.8));
+}
+.scroll-btn.scroll-caacupe:hover {
+  background: rgba(74,222,128,0.35);
+  box-shadow: 0 0 25px rgba(74,222,128,0.8), 0 0 50px rgba(74,222,128,0.4);
+}
+.scroll-btn.scroll-musica {
+  border-color: #a78bfa;
+}
+.scroll-btn.scroll-musica svg {
+  stroke: #a78bfa;
+  filter: drop-shadow(0 0 4px rgba(167,139,250,0.8));
+}
+.scroll-btn.scroll-musica:hover {
+  background: rgba(167,139,250,0.35);
+  box-shadow: 0 0 25px rgba(167,139,250,0.8), 0 0 50px rgba(167,139,250,0.4);
+}
+
+/* =============================================
+   FOOTER MENU - Sistema Global
+   ============================================= */
+.footer-menu {
+  background: linear-gradient(145deg, rgba(0,0,0,0.6), rgba(10,22,40,0.7), rgba(0,0,0,0.5));
+  border: 1px solid rgba(212,175,55,0.3);
+  border-radius: 20px;
+  padding: 35px 30px;
+  margin: 50px auto;
+  max-width: 950px;
+  backdrop-filter: blur(15px);
+  box-shadow: 
+    0 10px 40px rgba(0,0,0,0.4),
+    0 0 30px rgba(212,175,55,0.08);
+  position: relative;
+  overflow: hidden;
+}
+.footer-menu::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.5), transparent);
+}
+.footer-menu-title {
+  font-family:'Cinzel',serif; font-size:0.9rem; color:var(--gold-light);
+  text-align:center; margin-bottom:25px; letter-spacing:4px; text-transform:uppercase;
+  text-shadow: 0 0 20px rgba(212,175,55,0.3);
+}
+.footer-menu-links { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; }
+.footer-menu-links a {
+  color:var(--text-muted); text-decoration:none; font-size:0.85rem;
+  padding:10px 20px; border:1px solid rgba(212,175,55,0.2); border-radius:30px;
+  transition: all 0.4s ease;
+  background: rgba(255,255,255,0.02);
+  font-family:'EB Garamond',serif;
+  position: relative;
+  overflow: hidden;
+}
+.footer-menu-links a::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: all 0.4s ease;
+  border-radius: 50%;
+}
+.footer-menu-links a:hover::before {
+  width: 200%;
+  height: 200%;
+}
+.footer-menu-links a:hover {
+  background:rgba(212,175,55,0.15); border-color:rgba(212,175,55,0.5);
+  color:var(--gold-light); transform:translateY(-3px);
+  box-shadow: 0 5px 25px rgba(212,175,55,0.2), 0 0 40px rgba(212,175,55,0.1);
+  text-shadow: 0 0 15px rgba(212,175,55,0.5);
+}
+
+/* Borde dorado resplandeciente */
+.sacred-glow-border {
+  position: absolute; inset: 0; pointer-events: none;
+  border: 3px solid transparent; border-radius: 16px;
+  background: linear-gradient(45deg, #d4af37, #f4e2a1, #d4af37, #b8960c, #f4e2a1) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  animation: sacredPulse 3.2s ease-in-out infinite;
+  box-shadow: 0 0 15px 4px rgba(212,175,55,0.7), 0 0 35px 8px rgba(244,226,161,0.5), inset 0 0 25px rgba(212,175,55,0.4);
+}
+@keyframes sacredPulse {
+  0%, 100% { opacity: 0.65; box-shadow: 0 0 15px 4px rgba(212,175,55,0.7), 0 0 35px 8px rgba(244,226,161,0.5), inset 0 0 25px rgba(212,175,55,0.4); }
+  50% { opacity: 1; box-shadow: 0 0 35px 12px rgba(212,175,55,1), 0 0 70px 20px rgba(244,226,161,0.8), inset 0 0 45px rgba(212,175,55,0.7); }
+}
+
+/* =============================================
+   MAIN FOOTER - Sistema Global
+   ============================================= */
+footer.main-footer, footer.sacred-footer {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(10,22,40,0.8));
+  padding:40px 20px;
+  text-align:center; 
+  border-top: 2px solid rgba(212,175,55,0.3);
+  display:flex; flex-direction:column; align-items:center;
+  position: relative;
+}
+footer.main-footer::before, footer.sacred-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(212,175,55,0.05), transparent);
+  pointer-events: none;
+}
+footer.main-footer .cross-glow, footer.sacred-footer .cross-glow {
+  font-size:3.5rem; 
+  color:var(--gold);
+  text-shadow: 
+    0 0 30px rgba(212,175,55,0.8), 
+    0 0 60px rgba(212,175,55,0.5),
+    0 0 100px rgba(212,175,55,0.3);
+  margin-bottom:15px; 
+  animation: crossPulse 2.5s ease-in-out infinite;
+  position: relative;
+}
+footer.main-footer .cross-glow::before, footer.sacred-footer .cross-glow::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: crossAura 3s ease-in-out infinite;
+}
+@keyframes crossPulse {
+  0%,100% { 
+    text-shadow: 
+      0 0 25px rgba(212,175,55,0.8), 
+      0 0 50px rgba(212,175,55,0.5),
+      0 0 80px rgba(212,175,55,0.3);
+    transform:scale(1); 
+  }
+  50%      { 
+    text-shadow: 
+      0 0 50px rgba(255,235,100,1), 
+      0 0 100px rgba(212,175,55,0.7),
+      0 0 150px rgba(212,175,55,0.4);
+    transform:scale(1.1); 
+  }
+}
+@keyframes crossAura {
+  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.3); }
+}
+footer.main-footer p, footer.sacred-footer p { color:var(--text-muted); margin:5px 0; font-size:0.95rem; }
+footer.main-footer .tagline, footer.sacred-footer .tagline {
+  color:var(--gold); font-family:'Cinzel',serif;
+  font-size:1.05rem; letter-spacing:2px; margin-bottom:4px;
+}
+
+/* =============================================
+   GOLDEN DIVINE LINE - Línea luminosa post-footer
+   ============================================= */
+.golden-divine-line {
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(212,175,55,0.3) 20%, 
+    rgba(212,175,55,0.7) 50%, 
+    rgba(212,175,55,0.3) 80%, 
+    transparent 100%);
+  position: relative;
+  margin: 0;
+  animation: divineLineGlow 3s ease-in-out infinite;
+}
+@keyframes divineLineGlow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+.golden-divine-line::before,
+.golden-divine-line::after {
+  content: '+';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  color: var(--gold);
+  text-shadow: 0 0 10px rgba(212,175,55,0.8), 0 0 20px rgba(212,175,55,0.5);
+  animation: crossSidesPulse 2s ease-in-out infinite;
+}
+.golden-divine-line::before { left: 10%; }
+.golden-divine-line::after { right: 10%; }
+@keyframes crossSidesPulse {
+  0%, 100% { opacity: 0.6; transform: translateY(-50%) scale(1); }
+  50% { opacity: 1; transform: translateY(-50%) scale(1.2); }
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width:768px) {
+  header { padding:10px 16px; }
+  .scroll-btn { width:44px; height:44px; }
+  .scroll-btn svg { width:20px; height:20px; }
+  .scroll-up   { top:96px; right:20px; }
+  .scroll-down { bottom:16px; right:20px; }
+}
+
+/* =============================================
+   HOVER STATES PREMIUM
+   ============================================= */
+
+/* Botones con luz expansiva */
+.btn, button, .btn-primary, .btn-sagrado {
+  position: relative;
+  overflow: hidden;
+}
+.btn::before, button::before, .btn-primary::before, .btn-sagrado::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(212,175,55,0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+.btn:hover::before, button:hover::before, .btn-primary:hover::before, .btn-sagrado:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Links con subrayado progresivo */
+a:not(.btn):not([class*="nav"]) {
+  position: relative;
+  text-decoration: none;
+}
+a:not(.btn):not([class*="nav"])::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s ease;
+}
+a:not(.btn):not([class*="nav"]):hover::after {
+  width: 100%;
+}
+
+/* Imágenes con halo dorado */
+img, .devocion-card, .santo-card {
+  transition: box-shadow 0.4s ease, transform 0.4s ease;
+}
+img:hover, .devocion-card:hover, .santo-card:hover {
+  box-shadow: 0 0 30px rgba(212,175,55,0.4), 0 10px 40px rgba(0,0,0,0.3);
+}
+
+/* Tarjetas con elevación */
+.card, .track-card, .santo-card, .devocion-card {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), 
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+}
+.card:hover, .track-card:hover, .santo-card:hover, .devocion-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4), 0 0 20px rgba(212,175,55,0.15);
+}
+
+/* Nav links */
+nav a, .nav-link {
+  position: relative;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+nav a::before, .nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+nav a:hover::before, .nav-link:hover::before {
+  width: 60%;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =============================================
+   TEMAS DE TEMPORADAS LITÚRGICAS
+   Adaptación visual según el calendario
+   ============================================= */
+
+/* Transición suave entre temporadas */
+body {
+  transition: background 2s ease, color 2s ease;
+}
+
+/* Adviento - Morados profundos, azules nocturnos */
+body.season-adviento {
+  --season-bg: #1a1025;
+  --season-gold: #9b7cb8;
+  --season-accent: #6b5b7a;
+}
+body.season-adviento .hero::before {
+  background: radial-gradient(ellipse at top, rgba(107,91,122,0.4) 0%, transparent 60%);
+}
+
+/* Navidad - Blancos luminosos, dorados cálidos */
+body.season-navidad {
+  --season-bg: #151820;
+  --season-gold: #fff8e0;
+  --season-accent: #ffeeba;
+}
+body.season-navidad .hero::before {
+  background: radial-gradient(ellipse at top, rgba(255,248,224,0.25) 0%, transparent 60%);
+}
+
+/* Cuaresma - Morados penitenciales, menos saturación */
+body.season-cuaresma {
+  --season-bg: #1f1828;
+  --season-gold: #8b6b9b;
+  --season-accent: #6b4d7a;
+}
+body.season-cuaresma .hero::before {
+  background: radial-gradient(ellipse at top, rgba(107,77,122,0.3) 0%, transparent 60%);
+}
+
+/* Semana Santa - Rojo oscuro/negro, animaciones solemnes */
+body.season-semana-santa {
+  --season-bg: #120a0a;
+  --season-gold: #6b2222;
+  --season-accent: #8b3030;
+}
+body.season-semana-santa .hero::before {
+  background: radial-gradient(ellipse at top, rgba(139,48,48,0.3) 0%, transparent 60%);
+}
+body.season-semana-santa * {
+  animation-duration: 3s !important;
+}
+
+/* Pascua - Blancos y dorados brillantes, más luz y movimiento */
+body.season-pascua {
+  --season-bg: #0f1815;
+  --season-gold: #f4e8c1;
+  --season-accent: #fff5d6;
+}
+body.season-pascua .hero::before {
+  background: radial-gradient(ellipse at top, rgba(244,232,193,0.35) 0%, transparent 60%);
+}
+body.season-pascua * {
+  animation-duration: 1s !important;
+}
+
+/* Tiempo Ordinario - Verdes esmeralda, paleta base */
+body.season-ordinario {
+  --season-bg: #050814;
+  --season-gold: #d4af37;
+  --season-accent: #6fa8dc;
+}

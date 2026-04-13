@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test - Reproductor Divino</title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      background: linear-gradient(135deg, #1a3a6e 0%, #0a1628 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    h1 { margin-bottom: 30px; }
+    .test-section {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 10px;
+      max-width: 600px;
+      width: 100%;
+    }
+    button {
+      background: #d4af37;
+      color: #050d1a;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 5px;
+    }
+    button:hover { background: #f4e2a1; }
+    .log {
+      background: rgba(0,0,0,0.3);
+      padding: 10px;
+      border-radius: 5px;
+      font-family: monospace;
+      font-size: 12px;
+      max-height: 200px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>🕊️ Test - Reproductor Divino</h1>
+  
+  <div class="test-section">
+    <h2>Prueba Manual</h2>
+    <button onclick="testPlay()">▶ Reproducir Canon</button>
+    <button onclick="testPause()">⏸ Pausar</button>
+    <button onclick="testChange()">🔄 Cambiar a Faustina</button>
+    <button onclick="testVolume()">🔊 Subir Volumen</button>
+  </div>
+
+  <div class="test-section">
+    <h2>Estado</h2>
+    <button onclick="checkState()">📋 Ver Estado</button>
+    <div class="log" id="log">Esperando...</div>
+  </div>
+
+  <script src="js/reproductor-global.js"></script>
+  <script>
+    function log(msg) {
+      document.getElementById('log').textContent += '\n' + msg;
+      console.log(msg);
+    }
+
+    function testPlay() {
+      if (window.sacredPlayer) {
+        window.sacredPlayer.audio.src = 'mp3/15. Canon in D.mp3';
+        window.sacredPlayer.reproducir();
+        log('▶ Reproduciendo Canon in D');
+      } else {
+        log('❌ Reproductor no inicializado');
+      }
+    }
+
+    function testPause() {
+      if (window.sacredPlayer) {
+        window.sacredPlayer.pausar();
+        log('⏸ Pausado');
+      }
+    }
+
+    function testChange() {
+      if (window.sacredPlayer) {
+        window.sacredPlayer.audio.src = 'mp3/00. Santa Faustina, Himno Moderno.mp3';
+        const trackName = document.getElementById('sp-track-name');
+        if (trackName) trackName.textContent = 'Santa Faustina - Himno Moderno';
+        window.sacredPlayer.reproducir();
+        log('🔄 Cambiado a Santa Faustina');
+      }
+    }
+
+    function testVolume() {
+      if (window.sacredPlayer) {
+        window.sacredPlayer.setVolume(0.9);
+        log('🔊 Volumen: 0.9');
+      }
+    }
+
+    function checkState() {
+      if (window.sacredPlayer) {
+        const state = {
+          'src': window.sacredPlayer.audio.src,
+          'readyState': window.sacredPlayer.audio.readyState,
+          'paused': window.sacredPlayer.audio.paused,
+          'volume': window.sacredPlayer.audio.volume,
+          'currentTime': window.sacredPlayer.audio.currentTime
+        };
+        log('Estado: ' + JSON.stringify(state, null, 2));
+      } else {
+        log('❌ No hay reproductor');
+      }
+    }
+
+    // Escuchar errores
+    window.addEventListener('error', (e) => {
+      log('Error: ' + e.message);
+    });
+  </script>
+
+<!-- Sistema de Diseño Global -->
+<script src="js/system-init.js"></script>
+</body>
+</html>

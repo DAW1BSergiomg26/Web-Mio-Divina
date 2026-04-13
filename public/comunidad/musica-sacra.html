@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Música Sacra | Biblioteca de Música Divina</title>
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="musica-sacra.css">
+</head>
+<body>
+    <main class="sacred-library">
+        <header class="library-header">
+            <h1>Biblioteca de Música Sacra</h1>
+            <p>Selección curada para la oración y el encuentro con lo Divino.</p>
+        </header>
+
+        <section class="search-section">
+            <input type="text" id="search-input" placeholder="Buscar por título o artista..." class="search-bar">
+        </section>
+
+        <nav id="filter-nav" class="filter-nav">
+            <!-- Categorías inyectadas por JS -->
+        </nav>
+
+        <section id="tracks-container" class="tracks-grid">
+            <!-- Pistas inyectadas por JS -->
+        </section>
+    </main>
+
+    <!-- Dependencias globales -->
+    <script src="assets/js/audio-catalog.js"></script>
+    <script src="assets/js/event-bus.js"></script>
+    <script src="musica-sacra.js"></script>
+</body>
+</html>

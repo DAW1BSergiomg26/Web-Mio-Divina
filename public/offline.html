@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sin ConexiÃ³n - Divina Misericordia</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f4e2a1;
+      --gold-dark: #b8960c;
+      --blue-deep: #050d1a;
+      --blue-mid: #0a1628;
+      --white: #faf7f0;
+      --celestial: #6fa8dc;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: linear-gradient(180deg, var(--blue-deep) 0%, var(--blue-mid) 100%);
+      color: var(--white);
+      font-family: 'EB Garamond', Georgia, serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+    }
+    .offline-container {
+      max-width: 500px;
+    }
+    .offline-symbol {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    h1 {
+      font-family: 'Cinzel Decorative', serif;
+      color: var(--gold-light);
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    .message {
+      font-size: 1.1rem;
+      color: rgba(250,247,240,0.8);
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+    .candle-container {
+      position: relative;
+      width: 60px;
+      height: 120px;
+      margin: 30px auto;
+    }
+    .candle {
+      position: absolute;
+      bottom: 0;
+      width: 30px;
+      height: 80px;
+      background: linear-gradient(90deg, #e8dcc8 0%, #f5efe6 30%, #d4c4a8 100%);
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 4px 4px 8px 8px;
+    }
+    .flame {
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 24px;
+      background: radial-gradient(ellipse at bottom, #fff5c0 0%, #ffd700 40%, #ff8c00 80%, transparent 100%);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      animation: flicker 0.5s ease-in-out infinite alternate;
+    }
+    @keyframes flicker {
+      0% { transform: translateX(-50%) scale(1) rotate(-3deg); opacity: 0.9; }
+      100% { transform: translateX(-50%) scale(1.1) rotate(3deg); opacity: 1; }
+    }
+    .flame-glow {
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 40px;
+      background: radial-gradient(circle, rgba(255,200,100,0.4) 0%, transparent 70%);
+      animation: glowPulse 1.5s ease-in-out infinite;
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+    .quote-section {
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 16px;
+      padding: 25px;
+      margin: 30px 0;
+    }
+    .quote-label {
+      font-size: 0.8rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+    .quote-text {
+      font-family: 'EB Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.5;
+    }
+    .quote-author {
+      font-family: 'Cinzel', serif;
+      color: var(--gold-light);
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+    .actions {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 100%);
+      color: var(--blue-deep);
+      border: none;
+      border-radius: 25px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .action-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(212,175,55,0.4);
+    }
+    .offline-note {
+      font-size: 0.8rem;
+      color: rgba(250,247,240,0.5);
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="offline-container">
+    <div class="offline-symbol">âœï¸</div>
+    
+    <h1>EstÃ¡s sin conexiÃ³n</h1>
+    <p class="message">
+      Pero el santuario sigue contigo.<br>
+      Tu fe no necesita internet.
+    </p>
+    
+    <div class="candle-container">
+      <div class="flame-glow"></div>
+      <div class="flame"></div>
+      <div class="candle"></div>
+    </div>
+    
+    <div class="quote-section">
+      <div class="quote-label">ðŸ“– Cita Espiritual</div>
+      <p class="quote-text" id="offline-quote">JesÃºs, en Vos confÃ­o.</p>
+      <p class="quote-author" id="offline-author">â€” Santa Faustina</p>
+    </div>
+    
+    <div class="actions">
+      <a href="/" class="action-btn">ðŸ  Volver al Inicio</a>
+      <button class="action-btn" onclick="window.location.reload()">ðŸ”„ Reintentar</button>
+    </div>
+    
+    <p class="offline-note">
+      Funciones offline disponibles: Rosario, Intenciones de oraciÃ³n, Cita del dÃ­a
+    </p>
+  </div>
+  
+  <script>
+    // Cita offline desde cachÃ©
+    const quotes = [
+      { text: "JesÃºs, en Vos confÃ­o.", author: "Santa Faustina" },
+      { text: "La misericordia es el atributo mÃ¡s grande de Dios.", author: "Santa Faustina" },
+      { text: "Dios no mira mis pecados, sino mi amor.", author: "Santa Faustina" },
+      { text: "Soy instrumento de Tu misericordia.", author: "Santa Faustina" },
+      { text: "La oraciÃ³n es el arma del cristiano.", author: "San Francisco de Sales" },
+      { text: "Donde hay caridad, estÃ¡ Dios.", author: "San Francisco de AsÃ­s" },
+      { text: "La fe esperanza y caridad permanecen.", author: "San Pablo" }
+    ];
+    
+    const today = new Date();
+    const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+    const quote = quotes[dayOfYear % quotes.length];
+    
+    document.getElementById('offline-quote').textContent = quote.text;
+    document.getElementById('offline-author').textContent = 'â€” ' + quote.author;
+  </script>
+
+<!-- PWA y Service Worker -->
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(reg => console.log('[PWA] SW registrado'))
+      .catch(err => console.log('[PWA] SW failed:', err));
+  }
+</script>
+<script src="js/pwa-install.js"></script>
+<script src="js/notifications.js"></script>
+
+<!-- Sistema de Diseño Global -->
+<script src="js/system-init.js"></script>
+</body>
+</html>

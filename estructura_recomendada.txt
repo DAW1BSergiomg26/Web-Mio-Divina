@@ -1,0 +1,44 @@
+════════════════════════════════════════════════════════════════
+    🏗️ PROPUESTA DE ARQUITECTURA WEB MODERNA - 2026
+════════════════════════════════════════════════════════════════
+
+Para escalar el Portal de la Divina Misericordia a un nivel de 
+"Frontend Profesional", se recomienda la siguiente evolución:
+
+1. ORGANIZACIÓN DEL CÓDIGO (Modularidad)
+---------------------------------------------------------------
+Actualmente el sitio es 100% estático. Para mejorar la mantenibilidad:
+- COMPONENTES: Extraer Header, Footer y Player a archivos JS (ya iniciado) 
+  o usar un SSG (Static Site Generator) como Astro o 11ty.
+- ASSETS: Mantener la estructura /assets que acabamos de crear:
+  /assets/css, /assets/js, /assets/img, /assets/fonts.
+
+2. SEO (Visibilidad Espiritual)
+---------------------------------------------------------------
+- JSON-LD PROFUNDO: Implementar esquemas de "BreadcrumbList" para que 
+  Google muestre la jerarquía (/devociones > /santos).
+- OPEN GRAPH: Optimizar las etiquetas OG:Image para que al compartir 
+  en WhatsApp/Facebook se vea la imagen del Santo o Virgen con brillo.
+- ALT TEXT DINÁMICO: Asegurar que cada imagen optimizada tenga un 
+  alt descriptivo basado en el contexto sagrado.
+
+3. RENDIMIENTO (Velocidad de Oración)
+---------------------------------------------------------------
+- CRITICAL CSS: Cargar el CSS del "Above the Fold" (cabecera y primer 
+  texto) en línea para una carga instantánea.
+- FETCHPRIORITY: Dar prioridad "high" a la imagen principal del 
+  altar o del santo de la sección.
+- WEBP/AVIF: Continuar con la migración a WebP (completado) y 
+  explorar AVIF para mayor ahorro.
+
+4. UX/UI (Experiencia del Fiel)
+---------------------------------------------------------------
+- MODO CATEDRAL: Opción de "Tema Oscuro" solemne para lectura nocturna.
+- AUDIO PLAYER GLOBAL: Que la música no se corte al cambiar de sección 
+  (usar AJAX/SPA para la navegación).
+
+════════════════════════════════════════════════════════════════
+        ESTRATEGIA RECOMENDADA: MIGRACIÓN A ASTRO (SSG)
+════════════════════════════════════════════════════════════════
+Astro permitiría mantener la velocidad de una web estática pero 
+con la potencia de componentes modernos, ideal para este proyecto.

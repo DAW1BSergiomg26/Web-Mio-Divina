@@ -1,0 +1,923 @@
+﻿<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Otras Devociones - Santos, Santas y Devociones Marianas | Divina Misericordia</title>
+<meta name="description" content="Colección de devociones católicas: santos, santas y devociones marianas. Encuentra oraciones para diferentes necesidades y momentos de vida espiritual.">
+<meta name="keywords" content="otras devociones, oraciones católicas, santos, santas, devociones marianas, novenas, letanias, bendiciones, santos patrón, devociones populares">
+<meta name="author" content="El Portal de la Divina Misericordia">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://misericordiadejesus.es/otras-devociones.html">
+<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================
+   VARIABLES - NEGRO PLATEADO, GOLDEN, ROJO
+   ============================================ */
+:root {
+    /* Negro Plateado */
+    --black-deep: #0a0a0a;
+    --black-mid: #141414;
+    --black-light: #1f1f1f;
+    --silver-dark: #6b6b6b;
+    --silver-mid: #a8a8a8;
+    --silver-light: #d4d4d4;
+    --platinum: #e8e8e8;
+    
+    /* Golden Oro Sagrado */
+    --gold-bright: #ffd700;
+    --gold-divine: #d4af37;
+    --gold-light: #f4e2a1;
+    --gold-dark: #b8960c;
+    --gold-glow: rgba(212,175,55,0.7);
+    
+    /* Rojo Sagrado */
+    --red-deep: #8b0000;
+    --red-divine: #cc0000;
+    --red-light: #dc143c;
+    --red-glow: rgba(204,0,0,0.6);
+    
+    /* Fondos */
+    --bg-deep: linear-gradient(145deg, #0a0a0a 0%, #1a1a1a 50%, #0d0d0d 100%);
+    --glass-bg: rgba(255,255,255,0.03);
+    
+    /* Textos */
+    --text-main: rgba(232,232,228,0.9);
+    --text-muted: rgba(200,200,196,0.7);
+    --border-gold: rgba(212,175,55,0.3);
+    
+    --transition: 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+    background: var(--black-deep); 
+    color: var(--platinum);
+    font-family:'EB Garamond',Georgia,serif;
+    line-height:1.85; overflow-x:hidden;
+}
+
+/* ============================================
+   FONDO DINÁMICO
+   ============================================ */
+.bg { 
+    position:fixed; inset:0; 
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #2d2d2d 50%, #1a1a1a 75%, #0a0a0a 100%);
+    background-size: 400% 400%;
+    animation: bgShift 20s ease infinite;
+    z-index:-2; 
+}
+@keyframes bgShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* ============================================
+   RAYOS DE LUZ SAGRADA
+   ============================================ */
+.sacred-rays {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300vmax;
+    height: 300vmax;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.15;
+}
+.ray {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 70%;
+    transform-origin: bottom center;
+}
+.ray::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, 
+        rgba(212,175,55,1) 0%,
+        rgba(204,0,0,0.7) 40%,
+        rgba(255,200,200,0.3) 70%,
+        transparent 100%);
+    animation: rayPulse 4s ease-in-out infinite;
+}
+.ray::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -4px;
+    width: 11px;
+    height: 100%;
+    background: linear-gradient(to top,
+        rgba(255,215,0,0.5) 0%,
+        rgba(204,0,0,0.3) 50%,
+        transparent 100%);
+    filter: blur(4px);
+}
+.ray:nth-child(1) { transform: translateY(-100%) rotate(0deg); animation-delay: 0s; }
+.ray:nth-child(2) { transform: translateY(-100%) rotate(20deg); animation-delay: 0.2s; }
+.ray:nth-child(3) { transform: translateY(-100%) rotate(40deg); animation-delay: 0.4s; }
+.ray:nth-child(4) { transform: translateY(-100%) rotate(60deg); animation-delay: 0.6s; }
+.ray:nth-child(5) { transform: translateY(-100%) rotate(80deg); animation-delay: 0.8s; }
+.ray:nth-child(6) { transform: translateY(-100%) rotate(100deg); animation-delay: 1s; }
+.ray:nth-child(7) { transform: translateY(-100%) rotate(120deg); animation-delay: 1.2s; }
+.ray:nth-child(8) { transform: translateY(-100%) rotate(140deg); animation-delay: 1.4s; }
+.ray:nth-child(9) { transform: translateY(-100%) rotate(160deg); animation-delay: 1.6s; }
+.ray:nth-child(10) { transform: translateY(-100%) rotate(180deg); animation-delay: 1.8s; }
+.ray:nth-child(11) { transform: translateY(-100%) rotate(200deg); animation-delay: 2s; }
+.ray:nth-child(12) { transform: translateY(-100%) rotate(220deg); animation-delay: 2.2s; }
+.ray:nth-child(13) { transform: translateY(-100%) rotate(240deg); animation-delay: 2.4s; }
+.ray:nth-child(14) { transform: translateY(-100%) rotate(260deg); animation-delay: 2.6s; }
+.ray:nth-child(15) { transform: translateY(-100%) rotate(280deg); animation-delay: 2.8s; }
+.ray:nth-child(16) { transform: translateY(-100%) rotate(300deg); animation-delay: 3s; }
+.ray:nth-child(17) { transform: translateY(-100%) rotate(320deg); animation-delay: 3.2s; }
+.ray:nth-child(18) { transform: translateY(-100%) rotate(340deg); animation-delay: 3.4s; }
+
+@keyframes rayPulse {
+    0%, 100% { opacity: 0.3; height: 60%; }
+    25% { opacity: 1; height: 100%; }
+    50% { opacity: 0.5; height: 80%; }
+    75% { opacity: 0.9; height: 95%; }
+}
+
+/* ============================================
+   PARTÍCULAS FLOTANTES
+   ============================================ */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--gold-divine);
+    border-radius: 50%;
+    animation: floatParticle 18s linear infinite;
+    box-shadow: 0 0 8px rgba(212,175,55,0.8), 0 0 15px rgba(204,0,0,0.4);
+}
+.particle:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 20s; }
+.particle:nth-child(2) { left: 10%; animation-delay: 2s; animation-duration: 24s; width: 3px; height: 3px; }
+.particle:nth-child(3) { left: 15%; animation-delay: 4s; animation-duration: 22s; }
+.particle:nth-child(4) { left: 20%; animation-delay: 1s; animation-duration: 26s; width: 5px; height: 5px; }
+.particle:nth-child(5) { left: 25%; animation-delay: 3s; animation-duration: 18s; }
+.particle:nth-child(6) { left: 30%; animation-delay: 5s; animation-duration: 25s; width: 3px; height: 3px; }
+.particle:nth-child(7) { left: 35%; animation-delay: 0.5s; animation-duration: 21s; }
+.particle:nth-child(8) { left: 40%; animation-delay: 2.5s; animation-duration: 23s; width: 5px; height: 5px; }
+.particle:nth-child(9) { left: 45%; animation-delay: 4.5s; animation-duration: 19s; }
+.particle:nth-child(10) { left: 50%; animation-delay: 1.5s; animation-duration: 27s; width: 3px; height: 3px; }
+.particle:nth-child(11) { left: 55%; animation-delay: 3.5s; animation-duration: 20s; }
+.particle:nth-child(12) { left: 60%; animation-delay: 0s; animation-duration: 22s; width: 5px; height: 5px; }
+.particle:nth-child(13) { left: 65%; animation-delay: 2s; animation-duration: 18s; }
+.particle:nth-child(14) { left: 70%; animation-delay: 4s; animation-duration: 24s; width: 3px; height: 3px; }
+.particle:nth-child(15) { left: 75%; animation-delay: 1s; animation-duration: 21s; }
+.particle:nth-child(16) { left: 80%; animation-delay: 3s; animation-duration: 25s; width: 5px; height: 5px; }
+.particle:nth-child(17) { left: 85%; animation-delay: 5s; animation-duration: 19s; }
+.particle:nth-child(18) { left: 90%; animation-delay: 2.5s; animation-duration: 23s; width: 3px; height: 3px; }
+.particle:nth-child(19) { left: 95%; animation-delay: 0.5s; animation-duration: 20s; }
+.particle:nth-child(20) { left: 3%; animation-delay: 4.5s; animation-duration: 28s; width: 5px; height: 5px; }
+
+@keyframes floatParticle {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    5% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+}
+
+/* Canvas divino */
+#divine-canvas { position:fixed; inset:0; z-index:-1; opacity:0.5; }
+
+/* Progress bar */
+.progress-bar {
+    position:fixed; top:0; left:0; height:2px; width:0;
+    background:linear-gradient(to right, var(--red-deep), var(--gold-divine), var(--gold-light));
+    z-index:1100; transition:width 0.1s linear;
+    box-shadow:0 0 10px var(--gold-glow);
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+header {
+    position:fixed; width:100%;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:10px 30px;
+    background:rgba(0,0,0,0.9);
+    backdrop-filter:blur(24px);
+    z-index:1000; border-bottom:1px solid var(--border-gold);
+    transition:padding var(--transition);
+}
+header.scrolled { padding:6px 30px; background:rgba(0,0,0,0.98); }
+
+.logo {
+    font-family:'Cinzel Decorative',serif;
+    font-size:1.25rem; color:var(--gold-light);
+    text-decoration:none; display:flex; align-items:center; gap:12px;
+}
+.logo:hover { opacity:0.85; }
+.logo img { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--border-gold); }
+.logo span { color:var(--platinum); }
+
+nav { display:flex; gap:4px; flex-wrap:wrap; justify-content:center; align-items:center; }
+nav a {
+    color:var(--gold-divine); text-decoration:none;
+    font-family:'Cinzel',serif; font-size:0.78rem; letter-spacing:1px;
+    padding:8px 12px; border-radius:6px;
+    transition:all var(--transition); position:relative; white-space:nowrap;
+}
+nav a::after {
+    content:''; position:absolute; bottom:4px; left:50%;
+    transform:translateX(-50%) scaleX(0);
+    width:60%; height:1px; background:var(--gold-divine);
+    transition:transform var(--transition);
+}
+nav a:hover::after, nav a.activo::after { transform:translateX(-50%) scaleX(1); }
+nav a:hover, nav a.activo {
+    color:var(--gold-light);
+    background:rgba(212,175,55,0.15);
+    text-shadow:0 0 18px var(--gold-glow);
+}
+
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:10px; z-index:1100; }
+.hamburger span { width:26px; height:2px; background:var(--gold-divine); border-radius:2px; transition:all var(--transition); display:block; }
+.hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+.hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+@media (max-width:900px) {
+    .hamburger { display:flex; }
+    nav {
+        position:fixed; top:0; right:-100%;
+        width:min(320px,80vw); height:100dvh;
+        background:rgba(10,10,10,0.98);
+        backdrop-filter:blur(30px);
+        flex-direction:column; align-items:flex-start; justify-content:flex-start;
+        padding:90px 30px 30px; gap:6px;
+        transition:right 0.4s cubic-bezier(0.4,0,0.2,1);
+        border-left:1px solid var(--border-gold); overflow-y:auto;
+    }
+    nav.active { right:0; }
+    nav a { font-size:1rem; width:100%; padding:12px 16px; border-radius:8px; }
+    nav a::after { display:none; }
+}
+
+/* ============================================
+   CONTENIDO PRINCIPAL
+   ============================================ */
+.main-content { max-width:1100px; margin:0 auto; position: relative; z-index: 2; padding: 180px 20px 80px; }
+
+/* Page Header */
+.page-header { text-align:center; margin-bottom:50px; background:linear-gradient(145deg,rgba(26,26,26,0.9),rgba(10,10,10,0.95)); border-radius:24px; border:2px solid var(--border-gold); position:relative; overflow:hidden; padding-top: 180px; }
+.page-header::before {
+    content:''; position:absolute; top:-50%; left:-50%;
+    width:200%; height:200%;
+    background:conic-gradient(from 0deg, transparent, rgba(212,175,55,0.1), transparent, rgba(204,0,0,0.1), transparent);
+    animation: headerRotate 15s linear infinite;
+}
+@keyframes headerRotate {
+    from { transform:rotate(0deg); }
+    to { transform:rotate(360deg); }
+}
+.page-title {
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(2.5rem,7vw,4rem);
+    color:var(--gold-light);
+    text-shadow:0 0 40px var(--gold-glow), 0 0 80px rgba(212,175,55,0.3);
+    margin-bottom:15px; position:relative; z-index:1;
+    animation:titleGlow 3s ease-in-out infinite;
+ margin-top: 20px; }
+@keyframes titleGlow {
+    0%,100% { text-shadow:0 0 40px var(--gold-glow), 0 0 80px rgba(212,175,55,0.3); }
+    50% { text-shadow:0 0 60px rgba(255,215,0,1), 0 0 100px var(--gold-glow), 0 0 150px rgba(204,0,0,0.3); }
+}
+.page-subtitle {
+    font-family:'Cinzel',serif; font-size:1rem;
+    color:var(--text-muted); letter-spacing:2px; position:relative; z-index:1;
+}
+
+/* Section Intro */
+.section-intro {
+    text-align:center; margin-bottom:40px; padding:30px;
+    background:rgba(255,255,255,0.02); border-radius:16px;
+    border:1px solid rgba(212,175,55,0.2);
+}
+.section-intro p {
+    font-size:1.15rem; color:var(--text-main); font-style:italic;
+}
+
+/* Reveal animations */
+.reveal { opacity:0; transform:translateY(30px); transition:all 0.8s cubic-bezier(0.4,0,0.2,1); }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* ============================================
+   GRID DE DEVOCIONES
+   ============================================ */
+.devociones-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    gap:25px; margin-bottom:50px;
+}
+
+.devocion-card {
+    background:linear-gradient(145deg, rgba(40,40,40,0.8), rgba(20,20,20,0.95));
+    border:1px solid rgba(212,175,55,0.25);
+    border-radius:20px;
+    padding:30px;
+    transition:all var(--transition);
+    position:relative; overflow:hidden;
+}
+.devocion-card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    background:linear-gradient(90deg, var(--gold-dark), var(--gold-divine), var(--gold-light), var(--gold-divine), var(--gold-dark));
+    opacity:0; transition:opacity var(--transition);
+}
+.devocion-card::after {
+    content:''; position:absolute; top:0; left:-100%;
+    width:100%; height:100%;
+    background:linear-gradient(90deg, transparent, rgba(212,175,55,0.1), transparent);
+    transition:left 0.6s ease;
+}
+.devocion-card:hover {
+    transform:translateY(-10px);
+    border-color:var(--gold-divine);
+    box-shadow:0 20px 50px rgba(0,0,0,0.5), 0 0 40px rgba(212,175,55,0.15);
+}
+.devocion-card:hover::before { opacity:1; }
+.devocion-card:hover::after { left:100%; }
+
+.devocion-icon {
+    font-size:3rem; margin-bottom:15px; display:block; text-align:center;
+    animation:iconPulse 2.5s ease-in-out infinite;
+}
+@keyframes iconPulse {
+    0%,100% { transform:scale(1); filter: drop-shadow(0 0 5px var(--gold-glow)); }
+    50% { transform:scale(1.1); filter: drop-shadow(0 0 15px var(--gold-glow)); }
+}
+.devocion-card h3 {
+    font-family:'Cinzel',serif; font-size:1.3rem;
+    color:var(--gold-light); margin-bottom:12px; text-align:center;
+}
+.devocion-card p {
+    color:var(--text-muted); font-size:1.05rem; line-height:1.75; margin-bottom:20px;
+}
+.devocion-card .btn {
+    display:inline-block; padding:12px 28px;
+    background:linear-gradient(135deg, var(--gold-dark), var(--gold-divine));
+    color:var(--black-deep); text-decoration:none;
+    font-family:'Cinzel',serif; font-size:0.9rem; border-radius:25px;
+    transition:all var(--transition); border:none; cursor:pointer;
+}
+.devocion-card .btn:hover {
+    background:linear-gradient(135deg, var(--gold-divine), var(--gold-light));
+    box-shadow:0 5px 25px rgba(212,175,55,0.5);
+    transform:scale(1.05);
+}
+
+/* Cards especiales */
+.devocion-card.dorado {
+    background:linear-gradient(145deg, rgba(40,30,10,0.9), rgba(20,15,5,0.95));
+    border-color:var(--gold-divine);
+}
+.devocion-card.dorado .devocion-icon { color:var(--gold-light); }
+.devocion-card.dorado h3 { color:var(--gold-light); }
+
+.devocion-card.rojo {
+    background:linear-gradient(145deg, rgba(40,10,10,0.9), rgba(20,5,5,0.95));
+    border-color:var(--red-divine);
+}
+.devocion-card.rojo .devocion-icon { color:var(--red-light); }
+.devocion-card.rojo h3 { color:var(--red-light); }
+.devocion-card.rojo::before {
+    background:linear-gradient(90deg, var(--red-deep), var(--red-divine), var(--red-light), var(--red-divine), var(--red-deep));
+}
+.devocion-card.rojo .btn {
+    background:linear-gradient(135deg, var(--red-deep), var(--red-divine));
+}
+.devocion-card.rojo .btn:hover {
+    background:linear-gradient(135deg, var(--red-divine), var(--red-light));
+    box-shadow:0 5px 25px rgba(204,0,0,0.5);
+}
+
+/* ============================================
+   SEPARADOR DE CRUZ
+   ============================================ */
+.separator-wrap {
+    width:100%; margin:3rem auto;
+    display:flex; align-items:center; justify-content:center;
+}
+.separator-cruz {
+    display:flex; align-items:center; justify-content:center;
+    gap:0; width:100%; max-width:500px;
+}
+.separator-linea {
+    flex:1; height:1px;
+    background:linear-gradient(to right, transparent, var(--gold-divine));
+}
+.separator-linea.right { background:linear-gradient(to left, transparent, var(--gold-divine)); }
+.separator-cruz-svg {
+    flex-shrink:0; width:80px; height:80px;
+    animation:cruzBreath 3.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px var(--gold-glow));
+}
+@keyframes cruzBreath {
+    0%,100% { filter:drop-shadow(0 0 15px var(--gold-glow)) drop-shadow(0 0 30px rgba(204,0,0,0.3)); transform:scale(1); }
+    50% { filter:drop-shadow(0 0 30px rgba(255,215,0,1)) drop-shadow(0 0 50px var(--gold-glow)) drop-shadow(0 0 80px rgba(204,0,0,0.5)); transform:scale(1.08); }
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer-menu {
+    background:linear-gradient(145deg, rgba(20,20,20,0.9), rgba(10,10,10,0.95));
+    border:1px solid var(--border-gold);
+    border-radius:20px; padding:35px; margin:40px auto;
+    backdrop-filter:blur(10px);
+}
+.footer-menu-title {
+    font-family:'Cinzel',serif; font-size:0.9rem; color:var(--gold-light);
+    text-align:center; margin-bottom:25px; letter-spacing:3px; text-transform:uppercase;
+}
+.footer-menu-links { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+.footer-menu-links a {
+    color:var(--text-muted); text-decoration:none; font-size:0.85rem;
+    padding:10px 20px; border:1px solid rgba(212,175,55,0.2); border-radius:25px;
+    transition:all var(--transition); font-family:'EB Garamond',serif;
+}
+.footer-menu-links a:hover {
+    background:rgba(212,175,55,0.15); border-color:var(--gold-divine);
+    color:var(--gold-light); transform:translateY(-3px);
+    box-shadow:0 5px 20px rgba(212,175,55,0.2);
+}
+
+footer.main-footer {
+    background:linear-gradient(to bottom, rgba(10,10,10,0.9), rgba(20,20,20,0.95));
+    padding:40px 20px; text-align:center;
+    border-top:2px solid var(--border-gold);
+    display:flex; flex-direction:column; align-items:center;
+}
+footer.main-footer .cross-glow {
+    font-size:3.5rem; color:var(--gold-divine);
+    text-shadow:0 0 30px var(--gold-glow), 0 0 60px rgba(204,0,0,0.3);
+    margin-bottom:15px; animation:crossPulse 2.5s ease-in-out infinite;
+}
+@keyframes crossPulse {
+    0%,100% { text-shadow:0 0 30px var(--gold-glow), 0 0 60px rgba(204,0,0,0.3); transform:scale(1); }
+    50% { text-shadow:0 0 50px rgba(255,215,0,1), 0 0 100px var(--gold-glow), 0 0 150px rgba(204,0,0,0.5); transform:scale(1.1); }
+}
+footer.main-footer p { color:var(--text-muted); margin:5px 0; font-size:0.95rem; }
+footer.main-footer .tagline { color:var(--gold-divine); font-family:'Cinzel',serif; font-size:1.05rem; letter-spacing:2px; }
+
+/* ============================================
+   GOLDEN LINE
+   ============================================ */
+.golden-divine-line {
+    width:100%; max-width:1000px; height:5px;
+    margin:0 auto 50px; position:relative;
+    background:linear-gradient(90deg, 
+        transparent 0%, #b8860b 5%, #d4af37 15%, #ffd700 25%, #fff8e0 35%,
+        #ffd700 45%, #d4af37 55%, #b8860b 65%, #d4af37 75%, #ffd700 85%,
+        #d4af37 95%, transparent 100%);
+    border-radius:3px;
+    box-shadow:0 0 20px var(--gold-glow), 0 0 40px rgba(204,0,0,0.3);
+    animation:lineGlow 2.5s ease-in-out infinite;
+}
+@keyframes lineGlow {
+    0%,100% { filter:brightness(1); box-shadow:0 0 20px var(--gold-glow), 0 0 40px rgba(204,0,0,0.3); }
+    50% { filter:brightness(1.3); box-shadow:0 0 40px rgba(255,215,0,1), 0 0 80px var(--gold-glow), 0 0 120px rgba(204,0,0,0.5); }
+}
+
+/* ============================================
+   SCROLL BUTTONS
+   ============================================ */
+.scroll-btn {
+    width:52px; height:52px; border-radius:50%;
+    background:rgba(0,0,0,0.7); border:2px solid var(--gold-divine);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; animation:scrollPulse 2s ease-in-out infinite;
+    transition:all 0.3s ease; position:fixed; z-index:1000;
+    backdrop-filter:blur(8px);
+}
+.scroll-btn:hover {
+    background:rgba(212,175,55,0.3);
+    box-shadow:0 0 30px var(--gold-glow), 0 0 60px rgba(204,0,0,0.3);
+    transform:scale(1.1);
+}
+.scroll-btn svg { width:24px; height:24px; stroke:var(--gold-divine); stroke-width:2.5; fill:none; }
+.scroll-up { top: 120px; right: 20px; }
+.scroll-down { bottom: 30px; right: 20px; }
+@keyframes scrollPulse {
+    0%,100% { box-shadow:0 0 20px rgba(212,175,55,0.5), 0 0 40px rgba(204,0,0,0.2); }
+    50% { box-shadow:0 0 35px var(--gold-glow), 0 0 70px rgba(204,0,0,0.4); }
+}
+
+/* ============================================
+   CURSOR DIVINO
+   ============================================ */
+.cursor-cruz {
+    position:fixed; pointer-events:none; z-index:9999;
+    width:36px; height:36px; transform:translate(-50%,-50%);
+}
+.cursor-cruz svg {
+    width:100%; height:100%;
+    filter:drop-shadow(0 0 8px var(--gold-glow)) drop-shadow(0 0 16px rgba(212,175,55,0.6));
+}
+.cursor-cruz.hover { transform:translate(-50%,-50%) scale(1.4); }
+.cursor-cruz.hover svg {
+    filter:drop-shadow(0 0 12px rgba(255,215,0,1)) drop-shadow(0 0 24px var(--gold-glow)) drop-shadow(0 0 40px rgba(204,0,0,0.5));
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width:768px) {
+    .page-header {  padding-top: 180px; }
+    .devociones-grid { grid-template-columns:1fr; }
+    .scroll-up { top: 120px; right: 20px; }
+    .scroll-down { bottom: 30px; right: 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Rayos de Luz -->
+<div class="sacred-rays">
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div>
+</div>
+
+<!-- Partículas Flotantes -->
+<div class="particles">
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+</div>
+
+<div class="bg"></div>
+<canvas id="divine-canvas"></canvas>
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Cursor Cruz -->
+<div class="cursor-cruz" id="cursor">
+    <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="cruzGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fffbe0"/>
+                <stop offset="30%" stop-color="#ffd700"/>
+                <stop offset="50%" stop-color="#d4af37"/>
+                <stop offset="70%" stop-color="#ffd700"/>
+                <stop offset="100%" stop-color="#b8860b"/>
+            </linearGradient>
+            <filter id="glowGold">
+                <feGaussianBlur stdDeviation="2" result="blur1"/>
+                <feGaussianBlur stdDeviation="4" result="blur2"/>
+                <feMerge>
+                    <feMergeNode in="blur2"/>
+                    <feMergeNode in="blur1"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+        <rect x="17" y="2" width="6" height="36" rx="2" fill="url(#cruzGold)" filter="url(#glowGold)"/>
+        <rect x="4" y="12" width="32" height="6" rx="2" fill="url(#cruzGold)" filter="url(#glowGold)"/>
+        <circle cx="20" cy="7" r="3.5" fill="#fffbe0" filter="url(#glowGold)"/>
+    </svg>
+</div>
+
+<!-- Header -->
+<header id="mainHeader">
+    <a href="index.html" class="logo">
+        <img src="img/logo_divina_misericordia.webp" alt="Logo Divina Misericordia" loading="lazy">
+        Divina<span>Misericordia</span>
+    </a>
+    <nav id="mainNav">
+        <a href="index.html">Inicio</a>
+        <a href="quienes-somos.html">Quiénes Somos</a>
+        <a href="introduccion.html">Introducción</a>
+        <a href="santa-faustina.html">Santa Faustina</a>
+        <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
+        <a href="coronilla.html">Coronilla</a>
+        <a href="novena.html">Novena</a>
+        <a href="via-crucis.html">Vía Crucis</a>
+        <a href="oraciones.html">Oraciones</a>
+        <a href="santo-rosario.html">El Santo Rosario</a>
+        <a href="maria.html">María</a>
+        <a href="obras-de-misericordia.html">Obras de Misericordia</a>
+        <a href="consagracion.html">Consagración</a>
+        <a href="lugares-de-culto.html">Lugares de Culto</a>
+        <a href="musica-sacra.html">Música Sacra</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="enlaces.html">Enlaces</a>
+        
+        
+        
+        
+        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+        <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
+    <a href="estudios-biblicos.html">Estudios</a>
+        <a href="otras-devociones.html" class="activo">Otras Devociones</a>
+        <a href="contacto.html">Contacto</a>
+    
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+
+<!-- Main Content -->
+<main class="main-content">
+
+    <div class="page-header reveal">
+        <h1 class="page-title">Otras Devociones</h1>
+        <p class="page-subtitle">Santos, Santas y Devociones Marianas</p>
+    </div>
+
+    <div class="section-intro reveal">
+        <p>«Toda oración que sale del corazón es agradable a Dios.» Explora estas devociones que enriquecerán tu vida espiritual.</p>
+    </div>
+
+    <div class="devociones-grid">
+
+        <!-- San Miguel Arcángel -->
+        <div class="devocion-card dorado reveal">
+            <span class="devocion-icon">+</span>
+            <h3>San Miguel Arcángel</h3>
+            <p>Príncipe de la Milicia Celestial. La oración de León XIII por la Iglesia y el pueblo fiel.</p>
+            <a href="oracion-san-miguel.html" class="btn">Ver Oración</a>
+        </div>
+
+        <!-- San Antonio de Padua -->
+        <div class="devocion-card reveal">
+            <span class="devocion-icon">+</span>
+            <h3>San Antonio de Padua</h3>
+            <p>El Santo de los Milagros y las causas imposibles. Oración para pedir milagros.</p>
+            <a href="oracion-san-antonio.html" class="btn">Ver Oración</a>
+        </div>
+
+        <!-- San Pancracio -->
+        <div class="devocion-card reveal">
+            <span class="devocion-icon">+</span>
+            <h3>San Pancracio</h3>
+            <p>Patrón del trabajo, dinero y salud. El joven mártir de 14 años.</p>
+            <a href="oracion-san-pancracio.html" class="btn">Ver Oración</a>
+        </div>
+
+        <!-- San Benito -->
+        <div class="devocion-card reveal">
+            <span class="devocion-icon">+</span>
+            <h3>San Benito</h3>
+            <p>Patrón de Europa. Ora et Labora. Protege contra todo mal y tentaciones.</p>
+            <a href="san-benito.html" class="btn">Ver Oración</a>
+        </div>
+
+        <!-- San Judas Tadeo -->
+        <div class="devocion-card rojo reveal">
+            <span class="devocion-icon">+</span>
+            <h3>San Judas Tadeo</h3>
+            <p>Patrón de las causas imposibles. El santo más popular para los favores recibidos.</p>
+            <a href="san-judas-tadeo.html" class="btn">Ver Oración</a>
+        </div>
+
+        <!-- San Cayetano -->
+        <div class="devocion-card dorado reveal">
+            <span class="devocion-icon">+</span>
+            <h3>San Cayetano</h3>
+            <p>Padre de la divina providencia. El santo que socorre con grandes milagros.</p>
+            <a href="san-cayetano.html" class="btn">Ver Oración</a>
+        </div>
+
+        <!-- San Francisco de Asís -->
+        <div class="devocion-card reveal">
+            <span class="devocion-icon">+</span>
+            <h3>San Francisco de Asís</h3>
+            <p>Patrón de Italia y los ecólogos. Oración diaria de bendiciones y paz.</p>
+            <a href="san-francisco.html" class="btn">Ver Oración</a>
+        </div>
+
+        <!-- Sansón -->
+        <div class="devocion-card reveal">
+            <span class="devocion-icon">+</span>
+            <h3>Sansón</h3>
+            <p>Glorioso santo que recibió de Dios fortaleza y poder para defender a sus hijos.</p>
+            <a href="san-sanson.html" class="btn">Ver Oración</a>
+        </div>
+
+        <!-- San José -->
+        <div class="devocion-card dorado reveal">
+            <span class="devocion-icon">+</span>
+            <h3>San José</h3>
+            <p>El padre más fiel, paciente y silencioso. Guardián del Salvador y esposo de María.</p>
+            <a href="san-jose.html" class="btn">Ver Devoción</a>
+        </div>
+
+        <!-- San José Dormido -->
+        <div class="devocion-card reveal">
+            <span class="devocion-icon">+</span>
+            <h3>San José Dormido</h3>
+            <p>La devoción del Papa Francisco al padre guardián de Jesús.</p>
+            <a href="san-jose-dormido.html" class="btn">Ver Oración</a>
+        </div>
+
+        <!-- Divino Niño Jesús -->
+        <div class="devocion-card dorado reveal">
+            <span class="devocion-icon">+</span>
+            <h3>Divino Niño Jesús</h3>
+            <p>El Divino Niño del 20 de Julio. Millones de fieles concurren para pedirle favores.</p>
+            <a href="divino-nino-jesus.html" class="btn">Ver Oración</a>
+        </div>
+
+        <!-- María Auxiliadora -->
+        <div class="devocion-card reveal">
+            <span class="devocion-icon">+</span>
+            <h3>María Auxiliadora</h3>
+            <p>La Virgen María como Auxiliadora de los cristianos.</p>
+            <a href="maria-auxiliadora.html" class="btn">Ver Oración</a>
+        </div>
+
+        <!-- Oración a la Santa Cruz -->
+        <div class="devocion-card rojo reveal">
+            <span class="devocion-icon">+</span>
+            <h3>Oración a la Santa Cruz</h3>
+            <p>Devoción al árbol de la vida y salvación. Protección a través de la Santa Cruz.</p>
+            <a href="oracion-santa-cruz.html" class="btn">Ver Oración</a>
+        </div>
+
+        <!-- Cruz del Perdón -->
+        <div class="devocion-card rojo reveal">
+            <span class="devocion-icon">+</span>
+            <h3>Cruz del Perdón</h3>
+            <p>Cristo con el Brazo Caído. Milagro del Monasterio de Santa Ana y San José.</p>
+            <a href="cruz-del-perdon.html" class="btn">Ver Historia y Oración</a>
+        </div>
+
+        <!-- Santa Francisca Romana -->
+        <div class="devocion-card dorado reveal">
+            <span class="devocion-icon">+</span>
+            <h3>Santa Francisca Romana</h3>
+            <p>Esposa, madre, viuda y apóstol seglar de Roma. Fundadora de las Oblatas de María.</p>
+            <a href="santa-francisca-romana.html" class="btn">Ver Devoción</a>
+        </div>
+
+        <!-- Jesús Eucaristía -->
+        <div class="devocion-card rojo reveal">
+            <span class="devocion-icon">+</span>
+            <h3>Jesús Eucaristía</h3>
+            <p>Bendita Eucaristía que con amor me esperas en cada Sagrario. El Amor que se entrega.</p>
+            <a href="oracion-eucharistia.html" class="btn">Ver Devoción</a>
+        </div>
+
+        <!-- Sagrado Corazón -->
+        <div class="devocion-card rojo reveal">
+            <span class="devocion-icon">+</span>
+            <h3>Sagrado Corazón de Jesús</h3>
+            <p>Consagración al Sagrado Corazón de Jesús con la oración de entrega total.</p>
+            <a href="consagracion-sagrado-corazon.html" class="btn">Ver Devoción</a>
+        </div>
+
+        <!-- Oración del Estudiante -->
+        <div class="devocion-card reveal">
+            <span class="devocion-icon">+</span>
+            <h3>Oración del Estudiante</h3>
+            <p>Para pedir sabiduría, entendimiento y bendiciones sobre los estudios.</p>
+            <a href="oracion-del-estudiante.html" class="btn">Ver Oración</a>
+        </div>
+
+    </div>
+
+</main>
+
+<!-- Footer Menu -->
+<div class="footer-menu reveal">
+    <h3 class="footer-menu-title">Explorar Más</h3>
+    <div class="footer-menu-links">
+        <a href="santa-faustina.html">Santa Faustina</a>
+        <a href="coronilla.html">Coronilla</a>
+        <a href="novena.html">Novena</a>
+        <a href="oraciones.html">Oraciones</a>
+        <a href="maria.html">Santa María</a>
+        <a href="san-jose.html">San José</a>
+        <a href="contacto.html">Contacto</a>
+    </div>
+</div>
+
+<!-- Golden Line -->
+<div class="golden-divine-line"></div>
+
+<!-- Footer -->
+<footer class="main-footer sacred-footer">
+    <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">✝</a>
+    <p class="tagline">Jesús, En Vos Confío</p>
+    <p>© 2026 — Portal de la Divina Misericordia</p>
+</footer>
+
+<!-- Scroll Buttons -->
+<button class="scroll-btn scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Subir">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+<button class="scroll-btn scroll-down" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})" aria-label="Bajar">
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+
+<script>
+// Force reveal
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        document.querySelectorAll('.reveal').forEach(function(el) {
+            el.classList.add('visible');
+        });
+    }, 500);
+});
+
+// Progress bar
+window.addEventListener('scroll',()=>{
+    const bar=document.getElementById('progressBar');
+    const h=document.documentElement;
+    bar.style.width=((h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';
+});
+
+// Header scroll
+window.addEventListener('scroll',()=>{
+    document.getElementById('mainHeader').classList.toggle('scrolled',window.scrollY>60);
+});
+
+// Reveal
+const reveal=document.querySelectorAll('.reveal');
+const ro=new IntersectionObserver((e)=>{
+    e.forEach(el=>{ if(el.isIntersecting){ el.classList.add('visible'); } });
+},{threshold:0.1});
+reveal.forEach(el=>ro.observe(el));
+
+// Hamburger
+document.getElementById('hamburger').addEventListener('click',function(){
+    this.classList.toggle('open');
+    document.getElementById('mainNav').classList.toggle('active');
+});
+
+// Divine Canvas
+(function(){
+    const c=document.getElementById('divine-canvas'),x=c.getContext('2d');
+    let w,h,p=[];
+    function rs(){w=c.width=innerWidth;h=c.height=innerHeight;}
+    function init(){p=[];for(let i=0;i<60;i++)p.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+0.5,vx:(Math.random()-0.5)*0.3,vy:-Math.random()*0.5-0.2,o:Math.random()});}
+    function dr(){
+        x.clearRect(0,0,w,h);
+        p.forEach((pt,i)=>{
+            pt.x+=pt.vx;pt.y+=pt.vy;pt.o+=0.002;
+            if(pt.y<-10)pt.y=h+10;
+            if(pt.x<0||pt.x>w)pt.vx*=-1;
+            x.beginPath();x.arc(pt.x,pt.y,pt.r,0,Math.PI*2);
+            x.fillStyle=`rgba(212,175,55,${Math.min(pt.o,0.6)})`;x.fill();
+        });
+        requestAnimationFrame(dr);
+    }
+    window.addEventListener('resize',()=>{rs();init();});
+    rs();init();dr();
+})();
+
+// Cursor instantáneo
+(function(){
+    const cursor = document.getElementById('cursor');
+    if(!cursor) return;
+    document.addEventListener('mousemove', e => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    }, { passive: true });
+    document.addEventListener('mouseover', e => {
+        const shouldHover = e.target.closest('a, button, [onclick], .btn, .scroll-btn, .devocion-card');
+        if(shouldHover) cursor.classList.add('hover');
+    });
+    document.addEventListener('mouseout', e => {
+        const shouldHover = e.target.closest('a, button, [onclick], .btn, .scroll-btn, .devocion-card');
+        if(shouldHover) cursor.classList.remove('hover');
+    });
+})();
+</script>
+
+
+<!-- Sistema de Diseño Global -->
+<script src="js/system-init.js"></script>
+</body>
+</html>

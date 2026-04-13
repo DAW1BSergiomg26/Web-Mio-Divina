@@ -1,0 +1,49 @@
+# ============================================================
+# Robots.txt - El Portal de la Divina Misericordia
+# Última actualización: 2026-03-31
+# ============================================================
+
+User-agent: *
+Allow: /
+Allow: /img/
+Allow: /css/
+Allow: /js/
+
+Disallow: /admin/
+Disallow: /admin_panel.html
+Disallow: /admin.html
+Disallow: /backups/
+Disallow: /public_backup_/
+Disallow: /Rufi_Divina/
+
+Crawl-delay: 1
+
+Sitemap: https://misericordiadejesus.es/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot-Image
+Allow: /img/
+Crawl-delay: 3
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+
+Allow: /humans.txt
+Allow: /sitemap.xml
+Allow: /robots.txt
+
+Disallow: /*.json$
+Disallow: /*.log$
+Disallow: /*.env$

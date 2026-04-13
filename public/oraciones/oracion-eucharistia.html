@@ -1,0 +1,834 @@
+﻿<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oración Ante Jesús Eucaristía - El Amor que se Entrega | Divina Misericordia</title>
+<meta name="description" content="Oración ante Jesús Eucaristía. Bendita Eucaristía que con amor me esperas en cada Sagrario. Devoción al Cuerpo y Sangre de Cristo presente en el Santísimo Sacramento.">
+<meta name="keywords" content="Jesús Eucaristía, Bendita Eucaristía, oración eucarística, Sagrario, Cuerpo de Cristo, Sangre de Cristo, comunión, adoración eucarística">
+<meta name="author" content="El Portal de la Divina Misericordia">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1a0a2e">
+<link rel="canonical" href="https://misericordiadejesus.es/oracion-eucharistia.html">
+<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://misericordiadejesus.es/oracion-eucharistia.html">
+<meta property="og:title" content="Oración Ante Jesús Eucaristía — El Amor que se Entrega">
+<meta property="og:description" content="Bendita Eucaristía que con amor me esperas en cada Sagrario.">
+<meta property="og:site_name" content="Divina Misericordia">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --white-hostia: #faf8f0;
+    --white-cream: #fff8e7;
+    --purple-deep: #1a0a2e;
+    --purple-mid: #2d1b4e;
+    --purple-light: #4a2c7a;
+    --violet-glow: rgba(147,112,219,0.6);
+    --gold-divine: #d4af37;
+    --gold-light: #f4e2a1;
+    --gold-dark: #b8960c;
+    --gold-glow: rgba(212,175,55,0.6);
+    --text-main: rgba(250,248,240,0.9);
+    --text-muted: rgba(250,248,240,0.7);
+    --border-gold: rgba(212,175,55,0.25);
+    --glass-bg: rgba(255,255,255,0.03);
+    --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+    background:var(--purple-deep); color:var(--white-hostia);
+    font-family:'EB Garamond',Georgia,serif;
+    line-height:1.85; overflow-x:hidden;
+}
+
+.bg { 
+    position:fixed; inset:0; 
+    background: radial-gradient(ellipse at 50% 30%,#2d1b4e 0%,#1a0a2e 50%,#0d051a 100%); 
+    z-index:-2; 
+}
+#divine-canvas { position:fixed; inset:0; z-index:-1; opacity:0.6; }
+
+.progress-bar {
+    position:fixed; top:0; left:0; height:2px; width:0;
+    background:linear-gradient(to right,var(--purple-light),var(--gold-divine),var(--gold-light));
+    z-index:1100; transition:width 0.1s linear;
+    box-shadow:0 0 8px rgba(147,112,219,0.6);
+}
+
+header {
+    position:fixed; width:100%;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:10px 30px;
+    background:rgba(0,0,0,0.88);
+    backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
+    z-index:1000; border-bottom:1px solid var(--border-gold);
+    transition:padding var(--transition);
+}
+header.scrolled { padding:6px 30px; background:rgba(0,0,0,0.96); }
+
+.logo {
+    font-family:'Cinzel Decorative',serif;
+    font-size:1.25rem; color:var(--gold-light);
+    text-decoration:none; display:flex; align-items:center; gap:12px;
+}
+.logo:hover { opacity:0.85; }
+.logo img { width:44px; height:44px; border-radius:50%; object-fit:cover; border:2px solid var(--border-gold); }
+.logo span { color:var(--white-hostia); }
+
+nav { display:flex; gap:4px; flex-wrap:wrap; justify-content:center; align-items:center; }
+nav a {
+    color:var(--violet-glow); text-decoration:none;
+    font-family:'Cinzel',serif; font-size:0.78rem; letter-spacing:1px;
+    padding:8px 12px; border-radius:6px;
+    transition:all var(--transition); position:relative; white-space:nowrap;
+}
+nav a::after {
+    content:''; position:absolute; bottom:4px; left:50%;
+    transform:translateX(-50%) scaleX(0);
+    width:60%; height:1px; background:var(--gold-divine);
+    transition:transform var(--transition);
+}
+nav a:hover::after, nav a.activo::after { transform:translateX(-50%) scaleX(1); }
+nav a:hover, nav a.activo {
+    color:var(--gold-light);
+    background:rgba(147,112,219,0.15);
+    text-shadow:0 0 18px var(--violet-glow);
+}
+nav a.activo { background:rgba(147,112,219,0.2); }
+
+.hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:10px; z-index:1100; }
+.hamburger span { width:26px; height:2px; background:var(--gold-divine); border-radius:2px; transition:all var(--transition); display:block; }
+.hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+.hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+@media (max-width:900px) {
+    .hamburger { display:flex; }
+    nav {
+        position:fixed; top:0; right:-100%;
+        width:min(320px,80vw); height:100dvh;
+        background:rgba(26,10,46,0.97);
+        backdrop-filter:blur(30px); -webkit-backdrop-filter:blur(30px);
+        flex-direction:column; align-items:flex-start; justify-content:flex-start;
+        padding:90px 30px 30px; gap:6px;
+        transition:right 0.4s cubic-bezier(0.4,0,0.2,1);
+        border-left:1px solid var(--border-gold); overflow-y:auto;
+    }
+    nav.active { right:0; }
+    nav a { font-size:1rem; width:100%; padding:12px 16px; border-radius:8px; }
+    nav a::after { display:none; }
+}
+
+.main-content { max-width:860px; margin:0 auto; padding: 180px 20px 80px; }
+
+.page-title {
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(1.8rem,5.5vw,3.2rem);
+    color:var(--white-hostia); text-align:center; margin-bottom:12px;
+    text-shadow:0 0 40px rgba(147,112,219,0.5),0 0 80px rgba(147,112,219,0.3);
+    animation:titleReveal 1.2s ease forwards; opacity:0; line-height:1.3;
+ margin-top: 20px; }
+@keyframes titleReveal {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0); }
+}
+.subtitle-line {
+    text-align:center; font-family:'Cinzel',serif; font-size:0.75rem;
+    letter-spacing:4px; color:var(--gold-divine); text-transform:uppercase;
+    margin-bottom:35px; opacity:0.9;
+}
+
+.reveal { opacity:0; transform:translateY(28px); transition:opacity 0.7s ease,transform 0.7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+.separator-wrap {
+    width:100%; margin:3rem auto;
+    display:flex; align-items:center; justify-content:center;
+}
+.separator-cruz {
+    display:flex; align-items:center; justify-content:center;
+    gap:0; width:100%; max-width:560px;
+}
+.separator-linea {
+    flex:1; height:1px;
+    background:linear-gradient(to right,transparent,rgba(147,112,219,0.55));
+}
+.separator-linea.right { background:linear-gradient(to left,transparent,rgba(147,112,219,0.55)); }
+.separator-cruz-svg {
+    flex-shrink:0; width:100px; height:100px;
+    animation:cruzBreath 3.5s ease-in-out infinite;
+}
+@keyframes cruzBreath {
+    0%,100% {
+        filter:drop-shadow(0 0 10px rgba(147,112,219,0.8)) drop-shadow(0 0 28px rgba(212,175,55,0.4));
+        transform:scale(1);
+    }
+    50% {
+        filter:drop-shadow(0 0 22px rgba(255,235,200,1)) drop-shadow(0 0 50px rgba(147,112,219,0.8)) drop-shadow(0 0 80px rgba(212,175,55,0.5));
+        transform:scale(1.06);
+    }
+}
+
+.content-block {
+    background:var(--glass-bg); border:1px solid rgba(147,112,219,0.25);
+    border-radius:16px; padding:28px 32px; margin-bottom:24px;
+    transition:border-color var(--transition),box-shadow var(--transition);
+}
+.content-block:hover {
+    border-color:rgba(147,112,219,0.5);
+    box-shadow:0 0 30px rgba(147,112,219,0.1),0 8px 32px rgba(0,0,0,0.3);
+}
+.content-block h2 { font-family:'Cinzel',serif; font-size:1.2rem; color:var(--gold-light); margin-bottom:14px; letter-spacing:0.5px; }
+.content-block h3 { font-family:'Cinzel',serif; font-size:1rem; color:var(--white-cream); margin:18px 0 10px; }
+.content-block p  { color:var(--text-main); line-height:1.95; font-size:1.05rem; }
+
+.oracion-hero {
+    background:linear-gradient(145deg,rgba(45,27,78,0.5),rgba(26,10,46,0.7));
+    border:2px solid rgba(212,175,55,0.4);
+    border-radius:20px; padding:35px 40px; margin:30px 0;
+    text-align:center; position:relative; overflow:hidden;
+}
+.oracion-hero::before {
+    content:''; position:absolute; top:-50%; left:-50%;
+    width:200%; height:200%;
+    background:radial-gradient(ellipse at center,rgba(147,112,219,0.1) 0%,transparent 70%);
+    animation:haloRotate 10s linear infinite;
+}
+@keyframes haloRotate {
+    from { transform:rotate(0deg); }
+    to { transform:rotate(360deg); }
+}
+.oracion-hero p {
+    font-size:1.15rem; line-height:2.2; color:var(--white-hostia);
+    font-style:italic; position:relative; z-index:1;
+}
+
+.oracion-box {
+    background:linear-gradient(145deg,rgba(45,27,78,0.6),rgba(26,10,46,0.8));
+    border:1px solid rgba(212,175,55,0.35);
+    border-radius:16px; padding:30px; margin:28px 0;
+    text-align:center;
+}
+.oracion-box h3 {
+    font-family:'Cinzel',serif; font-size:1.2rem; color:var(--gold-light);
+    margin-bottom:20px; letter-spacing:1px;
+}
+.oracion-box p {
+    font-size:1.1rem; line-height:2.2; color:var(--text-main);
+    font-style:italic;
+}
+
+.quote {
+    background:linear-gradient(145deg,rgba(45,27,78,0.4),rgba(26,10,46,0.6));
+    border-left:3px solid var(--gold-divine); border-radius:0 14px 14px 0;
+    padding:22px 28px; margin:28px 0;
+    position:relative; overflow:hidden;
+}
+.quote::before {
+    content:'"'; position:absolute; top:-10px; left:10px;
+    font-size:8rem; color:rgba(212,175,55,0.06);
+    font-family:'EB Garamond',serif; line-height:1; pointer-events:none;
+}
+.quote-text { font-size:1.1rem; line-height:2; color:var(--white-hostia); font-style:italic; margin-bottom:10px; }
+.quote-source { font-family:'Cinzel',serif; font-size:0.8rem; color:var(--gold-divine); letter-spacing:1px; }
+
+.autor-box {
+    background:rgba(212,175,55,0.1); border:1px solid rgba(212,175,55,0.3);
+    border-radius:12px; padding:20px; margin:25px 0; text-align:center;
+}
+.autor-box p { color:var(--gold-light); font-size:1rem; }
+.autor-box span { color:var(--text-muted); font-size:0.9rem; }
+
+.closing-text {
+    font-size:1.12rem; text-align:center; max-width:720px;
+    margin:30px auto 0; color:var(--text-main); font-style:italic; line-height:2;
+}
+
+.footer-menu {
+    background:rgba(0,0,0,0.5); border:1px solid var(--border-gold);
+    border-radius:16px; padding:28px; margin:40px auto; max-width:900px;
+    backdrop-filter:blur(10px);
+}
+.footer-menu-title {
+    font-family:'Cinzel',serif; font-size:0.85rem; color:var(--gold-light);
+    text-align:center; margin-bottom:20px; letter-spacing:3px; text-transform:uppercase;
+}
+.footer-menu-links { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+.footer-menu-links a {
+    color:var(--text-muted); text-decoration:none; font-size:0.82rem;
+    padding:7px 16px; border:1px solid rgba(147,112,219,0.2); border-radius:25px;
+    transition:all var(--transition); background:rgba(255,255,255,0.02);
+    font-family:'EB Garamond',serif;
+}
+.footer-menu-links a:hover {
+    background:rgba(147,112,219,0.15); border-color:rgba(147,112,219,0.5);
+    color:var(--gold-light); transform:translateY(-2px);
+    box-shadow:0 4px 16px rgba(147,112,219,0.2);
+}
+
+footer.main-footer {
+    background:rgba(0,0,0,0.6); padding:30px 20px;
+    text-align:center; border-top:1px solid var(--border-gold);
+    display:flex; flex-direction:column; align-items:center;
+}
+footer.main-footer .cross {
+    font-size:2.8rem; color:var(--gold-divine);
+    text-shadow:0 0 20px var(--gold-glow),0 0 40px rgba(147,112,219,0.4);
+    margin-bottom:12px; animation:crossPulse 2.5s ease-in-out infinite;
+}
+@keyframes crossPulse {
+    0%,100% { text-shadow:0 0 15px var(--gold-glow); transform:scale(1); }
+    50%      { text-shadow:0 0 35px var(--gold-glow),0 0 60px rgba(147,112,219,0.5); transform:scale(1.06); }
+}
+footer.main-footer p { color:var(--text-muted); margin:5px 0; font-size:0.95rem; }
+footer.main-footer .tagline { color:var(--gold-divine); font-family:'Cinzel',serif; font-size:1.05rem; letter-spacing:2px; margin-bottom:4px; }
+
+.scroll-btn {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: rgba(0,0,0,0.6); border: 2px solid var(--gold-divine);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; animation: scrollPulse 2s ease-in-out infinite;
+    transition: all 0.3s ease; position: fixed; z-index: 1000;
+    backdrop-filter: blur(8px);
+}
+.scroll-btn:hover {
+    background: rgba(147,112,219,0.35);
+    box-shadow: 0 0 25px rgba(147,112,219,0.8), 0 0 50px rgba(147,112,219,0.4);
+    transform: scale(1.1);
+}
+.scroll-btn svg { width: 24px; height: 24px; stroke: var(--gold-divine); stroke-width: 2.5; fill: none; }
+.scroll-up { top: 120px; right: 20px; }
+.scroll-down { bottom: 30px; right: 20px; }
+
+/* Rays of Light */
+.sacred-rays {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 300vmax;
+    height: 300vmax;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.2;
+}
+.ray {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 60%;
+    transform-origin: bottom center;
+    overflow: visible;
+}
+.ray::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, 
+        rgba(245, 215, 122, 1) 0%,
+        rgba(147, 112, 219, 0.8) 30%,
+        rgba(147, 112, 219, 0.4) 55%,
+        rgba(255, 255, 255, 0.2) 75%,
+        transparent 100%);
+    animation: rayPulse 4s ease-in-out infinite;
+}
+.ray::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -5px;
+    width: 14px;
+    height: 100%;
+    background: linear-gradient(to top,
+        rgba(255, 229, 158, 0.5) 0%,
+        rgba(147, 112, 219, 0.3) 50%,
+        transparent 100%);
+    filter: blur(5px);
+}
+.ray:nth-child(1) { transform: translateY(-100%) rotate(0deg); animation-delay: 0s; }
+.ray:nth-child(2) { transform: translateY(-100%) rotate(20deg); animation-delay: 0.2s; }
+.ray:nth-child(3) { transform: translateY(-100%) rotate(40deg); animation-delay: 0.4s; }
+.ray:nth-child(4) { transform: translateY(-100%) rotate(60deg); animation-delay: 0.6s; }
+.ray:nth-child(5) { transform: translateY(-100%) rotate(80deg); animation-delay: 0.8s; }
+.ray:nth-child(6) { transform: translateY(-100%) rotate(100deg); animation-delay: 1s; }
+.ray:nth-child(7) { transform: translateY(-100%) rotate(120deg); animation-delay: 1.2s; }
+.ray:nth-child(8) { transform: translateY(-100%) rotate(140deg); animation-delay: 1.4s; }
+.ray:nth-child(9) { transform: translateY(-100%) rotate(160deg); animation-delay: 1.6s; }
+.ray:nth-child(10) { transform: translateY(-100%) rotate(180deg); animation-delay: 1.8s; }
+.ray:nth-child(11) { transform: translateY(-100%) rotate(200deg); animation-delay: 2s; }
+.ray:nth-child(12) { transform: translateY(-100%) rotate(220deg); animation-delay: 2.2s; }
+.ray:nth-child(13) { transform: translateY(-100%) rotate(240deg); animation-delay: 2.4s; }
+.ray:nth-child(14) { transform: translateY(-100%) rotate(260deg); animation-delay: 2.6s; }
+.ray:nth-child(15) { transform: translateY(-100%) rotate(280deg); animation-delay: 2.8s; }
+.ray:nth-child(16) { transform: translateY(-100%) rotate(300deg); animation-delay: 3s; }
+.ray:nth-child(17) { transform: translateY(-100%) rotate(320deg); animation-delay: 3.2s; }
+.ray:nth-child(18) { transform: translateY(-100%) rotate(340deg); animation-delay: 3.4s; }
+
+@keyframes rayPulse {
+    0%, 100% { opacity: 0.4; height: 70%; }
+    25% { opacity: 1; height: 100%; }
+    50% { opacity: 0.6; height: 85%; }
+    75% { opacity: 0.9; height: 95%; }
+}
+
+/* Floating Particles */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--gold-divine);
+    border-radius: 50%;
+    animation: floatParticle 15s linear infinite;
+    box-shadow: 0 0 10px rgba(147, 112, 219, 0.8), 0 0 20px rgba(212, 175, 55, 0.4);
+}
+.particle:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 18s; }
+.particle:nth-child(2) { left: 10%; animation-delay: 2s; animation-duration: 22s; width: 3px; height: 3px; }
+.particle:nth-child(3) { left: 15%; animation-delay: 4s; animation-duration: 20s; }
+.particle:nth-child(4) { left: 20%; animation-delay: 1s; animation-duration: 25s; width: 5px; height: 5px; }
+.particle:nth-child(5) { left: 25%; animation-delay: 3s; animation-duration: 19s; }
+.particle:nth-child(6) { left: 30%; animation-delay: 5s; animation-duration: 23s; width: 3px; height: 3px; }
+.particle:nth-child(7) { left: 35%; animation-delay: 0.5s; animation-duration: 21s; }
+.particle:nth-child(8) { left: 40%; animation-delay: 2.5s; animation-duration: 24s; width: 5px; height: 5px; }
+.particle:nth-child(9) { left: 45%; animation-delay: 4.5s; animation-duration: 17s; }
+.particle:nth-child(10) { left: 50%; animation-delay: 1.5s; animation-duration: 26s; width: 3px; height: 3px; }
+.particle:nth-child(11) { left: 55%; animation-delay: 3.5s; animation-duration: 20s; }
+.particle:nth-child(12) { left: 60%; animation-delay: 0s; animation-duration: 22s; width: 5px; height: 5px; }
+.particle:nth-child(13) { left: 65%; animation-delay: 2s; animation-duration: 18s; }
+.particle:nth-child(14) { left: 70%; animation-delay: 4s; animation-duration: 25s; width: 3px; height: 3px; }
+.particle:nth-child(15) { left: 75%; animation-delay: 1s; animation-duration: 21s; }
+.particle:nth-child(16) { left: 80%; animation-delay: 3s; animation-duration: 24s; width: 5px; height: 5px; }
+.particle:nth-child(17) { left: 85%; animation-delay: 5s; animation-duration: 19s; }
+.particle:nth-child(18) { left: 90%; animation-delay: 2.5s; animation-duration: 23s; width: 3px; height: 3px; }
+.particle:nth-child(19) { left: 95%; animation-delay: 0.5s; animation-duration: 20s; }
+.particle:nth-child(20) { left: 3%; animation-delay: 4.5s; animation-duration: 27s; width: 5px; height: 5px; }
+
+@keyframes floatParticle {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    5% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+}
+
+/* Golden Line Before Footer */
+.golden-line-footer {
+    width: 100%;
+    max-width: 950px;
+    height: 5px;
+    margin: 0 auto 55px;
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        #E8C76A 8%,
+        #F5D77A 20%,
+        #FFE59E 35%,
+        #F5D77A 50%,
+        #D9A441 65%,
+        #E8C76A 80%,
+        transparent 100%);
+    border-radius: 3px;
+    box-shadow: 
+        0 0 30px rgba(147, 112, 219, 1),
+        0 0 60px rgba(212, 175, 55, 0.7),
+        0 0 100px rgba(147, 112, 219, 0.5);
+    animation: goldenShimmer 2.5s ease-in-out infinite;
+    position: relative;
+}
+@keyframes goldenShimmer {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.3); }
+}
+</style>
+</head>
+<body>
+
+<!-- Rays of Light -->
+<div class="sacred-rays">
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div>
+</div>
+
+<!-- Floating Particles -->
+<div class="particles">
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+    <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
+</div>
+
+<div class="bg"></div>
+<canvas id="divine-canvas"></canvas>
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- ========== HEADER ========== -->
+<header id="mainHeader">
+    <a href="index.html" class="logo">
+        <img src="img/logo_divina_misericordia.webp" alt="Logo Divina Misericordia" loading="lazy">
+        Divina<span>Misericordia</span>
+    </a>
+    <nav id="mainNav">
+        <a href="index.html">Inicio</a>
+        <a href="quienes-somos.html">Quienes Somos</a>
+        <a href="introduccion.html">Introduccion</a>
+        <a href="santa-faustina.html">Santa Faustina</a>
+        <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
+        <a href="novena.html">Novena</a>
+        <a href="coronilla.html">Coronilla</a>
+        <a href="via-crucis.html">Via Crucis</a>
+        <a href="oraciones.html">Oraciones</a>
+        <a href="santo-rosario.html">Santo Rosario</a>
+        <a href="los-rayos.html">Los Rayos</a>
+        <a href="obras-de-misericordia.html">Obras de Misericordia</a>
+        <a href="lugares-de-culto.html">Lugares de Culto</a>
+        <a href="lecturas-recomendadas.html">Lecturas</a>
+        <a href="enlaces.html">Enlaces</a>
+        
+        
+        
+        
+        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+        <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
+    <a href="estudios-biblicos.html">Estudios</a>
+        <a href="otras-devociones.html" class="activo">Otras Devociones</a>
+        <a href="contacto.html">Contacto</a>
+    
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+
+<!-- ========== MAIN ========== -->
+<main class="main-content">
+
+    <h1 class="page-title">Oración Ante Jesús Eucaristía</h1>
+    <p class="subtitle-line">El Amor que se Entrega por Amor</p>
+
+    <div class="content-block reveal">
+        <p>La Eucaristía es el misterio central de nuestra fe católica. En el Santo Sacramento del Altar, Jesús Cristo se hace presente de manera real, sustancial y permanente bajo las especies de pan y vino. No es merely un símbolo ni una representación: es el mismo Cuerpo, la misma Sangre, la misma Alma y la Divinidad de Nuestro Señor Jesucristo, escondido bajo los velos del pan consagrado.</p>
+        <p style="margin-top:16px;">Cada sagrario del mundo es un santuario donde el Amor Infinito aguarda con paciencia eterna la visita de sus hijos. Jesús Eucaristía nos espera con un amor que trasciende toda comprensión humana: un amor que se humilla hasta la oscuridad del sagrario, que se entrega sin reservas en cada Misa, que se une a nosotros de manera íntima cuando lo recibimos en la comunión.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#fff5c0"/>
+                        <stop offset="50%" stop-color="#d4af37"/>
+                        <stop offset="100%" stop-color="#8a7000"/>
+                    </linearGradient>
+                    <filter id="cruzGlow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                </defs>
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="content-block reveal">
+        <h2>El Don del Amor Eucarístico</h2>
+        <p>Cuando recibimos a Jesús en la Eucaristía, no recibimos merely un sacramento: recibimos a Dios mismo habitando en nuestra alma. Este don privilegiado nos transforma lentamente, a medida que nos vamos abriendo a su presencia y permitiendo que su amor purifique nuestro corazón, fortalezca nuestra voluntad y alumbre nuestro entendimiento.</p>
+        <p style="margin-top:16px;">San Pedro Julian Eymard, gran apóstol de la Eucaristía, decia que "la Eucaristía es el secreto de Jesús para hacer de nosotros unos cristianos parfaits". Este secreto es un amor que se oculta, que se anonada, que se esconde bajo las apariencias del pan para encontrarse mejor con nosotros en la intimidad del corazón.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="oracion-hero reveal">
+        <p>Bendita Eucaristía, que con amor me esperas en cada Sagrario del mundo. Que por amor te entregas cada vez que te recibo. Te comulgo, te recibo, me uno y me pierdo en tu Divinidad amantísima.</p>
+        <p style="margin-top:20px;">Que cada Eucaristía sea mi Cielo y mi Eternidad, mi Vida y mi única Delicia de este mundo. Cumple hoy en mí estas palabras: "Cuando sea levantado en alto, atraeré a todos hacia Mí".</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="content-block reveal">
+        <h2>Jesús Atrae a Todos hacia Sí</h2>
+        <p>La palabra de Cristo se cumple en cada Eucaristía: "Cuando sea levantado en alto, atraeré a todos hacia Mí". Este atractivo divino no conoce fronteras ni exclusiones. Jesús Eucarístico atrae hacia sí:</p>
+        <p style="margin-top:16px;">A los que están alejados de tu amor y buscan sin encontrar. A los que sufren sin sentido y necesitan esperanza. A los que lloran sin consuelo y esperan palabras de vida. A los que no encuentran razón a su vida y buscan un porqué. A los que no creen en Ti y desean creer. A toda alma de buena voluntad que no te conoce. A aquel que es violento y necesita paz. A los que les cuesta perdonar y desean la reconciliación. A toda alma herida que necesita sanarse.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="content-block reveal">
+        <h2>Jesús, Nuestro Cielo y Remedio</h2>
+        <p>Sé nuestro Cielo, cuando la tierra nos parezca un desierto. Sé nuestro Remedio, cuando las heridas del alma sangren sin cesar. Sé nuestro más perfecto Don de Amor, cuando el egoísmo amenace con apagar la llama de la caridad en nuestros corazones.</p>
+        <p style="margin-top:16px;">La Eucaristía es el misterio que une cielo y tierra, tiempo y eternidad, humanidad y divinidad. Cuando nos acercamos al sagrario con fe viva, el cielo se abre sobre nosotros y Dios mismo viene a habitar en nuestra alma como en un trono de gracias.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="content-block reveal">
+        <h2>La Eucaristía, Fuente de Misericordia</h2>
+        <p>Cada Misa es un reflejo del sacrificio del Calvario, donde Jesús derrama su sangre por la remisión de los pecados. En la Eucaristía, el mismo Jesús que murió en la cruz se hace presente para continuar derramando sobre nosotros los torrentes de su misericordia infinita.</p>
+        <p style="margin-top:16px;">Quien se acerca a comulgar con fe y devoción no puede salir indiferente. El amor eucarístico tiene la potencia de transformar las piedras más duras del corazón humano en corazones nuevos, capaces de amar como Cristo amó.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="content-block reveal">
+        <h2>Devoción Eucarística</h2>
+        <p>Rezar cada día esta oración ante Jesús Eucarístico aumenta el fervor y el amor por el Señor presente en el Santísimo Sacramento. La devoción eucarística se cultiva con:</p>
+        <ul style="margin-top:16px;">
+            <li>Visitas frecuentes al sagrario, aunque sean breves</li>
+            <li>La comunión frecuente, con las debidas disposiciones</li>
+            <li>La oración silenciosa ante el expositorio eucarístico</li>
+            <li>La compañía espiritual con Jesús eucarístico durante el día</li>
+            <li>El ofrecimiento de cada momento del día unidos a Él</li>
+        </ul>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="oracion-box reveal">
+        <h3>Oración Ante Jesús Eucaristía</h3>
+        <p>Bendita Eucaristía, que con amor me esperas en cada Sagrario del mundo.</p>
+        <p style="margin-top:16px;">Que por amor te entregas cada vez que te recibo.</p>
+        <p style="margin-top:16px;">Te comulgo, te recibo, me uno y me pierdo en tu Divinidad amantísima.</p>
+        <p style="margin-top:16px;">Que cada Eucaristía sea mi Cielo y mi Eternidad, mi Vida y mi única Delicia de este mundo.</p>
+        <p style="margin-top:16px;">Cumple hoy en mí estas palabras: "Cuando sea levantado en alto, atraeré a todos hacia Mí".</p>
+        <p style="margin-top:16px;">A los que están alejados de tu amor, a los que sufren sin sentido, a los que lloran sin consuelo, a los que no encuentran razón a su vida, a los que no creen en Tí, a toda alma de buena voluntad que no te conoce, a aquel que es violento, a los que les cuesta perdonar, a toda alma herida que necesita sanarse.</p>
+        <p style="margin-top:16px;">Sé nuestro Cielo, nuestro Remedio, nuestro más perfecto Don de Amor.</p>
+        <p style="margin-top:20px; color:var(--gold-light); font-weight:600;">Amén.</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="autor-box reveal">
+        <p><strong>Oración de Feyuk Teresita</strong></p>
+        <span>Rezala con devoción cada día para aumentar tu fervor y amor por Jesús Eucaristía</span>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <div class="quote reveal">
+        <p class="quote-text">"Yo soy el pan vivo que descendió del cielo. Si alguien come de este pan, vivirá para siempre."</p>
+        <p class="quote-source">San Juan 6, 51</p>
+    </div>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <p class="closing-text reveal">Jesús Eucarístico, que te ocultas por amor en cada sagrario para estar cerca de nosotros, te agradecemos este don infinito. Que cada comunión nos acerque más a Ti y nos haga testigos luminosos de tu amor en el mundo. Amén.</p>
+
+    <div class="separator-wrap">
+        <div class="separator-cruz">
+            <div class="separator-linea"></div>
+            <svg class="separator-cruz-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <rect x="42" y="8" width="16" height="84" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <rect x="18" y="32" width="64" height="16" rx="4" fill="url(#goldGrad)" filter="url(#cruzGlow)"/>
+                <circle cx="50" cy="24" r="5" fill="#fff5c0" filter="url(#cruzGlow)"/>
+            </svg>
+            <div class="separator-linea right"></div>
+        </div>
+    </div>
+
+    <!-- Footer Menu -->
+    <div class="footer-menu reveal">
+        <p class="footer-menu-title">Explorar Mas Devociones</p>
+        <div class="footer-menu-links">
+            <a href="santa-faustina.html">Santa Faustina</a>
+            <a href="santa-francisca-romana.html">Santa Francisca Romana</a>
+            <a href="maria.html">Santa Maria</a>
+            <a href="san-jose.html">San Jose</a>
+            <a href="san-judas-tadeo.html">San Judas Tadeo</a>
+            <a href="san-benito.html">San Benito</a>
+            <a href="divino-nino-jesus.html">Divino Nino Jesus</a>
+            <a href="oraciones.html">Oraciones</a>
+            <a href="novena.html">Novena</a>
+            <a href="coronilla.html">Coronilla</a>
+        </div>
+    </div>
+
+</main>
+
+<!-- Golden Line Before Footer -->
+<div class="golden-line-footer"></div>
+
+<!-- ========== FOOTER ========== -->
+<footer class="main-footer sacred-footer">
+    <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">✝</a>
+    <p class="tagline">Jesús, En Vos Confío</p>
+    <p>© 2026 — Portal de la Divina Misericordia</p>
+</footer>
+
+<!-- Scroll Buttons -->
+<button class="scroll-btn scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Subir">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+<button class="scroll-btn scroll-down" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})" aria-label="Bajar">
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+</button>
+
+<script>
+// Force reveal all content (fallback in case of cache issues)
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        document.querySelectorAll('.reveal').forEach(function(el) {
+            el.classList.add('visible');
+        });
+    }, 500);
+});
+
+// Progress bar
+window.addEventListener('scroll',()=>{
+    const bar=document.getElementById('progressBar');
+    const h=document.documentElement;
+    bar.style.width=((h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';
+});
+// Header scroll
+window.addEventListener('scroll',()=>{
+    document.getElementById('mainHeader').classList.toggle('scrolled',window.scrollY>50);
+});
+// Reveal
+const reveal=document.querySelectorAll('.reveal');
+const ro=new IntersectionObserver((e)=>{
+    e.forEach(el=>{ if(el.isIntersecting){ el.classList.add('visible'); } });
+},{threshold:0.12});
+reveal.forEach(el=>ro.observe(el));
+// Hamburger
+document.getElementById('hamburger').addEventListener('click',function(){
+    this.classList.toggle('open');
+    document.getElementById('mainNav').classList.toggle('active');
+});
+// Divine canvas
+(function(){
+    const c=document.getElementById('divine-canvas'),x=c.getContext('2d');
+    let w,h,p=[];
+    function rs(){w=c.width=innerWidth;h=c.height=innerHeight;}
+    function init(){p=[];for(let i=0;i<80;i++)p.push({x:Math.random()*w,y:Math.random()*h,r:Math.random()*2+0.5,vx:(Math.random()-0.5)*0.3,vy:-Math.random()*0.5-0.2,o:Math.random()});}
+    function dr(){
+        x.clearRect(0,0,w,h);
+        p.forEach((pt,i)=>{
+            pt.x+=pt.vx;pt.y+=pt.vy;pt.o+=0.002;
+            if(pt.y<-10)pt.y=h+10;
+            if(pt.x<0||pt.x>w)pt.vx*=-1;
+            x.beginPath();x.arc(pt.x,pt.y,pt.r,0,Math.PI*2);
+            x.fillStyle=`rgba(147,112,219,${Math.min(pt.o,0.6)})`;x.fill();
+            if(pt.o>0.5){x.beginPath();x.arc(pt.x,pt.y,pt.r*2,0,Math.PI*2);x.fillStyle=`rgba(147,112,219,${pt.o*0.15})`;x.fill();}
+        });
+        requestAnimationFrame(dr);
+    }
+    window.addEventListener('resize',()=>{rs();init();});
+    rs();init();dr();
+})();
+</script>
+
+
+<!-- Sistema de Diseño Global -->
+<script src="js/system-init.js"></script>
+</body>
+</html>
