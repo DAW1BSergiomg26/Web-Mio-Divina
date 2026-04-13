@@ -1,0 +1,38 @@
+# humans.txt
+# Meet the humans behind this website
+
+# This website is maintained by:
+Asociación Apóstoles de la Divina Misericordia
+
+# Developed by:
+Sergio Daniel
+Devoción y fe en la Divina Misericordia
+
+# With the grace of God and the intercession of:
+- Santa María Faustina Kowalska
+- Jesús Misericordioso
+
+# Location:
+Asturias, España
+
+# Mission:
+Portal de espiritualidad y devoción a la Divina Misericordia.
+"Jesús, En Vos Confío"
+
+# Contact:
+Email: contacto@misericordiadejesus.es
+
+# Last updated:
+Marzo 2026
+
+# Technology:
+- HTML5 semántico
+- CSS3 con animaciones
+- JavaScript vanilla
+- Google Fonts (Cinzel, EB Garamond)
+- SVG graphics
+
+# Special thanks:
+- A Dios, por su infinito amor y misericordia
+- A Santa Faustina, por transmitir el mensaje de la misericordia
+- A todos los feligreses que utilizan esta web para su oración diaria

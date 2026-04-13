@@ -1,0 +1,78 @@
+Voy a revisar algunas páginas más para completar el análisis:
+# Informe de Accesibilidad
+
+## 1. Imágenes (Alt Text)
+
+**✓ BIEN:**
+- Logo principal: `<img ... alt="Logo Divina Misericordia">` (index.html:943, contacto.html:476)
+- Metadatos OG tienen `og:image:alt`
+
+**✗ PROBLEMAS:**
+- Imágenes decorativas sin `alt=""` o `aria-hidden="true"` (emojis en iconos de botones, separadores SVG)
+- Vídeo `<video>` sin pista de subtítulos ni descripción de contenido
+
+---
+
+## 2. ARIA Labels
+
+**✓ BIEN:**
+- Botones scroll: `aria-label="Subir"`, `aria-label="Bajar"` (index.html:1225-1228)
+- SVG separadores: `aria-label="Cruz Divina Misericordia"`
+- Skip link funcional (index.html:933)
+
+**✗ PROBLEMAS:**
+- Menú hamburguesa (index.html:964): `onclick="toggleMenu()"` sin `aria-expanded`, `aria-controls` ni `role="button"`
+- `<nav>` sin `role="navigation"` ni `aria-label` para identificar
+- Formulario contacto (contacto.html:558): inputs sin `aria-describedby` para mensajes de error
+- Canvas animado (línea 936): `aria-hidden="true"` ausente
+- Cursor personalizado `<div id="cursor">`: necesita `aria-hidden="true"`
+- Botón play del vídeo: sin `aria-label` ni `aria-pressed`
+
+---
+
+## 3. Navegación por Teclado
+
+**✓ BIEN:**
+- Skip link presente y funcional (index.html:933)
+- `:focus-visible` y `:focus` con outline (styles.css:20-34)
+- Escape cierra menú mobile (main.js:52-58)
+
+**✗ PROBLEMAS:**
+- Cursor personalizado `cursor: none` en body (index.html:153) + custom cursor pueden confondir usuarios con tecnología asistiva
+- Menú mobile: no recibe foco con Tab cuando está cerrado
+- Links con `onclick` sin `href` no son alcanzables con teclado
+- Botón play-video (index.html:1031): `<div onclick="toggleVideo()">` - no enfocable
+- No hay indicador visual de foco visible en todos los elementos interactivos
+- order of tab puede ser confuso con animaciones que revelan contenido
+
+---
+
+## 4. Contraste
+
+**✓ CUMPLE:**
+- Texto principal `--text-main: rgba(250,247,240,0.9)` sobre fondo `#050d1a` → ratio ~13:1 ✓
+- Títulos dorados `#f4e2a1` sobre fondo oscuro → ratio ~10:1 ✓
+
+**✗ FALLA:**
+- `--text-muted: rgba(250,247,240,0.7)` → ratio ~7:1, cumple WCAG AA pero no AAA
+- Placeholder formularios (contacto.html:262): `rgba(250,247,240,0.35)` → ratio ~3:1 ✗ **NO CUMPLE**
+- Footer links `color:var(--text-muted)` pueden tener contraste insuficiente
+- Algunos botones outline con `border:1.5px solid var(--gold)` sobre fondo oscuro pueden no destacar suficientemente
+
+---
+
+## Resumen
+
+| Área | Estado |
+|------|--------|
+| Alt text imágenes | Parcial |
+| ARIA labels | Insuficiente |
+| Navegación teclado | Parcial |
+| Contraste | Parcial |
+
+**Prioridades de corrección:**
+1. Añadir `aria-expanded` y roles al menú hamburguesa
+2. Hacer interactivos los elementos con onclick
+3. Añadir `aria-hidden` al canvas y cursor
+4. Corregir contraste de placeholders
+5. Añadir subtítulos al vídeo

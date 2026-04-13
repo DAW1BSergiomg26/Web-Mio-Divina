@@ -1,0 +1,173 @@
+================================================================================
+            LISTADO COMPLETO DE SECCIONES - WEB DIVINA MISERICORDIA
+================================================================================
+
+Fecha: Marzo 2026
+Proyecto: Asociación Apóstoles de la Divina Misericordia
+Web: https://misericordiadejesus.es
+
+================================================================================
+                              SECCIONES PRINCIPALES
+================================================================================
+
+Nº   | ARCHIVO HTML              | NOMBRE DE LA SECCIÓN
+-----|---------------------------|--------------------------------------------
+1    | index.html               | Inicio (Página Principal)
+2    | quienes-somos.html       | Quiénes Somos
+3    | santa-faustina.html      | Santa Faustina
+4    | novena.html              | Novena
+5    | hora-de-la-misericordia.html | Hora de la Misericordia
+6    | coronilla.html           | Coronilla
+7    | los-rayos.html           | Los Rayos
+8    | galeria.html             | Galería
+9    | oraciones.html           | Oraciones
+10   | noticias.html            | Noticias
+11   | contacto.html            | Contacto
+12   | consagracion.html        | Consagración
+13   | lugares-de-culto.html    | Lugares de Culto
+14   | obras-de-misericordia.html | Obras de Misericordia
+15   | via-crucis.html         | Vía Crucis
+16   | maria.html              | María
+17   | introduccion.html        | Introducción
+18   | testimonios.html         | Testimonios
+19   | enlaces.html             | Enlaces
+20   | espacio-jovenes.html     | Espacio para Jóvenes
+21   | lecturas-recomendadas.html | Lecturas Recomendadas
+22   | ss-francisco.html        | Santos Padres: Francisco
+23   | ss-benedicto-xvi.html    | Santos Padres: Benedicto XVI
+24   | ss-juan-pablo-ii.html    | Santos Padres: Juan Pablo II
+25   | ss-leon-xiv.html         | Santos Padres: León XIV
+
+================================================================================
+                           ARCHIVOS ADMINISTRATIVOS
+================================================================================
+
+Nº   | ARCHIVO HTML              | DESCRIPCIÓN
+-----|---------------------------|--------------------------------------------
+1    | admin.html                | Página de Login del Panel de Admin
+2    | admin_panel.html          | Panel de Administración para editar páginas
+
+================================================================================
+                              ESTRUCTURA DE ARCHIVOS
+================================================================================
+
+Carpeta principal: /public/
+├── index.html                 (Inicio)
+├── quienes-somos.html         (Quiénes Somos)
+├── santa-faustina.html        (Santa Faustina)
+├── novena.html                (Novena)
+├── hora-de-la-misericordia.html (Hora Misericordia)
+├── coronilla.html             (Coronilla)
+├── los-rayos.html             (Los Rayos)
+├── galeria.html               (Galería)
+├── oraciones.html             (Oraciones)
+├── noticias.html              (Noticias)
+├── contacto.html              (Contacto)
+├── consagracion.html          (Consagración)
+├── lugares-de-culto.html      (Lugares de Culto)
+├── obras-de-misericordia.html (Obras de Misericordia)
+├── via-crucis.html            (Vía Crucis)
+├── maria.html                (María)
+├── introduccion.html         (Introducción)
+├── testimonios.html          (Testimonios)
+├── enlaces.html              (Enlaces)
+├── espacio-jovenes.html      (Espacio Jóvenes)
+├── lecturas-recomendadas.html (Lecturas)
+├── ss-francisco.html         (S.S. Francisco)
+├── ss-benedicto-xvi.html     (S.S. Benedicto XVI)
+├── ss-juan-pablo-ii.html     (S.S. Juan Pablo II)
+├── ss-leon-xiv.html          (S.S. León XIV)
+├── admin.html                (Login Admin)
+├── admin_panel.html          (Panel Admin)
+│
+├── css/
+│   └── styles.css            (Estilos principales)
+│
+├── js/
+│   └── main.js              (Scripts principales)
+│
+└── img/
+    ├── logo_divina_misericordia.jpg
+    ├── favicon.ico
+    └── ... (otras imágenes)
+
+================================================================================
+                            ENLACES DEL MENÚ DE NAVEGACIÓN
+================================================================================
+
+El menú de navegación principal contiene los siguientes enlaces:
+
+1. Inicio                    → index.html
+2. Quiénes Somos            → quienes-somos.html
+3. Santa Faustina           → santa-faustina.html
+4. Novena                   → novena.html
+5. Hora Misericordia        → hora-de-la-misericordia.html
+6. Coronilla                → coronilla.html
+7. Los Rayos                → los-rayos.html
+8. Galería                   → galeria.html
+9. Oraciones                 → oraciones.html
+10. Noticias                 → noticias.html
+11. Contacto                 → contacto.html
+
+================================================================================
+                              ENLACES DEL FOOTER
+================================================================================
+
+El menú del pie de página contiene:
+
+• Vía Crucis          → via-crucis.html
+• María               → maria.html
+• Obras de Misericordia → obras-de-misericordia.html
+• Consagración        → consagracion.html
+• Lugares de Culto    → lugares-de-culto.html
+• Noticias            → noticias.html
+• Testimonios         → testimonios.html
+• S.S. Francisco      → ss-francisco.html
+• S.S. Benedicto XVI  → ss-benedicto-xvi.html
+• S.S. Juan Pablo II → ss-juan-pablo-ii.html
+• Enlaces             → enlaces.html
+
+================================================================================
+                              PANEL DE ADMINISTRACIÓN
+================================================================================
+
+Para editar las páginas de la web:
+
+1. Acceder a: http://localhost:3001/admin.html (en desarrollo)
+              https://tu-dominio/admin.html (en producción)
+
+2. Credenciales:
+   - Usuario: Rayos
+   - Contraseña: Rufi14
+
+3. Funciones del panel:
+   - Editar código HTML de cualquier página
+   - Vista previa en tiempo real
+   - Guardar cambios en el servidor
+   - Deshacer (Ctrl+Z) / Rehacer (Ctrl+Y)
+   - Copiar código
+   - Descargar archivo
+
+================================================================================
+                            TECHNOLOGÍAS USADAS
+================================================================================
+
+• HTML5 - Estructura de las páginas
+• CSS3 - Estilos y animaciones
+• JavaScript (Vanilla) - Funcionalidad
+• Node.js - Servidor local (puerto 3001)
+• GitHub - Control de versiones y despliegue
+
+================================================================================
+                              NOTAS IMPORTANTES
+================================================================================
+
+• Todas las páginas tienen diseño responsivo (móvil, tablet, escritorio)
+• El separador de Cruz Divina Misericordia está presente en todas las páginas
+• El fondo animado con rayos de luz está disponible en todas las secciones
+• El cursor personalizado con cruz está activo en escritorio
+• Hay efectos de reveal al hacer scroll
+
+================================================================================
+                                   FIN DEL DOCUMENTO
+================================================================================
