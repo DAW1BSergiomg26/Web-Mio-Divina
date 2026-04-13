@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="es-ES">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sin Conexión - Divina Misericordia</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cinzel+Decorative:wght@700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sin Conexión - Divina Misericordia</title>
+<link href="manifest.json" rel="manifest"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&amp;family=Cinzel+Decorative:wght@700&amp;family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet"/>
+<style>
     :root {
       --gold: #d4af37;
       --gold-light: #f4e2a1;
@@ -160,40 +161,34 @@
       margin-top: 30px;
     }
   </style>
-</head>
+<meta content="Portal oficial sobre offline. Divina Misericordia, Jesús en vos confío." name="description"/></head>
 <body>
-  <div class="offline-container">
-    <div class="offline-symbol">✝️</div>
-    
-    <h1>Estás sin conexión</h1>
-    <p class="message">
-      Pero el santuario sigue contigo.<br>
+<div class="offline-container">
+<div class="offline-symbol">✝️</div>
+<h1>Estás sin conexión</h1>
+<p class="message">
+      Pero el santuario sigue contigo.<br/>
       Tu fe no necesita internet.
     </p>
-    
-    <div class="candle-container">
-      <div class="flame-glow"></div>
-      <div class="flame"></div>
-      <div class="candle"></div>
-    </div>
-    
-    <div class="quote-section">
-      <div class="quote-label">📖 Cita Espiritual</div>
-      <p class="quote-text" id="offline-quote">Jesús, en Vos confío.</p>
-      <p class="quote-author" id="offline-author">— Santa Faustina</p>
-    </div>
-    
-    <div class="actions">
-      <a href="/" class="action-btn">🏠 Volver al Inicio</a>
-      <button class="action-btn" onclick="window.location.reload()">🔄 Reintentar</button>
-    </div>
-    
-    <p class="offline-note">
+<div class="candle-container">
+<div class="flame-glow"></div>
+<div class="flame"></div>
+<div class="candle"></div>
+</div>
+<div class="quote-section">
+<div class="quote-label">📖 Cita Espiritual</div>
+<p class="quote-text" id="offline-quote">Jesús, en Vos confío.</p>
+<p class="quote-author" id="offline-author">— Santa Faustina</p>
+</div>
+<div class="actions">
+<a class="action-btn" href="/">🏠 Volver al Inicio</a>
+<button class="action-btn" onclick="window.location.reload()">🔄 Reintentar</button>
+</div>
+<p class="offline-note">
       Funciones offline disponibles: Rosario, Intenciones de oración, Cita del día
     </p>
-  </div>
-  
-  <script>
+</div>
+<script>
     // Cita offline desde caché
     const quotes = [
       { text: "Jesús, en Vos confío.", author: "Santa Faustina" },
@@ -212,7 +207,6 @@
     document.getElementById('offline-quote').textContent = quote.text;
     document.getElementById('offline-author').textContent = '— ' + quote.author;
   </script>
-
 <!-- PWA y Service Worker -->
 <script>
   if ('serviceWorker' in navigator) {
@@ -223,8 +217,7 @@
 </script>
 <script src="js/pwa-install.js"></script>
 <script src="js/notifications.js"></script>
-
-<!-- Sistema de Dise�o Global -->
+<!-- Sistema de Diseo Global -->
 <script src="js/system-init.js"></script>
 </body>
 </html>

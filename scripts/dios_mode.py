@@ -46,7 +46,12 @@ def devops_flow():
         if os.path.exists("reports/seo_audit.txt") and os.path.getsize("reports/seo_audit.txt") > 0:
             with open("reports/seo_audit.txt", "r", encoding="utf-8") as f:
                 seo_report = f.read()
-                asyncio.run(send_telegram_message(f"⚠️ Reporte SEO generado con advertencias:\n{seo_report[:500]}"))
+            
+            # Verificar si hay errores reales (no solo advertencias menores)
+            if len(seo_report.strip()) > 0:
+                asyncio.run(send_telegram_message(f"⚠️ Reporte SEO con advertencias detectadas, deteniendo despliegue:\n{seo_report[:500]}", is_error=True))
+                print("🛑 Despliegue cancelado debido a errores SEO.")
+                return
     except Exception as e:
         asyncio.run(send_telegram_message(f"Error en fase de optimización/SEO: {e}", is_error=True))
         return
@@ -61,11 +66,15 @@ def devops_flow():
         fecha = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         if run_step(f'git commit -m "Auto-Deploy: {fecha}"', "Commit automático"):
             if run_step("git push origin main", "Push a GitHub"):
-                # 4. Despliegue Netlify
-                if run_step("netlify deploy --prod", "Desplegando en Netlify"):
-                    asyncio.run(send_telegram_message("✅ Web actualizada y desplegada con éxito en Netlify."))
+                # 4. Despliegue Netlify (Usando ruta absoluta y especificando directorio public)
+                netlify_path = r"C:\Users\astur\AppData\Roaming\npm\netlify.cmd"
+                if os.path.exists(netlify_path):
+                    if run_step(f'"{netlify_path}" deploy --prod --dir=public', "Desplegando en Netlify"):
+                        asyncio.run(send_telegram_message("✅ Web actualizada y desplegada con éxito en Netlify.\n\n🔥 ¡Gran trabajo, Sergio!"))
+                    else:
+                        asyncio.run(send_telegram_message("❌ Error en el despliegue de Netlify.", is_error=True))
                 else:
-                    asyncio.run(send_telegram_message("❌ Error en el despliegue de Netlify.", is_error=True))
+                    asyncio.run(send_telegram_message("❌ No se encuentra el ejecutable de Netlify.", is_error=True))
             else:
                 asyncio.run(send_telegram_message("❌ Error al hacer push a GitHub.", is_error=True))
         else:

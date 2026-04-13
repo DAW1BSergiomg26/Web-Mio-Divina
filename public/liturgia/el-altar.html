@@ -1,11 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Divina Misericordia — Santuario Virtual 3D</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&amp;family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;display=swap" rel="stylesheet"/>
 <script type="importmap">
 {
   "imports": {
@@ -14,10 +14,9 @@
   }
 }
 </script>
-<script nomodule>
+<script nomodule="">
   document.body.innerHTML='<div style="color:#f0c060;font-family:serif;text-align:center;padding:4rem">Tu navegador no soporta ES Modules. Por favor usa Chrome, Firefox o Edge modernos.</div>';
 </script>
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -184,72 +183,63 @@ canvas{display:block;position:fixed;inset:0}
 }
 .modal-close:hover{background:rgba(240,192,96,.22);box-shadow:0 0 24px rgba(240,192,96,.3)}
 </style>
-</head>
-<body>
-
+<meta content="Portal oficial sobre el altar. Divina Misericordia, Jesús en vos confío." name="description"/></head>
+<body><h1>El Altar</h1>
 <!-- LOADING -->
 <div id="loading">
-  <div class="load-icon">✝</div>
-  <div class="load-title">Divina Misericordia</div>
-  <div class="load-quote">«Jesús, confío en Ti»</div>
-  <div class="load-bar-wrap"><div class="load-bar" id="lbar"></div></div>
-  <div class="load-msg" id="lmsg">Iniciando Santuario...</div>
-  <div class="load-crosses"><span>✦</span><span>✝</span><span>✦</span></div>
+<div class="load-icon">✝</div>
+<div class="load-title">Divina Misericordia</div>
+<div class="load-quote">«Jesús, confío en Ti»</div>
+<div class="load-bar-wrap"><div class="load-bar" id="lbar"></div></div>
+<div class="load-msg" id="lmsg">Iniciando Santuario...</div>
+<div class="load-crosses"><span>✦</span><span>✝</span><span>✦</span></div>
 </div>
-
 <!-- HUD -->
 <div id="hud">
-  <div class="hud-brand">
-    <div class="hud-title">✝ Divina Misericordia</div>
-    <div class="hud-sub">Santuario Virtual · Experiencia Sagrada</div>
-  </div>
-  <div class="hud-right">
-    <div id="clock"></div>
-    <div id="state-badge">Adoración</div>
-    <div class="hud-sub">Gijón, Asturias</div>
-  </div>
+<div class="hud-brand">
+<div class="hud-title">✝ Divina Misericordia</div>
+<div class="hud-sub">Santuario Virtual · Experiencia Sagrada</div>
 </div>
-
+<div class="hud-right">
+<div id="clock"></div>
+<div id="state-badge">Adoración</div>
+<div class="hud-sub">Gijón, Asturias</div>
+</div>
+</div>
 <!-- BOTTOM BAR -->
 <div id="bar">
-  <button class="btn nav-btn" onclick="window.location.href='./index.html'">🏠 Inicio</button>
-  <button class="btn nav-btn" onclick="window.location.href='./hora-de-la-misericordia.html'">⬅ Volver</button>
-  <button class="btn nav-btn" onclick="window.location.href='/musica/musica-sacra.html'">Siguiente ➡</button>
-  <button class="btn" id="btn-music"   onclick="app.toggleAudio()">🎵 Música Sacra</button>
-  <button class="btn" id="btn-prayer"  onclick="app.showPrayer('daily')">📿 Oración del Día</button>
-  <button class="btn" id="btn-cam"     onclick="app.resetCam()">🏛 Santuario</button>
-  <button class="btn toggled" id="btn-parts"  onclick="app.toggleParts()">✨ Partículas</button>
-  <button class="btn toggled" id="btn-bloom"  onclick="app.toggleBloom()">🌟 Bloom</button>
-  <button class="btn toggled" id="btn-candles" onclick="app.toggleAllCandles()">🕯 Velas</button>
+<button class="btn nav-btn" onclick="window.location.href='./index.html'">🏠 Inicio</button>
+<button class="btn nav-btn" onclick="window.location.href='./hora-de-la-misericordia.html'">⬅ Volver</button>
+<button class="btn nav-btn" onclick="window.location.href='/musica/musica-sacra.html'">Siguiente ➡</button>
+<button class="btn" id="btn-music" onclick="app.toggleAudio()">🎵 Música Sacra</button>
+<button class="btn" id="btn-prayer" onclick="app.showPrayer('daily')">📿 Oración del Día</button>
+<button class="btn" id="btn-cam" onclick="app.resetCam()">🏛 Santuario</button>
+<button class="btn toggled" id="btn-parts" onclick="app.toggleParts()">✨ Partículas</button>
+<button class="btn toggled" id="btn-bloom" onclick="app.toggleBloom()">🌟 Bloom</button>
+<button class="btn toggled" id="btn-candles" onclick="app.toggleAllCandles()">🕯 Velas</button>
 </div>
-
 <!-- ROSARY -->
 <div id="rosary">
-  <div class="bead-label">Rosario</div>
-  <div id="beads"></div>
+<div class="bead-label">Rosario</div>
+<div id="beads"></div>
 </div>
-
 <!-- HINT -->
 <div id="hint">🖱 Toca los objetos sagrados para orar</div>
-
 <!-- TOAST -->
 <div id="toast"></div>
-
 <!-- OBJECT NAME -->
 <div id="objname"></div>
-
 <!-- MODAL -->
 <div id="modal">
-  <div class="modal-bg" onclick="app.closeModal()"></div>
-  <div class="modal-card">
-    <span class="modal-icon" id="micon">✝️</span>
-    <div class="modal-title" id="mtitle">Oración</div>
-    <div class="modal-text" id="mtext"></div>
-    <div class="modal-blessing" id="mblessing"></div>
-    <button class="modal-close" onclick="app.closeModal()">Amén 🙏</button>
-  </div>
+<div class="modal-bg" onclick="app.closeModal()"></div>
+<div class="modal-card">
+<span class="modal-icon" id="micon">✝️</span>
+<div class="modal-title" id="mtitle">Oración</div>
+<div class="modal-text" id="mtext"></div>
+<div class="modal-blessing" id="mblessing"></div>
+<button class="modal-close" onclick="app.closeModal()">Amén 🙏</button>
 </div>
-
+</div>
 <script type="module">
 import * as THREE from 'three';
 import { OrbitControls }       from 'three/addons/controls/OrbitControls.js';

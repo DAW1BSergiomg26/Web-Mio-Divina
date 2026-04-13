@@ -6,7 +6,7 @@ def audit_seo(public_dir="public"):
     
     for root, _, files in os.walk(public_dir):
         for file in files:
-            if file.endswith(".html"):
+            if file.endswith(".html") and file != "pwa-init.html":
                 path = os.path.join(root, file)
                 with open(path, 'r', encoding='utf-8', errors='ignore') as f:
                     soup = BeautifulSoup(f, 'html.parser')

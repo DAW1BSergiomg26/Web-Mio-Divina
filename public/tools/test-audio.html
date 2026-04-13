@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test - Reproductor Divino</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Test - Reproductor Divino</title>
+<style>
     body {
       font-family: Georgia, serif;
       background: linear-gradient(135deg, #1a3a6e 0%, #0a1628 100%);
@@ -47,26 +48,23 @@
       white-space: pre-wrap;
     }
   </style>
-</head>
+<meta content="Portal oficial sobre test audio. Divina Misericordia, Jesús en vos confío." name="description"/></head>
 <body>
-  <h1>🕊️ Test - Reproductor Divino</h1>
-  
-  <div class="test-section">
-    <h2>Prueba Manual</h2>
-    <button onclick="testPlay()">▶ Reproducir Canon</button>
-    <button onclick="testPause()">⏸ Pausar</button>
-    <button onclick="testChange()">🔄 Cambiar a Faustina</button>
-    <button onclick="testVolume()">🔊 Subir Volumen</button>
-  </div>
-
-  <div class="test-section">
-    <h2>Estado</h2>
-    <button onclick="checkState()">📋 Ver Estado</button>
-    <div class="log" id="log">Esperando...</div>
-  </div>
-
-  <script src="js/reproductor-global.js"></script>
-  <script>
+<h1>🕊️ Test - Reproductor Divino</h1>
+<div class="test-section">
+<h2>Prueba Manual</h2>
+<button onclick="testPlay()">▶ Reproducir Canon</button>
+<button onclick="testPause()">⏸ Pausar</button>
+<button onclick="testChange()">🔄 Cambiar a Faustina</button>
+<button onclick="testVolume()">🔊 Subir Volumen</button>
+</div>
+<div class="test-section">
+<h2>Estado</h2>
+<button onclick="checkState()">📋 Ver Estado</button>
+<div class="log" id="log">Esperando...</div>
+</div>
+<script src="js/reproductor-global.js"></script>
+<script>
     function log(msg) {
       document.getElementById('log').textContent += '\n' + msg;
       console.log(msg);
@@ -126,7 +124,6 @@
       log('Error: ' + e.message);
     });
   </script>
-
 <!-- Sistema de Diseño Global -->
 <script src="js/system-init.js"></script>
 </body>

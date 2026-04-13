@@ -1,42 +1,39 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diario de Reflexión - Divina Misericordia</title>
-    <link rel="stylesheet" href="../assets/css/global.css">
-    <link rel="stylesheet" href="../assets/css/styles.css">
-    <link rel="stylesheet" href="../assets/css/sacred-components.css">
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Diario de Reflexión - Divina Misericordia</title>
+<link href="../assets/css/global.css" rel="stylesheet"/>
+<link href="../assets/css/styles.css" rel="stylesheet"/>
+<link href="../assets/css/sacred-components.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<meta content="Portal oficial sobre diario. Divina Misericordia, Jesús en vos confío." name="description"/></head>
 <body class="sacred-theme">
-    <div class="container">
-        <header style="text-align: center; padding: 20px 0;">
-            <h1 class="gold-text">Mi Diario Espiritual</h1>
-            <p>Un espacio íntimo para tus diálogos con Jesús</p>
-        </header>
-
-        <div class="journal-container">
-            <div class="journal-header">
-                <span>Fecha: <span id="current-date"></span></span>
-                <span id="save-status" style="font-style: italic; opacity: 0.7;">Santuario en Silencio</span>
-            </div>
-            <textarea id="journal-editor" placeholder="Escribe aquí tus reflexiones, gracias recibidas o propósitos de hoy..."></textarea>
-            
-            <div class="journal-controls">
-                <button id="export-txt" class="btn-sacred">Guardar en PC (.txt)</button>
-                <button onclick="localStorage.removeItem('spiritual_journal'); location.reload();" class="btn-sacred" style="background: #8b0000; color: white;">Limpiar Diario</button>
-            </div>
-        </div>
-
-        <footer style="text-align: center; margin-top: 30px;">
-            <a href="../index.html" class="btn-sacred">Volver al Altar</a>
-        </footer>
-    </div>
-
-    <script>
+<div class="container">
+<header style="text-align: center; padding: 20px 0;">
+<h1 class="gold-text">Mi Diario Espiritual</h1>
+<p>Un espacio íntimo para tus diálogos con Jesús</p>
+</header>
+<div class="journal-container">
+<div class="journal-header">
+<span>Fecha: <span id="current-date"></span></span>
+<span id="save-status" style="font-style: italic; opacity: 0.7;">Santuario en Silencio</span>
+</div>
+<textarea id="journal-editor" placeholder="Escribe aquí tus reflexiones, gracias recibidas o propósitos de hoy..."></textarea>
+<div class="journal-controls">
+<button class="btn-sacred" id="export-txt">Guardar en PC (.txt)</button>
+<button class="btn-sacred" onclick="localStorage.removeItem('spiritual_journal'); location.reload();" style="background: #8b0000; color: white;">Limpiar Diario</button>
+</div>
+</div>
+<footer style="text-align: center; margin-top: 30px;">
+<a class="btn-sacred" href="../index.html">Volver al Altar</a>
+</footer>
+</div>
+<script>
         document.getElementById('current-date').innerText = new Date().toLocaleDateString();
     </script>
-    <script src="../assets/js/journal-pro.js"></script>
+<script src="../assets/js/journal-pro.js"></script>
 </body>
 </html>
