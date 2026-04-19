@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>La Santina - Nuestra Señora de Covadonga | Divina Misericordia</title>
-<meta name="description" content="La Santina - Nuestra Señora de Covadonga. Patrona de Asturias, Madre de España, Cuna de la Reconquista. Historia, oraciones, novena y peregrinaciones.">
+<title>La Santina - Nuestra Seï¿½ora de Covadonga | Divina Misericordia</title>
+<meta name="description" content="La Santina - Nuestra Seï¿½ora de Covadonga. Patrona de Asturias, Madre de Espaï¿½a, Cuna de la Reconquista. Historia, oraciones, novena y peregrinaciones.">
 <meta name="author" content="El Portal de la Divina Misericordia">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://misericordiadejesus.es/la-santina.html">
@@ -54,7 +54,7 @@ body {
 }
 
 /* ============================================
-   FONDO DINÁMICO
+   FONDO DINï¿½MICO
    ============================================ */
 .bg { 
     position:fixed; inset:0; 
@@ -130,7 +130,7 @@ body {
     75% { opacity: 0.9; height: 95%; }
 }
 
-/* Partículas */
+/* Partï¿½culas */
 .particles {
     position: fixed;
     top: 0;
@@ -231,7 +231,7 @@ nav a:hover, nav a.activo {
     text-shadow:0 0 18px var(--gold-glow);
 }
 
-/* Botón La Santina con luz propia */
+/* Botï¿½n La Santina con luz propia */
 nav a.santina-btn {
     color: #fff;
     background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
@@ -769,7 +769,26 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
     .scroll-down { bottom: 30px; right: 20px; }
 }
 </style>
-</head>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track devociones
+      document.querySelectorAll('a[href*="coronilla"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_coronilla', { event_category: 'Devocion' })));
+      document.querySelectorAll('a[href*="novena"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_novena', { event_category: 'Devocion' })));
+      document.querySelectorAll('audio, .play-btn').forEach(l => 
+        l.addEventListener('play', () => gtag && gtag('event', 'play_audio', { event_category: 'Multimedia' })));
+    });
+  </script></head>
 
 <body>
 
@@ -782,7 +801,7 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
     <div class="ray"></div><div class="ray"></div>
 </div>
 
-<!-- Partículas -->
+<!-- Partï¿½culas -->
 <div class="particles">
     <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
     <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -830,34 +849,34 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
     </a>
     <nav id="mainNav">
         <a href="index.html">Inicio</a>
-        <a href="quienes-somos.html">Quiénes Somos</a>
-        <a href="introduccion.html">Introducción</a>
+        <a href="quienes-somos.html">Quiï¿½nes Somos</a>
+        <a href="introduccion.html">Introducciï¿½n</a>
         <a href="santa-faustina.html">Santa Faustina</a>
         <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
         <a href="coronilla.html">Coronilla</a>
         <a href="novena.html">Novena</a>
-        <a href="via-crucis.html">Vía Crucis</a>
+        <a href="via-crucis.html">Vï¿½a Crucis</a>
         <a href="oraciones.html">Oraciones</a>
         <a href="santo-rosario.html">El Santo Rosario</a>
-        <a href="maria.html">María</a>
+        <a href="maria.html">Marï¿½a</a>
         <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-        <a href="consagracion.html">Consagración</a>
+        <a href="consagracion.html">Consagraciï¿½n</a>
         <a href="lugares-de-culto.html">Lugares de Culto</a>
-        <a href=\"/musica/musica-sacra.html\">Música Sacra</a>
+        <a href=\"/musica/musica-sacra.html\">Mï¿½sica Sacra</a>
         <a href="noticias.html">Noticias</a>
         <a href="enlaces.html">Enlaces</a>
         
         
         
         
-        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
     <a href="estudios-biblicos.html">Estudios</a>
         <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones ?</a>
         <a href="contacto.html">Contacto</a>
     
     </nav>
-    <button class="hamburger" id="hamburger" aria-label="Menú">
+    <button class="hamburger" id="hamburger" aria-label="Menï¿½">
         <span></span><span></span><span></span>
     </button>
 </header>
@@ -869,13 +888,13 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
     <div class="hero reveal">
         <div class="hero-content">
             <div class="hero-icon">+</div>
-            <h1>Nuestra Señora de <span>Covadonga</span></h1>
-            <p class="tagline">«La Santina» — Patrona de Asturias · Madre de España · Cuna de la Reconquista</p>
+            <h1>Nuestra Seï¿½ora de <span>Covadonga</span></h1>
+            <p class="tagline">ï¿½La Santinaï¿½ ï¿½ Patrona de Asturias ï¿½ Madre de Espaï¿½a ï¿½ Cuna de la Reconquista</p>
             <div class="hero-stats">
                 <div class="hero-stat"><span class="num">722</span><span class="lab">Batalla de Covadonga</span></div>
-                <div class="hero-stat"><span class="num">+2M</span><span class="lab">Visitantes al año</span></div>
-                <div class="hero-stat"><span class="num">8 Sep</span><span class="lab">Día de la Santina</span></div>
-                <div class="hero-stat"><span class="num">1918</span><span class="lab">Coronación canónica</span></div>
+                <div class="hero-stat"><span class="num">+2M</span><span class="lab">Visitantes al aï¿½o</span></div>
+                <div class="hero-stat"><span class="num">8 Sep</span><span class="lab">Dï¿½a de la Santina</span></div>
+                <div class="hero-stat"><span class="num">1918</span><span class="lab">Coronaciï¿½n canï¿½nica</span></div>
             </div>
         </div>
     </div>
@@ -885,14 +904,14 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
         <div class="divine-image-container">
             <img 
                 src="img/la_santina.webp" 
-                alt="La Santina - Nuestra Señora de Covadonga - Patrona de Asturias" 
+                alt="La Santina - Nuestra Seï¿½ora de Covadonga - Patrona de Asturias" 
                 class="divine-image"
                 loading="eager"
             >
             <div class="divine-image-glow"></div>
         </div>
         <p class="divine-image-caption">+ La Santina +</p>
-        <p class="divine-image-subtitle">Nuestra Señora de Covadonga · Santa Cueva · Monte Auseva</p>
+        <p class="divine-image-subtitle">Nuestra Seï¿½ora de Covadonga ï¿½ Santa Cueva ï¿½ Monte Auseva</p>
     </div>
 
     <!-- HISTORIA -->
@@ -900,7 +919,7 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
         <div class="section-header">
             <span class="section-icon">+</span>
             <div>
-                <h2 class="section-title">Historia Completa · Reconquista · Don Pelayo</h2>
+                <h2 class="section-title">Historia Completa ï¿½ Reconquista ï¿½ Don Pelayo</h2>
                 <p class="section-subtitle">Fuentes: Wikipedia ES, Catholic.net, Santa Cueva, Arzobispado de Oviedo</p>
             </div>
         </div>
@@ -908,74 +927,74 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
         <div class="info-grid">
             <div class="info-box">
                 <div class="icon-big">+</div>
-                <strong>Año 722</strong>
-                <p>Batalla de Covadonga — Don Pelayo vence a las huestes musulmanas. Inicio simbólico de la Reconquista</p>
+                <strong>Aï¿½o 722</strong>
+                <p>Batalla de Covadonga ï¿½ Don Pelayo vence a las huestes musulmanas. Inicio simbï¿½lico de la Reconquista</p>
             </div>
             <div class="info-box">
                 <div class="icon-big">+</div>
                 <strong>Monte Auseva</strong>
-                <p>La Santa Cueva se excava en la roca viva del Monte Auseva, concejo de Cangas de Onís, Asturias</p>
+                <p>La Santa Cueva se excava en la roca viva del Monte Auseva, concejo de Cangas de Onï¿½s, Asturias</p>
             </div>
             <div class="info-box">
                 <div class="icon-big">+</div>
                 <strong>Alfonso I</strong>
-                <p>El rey Alfonso I el Católico manda construir la primera capilla dedicada a la Virgen María en la cueva</p>
+                <p>El rey Alfonso I el Catï¿½lico manda construir la primera capilla dedicada a la Virgen Marï¿½a en la cueva</p>
             </div>
             <div class="info-box">
                 <div class="icon-big">+</div>
                 <strong>Incendio 1777</strong>
-                <p>El 17 de octubre de 1777 un incendio destruyó la talla original. La imagen actual es del siglo XVI</p>
+                <p>El 17 de octubre de 1777 un incendio destruyï¿½ la talla original. La imagen actual es del siglo XVI</p>
             </div>
             <div class="info-box">
                 <div class="icon-big">+</div>
-                <strong>Coronación 1918</strong>
-                <p>El 8 de septiembre de 1918, el rey Alfonso XIII presidió la coronación canónica de la Virgen</p>
+                <strong>Coronaciï¿½n 1918</strong>
+                <p>El 8 de septiembre de 1918, el rey Alfonso XIII presidiï¿½ la coronaciï¿½n canï¿½nica de la Virgen</p>
             </div>
             <div class="info-box">
                 <div class="icon-big">+</div>
-                <strong>Juan Pablo II — 1989</strong>
-                <p>El 21 de agosto de 1989 Juan Pablo II visitó el santuario, rezó y ofreció misa en la Santa Cueva</p>
+                <strong>Juan Pablo II ï¿½ 1989</strong>
+                <p>El 21 de agosto de 1989 Juan Pablo II visitï¿½ el santuario, rezï¿½ y ofreciï¿½ misa en la Santa Cueva</p>
             </div>
         </div>
 
         <div class="timeline">
             <div class="t-item">
-                <div class="t-year">718–722 d.C.</div>
-                <div class="t-text"><strong>Don Pelayo y la Batalla:</strong> Según la tradición, fue en la cueva de Covadonga donde Pelayo y un pequeño grupo de hombres se refugiaron, y desde donde lideraron una histórica victoria sobre el ejército musulmán en el año 722.</div>
+                <div class="t-year">718ï¿½722 d.C.</div>
+                <div class="t-text"><strong>Don Pelayo y la Batalla:</strong> Segï¿½n la tradiciï¿½n, fue en la cueva de Covadonga donde Pelayo y un pequeï¿½o grupo de hombres se refugiaron, y desde donde lideraron una histï¿½rica victoria sobre el ejï¿½rcito musulmï¿½n en el aï¿½o 722.</div>
             </div>
             <div class="t-item">
                 <div class="t-year">Siglo VIII</div>
-                <div class="t-text"><strong>Primera construcción:</strong> La primera construcción en la Santa Cueva data de tiempos de Alfonso I el Católico, quien para conmemorial la victoria de don Pelayo ante los musulmanes, mandó construir una capilla dedicada a la Virgen María.</div>
+                <div class="t-text"><strong>Primera construcciï¿½n:</strong> La primera construcciï¿½n en la Santa Cueva data de tiempos de Alfonso I el Catï¿½lico, quien para conmemorial la victoria de don Pelayo ante los musulmanes, mandï¿½ construir una capilla dedicada a la Virgen Marï¿½a.</div>
             </div>
             <div class="t-item">
                 <div class="t-year">1777</div>
-                <div class="t-text">Un incendio destruyó, el 17 de octubre de 1777, todo el templo del milagro. Pereció la imagen sagrada, las reliquias, las alhajas. No se salvó nada. Solo quedaron los muros ennegrecidos y los sepulcros de Pelayo y Alfonso I.</div>
+                <div class="t-text">Un incendio destruyï¿½, el 17 de octubre de 1777, todo el templo del milagro. Pereciï¿½ la imagen sagrada, las reliquias, las alhajas. No se salvï¿½ nada. Solo quedaron los muros ennegrecidos y los sepulcros de Pelayo y Alfonso I.</div>
             </div>
             <div class="t-item">
                 <div class="t-year">1856</div>
-                <div class="t-text">El Papa <strong>Pío IX</strong> extiende la fiesta de Nuestra Señora de Covadonga a toda la Iglesia universal.</div>
+                <div class="t-text">El Papa <strong>Pï¿½o IX</strong> extiende la fiesta de Nuestra Seï¿½ora de Covadonga a toda la Iglesia universal.</div>
             </div>
             <div class="t-item">
                 <div class="t-year">1918</div>
-                <div class="t-text">Coronación canónica de la Virgen. El rey Alfonso XIII y la reina Victoria Eugenia asisten como testigos. Ese mismo día se inaugura el Parque Nacional de la Montaña de Covadonga (hoy Picos de Europa), el primero de España.</div>
+                <div class="t-text">Coronaciï¿½n canï¿½nica de la Virgen. El rey Alfonso XIII y la reina Victoria Eugenia asisten como testigos. Ese mismo dï¿½a se inaugura el Parque Nacional de la Montaï¿½a de Covadonga (hoy Picos de Europa), el primero de Espaï¿½a.</div>
             </div>
             <div class="t-item">
-                <div class="t-year">Guerra Civil (1936–1939)</div>
-                <div class="t-text">Durante la Guerra Civil ante el riesgo de su destrucción, la imagen de la Santina fue escondida. Fue llevada a París en 1937. El 11 de junio de 1939 entraba triunfalmente en España la imagen de la Santina.</div>
+                <div class="t-year">Guerra Civil (1936ï¿½1939)</div>
+                <div class="t-text">Durante la Guerra Civil ante el riesgo de su destrucciï¿½n, la imagen de la Santina fue escondida. Fue llevada a Parï¿½s en 1937. El 11 de junio de 1939 entraba triunfalmente en Espaï¿½a la imagen de la Santina.</div>
             </div>
             <div class="t-item">
                 <div class="t-year">21 Agosto 1989</div>
-                <div class="t-text">Juan Pablo II visita Covadonga, reza en la Santa Cueva y ofrece misa. Deja su oración histórica, hoy conservada en el Vaticano.</div>
+                <div class="t-text">Juan Pablo II visita Covadonga, reza en la Santa Cueva y ofrece misa. Deja su oraciï¿½n histï¿½rica, hoy conservada en el Vaticano.</div>
             </div>
             <div class="t-item">
                 <div class="t-year">Hoy</div>
-                <div class="t-text">Actualmente Covadonga recibe más de un millón de visitantes a lo largo del año procedentes de los cinco continentes. Su devoción se haya extendida por el mundo entero.</div>
+                <div class="t-text">Actualmente Covadonga recibe mï¿½s de un millï¿½n de visitantes a lo largo del aï¿½o procedentes de los cinco continentes. Su devociï¿½n se haya extendida por el mundo entero.</div>
             </div>
         </div>
 
         <blockquote>
-            "Hablar de Covadonga es hablar de don Pelayo y de la resistencia de un reducido grupo de cristianos frente a las huestes musulmanas, que fueron derrotadas gracias a la intercesión de la Santina. Aquello cambió el rumbo de nuestro país y de nuestra cultura."
-            <cite>— Santuario de Covadonga (iglesiadeasturias.org)</cite>
+            "Hablar de Covadonga es hablar de don Pelayo y de la resistencia de un reducido grupo de cristianos frente a las huestes musulmanas, que fueron derrotadas gracias a la intercesiï¿½n de la Santina. Aquello cambiï¿½ el rumbo de nuestro paï¿½s y de nuestra cultura."
+            <cite>ï¿½ Santuario de Covadonga (iglesiadeasturias.org)</cite>
         </blockquote>
     </section>
 
@@ -1005,33 +1024,33 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
         <div class="section-header">
             <span class="section-icon">+</span>
             <div>
-                <h2 class="section-title">La Imagen · «La Santina»</h2>
-                <p class="section-subtitle">Descripción oficial y datos verificados</p>
+                <h2 class="section-title">La Imagen ï¿½ ï¿½La Santinaï¿½</h2>
+                <p class="section-subtitle">Descripciï¿½n oficial y datos verificados</p>
             </div>
         </div>
 
         <div class="card highlight">
-            <h3>+ DESCRIPCIÓN DE LA TALLA ACTUAL</h3>
-            <p>La Virgen sostiene al Niño Jesús en su mano izquierda (colocado en 1704) y en la derecha sujeta una rosa de oro. Sobre su cabeza, una corona dorada con perlas en sus aristas y brillantes incrustados. Del arco que describe la parte superior de la corona pende una paloma representando al Espíritu Santo, rodeada de un círculo de brillantes.</p>
+            <h3>+ DESCRIPCIï¿½N DE LA TALLA ACTUAL</h3>
+            <p>La Virgen sostiene al Niï¿½o Jesï¿½s en su mano izquierda (colocado en 1704) y en la derecha sujeta una rosa de oro. Sobre su cabeza, una corona dorada con perlas en sus aristas y brillantes incrustados. Del arco que describe la parte superior de la corona pende una paloma representando al Espï¿½ritu Santo, rodeada de un cï¿½rculo de brillantes.</p>
             <br>
-            <p>La talla de la Virgen es de madera policromada, de dulces facciones, sostiene al Niño y una rosa de oro. La imagen actual data del siglo XVI y fue donada al Santuario por la catedral de Oviedo en 1778.</p>
+            <p>La talla de la Virgen es de madera policromada, de dulces facciones, sostiene al Niï¿½o y una rosa de oro. La imagen actual data del siglo XVI y fue donada al Santuario por la catedral de Oviedo en 1778.</p>
         </div>
 
         <div class="card">
-            <h3>+ DATO DE VERIFICACIÓN HISTÓRICA</h3>
-            <p>La imagen que actualmente se venera <strong>NO es la original que encontró Don Pelayo</strong>. La talla primitiva se quemó en el incendio de 1777. La actual es una imagen del siglo XVI donada por la catedral de Oviedo. Este dato es confirmado por fuentes históricas: Wikipedia, Catholic.net y la web de la Santa Cueva.</p>
+            <h3>+ DATO DE VERIFICACIï¿½N HISTï¿½RICA</h3>
+            <p>La imagen que actualmente se venera <strong>NO es la original que encontrï¿½ Don Pelayo</strong>. La talla primitiva se quemï¿½ en el incendio de 1777. La actual es una imagen del siglo XVI donada por la catedral de Oviedo. Este dato es confirmado por fuentes histï¿½ricas: Wikipedia, Catholic.net y la web de la Santa Cueva.</p>
         </div>
 
         <div class="card">
-            <h3>+ UBICACIÓN Y ACCESO</h3>
-            <p>La Santa Cueva se encuentra en el Monte Auseva, concejo de Cangas de Onís, Principado de Asturias. Se accede a través de 103 escalones o por un túnel desde la zona del estanque. <strong>La entrada es gratuita.</strong></p>
-            <p style="margin-top:10px;"><strong>Dirección:</strong> Covadonga, s/n, 33589 Cangas de Onís, Asturias<br>
-            <strong>Teléfono Abad:</strong> 985 84 60 27 · <strong>Email:</strong> abad@santuariodecovadonga.es</p>
+            <h3>+ UBICACIï¿½N Y ACCESO</h3>
+            <p>La Santa Cueva se encuentra en el Monte Auseva, concejo de Cangas de Onï¿½s, Principado de Asturias. Se accede a travï¿½s de 103 escalones o por un tï¿½nel desde la zona del estanque. <strong>La entrada es gratuita.</strong></p>
+            <p style="margin-top:10px;"><strong>Direcciï¿½n:</strong> Covadonga, s/n, 33589 Cangas de Onï¿½s, Asturias<br>
+            <strong>Telï¿½fono Abad:</strong> 985 84 60 27 ï¿½ <strong>Email:</strong> abad@santuariodecovadonga.es</p>
         </div>
 
         <div class="banner">
-            <h3>+ LA SANTINA EN DIRECTO · 24 HORAS</h3>
-            <p>El Santuario emite en streaming las 24 horas del día desde la Santa Cueva, con cámara fija enfocando directamente a la Santina.</p>
+            <h3>+ LA SANTINA EN DIRECTO ï¿½ 24 HORAS</h3>
+            <p>El Santuario emite en streaming las 24 horas del dï¿½a desde la Santa Cueva, con cï¿½mara fija enfocando directamente a la Santina.</p>
             <a href="https://www.youtube.com/@SantuarioCovadongaAsturias" target="_blank" class="tel">youtube.com/@SantuarioCovadongaAsturias</a>
         </div>
     </section>
@@ -1054,55 +1073,55 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
         <div class="section-header">
             <span class="section-icon">+</span>
             <div>
-                <h2 class="section-title">Oraciones · Novena · Consagración</h2>
-                <p class="section-subtitle">Fuentes: Vatican.va · Santuario de Covadonga · N.S. de la Cristiandad</p>
+                <h2 class="section-title">Oraciones ï¿½ Novena ï¿½ Consagraciï¿½n</h2>
+                <p class="section-subtitle">Fuentes: Vatican.va ï¿½ Santuario de Covadonga ï¿½ N.S. de la Cristiandad</p>
             </div>
         </div>
 
         <div class="prayer-block">
-            <h3>+ ORACIÓN DE S.S. JUAN PABLO II EN LA CUEVA DE COVADONGA +</h3>
+            <h3>+ ORACIï¿½N DE S.S. JUAN PABLO II EN LA CUEVA DE COVADONGA +</h3>
             <p class="jac">21 de agosto de 1989</p>
-            <p>He subido a la montaña, he venido hasta tu Cueva, Virgen María, para venerar tu imagen, "Santina de Covadonga". Con tus hijos de Asturias y de España entera quiero hoy proclamar tus glorias y unirme a tu canto: ¡Tú eres la Sierva del Señor, nuestra Madre y Reina!</p>
+            <p>He subido a la montaï¿½a, he venido hasta tu Cueva, Virgen Marï¿½a, para venerar tu imagen, "Santina de Covadonga". Con tus hijos de Asturias y de Espaï¿½a entera quiero hoy proclamar tus glorias y unirme a tu canto: ï¿½Tï¿½ eres la Sierva del Seï¿½or, nuestra Madre y Reina!</p>
             <br>
-            <p>"Junto con los Pastores y fieles de esta Iglesia de Asturias, a Ti, que eres dulzura y esperanza de cuantos te imploran, te pido el don de la esperanza que ilumina el futuro, el gozo perenne de la fe, el ardor radiante de la caridad. Ayúdanos a vivir en comunión sincera, sabiéndonos Iglesia de Dios, hermanos de Cristo e hijos tuyos, para dar testimonio de unidad y reavivar en nuestro pueblo la fe."</p>
+            <p>"Junto con los Pastores y fieles de esta Iglesia de Asturias, a Ti, que eres dulzura y esperanza de cuantos te imploran, te pido el don de la esperanza que ilumina el futuro, el gozo perenne de la fe, el ardor radiante de la caridad. Ayï¿½danos a vivir en comuniï¿½n sincera, sabiï¿½ndonos Iglesia de Dios, hermanos de Cristo e hijos tuyos, para dar testimonio de unidad y reavivar en nuestro pueblo la fe."</p>
             <br>
-            <p>"Madre y Maestra de la fe católica, haz que Covadonga siga siendo, como antaño lo fue, altar mayor y latido del corazón de España. ¡Oh Clementísima, oh piadosa, oh dulce Virgen María! Amén."</p>
-            <p class="note">— Fuente: <a href="https://www.vatican.va/content/john-paul-ii/es/speeches/1989/august/documents/hf_jp_spe_19890821_prayer-covadonga.html" target="_blank">Vatican.va</a></p>
+            <p>"Madre y Maestra de la fe catï¿½lica, haz que Covadonga siga siendo, como antaï¿½o lo fue, altar mayor y latido del corazï¿½n de Espaï¿½a. ï¿½Oh Clementï¿½sima, oh piadosa, oh dulce Virgen Marï¿½a! Amï¿½n."</p>
+            <p class="note">ï¿½ Fuente: <a href="https://www.vatican.va/content/john-paul-ii/es/speeches/1989/august/documents/hf_jp_spe_19890821_prayer-covadonga.html" target="_blank">Vatican.va</a></p>
         </div>
 
         <div class="prayer-block">
             <h3>+ JACULATORIA TRADICIONAL DE LA SANTINA +</h3>
-            <p class="jac">"Madre mía de Covadonga, sálvanos y salva a España"</p>
-            <p class="note">— Se repite al finalizar la novena tras tres avemarías (Fuente: Santuario de Covadonga)</p>
+            <p class="jac">"Madre mï¿½a de Covadonga, sï¿½lvanos y salva a Espaï¿½a"</p>
+            <p class="note">ï¿½ Se repite al finalizar la novena tras tres avemarï¿½as (Fuente: Santuario de Covadonga)</p>
         </div>
 
         <div class="prayer-block">
             <h3>+ HIMNO DE LA VIRGEN DE COVADONGA +</h3>
-            <p>Bendita la Reina de nuestra montaña,<br>
-            que tiene por trono la cuna de España<br>
-            y brilla en la altura más bella que el sol.<br>
+            <p>Bendita la Reina de nuestra montaï¿½a,<br>
+            que tiene por trono la cuna de Espaï¿½a<br>
+            y brilla en la altura mï¿½s bella que el sol.<br>
             Es Madre y es Reina. Venid, peregrinos,<br>
             que ante ella se aspiran amores divinos<br>
-            y en ella está el alma del pueblo español.</p>
+            y en ella estï¿½ el alma del pueblo espaï¿½ol.</p>
             <br>
             <p>Dios te salve, Reina y Madre del pueblo que hoy te corona,<br>
-            en los cánticos que entona te da el alma y el corazón,<br>
-            causa de nuestra alegría, vida y esperanza nuestra,<br>
+            en los cï¿½nticos que entona te da el alma y el corazï¿½n,<br>
+            causa de nuestra alegrï¿½a, vida y esperanza nuestra,<br>
             bendice a la Patria y muestra que sus hijos tuyos son.</p>
         </div>
 
         <div class="card highlight">
-            <h3>+ NOVENA A LA SANTINA · ESTRUCTURA OFICIAL</h3>
-            <p>La Novena de la Santina, en la vida de los cristianos de Asturias, es una ocasión entrañable para acercarse a la Madre de Jesús. Esta novena pretende ser un momento de encuentro para todos los que queremos "Orar con la madre de Jesús".</p>
+            <h3>+ NOVENA A LA SANTINA ï¿½ ESTRUCTURA OFICIAL</h3>
+            <p>La Novena de la Santina, en la vida de los cristianos de Asturias, es una ocasiï¿½n entraï¿½able para acercarse a la Madre de Jesï¿½s. Esta novena pretende ser un momento de encuentro para todos los que queremos "Orar con la madre de Jesï¿½s".</p>
             <br>
-            <p><strong>Estructura de cada día:</strong></p>
+            <p><strong>Estructura de cada dï¿½a:</strong></p>
             <ol style="padding-left: 22px; margin-top: 10px; line-height: 2.2;">
-                <li>En el nombre del Padre…</li>
-                <li>Antífona: <em>"Nuestra esperanza es María, a ella acudimos…"</em> (o canto "Bendita la Reina")</li>
-                <li>Reflexión del día (varía cada jornada)</li>
-                <li>Preces: <em>"A cada petición digamos: Intercede por nosotros Madre del Señor."</em></li>
-                <li>Tres avemarías con: <em>V. Madre mia de Covadonga / R. Sálvanos y salva a España</em></li>
-                <li>Oración final</li>
+                <li>En el nombre del Padreï¿½</li>
+                <li>Antï¿½fona: <em>"Nuestra esperanza es Marï¿½a, a ella acudimosï¿½"</em> (o canto "Bendita la Reina")</li>
+                <li>Reflexiï¿½n del dï¿½a (varï¿½a cada jornada)</li>
+                <li>Preces: <em>"A cada peticiï¿½n digamos: Intercede por nosotros Madre del Seï¿½or."</em></li>
+                <li>Tres avemarï¿½as con: <em>V. Madre mia de Covadonga / R. Sï¿½lvanos y salva a Espaï¿½a</em></li>
+                <li>Oraciï¿½n final</li>
             </ol>
             <p style="margin-top: 14px;">
                 <strong>Novena oficial en web del Santuario:</strong> <a href="https://santuariodecovadonga.es/novena-a-la-santina/" target="_blank">santuariodecovadonga.es/novena-a-la-santina</a>
@@ -1110,11 +1129,11 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
         </div>
 
         <div class="prayer-block">
-            <h3>+ ORACIÓN TRADICIONAL A LA VIRGEN DE COVADONGA +</h3>
-            <p>"Amorosísima Virgen María, Soberana Emperatriz de Cielos y tierra, hermosísima Reina de los Ángeles, Madre y abogadas de los pecadores, oíd la súplica que os dirigimos desde este sitio. Dirigid una cariñosa mirada que penetre nuestro corazón. Concedednos la gracia que os pedimos en esta santa novena, llenad nuestra alma de las esclarecidas virtudes que os adornan, inflamadla en el más puro y santo amor de Dios y no permitáis que hagamos cosa alguna que os desagrade.</p>
+            <h3>+ ORACIï¿½N TRADICIONAL A LA VIRGEN DE COVADONGA +</h3>
+            <p>"Amorosï¿½sima Virgen Marï¿½a, Soberana Emperatriz de Cielos y tierra, hermosï¿½sima Reina de los ï¿½ngeles, Madre y abogadas de los pecadores, oï¿½d la sï¿½plica que os dirigimos desde este sitio. Dirigid una cariï¿½osa mirada que penetre nuestro corazï¿½n. Concedednos la gracia que os pedimos en esta santa novena, llenad nuestra alma de las esclarecidas virtudes que os adornan, inflamadla en el mï¿½s puro y santo amor de Dios y no permitï¿½is que hagamos cosa alguna que os desagrade.</p>
             <br>
-            <p>Nos consagramos a vuestro amor y servicio y nunca más olvidaremos vuestras bondades. Alcanzadnos la verdadera santificación en esta vida, la perseverancia final y recibidnos en la hora de la muerte. Amén."</p>
-            <p class="note">— Fuente: nscristiandad.es/novena-covadonga</p>
+            <p>Nos consagramos a vuestro amor y servicio y nunca mï¿½s olvidaremos vuestras bondades. Alcanzadnos la verdadera santificaciï¿½n en esta vida, la perseverancia final y recibidnos en la hora de la muerte. Amï¿½n."</p>
+            <p class="note">ï¿½ Fuente: nscristiandad.es/novena-covadonga</p>
         </div>
     </section>
 
@@ -1143,7 +1162,7 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
 
         <div class="table-wrap">
             <table>
-                <thead><tr><th>Sitio</th><th>Tipo</th><th>Descripción</th><th>URL</th></tr></thead>
+                <thead><tr><th>Sitio</th><th>Tipo</th><th>Descripciï¿½n</th><th>URL</th></tr></thead>
                 <tbody>
                     <tr>
                         <td><strong>Santuario de Covadonga OFICIAL</strong> <span class="badge-top">TOP</span></td>
@@ -1153,38 +1172,38 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
                     </tr>
                     <tr>
                         <td><strong>Arzobispado de Oviedo</strong> <span class="badge-top">TOP</span></td>
-                        <td>Diótesis oficial</td>
+                        <td>Diï¿½tesis oficial</td>
                         <td>Ficha oficial del Santuario con datos actualizados</td>
                         <td><a href="https://iglesiadeasturias.org/entidades-diocesanas/santuario-de-covadonga/" target="_blank">iglesiadeasturias.org</a></td>
                     </tr>
                     <tr>
-                        <td><strong>Vatican.va — Oración Juan Pablo II</strong></td>
+                        <td><strong>Vatican.va ï¿½ Oraciï¿½n Juan Pablo II</strong></td>
                         <td>Vaticano</td>
-                        <td>Oración oficial del Papa en la Cueva (1989)</td>
+                        <td>Oraciï¿½n oficial del Papa en la Cueva (1989)</td>
                         <td><a href="https://www.vatican.va/content/john-paul-ii/es/speeches/1989/august/documents/hf_jp_spe_19890821_prayer-covadonga.html" target="_blank">vatican.va</a></td>
                     </tr>
                     <tr>
-                        <td><strong>Wikipedia ES — Virgen de Covadonga</strong></td>
+                        <td><strong>Wikipedia ES ï¿½ Virgen de Covadonga</strong></td>
                         <td>Enciclopedia</td>
                         <td>Historia completa y documentada</td>
                         <td><a href="https://es.wikipedia.org/wiki/Virgen_de_Covadonga" target="_blank">wikipedia.org</a></td>
                     </tr>
                     <tr>
                         <td><strong>N. S. de la Cristiandad</strong></td>
-                        <td>Peregrinación</td>
-                        <td>Novena completa + info de peregrinación anual</td>
+                        <td>Peregrinaciï¿½n</td>
+                        <td>Novena completa + info de peregrinaciï¿½n anual</td>
                         <td><a href="https://nscristiandad.es/novena-covadonga/" target="_blank">nscristiandad.es</a></td>
                     </tr>
                     <tr>
                         <td><strong>Catholic.net</strong></td>
                         <td>Religioso</td>
-                        <td>Historia espiritual y devoción</td>
+                        <td>Historia espiritual y devociï¿½n</td>
                         <td><a href="https://es.catholic.net/op/articulos/63137/cat/644/nuestra-senora-de-covadonga.html" target="_blank">es.catholic.net</a></td>
                     </tr>
                     <tr>
                         <td><strong>Real Sitio de Covadonga</strong></td>
                         <td>Turismo/Fe</td>
-                        <td>Webcam 24h, horarios litúrgicos, información completa</td>
+                        <td>Webcam 24h, horarios litï¿½rgicos, informaciï¿½n completa</td>
                         <td><a href="https://www.realsitiodecovadonga.com/" target="_blank">realsitiodecovadonga.com</a></td>
                     </tr>
                     <tr>
@@ -1223,7 +1242,7 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
 
         <div class="banner">
             <h3>+ CANAL OFICIAL DE YOUTUBE DEL SANTUARIO</h3>
-            <p>El Santuario de Covadonga retransmite en directo los actos de la Novena de la Santina y la eucía del Día de Covadonga.</p>
+            <p>El Santuario de Covadonga retransmite en directo los actos de la Novena de la Santina y la eucï¿½a del Dï¿½a de Covadonga.</p>
             <a href="https://www.youtube.com/@SantuarioCovadongaAsturias" target="_blank" class="tel">youtube.com/@SantuarioCovadongaAsturias</a>
         </div>
 
@@ -1231,26 +1250,26 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
             <div class="video-card">
                 <div class="v-icon">+</div>
                 <h4>SANTINA EN DIRECTO 24H</h4>
-                <p>Cámara fija desde la Santa Cueva. La Santina visible desde cualquier lugar del mundo.</p>
+                <p>Cï¿½mara fija desde la Santa Cueva. La Santina visible desde cualquier lugar del mundo.</p>
                 <a href="https://www.youtube.com/@SantuarioCovadongaAsturias/streams" target="_blank">Ver en Directo</a>
             </div>
             <div class="video-card">
                 <div class="v-icon">+</div>
                 <h4>MISA DIARIA EN VIVO</h4>
-                <p>Lunes a viernes: 13:30h. Sábados, domingos y festivos: 11:00h.</p>
+                <p>Lunes a viernes: 13:30h. Sï¿½bados, domingos y festivos: 11:00h.</p>
                 <a href="https://www.youtube.com/results?search_query=misa+santuario+covadonga+directo" target="_blank">Buscar Misas</a>
             </div>
             <div class="video-card">
                 <div class="v-icon">+</div>
                 <h4>NOVENA ANUAL</h4>
-                <p>Del 30 agosto al 8 septiembre cada año. La novena completa retransmitida a las 18:00h.</p>
+                <p>Del 30 agosto al 8 septiembre cada aï¿½o. La novena completa retransmitida a las 18:00h.</p>
                 <a href="https://www.youtube.com/results?search_query=novena+virgen+covadonga+santina" target="_blank">Ver Novena</a>
             </div>
             <div class="video-card">
                 <div class="v-icon">+</div>
-                <h4>DÍA DE COVADONGA — 8 SEP</h4>
-                <p>Eucía presideda por el Arzopsipo de Oviedo. El evento más importante del año.</p>
-                <a href="https://www.youtube.com/results?search_query=dia+covadonga+8+septiembre+misa" target="_blank">Ver Celebración</a>
+                <h4>Dï¿½A DE COVADONGA ï¿½ 8 SEP</h4>
+                <p>Eucï¿½a presideda por el Arzopsipo de Oviedo. El evento mï¿½s importante del aï¿½o.</p>
+                <a href="https://www.youtube.com/results?search_query=dia+covadonga+8+septiembre+misa" target="_blank">Ver Celebraciï¿½n</a>
             </div>
         </div>
 
@@ -1258,12 +1277,12 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
             <h3>+ HORARIO DE MISAS Y ROSARIO (VERIFICADO)</h3>
             <div class="table-wrap" style="margin-top: 12px;">
                 <table>
-                    <thead><tr><th>Día</th><th>Hora</th><th>Acto</th></tr></thead>
+                    <thead><tr><th>Dï¿½a</th><th>Hora</th><th>Acto</th></tr></thead>
                     <tbody>
-                        <tr><td>Lunes a Viernes</td><td>13:30h</td><td>Eucía</td></tr>
-                        <tr><td>Sábados, Domingos, Festivos</td><td>11:00h</td><td>Eucía</td></tr>
-                        <tr><td>Todos los días</td><td>17:00h</td><td>Santo Rosario</td></tr>
-                        <tr><td>30 agosto – 8 septiembre</td><td>18:00h</td><td>Novena anual + Rosario procesional</td></tr>
+                        <tr><td>Lunes a Viernes</td><td>13:30h</td><td>Eucï¿½a</td></tr>
+                        <tr><td>Sï¿½bados, Domingos, Festivos</td><td>11:00h</td><td>Eucï¿½a</td></tr>
+                        <tr><td>Todos los dï¿½as</td><td>17:00h</td><td>Santo Rosario</td></tr>
+                        <tr><td>30 agosto ï¿½ 8 septiembre</td><td>18:00h</td><td>Novena anual + Rosario procesional</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -1288,8 +1307,8 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
         <div class="section-header">
             <span class="section-icon">+</span>
             <div>
-                <h2 class="section-title">Datos Culturales · Fiestas · 8 de Septiembre</h2>
-                <p class="section-subtitle">El Día de la Santina es también el Día Oficial de Asturias</p>
+                <h2 class="section-title">Datos Culturales ï¿½ Fiestas ï¿½ 8 de Septiembre</h2>
+                <p class="section-subtitle">El Dï¿½a de la Santina es tambiï¿½n el Dï¿½a Oficial de Asturias</p>
             </div>
         </div>
 
@@ -1297,27 +1316,27 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
             <div class="info-box">
                 <div class="icon-big">+</div>
                 <strong>8 de Septiembre</strong>
-                <p>Natividad de la Virgen María — Fiesta de Nuestra Señora de Covadonga y Día de Asturias</p>
+                <p>Natividad de la Virgen Marï¿½a ï¿½ Fiesta de Nuestra Seï¿½ora de Covadonga y Dï¿½a de Asturias</p>
             </div>
             <div class="info-box">
                 <div class="icon-big">+</div>
                 <strong>Novena Previa</strong>
-                <p>Del 30 agosto al 7 septiembre: novenario en la Basílica a las 18:00h</p>
+                <p>Del 30 agosto al 7 septiembre: novenario en la Basï¿½lica a las 18:00h</p>
             </div>
             <div class="info-box">
                 <div class="icon-big">+</div>
                 <strong>Misa Solemne</strong>
-                <p>El 8 de septiembre a las 12:00h: Eucía presideda por el Arzopsipo de Oviedo</p>
+                <p>El 8 de septiembre a las 12:00h: Eucï¿½a presideda por el Arzopsipo de Oviedo</p>
             </div>
             <div class="info-box">
                 <div class="icon-big">+</div>
-                <strong>Fuente de los 7 Caños</strong>
+                <strong>Fuente de los 7 Caï¿½os</strong>
                 <p>Los peregrinos beben el agua de la fuente sagrada y lanzan monedas al estanque</p>
             </div>
             <div class="info-box">
                 <div class="icon-big">+</div>
-                <strong>Lago Enol — 8 Sep</strong>
-                <p>El 8 de septiembre se rescata la réplica sumergida de la Santina del Lago Enol</p>
+                <strong>Lago Enol ï¿½ 8 Sep</strong>
+                <p>El 8 de septiembre se rescata la rï¿½plica sumergida de la Santina del Lago Enol</p>
             </div>
             <div class="info-box">
                 <div class="icon-big">+</div>
@@ -1327,8 +1346,8 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
         </div>
 
         <blockquote>
-            "La «Santina» es símbolo indiscutible de Asturias, sea creyente o no, pues trasciende el aspecto religioso para convertirse en parte de una cultura y un sentimiento de pertenencia a una colectividad que comparte historia, pasado y presente."
-            <cite>— Ediciones Trabe · "Covadonga, Otra Mirada" (2018)</cite>
+            "La ï¿½Santinaï¿½ es sï¿½mbolo indiscutible de Asturias, sea creyente o no, pues trasciende el aspecto religioso para convertirse en parte de una cultura y un sentimiento de pertenencia a una colectividad que comparte historia, pasado y presente."
+            <cite>ï¿½ Ediciones Trabe ï¿½ "Covadonga, Otra Mirada" (2018)</cite>
         </blockquote>
     </section>
 
@@ -1351,31 +1370,31 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
             <span class="section-icon">+</span>
             <div>
                 <h2 class="section-title">Datos de Contacto Oficiales</h2>
-                <p class="section-subtitle">Datos verificados vía web oficial del Arzobispado de Oviedo</p>
+                <p class="section-subtitle">Datos verificados vï¿½a web oficial del Arzobispado de Oviedo</p>
             </div>
         </div>
 
         <div class="card highlight">
-            <h3>+ REAL SITIO DE COVADONGA — CONTACTO OFICIAL</h3>
-            <p><strong>Abad:</strong> M. I. Sr. D. David Cueto Rodríguez</p>
-            <p><strong>Teléfono:</strong> <a href="tel:+34985846027">985 84 60 27</a></p>
+            <h3>+ REAL SITIO DE COVADONGA ï¿½ CONTACTO OFICIAL</h3>
+            <p><strong>Abad:</strong> M. I. Sr. D. David Cueto Rodrï¿½guez</p>
+            <p><strong>Telï¿½fono:</strong> <a href="tel:+34985846027">985 84 60 27</a></p>
             <p><strong>Email Abad:</strong> <a href="mailto:abad@santuariodecovadonga.es">abad@santuariodecovadonga.es</a></p>
             <p><strong>Web Santuario:</strong> <a href="https://santuariodecovadonga.es" target="_blank">santuariodecovadonga.es</a></p>
-            <p><strong>Web Diótesis:</strong> <a href="https://iglesiadeasturias.org" target="_blank">iglesiadeasturias.org</a></p>
+            <p><strong>Web Diï¿½tesis:</strong> <a href="https://iglesiadeasturias.org" target="_blank">iglesiadeasturias.org</a></p>
             <p><strong>YouTube:</strong> <a href="https://www.youtube.com/@SantuarioCovadongaAsturias" target="_blank">youtube.com/@SantuarioCovadongaAsturias</a></p>
         </div>
     </section>
 
     <!-- FOOTER MENU -->
     <div class="footer-menu reveal">
-        <h3 class="footer-menu-title">Explorar Más</h3>
+        <h3 class="footer-menu-title">Explorar Mï¿½s</h3>
         <div class="footer-menu-links">
             <a href="santa-faustina.html">Santa Faustina</a>
             <a href="coronilla.html">Coronilla</a>
             <a href="novena.html">Novena</a>
             <a href="oraciones.html">Oraciones</a>
-            <a href="maria.html">Santa María</a>
-            <a href="san-jose.html">San José</a>
+            <a href="maria.html">Santa Marï¿½a</a>
+            <a href="san-jose.html">San Josï¿½</a>
             <a href="contacto.html">Contacto</a>
         </div>
     </div>
@@ -1387,9 +1406,9 @@ footer.main-footer .tagline { color: var(--gold-divine); font-family: 'Cinzel', 
 
 <!-- Footer -->
 <footer class="main-footer sacred-footer">
-    <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">?</a>
-    <p class="tagline">Jesús, En Vos Confío</p>
-    <p>© 2026 — Portal de la Divina Misericordia</p>
+    <a href="el-altar.html" class="cross-glow" title="Adorar al Santï¿½simo">?</a>
+    <p class="tagline">Jesï¿½s, En Vos Confï¿½o</p>
+    <p>ï¿½ 2026 ï¿½ Portal de la Divina Misericordia</p>
 </footer>
 
 <!-- Scroll Buttons -->
@@ -1456,7 +1475,7 @@ document.getElementById('hamburger').addEventListener('click',function(){
     rs();init();dr();
 })();
 
-// Cursor instantáneo
+// Cursor instantï¿½neo
 (function(){
     const cursor = document.getElementById('cursor');
     if(!cursor) return;
@@ -1476,7 +1495,9 @@ document.getElementById('hamburger').addEventListener('click',function(){
 </script>
 
 
-<!-- Sistema de Diseño Global -->
+<!-- Sistema de Diseï¿½o Global -->
 <script src="js/system-init.js"></script>
-</body>
+
+  <!-- Core Web Vitals -->
+  <script src="/assets/js/web-vitals.js"></script></body>
 </html>

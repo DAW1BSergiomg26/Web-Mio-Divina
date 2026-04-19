@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contacto - El Portal de la Divina Misericordia | Escríbenos</title>
-<meta name="description" content="Contacto con la El Portal de la Divina Misericordia. Escríbenos para consultas sobre la devoción, oración o colaboración. Estamos en Asturias, España.">
-<meta name="keywords" content="contacto Divina Misericordia, asociación católica, escribirnos, consulta espiritual, Asturias España, colaboración ???????">
+<title>Contacto - El Portal de la Divina Misericordia | Escrï¿½benos</title>
+<meta name="description" content="Contacto con la El Portal de la Divina Misericordia. Escrï¿½benos para consultas sobre la devociï¿½n, oraciï¿½n o colaboraciï¿½n. Estamos en Asturias, Espaï¿½a.">
+<meta name="keywords" content="contacto Divina Misericordia, asociaciï¿½n catï¿½lica, escribirnos, consulta espiritual, Asturias Espaï¿½a, colaboraciï¿½n ???????">
 <meta name="author" content="El Portal de la Divina Misericordia">
 <meta name="robots" content="index, follow, max-snippet:-1">
 <meta name="theme-color" content="#050d1a">
@@ -13,7 +13,7 @@
 <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://misericordiadejesus.es/contacto.html">
-<meta property="og:title" content="Contacto — Divina Misericordia">
+<meta property="og:title" content="Contacto ï¿½ Divina Misericordia">
 <meta property="og:description" content="Contacto con la El Portal de la Divina Misericordia.">
 <meta property="og:site_name" content="Divina Misericordia">
 <meta property="og:locale" content="es_ES">
@@ -22,7 +22,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Contacto - El Portal de la Divina Misericordia">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Contacto — Divina Misericordia">
+<meta name="twitter:title" content="Contacto ï¿½ Divina Misericordia">
 <meta name="twitter:description" content="Contacto con la El Portal de la Divina Misericordia.">
 <meta name="twitter:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta name="twitter:site" content="@divinamisericordia">
@@ -196,7 +196,7 @@ nav a.activo { background:rgba(212,175,55,0.18); box-shadow:0 0 20px rgba(212,17
 .reveal.visible { opacity:1; transform:translateY(0); }
 
 /* =============================================
-   SEPARADOR — CRUZ DIVINA MISERICORDIA
+   SEPARADOR ï¿½ CRUZ DIVINA MISERICORDIA
    ============================================= */
 .separator-wrap {
   width:100%; margin:3rem auto;
@@ -481,7 +481,26 @@ footer.main-footer .tagline {
   animation: sacredPulse 4s ease-in-out infinite; pointer-events: none;
 }
 </style>
-</head>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track devociones
+      document.querySelectorAll('a[href*="coronilla"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_coronilla', { event_category: 'Devocion' })));
+      document.querySelectorAll('a[href*="novena"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_novena', { event_category: 'Devocion' })));
+      document.querySelectorAll('audio, .play-btn').forEach(l => 
+        l.addEventListener('play', () => gtag && gtag('event', 'play_audio', { event_category: 'Multimedia' })));
+    });
+  </script></head>
 
 <!-- Schema.org BreadcrumbList -->
 <script type="application/ld+json">
@@ -544,34 +563,34 @@ footer.main-footer .tagline {
   </a>
     <nav id="mainNav">
     <a href="index.html">Inicio</a>
-    <a href="quienes-somos.html">Quiénes Somos</a>
-    <a href="introduccion.html">Introducción</a>
+    <a href="quienes-somos.html">Quiï¿½nes Somos</a>
+    <a href="introduccion.html">Introducciï¿½n</a>
     <a href="santa-faustina.html">Santa Faustina</a>
     <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
     <a href="coronilla.html">Coronilla</a>
     <a href="novena.html">Novena</a>
-    <a href="via-crucis.html">Vía Crucis</a>
+    <a href="via-crucis.html">Vï¿½a Crucis</a>
     <a href="oraciones.html">Oraciones</a>
     <a href="santo-rosario.html">El Santo Rosario</a>
-    <a href="maria.html">María</a>
+    <a href="maria.html">Marï¿½a</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
+    <a href="consagracion.html">Consagraciï¿½n</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
-    <a href=\"/musica/musica-sacra.html\">Música Sacra</a>
+    <a href=\"/musica/musica-sacra.html\">Mï¿½sica Sacra</a>
     <a href="noticias.html">Noticias</a>
     <a href="enlaces.html">Enlaces</a>
     
     
     
     
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
     <a href="estudios-biblicos.html">Estudios</a>
         <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones ?</a>
     <a href="contacto.html">Contacto</a>
     
   </nav>
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menú" aria-expanded="false">
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menï¿½" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </header>
@@ -580,11 +599,11 @@ footer.main-footer .tagline {
 <main class="main-content">
 
   <h1 class="page-title">Contacto</h1>
-  <p class="subtitle-line">? Estamos aquí para escucharte ?</p>
+  <p class="subtitle-line">? Estamos aquï¿½ para escucharte ?</p>
   <p class="intro-text">
-    Si tienes alguna pregunta, petición de oración o deseas saber más sobre
-    la El Portal de la Divina Misericordia, escríbenos.
-    Respondemos con amor y confianza en Jesús Misericordioso.
+    Si tienes alguna pregunta, peticiï¿½n de oraciï¿½n o deseas saber mï¿½s sobre
+    la El Portal de la Divina Misericordia, escrï¿½benos.
+    Respondemos con amor y confianza en Jesï¿½s Misericordioso.
   </p>
 
   <!-- SEPARADOR 1 -->
@@ -638,13 +657,13 @@ footer.main-footer .tagline {
           <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
         </div>
         <div class="form-group">
-          <label for="email">Correo electrónico</label>
+          <label for="email">Correo electrï¿½nico</label>
           <input type="email" id="email" name="email" required placeholder="tu@email.com">
         </div>
       </div>
       <div class="form-group">
         <label for="asunto">Asunto</label>
-        <input type="text" id="asunto" name="asunto" placeholder="¿En qué podemos ayudarte?">
+        <input type="text" id="asunto" name="asunto" placeholder="ï¿½En quï¿½ podemos ayudarte?">
       </div>
       <div class="form-group">
         <label for="mensaje">Mensaje</label>
@@ -654,7 +673,7 @@ footer.main-footer .tagline {
     </form>
     <div class="form-success" id="formSuccess">
       ?? Gracias por escribirnos. Tu mensaje ha sido recibido.<br>
-      Responderemos lo antes posible. <em>Jesús, En Vos Confío.</em>
+      Responderemos lo antes posible. <em>Jesï¿½s, En Vos Confï¿½o.</em>
     </div>
   </div>
 
@@ -711,7 +730,7 @@ footer.main-footer .tagline {
       <span class="icon">?</span>
       <span>El Portal de la Divina Misericordia</span>
     </div>
-    <p class="contact-tagline">Jesús, En Vos Confío</p>
+    <p class="contact-tagline">Jesï¿½s, En Vos Confï¿½o</p>
   </div>
 
 </main>
@@ -724,38 +743,38 @@ footer.main-footer .tagline {
 
   <h3 class="footer-menu-title">Explora nuestra web</h3>
   <div class="footer-menu-links">
-    <a href="via-crucis.html">Vía Crucis</a>
+    <a href="via-crucis.html">Vï¿½a Crucis</a>
     <a href="santo-rosario.html">El Santo Rosario</a>
-    <a href="maria.html">María</a>
+    <a href="maria.html">Marï¿½a</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
+    <a href="consagracion.html">Consagraciï¿½n</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
     <a href="el-altar.html" class="el-altar-btn">? El Altar</a>
     <a href="noticias.html">Noticias</a>
-    <a href="ss-leon-xiv.html">S.S. León XIV</a>
+    <a href="ss-leon-xiv.html">S.S. Leï¿½n XIV</a>
     <a href="ss-francisco.html">S.S. Francisco</a>
     <a href="ss-benedicto-xvi.html">S.S. Benedicto XVI</a>
     <a href="ss-juan-pablo-ii.html">S.S. Juan Pablo II</a>
     <a href="enlaces.html">Enlaces</a>
-    <a href="divino-nino-jesus.html">Divino Niño Jesús</a>
+    <a href="divino-nino-jesus.html">Divino Niï¿½o Jesï¿½s</a>
     <a href="san-judas-tadeo.html">San Judas Tadeo</a>
     <a href="san-cayetano.html">San Cayetano</a>
-    <a href="consagracion-sagrado-corazon.html">Sagrado Corazón</a>
-    <a href="maria-auxiliadora.html">María Auxiliadora</a>
-    <a href="san-sanson.html">Sansón</a>
+    <a href="consagracion-sagrado-corazon.html">Sagrado Corazï¿½n</a>
+    <a href="maria-auxiliadora.html">Marï¿½a Auxiliadora</a>
+    <a href="san-sanson.html">Sansï¿½n</a>
     <a href="san-benito.html">San Benito</a>
     <a href="oracion-santa-cruz.html">Santa Cruz</a>
     <a href="san-francisco.html">San Francisco</a>
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
         <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones</a>
   </div>
 </div>
 
 <footer class="main-footer sacred-footer">
-    <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">?</a>
-    <p class="tagline">Jesús, En Vos Confío</p>
-    <p>© 2026 — Portal de la Divina Misericordia</p>
+    <a href="el-altar.html" class="cross-glow" title="Adorar al Santï¿½simo">?</a>
+    <p class="tagline">Jesï¿½s, En Vos Confï¿½o</p>
+    <p>ï¿½ 2026 ï¿½ Portal de la Divina Misericordia</p>
 </footer>
 
 <!-- ========== SCROLL BUTTONS ========== -->
@@ -927,8 +946,8 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     return;
   }
 
-  // Aquí conectarías con tu backend o servicio de email
-  // Por ahora muestra la confirmación visual
+  // Aquï¿½ conectarï¿½as con tu backend o servicio de email
+  // Por ahora muestra la confirmaciï¿½n visual
   this.style.opacity = '0.4';
   this.style.pointerEvents = 'none';
   document.getElementById('formSuccess').classList.add('visible');
@@ -968,7 +987,9 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 </script>
 
 
-<!-- Sistema de Diseño Global -->
+<!-- Sistema de Diseï¿½o Global -->
 <script src="js/system-init.js"></script>
-</body>
+
+  <!-- Core Web Vitals -->
+  <script src="/assets/js/web-vitals.js"></script></body>
 </html>

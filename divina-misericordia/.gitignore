@@ -4,3 +4,6 @@ data/
 # Archivos JSON específicos para web
 !public/manifest.json
 *.json
+
+# Local Netlify folder
+.netlify

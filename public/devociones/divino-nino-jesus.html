@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Divino Niño Jesús - Devoción, Oración y Novena | Divina Misericordia</title>
-<meta name="description" content="Devoción al Divino Niño Jesús. Oraciones, novena y devoción. El amor tierno de Jesús Niño para tiempos difíciles. Niño Jesús de Praga y otras devociones.">
-<meta name="keywords" content="Divino Niño Jesús, oración Niño Jesús, novena Niño Jesús, niño jesús praga, devoción niño dios, niño dios ternura, oración niños, amor dios niño, infacia cristo">
+<title>Divino Niï¿½o Jesï¿½s - Devociï¿½n, Oraciï¿½n y Novena | Divina Misericordia</title>
+<meta name="description" content="Devociï¿½n al Divino Niï¿½o Jesï¿½s. Oraciones, novena y devociï¿½n. El amor tierno de Jesï¿½s Niï¿½o para tiempos difï¿½ciles. Niï¿½o Jesï¿½s de Praga y otras devociones.">
+<meta name="keywords" content="Divino Niï¿½o Jesï¿½s, oraciï¿½n Niï¿½o Jesï¿½s, novena Niï¿½o Jesï¿½s, niï¿½o jesï¿½s praga, devociï¿½n niï¿½o dios, niï¿½o dios ternura, oraciï¿½n niï¿½os, amor dios niï¿½o, infacia cristo">
 <meta name="author" content="El Portal de la Divina Misericordia">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <link rel="canonical" href="https://misericordiadejesus.es/divino-nino-jesus.html">
 <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://misericordiadejesus.es/divino-nino-jesus.html">
-<meta property="og:title" content="Divino Niño Jesús — Devoción, Oración y Novena">
-<meta property="og:description" content="Devoción al Divino Niño Jesús. Oraciones, novena y devoción. El amor tierno de Jesús Niño para tiempos difíciles.">
+<meta property="og:title" content="Divino Niï¿½o Jesï¿½s ï¿½ Devociï¿½n, Oraciï¿½n y Novena">
+<meta property="og:description" content="Devociï¿½n al Divino Niï¿½o Jesï¿½s. Oraciones, novena y devociï¿½n. El amor tierno de Jesï¿½s Niï¿½o para tiempos difï¿½ciles.">
 <meta property="og:site_name" content="Divina Misericordia">
 <meta property="og:locale" content="es_ES">
 <meta property="og:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Divino Niño Jesús - Devoción y Oración">
+<meta property="og:image:alt" content="Divino Niï¿½o Jesï¿½s - Devociï¿½n y Oraciï¿½n">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Divino Niño Jesús — Devoción, Oración y Novena">
-<meta name="twitter:description" content="Devoción al Divino Niño Jesús. Oraciones, novena y devoción.">
+<meta name="twitter:title" content="Divino Niï¿½o Jesï¿½s ï¿½ Devociï¿½n, Oraciï¿½n y Novena">
+<meta name="twitter:description" content="Devociï¿½n al Divino Niï¿½o Jesï¿½s. Oraciones, novena y devociï¿½n.">
 <meta name="twitter:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta name="twitter:site" content="@divinamisericordia">
 <meta name="twitter:creator" content="@divinamisericordia">
@@ -472,7 +472,26 @@ footer .tagline {
   pointer-events: none;
 }
 </style>
-</head>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track devociones
+      document.querySelectorAll('a[href*="coronilla"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_coronilla', { event_category: 'Devocion' })));
+      document.querySelectorAll('a[href*="novena"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_novena', { event_category: 'Devocion' })));
+      document.querySelectorAll('audio, .play-btn').forEach(l => 
+        l.addEventListener('play', () => gtag && gtag('event', 'play_audio', { event_category: 'Multimedia' })));
+    });
+  </script></head>
 
 <!-- Schema.org BreadcrumbList -->
 <script type="application/ld+json">
@@ -482,7 +501,7 @@ footer .tagline {
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://misericordiadejesus.es/"},
     {"@type": "ListItem", "position": 2, "name": "Devociones", "item": "https://misericordiadejesus.es/otras-devociones.html"},
-    {"@type": "ListItem", "position": 3, "name": "Divino Niño Jesús", "item": "https://misericordiadejesus.es/divino-nino-jesus.html"}
+    {"@type": "ListItem", "position": 3, "name": "Divino Niï¿½o Jesï¿½s", "item": "https://misericordiadejesus.es/divino-nino-jesus.html"}
   ]
 }
 </script>
@@ -533,27 +552,27 @@ footer .tagline {
     </a>
       <nav id="mainNav">
     <a href="index.html">Inicio</a>
-    <a href="quienes-somos.html">Quiénes Somos</a>
-    <a href="introduccion.html">Introducción</a>
+    <a href="quienes-somos.html">Quiï¿½nes Somos</a>
+    <a href="introduccion.html">Introducciï¿½n</a>
     <a href="santa-faustina.html">Santa Faustina</a>
     <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
     <a href="coronilla.html">Coronilla</a>
     <a href="novena.html">Novena</a>
-    <a href="via-crucis.html">Vía Crucis</a>
+    <a href="via-crucis.html">Vï¿½a Crucis</a>
     <a href="oraciones.html">Oraciones</a>
     <a href="santo-rosario.html">El Santo Rosario</a>
-    <a href="maria.html">María</a>
+    <a href="maria.html">Marï¿½a</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
+    <a href="consagracion.html">Consagraciï¿½n</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
-    <a href=\"/musica/musica-sacra.html\">Música Sacra</a>
+    <a href=\"/musica/musica-sacra.html\">Mï¿½sica Sacra</a>
     <a href="noticias.html">Noticias</a>
     <a href="enlaces.html">Enlaces</a>
     
     
     
     
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
     <a href="estudios-biblicos.html">Estudios</a>
         <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones ?</a>
@@ -568,57 +587,57 @@ footer .tagline {
 <main class="main-content">
 
     <div class="page-header">
-        <h1 class="page-title">Devoción al Divino Niño Jesús</h1>
-        <p class="page-subtitle">Oraciones y reflexiones del Niño que tiene los brazos abiertos para todos</p>
+        <h1 class="page-title">Devociï¿½n al Divino Niï¿½o Jesï¿½s</h1>
+        <p class="page-subtitle">Oraciones y reflexiones del Niï¿½o que tiene los brazos abiertos para todos</p>
     </div>
 
     <div class="historia-box">
-        <h2>Historia de la Devoción</h2>
-        <p>El Divino Niño Jesús, también conocido como el "Niño del 20 de Julio", es una imagen en mármol que mide 30 centímetros a la cual concurren millones de fieles para pedirle favores o darle las gracias por un milagro.</p>
+        <h2>Historia de la Devociï¿½n</h2>
+        <p>El Divino Niï¿½o Jesï¿½s, tambiï¿½n conocido como el "Niï¿½o del 20 de Julio", es una imagen en mï¿½rmol que mide 30 centï¿½metros a la cual concurren millones de fieles para pedirle favores o darle las gracias por un milagro.</p>
         
-        <p>La devoción comenzó en 1934 junto al sacerdote italiano Juan del Rizzo, quien fue un ferviente devoto de quien llamaba el "Divino Principito". Fue en Barranquilla, Medellín e Ibagué donde apareció con un Niño Jesús de Praga.</p>
+        <p>La devociï¿½n comenzï¿½ en 1934 junto al sacerdote italiano Juan del Rizzo, quien fue un ferviente devoto de quien llamaba el "Divino Principito". Fue en Barranquilla, Medellï¿½n e Ibaguï¿½ donde apareciï¿½ con un Niï¿½o Jesï¿½s de Praga.</p>
         
-        <p>Una comunidad religiosa le impidió venerarlo en Bogotá con la excusa de que "tenía la exclusividad" sobre esta figura. Esta prohibición lo obligó a buscar otro Jesús en El Vaticano, un almacén de objetos religiosos. Allí quedó encantado con una estatua a la que le retiró una cruz que tenía en la espalda porque "ese niño estaba muy pequeño para llevar una carga tan pesada".</p>
+        <p>Una comunidad religiosa le impidiï¿½ venerarlo en Bogotï¿½ con la excusa de que "tenï¿½a la exclusividad" sobre esta figura. Esta prohibiciï¿½n lo obligï¿½ a buscar otro Jesï¿½s en El Vaticano, un almacï¿½n de objetos religiosos. Allï¿½ quedï¿½ encantado con una estatua a la que le retirï¿½ una cruz que tenï¿½a en la espalda porque "ese niï¿½o estaba muy pequeï¿½o para llevar una carga tan pesada".</p>
         
-        <p>A la imagen la ubicó en el altar de un cobertizo que hacía las veces de iglesia y le tomó fotografías para imprimir estampas que repartió por toda la ciudad.</p>
+        <p>A la imagen la ubicï¿½ en el altar de un cobertizo que hacï¿½a las veces de iglesia y le tomï¿½ fotografï¿½as para imprimir estampas que repartiï¿½ por toda la ciudad.</p>
     </div>
 
     <div class="cita-box">
-        <p>" quienes tengan fe pidan poco; los que tengan más fe, pidan más, y quienes tengan mucha fe, pidan todo lo que quieran porque el Niño Jesús tiene los brazos abiertos para todos "</p>
-        <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-muted);">— Padre Juan del Rizzo</p>
+        <p>" quienes tengan fe pidan poco; los que tengan mï¿½s fe, pidan mï¿½s, y quienes tengan mucha fe, pidan todo lo que quieran porque el Niï¿½o Jesï¿½s tiene los brazos abiertos para todos "</p>
+        <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-muted);">ï¿½ Padre Juan del Rizzo</p>
     </div>
 
     <div class="historia-box">
-        <p>Las peticiones fervorosas se complementaban con cuatro condiciones que hoy siguen vigentes: la confesión, ir a misa todos los domingos o los primeros domingos, comulgar y ayudar a los más pobres.</p>
+        <p>Las peticiones fervorosas se complementaban con cuatro condiciones que hoy siguen vigentes: la confesiï¿½n, ir a misa todos los domingos o los primeros domingos, comulgar y ayudar a los mï¿½s pobres.</p>
     </div>
 
     <div class="oracion-box oracion-destacada">
-        <h3>Oración al Divino Niño Jesús para Tiempos Difíciles</h3>
-        <p class="oracion-texto">Divino Niño Jesús tengo mil dificultades: ayúdame. De los enemigos del alma: sálvame, en mis desaciertos: ilumíname, en mis dudas y penas: confórtame, en mis soledades: acompáñame, en mis enfermedades: fortaléceme. Cuando me desprecien: anímame, en las tentaciones: defiéndeme, en las horas difíciles: consuélame, con tu corazón paternal: ámame, con tu inmenso poder: protégeme, y en tus brazos al expirar: recíbeme. Amén.</p>
+        <h3>Oraciï¿½n al Divino Niï¿½o Jesï¿½s para Tiempos Difï¿½ciles</h3>
+        <p class="oracion-texto">Divino Niï¿½o Jesï¿½s tengo mil dificultades: ayï¿½dame. De los enemigos del alma: sï¿½lvame, en mis desaciertos: ilumï¿½name, en mis dudas y penas: confï¿½rtame, en mis soledades: acompï¿½ï¿½ame, en mis enfermedades: fortalï¿½ceme. Cuando me desprecien: anï¿½mame, en las tentaciones: defiï¿½ndeme, en las horas difï¿½ciles: consuï¿½lame, con tu corazï¿½n paternal: ï¿½mame, con tu inmenso poder: protï¿½geme, y en tus brazos al expirar: recï¿½beme. Amï¿½n.</p>
     </div>
 
     <div class="oracion-box">
-        <h3>Unos Minutos con el Divino Niño Jesús</h3>
-        <p class="oracion-texto">Bendíceme Divino Niño Jesús y ruega por mí sin cesar, aleja de mí el pecado hoy y en todo momento, si tropiezo, tiende tú mano hacia mí. Si cien veces caigo, cien veces levántame, si yo te olvido, tú no te olvides de mí. Si me dejas Divino Niño, ¿qué será de mí? En los peligros del mundo, asísteme.</p>
+        <h3>Unos Minutos con el Divino Niï¿½o Jesï¿½s</h3>
+        <p class="oracion-texto">Bendï¿½ceme Divino Niï¿½o Jesï¿½s y ruega por mï¿½ sin cesar, aleja de mï¿½ el pecado hoy y en todo momento, si tropiezo, tiende tï¿½ mano hacia mï¿½. Si cien veces caigo, cien veces levï¿½ntame, si yo te olvido, tï¿½ no te olvides de mï¿½. Si me dejas Divino Niï¿½o, ï¿½quï¿½ serï¿½ de mï¿½? En los peligros del mundo, asï¿½steme.</p>
         
-        <p class="oracion-texto" style="margin-top: 20px;">Quiero siempre vivir y morir bajo tu mano, quiero que mi vida te haga sonreír, mírame con compasión, no me dejes Jesús mío, y al final, recíbeme y llévame junto a Ti. Divino Niño Jesús, que tu bendición nos acompañe siempre. Amén.</p>
+        <p class="oracion-texto" style="margin-top: 20px;">Quiero siempre vivir y morir bajo tu mano, quiero que mi vida te haga sonreï¿½r, mï¿½rame con compasiï¿½n, no me dejes Jesï¿½s mï¿½o, y al final, recï¿½beme y llï¿½vame junto a Ti. Divino Niï¿½o Jesï¿½s, que tu bendiciï¿½n nos acompaï¿½e siempre. Amï¿½n.</p>
     </div>
 
     <div class="oracion-box oracion-destacada">
-        <h3>Oración al Divino Niño Jesús</h3>
-        <p class="oracion-texto">Divino Niño Jesús, Dios de mi corazón y modelo de mi conducta, estate siempre conmigo para separarme del mal y hacerme semelhante a Ti, haciendo que crezca en sabiduría y gracia delante de Dios y de los hombres.</p>
+        <h3>Oraciï¿½n al Divino Niï¿½o Jesï¿½s</h3>
+        <p class="oracion-texto">Divino Niï¿½o Jesï¿½s, Dios de mi corazï¿½n y modelo de mi conducta, estate siempre conmigo para separarme del mal y hacerme semelhante a Ti, haciendo que crezca en sabidurï¿½a y gracia delante de Dios y de los hombres.</p>
         
-        <p class="oracion-texto" style="margin-top: 20px;">Oh dulce y pequeño Niño Jesús, yo te amaré siempre con todo mi corazón. Divino Niño Jesús, bendícenos. Divino Niño Jesús, escúchanos. Divino Niño Jesús, óyenos.</p>
+        <p class="oracion-texto" style="margin-top: 20px;">Oh dulce y pequeï¿½o Niï¿½o Jesï¿½s, yo te amarï¿½ siempre con todo mi corazï¿½n. Divino Niï¿½o Jesï¿½s, bendï¿½cenos. Divino Niï¿½o Jesï¿½s, escï¿½chanos. Divino Niï¿½o Jesï¿½s, ï¿½yenos.</p>
         
-        <p class="oracion-texto" style="margin-top: 20px; text-align: center; font-weight: bold;">Amén.</p>
+        <p class="oracion-texto" style="margin-top: 20px; text-align: center; font-weight: bold;">Amï¿½n.</p>
     </div>
 
-    <!-- Nueva Oración de Confianza al Divino Niño -->
+    <!-- Nueva Oraciï¿½n de Confianza al Divino Niï¿½o -->
     <div class="oracion-box oracion-destacada">
-        <h3>Oración de la Confianza al Divino Niño</h3>
+        <h3>Oraciï¿½n de la Confianza al Divino Niï¿½o</h3>
         
         <p class="oracion-texto" style="text-align: center;">
-            Niño amable de mi vida<br>
+            Niï¿½o amable de mi vida<br>
             Consuelo de los cristianos<br>
             La gracia que necesito<br>
             Pongo en tus benditas manos.
@@ -632,22 +651,22 @@ footer .tagline {
     <div class="oracion-box">
         <p class="oracion-texto" style="text-align: center;">
             Y aunque tu amor no merezca<br>
-            No recurriré a ti en vano<br>
+            No recurrirï¿½ a ti en vano<br>
             pues eres Hijo de Dios<br>
             Y auxilio de los cristianos.
         </p>
         
         <p class="oracion-texto" style="margin-top: 20px; text-align: center; font-weight: bold; color: var(--celestial-light);">
-            Dios te salve María...
+            Dios te salve Marï¿½a...
         </p>
     </div>
 
     <div class="oracion-box">
         <p class="oracion-texto" style="text-align: center;">
-            Tú que sabes mis pesares<br>
-            Pues todos te los confío<br>
+            Tï¿½ que sabes mis pesares<br>
+            Pues todos te los confï¿½o<br>
             Da la paz a los turbados<br>
-            Y alivio al corazón mío.
+            Y alivio al corazï¿½n mï¿½o.
         </p>
         
         <p class="oracion-texto" style="margin-top: 20px; text-align: center; font-weight: bold; color: var(--celestial-light);">
@@ -657,20 +676,20 @@ footer .tagline {
 
     <div class="oracion-box oracion-destacada">
         <p class="oracion-texto" style="text-align: center; font-size: 1.3rem; font-weight: bold;">
-            Divino Niño Jesús Bendícenos
+            Divino Niï¿½o Jesï¿½s Bendï¿½cenos
         </p>
         
         <p class="oracion-texto" style="margin-top: 20px; text-align: center; font-weight: bold; font-size: 1.4rem;">
-            Amén.
+            Amï¿½n.
         </p>
     </div>
 
 </main>
 
 <footer class="main-footer sacred-footer">
-    <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">?</a>
-    <p class="tagline">Jesús, En Vos Confío</p>
-    <p>© 2026 — Portal de la Divina Misericordia</p>
+    <a href="el-altar.html" class="cross-glow" title="Adorar al Santï¿½simo">?</a>
+    <p class="tagline">Jesï¿½s, En Vos Confï¿½o</p>
+    <p>ï¿½ 2026 ï¿½ Portal de la Divina Misericordia</p>
 </footer>
 
 <div class="scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})"></div>
@@ -730,7 +749,9 @@ window.addEventListener('scroll',()=>{
 </script>
 
 
-<!-- Sistema de Diseño Global -->
+<!-- Sistema de Diseï¿½o Global -->
 <script src="js/system-init.js"></script>
-</body>
+
+  <!-- Core Web Vitals -->
+  <script src="/assets/js/web-vitals.js"></script></body>
 </html>

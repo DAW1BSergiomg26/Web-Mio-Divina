@@ -493,7 +493,26 @@ footer.main-footer .tagline { color:var(--gold-warm); font-family:'Cinzel',serif
     50% { filter: brightness(1.3); }
 }
 </style>
-</head>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track devociones
+      document.querySelectorAll('a[href*="coronilla"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_coronilla', { event_category: 'Devocion' })));
+      document.querySelectorAll('a[href*="novena"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_novena', { event_category: 'Devocion' })));
+      document.querySelectorAll('audio, .play-btn').forEach(l => 
+        l.addEventListener('play', () => gtag && gtag('event', 'play_audio', { event_category: 'Multimedia' })));
+    });
+  </script></head>
 <body>
 
 <!-- Rays of Light -->
@@ -544,7 +563,7 @@ footer.main-footer .tagline { color:var(--gold-warm); font-family:'Cinzel',serif
         
         
         
-        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
     <a href="estudios-biblicos.html">Estudios</a>
         <a href="otras-devociones.html" class="activo">Otras Devociones</a>
@@ -592,7 +611,7 @@ footer.main-footer .tagline { color:var(--gold-warm); font-family:'Cinzel',serif
     </div>
 
     <div class="content-block reveal">
-        <h2>Una Niñez Privilegiada</h2>
+        <h2>Una Niï¿½ez Privilegiada</h2>
         <p>Francisca nacio en el seno de una familia senatorial romana que, segun las chronicons de la epoca, era una de las mas distinguidas y adineradas de la Ciudad Eterna. Sus padres, personas de profunda fe catolica, la criaron en el ambiente de la nobleza romana pero siempre rodeado de valores evangelicos. Desde la mas tierna infancia, la pequena mostro una vocation extraordinaria hacia la vida religiosa y contemplativa.</p>
         <p style="margin-top:16px;">Su corazon infantil latia con fuerza por Jesus y por la vida consagrada. Sin embargo, la voluntad divina se manifestaria de una manera inesperada: cuando Francisca alcanzo la edad casadera, sus padres, ignorando su profunda vocation, le buscaronspouse de una familia igualmente distinguida y acaudalada. Contra su inclination mas profunda, Francisca obedecio y contrajo matrimonio, iniciando asi un capitulo de su vida que la Iglesia celebraria siglos despues como exemplo luminoso de santidad en el estado matrimonial.</p>
     </div>
@@ -666,7 +685,7 @@ footer.main-footer .tagline { color:var(--gold-warm); font-family:'Cinzel',serif
 
     <div class="content-block reveal">
         <h2>Las Pruebas que Forjaron su Santidad</h2>
-        <p>Dios, que llamaba a Francisca a??? santidad, permitio que atravesara circunstancias extraordinariamente difficiles. En primer lugar, el cisma de Aviñon y los conflictos politicos que desgarraban a Italia en aquella epoca trajeron consigo una guerra civil en Roma. Lanzolano, su esposo, havia ????????? del Papa, y cuando los inimigos del Sumo Pontifice prevailcieron, la familia de Francisca fue despojada violentamente de todas sus propiedades.</p>
+        <p>Dios, que llamaba a Francisca a??? santidad, permitio que atravesara circunstancias extraordinariamente difficiles. En primer lugar, el cisma de Aviï¿½on y los conflictos politicos que desgarraban a Italia en aquella epoca trajeron consigo una guerra civil en Roma. Lanzolano, su esposo, havia ????????? del Papa, y cuando los inimigos del Sumo Pontifice prevailcieron, la familia de Francisca fue despojada violentamente de todas sus propiedades.</p>
         <p style="margin-top:16px;">De la opulencia pasaron a la miseria ms profunda. Francisca tuvo que abandonar sus hermosas casas y trasladarse a una casona viejisima en los arrabales de Roma. Para mantener el hospital que havia fundado y seguir atendiendo a los pobres, salia ella misma a pedir limosna de puerta en puerta. Esta vida de pobreza y privaciones duro muchos anos, durante los cuales?? padec?????????????? que la postraron en el lecho por longos periodos.</p>
         <p style="margin-top:16px;">Ademas de estas pruebas externas, Francisca tuvo que enfrentar intensas tentaciones espirituales. Pero su response siempre era la misma: oracion constante, mortificacion voluntaria y una actividad incesante en favor del projimo. Sabia que estaba almacando tesoros en el cielo, y esta conviction le daba fuerzas para soportar todo con paz y hasta con alegria.</p>
     </div>
@@ -686,8 +705,8 @@ footer.main-footer .tagline { color:var(--gold-warm); font-family:'Cinzel',serif
     <div class="content-block reveal">
         <h2>La Prueba de la Nuera</h2>
         <p>Cuando su unico hijo superviviente contrajo matrimonio, Francisca penso que finalmente tendria un poco de paz. Pero la Divina Providencia le reserved otra prueba: la joven que se caso con su hijo era extremadamente hermosa pero de caracter difficile y criticona. Desde el primer momento, esta nuera se dedico a amargarle la vida a Francisca, burlandose de sus practicas de piedad, de sus caridades y de todo lo que hacia.</p>
-        <p style="margin-top:16px;">Francisca, con una patience heroica, soportaba todas las impertinencias sin jamais responder con palabra descortés. Cuando pior, la nuera contrajo una enfermedad grave que la postro en cama. Entonces Francisca, olvidando todo el mal que havia recibido, se dedication con zeal extraordinario a asistirla. Le preparaba la comida con sus propias manos, le mudaba la ropa de cama, le proporcionaba medicines y, sobre todo, la atencibaum espiritual con reflexiones piadosas y oraciones.</p>
-        <p style="margin-top:16px;">El milagro se produjo de manera inesperada: la nuera sanó de su enfermedad fisica y, lo que era aun mas maravilloso, quedo completamente curada de su amargura y antipatia hacia su suegra. En adelante, se convirtio en su mas ferviente admiradora y amiga, reconociendo publicly que havia encontrado en Francisca a la madre que nunca havia tenido.</p>
+        <p style="margin-top:16px;">Francisca, con una patience heroica, soportaba todas las impertinencias sin jamais responder con palabra descortï¿½s. Cuando pior, la nuera contrajo una enfermedad grave que la postro en cama. Entonces Francisca, olvidando todo el mal que havia recibido, se dedication con zeal extraordinario a asistirla. Le preparaba la comida con sus propias manos, le mudaba la ropa de cama, le proporcionaba medicines y, sobre todo, la atencibaum espiritual con reflexiones piadosas y oraciones.</p>
+        <p style="margin-top:16px;">El milagro se produjo de manera inesperada: la nuera sanï¿½ de su enfermedad fisica y, lo que era aun mas maravilloso, quedo completamente curada de su amargura y antipatia hacia su suegra. En adelante, se convirtio en su mas ferviente admiradora y amiga, reconociendo publicly que havia encontrado en Francisca a la madre que nunca havia tenido.</p>
     </div>
 
     <div class="separator-wrap">
@@ -725,7 +744,7 @@ footer.main-footer .tagline { color:var(--gold-warm); font-family:'Cinzel',serif
         <h2>Fundacion de las Oblatas de Maria</h2>
         <p>La obra mas importante de Santa Francisca Romana fue la fundacion de la comunidad de las "Oblatas de Maria". Estas eran religiosas seglares, mujeres casadas o viudas que, sin renunciar a su estado, se dedicaban a works de misericordia espiritual y corporal. Vestian como senoras respetables de la epoca, sin habito especial que las distinguiera, porque la santidad no necesita ??????? signos.</p>
         <p style="margin-top:16px;">La casa principal de esta comunidad se establishcio en un edificio historique de Roma llamado "Torre de los Espejos", nombre que evoca la figura de Maria Santisima, espejo de toda perfeccion. Este convento sigue existiendo hoy en dia y permanece como testimonio vivo de la obra de Francisca.</p>
-        <p style="margin-top:16px;">Cuando Francisca quedo viuda, entro ella misma a formar parte de la comunidad que havia fundado. Las religiosas, por vote unanime, la eligieron Superiora General, cargo que accepto con humility y que desempeño hasta su muerte. Desde entonces tom el nombre por el qual es conocida universally: Francisca Romana.</p>
+        <p style="margin-top:16px;">Cuando Francisca quedo viuda, entro ella misma a formar parte de la comunidad que havia fundado. Las religiosas, por vote unanime, la eligieron Superiora General, cargo que accepto con humility y que desempeï¿½o hasta su muerte. Desde entonces tom el nombre por el qual es conocida universally: Francisca Romana.</p>
     </div>
 
     <div class="separator-wrap">
@@ -853,7 +872,7 @@ footer.main-footer .tagline { color:var(--gold-warm); font-family:'Cinzel',serif
         <p>Oh Dios, que concediste a Santa Francisca Romana la gracia de alcanzar la santidad en medio de los deberes del estado matrimonial, concedenos, por su intercesion, la gracia de santificar nuestro hogar con el fuego de tu amor y de cumplir con alegra cada uno de nuestros deberes familiares y profesionales.</p>
         <p style="margin-top:16px;">Santa Francisca, que conociste las alegrias y las penas de la vida familiar, ruiega por las esposas y madres que hoy enfrentan dificultades en su hogar. Ensennales a poner a Dios en el centro de su familia, a amar a sus esposos con entrega verdadera, a educar a sus hijos en la fe catolica y a servir generosamente a los mas necesitados.</p>
         <p style="margin-top:16px;">Tu que supiste reconciliarte con tu nuera a traves del amor y la paciencia, ayudanos a perdonar a quienes nos han ofendido y a ser instrumentos de paz en nuestros hogares y comunidades.</p>
-        <p style="margin-top:16px;">Francisca, esposa fiel, madre amorosa, viuda pia, religiosa exemplar, ruega por nosotros. Amén.</p>
+        <p style="margin-top:16px;">Francisca, esposa fiel, madre amorosa, viuda pia, religiosa exemplar, ruega por nosotros. Amï¿½n.</p>
     </div>
 
     <div class="separator-wrap">
@@ -873,7 +892,7 @@ footer.main-footer .tagline { color:var(--gold-warm); font-family:'Cinzel',serif
         <p class="quote-source">Proverbios 31, Santa Biblia</p>
     </div>
 
-    <p class="closing-text reveal">Santa Francisca Romana, ruega al buen Dios por nosotros, para que sepamos cumplir cada dia nuestros deberes conyugales y familiares con la misma entrega y amor que tu demostraste. Concdenos la gracia de santificar nuestra vida matrimonial y de hacer de nuestro hogar un?? santurario de fe, esperanza y caridad. Amén.</p>
+    <p class="closing-text reveal">Santa Francisca Romana, ruega al buen Dios por nosotros, para que sepamos cumplir cada dia nuestros deberes conyugales y familiares con la misma entrega y amor que tu demostraste. Concdenos la gracia de santificar nuestra vida matrimonial y de hacer de nuestro hogar un?? santurario de fe, esperanza y caridad. Amï¿½n.</p>
 
     <div class="separator-wrap">
         <div class="separator-cruz">
@@ -911,9 +930,9 @@ footer.main-footer .tagline { color:var(--gold-warm); font-family:'Cinzel',serif
 
 <!-- ========== FOOTER ========== -->
 <footer class="main-footer sacred-footer">
-    <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">?</a>
-    <p class="tagline">Jesús, En Vos Confío</p>
-    <p>© 2026 — Portal de la Divina Misericordia</p>
+    <a href="el-altar.html" class="cross-glow" title="Adorar al Santï¿½simo">?</a>
+    <p class="tagline">Jesï¿½s, En Vos Confï¿½o</p>
+    <p>ï¿½ 2026 ï¿½ Portal de la Divina Misericordia</p>
 </footer>
 
 <!-- Scroll Buttons -->
@@ -979,7 +998,9 @@ document.getElementById('hamburger').addEventListener('click',function(){
 </script>
 
 
-<!-- Sistema de Diseño Global -->
+<!-- Sistema de Diseï¿½o Global -->
 <script src="js/system-init.js"></script>
-</body>
+
+  <!-- Core Web Vitals -->
+  <script src="/assets/js/web-vitals.js"></script></body>
 </html>

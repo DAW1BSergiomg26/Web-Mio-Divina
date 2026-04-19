@@ -1,358 +1,345 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-         xmlns:xhtml="http://www.w3.org/1999/xhtml"
-         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <!-- HOME -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://misericordiadejesus.es/</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://misericordiadejesus.es/"/>
-    <image:image>
-      <image:loc>https://misericordiadejesus.es/img/logo_divina_misericordia.jpg</image:loc>
-      <image:title>Divina Misericordia - Jesús, En Vos Confío</image:title>
-    </image:image>
-  </url>
-  <!-- CORE PAGES -->
-  <url>
-    <loc>https://misericordiadejesus.es/quienes-somos.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://misericordiadejesus.es/quienes-somos.html"/>
   </url>
   <url>
-    <loc>https://misericordiadejesus.es/introduccion.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://misericordiadejesus.es/introduccion.html"/>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/contacto.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://misericordiadejesus.es/contacto.html"/>
-  </url>
-  <!-- DEVOCIONES PRINCIPALES -->
-  <url>
-    <loc>https://misericordiadejesus.es/santa-faustina.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-    <image:image>
-      <image:loc>https://misericordiadejesus.es/img/logo_divina_misericordia.jpg</image:loc>
-      <image:title>Santa Faustina Kowalska</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/coronilla.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/novena.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/hora-de-la-misericordia.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/oraciones.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <!-- DEVOCIONES MARIANAS -->
-  <url>
-    <loc>https://misericordiadejesus.es/maria.html</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://misericordiadejesus.es/liturgia/coronilla.html</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://misericordiadejesus.es/virgen-lujan.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/virgen-caacupe.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/medalla-milagrosa.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/maria-auxiliadora.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/la-santina.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/devociones-marianas.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <!-- SANTOS -->
-  <url>
-    <loc>https://misericordiadejesus.es/santo-rosario.html</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://misericordiadejesus.es/liturgia/hora-de-la-misericordia.html</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://misericordiadejesus.es/san-jose.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://misericordiadejesus.es/liturgia/via-crucis.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://misericordiadejesus.es/san-jose-dormido.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/san-francisco.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/san-cayetano.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/san-benito.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/san-judas-tadeo.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/san-sanson.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/santa-francisca-romana.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <!-- SANTOS PADRES -->
-  <url>
-    <loc>https://misericordiadejesus.es/ss-leon-xiv.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/ss-juan-pablo-ii.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/ss-francisco.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/ss-benedicto-xvi.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <!-- ORACIONES ESPECÍFICAS -->
-  <url>
-    <loc>https://misericordiadejesus.es/oracion-san-antonio.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/oracion-san-miguel.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/oracion-san-pancracio.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/oracion-santa-cruz.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/oracion-eucharistia.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/oracion-del-estudiante.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- OTROS -->
-  <url>
-    <loc>https://misericordiadejesus.es/via-crucis.html</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://misericordiadejesus.es/devociones/novena.html</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://misericordiadejesus.es/los-rayos.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/cruz-del-perdon.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/divino-nino-jesus.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/obras-de-misericordia.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/consagracion.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/consagracion-sagrado-corazon.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <!-- MISTERIOS -->
-  <url>
-    <loc>https://misericordiadejesus.es/misterios-de-gloria.html</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://misericordiadejesus.es/devociones/otras-devociones.html</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://misericordiadejesus.es/misterios-dolorosos.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://misericordiadejesus.es/devociones/consagracion.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://misericordiadejesus.es/misterios-gozosos.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://misericordiadejesus.es/devociones/consagracion-sagrado-corazon.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://misericordiadejesus.es/misterios-luminosos.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://misericordiadejesus.es/devociones/divino-nino-jesus.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-  <!-- MÚSICA -->
   <url>
-    <loc>https://misericordiadejesus.es/musica-sacra.html</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://misericordiadejesus.es/devociones/cruz-del-perdon.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/los-rayos.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/obras-de-misericordia.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/rosario/santo-rosario.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/rosario/misterios-gozosos.html</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-  <!-- OTRAS SECCIONES -->
   <url>
-    <loc>https://misericordiadejesus.es/otras-devociones.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://misericordiadejesus.es/devociones/rosario/misterios-dolorosos.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/rosario/misterios-luminosos.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/rosario/misterios-de-gloria.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/marianas/devociones-marianas.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://misericordiadejesus.es/lugares-de-culto.html</loc>
-    <lastmod>2026-03-31</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://misericordiadejesus.es/galeria.html</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://misericordiadejesus.es/devociones/marianas/maria.html</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://misericordiadejesus.es/noticias.html</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://misericordiadejesus.es/devociones/marianas/virgen-lujan.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/marianas/virgen-caacupe.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/marianas/medalla-milagrosa.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/marianas/maria-auxiliadora.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/marianas/la-santina.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/santos/santa-faustina.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/santos/san-jose.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/santos/san-jose-dormido.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/santos/san-francisco.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/santos/san-cayetano.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/santos/san-benito.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/santos/san-judas-tadeo.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/santos/san-sanson.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/devociones/santos/santa-francisca-romana.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/comunidad/introduccion.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/comunidad/quienes-somos.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/comunidad/noticias.html</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://misericordiadejesus.es/enlaces.html</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://misericordiadejesus.es/comunidad/galeria.html</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://misericordiadejesus.es/lecturas-recomendadas.html</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://misericordiadejesus.es/comunidad/lugares-de-culto.html</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://misericordiadejesus.es/estudios-biblicos.html</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://misericordiadejesus.es/comunidad/espacio-jovenes.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/comunidad/enlaces.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/comunidad/contacto.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/comunidad/diario.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/comunidad/buscador.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/musica/musica-sacra.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/oraciones/oraciones.html</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://misercordiadejesus.es/espacio-jovenes.html</loc>
-    <lastmod>2026-03-31</lastmod>
+    <loc>https://misericordiadejesus.es/oraciones/oracion-san-antonio.html</loc>
+    <lastmod>2026-04-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/oraciones/oracion-san-miguel.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/oraciones/oracion-san-pancracio.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/oraciones/oracion-del-estudiante.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/oraciones/oracion-eucharistia.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/oraciones/oracion-santa-cruz.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/papas/ss-francisco.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/papas/ss-benedicto-xvi.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/papas/ss-juan-pablo-ii.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/papas/ss-leon-xiv.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/estudios/estudios-biblicos.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://misericordiadejesus.es/estudios/lecturas-recomendadas.html</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>

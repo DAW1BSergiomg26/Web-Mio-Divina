@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Novena de la Divina Misericordia - 9 Días de Oración con Intenciones</title>
-<meta name="description" content="Practica la Novena de la Divina Misericordia con las 9 intenciones reveladas por Jesús a Santa Faustina Kowalska. Cada día tiene una intención especial para pedir gracias.">
-<meta name="keywords" content="novena divina misericordia, novena 9 dias, novena misericordia intenciones, oraciones Santa Faustina, novena antes fiesta misericordia, novena para almas, devoción católica novena, cómo hacer novena misericordia">
+<title>Novena de la Divina Misericordia - 9 Dï¿½as de Oraciï¿½n con Intenciones</title>
+<meta name="description" content="Practica la Novena de la Divina Misericordia con las 9 intenciones reveladas por Jesï¿½s a Santa Faustina Kowalska. Cada dï¿½a tiene una intenciï¿½n especial para pedir gracias.">
+<meta name="keywords" content="novena divina misericordia, novena 9 dias, novena misericordia intenciones, oraciones Santa Faustina, novena antes fiesta misericordia, novena para almas, devociï¿½n catï¿½lica novena, cï¿½mo hacer novena misericordia">
 <meta name="author" content="El Portal de la Divina Misericordia">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <meta name="theme-color" content="#050d1a">
@@ -13,8 +13,8 @@
 <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://misericordiadejesus.es/novena.html">
-<meta property="og:title" content="Novena de la Divina Misericordia - 9 Días de Oración">
-<meta property="og:description" content="Practica la Novena de la Divina Misericordia con las 9 intenciones reveladas por Jesús a Santa Faustina Kowalska.">
+<meta property="og:title" content="Novena de la Divina Misericordia - 9 Dï¿½as de Oraciï¿½n">
+<meta property="og:description" content="Practica la Novena de la Divina Misericordia con las 9 intenciones reveladas por Jesï¿½s a Santa Faustina Kowalska.">
 <meta property="og:site_name" content="Divina Misericordia">
 <meta property="og:locale" content="es_ES">
 <meta property="og:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
@@ -22,8 +22,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Novena de la Divina Misericordia">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Novena de la Divina Misericordia - 9 Días de Oración">
-<meta name="twitter:description" content="Practica la Novena de la Divina Misericordia con las 9 intenciones reveladas por Jesús a Santa Faustina Kowalska.">
+<meta name="twitter:title" content="Novena de la Divina Misericordia - 9 Dï¿½as de Oraciï¿½n">
+<meta name="twitter:description" content="Practica la Novena de la Divina Misericordia con las 9 intenciones reveladas por Jesï¿½s a Santa Faustina Kowalska.">
 <meta name="twitter:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta name="twitter:site" content="@divinamisericordia">
 <meta name="twitter:creator" content="@divinamisericordia">
@@ -38,8 +38,8 @@
 {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Novena de la Divina Misericordia - 9 Días de Oración",
-  "description": "Practica la Novena de la Divina Misericordia con las 9 intenciones reveladas por Jesús a Santa Faustina Kowalska.",
+  "headline": "Novena de la Divina Misericordia - 9 Dï¿½as de Oraciï¿½n",
+  "description": "Practica la Novena de la Divina Misericordia con las 9 intenciones reveladas por Jesï¿½s a Santa Faustina Kowalska.",
   "image": "https://misericordiadejesus.es/img/logo_divina_misericordia.webp",
   "author": {"@type": "Organization", "name": "El Portal de la Divina Misericordia", "url": "https://misericordiadejesus.es/"},
   "publisher": {"@type": "Organization", "name": "Divina Misericordia", "url": "https://misericordiadejesus.es/", "logo": {"@type": "ImageObject", "url": "https://misericordiadejesus.es/img/logo_divina_misericordia.webp"}},
@@ -464,7 +464,26 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
   background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.9));
 }
 </style>
-</head>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track devociones
+      document.querySelectorAll('a[href*="coronilla"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_coronilla', { event_category: 'Devocion' })));
+      document.querySelectorAll('a[href*="novena"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_novena', { event_category: 'Devocion' })));
+      document.querySelectorAll('audio, .play-btn').forEach(l => 
+        l.addEventListener('play', () => gtag && gtag('event', 'play_audio', { event_category: 'Multimedia' })));
+    });
+  </script></head>
 <body>
 <div class="cursor-cruz" id="cursor">
   <svg class="cruz-normal" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
@@ -508,27 +527,27 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 <a href="index.html" class="logo"><img src="img/logo_divina_misericordia.webp" alt="Logo" loading="lazy">Divina<span>Misericordia</span></a>
   <nav id="mainNav">
     <a href="index.html">Inicio</a>
-    <a href="quienes-somos.html">Quiénes Somos</a>
-    <a href="introduccion.html">Introducción</a>
+    <a href="quienes-somos.html">Quiï¿½nes Somos</a>
+    <a href="introduccion.html">Introducciï¿½n</a>
     <a href="santa-faustina.html">Santa Faustina</a>
     <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
     <a href="coronilla.html">Coronilla</a>
     <a href="novena.html">Novena</a>
-    <a href="via-crucis.html">Vía Crucis</a>
+    <a href="via-crucis.html">Vï¿½a Crucis</a>
     <a href="oraciones.html">Oraciones</a>
     <a href="santo-rosario.html">El Santo Rosario</a>
-    <a href="maria.html">María</a>
+    <a href="maria.html">Marï¿½a</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
+    <a href="consagracion.html">Consagraciï¿½n</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
-    <a href=\"/musica/musica-sacra.html\">Música Sacra</a>
+    <a href=\"/musica/musica-sacra.html\">Mï¿½sica Sacra</a>
     <a href="noticias.html">Noticias</a>
     <a href="enlaces.html">Enlaces</a>
     
     
     
     
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
     <a href="estudios-biblicos.html">Estudios</a>
         <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones ?</a>
@@ -540,24 +559,24 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 
 <main class="main-content">
 <h1 class="page-title">Novena de la Divina Misericordia</h1>
-<p class="subtitle-line">9 días de oración revelados por Jesús</p>
-<p class="intro-text">La Novena de la Divina Misericordia fue enseñada por Jesús a Santa Faustina. Cada día tiene una intención específica. Haz clic en el día que desees rezar.</p>
+<p class="subtitle-line">9 dï¿½as de oraciï¿½n revelados por Jesï¿½s</p>
+<p class="intro-text">La Novena de la Divina Misericordia fue enseï¿½ada por Jesï¿½s a Santa Faustina. Cada dï¿½a tiene una intenciï¿½n especï¿½fica. Haz clic en el dï¿½a que desees rezar.</p>
 
-  <!-- Reproductor de Música Sagrada para la Novena -->
+  <!-- Reproductor de Mï¿½sica Sagrada para la Novena -->
   <div class="section-music">
-    <h3>?? Ambiente de Oración para la Novena</h3>
-    <p>Escucha música celestial mientras realizas los 9 días de la Novena a la Divina Misericordia:</p>
+    <h3>?? Ambiente de Oraciï¿½n para la Novena</h3>
+    <p>Escucha mï¿½sica celestial mientras realizas los 9 dï¿½as de la Novena a la Divina Misericordia:</p>
     
     <!-- Novena Divine Inspiration -himno especial -->
-    <div class="reproductor-sagrado" data-src="mp3/25.%20Novena%20Divine%20Inspiration.mp3" data-title="Novena - Inspiración Divina">
+    <div class="reproductor-sagrado" data-src="mp3/25.%20Novena%20Divine%20Inspiration.mp3" data-title="Novena - Inspiraciï¿½n Divina">
       <div class="reproductor-visualizador">
         <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
       </div>
       <div class="reproductor-info">
         <div class="reproductor-icono">???</div>
         <div class="reproductor-titulo">
-          <h4>Inspiración Divina - Novena</h4>
-          <p>Música especial para los 9 días</p>
+          <h4>Inspiraciï¿½n Divina - Novena</h4>
+          <p>Mï¿½sica especial para los 9 dï¿½as</p>
         </div>
       </div>
       <div class="reproductor-controles">
@@ -578,7 +597,7 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
       </div>
     </div>
 
-    <!-- Brandenburg Concerto - Gloria y celebración -->
+    <!-- Brandenburg Concerto - Gloria y celebraciï¿½n -->
     <div class="reproductor-sagrado" data-src="mp3/05.%20Brandenburg%20Concerto%20No.%201%20in%20F%20Major,%20BWV%201046_%20I.mp3" data-title="Brandenburg Concerto - Gloria">
       <div class="reproductor-visualizador">
         <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
@@ -587,7 +606,7 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
         <div class="reproductor-icono">??</div>
         <div class="reproductor-titulo">
           <h4>Concierto de Brandeburgo - Gloria</h4>
-          <p>J.S. Bach - Energía celestial</p>
+          <p>J.S. Bach - Energï¿½a celestial</p>
         </div>
       </div>
       <div class="reproductor-controles">
@@ -608,15 +627,15 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
       </div>
     </div>
 
-    <!-- La Primavera - Renovación espiritual -->
-    <div class="reproductor-sagrado" data-src="mp3/10.%20Spring%20(La%20Primavera)%20Op.8%20No.1%20E%20Major_%20Allegro.mp3" data-title="La Primavera - Renovación">
+    <!-- La Primavera - Renovaciï¿½n espiritual -->
+    <div class="reproductor-sagrado" data-src="mp3/10.%20Spring%20(La%20Primavera)%20Op.8%20No.1%20E%20Major_%20Allegro.mp3" data-title="La Primavera - Renovaciï¿½n">
       <div class="reproductor-visualizador">
         <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
       </div>
       <div class="reproductor-info">
         <div class="reproductor-icono">??</div>
         <div class="reproductor-titulo">
-          <h4>La Primavera - Renovación</h4>
+          <h4>La Primavera - Renovaciï¿½n</h4>
           <p>A. Vivaldi - Las Cuatro Estaciones</p>
         </div>
       </div>
@@ -647,54 +666,54 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
   </div>
 
 <div class="tabs-nav">
-<button class="tab-btn active" onclick="showDay(1)">Día 1</button>
-<button class="tab-btn" onclick="showDay(2)">Día 2</button>
-<button class="tab-btn" onclick="showDay(3)">Día 3</button>
-<button class="tab-btn" onclick="showDay(4)">Día 4</button>
-<button class="tab-btn" onclick="showDay(5)">Día 5</button>
-<button class="tab-btn" onclick="showDay(6)">Día 6</button>
-<button class="tab-btn" onclick="showDay(7)">Día 7</button>
-<button class="tab-btn" onclick="showDay(8)">Día 8</button>
-<button class="tab-btn" onclick="showDay(9)">Día 9</button>
+<button class="tab-btn active" onclick="showDay(1)">Dï¿½a 1</button>
+<button class="tab-btn" onclick="showDay(2)">Dï¿½a 2</button>
+<button class="tab-btn" onclick="showDay(3)">Dï¿½a 3</button>
+<button class="tab-btn" onclick="showDay(4)">Dï¿½a 4</button>
+<button class="tab-btn" onclick="showDay(5)">Dï¿½a 5</button>
+<button class="tab-btn" onclick="showDay(6)">Dï¿½a 6</button>
+<button class="tab-btn" onclick="showDay(7)">Dï¿½a 7</button>
+<button class="tab-btn" onclick="showDay(8)">Dï¿½a 8</button>
+<button class="tab-btn" onclick="showDay(9)">Dï¿½a 9</button>
 </div>
 
-<!-- DÍA 1 -->
+<!-- Dï¿½A 1 -->
 <div id="day1" class="day-content active">
 <div class="day-header">
-<h2 class="day-title"><span class="day-number">1</span> Primer Día</h2>
+<h2 class="day-title"><span class="day-number">1</span> Primer Dï¿½a</h2>
 </div>
 <div class="jesus-card">
-<div class="jesus-card-title">Habla Jesús:</div>
-<p>«Hoy, hijo mío, hija mía, tráeme en tus manos el don más grande que puedo acoger: a toda la Humanidad. Tráeme, sobre todo, a quienes más necesitan la esperanza, a los pecadores, a los que se sienten lejos, a los que han olvidado mi Nombre. Sumérgelos conmigo en el océano sin fondo de mi Misericordia.</p>
-<p>Así aliviarás el dolor que oprime mi Corazón cuando una sola alma se pierde sin conocer el inmenso amor con que fue creada».</p>
+<div class="jesus-card-title">Habla Jesï¿½s:</div>
+<p>ï¿½Hoy, hijo mï¿½o, hija mï¿½a, trï¿½eme en tus manos el don mï¿½s grande que puedo acoger: a toda la Humanidad. Trï¿½eme, sobre todo, a quienes mï¿½s necesitan la esperanza, a los pecadores, a los que se sienten lejos, a los que han olvidado mi Nombre. Sumï¿½rgelos conmigo en el ocï¿½ano sin fondo de mi Misericordia.</p>
+<p>Asï¿½ aliviarï¿½s el dolor que oprime mi Corazï¿½n cuando una sola alma se pierde sin conocer el inmenso amor con que fue creadaï¿½.</p>
 </div>
 <div class="divine-prayer">
-<div class="divine-prayer-title">Misericordiosísimo Jesús</div>
-<p>que no sabes sino amarnos y perdonarnos, no fijes tu mirada en nuestras heridas ni en nuestras faltas, sino en la fe frágil pero sincera con que nos abandonamos en Ti. Recíbenos, Señor, en el resguardo de tu Corazón abierto, donde cada lágrima se vuelve oración y cada fracaso, esperanza. Que jamás nos apartemos de esa fuente viva, donde el alma cansada hallan descanso y el pecador descubre su dignidad. <strong>Te lo suplicamos por el amor eterno que te une al Padre y al Espíritu Santo.</strong></p>
+<div class="divine-prayer-title">Misericordiosï¿½simo Jesï¿½s</div>
+<p>que no sabes sino amarnos y perdonarnos, no fijes tu mirada en nuestras heridas ni en nuestras faltas, sino en la fe frï¿½gil pero sincera con que nos abandonamos en Ti. Recï¿½benos, Seï¿½or, en el resguardo de tu Corazï¿½n abierto, donde cada lï¿½grima se vuelve oraciï¿½n y cada fracaso, esperanza. Que jamï¿½s nos apartemos de esa fuente viva, donde el alma cansada hallan descanso y el pecador descubre su dignidad. <strong>Te lo suplicamos por el amor eterno que te une al Padre y al Espï¿½ritu Santo.</strong></p>
 </div>
 <div class="divine-prayer">
 <div class="divine-prayer-title">Oh Fuerza inefable de la Divina Misericordia</div>
-<p>luz que vence toda oscuridad del corazón humano, Tú eres el abrazo del cielo al pecador, el mar sin orillas donde naufraga el mal y renace la vida. Acoge, Señor, a quienes claman con humildad y no los dejes sin consuelo.</p>
+<p>luz que vence toda oscuridad del corazï¿½n humano, Tï¿½ eres el abrazo del cielo al pecador, el mar sin orillas donde naufraga el mal y renace la vida. Acoge, Seï¿½or, a quienes claman con humildad y no los dejes sin consuelo.</p>
 </div>
 <div class="divine-prayer">
 <div class="divine-prayer-title">Padre Eterno</div>
-<p>contempla con ternura a toda la Humanidad, especialmente a aquellos que más se han perdido en sus sombras. Por los méritos preciosos de la Pasión de tu Hijo amado, Jesús, derrama sobre nosotros la gracia de tu Misericordia sin límites, para que, unidos en un solo corazón, alabemos por siempre la grandeza de tu Amor que todo lo perdona, <strong>por los siglos de los siglos. Amén.</strong></p>
+<p>contempla con ternura a toda la Humanidad, especialmente a aquellos que mï¿½s se han perdido en sus sombras. Por los mï¿½ritos preciosos de la Pasiï¿½n de tu Hijo amado, Jesï¿½s, derrama sobre nosotros la gracia de tu Misericordia sin lï¿½mites, para que, unidos en un solo corazï¿½n, alabemos por siempre la grandeza de tu Amor que todo lo perdona, <strong>por los siglos de los siglos. Amï¿½n.</strong></p>
 </div>
 <div class="coronilla-note"><a href="coronilla.html">? Se reza la Coronilla de la Divina Misericordia ?</a></div>
 </div>
 
-<!-- DÍA 2 -->
+<!-- Dï¿½A 2 -->
 <div id="day2" class="day-content">
 <div class="day-header">
-<h2 class="day-title"><span class="day-number">2</span> Segundo Día</h2>
+<h2 class="day-title"><span class="day-number">2</span> Segundo Dï¿½a</h2>
 </div>
 <div class="jesus-card">
-<div class="jesus-card-title">Habla Jesús:</div>
-<p>«Hoy, tráeme a las almas de los sacerdotes y religiosos y sumérgelas en mi insondable Misericordia. Fueron ellas las que me dieron fortaleza para soportar las amarguras de mi Pasión. A través de ellas, como a través de canales, mi Misericordia fluye hacia la Humanidad».</p>
+<div class="jesus-card-title">Habla Jesï¿½s:</div>
+<p>ï¿½Hoy, trï¿½eme a las almas de los sacerdotes y religiosos y sumï¿½rgelas en mi insondable Misericordia. Fueron ellas las que me dieron fortaleza para soportar las amarguras de mi Pasiï¿½n. A travï¿½s de ellas, como a travï¿½s de canales, mi Misericordia fluye hacia la Humanidadï¿½.</p>
 </div>
 <div class="divine-prayer">
-<div class="divine-prayer-title">Misericordiosísimo Jesús</div>
-<p>de quien procede todo bien, multiplica tus gracias sobre las almas consagradas a tu servicio, para que puedan hacer obras dignas de Misericordia; y que todos los que las vean, glorifiquen al Padre de Misericordia que está en el Cielo.</p>
+<div class="divine-prayer-title">Misericordiosï¿½simo Jesï¿½s</div>
+<p>de quien procede todo bien, multiplica tus gracias sobre las almas consagradas a tu servicio, para que puedan hacer obras dignas de Misericordia; y que todos los que las vean, glorifiquen al Padre de Misericordia que estï¿½ en el Cielo.</p>
 </div>
 <div class="divine-prayer">
 <div class="divine-prayer-title">La fuente del amor de Dios</div>
@@ -702,47 +721,47 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 </div>
 <div class="divine-prayer">
 <div class="divine-prayer-title">Padre Eterno</div>
-<p>mira con Misericordia al grupo elegido de tu Viña, las almas de los sacerdotes y religiosos; dótalas con la fortaleza de tus bendiciones y, por el amor del Corazón de tu Hijo, al cual están unidas, concédeles el poder de tu Luz, para que puedan guiar a otros por el camino de la Salvación y, con una sola voz, canten alabanzas a tu Misericordia, <strong>por los siglos de los siglos. Amén.</strong></p>
+<p>mira con Misericordia al grupo elegido de tu Viï¿½a, las almas de los sacerdotes y religiosos; dï¿½talas con la fortaleza de tus bendiciones y, por el amor del Corazï¿½n de tu Hijo, al cual estï¿½n unidas, concï¿½deles el poder de tu Luz, para que puedan guiar a otros por el camino de la Salvaciï¿½n y, con una sola voz, canten alabanzas a tu Misericordia, <strong>por los siglos de los siglos. Amï¿½n.</strong></p>
 </div>
 <div class="coronilla-note"><a href="coronilla.html">? Se reza la Coronilla de la Divina Misericordia ?</a></div>
 </div>
 
-<!-- DÍA 3 -->
+<!-- Dï¿½A 3 -->
 <div id="day3" class="day-content">
 <div class="day-header">
-<h2 class="day-title"><span class="day-number">3</span> Tercer Día</h2>
+<h2 class="day-title"><span class="day-number">3</span> Tercer Dï¿½a</h2>
 </div>
 <div class="jesus-card">
-<div class="jesus-card-title">Habla Jesús:</div>
-<p>«Hoy, tráeme a todas las almas devotas y fieles y sumérgelas en el gran océano de mi Misericordia. Ellas me confortaron a lo largo del Vía Crucis y fueron una gota de consuelo en medio de un mar de amargura».</p>
+<div class="jesus-card-title">Habla Jesï¿½s:</div>
+<p>ï¿½Hoy, trï¿½eme a todas las almas devotas y fieles y sumï¿½rgelas en el gran ocï¿½ano de mi Misericordia. Ellas me confortaron a lo largo del Vï¿½a Crucis y fueron una gota de consuelo en medio de un mar de amarguraï¿½.</p>
 </div>
 <div class="divine-prayer">
-<div class="divine-prayer-title">Misericordiosísimo Jesús</div>
-<p>que desde el tesoro de tu Misericordia distribuyes tus gracias a raudales entre todos y cada uno de nosotros, acógenos en el seno de tu muy compasivo Corazón y no permitas que salgamos nunca de Él. Te imploramos esta gracia en virtud del más excelso amor, aquel con el que tu Corazón arde por el Padre Celestial.</p>
+<div class="divine-prayer-title">Misericordiosï¿½simo Jesï¿½s</div>
+<p>que desde el tesoro de tu Misericordia distribuyes tus gracias a raudales entre todos y cada uno de nosotros, acï¿½genos en el seno de tu muy compasivo Corazï¿½n y no permitas que salgamos nunca de ï¿½l. Te imploramos esta gracia en virtud del mï¿½s excelso amor, aquel con el que tu Corazï¿½n arde por el Padre Celestial.</p>
 </div>
 <div class="divine-prayer">
 <div class="divine-prayer-title">Son impenetrables las maravillas</div>
-<p>de la Misericordia, no alcanza sondearlas ni el pecador ni el justo, miras a todos con compasión, y atraes a todos con tu amor.</p>
+<p>de la Misericordia, no alcanza sondearlas ni el pecador ni el justo, miras a todos con compasiï¿½n, y atraes a todos con tu amor.</p>
 </div>
 <div class="divine-prayer">
 <div class="divine-prayer-title">Padre Eterno</div>
-<p>vuelve tus ojos misericordiosos hacia las almas fieles, que guardan el legado de Tu Hijo, y por los méritos y dolores de su Pasión concédeles tu bendición y tenlas siempre bajo tu tutela. Que nunca claudique su amor ni pierdan el tesoro de nuestra santa Fe, sino que, con todo el ejército de Ángeles y Santos, glorifiquen tu infinita Misericordia, <strong>por los siglos de los siglos. Amén.</strong></p>
+<p>vuelve tus ojos misericordiosos hacia las almas fieles, que guardan el legado de Tu Hijo, y por los mï¿½ritos y dolores de su Pasiï¿½n concï¿½deles tu bendiciï¿½n y tenlas siempre bajo tu tutela. Que nunca claudique su amor ni pierdan el tesoro de nuestra santa Fe, sino que, con todo el ejï¿½rcito de ï¿½ngeles y Santos, glorifiquen tu infinita Misericordia, <strong>por los siglos de los siglos. Amï¿½n.</strong></p>
 </div>
 <div class="coronilla-note"><a href="coronilla.html">? Se reza la Coronilla de la Divina Misericordia ?</a></div>
 </div>
 
-<!-- DÍA 4 -->
+<!-- Dï¿½A 4 -->
 <div id="day4" class="day-content">
 <div class="day-header">
-<h2 class="day-title"><span class="day-number">4</span> Cuarto Día</h2>
+<h2 class="day-title"><span class="day-number">4</span> Cuarto Dï¿½a</h2>
 </div>
 <div class="jesus-card">
-<div class="jesus-card-title">Habla Jesús:</div>
-<p>«Hoy, tráeme a los que no creen en Mí y a los que todavía no me conocen. Pensaba en ellos durante las angustias de mi dolorosa Pasión, y su futuro fervor servirá de consuelo a mi Corazón. Sumérgelos en la inmensidad de mi Misericordia».</p>
+<div class="jesus-card-title">Habla Jesï¿½s:</div>
+<p>ï¿½Hoy, trï¿½eme a los que no creen en Mï¿½ y a los que todavï¿½a no me conocen. Pensaba en ellos durante las angustias de mi dolorosa Pasiï¿½n, y su futuro fervor servirï¿½ de consuelo a mi Corazï¿½n. Sumï¿½rgelos en la inmensidad de mi Misericordiaï¿½.</p>
 </div>
 <div class="divine-prayer">
-<div class="divine-prayer-title">Misericordiosísimo Jesús</div>
-<p>Tú que eres la Luz del mundo entero, recibe en la morada de tu Corazón lleno de compasión a las almas de aquellos que todavía no creen en Ti o que no te conocen. Que los rayos de tu Gracia las iluminen, para que también ellas, unidas a nosotros, ensalcen tu maravillosa Misericordia y no las dejes salir de la morada de tu Corazón desbordante de piedad.</p>
+<div class="divine-prayer-title">Misericordiosï¿½simo Jesï¿½s</div>
+<p>Tï¿½ que eres la Luz del mundo entero, recibe en la morada de tu Corazï¿½n lleno de compasiï¿½n a las almas de aquellos que todavï¿½a no creen en Ti o que no te conocen. Que los rayos de tu Gracia las iluminen, para que tambiï¿½n ellas, unidas a nosotros, ensalcen tu maravillosa Misericordia y no las dejes salir de la morada de tu Corazï¿½n desbordante de piedad.</p>
 </div>
 <div class="divine-prayer">
 <div class="divine-prayer-title">La luz de Tu Amor</div>
@@ -750,119 +769,119 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 </div>
 <div class="divine-prayer">
 <div class="divine-prayer-title">Padre Eterno</div>
-<p>vuelve tu piadosa mirada hacia las almas de aquellos que no creen en tu Hijo y hacia las de aquellos que todavía no te conocen, pero que están presentes en el muy compasivo Corazón de Jesús. Atráelas hacia la luz del Evangelical; estas almas desconocen la gran felicidad que es amarte. Concédeles que también ellas ensalcen la generosidad de tu Misericordia, <strong>por los siglos de los siglos. Amén.</strong></p>
+<p>vuelve tu piadosa mirada hacia las almas de aquellos que no creen en tu Hijo y hacia las de aquellos que todavï¿½a no te conocen, pero que estï¿½n presentes en el muy compasivo Corazï¿½n de Jesï¿½s. Atrï¿½elas hacia la luz del Evangelical; estas almas desconocen la gran felicidad que es amarte. Concï¿½deles que tambiï¿½n ellas ensalcen la generosidad de tu Misericordia, <strong>por los siglos de los siglos. Amï¿½n.</strong></p>
 </div>
 <div class="coronilla-note"><a href="coronilla.html">? Se reza la Coronilla de la Divina Misericordia ?</a></div>
 </div>
 
-<!-- DÍA 5 -->
+<!-- Dï¿½A 5 -->
 <div id="day5" class="day-content">
 <div class="day-header">
-<h2 class="day-title"><span class="day-number">5</span> Quinto Día</h2>
+<h2 class="day-title"><span class="day-number">5</span> Quinto Dï¿½a</h2>
 </div>
 <div class="jesus-card">
-<div class="jesus-card-title">Habla Jesús:</div>
-<p>«Hoy, tráeme a las almas de nuestros hermanos separados y sumérgelas en la inmensidad de mi Misericordia. Ellas, durante las angustias de mi Pasión, desgarraron mi Cuerpo y mi Corazón, es decir, mi Iglesia. A medida que se reincorporan a ella, mis heridas cicatrizan y, de esta forma, sirven de bálsamo a mi Pasión».</p>
+<div class="jesus-card-title">Habla Jesï¿½s:</div>
+<p>ï¿½Hoy, trï¿½eme a las almas de nuestros hermanos separados y sumï¿½rgelas en la inmensidad de mi Misericordia. Ellas, durante las angustias de mi Pasiï¿½n, desgarraron mi Cuerpo y mi Corazï¿½n, es decir, mi Iglesia. A medida que se reincorporan a ella, mis heridas cicatrizan y, de esta forma, sirven de bï¿½lsamo a mi Pasiï¿½nï¿½.</p>
 </div>
 <div class="divine-prayer">
-<div class="divine-prayer-title">También para aquellos que rasgaron</div>
-<p>la vestidura de Tu unidad brota de Tu Corazón la fuente de piedad. La omnipotencia de Tu Misericordia, oh Dios, puede sacar del error también a estas almas.</p>
+<div class="divine-prayer-title">Tambiï¿½n para aquellos que rasgaron</div>
+<p>la vestidura de Tu unidad brota de Tu Corazï¿½n la fuente de piedad. La omnipotencia de Tu Misericordia, oh Dios, puede sacar del error tambiï¿½n a estas almas.</p>
 </div>
 <div class="divine-prayer">
-<div class="divine-prayer-title">Misericordiosísimo Jesús</div>
-<p>que eres la Bondad misma y no niegas la Luz a aquellos que te buscan, recibe en el seno de tu Corazón, desbordante de piedad, a las almas de nuestros hermanos separados. Encamínalas, con la ayuda de tu Luz, hacia la unidad con la Iglesia y no las dejes marchar de la morada de tu muy compasivo Corazón, que es todo Amor; haz que también ellas glorifiquen la generosidad de tu Misericordia.</p>
+<div class="divine-prayer-title">Misericordiosï¿½simo Jesï¿½s</div>
+<p>que eres la Bondad misma y no niegas la Luz a aquellos que te buscan, recibe en el seno de tu Corazï¿½n, desbordante de piedad, a las almas de nuestros hermanos separados. Encamï¿½nalas, con la ayuda de tu Luz, hacia la unidad con la Iglesia y no las dejes marchar de la morada de tu muy compasivo Corazï¿½n, que es todo Amor; haz que tambiï¿½n ellas glorifiquen la generosidad de tu Misericordia.</p>
 </div>
 <div class="divine-prayer">
 <div class="divine-prayer-title">Padre Eterno</div>
-<p>vuelve tu mirada misericordiosa hacia las almas de nuestros hermanos separados, especialmente hacia las almas de aquellos que han malgastado tus bendiciones y abusado de tus gracias, manteniéndose obstinadamente en el error. También ellas están acogidas en el Corazón Misericordioso de Jesús; no mires sus errores, sino el Amor de tu Hijo y los dolores que, para su provecho, sufrió y aceptó por ellas durante su Pasión, y haz que también ellas glorifiquen tu gran Misericordia, <strong>por los siglos de los siglos. Amén.</strong></p>
+<p>vuelve tu mirada misericordiosa hacia las almas de nuestros hermanos separados, especialmente hacia las almas de aquellos que han malgastado tus bendiciones y abusado de tus gracias, manteniï¿½ndose obstinadamente en el error. Tambiï¿½n ellas estï¿½n acogidas en el Corazï¿½n Misericordioso de Jesï¿½s; no mires sus errores, sino el Amor de tu Hijo y los dolores que, para su provecho, sufriï¿½ y aceptï¿½ por ellas durante su Pasiï¿½n, y haz que tambiï¿½n ellas glorifiquen tu gran Misericordia, <strong>por los siglos de los siglos. Amï¿½n.</strong></p>
 </div>
 <div class="coronilla-note"><a href="coronilla.html">? Se reza la Coronilla de la Divina Misericordia ?</a></div>
 </div>
 
-<!-- DÍA 6 -->
+<!-- Dï¿½A 6 -->
 <div id="day6" class="day-content">
 <div class="day-header">
-<h2 class="day-title"><span class="day-number">6</span> Sexto Día</h2>
+<h2 class="day-title"><span class="day-number">6</span> Sexto Dï¿½a</h2>
 </div>
 <div class="jesus-card">
-<div class="jesus-card-title">Habla Jesús:</div>
-<p>«Hoy, tráeme a las almas que están en el purgatorio y sumérgelas en el abismo de mi Misericordia. Que los méritos de mi Pasión sean su consuelo y que las llamas de mi amor abrasen la dureza de su purgación».</p>
+<div class="jesus-card-title">Habla Jesï¿½s:</div>
+<p>ï¿½Hoy, trï¿½eme a las almas que estï¿½n en el purgatorio y sumï¿½rgelas en el abismo de mi Misericordia. Que los mï¿½ritos de mi Pasiï¿½n sean su consuelo y que las llamas de mi amor abrasen la dureza de su purgaciï¿½nï¿½.</p>
 </div>
 <div class="divine-prayer">
-<div class="divine-prayer-title">Jesús, manantial de toda consolación</div>
-<p>Tú que tienes en tus manos los caminos del cielo y del purgatorio, mira con ojos de piedad a las almas que sufren en el fuego purificador. Por los méritos de tu Pasión dolorosa, aplica a cada una de ellas el bálsamo de tu infinita Misericordia.</p>
+<div class="divine-prayer-title">Jesï¿½s, manantial de toda consolaciï¿½n</div>
+<p>Tï¿½ que tienes en tus manos los caminos del cielo y del purgatorio, mira con ojos de piedad a las almas que sufren en el fuego purificador. Por los mï¿½ritos de tu Pasiï¿½n dolorosa, aplica a cada una de ellas el bï¿½lsamo de tu infinita Misericordia.</p>
 </div>
 <div class="divine-prayer">
-<div class="divine-prayer-title">La oración de los vivos</div>
-<p>es el mejor alivio para las almas del purgatorio, pues ellas no pueden ya ayudarse a sí mismas.</p>
+<div class="divine-prayer-title">La oraciï¿½n de los vivos</div>
+<p>es el mejor alivio para las almas del purgatorio, pues ellas no pueden ya ayudarse a sï¿½ mismas.</p>
 </div>
 <div class="divine-prayer">
 <div class="divine-prayer-title">Padre Eterno</div>
-<p>concédeles a las almas del purgatorio, por los méritos dolorosos de tu Hijo, el refrigerio de tu presencia y la luz eterna. Que pronto puedan gozar de la visión beatífica de tu Amor, <strong>por los siglos de los siglos. Amén.</strong></p>
+<p>concï¿½deles a las almas del purgatorio, por los mï¿½ritos dolorosos de tu Hijo, el refrigerio de tu presencia y la luz eterna. Que pronto puedan gozar de la visiï¿½n beatï¿½fica de tu Amor, <strong>por los siglos de los siglos. Amï¿½n.</strong></p>
 </div>
 <div class="coronilla-note"><a href="coronilla.html">? Se reza la Coronilla de la Divina Misericordia ?</a></div>
 </div>
 
-<!-- DÍA 7 -->
+<!-- Dï¿½A 7 -->
 <div id="day7" class="day-content">
 <div class="day-header">
-<h2 class="day-title"><span class="day-number">7</span> Séptimo Día</h2>
+<h2 class="day-title"><span class="day-number">7</span> Sï¿½ptimo Dï¿½a</h2>
 </div>
 <div class="jesus-card">
-<div class="jesus-card-title">Habla Jesús:</div>
-<p>«Hoy, tráeme a las almas que más me aman y ponlas en mi Corazón como una corona. Estas almas son el ornamento de mi Iglesia y la gloria de mi Esposa. Ellas han brillado como estrellas en medio de las tinieblas del mundo».</p>
+<div class="jesus-card-title">Habla Jesï¿½s:</div>
+<p>ï¿½Hoy, trï¿½eme a las almas que mï¿½s me aman y ponlas en mi Corazï¿½n como una corona. Estas almas son el ornamento de mi Iglesia y la gloria de mi Esposa. Ellas han brillado como estrellas en medio de las tinieblas del mundoï¿½.</p>
 </div>
 <div class="divine-prayer">
-<div class="divine-prayer-title">Misericordiosísimo Jesús</div>
-<p>que tienes un amor sin límites por las almas que te aman, recibe en el trono de tu Misericordia a estas almas selectas. Que la fragancia de sus virtudes sea un perfume agradable para ti y que su ejemplo ilumine a otros.</p>
+<div class="divine-prayer-title">Misericordiosï¿½simo Jesï¿½s</div>
+<p>que tienes un amor sin lï¿½mites por las almas que te aman, recibe en el trono de tu Misericordia a estas almas selectas. Que la fragancia de sus virtudes sea un perfume agradable para ti y que su ejemplo ilumine a otros.</p>
 </div>
 <div class="divine-prayer">
 <div class="divine-prayer-title">El amor que todo lo vence</div>
-<p>es el vínculo perfecto que une las almas a Dios y entre sí.</p>
+<p>es el vï¿½nculo perfecto que une las almas a Dios y entre sï¿½.</p>
 </div>
 <div class="divine-prayer">
 <div class="divine-prayer-title">Padre Eterno</div>
-<p>contempla con alegría a las almas que más aman a tu Hijo, que han sido coronadas de virtudes en la tierra. Que su recompensa sea eterna y que su presencia sea luz para otros, <strong>por los siglos de los siglos. Amén.</strong></p>
+<p>contempla con alegrï¿½a a las almas que mï¿½s aman a tu Hijo, que han sido coronadas de virtudes en la tierra. Que su recompensa sea eterna y que su presencia sea luz para otros, <strong>por los siglos de los siglos. Amï¿½n.</strong></p>
 </div>
 <div class="coronilla-note"><a href="coronilla.html">? Se reza la Coronilla de la Divina Misericordia ?</a></div>
 </div>
 
-<!-- DÍA 8 -->
+<!-- Dï¿½A 8 -->
 <div id="day8" class="day-content">
 <div class="day-header">
-<h2 class="day-title"><span class="day-number">8</span> Octavo Día</h2>
+<h2 class="day-title"><span class="day-number">8</span> Octavo Dï¿½a</h2>
 </div>
 <div class="jesus-card">
-<div class="jesus-card-title">Habla Jesús:</div>
-<p>«Hoy, tráeme a las almas que están separadas de mi Corazón por la incredulidad y la indiferencia. Mi Misericordia es más fuerte que todos sus pecados. Quiero revelarte el poder de mi amor a quienes me han olvidado».</p>
+<div class="jesus-card-title">Habla Jesï¿½s:</div>
+<p>ï¿½Hoy, trï¿½eme a las almas que estï¿½n separadas de mi Corazï¿½n por la incredulidad y la indiferencia. Mi Misericordia es mï¿½s fuerte que todos sus pecados. Quiero revelarte el poder de mi amor a quienes me han olvidadoï¿½.</p>
 </div>
 <div class="divine-prayer">
-<div class="divine-prayer-title">Jesús, esperanza de los desesperanzados</div>
-<p>Tú que nunca abandonas a nadie, extiende tu mano a las almas que se han alejado. Que tu Misericordia sea el puente que las regrese a ti.</p>
+<div class="divine-prayer-title">Jesï¿½s, esperanza de los desesperanzados</div>
+<p>Tï¿½ que nunca abandonas a nadie, extiende tu mano a las almas que se han alejado. Que tu Misericordia sea el puente que las regrese a ti.</p>
 </div>
 <div class="divine-prayer">
 <div class="divine-prayer-title">La puerta de la Misericordia</div>
-<p>nunca se cierra para quien llama con sinceridad de corazón.</p>
+<p>nunca se cierra para quien llama con sinceridad de corazï¿½n.</p>
 </div>
 <div class="divine-prayer">
 <div class="divine-prayer-title">Padre Eterno</div>
-<p>mira con ojos de compasión a las almas que han perdido la fe o viven en indiferencia. Por el poder del Corazón de tu Hijo, ilumína sus tinieblas y haz que encuentren el camino de regreso, <strong>por los siglos de los siglos. Amén.</strong></p>
+<p>mira con ojos de compasiï¿½n a las almas que han perdido la fe o viven en indiferencia. Por el poder del Corazï¿½n de tu Hijo, ilumï¿½na sus tinieblas y haz que encuentren el camino de regreso, <strong>por los siglos de los siglos. Amï¿½n.</strong></p>
 </div>
 <div class="coronilla-note"><a href="coronilla.html">? Se reza la Coronilla de la Divina Misericordia ?</a></div>
 </div>
 
-<!-- DÍA 9 -->
+<!-- Dï¿½A 9 -->
 <div id="day9" class="day-content">
 <div class="day-header">
-<h2 class="day-title"><span class="day-number">9</span> Noveno Día</h2>
+<h2 class="day-title"><span class="day-number">9</span> Noveno Dï¿½a</h2>
 </div>
 <div class="jesus-card">
-<div class="jesus-card-title">Habla Jesús:</div>
-<p>«Hoy, tráeme a todas las almas que han muerto y aún no han alcanzado la luz del cielo. Que mi Misericordia sea el último rayo de esperanza que las conduzca a la gloria eterna. Que ninguna alma se pierda para siempre».</p>
+<div class="jesus-card-title">Habla Jesï¿½s:</div>
+<p>ï¿½Hoy, trï¿½eme a todas las almas que han muerto y aï¿½n no han alcanzado la luz del cielo. Que mi Misericordia sea el ï¿½ltimo rayo de esperanza que las conduzca a la gloria eterna. Que ninguna alma se pierda para siempreï¿½.</p>
 </div>
 <div class="divine-prayer">
-<div class="divine-prayer-title">Jesús, puerta del cielo</div>
-<p>Tú que has abierto las puertas delparaíso a toda la humanidad, recibe en tu brazos extendidos a las almas que parten de esta vida. Que tu Misericordia sea la última luz que vean.</p>
+<div class="divine-prayer-title">Jesï¿½s, puerta del cielo</div>
+<p>Tï¿½ que has abierto las puertas delparaï¿½so a toda la humanidad, recibe en tu brazos extendidos a las almas que parten de esta vida. Que tu Misericordia sea la ï¿½ltima luz que vean.</p>
 </div>
 <div class="divine-prayer">
 <div class="divine-prayer-title">La muerte es el despertar</div>
@@ -870,7 +889,7 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 </div>
 <div class="divine-prayer">
 <div class="divine-prayer-title">Padre Eterno</div>
-<p>por los méritos infinitos de la Pasión y Muerte de tu Hijo, haz que todas las almas que han partido de esta vida alcancen la felicidad eterna. Que tu Misericordia sea su herencia y tu amor su recompensa, <strong>por los siglos de los siglos. Amén.</strong></p>
+<p>por los mï¿½ritos infinitos de la Pasiï¿½n y Muerte de tu Hijo, haz que todas las almas que han partido de esta vida alcancen la felicidad eterna. Que tu Misericordia sea su herencia y tu amor su recompensa, <strong>por los siglos de los siglos. Amï¿½n.</strong></p>
 </div>
 <div class="separator-wrap">
 <div class="separator-cruz">
@@ -880,9 +899,9 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 </div>
 </div>
 <div class="jesus-card" style="text-align:center; border-color:var(--gold);">
-<div class="jesus-card-title" style="font-size:1.1rem;">Oración Final de la Novena</div>
-<p style="font-size:1.1rem; line-height:2;">Eterno Padre, mira hacia tu Hijo Jesús crucificado, en quien has puesto toda tu Misericordia. Por los méritos de su Pasión y Muerte, te rogamos que derrames tu Misericordia sobre el mundo entero.<br><br>
-<strong>Jesús, En Vos Confío.</strong></p>
+<div class="jesus-card-title" style="font-size:1.1rem;">Oraciï¿½n Final de la Novena</div>
+<p style="font-size:1.1rem; line-height:2;">Eterno Padre, mira hacia tu Hijo Jesï¿½s crucificado, en quien has puesto toda tu Misericordia. Por los mï¿½ritos de su Pasiï¿½n y Muerte, te rogamos que derrames tu Misericordia sobre el mundo entero.<br><br>
+<strong>Jesï¿½s, En Vos Confï¿½o.</strong></p>
 </div>
 </div>
 
@@ -902,36 +921,36 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
   <h3 class="footer-menu-title">Explora nuestra web</h3>
   <div class="footer-menu-links">
         <a href="oraciones.html">Oraciones</a>
-    <a href="via-crucis.html">Vía Crucis</a>
-    <a href="maria.html">María</a>
+    <a href="via-crucis.html">Vï¿½a Crucis</a>
+    <a href="maria.html">Marï¿½a</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
+    <a href="consagracion.html">Consagraciï¿½n</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
     <a href="noticias.html">Noticias</a>
-    <a href="ss-leon-xiv.html">S.S. León XIV</a>
+    <a href="ss-leon-xiv.html">S.S. Leï¿½n XIV</a>
     <a href="ss-francisco.html">S.S. Francisco</a>
     <a href="ss-benedicto-xvi.html">S.S. Benedicto XVI</a>
     <a href="ss-juan-pablo-ii.html">S.S. Juan Pablo II</a>
     <a href="enlaces.html">Enlaces</a>
-    <a href="divino-nino-jesus.html">Divino Niño Jesús</a>
+    <a href="divino-nino-jesus.html">Divino Niï¿½o Jesï¿½s</a>
     <a href="san-judas-tadeo.html">San Judas Tadeo</a>
     <a href="san-cayetano.html">San Cayetano</a>
-    <a href="consagracion-sagrado-corazon.html">Sagrado Corazón</a>
-    <a href="maria-auxiliadora.html">María Auxiliadora</a>
-    <a href="san-sanson.html">Sansón</a>
+    <a href="consagracion-sagrado-corazon.html">Sagrado Corazï¿½n</a>
+    <a href="maria-auxiliadora.html">Marï¿½a Auxiliadora</a>
+    <a href="san-sanson.html">Sansï¿½n</a>
     <a href="san-benito.html">San Benito</a>
     <a href="oracion-santa-cruz.html">Santa Cruz</a>
     <a href="san-francisco.html">San Francisco</a>
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
         <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones</a>
   </div>
 </div>
 
 <footer class="main-footer sacred-footer">
-  <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">?</a>
-  <p class="tagline">Jesús, En Vos Confío</p>
-  <p>© 2026 — Portal de la Divina Misericordia</p>
+  <a href="el-altar.html" class="cross-glow" title="Adorar al Santï¿½simo">?</a>
+  <p class="tagline">Jesï¿½s, En Vos Confï¿½o</p>
+  <p>ï¿½ 2026 ï¿½ Portal de la Divina Misericordia</p>
 </footer>
 
 <!-- Golden Line Divine - Bella y Resplandeciente -->
@@ -1153,7 +1172,9 @@ if('serviceWorker' in navigator){
   navigator.serviceWorker.register('/sw.js').then(reg=>console.log('SW registered')).catch(e=>console.log('SW error'));
 }
 </script>
-<!-- Sistema de Diseño Global -->
+<!-- Sistema de Diseï¿½o Global -->
 <script src="js/system-init.js"></script>
-</body>
+
+  <!-- Core Web Vitals -->
+  <script src="/assets/js/web-vitals.js"></script></body>
 </html>

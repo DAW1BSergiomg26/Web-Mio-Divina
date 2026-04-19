@@ -1,24 +1,39 @@
 # ============================================================
 # Robots.txt - El Portal de la Divina Misericordia
-# Última actualización: 2026-03-31
+# Última actualización: 2026-04-19
 # ============================================================
 
+# Reglas generales para todos los bots
 User-agent: *
 Allow: /
 Allow: /img/
 Allow: /css/
 Allow: /js/
+Allow: /assets/
 
+# Rutas bloqueadas
 Disallow: /admin/
 Disallow: /admin_panel.html
 Disallow: /admin.html
+Disallow: /api/
 Disallow: /backups/
 Disallow: /public_backup_/
 Disallow: /Rufi_Divina/
+Disallow: /tools/
+Disallow: /temp_restore.html
+Disallow: /*.json$
+Disallow: /*.log$
+Disallow: /*.env$
 
+# Velocidad de rastreo
 Crawl-delay: 1
 
+# Sitemap
 Sitemap: https://misericordiadejesus.es/sitemap.xml
+
+# ============================================================
+# Bots específicos
+# ============================================================
 
 User-agent: Googlebot
 Allow: /
@@ -26,7 +41,12 @@ Crawl-delay: 1
 
 User-agent: Googlebot-Image
 Allow: /img/
-Crawl-delay: 3
+Allow: /assets/
+Crawl-delay: 2
+
+User-agent: Googlebot-News
+Allow: /comunidad/noticias.html
+Disallow: /
 
 User-agent: Bingbot
 Allow: /
@@ -40,10 +60,13 @@ User-agent: Yandex
 Allow: /
 Crawl-delay: 1
 
+User-agent: YandexImages
+Allow: /img/
+Allow: /assets/
+Crawl-delay: 2
+
+# Archivos públicos permitidos
 Allow: /humans.txt
 Allow: /sitemap.xml
 Allow: /robots.txt
-
-Disallow: /*.json$
-Disallow: /*.log$
-Disallow: /*.env$
+Allow: /manifest.json

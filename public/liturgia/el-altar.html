@@ -183,7 +183,26 @@ canvas{display:block;position:fixed;inset:0}
 }
 .modal-close:hover{background:rgba(240,192,96,.22);box-shadow:0 0 24px rgba(240,192,96,.3)}
 </style>
-<meta content="Portal oficial sobre el altar. Divina Misericordia, Jesús en vos confío." name="description"/></head>
+<meta content="Portal oficial sobre el altar. Divina Misericordia, Jesús en vos confío." name="description"/>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track devociones
+      document.querySelectorAll('a[href*="coronilla"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_coronilla', { event_category: 'Devocion' })));
+      document.querySelectorAll('a[href*="novena"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_novena', { event_category: 'Devocion' })));
+      document.querySelectorAll('audio, .play-btn').forEach(l => 
+        l.addEventListener('play', () => gtag && gtag('event', 'play_audio', { event_category: 'Multimedia' })));
+    });
+  </script></head>
 <body><h1>El Altar</h1>
 <!-- LOADING -->
 <div id="loading">
@@ -3158,5 +3177,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 <!-- Sistema de Diseño Global -->
 <script src="js/system-init.js"></script>
-</body>
+
+  <!-- Core Web Vitals -->
+  <script src="/assets/js/web-vitals.js"></script></body>
 </html>

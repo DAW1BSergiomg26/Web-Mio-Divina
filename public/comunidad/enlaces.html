@@ -4,26 +4,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Enlaces Útiles - Recursos para Orar y Formarse | Divina Misericordia</title>
-<meta name="description" content="Enlaces a recursos oficiales de la Iglesia Católica: Santa Sede, Conferencia Episcopal Española, lecturas diarias, liturgia, sagrada escritura y medios católicos de calidad.">
-<meta name="keywords" content="enlaces iglesia, recursos oración, formación católica, Santa Sede, Vaticano, Conferencia Episcopal, Biblia, liturgia, Radio María, EWTN, prayer resources">
+<title>Enlaces ï¿½tiles - Recursos para Orar y Formarse | Divina Misericordia</title>
+<meta name="description" content="Enlaces a recursos oficiales de la Iglesia Catï¿½lica: Santa Sede, Conferencia Episcopal Espaï¿½ola, lecturas diarias, liturgia, sagrada escritura y medios catï¿½licos de calidad.">
+<meta name="keywords" content="enlaces iglesia, recursos oraciï¿½n, formaciï¿½n catï¿½lica, Santa Sede, Vaticano, Conferencia Episcopal, Biblia, liturgia, Radio Marï¿½a, EWTN, prayer resources">
 <meta name="author" content="El Portal de la Divina Misericordia">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://misericordiadejesus.es/enlaces.html">
 <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://misericordiadejesus.es/enlaces.html">
-<meta property="og:title" content="Enlaces Útiles — Recursos para Orar y Formarse">
-<meta property="og:description" content="Enlaces a recursos oficiales de la Iglesia Católica: Santa Sede, Conferencia Episcopal Española y medios católicos.">
+<meta property="og:title" content="Enlaces ï¿½tiles ï¿½ Recursos para Orar y Formarse">
+<meta property="og:description" content="Enlaces a recursos oficiales de la Iglesia Catï¿½lica: Santa Sede, Conferencia Episcopal Espaï¿½ola y medios catï¿½licos.">
 <meta property="og:site_name" content="Divina Misericordia">
 <meta property="og:locale" content="es_ES">
 <meta property="og:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Enlaces Útiles - Recursos para Orar y Formarse">
+<meta property="og:image:alt" content="Enlaces ï¿½tiles - Recursos para Orar y Formarse">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Enlaces Útiles — Recursos para Orar y Formarse">
-<meta name="twitter:description" content="Enlaces a recursos oficiales de la Iglesia Católica.">
+<meta name="twitter:title" content="Enlaces ï¿½tiles ï¿½ Recursos para Orar y Formarse">
+<meta name="twitter:description" content="Enlaces a recursos oficiales de la Iglesia Catï¿½lica.">
 <meta name="twitter:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta name="twitter:site" content="@divinamisericordia">
 <meta name="twitter:creator" content="@divinamisericordia">
@@ -144,7 +144,7 @@ nav a:hover, nav a.activo { background: rgba(212,175,55,0.25); color: var(--gold
   box-shadow: 0 5px 25px rgba(212,175,55,0.2), 0 0 40px rgba(212,175,55,0.1);
 }
 
-/* FOOTER PRINCIPAL + CRUZ + LÍNEA DORADA */
+/* FOOTER PRINCIPAL + CRUZ + Lï¿½NEA DORADA */
 .main-footer {
   background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(10,22,40,0.8));
   padding:40px 20px;
@@ -219,7 +219,7 @@ nav a:hover, nav a.activo { background: rgba(212,175,55,0.25); color: var(--gold
   background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(10,20,40,0.8));
 }
 
-/* Golden Divine Line - Línea dorada con animación */
+/* Golden Divine Line - Lï¿½nea dorada con animaciï¿½n */
 .golden-divine-line {
   width: 100%; max-width: 1000px; height: 6px;
   margin: 0 auto 50px; position: relative; border-radius: 3px; overflow: visible;
@@ -287,7 +287,26 @@ nav a:hover, nav a.activo { background: rgba(212,175,55,0.25); color: var(--gold
 .reveal { opacity:0; transform:translateY(30px); transition: all 0.8s ease; }
 .reveal.visible { opacity:1; transform:translateY(0); }
 </style>
-</head>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track devociones
+      document.querySelectorAll('a[href*="coronilla"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_coronilla', { event_category: 'Devocion' })));
+      document.querySelectorAll('a[href*="novena"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_novena', { event_category: 'Devocion' })));
+      document.querySelectorAll('audio, .play-btn').forEach(l => 
+        l.addEventListener('play', () => gtag && gtag('event', 'play_audio', { event_category: 'Multimedia' })));
+    });
+  </script></head>
 
 <!-- Schema.org BreadcrumbList -->
 <script type="application/ld+json">
@@ -347,29 +366,29 @@ nav a:hover, nav a.activo { background: rgba(212,175,55,0.25); color: var(--gold
   </a>
   <nav id="mainNav">
     <a href="index.html">Inicio</a>
-    <a href="quienes-somos.html">Quiénes Somos</a>
-    <a href="introduccion.html">Introducción</a>
+    <a href="quienes-somos.html">Quiï¿½nes Somos</a>
+    <a href="introduccion.html">Introducciï¿½n</a>
     <a href="santa-faustina.html">Santa Faustina</a>
     <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
     <a href="coronilla.html">Coronilla</a>
     <a href="novena.html">Novena</a>
-    <a href="via-crucis.html">Vía Crucis</a>
+    <a href="via-crucis.html">Vï¿½a Crucis</a>
     <a href="oraciones.html">Oraciones</a>
     <a href="santo-rosario.html">El Santo Rosario</a>
-    <a href="maria.html">María</a>
+    <a href="maria.html">Marï¿½a</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
+    <a href="consagracion.html">Consagraciï¿½n</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
-    <a href=\"/musica/musica-sacra.html\">Música Sacra</a>
+    <a href=\"/musica/musica-sacra.html\">Mï¿½sica Sacra</a>
     <a href="noticias.html">Noticias</a>
     <a href="enlaces.html" class="activo">Enlaces</a>
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
     <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
     <a href="estudios-biblicos.html">Estudios</a>
     <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones ?</a>
     <a href="contacto.html">Contacto</a>
   </nav>
-  <button id="hamburger" class="hamburger" onclick="toggleMenu()" aria-label="Abrir menú" aria-expanded="false">
+  <button id="hamburger" class="hamburger" onclick="toggleMenu()" aria-label="Abrir menï¿½" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </header>
@@ -377,10 +396,10 @@ nav a:hover, nav a.activo { background: rgba(212,175,55,0.25); color: var(--gold
 <main class="main-content">
   <h1 class="page-title">Enlaces</h1>
   <p class="intro-text">
-    En esta sección te ofrecemos una pequeña "puerta de entrada" a la gran familia de la Iglesia, para que puedas orar, formarte y mantenerte unido a su vida cotidiana.
+    En esta secciï¿½n te ofrecemos una pequeï¿½a "puerta de entrada" a la gran familia de la Iglesia, para que puedas orar, formarte y mantenerte unido a su vida cotidiana.
   </p>
   <p class="intro-text">
-    A través de los enlaces a la Santa Sede encontrarás el magisterio del Papa, los grandes textos de la fe (Biblia, Catecismo, Concilio Vaticano II, Código de Derecho Canónico) y las noticias oficiales de la Iglesia universal. Los sitios de la Iglesia en Asturias y de la Conferencia Episcopal Española te acercan a la vida de la Iglesia en nuestro país: parroquias, pastores, iniciativas pastorales, caminos de participación y misión en medio del pueblo de Dios.
+    A travï¿½s de los enlaces a la Santa Sede encontrarï¿½s el magisterio del Papa, los grandes textos de la fe (Biblia, Catecismo, Concilio Vaticano II, Cï¿½digo de Derecho Canï¿½nico) y las noticias oficiales de la Iglesia universal. Los sitios de la Iglesia en Asturias y de la Conferencia Episcopal Espaï¿½ola te acercan a la vida de la Iglesia en nuestro paï¿½s: parroquias, pastores, iniciativas pastorales, caminos de participaciï¿½n y misiï¿½n en medio del pueblo de Dios.
   </p>
 
   <!-- SEPARADOR CRUZ -->
@@ -388,7 +407,7 @@ nav a:hover, nav a.activo { background: rgba(212,175,55,0.25); color: var(--gold
     <div class="separator-cruz">
       <div class="separator-linea"></div>
       <svg class="separator-cruz-svg" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg" aria-label="Cruz Divina Misericordia">
-        <!-- Tu SVG original completo se mantiene aquí -->
+        <!-- Tu SVG original completo se mantiene aquï¿½ -->
         <defs>
           <radialGradient id="gc1" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff9e0" stop-opacity="0.5"/><stop offset="100%" stop-color="#d4af37" stop-opacity="0"/></radialGradient>
           <linearGradient id="gv1" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#fff5c0"/><stop offset="38%" stop-color="#e8c84a"/><stop offset="100%" stop-color="#7a5a00"/></linearGradient>
@@ -426,53 +445,53 @@ nav a:hover, nav a.activo { background: rgba(212,175,55,0.25); color: var(--gold
     <div class="links-grid">
       <a href="https://www.vatican.va/content/vatican/es.html" target="_blank" rel="noopener noreferrer" class="link-card reveal">
         <h3>La Santa Sede - Vaticano</h3>
-        <p>El sitio oficial del Papa y la Santa Sede. Encíclicas, audiencias, documentos pontificios y magisterio completo.</p>
+        <p>El sitio oficial del Papa y la Santa Sede. Encï¿½clicas, audiencias, documentos pontificios y magisterio completo.</p>
       </a>
       <!-- ... el resto de tus tarjetas se mantienen igual ... -->
     </div>
   </div>
 
-  <!-- Resto de secciones (oración diaria, escritura, medios, etc.) se mantienen igual -->
+  <!-- Resto de secciones (oraciï¿½n diaria, escritura, medios, etc.) se mantienen igual -->
 
   <p class="final-quote">
     "La misericordia es el puente que une a Dios y al hombre, que une el cielo y la tierra."<br>
-    <small>— San Juan Pablo II, Encíclica Dives in Misericordia</small>
+    <small>ï¿½ San Juan Pablo II, Encï¿½clica Dives in Misericordia</small>
   </p>
 </main>
 
-<!-- FOOTER MENÚ -->
+<!-- FOOTER MENï¿½ -->
 <div class="footer-menu" style="position: relative; overflow: hidden;">
   <div class="sacred-glow-border"></div>
   <h3 class="footer-menu-title">Explora nuestra web</h3>
   <div class="footer-menu-links">
     <a href="oraciones.html">Oraciones</a>
-    <a href="via-crucis.html">Vía Crucis</a>
-    <a href="maria.html">María</a>
+    <a href="via-crucis.html">Vï¿½a Crucis</a>
+    <a href="maria.html">Marï¿½a</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
+    <a href="consagracion.html">Consagraciï¿½n</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
     <a href="noticias.html">Noticias</a>
     <a href="enlaces.html">Enlaces</a>
-    <a href="divino-nino-jesus.html">Divino Niño Jesús</a>
+    <a href="divino-nino-jesus.html">Divino Niï¿½o Jesï¿½s</a>
     <a href="san-judas-tadeo.html">San Judas Tadeo</a>
     <a href="san-cayetano.html">San Cayetano</a>
-    <a href="consagracion-sagrado-corazon.html">Sagrado Corazón</a>
-    <a href="maria-auxiliadora.html">María Auxiliadora</a>
-    <a href="san-sanson.html">Sansón</a>
+    <a href="consagracion-sagrado-corazon.html">Sagrado Corazï¿½n</a>
+    <a href="maria-auxiliadora.html">Marï¿½a Auxiliadora</a>
+    <a href="san-sanson.html">Sansï¿½n</a>
     <a href="san-benito.html">San Benito</a>
     <a href="oracion-santa-cruz.html">Santa Cruz</a>
     <a href="san-francisco.html">San Francisco</a>
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
     <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
     <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones</a>
   </div>
 </div>
 
-<!-- FOOTER PRINCIPAL + CRUZ + LÍNEA DORADA -->
+<!-- FOOTER PRINCIPAL + CRUZ + Lï¿½NEA DORADA -->
 <footer class="main-footer sacred-footer">
-  <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">?</a>
-  <p class="tagline">Jesús, En Vos Confío</p>
-  <p>© 2026 — Portal de la Divina Misericordia</p>
+  <a href="el-altar.html" class="cross-glow" title="Adorar al Santï¿½simo">?</a>
+  <p class="tagline">Jesï¿½s, En Vos Confï¿½o</p>
+  <p>ï¿½ 2026 ï¿½ Portal de la Divina Misericordia</p>
 </footer>
 
 <div class="golden-divine-line" aria-hidden="true">
@@ -578,10 +597,12 @@ draw();
 
 <!-- Resto de tus scripts (cursor, progress, toggleMenu, etc.) se mantienen igual -->
 <script>
-// ... tus otros scripts aquí (puedes copiarlos tal cual del código que me diste)
+// ... tus otros scripts aquï¿½ (puedes copiarlos tal cual del cï¿½digo que me diste)
 </script>
 
-<!-- Sistema de Diseño Global -->
+<!-- Sistema de Diseï¿½o Global -->
 <script src="js/system-init.js"></script>
-</body>
+
+  <!-- Core Web Vitals -->
+  <script src="/assets/js/web-vitals.js"></script></body>
 </html>

@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Galería de Imágenes - Divina Misericordia | Fotos de Jesús y Santa Faustina</title>
-<meta name="description" content="Galería de imágenes de la Devoción a la Divina Misericordia. Fotos de la imagen de Jesús Misericordioso, Santa Faustina, Santuarios y arte religioso.">
-<meta name="keywords" content="galería imágenes misericordia, fotos Divina Misericordia, Corazón Jesús imágenes, Santa Faustina fotos, santuario Lagiewniki fotos, arte religioso misericordia">
+<title>Galerï¿½a de Imï¿½genes - Divina Misericordia | Fotos de Jesï¿½s y Santa Faustina</title>
+<meta name="description" content="Galerï¿½a de imï¿½genes de la Devociï¿½n a la Divina Misericordia. Fotos de la imagen de Jesï¿½s Misericordioso, Santa Faustina, Santuarios y arte religioso.">
+<meta name="keywords" content="galerï¿½a imï¿½genes misericordia, fotos Divina Misericordia, Corazï¿½n Jesï¿½s imï¿½genes, Santa Faustina fotos, santuario Lagiewniki fotos, arte religioso misericordia">
 <meta name="author" content="El Portal de la Divina Misericordia">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://misericordiadejesus.es/galeria.html">
 <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://misericordiadejesus.es/galeria.html">
-<meta property="og:title" content="Galería de Imágenes - Divina Misericordia">
-<meta property="og:description" content="Galería de imágenes de la Devoción a la Divina Misericordia. Fotos de la imagen de Jesús Misericordioso, Santa Faustina, Santuarios y arte religioso.">
+<meta property="og:title" content="Galerï¿½a de Imï¿½genes - Divina Misericordia">
+<meta property="og:description" content="Galerï¿½a de imï¿½genes de la Devociï¿½n a la Divina Misericordia. Fotos de la imagen de Jesï¿½s Misericordioso, Santa Faustina, Santuarios y arte religioso.">
 <meta property="og:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Galería de Imágenes - Divina Misericordia">
+<meta property="og:image:alt" content="Galerï¿½a de Imï¿½genes - Divina Misericordia">
 <meta property="og:site_name" content="Divina Misericordia">
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Galería de Imágenes - Divina Misericordia">
-<meta name="twitter:description" content="Galería de imágenes de la Devoción a la Divina Misericordia.">
+<meta name="twitter:title" content="Galerï¿½a de Imï¿½genes - Divina Misericordia">
+<meta name="twitter:description" content="Galerï¿½a de imï¿½genes de la Devociï¿½n a la Divina Misericordia.">
 <meta name="twitter:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta name="twitter:site" content="@divinamisericordia">
 <meta name="twitter:creator" content="@divinamisericordia">
@@ -142,7 +142,7 @@ body {
 #divine-canvas { position: fixed; inset: 0; z-index: -1; }
 
 /* =============================================
-   SEPARADOR — CRUZ DIVINA MISERICORDIA
+   SEPARADOR ï¿½ CRUZ DIVINA MISERICORDIA
    ============================================= */
 .separator-wrap {
     width: 100%;
@@ -589,7 +589,26 @@ footer .cross {
   pointer-events: none;
 }
 </style>
-</head>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track devociones
+      document.querySelectorAll('a[href*="coronilla"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_coronilla', { event_category: 'Devocion' })));
+      document.querySelectorAll('a[href*="novena"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_novena', { event_category: 'Devocion' })));
+      document.querySelectorAll('audio, .play-btn').forEach(l => 
+        l.addEventListener('play', () => gtag && gtag('event', 'play_audio', { event_category: 'Multimedia' })));
+    });
+  </script></head>
 
 <!-- Schema.org BreadcrumbList -->
 <script type="application/ld+json">
@@ -598,7 +617,7 @@ footer .cross {
   "@type": "BreadcrumbList",
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://misericordiadejesus.es/"},
-    {"@type": "ListItem", "position": 2, "name": "Galería", "item": "https://misericordiadejesus.es/galeria.html"}
+    {"@type": "ListItem", "position": 2, "name": "Galerï¿½a", "item": "https://misericordiadejesus.es/galeria.html"}
   ]
 }
 </script>
@@ -649,27 +668,27 @@ footer .cross {
     </a>
       <nav id="mainNav">
     <a href="index.html">Inicio</a>
-    <a href="quienes-somos.html">Quiénes Somos</a>
-    <a href="introduccion.html">Introducción</a>
+    <a href="quienes-somos.html">Quiï¿½nes Somos</a>
+    <a href="introduccion.html">Introducciï¿½n</a>
     <a href="santa-faustina.html">Santa Faustina</a>
     <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
     <a href="coronilla.html">Coronilla</a>
     <a href="novena.html">Novena</a>
-    <a href="via-crucis.html">Vía Crucis</a>
+    <a href="via-crucis.html">Vï¿½a Crucis</a>
     <a href="oraciones.html">Oraciones</a>
     <a href="santo-rosario.html">El Santo Rosario</a>
-    <a href="maria.html">María</a>
+    <a href="maria.html">Marï¿½a</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
+    <a href="consagracion.html">Consagraciï¿½n</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
-    <a href=\"/musica/musica-sacra.html\">Música Sacra</a>
+    <a href=\"/musica/musica-sacra.html\">Mï¿½sica Sacra</a>
     <a href="noticias.html">Noticias</a>
     <a href="enlaces.html">Enlaces</a>
     
     
     
     
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
     <a href="estudios-biblicos.html">Estudios</a>
         <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones ?</a>
@@ -683,11 +702,11 @@ footer .cross {
 
 <main class="main-content">
 
-    <h1 class="page-title">Galería</h1>
+    <h1 class="page-title">Galerï¿½a</h1>
 
     <p class="intro-text">
-        Contempla imágenes que nos ayudan a meditar en la infinita misericordia de Jesús. 
-        Cada fotografía y representación es una ventana hacia su Corazón abierto por amor.
+        Contempla imï¿½genes que nos ayudan a meditar en la infinita misericordia de Jesï¿½s. 
+        Cada fotografï¿½a y representaciï¿½n es una ventana hacia su Corazï¿½n abierto por amor.
     </p>
 
     <!-- Primer separador -->
@@ -763,16 +782,16 @@ footer .cross {
         <div class="gallery-item">
             <div class="gallery-img" style="font-size:6rem;">?</div>
             <div class="gallery-caption">
-                <h3>Jesús de la Divina Misericordia</h3>
-                <p>La imagen venerada en todo el mundo, pintada por Adolf Hyla por indicación de Santa Faustina</p>
+                <h3>Jesï¿½s de la Divina Misericordia</h3>
+                <p>La imagen venerada en todo el mundo, pintada por Adolf Hyla por indicaciï¿½n de Santa Faustina</p>
             </div>
         </div>
 
         <div class="gallery-item">
             <div class="gallery-img" style="font-size:6rem;">??</div>
             <div class="gallery-caption">
-                <h3>Santuario de Lódz – Polonia</h3>
-                <p>Lugar donde Santa Faustina vivió sus últimos días y donde reposan sus restos</p>
+                <h3>Santuario de Lï¿½dz ï¿½ Polonia</h3>
+                <p>Lugar donde Santa Faustina viviï¿½ sus ï¿½ltimos dï¿½as y donde reposan sus restos</p>
             </div>
         </div>
 
@@ -780,19 +799,19 @@ footer .cross {
             <div class="gallery-img" style="font-size:6rem;">??</div>
             <div class="gallery-caption">
                 <h3>La Hora de la Misericordia</h3>
-                <p>Las 3 de la tarde: hora en que Jesús expiró en la cruz y momento de gran gracia</p>
+                <p>Las 3 de la tarde: hora en que Jesï¿½s expirï¿½ en la cruz y momento de gran gracia</p>
             </div>
         </div>
 
         <div class="gallery-item">
             <div class="gallery-img" style="font-size:6rem;">?</div>
             <div class="gallery-caption">
-                <h3>Santuario de la Divina Misericordia – Kraków-Lagiewniki</h3>
-                <p>Centro mundial de la devoción, consagrado por San Juan Pablo II</p>
+                <h3>Santuario de la Divina Misericordia ï¿½ Krakï¿½w-Lagiewniki</h3>
+                <p>Centro mundial de la devociï¿½n, consagrado por San Juan Pablo II</p>
             </div>
         </div>
 
-        <!-- Puedes añadir más elementos aquí cuando tengas imágenes reales -->
+        <!-- Puedes aï¿½adir mï¿½s elementos aquï¿½ cuando tengas imï¿½genes reales -->
     </div>
 
     <!-- Segundo separador -->
@@ -866,9 +885,9 @@ footer .cross {
     </div>
 
     <p class="quote-closing">
-        «Del Corazón abierto de Jesús brotan dos rayos: uno pálido y otro rojo.  
-        El rayo pálido representa el agua que justifica; el rayo rojo representa la sangre que da vida.»<br><br>
-        <small>— Santa Faustina, Diario 299</small>
+        ï¿½Del Corazï¿½n abierto de Jesï¿½s brotan dos rayos: uno pï¿½lido y otro rojo.  
+        El rayo pï¿½lido representa el agua que justifica; el rayo rojo representa la sangre que da vida.ï¿½<br><br>
+        <small>ï¿½ Santa Faustina, Diario 299</small>
     </p>
 
 </main>
@@ -878,43 +897,43 @@ footer .cross {
     <h3 class="footer-menu-title">Explora nuestra web</h3>
     <div class="footer-menu-links">
         <a href="oraciones.html">Oraciones</a>
-        <a href="via-crucis.html">Vía Crucis</a>
-        <a href="maria.html">María</a>
+        <a href="via-crucis.html">Vï¿½a Crucis</a>
+        <a href="maria.html">Marï¿½a</a>
         <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-        <a href="consagracion.html">Consagración</a>
+        <a href="consagracion.html">Consagraciï¿½n</a>
         <a href="lugares-de-culto.html">Lugares de Culto</a>
         <a href="noticias.html">Noticias</a>
-        <a href="ss-leon-xiv.html">S.S. León XIV</a>
+        <a href="ss-leon-xiv.html">S.S. Leï¿½n XIV</a>
         <a href="ss-francisco.html">S.S. Francisco</a>
         <a href="ss-benedicto-xvi.html">S.S. Benedicto XVI</a>
         <a href="ss-juan-pablo-ii.html">S.S. Juan Pablo II</a>
         <a href="enlaces.html">Enlaces</a>
-        <a href="divino-nino-jesus.html">Divino Niño Jesús</a>
+        <a href="divino-nino-jesus.html">Divino Niï¿½o Jesï¿½s</a>
         <a href="san-judas-tadeo.html">San Judas Tadeo</a>
         <a href="san-cayetano.html">San Cayetano</a>
-        <a href="consagracion-sagrado-corazon.html">Sagrado Corazón</a>
-        <a href="maria-auxiliadora.html">María Auxiliadora</a>
-        <a href="san-sanson.html">Sansón</a>
+        <a href="consagracion-sagrado-corazon.html">Sagrado Corazï¿½n</a>
+        <a href="maria-auxiliadora.html">Marï¿½a Auxiliadora</a>
+        <a href="san-sanson.html">Sansï¿½n</a>
         <a href="san-benito.html">San Benito</a>
         <a href="oracion-santa-cruz.html">Santa Cruz</a>
         <a href="san-francisco.html">San Francisco</a>
-        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
         <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones</a>
     </div>
 </div>
 
 <footer class="main-footer sacred-footer">
-    <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">?</a>
-    <p class="tagline">Jesús, En Vos Confío</p>
-    <p>© 2026 — Portal de la Divina Misericordia</p>
+    <a href="el-altar.html" class="cross-glow" title="Adorar al Santï¿½simo">?</a>
+    <p class="tagline">Jesï¿½s, En Vos Confï¿½o</p>
+    <p>ï¿½ 2026 ï¿½ Portal de la Divina Misericordia</p>
 </footer>
 
 <div class="scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})"></div>
 <div class="scroll-down" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})"></div>
 
 <script>
-// Canvas rays (versión mejorada y corregida)
+// Canvas rays (versiï¿½n mejorada y corregida)
 const canvas = document.getElementById('divine-canvas');
 const ctx = canvas.getContext('2d');
 let width, height, rays = [], particles = [];
@@ -1061,7 +1080,9 @@ document.addEventListener("DOMContentLoaded", function(){
 </script>
 
 
-<!-- Sistema de Diseño Global -->
+<!-- Sistema de Diseï¿½o Global -->
 <script src="js/system-init.js"></script>
-</body>
+
+  <!-- Core Web Vitals -->
+  <script src="/assets/js/web-vitals.js"></script></body>
 </html>

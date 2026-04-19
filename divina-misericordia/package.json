@@ -4,8 +4,8 @@
   "description": "Radiant Mercy - Global Spiritual Community",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "node index.js"
+    "start": "PORT=3001 node index.js",
+    "dev": "PORT=3001 node index.js"
   },
   "author": "Sergio Daniel",
   "license": "ISC",

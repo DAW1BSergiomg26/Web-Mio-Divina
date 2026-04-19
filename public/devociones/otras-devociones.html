@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Otras Devociones - Santos, Santas y Devociones Marianas | Divina Misericordia</title>
-<meta name="description" content="Colección de devociones católicas: santos, santas y devociones marianas. Encuentra oraciones para diferentes necesidades y momentos de vida espiritual.">
-<meta name="keywords" content="otras devociones, oraciones católicas, santos, santas, devociones marianas, novenas, letanias, bendiciones, santos patrón, devociones populares">
+<meta name="description" content="Colecciï¿½n de devociones catï¿½licas: santos, santas y devociones marianas. Encuentra oraciones para diferentes necesidades y momentos de vida espiritual.">
+<meta name="keywords" content="otras devociones, oraciones catï¿½licas, santos, santas, devociones marianas, novenas, letanias, bendiciones, santos patrï¿½n, devociones populares">
 <meta name="author" content="El Portal de la Divina Misericordia">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://misericordiadejesus.es/otras-devociones.html">
@@ -63,7 +63,7 @@ body {
 }
 
 /* ============================================
-   FONDO DINÁMICO
+   FONDO DINï¿½MICO
    ============================================ */
 .bg { 
     position:fixed; inset:0; 
@@ -153,7 +153,7 @@ body {
 }
 
 /* ============================================
-   PARTÍCULAS FLOTANTES
+   PARTï¿½CULAS FLOTANTES
    ============================================ */
 .particles {
     position: fixed;
@@ -554,7 +554,26 @@ footer.main-footer .tagline { color:var(--gold-divine); font-family:'Cinzel',ser
     .scroll-down { bottom: 30px; right: 20px; }
 }
 </style>
-</head>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track devociones
+      document.querySelectorAll('a[href*="coronilla"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_coronilla', { event_category: 'Devocion' })));
+      document.querySelectorAll('a[href*="novena"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_novena', { event_category: 'Devocion' })));
+      document.querySelectorAll('audio, .play-btn').forEach(l => 
+        l.addEventListener('play', () => gtag && gtag('event', 'play_audio', { event_category: 'Multimedia' })));
+    });
+  </script></head>
 
 <body>
 
@@ -567,7 +586,7 @@ footer.main-footer .tagline { color:var(--gold-divine); font-family:'Cinzel',ser
     <div class="ray"></div><div class="ray"></div>
 </div>
 
-<!-- Partículas Flotantes -->
+<!-- Partï¿½culas Flotantes -->
 <div class="particles">
     <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
     <div class="particle"></div><div class="particle"></div><div class="particle"></div><div class="particle"></div>
@@ -615,34 +634,34 @@ footer.main-footer .tagline { color:var(--gold-divine); font-family:'Cinzel',ser
     </a>
     <nav id="mainNav">
         <a href="index.html">Inicio</a>
-        <a href="quienes-somos.html">Quiénes Somos</a>
-        <a href="introduccion.html">Introducción</a>
+        <a href="quienes-somos.html">Quiï¿½nes Somos</a>
+        <a href="introduccion.html">Introducciï¿½n</a>
         <a href="santa-faustina.html">Santa Faustina</a>
         <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
         <a href="coronilla.html">Coronilla</a>
         <a href="novena.html">Novena</a>
-        <a href="via-crucis.html">Vía Crucis</a>
+        <a href="via-crucis.html">Vï¿½a Crucis</a>
         <a href="oraciones.html">Oraciones</a>
         <a href="santo-rosario.html">El Santo Rosario</a>
-        <a href="maria.html">María</a>
+        <a href="maria.html">Marï¿½a</a>
         <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-        <a href="consagracion.html">Consagración</a>
+        <a href="consagracion.html">Consagraciï¿½n</a>
         <a href="lugares-de-culto.html">Lugares de Culto</a>
-        <a href=\"/musica/musica-sacra.html\">Música Sacra</a>
+        <a href=\"/musica/musica-sacra.html\">Mï¿½sica Sacra</a>
         <a href="noticias.html">Noticias</a>
         <a href="enlaces.html">Enlaces</a>
         
         
         
         
-        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
     <a href="estudios-biblicos.html">Estudios</a>
         <a href="otras-devociones.html" class="activo">Otras Devociones</a>
         <a href="contacto.html">Contacto</a>
     
     </nav>
-    <button class="hamburger" id="hamburger" aria-label="Menú">
+    <button class="hamburger" id="hamburger" aria-label="Menï¿½">
         <span></span><span></span><span></span>
     </button>
 </header>
@@ -656,49 +675,49 @@ footer.main-footer .tagline { color:var(--gold-divine); font-family:'Cinzel',ser
     </div>
 
     <div class="section-intro reveal">
-        <p>«Toda oración que sale del corazón es agradable a Dios.» Explora estas devociones que enriquecerán tu vida espiritual.</p>
+        <p>ï¿½Toda oraciï¿½n que sale del corazï¿½n es agradable a Dios.ï¿½ Explora estas devociones que enriquecerï¿½n tu vida espiritual.</p>
     </div>
 
     <div class="devociones-grid">
 
-        <!-- San Miguel Arcángel -->
+        <!-- San Miguel Arcï¿½ngel -->
         <div class="devocion-card dorado reveal">
             <span class="devocion-icon">+</span>
-            <h3>San Miguel Arcángel</h3>
-            <p>Príncipe de la Milicia Celestial. La oración de León XIII por la Iglesia y el pueblo fiel.</p>
-            <a href="oracion-san-miguel.html" class="btn">Ver Oración</a>
+            <h3>San Miguel Arcï¿½ngel</h3>
+            <p>Prï¿½ncipe de la Milicia Celestial. La oraciï¿½n de Leï¿½n XIII por la Iglesia y el pueblo fiel.</p>
+            <a href="oracion-san-miguel.html" class="btn">Ver Oraciï¿½n</a>
         </div>
 
         <!-- San Antonio de Padua -->
         <div class="devocion-card reveal">
             <span class="devocion-icon">+</span>
             <h3>San Antonio de Padua</h3>
-            <p>El Santo de los Milagros y las causas imposibles. Oración para pedir milagros.</p>
-            <a href="oracion-san-antonio.html" class="btn">Ver Oración</a>
+            <p>El Santo de los Milagros y las causas imposibles. Oraciï¿½n para pedir milagros.</p>
+            <a href="oracion-san-antonio.html" class="btn">Ver Oraciï¿½n</a>
         </div>
 
         <!-- San Pancracio -->
         <div class="devocion-card reveal">
             <span class="devocion-icon">+</span>
             <h3>San Pancracio</h3>
-            <p>Patrón del trabajo, dinero y salud. El joven mártir de 14 años.</p>
-            <a href="oracion-san-pancracio.html" class="btn">Ver Oración</a>
+            <p>Patrï¿½n del trabajo, dinero y salud. El joven mï¿½rtir de 14 aï¿½os.</p>
+            <a href="oracion-san-pancracio.html" class="btn">Ver Oraciï¿½n</a>
         </div>
 
         <!-- San Benito -->
         <div class="devocion-card reveal">
             <span class="devocion-icon">+</span>
             <h3>San Benito</h3>
-            <p>Patrón de Europa. Ora et Labora. Protege contra todo mal y tentaciones.</p>
-            <a href="san-benito.html" class="btn">Ver Oración</a>
+            <p>Patrï¿½n de Europa. Ora et Labora. Protege contra todo mal y tentaciones.</p>
+            <a href="san-benito.html" class="btn">Ver Oraciï¿½n</a>
         </div>
 
         <!-- San Judas Tadeo -->
         <div class="devocion-card rojo reveal">
             <span class="devocion-icon">+</span>
             <h3>San Judas Tadeo</h3>
-            <p>Patrón de las causas imposibles. El santo más popular para los favores recibidos.</p>
-            <a href="san-judas-tadeo.html" class="btn">Ver Oración</a>
+            <p>Patrï¿½n de las causas imposibles. El santo mï¿½s popular para los favores recibidos.</p>
+            <a href="san-judas-tadeo.html" class="btn">Ver Oraciï¿½n</a>
         </div>
 
         <!-- San Cayetano -->
@@ -706,103 +725,103 @@ footer.main-footer .tagline { color:var(--gold-divine); font-family:'Cinzel',ser
             <span class="devocion-icon">+</span>
             <h3>San Cayetano</h3>
             <p>Padre de la divina providencia. El santo que socorre con grandes milagros.</p>
-            <a href="san-cayetano.html" class="btn">Ver Oración</a>
+            <a href="san-cayetano.html" class="btn">Ver Oraciï¿½n</a>
         </div>
 
-        <!-- San Francisco de Asís -->
+        <!-- San Francisco de Asï¿½s -->
         <div class="devocion-card reveal">
             <span class="devocion-icon">+</span>
-            <h3>San Francisco de Asís</h3>
-            <p>Patrón de Italia y los ecólogos. Oración diaria de bendiciones y paz.</p>
-            <a href="san-francisco.html" class="btn">Ver Oración</a>
+            <h3>San Francisco de Asï¿½s</h3>
+            <p>Patrï¿½n de Italia y los ecï¿½logos. Oraciï¿½n diaria de bendiciones y paz.</p>
+            <a href="san-francisco.html" class="btn">Ver Oraciï¿½n</a>
         </div>
 
-        <!-- Sansón -->
+        <!-- Sansï¿½n -->
         <div class="devocion-card reveal">
             <span class="devocion-icon">+</span>
-            <h3>Sansón</h3>
-            <p>Glorioso santo que recibió de Dios fortaleza y poder para defender a sus hijos.</p>
-            <a href="san-sanson.html" class="btn">Ver Oración</a>
+            <h3>Sansï¿½n</h3>
+            <p>Glorioso santo que recibiï¿½ de Dios fortaleza y poder para defender a sus hijos.</p>
+            <a href="san-sanson.html" class="btn">Ver Oraciï¿½n</a>
         </div>
 
-        <!-- San José -->
+        <!-- San Josï¿½ -->
         <div class="devocion-card dorado reveal">
             <span class="devocion-icon">+</span>
-            <h3>San José</h3>
-            <p>El padre más fiel, paciente y silencioso. Guardián del Salvador y esposo de María.</p>
-            <a href="san-jose.html" class="btn">Ver Devoción</a>
+            <h3>San Josï¿½</h3>
+            <p>El padre mï¿½s fiel, paciente y silencioso. Guardiï¿½n del Salvador y esposo de Marï¿½a.</p>
+            <a href="san-jose.html" class="btn">Ver Devociï¿½n</a>
         </div>
 
-        <!-- San José Dormido -->
+        <!-- San Josï¿½ Dormido -->
         <div class="devocion-card reveal">
             <span class="devocion-icon">+</span>
-            <h3>San José Dormido</h3>
-            <p>La devoción del Papa Francisco al padre guardián de Jesús.</p>
-            <a href="san-jose-dormido.html" class="btn">Ver Oración</a>
+            <h3>San Josï¿½ Dormido</h3>
+            <p>La devociï¿½n del Papa Francisco al padre guardiï¿½n de Jesï¿½s.</p>
+            <a href="san-jose-dormido.html" class="btn">Ver Oraciï¿½n</a>
         </div>
 
-        <!-- Divino Niño Jesús -->
+        <!-- Divino Niï¿½o Jesï¿½s -->
         <div class="devocion-card dorado reveal">
             <span class="devocion-icon">+</span>
-            <h3>Divino Niño Jesús</h3>
-            <p>El Divino Niño del 20 de Julio. Millones de fieles concurren para pedirle favores.</p>
-            <a href="divino-nino-jesus.html" class="btn">Ver Oración</a>
+            <h3>Divino Niï¿½o Jesï¿½s</h3>
+            <p>El Divino Niï¿½o del 20 de Julio. Millones de fieles concurren para pedirle favores.</p>
+            <a href="divino-nino-jesus.html" class="btn">Ver Oraciï¿½n</a>
         </div>
 
-        <!-- María Auxiliadora -->
+        <!-- Marï¿½a Auxiliadora -->
         <div class="devocion-card reveal">
             <span class="devocion-icon">+</span>
-            <h3>María Auxiliadora</h3>
-            <p>La Virgen María como Auxiliadora de los cristianos.</p>
-            <a href="maria-auxiliadora.html" class="btn">Ver Oración</a>
+            <h3>Marï¿½a Auxiliadora</h3>
+            <p>La Virgen Marï¿½a como Auxiliadora de los cristianos.</p>
+            <a href="maria-auxiliadora.html" class="btn">Ver Oraciï¿½n</a>
         </div>
 
-        <!-- Oración a la Santa Cruz -->
+        <!-- Oraciï¿½n a la Santa Cruz -->
         <div class="devocion-card rojo reveal">
             <span class="devocion-icon">+</span>
-            <h3>Oración a la Santa Cruz</h3>
-            <p>Devoción al árbol de la vida y salvación. Protección a través de la Santa Cruz.</p>
-            <a href="oracion-santa-cruz.html" class="btn">Ver Oración</a>
+            <h3>Oraciï¿½n a la Santa Cruz</h3>
+            <p>Devociï¿½n al ï¿½rbol de la vida y salvaciï¿½n. Protecciï¿½n a travï¿½s de la Santa Cruz.</p>
+            <a href="oracion-santa-cruz.html" class="btn">Ver Oraciï¿½n</a>
         </div>
 
-        <!-- Cruz del Perdón -->
+        <!-- Cruz del Perdï¿½n -->
         <div class="devocion-card rojo reveal">
             <span class="devocion-icon">+</span>
-            <h3>Cruz del Perdón</h3>
-            <p>Cristo con el Brazo Caído. Milagro del Monasterio de Santa Ana y San José.</p>
-            <a href="cruz-del-perdon.html" class="btn">Ver Historia y Oración</a>
+            <h3>Cruz del Perdï¿½n</h3>
+            <p>Cristo con el Brazo Caï¿½do. Milagro del Monasterio de Santa Ana y San Josï¿½.</p>
+            <a href="cruz-del-perdon.html" class="btn">Ver Historia y Oraciï¿½n</a>
         </div>
 
         <!-- Santa Francisca Romana -->
         <div class="devocion-card dorado reveal">
             <span class="devocion-icon">+</span>
             <h3>Santa Francisca Romana</h3>
-            <p>Esposa, madre, viuda y apóstol seglar de Roma. Fundadora de las Oblatas de María.</p>
-            <a href="santa-francisca-romana.html" class="btn">Ver Devoción</a>
+            <p>Esposa, madre, viuda y apï¿½stol seglar de Roma. Fundadora de las Oblatas de Marï¿½a.</p>
+            <a href="santa-francisca-romana.html" class="btn">Ver Devociï¿½n</a>
         </div>
 
-        <!-- Jesús Eucaristía -->
+        <!-- Jesï¿½s Eucaristï¿½a -->
         <div class="devocion-card rojo reveal">
             <span class="devocion-icon">+</span>
-            <h3>Jesús Eucaristía</h3>
-            <p>Bendita Eucaristía que con amor me esperas en cada Sagrario. El Amor que se entrega.</p>
-            <a href="oracion-eucharistia.html" class="btn">Ver Devoción</a>
+            <h3>Jesï¿½s Eucaristï¿½a</h3>
+            <p>Bendita Eucaristï¿½a que con amor me esperas en cada Sagrario. El Amor que se entrega.</p>
+            <a href="oracion-eucharistia.html" class="btn">Ver Devociï¿½n</a>
         </div>
 
-        <!-- Sagrado Corazón -->
+        <!-- Sagrado Corazï¿½n -->
         <div class="devocion-card rojo reveal">
             <span class="devocion-icon">+</span>
-            <h3>Sagrado Corazón de Jesús</h3>
-            <p>Consagración al Sagrado Corazón de Jesús con la oración de entrega total.</p>
-            <a href="consagracion-sagrado-corazon.html" class="btn">Ver Devoción</a>
+            <h3>Sagrado Corazï¿½n de Jesï¿½s</h3>
+            <p>Consagraciï¿½n al Sagrado Corazï¿½n de Jesï¿½s con la oraciï¿½n de entrega total.</p>
+            <a href="consagracion-sagrado-corazon.html" class="btn">Ver Devociï¿½n</a>
         </div>
 
-        <!-- Oración del Estudiante -->
+        <!-- Oraciï¿½n del Estudiante -->
         <div class="devocion-card reveal">
             <span class="devocion-icon">+</span>
-            <h3>Oración del Estudiante</h3>
-            <p>Para pedir sabiduría, entendimiento y bendiciones sobre los estudios.</p>
-            <a href="oracion-del-estudiante.html" class="btn">Ver Oración</a>
+            <h3>Oraciï¿½n del Estudiante</h3>
+            <p>Para pedir sabidurï¿½a, entendimiento y bendiciones sobre los estudios.</p>
+            <a href="oracion-del-estudiante.html" class="btn">Ver Oraciï¿½n</a>
         </div>
 
     </div>
@@ -811,14 +830,14 @@ footer.main-footer .tagline { color:var(--gold-divine); font-family:'Cinzel',ser
 
 <!-- Footer Menu -->
 <div class="footer-menu reveal">
-    <h3 class="footer-menu-title">Explorar Más</h3>
+    <h3 class="footer-menu-title">Explorar Mï¿½s</h3>
     <div class="footer-menu-links">
         <a href="santa-faustina.html">Santa Faustina</a>
         <a href="coronilla.html">Coronilla</a>
         <a href="novena.html">Novena</a>
         <a href="oraciones.html">Oraciones</a>
-        <a href="maria.html">Santa María</a>
-        <a href="san-jose.html">San José</a>
+        <a href="maria.html">Santa Marï¿½a</a>
+        <a href="san-jose.html">San Josï¿½</a>
         <a href="contacto.html">Contacto</a>
     </div>
 </div>
@@ -828,9 +847,9 @@ footer.main-footer .tagline { color:var(--gold-divine); font-family:'Cinzel',ser
 
 <!-- Footer -->
 <footer class="main-footer sacred-footer">
-    <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">?</a>
-    <p class="tagline">Jesús, En Vos Confío</p>
-    <p>© 2026 — Portal de la Divina Misericordia</p>
+    <a href="el-altar.html" class="cross-glow" title="Adorar al Santï¿½simo">?</a>
+    <p class="tagline">Jesï¿½s, En Vos Confï¿½o</p>
+    <p>ï¿½ 2026 ï¿½ Portal de la Divina Misericordia</p>
 </footer>
 
 <!-- Scroll Buttons -->
@@ -897,7 +916,7 @@ document.getElementById('hamburger').addEventListener('click',function(){
     rs();init();dr();
 })();
 
-// Cursor instantáneo
+// Cursor instantï¿½neo
 (function(){
     const cursor = document.getElementById('cursor');
     if(!cursor) return;
@@ -917,7 +936,9 @@ document.getElementById('hamburger').addEventListener('click',function(){
 </script>
 
 
-<!-- Sistema de Diseño Global -->
+<!-- Sistema de Diseï¿½o Global -->
 <script src="js/system-init.js"></script>
-</body>
+
+  <!-- Core Web Vitals -->
+  <script src="/assets/js/web-vitals.js"></script></body>
 </html>

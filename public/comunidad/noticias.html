@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Noticias de la Iglesia Católica - Actualidad Divina Misericordia | España Mundo</title>
-<meta name="description" content="Noticias de la Iglesia Católica sobre la Divina Misericordia y actualidad religiosa. Últimas noticias del Papa, Vaticano, diocese y comunidad católica.">
-<meta name="keywords" content="noticias iglesia, noticias católicas, Vaticano, papa, Divina Misericordia, actualidad religiosa, diocese, comunidad católica, fe">
+<title>Noticias de la Iglesia Catï¿½lica - Actualidad Divina Misericordia | Espaï¿½a Mundo</title>
+<meta name="description" content="Noticias de la Iglesia Catï¿½lica sobre la Divina Misericordia y actualidad religiosa. ï¿½ltimas noticias del Papa, Vaticano, diocese y comunidad catï¿½lica.">
+<meta name="keywords" content="noticias iglesia, noticias catï¿½licas, Vaticano, papa, Divina Misericordia, actualidad religiosa, diocese, comunidad catï¿½lica, fe">
 <meta name="author" content="El Portal de la Divina Misericordia">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://misericordiadejesus.es/noticias.html">
 <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://misericordiadejesus.es/noticias.html">
-<meta property="og:title" content="Noticias de la Iglesia Católica — Divina Misericordia">
-<meta property="og:description" content="Noticias de la Iglesia Católica sobre la Divina Misericordia y actualidad religiosa.">
+<meta property="og:title" content="Noticias de la Iglesia Catï¿½lica ï¿½ Divina Misericordia">
+<meta property="og:description" content="Noticias de la Iglesia Catï¿½lica sobre la Divina Misericordia y actualidad religiosa.">
 <meta property="og:site_name" content="Divina Misericordia">
 <meta property="og:locale" content="es_ES">
 <meta property="og:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Noticias de la Iglesia Católica">
+<meta property="og:image:alt" content="Noticias de la Iglesia Catï¿½lica">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Noticias de la Iglesia Católica — Divina Misericordia">
-<meta name="twitter:description" content="Noticias de la Iglesia Católica sobre la Divina Misericordia y actualidad religiosa.">
+<meta name="twitter:title" content="Noticias de la Iglesia Catï¿½lica ï¿½ Divina Misericordia">
+<meta name="twitter:description" content="Noticias de la Iglesia Catï¿½lica sobre la Divina Misericordia y actualidad religiosa.">
 <meta name="twitter:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta name="twitter:site" content="@divinamisericordia">
 <meta name="twitter:creator" content="@divinamisericordia">
@@ -181,7 +181,7 @@ nav a.activo {
   background: rgba(212,175,55,0.18);
   box-shadow: 0 0 20px rgba(212,175,55,0.15);
 }
-/* OTRAS DEVOCIONES — special style */
+/* OTRAS DEVOCIONES ï¿½ special style */
 nav a.nav-otras-devociones {
   color: var(--celestial) !important;
   animation: heartbeat-glow 2s ease-in-out infinite;
@@ -530,7 +530,7 @@ nav a.nav-otras-devociones::after {
   margin-bottom:4px;
 }
 
-/* Golden Divine Line - Línea dorada luminosa debajo del footer */
+/* Golden Divine Line - Lï¿½nea dorada luminosa debajo del footer */
 .golden-divine-line {
   width: 100%;
   max-width: 1000px;
@@ -722,7 +722,26 @@ nav a.nav-otras-devociones::after {
   50% { box-shadow: 0 0 25px rgba(212,175,55,0.8), 0 0 50px rgba(212,175,55,0.4), 0 0 70px rgba(212,175,55,0.2); }
 }
 </style>
-</head>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track devociones
+      document.querySelectorAll('a[href*="coronilla"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_coronilla', { event_category: 'Devocion' })));
+      document.querySelectorAll('a[href*="novena"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_novena', { event_category: 'Devocion' })));
+      document.querySelectorAll('audio, .play-btn').forEach(l => 
+        l.addEventListener('play', () => gtag && gtag('event', 'play_audio', { event_category: 'Multimedia' })));
+    });
+  </script></head>
 
 <!-- Schema.org BreadcrumbList -->
 <script type="application/ld+json">
@@ -791,23 +810,23 @@ nav a.nav-otras-devociones::after {
   </a>
   <nav id="mainNav">
     <a href="index.html">Inicio</a>
-    <a href="quienes-somos.html">Quiénes Somos</a>
-    <a href="introduccion.html">Introducción</a>
+    <a href="quienes-somos.html">Quiï¿½nes Somos</a>
+    <a href="introduccion.html">Introducciï¿½n</a>
     <a href="santa-faustina.html">Santa Faustina</a>
     <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
     <a href="coronilla.html">Coronilla</a>
     <a href="novena.html">Novena</a>
-    <a href="via-crucis.html">Vía Crucis</a>
+    <a href="via-crucis.html">Vï¿½a Crucis</a>
     <a href="oraciones.html">Oraciones</a>
     <a href="santo-rosario.html">El Santo Rosario</a>
-    <a href="maria.html">María</a>
+    <a href="maria.html">Marï¿½a</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
+    <a href="consagracion.html">Consagraciï¿½n</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
-    <a href=\"/musica/musica-sacra.html\">Música Sacra</a>
+    <a href=\"/musica/musica-sacra.html\">Mï¿½sica Sacra</a>
     <a href="noticias.html" class="activo">Noticias</a>
     <a href="enlaces.html">Enlaces</a>
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
     <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
     <a href="estudios-biblicos.html">Estudios</a>
     <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones ?</a>
@@ -822,7 +841,7 @@ nav a.nav-otras-devociones::after {
 <main class="main-content">
   <h1 class="page-title">Noticias de la Iglesia</h1>
   <p class="intro-text">
-    Mantente informado sobre las últimas noticias de la Iglesia Católica relacionadas con la Divina Misericordia y otras devociones.
+    Mantente informado sobre las ï¿½ltimas noticias de la Iglesia Catï¿½lica relacionadas con la Divina Misericordia y otras devociones.
   </p>
 
   <!-- Separador -->
@@ -830,7 +849,7 @@ nav a.nav-otras-devociones::after {
     <div class="separator-cruz">
       <div class="separator-linea"></div>
       <svg class="separator-cruz-svg" viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg" aria-label="Cruz Divina Misericordia">
-        <!-- (SVG de la cruz se mantiene igual que en tu código) -->
+        <!-- (SVG de la cruz se mantiene igual que en tu cï¿½digo) -->
         <defs>
           <radialGradient id="gc_s1" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stop-color="#fff9e0" stop-opacity="0.55"/>
@@ -890,55 +909,55 @@ nav a.nav-otras-devociones::after {
   </div>
 
   <div class="content-block">
-    <h2>Fuentes de Noticias Católicas</h2>
+    <h2>Fuentes de Noticias Catï¿½licas</h2>
     <ul>
-      <li><a href="https://www.vaticannews.va/es/vaticano.html" target="_blank" rel="noopener noreferrer">Vatican News</a> — Noticias oficiales del Vaticano, el Papa y la Santa Sede en español.</li>
-      <li><a href="https://es.zenit.org/" target="_blank" rel="noopener noreferrer">Zenit</a> — Agencia internacional de noticias católicas con análisis y reportajes.</li>
-      <li><a href="https://www.aciprensa.com/" target="_blank" rel="noopener noreferrer">ACI Prensa</a> — Portal de noticias católicas con la actualidad de la Iglesia en el mundo.</li>
+      <li><a href="https://www.vaticannews.va/es/vaticano.html" target="_blank" rel="noopener noreferrer">Vatican News</a> ï¿½ Noticias oficiales del Vaticano, el Papa y la Santa Sede en espaï¿½ol.</li>
+      <li><a href="https://es.zenit.org/" target="_blank" rel="noopener noreferrer">Zenit</a> ï¿½ Agencia internacional de noticias catï¿½licas con anï¿½lisis y reportajes.</li>
+      <li><a href="https://www.aciprensa.com/" target="_blank" rel="noopener noreferrer">ACI Prensa</a> ï¿½ Portal de noticias catï¿½licas con la actualidad de la Iglesia en el mundo.</li>
     </ul>
   </div>
 
   <p class="quote-closing">
-    Jesús, En Vos Confío.
+    Jesï¿½s, En Vos Confï¿½o.
   </p>
 </main>
 
-<!-- ====== FOOTER MENÚ ====== -->
+<!-- ====== FOOTER MENï¿½ ====== -->
 <div class="footer-menu">
   <h3 class="footer-menu-title">Explora nuestra web</h3>
   <div class="footer-menu-links">
     <a href="oraciones.html">Oraciones</a>
-    <a href="via-crucis.html">Vía Crucis</a>
-    <a href="maria.html">María</a>
+    <a href="via-crucis.html">Vï¿½a Crucis</a>
+    <a href="maria.html">Marï¿½a</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
+    <a href="consagracion.html">Consagraciï¿½n</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
     <a href="noticias.html">Noticias</a>
-    <a href="ss-leon-xiv.html">S.S. León XIV</a>
+    <a href="ss-leon-xiv.html">S.S. Leï¿½n XIV</a>
     <a href="ss-francisco.html">S.S. Francisco</a>
     <a href="ss-benedicto-xvi.html">S.S. Benedicto XVI</a>
     <a href="ss-juan-pablo-ii.html">S.S. Juan Pablo II</a>
     <a href="enlaces.html">Enlaces</a>
-    <a href="divino-nino-jesus.html">Divino Niño Jesús</a>
+    <a href="divino-nino-jesus.html">Divino Niï¿½o Jesï¿½s</a>
     <a href="san-judas-tadeo.html">San Judas Tadeo</a>
     <a href="san-cayetano.html">San Cayetano</a>
-    <a href="consagracion-sagrado-corazon.html">Sagrado Corazón</a>
-    <a href="maria-auxiliadora.html">María Auxiliadora</a>
-    <a href="san-sanson.html">Sansón</a>
+    <a href="consagracion-sagrado-corazon.html">Sagrado Corazï¿½n</a>
+    <a href="maria-auxiliadora.html">Marï¿½a Auxiliadora</a>
+    <a href="san-sanson.html">Sansï¿½n</a>
     <a href="san-benito.html">San Benito</a>
     <a href="oracion-santa-cruz.html">Santa Cruz</a>
     <a href="san-francisco.html">San Francisco</a>
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
     <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
     <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones</a>
   </div>
 </div>
 
-<!-- ====== FOOTER PRINCIPAL + CRUZ + LÍNEA DORADA ====== -->
+<!-- ====== FOOTER PRINCIPAL + CRUZ + Lï¿½NEA DORADA ====== -->
 <footer class="main-footer">
-  <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">?</a>
-  <p class="tagline">Jesús, En Vos Confío</p>
-  <p>© 2026 — Portal de la Divina Misericordia</p>
+  <a href="el-altar.html" class="cross-glow" title="Adorar al Santï¿½simo">?</a>
+  <p class="tagline">Jesï¿½s, En Vos Confï¿½o</p>
+  <p>ï¿½ 2026 ï¿½ Portal de la Divina Misericordia</p>
 </footer>
 
 <!-- Golden Divine Line -->
@@ -1076,7 +1095,9 @@ nav a.nav-otras-devociones::after {
 })();
 </script>
 
-<!-- Sistema de Diseño Global -->
+<!-- Sistema de Diseï¿½o Global -->
 <script src="js/system-init.js"></script>
-</body>
+
+  <!-- Core Web Vitals -->
+  <script src="/assets/js/web-vitals.js"></script></body>
 </html>

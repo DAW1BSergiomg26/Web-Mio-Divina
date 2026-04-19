@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Devociones Marianas - María, Madre de Dios | Divina Misericordia</title>
-<meta name="description" content="Devociones Marianas - María, Madre de Dios y Madre de la Iglesia. La Santina, Virgen de Caacupé, Virgen de Luján, María Auxiliadora y más. Todas las devociones marianas reunidas.">
+<title>Devociones Marianas - Marï¿½a, Madre de Dios | Divina Misericordia</title>
+<meta name="description" content="Devociones Marianas - Marï¿½a, Madre de Dios y Madre de la Iglesia. La Santina, Virgen de Caacupï¿½, Virgen de Lujï¿½n, Marï¿½a Auxiliadora y mï¿½s. Todas las devociones marianas reunidas.">
 <meta name="author" content="El Portal de la Divina Misericordia">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#1a3a6e">
@@ -147,7 +147,7 @@ body {
 }
 
 /* ------------------------------------------
-   ESTRELLAS Y PARTÍCULAS
+   ESTRELLAS Y PARTï¿½CULAS
    ------------------------------------------ */
 .stars {
     position: fixed;
@@ -597,7 +597,7 @@ nav a.devociones-btn:hover {
 .devocion-card.medalla { border-color: rgba(201,150,10,0.3); }
 
 /* ------------------------------------------
-   CONSAGRACIÓN - 10 FORMAS
+   CONSAGRACIï¿½N - 10 FORMAS
    ------------------------------------------ */
 .consagracion-hero {
     background: linear-gradient(135deg, rgba(26,58,110,0.5), rgba(212,165,165,0.15), rgba(10,22,40,0.9));
@@ -1016,7 +1016,26 @@ blockquote cite {
 .scroll-down { bottom:16px; right:20px; }
 }
 </style>
-</head>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track devociones
+      document.querySelectorAll('a[href*="coronilla"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_coronilla', { event_category: 'Devocion' })));
+      document.querySelectorAll('a[href*="novena"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_novena', { event_category: 'Devocion' })));
+      document.querySelectorAll('audio, .play-btn').forEach(l => 
+        l.addEventListener('play', () => gtag && gtag('event', 'play_audio', { event_category: 'Multimedia' })));
+    });
+  </script></head>
 <body>
 
 <div class="bg"></div>
@@ -1077,29 +1096,29 @@ blockquote cite {
     </a>
     <nav id="mainNav">
         <a href="index.html">Inicio</a>
-        <a href="quienes-somos.html">Quiénes Somos</a>
-        <a href="introduccion.html">Introducción</a>
+        <a href="quienes-somos.html">Quiï¿½nes Somos</a>
+        <a href="introduccion.html">Introducciï¿½n</a>
         <a href="santa-faustina.html">Santa Faustina</a>
         <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
         <a href="coronilla.html">Coronilla</a>
         <a href="novena.html">Novena</a>
-        <a href="via-crucis.html">Vía Crucis</a>
+        <a href="via-crucis.html">Vï¿½a Crucis</a>
         <a href="oraciones.html">Oraciones</a>
         <a href="santo-rosario.html">El Santo Rosario</a>
-        <a href="maria.html">María</a>
+        <a href="maria.html">Marï¿½a</a>
         <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-        <a href="consagracion.html">Consagración</a>
+        <a href="consagracion.html">Consagraciï¿½n</a>
         <a href="lugares-de-culto.html">Lugares de Culto</a>
-        <a href=\"/musica/musica-sacra.html\">Música Sacra</a>
+        <a href=\"/musica/musica-sacra.html\">Mï¿½sica Sacra</a>
         <a href="noticias.html">Noticias</a>
         <a href="enlaces.html">Enlaces</a>
-        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
     <a href="estudios-biblicos.html">Estudios</a>
         <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones</a>
         <a href="contacto.html">Contacto</a>
     </nav>
-    <button class="hamburger" id="hamburger" aria-label="Menú">
+    <button class="hamburger" id="hamburger" aria-label="Menï¿½">
         <span></span><span></span><span></span>
     </button>
 </header>
@@ -1108,16 +1127,16 @@ blockquote cite {
 
     <!-- HERO CELESTIAL -->
     <section class="hero reveal">
-        <span class="hero-crown">Santa María</span>
+        <span class="hero-crown">Santa Marï¿½a</span>
         <h1>Devociones Marianas</h1>
         <p class="hero-subtitle">
-            Bajo tu protección nos acogemos, Santa Madre de Dios;<br>
-            no deseches nuestras súplicas en nuestras necesidades,<br>
-            mas líbranos siempre de todo peligro,<br>
+            Bajo tu protecciï¿½n nos acogemos, Santa Madre de Dios;<br>
+            no deseches nuestras sï¿½plicas en nuestras necesidades,<br>
+            mas lï¿½branos siempre de todo peligro,<br>
             Oh Virgen gloriosa y bendita.
         </p>
         <p class="hero-quote">
-            «María es la obra maestra de Dios, la más perfecta, la más pura, la más santa, la más cercana a Él.»
+            ï¿½Marï¿½a es la obra maestra de Dios, la mï¿½s perfecta, la mï¿½s pura, la mï¿½s santa, la mï¿½s cercana a ï¿½l.ï¿½
         </p>
     </section>
 
@@ -1142,20 +1161,20 @@ blockquote cite {
         </div>
     </div>
 
-    <!-- INTRODUCCIÓN -->
+    <!-- INTRODUCCIï¿½N -->
     <section class="section reveal">
         <div class="section-header">
             <span class="section-icon">+</span>
             <div>
-                <h2 class="section-title">María, Madre de Dios y Madre de la Iglesia</h2>
-                <p class="section-subtitle">El misterio de la Theotokos en la tradición católica</p>
+                <h2 class="section-title">Marï¿½a, Madre de Dios y Madre de la Iglesia</h2>
+                <p class="section-subtitle">El misterio de la Theotokos en la tradiciï¿½n catï¿½lica</p>
             </div>
         </div>
 
         <div class="card divine reveal">
-            <h3>Quién es María para nosotros</h3>
+            <h3>Quiï¿½n es Marï¿½a para nosotros</h3>
             <p style="font-size:1.15rem; line-height:2;">
-                Santa María, Madre de Dios, ha sido venerada desde los primeros siglos del cristianismo como la más perfecta discípula de su Hijo y modelo supremo de fe, esperanza y caridad para todos los bautizados. La Iglesia Católica, en conformidad con la Sagrada Escritura y la Tradición Apostólica, le rinde un culto <strong>hiperdulia</strong> —superior al de los demás santos, pero inferior al culto de latría debido exclusivamente a Dios—.
+                Santa Marï¿½a, Madre de Dios, ha sido venerada desde los primeros siglos del cristianismo como la mï¿½s perfecta discï¿½pula de su Hijo y modelo supremo de fe, esperanza y caridad para todos los bautizados. La Iglesia Catï¿½lica, en conformidad con la Sagrada Escritura y la Tradiciï¿½n Apostï¿½lica, le rinde un culto <strong>hiperdulia</strong> ï¿½superior al de los demï¿½s santos, pero inferior al culto de latrï¿½a debido exclusivamente a Diosï¿½.
             </p>
         </div>
 
@@ -1163,28 +1182,28 @@ blockquote cite {
             <div class="info-box">
                 <span class="icon-big">+</span>
                 <strong>Theotokos</strong>
-                <p>En el año 431, el Concilio de Éfeso proclamó a María como Madre de Dios (Theotokos), confirmando su papel único en el misterio de la Encarnación.</p>
+                <p>En el aï¿½o 431, el Concilio de ï¿½feso proclamï¿½ a Marï¿½a como Madre de Dios (Theotokos), confirmando su papel ï¿½nico en el misterio de la Encarnaciï¿½n.</p>
             </div>
             <div class="info-box">
                 <span class="icon-big">+</span>
-                <strong>Inmaculada Concepción</strong>
-                <p>El 8 de diciembre de 1854, el Papa Pío IX definió como dogma de fe que María fue concebida sin pecado original desde el primer instante de su existencia.</p>
+                <strong>Inmaculada Concepciï¿½n</strong>
+                <p>El 8 de diciembre de 1854, el Papa Pï¿½o IX definiï¿½ como dogma de fe que Marï¿½a fue concebida sin pecado original desde el primer instante de su existencia.</p>
             </div>
             <div class="info-box">
                 <span class="icon-big">+</span>
-                <strong>Asunción a los Cielos</strong>
-                <p>El 1 de noviembre de 1950, el Papa Pío XII definió como dogma que María fue elevada en cuerpo y alma a la gloria celestial.</p>
+                <strong>Asunciï¿½n a los Cielos</strong>
+                <p>El 1 de noviembre de 1950, el Papa Pï¿½o XII definiï¿½ como dogma que Marï¿½a fue elevada en cuerpo y alma a la gloria celestial.</p>
             </div>
             <div class="info-box">
                 <span class="icon-big">+</span>
                 <strong>Madre de la Iglesia</strong>
-                <p>El 11 de octubre de 1964, el Papa Pablo VI proclamó a María como Madre de la Iglesia, confirmando su misión maternal en el Pueblo de Dios.</p>
+                <p>El 11 de octubre de 1964, el Papa Pablo VI proclamï¿½ a Marï¿½a como Madre de la Iglesia, confirmando su misiï¿½n maternal en el Pueblo de Dios.</p>
             </div>
         </div>
 
         <blockquote class="reveal">
-            «María no es solamente el modelo perfecto de la Iglesia, sino también su Madre e intercesora ante el trono de la gracia.»
-            <cite>— Catecismo de la Iglesia Católica, n. 963</cite>
+            ï¿½Marï¿½a no es solamente el modelo perfecto de la Iglesia, sino tambiï¿½n su Madre e intercesora ante el trono de la gracia.ï¿½
+            <cite>ï¿½ Catecismo de la Iglesia Catï¿½lica, n. 963</cite>
         </blockquote>
     </section>
 
@@ -1212,7 +1231,7 @@ blockquote cite {
         </div>
 
         <p style="font-size:1.1rem; color:var(--text-main); line-height:1.9; margin-bottom:30px; text-align:center;">
-            En <strong>el Portal de la Divina Misericordia</strong>, honramos diversas advocaciones de la Santísima Virgen María, cada una con su historia, devoción y gracias particulares. Cada advocación mariana nos acerca a Cristo y a su misterio de salvación.
+            En <strong>el Portal de la Divina Misericordia</strong>, honramos diversas advocaciones de la Santï¿½sima Virgen Marï¿½a, cada una con su historia, devociï¿½n y gracias particulares. Cada advocaciï¿½n mariana nos acerca a Cristo y a su misterio de salvaciï¿½n.
         </p>
 
         <div class="devociones-grid">
@@ -1220,35 +1239,35 @@ blockquote cite {
                 <div class="devocion-card santina reveal">
                     <span class="icon">+</span>
                     <h4>La Santina</h4>
-                    <p>La imagen de la Divina Misericordia pintada por Adolf Hyla, donde Jesús se presenta con los sellos de la luz, recordándonos que la misericordia divina es la mayor perfección del Amor divino.</p>
-                    <span class="btn">Conocer más</span>
+                    <p>La imagen de la Divina Misericordia pintada por Adolf Hyla, donde Jesï¿½s se presenta con los sellos de la luz, recordï¿½ndonos que la misericordia divina es la mayor perfecciï¿½n del Amor divino.</p>
+                    <span class="btn">Conocer mï¿½s</span>
                 </div>
             </a>
 
             <a href="virgen-caacupe.html" class="devocion-card-link">
                 <div class="devocion-card caacupe reveal">
                     <span class="icon">+</span>
-                    <h4>Virgen de Caacupé</h4>
-                    <p>Patrona del Paraguay, venerada como la «Virgen de los Milagros» y «Tupãsy Caacupé» (Madre de Dios de Caacupé). Primera patronaamericana declarada oficialmente.</p>
-                    <span class="btn">Conocer más</span>
+                    <h4>Virgen de Caacupï¿½</h4>
+                    <p>Patrona del Paraguay, venerada como la ï¿½Virgen de los Milagrosï¿½ y ï¿½Tupï¿½sy Caacupï¿½ (Madre de Dios de Caacupï¿½). Primera patronaamericana declarada oficialmente.</p>
+                    <span class="btn">Conocer mï¿½s</span>
                 </div>
             </a>
 
             <a href="virgen-lujan.html" class="devocion-card-link">
-                <div class="devocion-card luján reveal">
+                <div class="devocion-card lujï¿½n reveal">
                     <span class="icon">+</span>
-                    <h4>Virgen de Luján</h4>
-                    <p>Patrona de Argentina, Uruguay y Paraguay. La Virgen morena que se apareció en una carreta y cuyos milagros fundaron una nación-devoción.</p>
-                    <span class="btn">Conocer más</span>
+                    <h4>Virgen de Lujï¿½n</h4>
+                    <p>Patrona de Argentina, Uruguay y Paraguay. La Virgen morena que se apareciï¿½ en una carreta y cuyos milagros fundaron una naciï¿½n-devociï¿½n.</p>
+                    <span class="btn">Conocer mï¿½s</span>
                 </div>
             </a>
 
             <a href="maria-auxiliadora.html" class="devocion-card-link">
                 <div class="devocion-card auxiliadora reveal">
                     <span class="icon">+</span>
-                    <h4>María Auxiliadora</h4>
-                    <p>Devoción propagada por San Juan Bosco, con el título de «Auxilio de los Cristianos». Patrona de los jóvenes y de la Familia Salesiana mundial.</p>
-                    <span class="btn">Conocer más</span>
+                    <h4>Marï¿½a Auxiliadora</h4>
+                    <p>Devociï¿½n propagada por San Juan Bosco, con el tï¿½tulo de ï¿½Auxilio de los Cristianosï¿½. Patrona de los jï¿½venes y de la Familia Salesiana mundial.</p>
+                    <span class="btn">Conocer mï¿½s</span>
                 </div>
             </a>
 
@@ -1256,8 +1275,8 @@ blockquote cite {
                 <div class="devocion-card medalla reveal">
                     <span class="icon">+</span>
                     <h4>Medalla Milagrosa</h4>
-                    <p>La aparición a Santa Catalina Labouré en la Rue du Bac, París (1830). La Virgen prometió gracias abundantes a quienes lleven su imagen con fe.</p>
-                    <span class="btn">Conocer más</span>
+                    <p>La apariciï¿½n a Santa Catalina Labourï¿½ en la Rue du Bac, Parï¿½s (1830). La Virgen prometiï¿½ gracias abundantes a quienes lleven su imagen con fe.</p>
+                    <span class="btn">Conocer mï¿½s</span>
                 </div>
             </a>
         </div>
@@ -1281,32 +1300,32 @@ blockquote cite {
         <div class="section-header">
             <span class="section-icon">+</span>
             <div>
-                <h2 class="section-title" style="font-size:clamp(1.3rem,2.5vw,1.8rem);">Diez Formas de Consagrarse a la Virgen María</h2>
-                <p class="section-subtitle">Formas sencillas que cambiarán radicalmente tu vida</p>
+                <h2 class="section-title" style="font-size:clamp(1.3rem,2.5vw,1.8rem);">Diez Formas de Consagrarse a la Virgen Marï¿½a</h2>
+                <p class="section-subtitle">Formas sencillas que cambiarï¿½n radicalmente tu vida</p>
             </div>
         </div>
 
         <div class="consagracion-hero reveal">
-            <h3>«Cambiar Radicalmente tu Vida Entera»</h3>
-            <p>Estas diez prácticas mariológicas, recomendadas por el <strong style="color:var(--oro-light);">Padre Escobita</strong> y el <strong style="color:var(--oro-light);">Padre Broom</strong>, te acercarán a Cristo a través del Corazón Inmaculado de María.</p>
+            <h3>ï¿½Cambiar Radicalmente tu Vida Enteraï¿½</h3>
+            <p>Estas diez prï¿½cticas mariolï¿½gicas, recomendadas por el <strong style="color:var(--oro-light);">Padre Escobita</strong> y el <strong style="color:var(--oro-light);">Padre Broom</strong>, te acercarï¿½n a Cristo a travï¿½s del Corazï¿½n Inmaculado de Marï¿½a.</p>
         </div>
 
         <div class="consagracion-grid">
             <div class="consagracion-item reveal">
                 <div class="consagracion-num">1</div>
                 <div class="consagracion-content">
-                    <h4>Consagración</h4>
-                    <p><strong style="color:var(--oro-light);">«El primer gesto que deberíamos hacer cada mañana es una oración: la oración de consagración a Jesús por medio del Corazón Inmaculado. ¡Arranca bien el día por medio de María!»</strong></p>
-                    <p>Como rezaba Santa Teresa de Calcuta: <em>«María, dame tu corazón, tan hermoso, puro e inmaculado, tan pleno de amor y humildad que yo pueda recibir a Jesús en el Pan de Vida, amarle como tú le amas y servirle en el rostro angustiado de los pobres»</em>.</p>
+                    <h4>Consagraciï¿½n</h4>
+                    <p><strong style="color:var(--oro-light);">ï¿½El primer gesto que deberï¿½amos hacer cada maï¿½ana es una oraciï¿½n: la oraciï¿½n de consagraciï¿½n a Jesï¿½s por medio del Corazï¿½n Inmaculado. ï¿½Arranca bien el dï¿½a por medio de Marï¿½a!ï¿½</strong></p>
+                    <p>Como rezaba Santa Teresa de Calcuta: <em>ï¿½Marï¿½a, dame tu corazï¿½n, tan hermoso, puro e inmaculado, tan pleno de amor y humildad que yo pueda recibir a Jesï¿½s en el Pan de Vida, amarle como tï¿½ le amas y servirle en el rostro angustiado de los pobresï¿½</em>.</p>
                 </div>
             </div>
 
             <div class="consagracion-item reveal">
                 <div class="consagracion-num">2</div>
                 <div class="consagracion-content">
-                    <h4>Rezar el Ángelus o el Regina Caeli</h4>
-                    <p><strong style="color:var(--oro-light);">«Santificaremos las horas de la mañana, de la tarde y de la noche por medio de la santa y dulce presencia de María»</strong></p>
-                    <p>San Juan María Vianney, Santo Cura de Ars, afirmaba: <em>«Solo después del Juicio Final podrá María descansar. Desde ahora y hasta entonces, está demasiado ocupada con sus hijos. Servir a la Reina del Cielo es reinar allí»</em>.</p>
+                    <h4>Rezar el ï¿½ngelus o el Regina Caeli</h4>
+                    <p><strong style="color:var(--oro-light);">ï¿½Santificaremos las horas de la maï¿½ana, de la tarde y de la noche por medio de la santa y dulce presencia de Marï¿½aï¿½</strong></p>
+                    <p>San Juan Marï¿½a Vianney, Santo Cura de Ars, afirmaba: <em>ï¿½Solo despuï¿½s del Juicio Final podrï¿½ Marï¿½a descansar. Desde ahora y hasta entonces, estï¿½ demasiado ocupada con sus hijos. Servir a la Reina del Cielo es reinar allï¿½ï¿½</em>.</p>
                 </div>
             </div>
 
@@ -1314,66 +1333,66 @@ blockquote cite {
                 <div class="consagracion-num">3</div>
                 <div class="consagracion-content">
                     <h4>Consagrar el Hogar y la Familia</h4>
-                    <p><strong style="color:var(--oro-light);">«Dios Padre derramará un aluvión de bendiciones sobre cada miembro de la familia»</strong></p>
-                    <p>El Padre Escobita propone una novena de nueve días de Rosarios culminando con la <strong style="color:var(--celeste-mariano);">bendición por parte de un sacerdote</strong> de la imagen, el hogar y los miembros de la familia.</p>
+                    <p><strong style="color:var(--oro-light);">ï¿½Dios Padre derramarï¿½ un aluviï¿½n de bendiciones sobre cada miembro de la familiaï¿½</strong></p>
+                    <p>El Padre Escobita propone una novena de nueve dï¿½as de Rosarios culminando con la <strong style="color:var(--celeste-mariano);">bendiciï¿½n por parte de un sacerdote</strong> de la imagen, el hogar y los miembros de la familia.</p>
                 </div>
             </div>
 
             <div class="consagracion-item reveal">
                 <div class="consagracion-num">4</div>
                 <div class="consagracion-content">
-                    <h4>Consagración de Uno Mismo</h4>
-                    <p><strong style="color:var(--oro-light); font-size:1.1rem;">«Esa consagración cambiará radicalmente tu vida entera.»</strong></p>
-                    <p>Según las formas de <strong style="color:var(--celeste-mariano);">San Maximiliano Kolbe</strong>, <strong style="color:var(--celeste-mariano);">San Luis María Grignion de Montfort</strong>, o la moderna del Padre Michael Gaitely. <em>«María tiene poder sobre nosotros en formas que van más allá de nuestra más rebuscada imaginación»</em>.</p>
+                    <h4>Consagraciï¿½n de Uno Mismo</h4>
+                    <p><strong style="color:var(--oro-light); font-size:1.1rem;">ï¿½Esa consagraciï¿½n cambiarï¿½ radicalmente tu vida entera.ï¿½</strong></p>
+                    <p>Segï¿½n las formas de <strong style="color:var(--celeste-mariano);">San Maximiliano Kolbe</strong>, <strong style="color:var(--celeste-mariano);">San Luis Marï¿½a Grignion de Montfort</strong>, o la moderna del Padre Michael Gaitely. <em>ï¿½Marï¿½a tiene poder sobre nosotros en formas que van mï¿½s allï¿½ de nuestra mï¿½s rebuscada imaginaciï¿½nï¿½</em>.</p>
                 </div>
             </div>
 
             <div class="consagracion-item reveal">
                 <div class="consagracion-num">5</div>
                 <div class="consagracion-content">
-                    <h4>Imitar a María</h4>
-                    <p>Las <strong style="color:var(--oro-light); font-size:1.1rem;">DIEZ VIRTUDES</strong> de Nuestra Señora que debemos imitar (según San Luis María Grignion de Monfort):</p>
+                    <h4>Imitar a Marï¿½a</h4>
+                    <p>Las <strong style="color:var(--oro-light); font-size:1.1rem;">DIEZ VIRTUDES</strong> de Nuestra Seï¿½ora que debemos imitar (segï¿½n San Luis Marï¿½a Grignion de Monfort):</p>
                     <div class="virtudes-grid">
                         <span class="virtud">Humildad profunda</span>
                         <span class="virtud">Fe viva</span>
                         <span class="virtud">Obediencia ciega</span>
-                        <span class="virtud">Oración incesante</span>
-                        <span class="virtud">Negación de sí mismo</span>
+                        <span class="virtud">Oraciï¿½n incesante</span>
+                        <span class="virtud">Negaciï¿½n de sï¿½ mismo</span>
                         <span class="virtud">Pureza absoluta</span>
                         <span class="virtud">Amor ardiente</span>
                         <span class="virtud">Paciencia heroica</span>
                         <span class="virtud">Amabilidad angelical</span>
-                        <span class="virtud">Sabiduría celestial</span>
+                        <span class="virtud">Sabidurï¿½a celestial</span>
                     </div>
-                    <p><em>«Los mayores santos, los más ricos en gracia y virtud, serán quienes recen con mayor frecuencia a la Santísima Virgen»</em> — San Luis María Grignion de Monfort.</p>
+                    <p><em>ï¿½Los mayores santos, los mï¿½s ricos en gracia y virtud, serï¿½n quienes recen con mayor frecuencia a la Santï¿½sima Virgenï¿½</em> ï¿½ San Luis Marï¿½a Grignion de Monfort.</p>
                 </div>
             </div>
 
             <div class="consagracion-item reveal">
                 <div class="consagracion-num">6</div>
                 <div class="consagracion-content">
-                    <h4>En las Tentaciones, Acude a María</h4>
-                    <p><strong style="color:var(--oro-light); font-size:1.2rem;">«¡Pronuncia el Nombre de María, reza el Avemaría!»</strong></p>
-                    <p><strong style="color:var(--celeste-mariano);">María es el general del ejército.</strong> A sus órdenes, el enemigo se desvanece. Como decía San Buenaventura: <em>«Los hombres no temen tanto a un poderoso ejército enemigo como temen los poderes del infierno el nombre y la protección de María»</em>.</p>
+                    <h4>En las Tentaciones, Acude a Marï¿½a</h4>
+                    <p><strong style="color:var(--oro-light); font-size:1.2rem;">ï¿½ï¿½Pronuncia el Nombre de Marï¿½a, reza el Avemarï¿½a!ï¿½</strong></p>
+                    <p><strong style="color:var(--celeste-mariano);">Marï¿½a es el general del ejï¿½rcito.</strong> A sus ï¿½rdenes, el enemigo se desvanece. Como decï¿½a San Buenaventura: <em>ï¿½Los hombres no temen tanto a un poderoso ejï¿½rcito enemigo como temen los poderes del infierno el nombre y la protecciï¿½n de Marï¿½aï¿½</em>.</p>
                 </div>
             </div>
 
             <div class="consagracion-item reveal">
                 <div class="consagracion-num">7</div>
                 <div class="consagracion-content">
-                    <h4>María y el Año Litúrgico</h4>
-                    <p>Conocer la presencia de María en el Cuerpo Místico de Cristo a través del <strong style="color:var(--oro-light);">año litúrgico</strong>, donde la Virgen tiene un lugar especial.</p>
-                    <p>Lectura recomendada: <strong style="color:var(--celeste-mariano);">Marialis Cultus</strong> de Pablo VI, <em>«una obra maestra espiritual»</em>.</p>
+                    <h4>Marï¿½a y el Aï¿½o Litï¿½rgico</h4>
+                    <p>Conocer la presencia de Marï¿½a en el Cuerpo Mï¿½stico de Cristo a travï¿½s del <strong style="color:var(--oro-light);">aï¿½o litï¿½rgico</strong>, donde la Virgen tiene un lugar especial.</p>
+                    <p>Lectura recomendada: <strong style="color:var(--celeste-mariano);">Marialis Cultus</strong> de Pablo VI, <em>ï¿½una obra maestra espiritualï¿½</em>.</p>
                 </div>
             </div>
 
             <div class="consagracion-item reveal">
                 <div class="consagracion-num">8</div>
                 <div class="consagracion-content">
-                    <h4>Leer sobre María</h4>
-                    <p><strong style="color:var(--oro-light);">«Una mariología integral y bien fundamentada debe cultivar tanto la doctrina como la devoción»</strong></p>
-                    <p><em>«María es la forma más rápida, breve, fácil y eficaz de llegar a Jesús»</em> — Padre Escobita.</p>
-                    <p>Lectura recomendada: <strong style="color:var(--celeste-mariano);">Rosarium Virginis Mariae</strong> de San Juan Pablo II: <em>«Contemplar el rostro de Jesús a través de los ojos y el corazón de María»</em>.</p>
+                    <h4>Leer sobre Marï¿½a</h4>
+                    <p><strong style="color:var(--oro-light);">ï¿½Una mariologï¿½a integral y bien fundamentada debe cultivar tanto la doctrina como la devociï¿½nï¿½</strong></p>
+                    <p><em>ï¿½Marï¿½a es la forma mï¿½s rï¿½pida, breve, fï¿½cil y eficaz de llegar a Jesï¿½sï¿½</em> ï¿½ Padre Escobita.</p>
+                    <p>Lectura recomendada: <strong style="color:var(--celeste-mariano);">Rosarium Virginis Mariae</strong> de San Juan Pablo II: <em>ï¿½Contemplar el rostro de Jesï¿½s a travï¿½s de los ojos y el corazï¿½n de Marï¿½aï¿½</em>.</p>
                 </div>
             </div>
 
@@ -1381,9 +1400,9 @@ blockquote cite {
                 <div class="consagracion-num">9</div>
                 <div class="consagracion-content">
                     <h4>Apostolado Mariano</h4>
-                    <p><strong style="color:var(--oro-light); font-size:1.1rem;">«Conviértete en un ardiente, ferviente y apasionado Apóstol de María»</strong></p>
-                    <p>Como <strong style="color:var(--celeste-mariano);">San Maximiliano Kolbe</strong>, que spreadía la devoción mediante la <strong style="color:var(--celeste-mariano);">Medalla Milagrosa</strong>, que él llamaba <em>«balas espirituales»</em>.</p>
-                    <p><em>«Solo a la Inmaculada le ha sido prometida por Dios la victoria sobre Satanás. Ella busca almas que se le consagren enteramente»</em> — San Maximiliano Kolbe.</p>
+                    <p><strong style="color:var(--oro-light); font-size:1.1rem;">ï¿½Conviï¿½rtete en un ardiente, ferviente y apasionado Apï¿½stol de Marï¿½aï¿½</strong></p>
+                    <p>Como <strong style="color:var(--celeste-mariano);">San Maximiliano Kolbe</strong>, que spreadï¿½a la devociï¿½n mediante la <strong style="color:var(--celeste-mariano);">Medalla Milagrosa</strong>, que ï¿½l llamaba <em>ï¿½balas espiritualesï¿½</em>.</p>
+                    <p><em>ï¿½Solo a la Inmaculada le ha sido prometida por Dios la victoria sobre Satanï¿½s. Ella busca almas que se le consagren enteramenteï¿½</em> ï¿½ San Maximiliano Kolbe.</p>
                 </div>
             </div>
 
@@ -1391,9 +1410,9 @@ blockquote cite {
                 <div class="consagracion-num">10</div>
                 <div class="consagracion-content">
                     <h4>El Santo Rosario</h4>
-                    <p><strong style="color:var(--oro-light); font-size:1.2rem;">«Si obedecemos a la Madre de Dios, la familia se salvará y alcanzaremos la paz que el corazón humano tanto anhela»</strong></p>
-                    <p>Las seis veces que la Virgen se apareció en Fátima a los pastorcillos, <strong style="color:var(--celeste-mariano);">insistió en el rezo del Rosario</strong>. San Juan Pablo II le atribuye al Rosario la capacidad de <strong style="color:var(--celeste-mariano);">salvar la familia y la paz mundial</strong>.</p>
-                    <p><em>«Familia que reza unida, permanece unida»</em> — Padre Patrick Peyton.</p>
+                    <p><strong style="color:var(--oro-light); font-size:1.2rem;">ï¿½Si obedecemos a la Madre de Dios, la familia se salvarï¿½ y alcanzaremos la paz que el corazï¿½n humano tanto anhelaï¿½</strong></p>
+                    <p>Las seis veces que la Virgen se apareciï¿½ en Fï¿½tima a los pastorcillos, <strong style="color:var(--celeste-mariano);">insistiï¿½ en el rezo del Rosario</strong>. San Juan Pablo II le atribuye al Rosario la capacidad de <strong style="color:var(--celeste-mariano);">salvar la familia y la paz mundial</strong>.</p>
+                    <p><em>ï¿½Familia que reza unida, permanece unidaï¿½</em> ï¿½ Padre Patrick Peyton.</p>
                 </div>
             </div>
         </div>
@@ -1418,39 +1437,39 @@ blockquote cite {
             <span class="section-icon">+</span>
             <div>
                 <h2 class="section-title">Oraciones Marianas</h2>
-                <p class="section-subtitle">Las oraciones más bellas dedicadas a Santa María</p>
+                <p class="section-subtitle">Las oraciones mï¿½s bellas dedicadas a Santa Marï¿½a</p>
             </div>
         </div>
 
         <div class="prayer-block reveal">
             <h3>+ SALVE SANCTA PARENS +</h3>
             <p class="rosario">
-                Dios te salve, María, llena eres de gracia;<br>
-                el Señor es contigo;<br>
-                bendita tú eres entre todas las mujeres,<br>
-                y bendito es el fruto de tu vientre: Jesús.<br><br>
-                Santa María, Madre de Dios,<br>
+                Dios te salve, Marï¿½a, llena eres de gracia;<br>
+                el Seï¿½or es contigo;<br>
+                bendita tï¿½ eres entre todas las mujeres,<br>
+                y bendito es el fruto de tu vientre: Jesï¿½s.<br><br>
+                Santa Marï¿½a, Madre de Dios,<br>
                 ruega por nosotros pecadores,<br>
                 ahora y en la hora de nuestra muerte.<br>
-                Amén.
+                Amï¿½n.
             </p>
             <p class="note">Rezada en todas las liturgias marianas</p>
         </div>
 
         <div class="prayer-block reveal">
-            <h3>+ CONSAGRACIÓN A MARÍA +</h3>
+            <h3>+ CONSAGRACIï¿½N A MARï¿½A +</h3>
             <p>
-                María, yo me consagro hoy a ti con todo mi ser, para vivir en adelante con aquel amor que te une a Dios y que te hace tan digna de Él.<br><br>
-                Tómame bajo tu maternal cuidado y guíame como un hijo. Enséñame a ser bueno y generoso, a servir con alegría y a caminar siempre junto a tu Hijo Jesús.<br><br>
-                Amén.
+                Marï¿½a, yo me consagro hoy a ti con todo mi ser, para vivir en adelante con aquel amor que te une a Dios y que te hace tan digna de ï¿½l.<br><br>
+                Tï¿½mame bajo tu maternal cuidado y guï¿½ame como un hijo. Ensï¿½ï¿½ame a ser bueno y generoso, a servir con alegrï¿½a y a caminar siempre junto a tu Hijo Jesï¿½s.<br><br>
+                Amï¿½n.
             </p>
         </div>
 
         <div class="prayer-block reveal">
             <h3>+ JACULATORIA MARIANA +</h3>
             <p style="font-size:1.4rem; line-height:2.5;">
-                «¡Ruega por nosotros, Santa Madre de Dios,<br>
-                para que seamos dignos de las promesas de Cristo!»
+                ï¿½ï¿½Ruega por nosotros, Santa Madre de Dios,<br>
+                para que seamos dignos de las promesas de Cristo!ï¿½
             </p>
         </div>
     </section>
@@ -1480,20 +1499,20 @@ blockquote cite {
 
         <div class="timeline reveal">
             <div class="t-item">
-                <div class="t-year">La Salette · Francia · 1846</div>
-                <div class="t-text">La Virgen se apareció a Melanie Calvat y Maximino Giraud en La Salette. Lloraba por los pecados del mundo y pedía penitencia y oración.</div>
+                <div class="t-year">La Salette ï¿½ Francia ï¿½ 1846</div>
+                <div class="t-text">La Virgen se apareciï¿½ a Melanie Calvat y Maximino Giraud en La Salette. Lloraba por los pecados del mundo y pedï¿½a penitencia y oraciï¿½n.</div>
             </div>
             <div class="t-item">
-                <div class="t-year">Lourdes · Francia · 1858</div>
-                <div class="t-text">A Bernadette Soubirous, en la gruta de Massabielle. Se identificó como «la Inmaculada Concepción» y prometió hacer dichosos a quienes vinieran en peregrinación.</div>
+                <div class="t-year">Lourdes ï¿½ Francia ï¿½ 1858</div>
+                <div class="t-text">A Bernadette Soubirous, en la gruta de Massabielle. Se identificï¿½ como ï¿½la Inmaculada Concepciï¿½nï¿½ y prometiï¿½ hacer dichosos a quienes vinieran en peregrinaciï¿½n.</div>
             </div>
             <div class="t-item">
-                <div class="t-year">Fátima · Portugal · 1917</div>
-                <div class="t-text">Nuestra Señora se apareció a tres pastorcillos —Lucía, Francisco y Jacinta— seis veces. Prometió la paz al mundo y reveló los tres secretos de Fátima.</div>
+                <div class="t-year">Fï¿½tima ï¿½ Portugal ï¿½ 1917</div>
+                <div class="t-text">Nuestra Seï¿½ora se apareciï¿½ a tres pastorcillos ï¿½Lucï¿½a, Francisco y Jacintaï¿½ seis veces. Prometiï¿½ la paz al mundo y revelï¿½ los tres secretos de Fï¿½tima.</div>
             </div>
             <div class="t-item">
-                <div class="t-year">Medjugorje · Bosnia · 1981</div>
-                <div class="t-text">La Virgen se aparece diariamente desde el 24 de junio de 1981, llamando a la conversión, la oración y la paz. Es una de las apariciones más recientes y activas.</div>
+                <div class="t-year">Medjugorje ï¿½ Bosnia ï¿½ 1981</div>
+                <div class="t-text">La Virgen se aparece diariamente desde el 24 de junio de 1981, llamando a la conversiï¿½n, la oraciï¿½n y la paz. Es una de las apariciones mï¿½s recientes y activas.</div>
             </div>
         </div>
     </section>
@@ -1513,9 +1532,9 @@ blockquote cite {
 
     <!-- BANNER FINAL -->
     <div class="banner reveal">
-        <h3>+ BAJO TU PROTECCIÓN +</h3>
+        <h3>+ BAJO TU PROTECCIï¿½N +</h3>
         <p>
-            «Bajo tu protección nos acogemos, Santa Madre de Dios; no deseches nuestras súplicas en nuestras necesidades, mas líbranos siempre de todo peligro, Oh Virgen gloriosa y bendita.»
+            ï¿½Bajo tu protecciï¿½n nos acogemos, Santa Madre de Dios; no deseches nuestras sï¿½plicas en nuestras necesidades, mas lï¿½branos siempre de todo peligro, Oh Virgen gloriosa y bendita.ï¿½
         </p>
         <p style="margin-top:15px; font-size:0.9rem; opacity:0.7;">
             Sub tuum praesidium confugimus, Sancta Dei Genetrix
@@ -1531,20 +1550,20 @@ blockquote cite {
         <a href="coronilla.html">Coronilla</a>
         <a href="novena.html">Novena</a>
         <a href="oraciones.html">Oraciones</a>
-        <a href="via-crucis.html">Vía Crucis</a>
+        <a href="via-crucis.html">Vï¿½a Crucis</a>
         <a href="santo-rosario.html">Santo Rosario</a>
-        <a href="maria.html">María</a>
+        <a href="maria.html">Marï¿½a</a>
         <a href="la-santina.html">La Santina</a>
-        <a href="virgen-caacupe.html">Virgen Caacupé</a>
-        <a href="virgen-lujan.html">Virgen de Luján</a>
+        <a href="virgen-caacupe.html">Virgen Caacupï¿½</a>
+        <a href="virgen-lujan.html">Virgen de Lujï¿½n</a>
         <a href="contacto.html">Contacto</a>
     </div>
 </div>
 
 <footer class="main-footer sacred-footer">
-    <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">?</a>
-    <p class="tagline">Jesús, En Vos Confío</p>
-    <p>© 2026 — Portal de la Divina Misericordia</p>
+    <a href="el-altar.html" class="cross-glow" title="Adorar al Santï¿½simo">?</a>
+    <p class="tagline">Jesï¿½s, En Vos Confï¿½o</p>
+    <p>ï¿½ 2026 ï¿½ Portal de la Divina Misericordia</p>
 </footer>
 
 <div class="golden-divine-line"></div>
@@ -1674,7 +1693,9 @@ hamburger.addEventListener('click', () => {
 </script>
 
 
-<!-- Sistema de Diseño Global -->
+<!-- Sistema de Diseï¿½o Global -->
 <script src="js/system-init.js"></script>
-</body>
+
+  <!-- Core Web Vitals -->
+  <script src="/assets/js/web-vitals.js"></script></body>
 </html>

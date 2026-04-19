@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lecturas Recomendadas - Biblia, Catecismo y Encíclicas | Divina Misericordia</title>
-<meta name="description" content="Accede a los documentos oficiales de la Iglesia: Biblia, Catecismo de la Iglesia Católica, encíclicas papales y obras espirituales sobre la Divina Misericordia.">
-<meta name="keywords" content="lecturas recomendadas, Biblia online, Catecismo católico, encíclicas papales, Divina Misericordia libros, espiritualidad católica, magisterio, documentos iglesia, concilio">
+<title>Lecturas Recomendadas - Biblia, Catecismo y Encï¿½clicas | Divina Misericordia</title>
+<meta name="description" content="Accede a los documentos oficiales de la Iglesia: Biblia, Catecismo de la Iglesia Catï¿½lica, encï¿½clicas papales y obras espirituales sobre la Divina Misericordia.">
+<meta name="keywords" content="lecturas recomendadas, Biblia online, Catecismo catï¿½lico, encï¿½clicas papales, Divina Misericordia libros, espiritualidad catï¿½lica, magisterio, documentos iglesia, concilio">
 <meta name="author" content="El Portal de la Divina Misericordia">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <link rel="canonical" href="https://misericordiadejesus.es/lecturas-recomendadas.html">
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://misericordiadejesus.es/lecturas-recomendadas.html">
 <meta property="og:title" content="Lecturas Recomendadas - Divina Misericordia">
-<meta property="og:description" content="Documentos oficiales de la Iglesia, encíclicas papales y obras espirituales sobre la Divina Misericordia.">
+<meta property="og:description" content="Documentos oficiales de la Iglesia, encï¿½clicas papales y obras espirituales sobre la Divina Misericordia.">
 <meta property="og:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -22,7 +22,7 @@
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Lecturas Recomendadas - Divina Misericordia">
-<meta name="twitter:description" content="Documentos oficiales de la Iglesia, encíclicas papales y obras espirituales.">
+<meta name="twitter:description" content="Documentos oficiales de la Iglesia, encï¿½clicas papales y obras espirituales.">
 <meta name="twitter:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta name="twitter:site" content="@divinamisericordia">
 <meta name="twitter:creator" content="@divinamisericordia">
@@ -32,7 +32,7 @@
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "Lecturas Recomendadas",
-  "description": "Colección de documentos oficiales de la Iglesia Católica y obras espirituales sobre la Divina Misericordia.",
+  "description": "Colecciï¿½n de documentos oficiales de la Iglesia Catï¿½lica y obras espirituales sobre la Divina Misericordia.",
   "url": "https://misericordiadejesus.es/lecturas-recomendadas.html",
   "publisher": { "@type": "Organization", "name": "El Portal de la Divina Misericordia" }
 }
@@ -187,7 +187,7 @@ nav a.activo { background:rgba(212,175,55,0.18); box-shadow:0 0 20px rgba(212,17
 .reveal.visible { opacity:1; transform:translateY(0); }
 
 /* =============================================
-   SEPARADOR — CRUZ DIVINA MISERICORDIA
+   SEPARADOR ï¿½ CRUZ DIVINA MISERICORDIA
    ============================================= */
 .separator-wrap {
   width:100%; margin:3rem auto;
@@ -555,7 +555,26 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
   animation: sacredPulse 4s ease-in-out infinite; pointer-events: none;
 }
 </style>
-</head>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track devociones
+      document.querySelectorAll('a[href*="coronilla"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_coronilla', { event_category: 'Devocion' })));
+      document.querySelectorAll('a[href*="novena"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_novena', { event_category: 'Devocion' })));
+      document.querySelectorAll('audio, .play-btn').forEach(l => 
+        l.addEventListener('play', () => gtag && gtag('event', 'play_audio', { event_category: 'Multimedia' })));
+    });
+  </script></head>
 
 <!-- Schema.org BreadcrumbList -->
 <script type="application/ld+json">
@@ -618,34 +637,34 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
   </a>
     <nav id="mainNav">
     <a href="index.html">Inicio</a>
-    <a href="quienes-somos.html">Quiénes Somos</a>
-    <a href="introduccion.html">Introducción</a>
+    <a href="quienes-somos.html">Quiï¿½nes Somos</a>
+    <a href="introduccion.html">Introducciï¿½n</a>
     <a href="santa-faustina.html">Santa Faustina</a>
     <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
     <a href="coronilla.html">Coronilla</a>
     <a href="novena.html">Novena</a>
-    <a href="via-crucis.html">Vía Crucis</a>
+    <a href="via-crucis.html">Vï¿½a Crucis</a>
     <a href="oraciones.html">Oraciones</a>
     <a href="santo-rosario.html">El Santo Rosario</a>
-    <a href="maria.html">María</a>
+    <a href="maria.html">Marï¿½a</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
+    <a href="consagracion.html">Consagraciï¿½n</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
-    <a href=\"/musica/musica-sacra.html\">Música Sacra</a>
+    <a href=\"/musica/musica-sacra.html\">Mï¿½sica Sacra</a>
     <a href="noticias.html">Noticias</a>
     <a href="enlaces.html">Enlaces</a>
     
     
     
     
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
     <a href="estudios-biblicos.html">Estudios</a>
         <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones ?</a>
     <a href="contacto.html">Contacto</a>
     
   </nav>
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menú" aria-expanded="false">
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menï¿½" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </header>
@@ -656,10 +675,10 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
   <h1 class="page-title">Lecturas Recomendadas para Crecer en la Fe</h1>
   <p class="subtitle-line">? Documentos de la Iglesia y obras espirituales ?</p>
   <p class="intro-text">
-    En el camino de la fe, la lectura espiritual es una luz que ilumina el alma y nos acerca al Corazón de Jesús.
-    Aquí encontrarás los documentos fundamentales de la Iglesia Católica, las encíclicas de los Papas
-    que han iluminado el mensaje de la Divina Misericordia, y obras clásicas que han alimentado la
-    espiritualidad de millones de creyentes. Cada página es una invitación a profundizar en el conocimiento
+    En el camino de la fe, la lectura espiritual es una luz que ilumina el alma y nos acerca al Corazï¿½n de Jesï¿½s.
+    Aquï¿½ encontrarï¿½s los documentos fundamentales de la Iglesia Catï¿½lica, las encï¿½clicas de los Papas
+    que han iluminado el mensaje de la Divina Misericordia, y obras clï¿½sicas que han alimentado la
+    espiritualidad de millones de creyentes. Cada pï¿½gina es una invitaciï¿½n a profundizar en el conocimiento
     del amor infinito de Dios.
   </p>
 
@@ -713,19 +732,19 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
       <span class="card-icon">??</span>
       <h3 class="card-title">Sagrada Escritura</h3>
       <p class="card-description">
-        La Biblia es la Palabra de Dios inspirada por el Espíritu Santo, fundamento de toda espiritualidad cristiana.
-        En ella encontramos los Evangelios que nos revelan a Jesús como Salvador, los Profetas que lo anunciaron
-        y las Cartas apostólicas. Leerla y meditarla es permitir que Dios mismo nos hable.
+        La Biblia es la Palabra de Dios inspirada por el Espï¿½ritu Santo, fundamento de toda espiritualidad cristiana.
+        En ella encontramos los Evangelios que nos revelan a Jesï¿½s como Salvador, los Profetas que lo anunciaron
+        y las Cartas apostï¿½licas. Leerla y meditarla es permitir que Dios mismo nos hable.
       </p>
       <a href="https://www.vatican.va/archive/ESL0506/_INDEX.HTM" target="_blank" rel="noopener noreferrer" class="card-btn">Leer en Vatican.va ?</a>
     </article>
 
     <article class="card">
       <span class="card-icon">??</span>
-      <h3 class="card-title">Catecismo de la Iglesia Católica</h3>
+      <h3 class="card-title">Catecismo de la Iglesia Catï¿½lica</h3>
       <p class="card-description">
-        Promulgado por San Juan Pablo II en 1992, resume la doctrina católica de forma sistemática: verdades de fe,
-        sacramentos, mandamientos y oración cristiana. Herramienta indispensable para profundizar en la fe
+        Promulgado por San Juan Pablo II en 1992, resume la doctrina catï¿½lica de forma sistemï¿½tica: verdades de fe,
+        sacramentos, mandamientos y oraciï¿½n cristiana. Herramienta indispensable para profundizar en la fe
         y resolver dudas doctrinales.
       </p>
       <a href="https://www.vatican.va/archive/catechism_sp/index_sp.html" target="_blank" rel="noopener noreferrer" class="card-btn">Leer en Vatican.va ?</a>
@@ -733,10 +752,10 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
 
     <article class="card">
       <span class="card-icon">??</span>
-      <h3 class="card-title">Código de Derecho Canónico</h3>
+      <h3 class="card-title">Cï¿½digo de Derecho Canï¿½nico</h3>
       <p class="card-description">
-        Promulgado por San Juan Pablo II en 1983, regula la estructura eclesiástica, los sacramentos,
-        los derechos y deberes de los fieles y el matrimonio canónico. Nos ayuda a comprender cómo
+        Promulgado por San Juan Pablo II en 1983, regula la estructura eclesiï¿½stica, los sacramentos,
+        los derechos y deberes de los fieles y el matrimonio canï¿½nico. Nos ayuda a comprender cï¿½mo
         funciona internamente la Iglesia.
       </p>
       <a href="https://www.vatican.va/archive/cod-iuris-canonici/cic_index_sp.html" target="_blank" rel="noopener noreferrer" class="card-btn">Leer en Vatican.va ?</a>
@@ -749,10 +768,10 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
   <div class="cards-grid reveal">
     <article class="card">
       <span class="card-icon">??</span>
-      <h3 class="card-title">Concilio Vaticano II (1962–1965)</h3>
+      <h3 class="card-title">Concilio Vaticano II (1962ï¿½1965)</h3>
       <p class="card-description">
-        La máxima autoridad doctrinal de la Iglesia en el siglo XX. Convocado por San Juan XXIII y
-        concluido por Pablo VI, promovió la renovación de la Iglesia al mundo moderno.
+        La mï¿½xima autoridad doctrinal de la Iglesia en el siglo XX. Convocado por San Juan XXIII y
+        concluido por Pablo VI, promoviï¿½ la renovaciï¿½n de la Iglesia al mundo moderno.
         Sus documentos abarcan la Liturgia, la Iglesia, el ecumenismo, la libertad religiosa
         y el apostolado de los laicos.
       </p>
@@ -767,24 +786,24 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
   <div class="cards-grid reveal">
     <article class="card">
       <span class="card-icon">??</span>
-      <h3 class="card-title">Lumen Fidei — La Luz de la Fe (2013)</h3>
+      <h3 class="card-title">Lumen Fidei ï¿½ La Luz de la Fe (2013)</h3>
       <p class="card-description">
-        Primera encíclica del Papa Francisco, iniciada por Benedicto XVI. Reflexiona sobre la fe como luz
-        que ilumina la existencia humana, respondiendo al relativismo contemporáneo. Nos invita a
+        Primera encï¿½clica del Papa Francisco, iniciada por Benedicto XVI. Reflexiona sobre la fe como luz
+        que ilumina la existencia humana, respondiendo al relativismo contemporï¿½neo. Nos invita a
         recuperar la centralidad de la fe en la vida personal y social.
       </p>
-      <a href="https://www.vatican.va/content/francesco/es/encyclicals/documents/papa-francesco_20130629_enciclica-lumen-fidei.html" target="_blank" rel="noopener noreferrer" class="card-btn">Leer encíclica ?</a>
+      <a href="https://www.vatican.va/content/francesco/es/encyclicals/documents/papa-francesco_20130629_enciclica-lumen-fidei.html" target="_blank" rel="noopener noreferrer" class="card-btn">Leer encï¿½clica ?</a>
     </article>
 
     <article class="card">
       <span class="card-icon">??</span>
-      <h3 class="card-title">Laudato Si — Cuidado de la Casa Común (2015)</h3>
+      <h3 class="card-title">Laudato Si ï¿½ Cuidado de la Casa Comï¿½n (2015)</h3>
       <p class="card-description">
-        Encíclica ecológica que aborda la crisis ambiental desde la fe cristiana. Propone una ecología
+        Encï¿½clica ecolï¿½gica que aborda la crisis ambiental desde la fe cristiana. Propone una ecologï¿½a
         integral que incluye el cuidado del medio ambiente, la justicia social y el desarrollo sostenible.
-        Un llamado urgente a nuestra responsabilidad ante la creación.
+        Un llamado urgente a nuestra responsabilidad ante la creaciï¿½n.
       </p>
-      <a href="https://www.vatican.va/content/francesco/es/encyclicals/documents/papa-francesco_20150524_enciclica-laudato-si.html" target="_blank" rel="noopener noreferrer" class="card-btn">Leer encíclica ?</a>
+      <a href="https://www.vatican.va/content/francesco/es/encyclicals/documents/papa-francesco_20150524_enciclica-laudato-si.html" target="_blank" rel="noopener noreferrer" class="card-btn">Leer encï¿½clica ?</a>
     </article>
   </div>
 
@@ -792,55 +811,55 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
   <div class="cards-grid reveal">
     <article class="card">
       <span class="card-icon">??</span>
-      <h3 class="card-title">Deus Caritas Est — Dios es Amor (2005)</h3>
+      <h3 class="card-title">Deus Caritas Est ï¿½ Dios es Amor (2005)</h3>
       <p class="card-description">
-        Primera encíclica de Benedicto XVI. Reflexiona sobre el amor cristiano distinguiendo el amor
-        humano del amor divino, y mostrando que «Dios es amor». Un llamado a recuperar la
+        Primera encï¿½clica de Benedicto XVI. Reflexiona sobre el amor cristiano distinguiendo el amor
+        humano del amor divino, y mostrando que ï¿½Dios es amorï¿½. Un llamado a recuperar la
         centralidad del amor en la vida espiritual y en el testimonio cristiano.
       </p>
-      <a href="https://www.vatican.va/content/benedict-xvi/es/encyclicals/documents/hf_ben-xvi_enc_20051225_deus-caritas-est.html" target="_blank" rel="noopener noreferrer" class="card-btn">Leer encíclica ?</a>
+      <a href="https://www.vatican.va/content/benedict-xvi/es/encyclicals/documents/hf_ben-xvi_enc_20051225_deus-caritas-est.html" target="_blank" rel="noopener noreferrer" class="card-btn">Leer encï¿½clica ?</a>
     </article>
 
     <article class="card">
       <span class="card-icon">?</span>
-      <h3 class="card-title">Spe Salvi — Salvados en la Esperanza (2007)</h3>
+      <h3 class="card-title">Spe Salvi ï¿½ Salvados en la Esperanza (2007)</h3>
       <p class="card-description">
-        Reflexión profunda sobre la esperanza cristiana y su relevancia para la vida actual.
-        Aborda la oración, el purgatorio, la vida eterna y la responsabilidad moral. Una meditación
-        sobre la escatología cristiana que ilumina el sentido último de nuestra existencia.
+        Reflexiï¿½n profunda sobre la esperanza cristiana y su relevancia para la vida actual.
+        Aborda la oraciï¿½n, el purgatorio, la vida eterna y la responsabilidad moral. Una meditaciï¿½n
+        sobre la escatologï¿½a cristiana que ilumina el sentido ï¿½ltimo de nuestra existencia.
       </p>
-      <a href="https://www.vatican.va/content/benedict-xvi/es/encyclicals/documents/hf_ben-xvi_enc_20071130_spe-salvi.html" target="_blank" rel="noopener noreferrer" class="card-btn">Leer encíclica ?</a>
+      <a href="https://www.vatican.va/content/benedict-xvi/es/encyclicals/documents/hf_ben-xvi_enc_20071130_spe-salvi.html" target="_blank" rel="noopener noreferrer" class="card-btn">Leer encï¿½clica ?</a>
     </article>
 
     <article class="card">
       <span class="card-icon">??</span>
-      <h3 class="card-title">Caritas in Veritate — El Amor en la Verdad (2009)</h3>
+      <h3 class="card-title">Caritas in Veritate ï¿½ El Amor en la Verdad (2009)</h3>
       <p class="card-description">
         Sobre el desarrollo humano integral y la doctrina social de la Iglesia. Contextualiza las
-        enseñanzas sociales precedentes para el siglo XXI, abordando globalización, paz, medioambiente
-        y economía. Documento fundamental del magisterio social contemporáneo.
+        enseï¿½anzas sociales precedentes para el siglo XXI, abordando globalizaciï¿½n, paz, medioambiente
+        y economï¿½a. Documento fundamental del magisterio social contemporï¿½neo.
       </p>
-      <a href="https://www.vatican.va/content/benedict-xvi/es/encyclicals/documents/hf_ben-xvi_enc_20090629_caritas-in-veritate.html" target="_blank" rel="noopener noreferrer" class="card-btn">Leer encíclica ?</a>
+      <a href="https://www.vatican.va/content/benedict-xvi/es/encyclicals/documents/hf_ben-xvi_enc_20090629_caritas-in-veritate.html" target="_blank" rel="noopener noreferrer" class="card-btn">Leer encï¿½clica ?</a>
     </article>
   </div>
 
   <h3 class="section-heading sub reveal">San Juan Pablo II</h3>
   <div class="cards-grid reveal">
     <article class="card destacada">
-      <span class="badge-esencial">? Lectura esencial — Divina Misericordia ?</span>
+      <span class="badge-esencial">? Lectura esencial ï¿½ Divina Misericordia ?</span>
       <span class="card-icon">??</span>
-      <h3 class="card-title">Dives in Misericordia — Rico en Misericordia (1980)</h3>
+      <h3 class="card-title">Dives in Misericordia ï¿½ Rico en Misericordia (1980)</h3>
       <p class="card-description">
-        El documento pontificio más importante sobre la Divina Misericordia, promulgado el 30 de noviembre
-        de 1980. Juan Pablo II —testigo de la Misericordia divina en su amada Polonia donde floreció la
-        devoción a través de Santa Faustina— dedica esta encíclica a profundizar en el misterio de la
+        El documento pontificio mï¿½s importante sobre la Divina Misericordia, promulgado el 30 de noviembre
+        de 1980. Juan Pablo II ï¿½testigo de la Misericordia divina en su amada Polonia donde floreciï¿½ la
+        devociï¿½n a travï¿½s de Santa Faustinaï¿½ dedica esta encï¿½clica a profundizar en el misterio de la
         Misericordia de Dios revelada en las Escrituras y en el mensaje de Santa Faustina.<br><br>
-        Responde a las preguntas fundamentales: ¿Qué es la Misericordia divina? ¿Cómo se manifiesta
-        en la historia de la salvación? ¿Por qué es necesaria para el hombre contemporáneo?<br><br>
-        «Que el hombre no tenga miedo de acercarse a Cristo», escribe el Papa, porque en Él
+        Responde a las preguntas fundamentales: ï¿½Quï¿½ es la Misericordia divina? ï¿½Cï¿½mo se manifiesta
+        en la historia de la salvaciï¿½n? ï¿½Por quï¿½ es necesaria para el hombre contemporï¿½neo?<br><br>
+        ï¿½Que el hombre no tenga miedo de acercarse a Cristoï¿½, escribe el Papa, porque en ï¿½l
         encontramos la Misericordia que sana, perdona y transforma nuestros corazones.
       </p>
-      <a href="https://www.vatican.va/content/john-paul-ii/es/encyclicals/documents/hf_jp-ii_enc_30111980_dives-in-misericordia.html" target="_blank" rel="noopener noreferrer" class="card-btn">Leer encíclica completa ?</a>
+      <a href="https://www.vatican.va/content/john-paul-ii/es/encyclicals/documents/hf_jp-ii_enc_30111980_dives-in-misericordia.html" target="_blank" rel="noopener noreferrer" class="card-btn">Leer encï¿½clica completa ?</a>
     </article>
   </div>
 
@@ -894,9 +913,9 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
       <span class="card-icon">??</span>
       <h3 class="card-title">Santos Padres de la Iglesia</h3>
       <p class="card-description">
-        Los escritores eclesiásticos de los primeros siglos cuya doctrina es de referencia perenne.
-        Destacan San Agustín con sus <em>Confesiones</em>, San Juan Crisóstomo maestro de la predicación,
-        San Jerónimo traductor de la Vulgata, y San Gregorio Magno autor de la Regla pastoral.
+        Los escritores eclesiï¿½sticos de los primeros siglos cuya doctrina es de referencia perenne.
+        Destacan San Agustï¿½n con sus <em>Confesiones</em>, San Juan Crisï¿½stomo maestro de la predicaciï¿½n,
+        San Jerï¿½nimo traductor de la Vulgata, y San Gregorio Magno autor de la Regla pastoral.
         Sus escritos han alimentado la fe de generaciones enteras.
       </p>
       <a href="https://www.newadvent.org/fathers/" target="_blank" rel="noopener noreferrer" class="card-btn">Explorar textos ?</a>
@@ -904,11 +923,11 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
 
     <article class="card">
       <span class="card-icon">??</span>
-      <h3 class="card-title">Jesús de Nazaret — Benedicto XVI</h3>
+      <h3 class="card-title">Jesï¿½s de Nazaret ï¿½ Benedicto XVI</h3>
       <p class="card-description">
-        Obra monumental en tres volúmenes del Papa Benedicto XVI. Ofrece una lectura histórico-crítica
+        Obra monumental en tres volï¿½menes del Papa Benedicto XVI. Ofrece una lectura histï¿½rico-crï¿½tica
         y al mismo tiempo profundamente espiritual de los Evangelios: el bautismo, los milagros,
-        la Última Cena, la pasión y la resurrección. Considerada un clásico de la teología contemporánea
+        la ï¿½ltima Cena, la pasiï¿½n y la resurrecciï¿½n. Considerada un clï¿½sico de la teologï¿½a contemporï¿½nea
         sobre Cristo. Disponible en PDF desde el Vaticano.
       </p>
       <a href="https://www.vatican.va/content/benedict-xvi/es/books/2011/documents/hf_ben-xvi_book_20110322_jesus-nazareth-ii.html" target="_blank" rel="noopener noreferrer" class="card-btn">Descargar PDF ?</a>
@@ -917,15 +936,15 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
 
   <!-- CTA BOX -->
   <div class="cta-box reveal">
-    <h3>¿Por qué leer estas obras?</h3>
+    <h3>ï¿½Por quï¿½ leer estas obras?</h3>
     <p>
       La lectura espiritual nos ayuda a crecer en la fe, a conocer mejor a Dios y a comprender su plan
-      de salvación. Los documentos del Magisterio garantizan una enseñanza sólida y auténtica, mientras
+      de salvaciï¿½n. Los documentos del Magisterio garantizan una enseï¿½anza sï¿½lida y autï¿½ntica, mientras
       que las obras de los Santos Padres y los grandes escritores espirituales alimentan el alma con
-      la sabiduría de siglos de tradición cristiana. Cada página leída es un paso más hacia
+      la sabidurï¿½a de siglos de tradiciï¿½n cristiana. Cada pï¿½gina leï¿½da es un paso mï¿½s hacia
       el conocimiento del amor infinito de Dios.
     </p>
-    <a href="contacto.html" class="btn-cta">? Únete a nuestro grupo de lectura espiritual</a>
+    <a href="contacto.html" class="btn-cta">? ï¿½nete a nuestro grupo de lectura espiritual</a>
   </div>
 
   <a href="oraciones.html" class="back-link reveal">? Volver a Oraciones y Plegarias</a>
@@ -940,36 +959,36 @@ footer.main-footer .tagline { color:var(--gold); font-family:'Cinzel',serif; fon
 
   <h3 class="footer-menu-title">Explora nuestra web</h3>
   <div class="footer-menu-links">
-    <a href="via-crucis.html">Vía Crucis</a>
-    <a href="maria.html">María</a>
+    <a href="via-crucis.html">Vï¿½a Crucis</a>
+    <a href="maria.html">Marï¿½a</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
+    <a href="consagracion.html">Consagraciï¿½n</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
     <a href="noticias.html">Noticias</a>
-    <a href="ss-leon-xiv.html">S.S. León XIV</a>
+    <a href="ss-leon-xiv.html">S.S. Leï¿½n XIV</a>
     <a href="ss-francisco.html">S.S. Francisco</a>
     <a href="ss-benedicto-xvi.html">S.S. Benedicto XVI</a>
     <a href="ss-juan-pablo-ii.html">S.S. Juan Pablo II</a>
     <a href="enlaces.html">Enlaces</a>
-    <a href="divino-nino-jesus.html">Divino Niño Jesús</a>
+    <a href="divino-nino-jesus.html">Divino Niï¿½o Jesï¿½s</a>
     <a href="san-judas-tadeo.html">San Judas Tadeo</a>
     <a href="san-cayetano.html">San Cayetano</a>
-    <a href="consagracion-sagrado-corazon.html">Sagrado Corazón</a>
-    <a href="maria-auxiliadora.html">María Auxiliadora</a>
-    <a href="san-sanson.html">Sansón</a>
+    <a href="consagracion-sagrado-corazon.html">Sagrado Corazï¿½n</a>
+    <a href="maria-auxiliadora.html">Marï¿½a Auxiliadora</a>
+    <a href="san-sanson.html">Sansï¿½n</a>
     <a href="san-benito.html">San Benito</a>
     <a href="oracion-santa-cruz.html">Santa Cruz</a>
     <a href="san-francisco.html">San Francisco</a>
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
         <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones</a>
   </div>
 </div>
 
 <footer class="main-footer sacred-footer">
-    <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">?</a>
-    <p class="tagline">Jesús, En Vos Confío</p>
-    <p>© 2026 — Portal de la Divina Misericordia</p>
+    <a href="el-altar.html" class="cross-glow" title="Adorar al Santï¿½simo">?</a>
+    <p class="tagline">Jesï¿½s, En Vos Confï¿½o</p>
+    <p>ï¿½ 2026 ï¿½ Portal de la Divina Misericordia</p>
 </footer>
 
 <!-- ========== SCROLL BUTTONS ========== -->
@@ -1084,7 +1103,9 @@ document.addEventListener('click',e=>{
 </script>
 
 
-<!-- Sistema de Diseño Global -->
+<!-- Sistema de Diseï¿½o Global -->
 <script src="js/system-init.js"></script>
-</body>
+
+  <!-- Core Web Vitals -->
+  <script src="/assets/js/web-vitals.js"></script></body>
 </html>

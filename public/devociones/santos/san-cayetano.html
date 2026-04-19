@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>San Cayetano - Patrón del Pan y del Trabajo | Novena y Oración | Divina Misericordia</title>
-<meta name="description" content="San Cayetano, el padre de la divina providencia. Oración para pedir trabajo, pan daily y bendiciones. Novena y devoción popular a San Cayetano.">
-<meta name="keywords" content="San Cayetano, oración san cayetano, novena san cayetano, padre providencia, trabajo, pan daily, santo trabajo, devoción san cayetano, necesidades">
+<title>San Cayetano - Patrï¿½n del Pan y del Trabajo | Novena y Oraciï¿½n | Divina Misericordia</title>
+<meta name="description" content="San Cayetano, el padre de la divina providencia. Oraciï¿½n para pedir trabajo, pan daily y bendiciones. Novena y devociï¿½n popular a San Cayetano.">
+<meta name="keywords" content="San Cayetano, oraciï¿½n san cayetano, novena san cayetano, padre providencia, trabajo, pan daily, santo trabajo, devociï¿½n san cayetano, necesidades">
 <meta name="author" content="El Portal de la Divina Misericordia">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <link rel="canonical" href="https://misericordiadejesus.es/san-cayetano.html">
 <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://misericordiadejesus.es/san-cayetano.html">
-<meta property="og:title" content="San Cayetano — Patrón del Pan y del Trabajo">
-<meta property="og:description" content="San Cayetano, el padre de la divina providencia. Oración para pedir trabajo, pan y bendiciones.">
+<meta property="og:title" content="San Cayetano ï¿½ Patrï¿½n del Pan y del Trabajo">
+<meta property="og:description" content="San Cayetano, el padre de la divina providencia. Oraciï¿½n para pedir trabajo, pan y bendiciones.">
 <meta property="og:site_name" content="Divina Misericordia">
 <meta property="og:locale" content="es_ES">
 <meta property="og:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="San Cayetano - Patrón del Pan y del Trabajo">
+<meta property="og:image:alt" content="San Cayetano - Patrï¿½n del Pan y del Trabajo">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="San Cayetano — Patrón del Pan y del Trabajo">
-<meta name="twitter:description" content="San Cayetano, el padre de la divina providencia. Oración para pedir trabajo y pan.">
+<meta name="twitter:title" content="San Cayetano ï¿½ Patrï¿½n del Pan y del Trabajo">
+<meta name="twitter:description" content="San Cayetano, el padre de la divina providencia. Oraciï¿½n para pedir trabajo y pan.">
 <meta name="twitter:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta name="twitter:site" content="@divinamisericordia">
 <meta name="twitter:creator" content="@divinamisericordia">
@@ -470,7 +470,26 @@ footer .tagline {
   pointer-events: none;
 }
 </style>
-</head>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track devociones
+      document.querySelectorAll('a[href*="coronilla"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_coronilla', { event_category: 'Devocion' })));
+      document.querySelectorAll('a[href*="novena"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_novena', { event_category: 'Devocion' })));
+      document.querySelectorAll('audio, .play-btn').forEach(l => 
+        l.addEventListener('play', () => gtag && gtag('event', 'play_audio', { event_category: 'Multimedia' })));
+    });
+  </script></head>
 
 <!-- Schema.org BreadcrumbList -->
 <script type="application/ld+json">
@@ -531,27 +550,27 @@ footer .tagline {
     </a>
       <nav id="mainNav">
     <a href="index.html">Inicio</a>
-    <a href="quienes-somos.html">Quiénes Somos</a>
-    <a href="introduccion.html">Introducción</a>
+    <a href="quienes-somos.html">Quiï¿½nes Somos</a>
+    <a href="introduccion.html">Introducciï¿½n</a>
     <a href="santa-faustina.html">Santa Faustina</a>
     <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
     <a href="coronilla.html">Coronilla</a>
     <a href="novena.html">Novena</a>
-    <a href="via-crucis.html">Vía Crucis</a>
+    <a href="via-crucis.html">Vï¿½a Crucis</a>
     <a href="oraciones.html">Oraciones</a>
     <a href="santo-rosario.html">El Santo Rosario</a>
-    <a href="maria.html">María</a>
+    <a href="maria.html">Marï¿½a</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
+    <a href="consagracion.html">Consagraciï¿½n</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
-    <a href=\"/musica/musica-sacra.html\">Música Sacra</a>
+    <a href=\"/musica/musica-sacra.html\">Mï¿½sica Sacra</a>
     <a href="noticias.html">Noticias</a>
     <a href="enlaces.html">Enlaces</a>
     
     
     
     
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
     <a href="estudios-biblicos.html">Estudios</a>
         <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones ?</a>
@@ -571,50 +590,50 @@ footer .tagline {
     </div>
 
     <div class="historia-box">
-        <p>San Cayetano es reconocido por todos los pueblos como el <strong>Padre de la Providencia</strong> porque socorre con grandes milagros a todos aquellos que lo invocan en sus necesidades. Es uno de los santos más venerados, especialmente en Argentina, Italia y Brasil.</p>
+        <p>San Cayetano es reconocido por todos los pueblos como el <strong>Padre de la Providencia</strong> porque socorre con grandes milagros a todos aquellos que lo invocan en sus necesidades. Es uno de los santos mï¿½s venerados, especialmente en Argentina, Italia y Brasil.</p>
     </div>
 
     <div class="nota-especial">
-        <p>Esta oración puede realizarse en cualquier momento de necesidad. Se recomienda rearla con fe y devoción.</p>
+        <p>Esta oraciï¿½n puede realizarse en cualquier momento de necesidad. Se recomienda rearla con fe y devociï¿½n.</p>
     </div>
 
     <div class="oracion-box oracion-destacada">
-        <h3>Oración a San Cayetano</h3>
-        <p class="oracion-texto">Glorioso San Cayetano, aclamado por todos los pueblos padre de providencia porque socorres con grandes milagros a cuantos te invocan en sus necesidades: acudo a tu altar, suplicando que presentes al Señor los deseos que confiadamente deposito en tus manos.</p>
+        <h3>Oraciï¿½n a San Cayetano</h3>
+        <p class="oracion-texto">Glorioso San Cayetano, aclamado por todos los pueblos padre de providencia porque socorres con grandes milagros a cuantos te invocan en sus necesidades: acudo a tu altar, suplicando que presentes al Seï¿½or los deseos que confiadamente deposito en tus manos.</p>
         
-        <p class="oracion-texto" style="margin-top: 20px;">Haz que estas gracias, que ahora te pido, me ayuden a buscar siempre el Reino de Dios y su Justicia, sabiendo que Dios que viste de hermosura las flores del campo y alimenta con largueza las aves del cielo me dará las demás cosas por añadidura.</p>
+        <p class="oracion-texto" style="margin-top: 20px;">Haz que estas gracias, que ahora te pido, me ayuden a buscar siempre el Reino de Dios y su Justicia, sabiendo que Dios que viste de hermosura las flores del campo y alimenta con largueza las aves del cielo me darï¿½ las demï¿½s cosas por aï¿½adidura.</p>
         
-        <p class="oracion-texto" style="margin-top: 25px; text-align: center; font-weight: bold; font-size: 1.3rem; color: var(--gold-light);">Amén.</p>
+        <p class="oracion-texto" style="margin-top: 25px; text-align: center; font-weight: bold; font-size: 1.3rem; color: var(--gold-light);">Amï¿½n.</p>
     </div>
 
     <div class="oracion-box">
-        <h3>Oración para las Necesidades</h3>
-        <p class="oracion-texto">Oh glorioso San Cayetano! Aclamado por todas las naciones; Padre de Providencia, porque con portentosos milagros socorres a cuantos te invocan con fe en sus necesidades. Te suplico me obtengas del Señor oportuno Socorro en las angustias presentes y sea ello prueba de la bienaventuranza eterna.</p>
+        <h3>Oraciï¿½n para las Necesidades</h3>
+        <p class="oracion-texto">Oh glorioso San Cayetano! Aclamado por todas las naciones; Padre de Providencia, porque con portentosos milagros socorres a cuantos te invocan con fe en sus necesidades. Te suplico me obtengas del Seï¿½or oportuno Socorro en las angustias presentes y sea ello prueba de la bienaventuranza eterna.</p>
         
-        <p class="oracion-texto" style="margin-top: 20px; text-align: center; font-weight: bold;">Amén.</p>
+        <p class="oracion-texto" style="margin-top: 20px; text-align: center; font-weight: bold;">Amï¿½n.</p>
     </div>
 
     <div class="oracion-box oracion-destacada">
-        <h3>Oración a la Santísima Trinidad</h3>
-        <p class="oracion-texto">Santísima Trinidad, ¡Oh Divina Providencia! Concédeme tu clemencia, por tu infinita bondad, arrodillado a tus plantas, a Ti portento de toda caridad, te pido por los míos casa, vestido y sustento.</p>
+        <h3>Oraciï¿½n a la Santï¿½sima Trinidad</h3>
+        <p class="oracion-texto">Santï¿½sima Trinidad, ï¿½Oh Divina Providencia! Concï¿½deme tu clemencia, por tu infinita bondad, arrodillado a tus plantas, a Ti portento de toda caridad, te pido por los mï¿½os casa, vestido y sustento.</p>
         
-        <p class="oracion-texto" style="margin-top: 20px;">Concédenos la salud, llévanos por buen camino, que sea siempre la virtud que guíe nuestro destino. Tú eres toda mi esperanza, eres el consuelo mío, en Ti creo, en Ti confío.</p>
+        <p class="oracion-texto" style="margin-top: 20px;">Concï¿½denos la salud, llï¿½vanos por buen camino, que sea siempre la virtud que guï¿½e nuestro destino. Tï¿½ eres toda mi esperanza, eres el consuelo mï¿½o, en Ti creo, en Ti confï¿½o.</p>
         
-        <p class="oracion-texto" style="margin-top: 20px;">Tu Divina Providencia se extienda a cada momento para que nunca nos falte casa, vestido, sustento y los Santos Sacramentos en el último momento.</p>
+        <p class="oracion-texto" style="margin-top: 20px;">Tu Divina Providencia se extienda a cada momento para que nunca nos falte casa, vestido, sustento y los Santos Sacramentos en el ï¿½ltimo momento.</p>
         
-        <p class="oracion-texto" style="margin-top: 25px; text-align: center; font-weight: bold; font-size: 1.3rem; color: var(--gold-light);">Amén.</p>
+        <p class="oracion-texto" style="margin-top: 25px; text-align: center; font-weight: bold; font-size: 1.3rem; color: var(--gold-light);">Amï¿½n.</p>
     </div>
 
     <div class="nota-especial">
-        <p><strong>Nota:</strong> Para esta oración, puedes escribir mentalmente o en voz alta la gracia específica que deseas obtener, teniendo siempre presente que la voluntad de Dios es la mejor para nosotros.</p>
+        <p><strong>Nota:</strong> Para esta oraciï¿½n, puedes escribir mentalmente o en voz alta la gracia especï¿½fica que deseas obtener, teniendo siempre presente que la voluntad de Dios es la mejor para nosotros.</p>
     </div>
 
 </main>
 
 <footer class="main-footer sacred-footer">
-    <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">?</a>
-    <p class="tagline">Jesús, En Vos Confío</p>
-    <p>© 2026 — Portal de la Divina Misericordia</p>
+    <a href="el-altar.html" class="cross-glow" title="Adorar al Santï¿½simo">?</a>
+    <p class="tagline">Jesï¿½s, En Vos Confï¿½o</p>
+    <p>ï¿½ 2026 ï¿½ Portal de la Divina Misericordia</p>
 </footer>
 
 <div class="scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})"></div>
@@ -674,7 +693,9 @@ window.addEventListener('scroll',()=>{
 </script>
 
 
-<!-- Sistema de Diseño Global -->
+<!-- Sistema de Diseï¿½o Global -->
 <script src="js/system-init.js"></script>
-</body>
+
+  <!-- Core Web Vitals -->
+  <script src="/assets/js/web-vitals.js"></script></body>
 </html>

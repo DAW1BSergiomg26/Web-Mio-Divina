@@ -3,25 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Espacio Jovenes Divina Misericordia - Fe, Reflexiones y Oración | Juventud Católica</title>
-<meta name="description" content="Espacio juvenil para descubrir la Divina Misericordia: reflexiones, retos de fe, oración y música. Jesús te está esperando. Únete a la juventud de la misericordia.">
-<meta name="keywords" content="jóvenes Divina Misericordia, juventud católica, oración jóvenes, retos fe, jóvenes iglesia,Retos spirituales, oración grupal jóvenes, fe católica joven, comunidad juvenil">
+<title>Espacio Jovenes Divina Misericordia - Fe, Reflexiones y Oraciï¿½n | Juventud Catï¿½lica</title>
+<meta name="description" content="Espacio juvenil para descubrir la Divina Misericordia: reflexiones, retos de fe, oraciï¿½n y mï¿½sica. Jesï¿½s te estï¿½ esperando. ï¿½nete a la juventud de la misericordia.">
+<meta name="keywords" content="jï¿½venes Divina Misericordia, juventud catï¿½lica, oraciï¿½n jï¿½venes, retos fe, jï¿½venes iglesia,Retos spirituales, oraciï¿½n grupal jï¿½venes, fe catï¿½lica joven, comunidad juvenil">
 <meta name="author" content="El Portal de la Divina Misericordia">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <link rel="canonical" href="https://misericordiadejesus.es/espacio-jovenes.html">
 <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://misericordiadejesus.es/espacio-jovenes.html">
-<meta property="og:title" content="Espacio Jóvenes Divina Misericordia — Fe, Reflexiones y Oración">
-<meta property="og:description" content="Espacio juvenil para descubrir la Divina Misericordia: reflexiones, retos de fe y oración.">
+<meta property="og:title" content="Espacio Jï¿½venes Divina Misericordia ï¿½ Fe, Reflexiones y Oraciï¿½n">
+<meta property="og:description" content="Espacio juvenil para descubrir la Divina Misericordia: reflexiones, retos de fe y oraciï¿½n.">
 <meta property="og:site_name" content="Divina Misericordia">
 <meta property="og:locale" content="es_ES">
 <meta property="og:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Espacio Jóvenes Divina Misericordia">
+<meta property="og:image:alt" content="Espacio Jï¿½venes Divina Misericordia">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Espacio Jóvenes Divina Misericordia — Fe, Reflexiones y Oración">
+<meta name="twitter:title" content="Espacio Jï¿½venes Divina Misericordia ï¿½ Fe, Reflexiones y Oraciï¿½n">
 <meta name="twitter:description" content="Espacio juvenil para descubrir la Divina Misericordia.">
 <meta name="twitter:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta name="twitter:site" content="@divinamisericordia">
@@ -572,7 +572,26 @@ footer .cross {
   pointer-events: none;
 }
 </style>
-</head>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track devociones
+      document.querySelectorAll('a[href*="coronilla"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_coronilla', { event_category: 'Devocion' })));
+      document.querySelectorAll('a[href*="novena"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_novena', { event_category: 'Devocion' })));
+      document.querySelectorAll('audio, .play-btn').forEach(l => 
+        l.addEventListener('play', () => gtag && gtag('event', 'play_audio', { event_category: 'Multimedia' })));
+    });
+  </script></head>
 
 <!-- Schema.org BreadcrumbList -->
 <script type="application/ld+json">
@@ -581,7 +600,7 @@ footer .cross {
   "@type": "BreadcrumbList",
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://misericordiadejesus.es/"},
-    {"@type": "ListItem", "position": 2, "name": "Espacio de Jóvenes", "item": "https://misericordiadejesus.es/espacio-jovenes.html"}
+    {"@type": "ListItem", "position": 2, "name": "Espacio de Jï¿½venes", "item": "https://misericordiadejesus.es/espacio-jovenes.html"}
   ]
 }
 </script>
@@ -632,27 +651,27 @@ footer .cross {
     </a>
       <nav id="mainNav">
     <a href="index.html">Inicio</a>
-    <a href="quienes-somos.html">Quiénes Somos</a>
-    <a href="introduccion.html">Introducción</a>
+    <a href="quienes-somos.html">Quiï¿½nes Somos</a>
+    <a href="introduccion.html">Introducciï¿½n</a>
     <a href="santa-faustina.html">Santa Faustina</a>
     <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
     <a href="coronilla.html">Coronilla</a>
     <a href="novena.html">Novena</a>
-    <a href="via-crucis.html">Vía Crucis</a>
+    <a href="via-crucis.html">Vï¿½a Crucis</a>
     <a href="oraciones.html">Oraciones</a>
     <a href="santo-rosario.html">El Santo Rosario</a>
-    <a href="maria.html">María</a>
+    <a href="maria.html">Marï¿½a</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
+    <a href="consagracion.html">Consagraciï¿½n</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
-    <a href=\"/musica/musica-sacra.html\">Música Sacra</a>
+    <a href=\"/musica/musica-sacra.html\">Mï¿½sica Sacra</a>
     <a href="noticias.html">Noticias</a>
     <a href="enlaces.html">Enlaces</a>
     
     
     
     
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
     <a href="estudios-biblicos.html">Estudios</a>
         <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones ?</a>
@@ -666,11 +685,11 @@ footer .cross {
 
 <main class="main-content">
 
-    <h1 class="page-title">Espacio para Jóvenes</h1>
+    <h1 class="page-title">Espacio para Jï¿½venes</h1>
 
     <p class="intro-text">
-        ¡Hey! Jesús te está mirando justo ahora y te dice: «No temas, en Ti confío yo también».  
-        Este es tu rincón para conectar la fe con tu día a día: retos, música, reflexiones cortas y mucho más.
+        ï¿½Hey! Jesï¿½s te estï¿½ mirando justo ahora y te dice: ï¿½No temas, en Ti confï¿½o yo tambiï¿½nï¿½.  
+        Este es tu rincï¿½n para conectar la fe con tu dï¿½a a dï¿½a: retos, mï¿½sica, reflexiones cortas y mucho mï¿½s.
     </p>
 
     <!-- Primer separador -->
@@ -745,42 +764,42 @@ footer .cross {
     <div class="youth-block">
         <h2>Reto de esta semana</h2>
         <div class="challenge">
-            <h3>Reto Misericordia 7 días</h3>
+            <h3>Reto Misericordia 7 dï¿½as</h3>
             <p>
-                Durante 7 días reza la Coronilla de la Divina Misericordia (solo 5-7 minutos) a las 3 de la tarde o cuando puedas.  
-                Cada día, ofrece una cuenta pequeña por una persona que necesite misericordia (un amigo que lo está pasando mal, alguien de tu familia, un desconocido que viste en redes...).  
-                Al final del día escribe en una nota del móvil una frase que Jesús te haya dicho al corazón.  
+                Durante 7 dï¿½as reza la Coronilla de la Divina Misericordia (solo 5-7 minutos) a las 3 de la tarde o cuando puedas.  
+                Cada dï¿½a, ofrece una cuenta pequeï¿½a por una persona que necesite misericordia (un amigo que lo estï¿½ pasando mal, alguien de tu familia, un desconocido que viste en redes...).  
+                Al final del dï¿½a escribe en una nota del mï¿½vil una frase que Jesï¿½s te haya dicho al corazï¿½n.  
                 Comparte tu experiencia con nosotros si quieres (sin nombre si prefieres).
             </p>
-            <p><strong>Premio:</strong> Paz interior y saber que estás siendo canal de misericordia. ¡Eso no tiene precio!</p>
+            <p><strong>Premio:</strong> Paz interior y saber que estï¿½s siendo canal de misericordia. ï¿½Eso no tiene precio!</p>
         </div>
     </div>
 
     <div class="youth-block">
-        <h2>Reflexión rápida para hoy</h2>
+        <h2>Reflexiï¿½n rï¿½pida para hoy</h2>
         <p>
-            «A veces pensamos que Jesús solo está en la iglesia o en momentos "santos". Pero Él está en tu chat cuando consuelas a un amigo, en tu story cuando pones una frase que levanta el ánimo, en tu like cuando apoyas a alguien que se siente solo.  
-            La Divina Misericordia no es algo viejo: es el amor de Dios entrando en tu TikTok, tu WhatsApp y tu playlist.»
+            ï¿½A veces pensamos que Jesï¿½s solo estï¿½ en la iglesia o en momentos "santos". Pero ï¿½l estï¿½ en tu chat cuando consuelas a un amigo, en tu story cuando pones una frase que levanta el ï¿½nimo, en tu like cuando apoyas a alguien que se siente solo.  
+            La Divina Misericordia no es algo viejo: es el amor de Dios entrando en tu TikTok, tu WhatsApp y tu playlist.ï¿½
         </p>
         <p style="text-align:right; font-style:italic; color:var(--gold);">
-            — Adaptado de un joven de 19 años que volvió a la fe rezando la Coronilla mientras iba en bus.
+            ï¿½ Adaptado de un joven de 19 aï¿½os que volviï¿½ a la fe rezando la Coronilla mientras iba en bus.
         </p>
     </div>
 
     <div class="youth-block">
-        <h2>Playlist "Jesús, En Vos Confío"</h2>
+        <h2>Playlist "Jesï¿½s, En Vos Confï¿½o"</h2>
         <p>
             Canciones que ayudan a rezar y a sentir la misericordia (puedes buscarlas en Spotify o YouTube):
         </p>
         <ul style="list-style:none; padding-left:20px; color:rgba(250,247,240,0.9);">
-            <li>• "Misericordia" – Martín Saldarriaga</li>
-            <li>• "Jesús, En Vos Confío" – Siervas</li>
-            <li>• "Corazón Abierto" – Jon Carlo</li>
-            <li>• "Rayos de Misericordia" – Kairy Márquez</li>
-            <li>• "Confío en Ti" – Athenas</li>
-            <li>• "Divina Misericordia" – Verónica Sanfilippo</li>
+            <li>ï¿½ "Misericordia" ï¿½ Martï¿½n Saldarriaga</li>
+            <li>ï¿½ "Jesï¿½s, En Vos Confï¿½o" ï¿½ Siervas</li>
+            <li>ï¿½ "Corazï¿½n Abierto" ï¿½ Jon Carlo</li>
+            <li>ï¿½ "Rayos de Misericordia" ï¿½ Kairy Mï¿½rquez</li>
+            <li>ï¿½ "Confï¿½o en Ti" ï¿½ Athenas</li>
+            <li>ï¿½ "Divina Misericordia" ï¿½ Verï¿½nica Sanfilippo</li>
         </ul>
-        <p>¿Tienes una canción que te conecta con Jesús? ¡Envíanosla!</p>
+        <p>ï¿½Tienes una canciï¿½n que te conecta con Jesï¿½s? ï¿½Envï¿½anosla!</p>
     </div>
 
     <!-- Segundo separador -->
@@ -853,20 +872,20 @@ footer .cross {
     </div>
 
     <div class="youth-block">
-        <h2>¿Quieres participar?</h2>
+        <h2>ï¿½Quieres participar?</h2>
         <p>
-            Escríbenos tu testimonio corto, una foto anónima con una frase que te haya marcado, o una idea para un reto nuevo.  
-            No hace falta que sea perfecto, solo que venga del corazón.  
-            Envía tu mensaje a través del <a href="contacto.html" style="color:var(--gold-light); text-decoration:underline;">formulario de contacto</a>.
+            Escrï¿½benos tu testimonio corto, una foto anï¿½nima con una frase que te haya marcado, o una idea para un reto nuevo.  
+            No hace falta que sea perfecto, solo que venga del corazï¿½n.  
+            Envï¿½a tu mensaje a travï¿½s del <a href="contacto.html" style="color:var(--gold-light); text-decoration:underline;">formulario de contacto</a>.
         </p>
         <p style="text-align:center; font-style:italic; color:var(--gold); margin-top:1.5rem;">
-            «No tengas miedo de acercarte a Jesús. Él ya te está esperando con los brazos abiertos.»
+            ï¿½No tengas miedo de acercarte a Jesï¿½s. ï¿½l ya te estï¿½ esperando con los brazos abiertos.ï¿½
         </p>
     </div>
 
     <p class="quote-closing">
-        «Los jóvenes son el ahora de Dios. Y Dios es misericordia infinita.»<br>
-        <small>— Inspirado en el mensaje de los Papas a la juventud</small>
+        ï¿½Los jï¿½venes son el ahora de Dios. Y Dios es misericordia infinita.ï¿½<br>
+        <small>ï¿½ Inspirado en el mensaje de los Papas a la juventud</small>
     </p>
 
 </main>
@@ -876,43 +895,43 @@ footer .cross {
     <h3 class="footer-menu-title">Explora nuestra web</h3>
     <div class="footer-menu-links">
         <a href="oraciones.html">Oraciones</a>
-        <a href="via-crucis.html">Vía Crucis</a>
-        <a href="maria.html">María</a>
+        <a href="via-crucis.html">Vï¿½a Crucis</a>
+        <a href="maria.html">Marï¿½a</a>
         <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-        <a href="consagracion.html">Consagración</a>
+        <a href="consagracion.html">Consagraciï¿½n</a>
         <a href="lugares-de-culto.html">Lugares de Culto</a>
         <a href="noticias.html">Noticias</a>
-        <a href="ss-leon-xiv.html">S.S. León XIV</a>
+        <a href="ss-leon-xiv.html">S.S. Leï¿½n XIV</a>
         <a href="ss-francisco.html">S.S. Francisco</a>
         <a href="ss-benedicto-xvi.html">S.S. Benedicto XVI</a>
         <a href="ss-juan-pablo-ii.html">S.S. Juan Pablo II</a>
         <a href="enlaces.html">Enlaces</a>
-        <a href="divino-nino-jesus.html">Divino Niño Jesús</a>
+        <a href="divino-nino-jesus.html">Divino Niï¿½o Jesï¿½s</a>
         <a href="san-judas-tadeo.html">San Judas Tadeo</a>
         <a href="san-cayetano.html">San Cayetano</a>
-        <a href="consagracion-sagrado-corazon.html">Sagrado Corazón</a>
-        <a href="maria-auxiliadora.html">María Auxiliadora</a>
-        <a href="san-sanson.html">Sansón</a>
+        <a href="consagracion-sagrado-corazon.html">Sagrado Corazï¿½n</a>
+        <a href="maria-auxiliadora.html">Marï¿½a Auxiliadora</a>
+        <a href="san-sanson.html">Sansï¿½n</a>
         <a href="san-benito.html">San Benito</a>
         <a href="oracion-santa-cruz.html">Santa Cruz</a>
         <a href="san-francisco.html">San Francisco</a>
-        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+        <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
         <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones</a>
     </div>
 </div>
 
 <footer class="main-footer sacred-footer">
-    <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">?</a>
-    <p class="tagline">Jesús, En Vos Confío</p>
-    <p>© 2026 — Portal de la Divina Misericordia</p>
+    <a href="el-altar.html" class="cross-glow" title="Adorar al Santï¿½simo">?</a>
+    <p class="tagline">Jesï¿½s, En Vos Confï¿½o</p>
+    <p>ï¿½ 2026 ï¿½ Portal de la Divina Misericordia</p>
 </footer>
 
 <div class="scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})"></div>
 <div class="scroll-down" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})"></div>
 
 <script>
-// Canvas rays (igual que en todas las páginas)
+// Canvas rays (igual que en todas las pï¿½ginas)
 const canvas = document.getElementById('divine-canvas');
 const ctx = canvas.getContext('2d');
 let width, height, rays = [], particles = [];
@@ -1056,7 +1075,9 @@ document.addEventListener("DOMContentLoaded", function(){
 </script>
 
 
-<!-- Sistema de Diseño Global -->
+<!-- Sistema de Diseï¿½o Global -->
 <script src="js/system-init.js"></script>
-</body>
+
+  <!-- Core Web Vitals -->
+  <script src="/assets/js/web-vitals.js"></script></body>
 </html>

@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>San Francisco de Asís - Patrón de Italia | Oraciones y Devoción | Divina Misericordia</title>
-<meta name="description" content="San Francisco de Asís, patrón de Italia y de los ecológicos. Oración diaria, biografía y devoción. La pobreza evangica y el amor a la creación de San Francisco.">
-<meta name="keywords" content="San Francisco de Asís, oración san francisco, patrón italia, ecológico, pobreza evangica, hermano sol, cantico criaturas, biografia san francisco">
+<title>San Francisco de Asï¿½s - Patrï¿½n de Italia | Oraciones y Devociï¿½n | Divina Misericordia</title>
+<meta name="description" content="San Francisco de Asï¿½s, patrï¿½n de Italia y de los ecolï¿½gicos. Oraciï¿½n diaria, biografï¿½a y devociï¿½n. La pobreza evangica y el amor a la creaciï¿½n de San Francisco.">
+<meta name="keywords" content="San Francisco de Asï¿½s, oraciï¿½n san francisco, patrï¿½n italia, ecolï¿½gico, pobreza evangica, hermano sol, cantico criaturas, biografia san francisco">
 <meta name="author" content="El Portal de la Divina Misericordia">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <link rel="canonical" href="https://misericordiadejesus.es/san-francisco.html">
 <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://misericordiadejesus.es/san-francisco.html">
-<meta property="og:title" content="San Francisco de Asís — Patrón de Italia">
-<meta property="og:description" content="San Francisco de Asís, patrón de Italia y de los ecológicos. La pobreza evangica y el amor a la creación.">
+<meta property="og:title" content="San Francisco de Asï¿½s ï¿½ Patrï¿½n de Italia">
+<meta property="og:description" content="San Francisco de Asï¿½s, patrï¿½n de Italia y de los ecolï¿½gicos. La pobreza evangica y el amor a la creaciï¿½n.">
 <meta property="og:site_name" content="Divina Misericordia">
 <meta property="og:locale" content="es_ES">
 <meta property="og:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="San Francisco de Asís - Patrón de Italia">
+<meta property="og:image:alt" content="San Francisco de Asï¿½s - Patrï¿½n de Italia">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="San Francisco de Asís — Patrón de Italia">
-<meta name="twitter:description" content="San Francisco de Asís, patrón de Italia y de los ecológicos.">
+<meta name="twitter:title" content="San Francisco de Asï¿½s ï¿½ Patrï¿½n de Italia">
+<meta name="twitter:description" content="San Francisco de Asï¿½s, patrï¿½n de Italia y de los ecolï¿½gicos.">
 <meta name="twitter:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta name="twitter:site" content="@divinamisericordia">
 <meta name="twitter:creator" content="@divinamisericordia">
@@ -38,9 +38,9 @@
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "San Francisco de Asís",
+  "name": "San Francisco de Asï¿½s",
   "alternateName": "San Francisco",
-  "description": "San Francisco de Asís, patrón de Italia y de los ecológicos. La pobreza evangica y el amor a la creación.",
+  "description": "San Francisco de Asï¿½s, patrï¿½n de Italia y de los ecolï¿½gicos. La pobreza evangica y el amor a la creaciï¿½n.",
   "image": "https://misericordiadejesus.es/img/logo_divina_misericordia.webp",
   "author": {"@type": "Organization", "name": "El Portal de la Divina Misericordia", "url": "https://misericordiadejesus.es/"},
   "publisher": {"@type": "Organization", "name": "Divina Misericordia", "url": "https://misericordiadejesus.es/"},
@@ -594,7 +594,26 @@ footer .tagline {
   animation: sacredPulse 4s ease-in-out infinite; pointer-events: none;
 }
 </style>
-</head>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track devociones
+      document.querySelectorAll('a[href*="coronilla"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_coronilla', { event_category: 'Devocion' })));
+      document.querySelectorAll('a[href*="novena"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_novena', { event_category: 'Devocion' })));
+      document.querySelectorAll('audio, .play-btn').forEach(l => 
+        l.addEventListener('play', () => gtag && gtag('event', 'play_audio', { event_category: 'Multimedia' })));
+    });
+  </script></head>
 
 <!-- Schema.org BreadcrumbList -->
 <script type="application/ld+json">
@@ -655,34 +674,34 @@ footer .tagline {
   </a>
     <nav id="mainNav">
     <a href="index.html">Inicio</a>
-    <a href="quienes-somos.html">Quiénes Somos</a>
-    <a href="introduccion.html">Introducción</a>
+    <a href="quienes-somos.html">Quiï¿½nes Somos</a>
+    <a href="introduccion.html">Introducciï¿½n</a>
     <a href="santa-faustina.html">Santa Faustina</a>
     <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
     <a href="coronilla.html">Coronilla</a>
     <a href="novena.html">Novena</a>
-    <a href="via-crucis.html">Vía Crucis</a>
+    <a href="via-crucis.html">Vï¿½a Crucis</a>
     <a href="oraciones.html">Oraciones</a>
     <a href="santo-rosario.html">El Santo Rosario</a>
-    <a href="maria.html">María</a>
+    <a href="maria.html">Marï¿½a</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
+    <a href="consagracion.html">Consagraciï¿½n</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
-    <a href=\"/musica/musica-sacra.html\">Música Sacra</a>
+    <a href=\"/musica/musica-sacra.html\">Mï¿½sica Sacra</a>
     <a href="noticias.html">Noticias</a>
     <a href="enlaces.html">Enlaces</a>
     
     
     
     
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
     <a href="estudios-biblicos.html">Estudios</a>
         <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones ?</a>
     <a href="contacto.html">Contacto</a>
     
   </nav>
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menú" aria-expanded="false">
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menï¿½" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </header>
@@ -692,73 +711,73 @@ footer .tagline {
 <div class="container">
 
 <header class="page-header">
-  <h1 class="page-title">San Francisco de Asís</h1>
-  <p class="page-subtitle">Patrón de Italia y de los Ecólogos</p>
+  <h1 class="page-title">San Francisco de Asï¿½s</h1>
+  <p class="page-subtitle">Patrï¿½n de Italia y de los Ecï¿½logos</p>
 </header>
 
 <section class="content-box reveal">
-  <h2 class="section-title">??? Oración Diaria ???</h2>
+  <h2 class="section-title">??? Oraciï¿½n Diaria ???</h2>
   
   <div class="prayer-box">
     <div class="prayer-text">
       <p class="intro">
-        Amado Dios, en esta mañana me acerco hasta Ti para darte gracias porque solo necesito mirar a mi alrededor para darme cuenta de todas las hermosas bendiciones que Tú me das.
+        Amado Dios, en esta maï¿½ana me acerco hasta Ti para darte gracias porque solo necesito mirar a mi alrededor para darme cuenta de todas las hermosas bendiciones que Tï¿½ me das.
       </p>
       
       <div class="oracion-item">
-        <p>Gracias por la vida, por mi familia, por nuestro hogar, por la salud y por los alimentos que hay en nuestras alacenas. Tú eres nuestro guía, nuestro guardián, nuestro protector y a tu lado vivimos en certezas y bienestar.</p>
+        <p>Gracias por la vida, por mi familia, por nuestro hogar, por la salud y por los alimentos que hay en nuestras alacenas. Tï¿½ eres nuestro guï¿½a, nuestro guardiï¿½n, nuestro protector y a tu lado vivimos en certezas y bienestar.</p>
       </div>
       
       <div class="oracion-item">
-        <p>Señor, hoy elevo esta oración hasta Ti porque quiero empezar este nuevo día de tu mano; hoy te entrego mis sueños, mis ilusiones y también mis batallas.</p>
+        <p>Seï¿½or, hoy elevo esta oraciï¿½n hasta Ti porque quiero empezar este nuevo dï¿½a de tu mano; hoy te entrego mis sueï¿½os, mis ilusiones y tambiï¿½n mis batallas.</p>
       </div>
       
       <div class="oracion-item">
-        <p>Te suplico que orientes cada una de mis acciones, que me concedas sabiduría en mis decisiones y me permitas vivir un día bueno, próspero y provechoso.</p>
+        <p>Te suplico que orientes cada una de mis acciones, que me concedas sabidurï¿½a en mis decisiones y me permitas vivir un dï¿½a bueno, prï¿½spero y provechoso.</p>
       </div>
       
       <div class="oracion-item">
-        <p>Por favor ayúdame a cultivar el don de la fortaleza frente a las dificultades, defiéndeme del enemigo malvado, del peligro inesperado, concédeme la gracia de la humildad y ayúdame a recordar que en la sencillez se encuentra la verdadera felicidad.</p>
+        <p>Por favor ayï¿½dame a cultivar el don de la fortaleza frente a las dificultades, defiï¿½ndeme del enemigo malvado, del peligro inesperado, concï¿½deme la gracia de la humildad y ayï¿½dame a recordar que en la sencillez se encuentra la verdadera felicidad.</p>
       </div>
       
       <div class="oracion-item">
-        <p>En esta oración también quiero pedirte por todas aquellas personas que empiezan este día con alguna necesidad y hoy requieren de Ti. Por favor socorre a los niños huérfanos, a las personas enfermas, a los desempleados y a todo aquel que está atravesando por algún desasosiego. Te ruego que tu luz bendita caiga sobre el mundo y que en los corazones florezcan la paz y la esperanza.</p>
+        <p>En esta oraciï¿½n tambiï¿½n quiero pedirte por todas aquellas personas que empiezan este dï¿½a con alguna necesidad y hoy requieren de Ti. Por favor socorre a los niï¿½os huï¿½rfanos, a las personas enfermas, a los desempleados y a todo aquel que estï¿½ atravesando por algï¿½n desasosiego. Te ruego que tu luz bendita caiga sobre el mundo y que en los corazones florezcan la paz y la esperanza.</p>
       </div>
       
       <div class="oracion-item">
-        <p>Amado Dios, gracias por ser mi maestro, mi benefactor y gracias por todos los planes perfectos y maravillosos que Tú tienes para mí. Te ruego que en este nuevo día te quedes a mi lado, pues junto a Ti no temeré.</p>
+        <p>Amado Dios, gracias por ser mi maestro, mi benefactor y gracias por todos los planes perfectos y maravillosos que Tï¿½ tienes para mï¿½. Te ruego que en este nuevo dï¿½a te quedes a mi lado, pues junto a Ti no temerï¿½.</p>
       </div>
       
       <div class="oracion-item">
-        <p>Señor, te pido que en este hermoso día seas Tú protegiéndome con amor y fortaleciéndome con fe. Mi vida, mis obligaciones y mis anhelos están puestos en tus manos.</p>
+        <p>Seï¿½or, te pido que en este hermoso dï¿½a seas Tï¿½ protegiï¿½ndome con amor y fortaleciï¿½ndome con fe. Mi vida, mis obligaciones y mis anhelos estï¿½n puestos en tus manos.</p>
       </div>
       
-      <span class="amen fire">Amén</span>
+      <span class="amen fire">Amï¿½n</span>
     </div>
   </div>
 </section>
 
 <section class="verse-box reveal">
-  <p>"El Señor me llamó para que viviera en pobreza y humildad. Que Dios te bendiga y te guarde, y te muestre su rostro y tenga misericordia de ti." — San Francisco de Asís</p>
+  <p>"El Seï¿½or me llamï¿½ para que viviera en pobreza y humildad. Que Dios te bendiga y te guarde, y te muestre su rostro y tenga misericordia de ti." ï¿½ San Francisco de Asï¿½s</p>
 </section>
 
 <section class="about-section reveal">
-  <h2>Sobre San Francisco de Asís</h2>
+  <h2>Sobre San Francisco de Asï¿½s</h2>
   <p>
-    San Francisco de Asís (1181-1226) es uno de los santos más amados de la Iglesia Católica. Fundador de la Orden de los Franciscanos (Orden de Hermanos Menores), es conocido por su amor extremo a la pobreza, su humildad y su profunda conexión con la creación de Dios.
+    San Francisco de Asï¿½s (1181-1226) es uno de los santos mï¿½s amados de la Iglesia Catï¿½lica. Fundador de la Orden de los Franciscanos (Orden de Hermanos Menores), es conocido por su amor extremo a la pobreza, su humildad y su profunda conexiï¿½n con la creaciï¿½n de Dios.
   </p>
   <p>
-    Nació en Asís, Italia, en una familia acomodada. En su juventud llevó una vida mundana hasta que tuvo una experiencia conversiva radical. Tras escuchar el llamado de Cristo a "predicar la penitencia", renunció a sus bienes y comenzó a vivir en pobreza extrema.
+    Naciï¿½ en Asï¿½s, Italia, en una familia acomodada. En su juventud llevï¿½ una vida mundana hasta que tuvo una experiencia conversiva radical. Tras escuchar el llamado de Cristo a "predicar la penitencia", renunciï¿½ a sus bienes y comenzï¿½ a vivir en pobreza extrema.
   </p>
   <p>
-    San Francisco recibió los estigmas de Cristo en 1224,??????????????. Murió el 3 de octubre de 1226 en Asís, y es venerado como patrón de Italia, de los ecólogos, de los animales y de la paz.
+    San Francisco recibiï¿½ los estigmas de Cristo en 1224,??????????????. Muriï¿½ el 3 de octubre de 1226 en Asï¿½s, y es venerado como patrï¿½n de Italia, de los ecï¿½logos, de los animales y de la paz.
   </p>
 </section>
 
 <section class="about-section reveal">
   <h2>La Paz de San Francisco</h2>
   <p>
-    La oración conocida como "La Paz de San Francisco" o "Oración de San Francisco" es una de las oraciones más conocidas del mundo. Nos enseña que la verdadera paz viene de servir a los demás con amor y humildad.
+    La oraciï¿½n conocida como "La Paz de San Francisco" o "Oraciï¿½n de San Francisco" es una de las oraciones mï¿½s conocidas del mundo. Nos enseï¿½a que la verdadera paz viene de servir a los demï¿½s con amor y humildad.
   </p>
 </section>
 
@@ -767,27 +786,27 @@ footer .tagline {
     <div class="patron-grid">
       <div class="patron-item">
         <span>????</span>
-        <p>Patrón de Italia</p>
+        <p>Patrï¿½n de Italia</p>
       </div>
       <div class="patron-item">
         <span>??</span>
-        <p>Patrón de los Ecólogos</p>
+        <p>Patrï¿½n de los Ecï¿½logos</p>
       </div>
       <div class="patron-item">
         <span>??</span>
-        <p>Patrón de los Animales</p>
+        <p>Patrï¿½n de los Animales</p>
       </div>
       <div class="patron-item">
         <span>???</span>
-        <p>Patrón de la Paz</p>
+        <p>Patrï¿½n de la Paz</p>
       </div>
       <div class="patron-item">
         <span>?????</span>
-        <p>Patrón de los Maestros</p>
+        <p>Patrï¿½n de los Maestros</p>
       </div>
       <div class="patron-item">
         <span>??</span>
-        <p>Patrón de los SS. Estigmas</p>
+        <p>Patrï¿½n de los SS. Estigmas</p>
       </div>
     </div>
 </section>
@@ -801,36 +820,36 @@ footer .tagline {
   <h3 class="footer-menu-title">Explora nuestra web</h3>
   <div class="footer-menu-links">
         <a href="oraciones.html">Oraciones</a>
-    <a href="via-crucis.html">Vía Crucis</a>
-    <a href="maria.html">María</a>
+    <a href="via-crucis.html">Vï¿½a Crucis</a>
+    <a href="maria.html">Marï¿½a</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
+    <a href="consagracion.html">Consagraciï¿½n</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
     <a href="noticias.html">Noticias</a>
-    <a href="ss-leon-xiv.html">S.S. León XIV</a>
+    <a href="ss-leon-xiv.html">S.S. Leï¿½n XIV</a>
     <a href="ss-francisco.html">S.S. Francisco</a>
     <a href="ss-benedicto-xvi.html">S.S. Benedicto XVI</a>
     <a href="ss-juan-pablo-ii.html">S.S. Juan Pablo II</a>
     <a href="enlaces.html">Enlaces</a>
-    <a href="divino-nino-jesus.html">Divino Niño Jesús</a>
+    <a href="divino-nino-jesus.html">Divino Niï¿½o Jesï¿½s</a>
     <a href="san-judas-tadeo.html">San Judas Tadeo</a>
     <a href="san-cayetano.html">San Cayetano</a>
-    <a href="consagracion-sagrado-corazon.html">Sagrado Corazón</a>
-    <a href="maria-auxiliadora.html">María Auxiliadora</a>
-    <a href="san-sanson.html">Sansón</a>
+    <a href="consagracion-sagrado-corazon.html">Sagrado Corazï¿½n</a>
+    <a href="maria-auxiliadora.html">Marï¿½a Auxiliadora</a>
+    <a href="san-sanson.html">Sansï¿½n</a>
     <a href="san-benito.html">San Benito</a>
     <a href="oracion-santa-cruz.html">Santa Cruz</a>
     <a href="san-francisco.html">San Francisco</a>
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
         <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones</a>
   </div>
 </div>
 
 <footer class="main-footer sacred-footer">
-    <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">?</a>
-    <p class="tagline">Jesús, En Vos Confío</p>
-    <p>© 2026 — Portal de la Divina Misericordia</p>
+    <a href="el-altar.html" class="cross-glow" title="Adorar al Santï¿½simo">?</a>
+    <p class="tagline">Jesï¿½s, En Vos Confï¿½o</p>
+    <p>ï¿½ 2026 ï¿½ Portal de la Divina Misericordia</p>
 </footer>
 
 <button class="scroll-btn scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})">
@@ -964,7 +983,9 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
 
-<!-- Sistema de Diseño Global -->
+<!-- Sistema de Diseï¿½o Global -->
 <script src="js/system-init.js"></script>
-</body>
+
+  <!-- Core Web Vitals -->
+  <script src="/assets/js/web-vitals.js"></script></body>
 </html>

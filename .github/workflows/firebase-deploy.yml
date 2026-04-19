@@ -4,34 +4,64 @@ on:
   push:
     branches:
       - main
-      - feat/ui-liturgical-context # Detectamos tu rama actual también
 
 jobs:
-  build_and_deploy:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: 📥 Clonando Repositorio
+      - name: 📥 Checkout
         uses: actions/checkout@v4
 
-      - name: 🐍 Configurando Python
+      - name: 🐍 Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: 📦 Instalando Dependencias
+      - name: 📦 Install Dependencies
+        run: pip install -r requirements.txt || echo "No requirements.txt, skipping"
+
+      - name: 🧪 Run Tests
+        run: |
+          npm install
+          node tests/run.js
+
+      - name: 🔍 Lighthouse Audit
+        uses: foo-software/lighthouse-check-action@master
+        with:
+          urls: 'http://localhost:3002'
+        continue-on-error: true
+
+  build_and_deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Install Dependencies
         run: |
           pip install Pillow python-dotenv
+          npm install
 
-      - name: ⚙️ Generando Build Optimizado (Nivel DIOS)
-        run: python tools/build_and_deploy.py
+      - name: ⚙️ Build Production
+        run: |
+          npm run build:sitemap
+          npm run build:css
+          npm run build:js
         env:
-          EMAIL_USER: ${{ secrets.EMAIL_USER }}
-          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          NODE_ENV: production
 
-      - name: 🚀 Desplegando a Firebase Hosting
+      - name: 🚀 Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_DIVINA_MISERICORDIA }}'
           channelId: live
           projectId: divina-misericordia-web
+        env:
+          FIREBASE_TOKEN: '${{ secrets.FIREBASE_TOKEN }}'

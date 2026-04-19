@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>San José Dormido - Contemplación del Sueño de San José | Divina Misericordia</title>
-<meta name="description" content="Devoción a San José Dormido. La oración del Papa Francisco y la historia de este sagrado sueño. Contemplación del sueño de San José, esposo de María.">
-<meta name="keywords" content="San Jose Dormido, Jose durmiendo, oración Jose dormido, sueño jose, papa francisco oracion, contemplación Jose, patrono iglesia">
+<title>San Josï¿½ Dormido - Contemplaciï¿½n del Sueï¿½o de San Josï¿½ | Divina Misericordia</title>
+<meta name="description" content="Devociï¿½n a San Josï¿½ Dormido. La oraciï¿½n del Papa Francisco y la historia de este sagrado sueï¿½o. Contemplaciï¿½n del sueï¿½o de San Josï¿½, esposo de Marï¿½a.">
+<meta name="keywords" content="San Jose Dormido, Jose durmiendo, oraciï¿½n Jose dormido, sueï¿½o jose, papa francisco oracion, contemplaciï¿½n Jose, patrono iglesia">
 <meta name="author" content="El Portal de la Divina Misericordia">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <link rel="canonical" href="https://misericordiadejesus.es/san-jose-dormido.html">
 <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://misericordiadejesus.es/san-jose-dormido.html">
-<meta property="og:title" content="San José Dormido — Contemplación del Sueño de San José">
-<meta property="og:description" content="Devoción a San José Dormido. La oración del Papa Francisco y la historia de este sagrado sueño.">
+<meta property="og:title" content="San Josï¿½ Dormido ï¿½ Contemplaciï¿½n del Sueï¿½o de San Josï¿½">
+<meta property="og:description" content="Devociï¿½n a San Josï¿½ Dormido. La oraciï¿½n del Papa Francisco y la historia de este sagrado sueï¿½o.">
 <meta property="og:site_name" content="Divina Misericordia">
 <meta property="og:locale" content="es_ES">
 <meta property="og:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="San José Dormido - Contemplación del Sueño">
+<meta property="og:image:alt" content="San Josï¿½ Dormido - Contemplaciï¿½n del Sueï¿½o">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="San José Dormido — Contemplación del Sueño de San José">
-<meta name="twitter:description" content="Devoción a San José Dormido. La oración del Papa Francisco.">
+<meta name="twitter:title" content="San Josï¿½ Dormido ï¿½ Contemplaciï¿½n del Sueï¿½o de San Josï¿½">
+<meta name="twitter:description" content="Devociï¿½n a San Josï¿½ Dormido. La oraciï¿½n del Papa Francisco.">
 <meta name="twitter:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta name="twitter:site" content="@divinamisericordia">
 <meta name="twitter:creator" content="@divinamisericordia">
@@ -472,7 +472,26 @@ footer .tagline {
   pointer-events: none;
 }
 </style>
-</head>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track devociones
+      document.querySelectorAll('a[href*="coronilla"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_coronilla', { event_category: 'Devocion' })));
+      document.querySelectorAll('a[href*="novena"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_novena', { event_category: 'Devocion' })));
+      document.querySelectorAll('audio, .play-btn').forEach(l => 
+        l.addEventListener('play', () => gtag && gtag('event', 'play_audio', { event_category: 'Multimedia' })));
+    });
+  </script></head>
 
 <!-- Schema.org BreadcrumbList -->
 <script type="application/ld+json">
@@ -482,7 +501,7 @@ footer .tagline {
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://misericordiadejesus.es/"},
     {"@type": "ListItem", "position": 2, "name": "Devociones", "item": "https://misericordiadejesus.es/otras-devociones.html"},
-    {"@type": "ListItem", "position": 3, "name": "San José Dormido", "item": "https://misericordiadejesus.es/san-jose-dormido.html"}
+    {"@type": "ListItem", "position": 3, "name": "San Josï¿½ Dormido", "item": "https://misericordiadejesus.es/san-jose-dormido.html"}
   ]
 }
 </script>
@@ -533,27 +552,27 @@ footer .tagline {
     </a>
       <nav id="mainNav">
     <a href="index.html">Inicio</a>
-    <a href="quienes-somos.html">Quiénes Somos</a>
-    <a href="introduccion.html">Introducción</a>
+    <a href="quienes-somos.html">Quiï¿½nes Somos</a>
+    <a href="introduccion.html">Introducciï¿½n</a>
     <a href="santa-faustina.html">Santa Faustina</a>
     <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
     <a href="coronilla.html">Coronilla</a>
     <a href="novena.html">Novena</a>
-    <a href="via-crucis.html">Vía Crucis</a>
+    <a href="via-crucis.html">Vï¿½a Crucis</a>
     <a href="oraciones.html">Oraciones</a>
     <a href="santo-rosario.html">El Santo Rosario</a>
-    <a href="maria.html">María</a>
+    <a href="maria.html">Marï¿½a</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
+    <a href="consagracion.html">Consagraciï¿½n</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
-    <a href=\"/musica/musica-sacra.html\">Música Sacra</a>
+    <a href=\"/musica/musica-sacra.html\">Mï¿½sica Sacra</a>
     <a href="noticias.html">Noticias</a>
     <a href="enlaces.html">Enlaces</a>
     
     
     
     
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
     <a href="estudios-biblicos.html">Estudios</a>
         <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones ?</a>
@@ -568,118 +587,118 @@ footer .tagline {
 <main class="main-content">
 
     <div class="page-header">
-        <h1 class="page-title">San José Dormido</h1>
-        <p class="page-subtitle">La devoción del Papa Francisco al padre guardián de Jesús</p>
+        <h1 class="page-title">San Josï¿½ Dormido</h1>
+        <p class="page-subtitle">La devociï¿½n del Papa Francisco al padre guardiï¿½n de Jesï¿½s</p>
     </div>
 
     <div class="historia-box">
-        <h2>La Devoción del Papa Francisco</h2>
-        <p>La estatua de San José Dormido, o también San José Durmiente, tiene un significado muy importante para el Papa Francisco. Cuando en 1953, con solo 17 años, recibió la Llamada del Señor, Jorge Mario Bergoglio entró a la iglesia de San José de Buenos Aires, ciudad de la cual luego fue Arzobispo.</p>
+        <h2>La Devociï¿½n del Papa Francisco</h2>
+        <p>La estatua de San Josï¿½ Dormido, o tambiï¿½n San Josï¿½ Durmiente, tiene un significado muy importante para el Papa Francisco. Cuando en 1953, con solo 17 aï¿½os, recibiï¿½ la Llamada del Seï¿½or, Jorge Mario Bergoglio entrï¿½ a la iglesia de San Josï¿½ de Buenos Aires, ciudad de la cual luego fue Arzobispo.</p>
         
-        <p>Su devoción hacia el padre putativo de Jesús se remarcó el día 19 de marzo de 2013, solo seis días después de su elección como Obispo de Roma y Pastor de la Iglesia universal, cuando, inaugurando su Pontificado, centró su sermón sobre el rol de guardián de San José.</p>
+        <p>Su devociï¿½n hacia el padre putativo de Jesï¿½s se remarcï¿½ el dï¿½a 19 de marzo de 2013, solo seis dï¿½as despuï¿½s de su elecciï¿½n como Obispo de Roma y Pastor de la Iglesia universal, cuando, inaugurando su Pontificado, centrï¿½ su sermï¿½n sobre el rol de guardiï¿½n de San Josï¿½.</p>
     </div>
 
     <div class="historia-box">
-        <h2>El Sueño de San José</h2>
-        <p>Gracias a la Sagrada Biblia, sabemos hoy cuánto ha sido fundamental el sueño para San José. Durante el sueño un Ángel le dijo de tomar en matrimonio a María, así como en sus sueños el mismo Ángel le avisó de la inminente Matanza de los Inocentes ordenada por Herodes.</p>
+        <h2>El Sueï¿½o de San Josï¿½</h2>
+        <p>Gracias a la Sagrada Biblia, sabemos hoy cuï¿½nto ha sido fundamental el sueï¿½o para San Josï¿½. Durante el sueï¿½o un ï¿½ngel le dijo de tomar en matrimonio a Marï¿½a, asï¿½ como en sus sueï¿½os el mismo ï¿½ngel le avisï¿½ de la inminente Matanza de los Inocentes ordenada por Herodes.</p>
         
-        <p>Esta aparición que tuvo en sueño le permitió huir a Egipto y guardar la vida de su hijo Jesús. El Santo es un padre misericordioso, que ayuda a los necesitados. Así como él, el ser humano tiene que despertar de su propio sueño, una vez haya escuchado la Palabra de Dios, levantarse y actuar para su vida.</p>
+        <p>Esta apariciï¿½n que tuvo en sueï¿½o le permitiï¿½ huir a Egipto y guardar la vida de su hijo Jesï¿½s. El Santo es un padre misericordioso, que ayuda a los necesitados. Asï¿½ como ï¿½l, el ser humano tiene que despertar de su propio sueï¿½o, una vez haya escuchado la Palabra de Dios, levantarse y actuar para su vida.</p>
     </div>
 
     <div class="cita-box">
-        <p>"El Papa Francisco tiene en su oficina en la Domus Sanctae Marthae dos estatuas que representan al Santo. Una de estas es una estatua que acompaña al Pontífice desde siempre, desde cuando era rector del Colegio Máximo de San Miguel."</p>
+        <p>"El Papa Francisco tiene en su oficina en la Domus Sanctae Marthae dos estatuas que representan al Santo. Una de estas es una estatua que acompaï¿½a al Pontï¿½fice desde siempre, desde cuando era rector del Colegio Mï¿½ximo de San Miguel."</p>
     </div>
 
     <div class="historia-box">
-        <h2>Curiosidades Sobre San José Dormido y el Papa Francisco</h2>
-        <p>El Papa Francisco tiene en su oficina en la Domus Sanctae Marthae dos estatuas que representan al Santo. Una de estas merece particular atención: se trata de una estatua que acompaña al Pontífice desde siempre, desde cuando era rector del Colegio Máximo de San Miguel.</p>
+        <h2>Curiosidades Sobre San Josï¿½ Dormido y el Papa Francisco</h2>
+        <p>El Papa Francisco tiene en su oficina en la Domus Sanctae Marthae dos estatuas que representan al Santo. Una de estas merece particular atenciï¿½n: se trata de una estatua que acompaï¿½a al Pontï¿½fice desde siempre, desde cuando era rector del Colegio Mï¿½ximo de San Miguel.</p>
         
-        <p>Esta estatua retrata San José durmiente, una figura insólita para los europeos pero muy difundida entre los fieles sudamericanos. El Papa Francisco, muchas veces, contó de su costumbre de poner por debajo de la estatua del San José Dormido unas notitas con las peticiones de gracia y las oraciones de los fieles, buscando invitar al Santo a "consultarlo con la almohada".</p>
+        <p>Esta estatua retrata San Josï¿½ durmiente, una figura insï¿½lita para los europeos pero muy difundida entre los fieles sudamericanos. El Papa Francisco, muchas veces, contï¿½ de su costumbre de poner por debajo de la estatua del San Josï¿½ Dormido unas notitas con las peticiones de gracia y las oraciones de los fieles, buscando invitar al Santo a "consultarlo con la almohada".</p>
         
-        <p>El Pontífice mismo declaró en 2015 querer particularmente San José, ya que es un hombre fuerte y silencioso, el hombre de los sueños, que protege y ayuda a cualquier persona que lo necesita, también cuando duerme.</p>
+        <p>El Pontï¿½fice mismo declarï¿½ en 2015 querer particularmente San Josï¿½, ya que es un hombre fuerte y silencioso, el hombre de los sueï¿½os, que protege y ayuda a cualquier persona que lo necesita, tambiï¿½n cuando duerme.</p>
     </div>
 
     <div class="oracion-box oracion-destacada">
-        <h3>Oración a San José Dormido</h3>
-        <p class="oracion-texto">Oh San José, cuya protección es tan grande, tan fuerte y tan inmediata ante el trono de Dios, a ti confío todas mis intenciones y deseos. Ayúdame, San José, con tu poderosa intercesión, a obtener todas las bendiciones espirituales por intercesión de tu Hijo adoptivo, Jesucristo Nuestro Señor, de modo que, al confiarme, aquí en la tierra, a tu poder celestial, Te tribute mi agradecimiento y homenaje.</p>
+        <h3>Oraciï¿½n a San Josï¿½ Dormido</h3>
+        <p class="oracion-texto">Oh San Josï¿½, cuya protecciï¿½n es tan grande, tan fuerte y tan inmediata ante el trono de Dios, a ti confï¿½o todas mis intenciones y deseos. Ayï¿½dame, San Josï¿½, con tu poderosa intercesiï¿½n, a obtener todas las bendiciones espirituales por intercesiï¿½n de tu Hijo adoptivo, Jesucristo Nuestro Seï¿½or, de modo que, al confiarme, aquï¿½ en la tierra, a tu poder celestial, Te tribute mi agradecimiento y homenaje.</p>
         
-        <p class="oracion-texto" style="margin-top: 20px;">Oh San José, yo nunca me canso de contemplarte con Jesús adormecido en tus brazos. No me atrevo a acercarme cuando Él descansa junto a tu corazón. Abrázale en mi nombre, besa por mí su delicado rostro y pídele que me devuelva ese beso cuando yo exhale mi último suspiro.</p>
+        <p class="oracion-texto" style="margin-top: 20px;">Oh San Josï¿½, yo nunca me canso de contemplarte con Jesï¿½s adormecido en tus brazos. No me atrevo a acercarme cuando ï¿½l descansa junto a tu corazï¿½n. Abrï¿½zale en mi nombre, besa por mï¿½ su delicado rostro y pï¿½dele que me devuelva ese beso cuando yo exhale mi ï¿½ltimo suspiro.</p>
         
-        <p class="oracion-texto" style="margin-top: 20px;">¡San José, patrono de las almas que parten, ruega por mí!</p>
+        <p class="oracion-texto" style="margin-top: 20px;">ï¿½San Josï¿½, patrono de las almas que parten, ruega por mï¿½!</p>
         
-        <p class="oracion-texto" style="margin-top: 20px; text-align: center; font-weight: bold;">Amén.</p>
+        <p class="oracion-texto" style="margin-top: 20px; text-align: center; font-weight: bold;">Amï¿½n.</p>
     </div>
 
     <div class="oracion-box">
-        <h3>Oración a San José para los Tiempos Difíciles</h3>
-        <p class="oracion-texto">Oh San José, eres un hombre muy favorecido por el Altísimo. El ángel del Señor se te apareció en sueños, mientras dormías, para advertirte y guiarte en el cuidado de la Sagrada Familia. Eras silencioso y fuerte, un protector leal y valiente.</p>
+        <h3>Oraciï¿½n a San Josï¿½ para los Tiempos Difï¿½ciles</h3>
+        <p class="oracion-texto">Oh San Josï¿½, eres un hombre muy favorecido por el Altï¿½simo. El ï¿½ngel del Seï¿½or se te apareciï¿½ en sueï¿½os, mientras dormï¿½as, para advertirte y guiarte en el cuidado de la Sagrada Familia. Eras silencioso y fuerte, un protector leal y valiente.</p>
         
-        <p class="oracion-texto" style="margin-top: 20px;">Querido San José, mientras descansas en el Señor, confiado en su poder y bondad absolutos, mírame. Por favor, toma mi necesidad en tu corazón, sueña con ella y preséntasela a tu Hijo. Ayúdame entonces, buen San José, a escuchar la voz de Dios, a levantarme y actuar con amor.</p>
+        <p class="oracion-texto" style="margin-top: 20px;">Querido San Josï¿½, mientras descansas en el Seï¿½or, confiado en su poder y bondad absolutos, mï¿½rame. Por favor, toma mi necesidad en tu corazï¿½n, sueï¿½a con ella y presï¿½ntasela a tu Hijo. Ayï¿½dame entonces, buen San Josï¿½, a escuchar la voz de Dios, a levantarme y actuar con amor.</p>
         
-        <p class="oracion-texto" style="margin-top: 20px;">Alabo y agradezco a Dios con alegría. San José, te amo.</p>
+        <p class="oracion-texto" style="margin-top: 20px;">Alabo y agradezco a Dios con alegrï¿½a. San Josï¿½, te amo.</p>
         
-        <p class="oracion-texto" style="margin-top: 20px; text-align: center; font-weight: bold;">Amén.</p>
+        <p class="oracion-texto" style="margin-top: 20px; text-align: center; font-weight: bold;">Amï¿½n.</p>
     </div>
 
     <div class="historia-box">
-        <h2>Así fue como el Papa Francisco hizo famosa la imagen de San José dormido</h2>
-        <p>La mayoría de los íconos y estatuas de santos suelen ser rígidos. Por lo general, se hacen bustos o imágenes de pie, con las manos cruzadas o sosteniendo algún elemento importante o con un rostro que podría mostrar una sonrisa leve y reflejar una mirada serena.</p>
+        <h2>Asï¿½ fue como el Papa Francisco hizo famosa la imagen de San Josï¿½ dormido</h2>
+        <p>La mayorï¿½a de los ï¿½conos y estatuas de santos suelen ser rï¿½gidos. Por lo general, se hacen bustos o imï¿½genes de pie, con las manos cruzadas o sosteniendo algï¿½n elemento importante o con un rostro que podrï¿½a mostrar una sonrisa leve y reflejar una mirada serena.</p>
         
-        <p>Sin embargo, hace seis años durante el viaje apostólico del Papa Francisco a Filipinas, el Santo Padre dio unas palabras que popularizaron un ícono más realista de los santos: la estatua de San José dormido.</p>
+        <p>Sin embargo, hace seis aï¿½os durante el viaje apostï¿½lico del Papa Francisco a Filipinas, el Santo Padre dio unas palabras que popularizaron un ï¿½cono mï¿½s realista de los santos: la estatua de San Josï¿½ dormido.</p>
     </div>
 
     <div class="cita-box">
-        <p>"Me gusta mucho San José. Es un hombre fuerte de silencio. En mi escritorio tengo una imagen de San José durmiendo. Incluso cuando duerme, cuida de la Iglesia. ¡Sí! Sabemos que puede hacer eso"</p>
-        <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-muted);">— Papa Francisco, 16 de enero de 2015</p>
+        <p>"Me gusta mucho San Josï¿½. Es un hombre fuerte de silencio. En mi escritorio tengo una imagen de San Josï¿½ durmiendo. Incluso cuando duerme, cuida de la Iglesia. ï¿½Sï¿½! Sabemos que puede hacer eso"</p>
+        <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-muted);">ï¿½ Papa Francisco, 16 de enero de 2015</p>
     </div>
 
     <div class="historia-box">
-        <p>"Entonces, cuando tengo un problema, una dificultad, escribo una pequeña nota y la pongo debajo de San José para que pueda soñar con eso. En otras palabras, le digo: ¡Ora por este problema!"</p>
-        <p style="margin-top: 15px; font-weight: bold; color: var(--celestial-light);">— Papa Francisco</p>
+        <p>"Entonces, cuando tengo un problema, una dificultad, escribo una pequeï¿½a nota y la pongo debajo de San Josï¿½ para que pueda soï¿½ar con eso. En otras palabras, le digo: ï¿½Ora por este problema!"</p>
+        <p style="margin-top: 15px; font-weight: bold; color: var(--celestial-light);">ï¿½ Papa Francisco</p>
     </div>
 
     <div class="historia-box">
-        <h2>Los Cuatro Sueños de San José</h2>
-        <p>La imagen surge inspirada en el Evangelio de San Mateo, donde se dice que San José tuvo la experiencia de recibir mensajes de Dios en cuatro sueños distintos.</p>
+        <h2>Los Cuatro Sueï¿½os de San Josï¿½</h2>
+        <p>La imagen surge inspirada en el Evangelio de San Mateo, donde se dice que San Josï¿½ tuvo la experiencia de recibir mensajes de Dios en cuatro sueï¿½os distintos.</p>
         
-        <p>En el primer sueño, un ángel le dice que continúe con su plan de casarse con María, a pesar de que la encontraron embarazada.</p>
+        <p>En el primer sueï¿½o, un ï¿½ngel le dice que continï¿½e con su plan de casarse con Marï¿½a, a pesar de que la encontraron embarazada.</p>
         
-        <p>El segundo ocurrió tras el nacimiento de Jesús, cuando un ángel le advierte en sueños a San José que huya con su familia a Egipto.</p>
+        <p>El segundo ocurriï¿½ tras el nacimiento de Jesï¿½s, cuando un ï¿½ngel le advierte en sueï¿½os a San Josï¿½ que huya con su familia a Egipto.</p>
         
-        <p>El tercero se da cuando está en Egipto, allí un ángel le dice que regrese a Israel.</p>
+        <p>El tercero se da cuando estï¿½ en Egipto, allï¿½ un ï¿½ngel le dice que regrese a Israel.</p>
         
-        <p>Y finalmente, en otro sueño le ordena que vaya a Galilea en lugar de Judea.</p>
+        <p>Y finalmente, en otro sueï¿½o le ordena que vaya a Galilea en lugar de Judea.</p>
     </div>
 
     <div class="cita-box">
-        <p>"Esos preciosos momentos de reposo, de descansar con el Señor en oración, son momentos que quizás desean prolongar. Pero como San José, una vez que hemos escuchado la voz de Dios, debemos levantarnos de nuestro sueño; debemos levantarnos y actuar"</p>
-        <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-muted);">— Papa Francisco</p>
+        <p>"Esos preciosos momentos de reposo, de descansar con el Seï¿½or en oraciï¿½n, son momentos que quizï¿½s desean prolongar. Pero como San Josï¿½, una vez que hemos escuchado la voz de Dios, debemos levantarnos de nuestro sueï¿½o; debemos levantarnos y actuar"</p>
+        <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-muted);">ï¿½ Papa Francisco</p>
     </div>
 
     <div class="historia-box">
-        <h2>El Amor de los Fieles por San José Dormido</h2>
-        <p>Después de este discurso, la popularidad de las estatuas de San José dormido se extendió tanto que en junio de 2015, el diario Catholic San Francisco informó que los íconos del santo dormido estaban "volando de los estantes" en Filipinas y que los viajeros que los compraban se los llevaban a Estados Unidos.</p>
+        <h2>El Amor de los Fieles por San Josï¿½ Dormido</h2>
+        <p>Despuï¿½s de este discurso, la popularidad de las estatuas de San Josï¿½ dormido se extendiï¿½ tanto que en junio de 2015, el diario Catholic San Francisco informï¿½ que los ï¿½conos del santo dormido estaban "volando de los estantes" en Filipinas y que los viajeros que los compraban se los llevaban a Estados Unidos.</p>
         
-        <p>Un grupo de fieles relataron qué los motivó a adquirir la estatua de San José dormido y expresaron por qué la aman tanto.</p>
+        <p>Un grupo de fieles relataron quï¿½ los motivï¿½ a adquirir la estatua de San Josï¿½ dormido y expresaron por quï¿½ la aman tanto.</p>
         
-        <p>Muchos señalan que les gustaba la estatua porque les recordaba los pasajes de la Biblia sobre los sueños de San José y la huida de la Sagrada Familia a Egipto.</p>
+        <p>Muchos seï¿½alan que les gustaba la estatua porque les recordaba los pasajes de la Biblia sobre los sueï¿½os de San Josï¿½ y la huida de la Sagrada Familia a Egipto.</p>
         
-        <p>La imagen "te recuerda que San José era humano y también se cansó. Esto me hace apreciar aún más el trabajo que hizo por María y Jesús. Es una posición vulnerable, pero es genial que sea aquí cuando Dios eligió hablar con él", dijeron.</p>
+        <p>La imagen "te recuerda que San Josï¿½ era humano y tambiï¿½n se cansï¿½. Esto me hace apreciar aï¿½n mï¿½s el trabajo que hizo por Marï¿½a y Jesï¿½s. Es una posiciï¿½n vulnerable, pero es genial que sea aquï¿½ cuando Dios eligiï¿½ hablar con ï¿½l", dijeron.</p>
     </div>
 
     <div class="historia-box">
-        <h2>El Año de San José</h2>
-        <p>El 8 de diciembre de 2020, el Papa Francisco convocó el Año de San José y publicó la Carta apostólica Patris Corde (Corazón de padre) para conmemorar los 150 años del decreto Quemadmodum Deus, con el cual el Beato Pío IX declaró a San José Patrono de la Iglesia universal.</p>
+        <h2>El Aï¿½o de San Josï¿½</h2>
+        <p>El 8 de diciembre de 2020, el Papa Francisco convocï¿½ el Aï¿½o de San Josï¿½ y publicï¿½ la Carta apostï¿½lica Patris Corde (Corazï¿½n de padre) para conmemorar los 150 aï¿½os del decreto Quemadmodum Deus, con el cual el Beato Pï¿½o IX declarï¿½ a San Josï¿½ Patrono de la Iglesia universal.</p>
         
-        <p>Durante este tiempo de gracia especial, que duró hasta el 8 de diciembre de 2021, la Iglesia buscó profundizar la devoción al Padre adoptivo de Cristo. Además, los fieles pueden ganar de diversas formas indulgencia plenaria, que remite todo castigo temporal causado por el pecado.</p>
+        <p>Durante este tiempo de gracia especial, que durï¿½ hasta el 8 de diciembre de 2021, la Iglesia buscï¿½ profundizar la devociï¿½n al Padre adoptivo de Cristo. Ademï¿½s, los fieles pueden ganar de diversas formas indulgencia plenaria, que remite todo castigo temporal causado por el pecado.</p>
     </div>
 
 </main>
 
 <footer class="main-footer sacred-footer">
-    <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">?</a>
-    <p class="tagline">Jesús, En Vos Confío</p>
-    <p>© 2026 — Portal de la Divina Misericordia</p>
+    <a href="el-altar.html" class="cross-glow" title="Adorar al Santï¿½simo">?</a>
+    <p class="tagline">Jesï¿½s, En Vos Confï¿½o</p>
+    <p>ï¿½ 2026 ï¿½ Portal de la Divina Misericordia</p>
 </footer>
 
 <div class="scroll-up" onclick="window.scrollTo({top:0,behavior:'smooth'})"></div>
@@ -739,7 +758,9 @@ window.addEventListener('scroll',()=>{
 </script>
 
 
-<!-- Sistema de Diseño Global -->
+<!-- Sistema de Diseï¿½o Global -->
 <script src="js/system-init.js"></script>
-</body>
+
+  <!-- Core Web Vitals -->
+  <script src="/assets/js/web-vitals.js"></script></body>
 </html>

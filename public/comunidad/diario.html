@@ -9,7 +9,26 @@
 <link href="../assets/css/styles.css" rel="stylesheet"/>
 <link href="../assets/css/sacred-components.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
-<meta content="Portal oficial sobre diario. Divina Misericordia, Jesús en vos confío." name="description"/></head>
+<meta content="Portal oficial sobre diario. Divina Misericordia, Jesús en vos confío." name="description"/>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track devociones
+      document.querySelectorAll('a[href*="coronilla"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_coronilla', { event_category: 'Devocion' })));
+      document.querySelectorAll('a[href*="novena"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_novena', { event_category: 'Devocion' })));
+      document.querySelectorAll('audio, .play-btn').forEach(l => 
+        l.addEventListener('play', () => gtag && gtag('event', 'play_audio', { event_category: 'Multimedia' })));
+    });
+  </script></head>
 <body class="sacred-theme">
 <div class="container">
 <header style="text-align: center; padding: 20px 0;">
@@ -35,5 +54,7 @@
         document.getElementById('current-date').innerText = new Date().toLocaleDateString();
     </script>
 <script src="../assets/js/journal-pro.js"></script>
-</body>
+
+  <!-- Core Web Vitals -->
+  <script src="/assets/js/web-vitals.js"></script></body>
 </html>

@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vía Crucis Completo - 14 Estaciones con Meditaciones | Divina Misericordia</title>
-<meta name="description" content="Meditación del Vía Crucis con las 14 estaciones tradicionales, unidas a la misericordia infinita de Jesús. Reflexiones para cada estación del calvario.">
-<meta name="keywords" content="vía crucis, estaciones vía crucis, pasión cristo, pasión jesús, calvario, meditación calvario, estaciones crucifixión, oración pasión, Cristo sale a encuentro, 14 estaciones">
+<title>Vï¿½a Crucis Completo - 14 Estaciones con Meditaciones | Divina Misericordia</title>
+<meta name="description" content="Meditaciï¿½n del Vï¿½a Crucis con las 14 estaciones tradicionales, unidas a la misericordia infinita de Jesï¿½s. Reflexiones para cada estaciï¿½n del calvario.">
+<meta name="keywords" content="vï¿½a crucis, estaciones vï¿½a crucis, pasiï¿½n cristo, pasiï¿½n jesï¿½s, calvario, meditaciï¿½n calvario, estaciones crucifixiï¿½n, oraciï¿½n pasiï¿½n, Cristo sale a encuentro, 14 estaciones">
 <meta name="author" content="El Portal de la Divina Misericordia">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
 <link rel="canonical" href="https://misericordiadejesus.es/via-crucis.html">
 <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://misericordiadejesus.es/via-crucis.html">
-<meta property="og:title" content="Vía Crucis Completo — 14 Estaciones con Meditaciones">
-<meta property="og:description" content="Meditación del Vía Crucis con las 14 estaciones tradicionales.">
+<meta property="og:title" content="Vï¿½a Crucis Completo ï¿½ 14 Estaciones con Meditaciones">
+<meta property="og:description" content="Meditaciï¿½n del Vï¿½a Crucis con las 14 estaciones tradicionales.">
 <meta property="og:site_name" content="Divina Misericordia">
 <meta property="og:locale" content="es_ES">
 <meta property="og:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Vía Crucis Completo - 14 Estaciones">
+<meta property="og:image:alt" content="Vï¿½a Crucis Completo - 14 Estaciones">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Vía Crucis Completo — 14 Estaciones con Meditaciones">
-<meta name="twitter:description" content="Meditación del Vía Crucis con las 14 estaciones tradicionales.">
+<meta name="twitter:title" content="Vï¿½a Crucis Completo ï¿½ 14 Estaciones con Meditaciones">
+<meta name="twitter:description" content="Meditaciï¿½n del Vï¿½a Crucis con las 14 estaciones tradicionales.">
 <meta name="twitter:image" content="https://misericordiadejesus.es/img/logo_divina_misericordia.webp">
 <meta name="twitter:site" content="@divinamisericordia">
 <meta name="twitter:creator" content="@divinamisericordia">
@@ -41,7 +41,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://misericordiadejesus.es/"},
-    {"@type": "ListItem", "position": 2, "name": "Vía Crucis", "item": "https://misericordiadejesus.es/via-crucis.html"}
+    {"@type": "ListItem", "position": 2, "name": "Vï¿½a Crucis", "item": "https://misericordiadejesus.es/via-crucis.html"}
   ]
 }
 </script>
@@ -426,7 +426,26 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
   pointer-events: none;
 }
 </style>
-</head>
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', { send_page_view: true });
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track devociones
+      document.querySelectorAll('a[href*="coronilla"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_coronilla', { event_category: 'Devocion' })));
+      document.querySelectorAll('a[href*="novena"]').forEach(l => 
+        l.addEventListener('click', () => gtag && gtag('event', 'iniciar_novena', { event_category: 'Devocion' })));
+      document.querySelectorAll('audio, .play-btn').forEach(l => 
+        l.addEventListener('play', () => gtag && gtag('event', 'play_audio', { event_category: 'Multimedia' })));
+    });
+  </script></head>
 <body>
 <div class="cursor-cruz" id="cursor">
   <svg class="cruz-normal" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
@@ -470,27 +489,27 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 <a href="index.html" class="logo"><img src="img/logo_divina_misericordia.webp" alt="Logo" loading="lazy">Divina<span>Misericordia</span></a>
   <nav id="mainNav">
     <a href="index.html">Inicio</a>
-    <a href="quienes-somos.html">Quiénes Somos</a>
-    <a href="introduccion.html">Introducción</a>
+    <a href="quienes-somos.html">Quiï¿½nes Somos</a>
+    <a href="introduccion.html">Introducciï¿½n</a>
     <a href="santa-faustina.html">Santa Faustina</a>
     <a href="hora-de-la-misericordia.html">Hora de la Misericordia</a>
     <a href="coronilla.html">Coronilla</a>
     <a href="novena.html">Novena</a>
-    <a href="via-crucis.html">Vía Crucis</a>
+    <a href="via-crucis.html">Vï¿½a Crucis</a>
     <a href="oraciones.html">Oraciones</a>
     <a href="santo-rosario.html">El Santo Rosario</a>
-    <a href="maria.html">María</a>
+    <a href="maria.html">Marï¿½a</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
+    <a href="consagracion.html">Consagraciï¿½n</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
-    <a href=\"/musica/musica-sacra.html\">Música Sacra</a>
+    <a href=\"/musica/musica-sacra.html\">Mï¿½sica Sacra</a>
     <a href="noticias.html">Noticias</a>
     <a href="enlaces.html">Enlaces</a>
     
     
     
     
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
     <a href="estudios-biblicos.html">Estudios</a>
         <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones ?</a>
@@ -501,25 +520,25 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 </header>
 
 <main class="main-content">
-<h1 class="page-title">Vía Crucis</h1>
-<p class="subtitle-line">14 estaciones de meditación</p>
-<p class="intro-text">El Vía Crucis nos invita a caminar con Jesús desde su condena hasta su sepultura. Haz clic en la estación que desees meditar.</p>
+<h1 class="page-title">Vï¿½a Crucis</h1>
+<p class="subtitle-line">14 estaciones de meditaciï¿½n</p>
+<p class="intro-text">El Vï¿½a Crucis nos invita a caminar con Jesï¿½s desde su condena hasta su sepultura. Haz clic en la estaciï¿½n que desees meditar.</p>
 
-<!-- Reproductor de Música Sagrada para el Vía Crucis -->
+<!-- Reproductor de Mï¿½sica Sagrada para el Vï¿½a Crucis -->
 <div class="section-music">
-  <h3>?? Ambiente de Oración - Camino de la Cruz</h3>
-  <p>Escucha música sagrada mientras meditas el sufrimiento de Cristo:</p>
+  <h3>?? Ambiente de Oraciï¿½n - Camino de la Cruz</h3>
+  <p>Escucha mï¿½sica sagrada mientras meditas el sufrimiento de Cristo:</p>
   
-  <!-- Vía Crucis - Música especial -->
-  <div class="reproductor-sagrado" data-src="mp3/24.%20V%C3%ADa%20Crucis%20-%20Para%20Orar.mp3" data-title="Vía Crucis - Oración">
+  <!-- Vï¿½a Crucis - Mï¿½sica especial -->
+  <div class="reproductor-sagrado" data-src="mp3/24.%20V%C3%ADa%20Crucis%20-%20Para%20Orar.mp3" data-title="Vï¿½a Crucis - Oraciï¿½n">
     <div class="reproductor-visualizador">
       <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
     </div>
     <div class="reproductor-info">
       <div class="reproductor-icono">?</div>
       <div class="reproductor-titulo">
-        <h4>Vía Crucis - Para Orar</h4>
-        <p>Música de meditación sagrada</p>
+        <h4>Vï¿½a Crucis - Para Orar</h4>
+        <p>Mï¿½sica de meditaciï¿½n sagrada</p>
       </div>
     </div>
     <div class="reproductor-controles">
@@ -570,16 +589,16 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
     </div>
   </div>
 
-  <!-- Sarabande - Reflexión -->
-  <div class="reproductor-sagrado" data-src="mp3/08.%20Handel%20_%20Orch.%20Hale_%20Keyboard%20Suite%20No.%204%20in%20D%20Minor,%20HWV%20437_%20III.%20Sarabande.mp3" data-title="Sarabande - Reflexión">
+  <!-- Sarabande - Reflexiï¿½n -->
+  <div class="reproductor-sagrado" data-src="mp3/08.%20Handel%20_%20Orch.%20Hale_%20Keyboard%20Suite%20No.%204%20in%20D%20Minor,%20HWV%20437_%20III.%20Sarabande.mp3" data-title="Sarabande - Reflexiï¿½n">
     <div class="reproductor-visualizador">
       <div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div><div class="viz-bar"></div>
     </div>
     <div class="reproductor-info">
       <div class="reproductor-icono">??</div>
       <div class="reproductor-titulo">
-        <h4>Sarabande - Reflexión</h4>
-        <p>G.F. Handel - Meditación profunda</p>
+        <h4>Sarabande - Reflexiï¿½n</h4>
+        <p>G.F. Handel - Meditaciï¿½n profunda</p>
       </div>
     </div>
     <div class="reproductor-controles">
@@ -618,281 +637,281 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 <button class="tab-btn" onclick="showStation(14)">XIV</button>
 </div>
 
-<!-- ESTACIÓN I -->
+<!-- ESTACIï¿½N I -->
 <div id="station1" class="station-content active">
 <div class="station-header">
-<div class="station-num">I ESTACIÓN</div>
-<h2 class="station-title">JESÚS ANTE EL SANEDRÍN</h2>
+<div class="station-num">I ESTACIï¿½N</div>
+<h2 class="station-title">JESï¿½S ANTE EL SANEDRï¿½N</h2>
 </div>
-<div class="station-adore">«Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundo».</div>
+<div class="station-adore">ï¿½Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundoï¿½.</div>
 <div class="station-meditation">
-<p>Jesús, inocente y silencioso, permanece ante el tribunal religioso que, creyendo defender a Dios, condena al Hijo de Dios. La Verdad eterna está rodeada de acusaciones, malentendidos, miradas que calculan y labios que sentencian lo que no comprenden. Él no se defiende, no negocia, no grita: ama, calla y ofrece. Es el Cordero que acepta ser juzgado por aquellas mismas ovejas a las que ha venido a salvar.</p>
+<p>Jesï¿½s, inocente y silencioso, permanece ante el tribunal religioso que, creyendo defender a Dios, condena al Hijo de Dios. La Verdad eterna estï¿½ rodeada de acusaciones, malentendidos, miradas que calculan y labios que sentencian lo que no comprenden. ï¿½l no se defiende, no negocia, no grita: ama, calla y ofrece. Es el Cordero que acepta ser juzgado por aquellas mismas ovejas a las que ha venido a salvar.</p>
 </div>
 <div class="station-quote">
-<p>En este juicio, tan humano y tan injusto, se revela algo que desconcierta al mundo: el poder de Dios no se muestra aplastando al enemigo, sino soportando la injusticia sin perder el amor. Aquí aprendemos que la fe verdadera no es una idea brillante, sino una fidelidad obstinada, casi "cabezota", que se mantiene de pie mientras todo alrededor se derrumba.</p>
+<p>En este juicio, tan humano y tan injusto, se revela algo que desconcierta al mundo: el poder de Dios no se muestra aplastando al enemigo, sino soportando la injusticia sin perder el amor. Aquï¿½ aprendemos que la fe verdadera no es una idea brillante, sino una fidelidad obstinada, casi "cabezota", que se mantiene de pie mientras todo alrededor se derrumba.</p>
 </div>
 <div class="station-oracion">
-<div class="station-oracion-title">Oración</div>
-<p>Señor Jesús, Verdad juzgada y condenada, enséñame a no temer los juicios humanos ni a vivir pendiente de la aprobación de nadie. Líbrame de ser parte del "Sanedrín" que critica, etiqueta y condena al hermano sin mirar su corazón. Dame un alma silenciosa y fuerte, que sepa callar cuando el amor lo pide, hablar cuando la justicia lo exige y discernir, contigo, lo que más conduce a la gloria de Dios y al bien de las almas.</p>
-<p>Jesús misericordioso, cuando me encuentre ante el tribunal de las habladurías, de las redes, de las sospechas y malentendidos, no permitas que yo condene tu rostro presente en mis prójimos. Que, mirándote a Ti ante el Sanedrín, aprenda a ofrecer contigo la incomprensión, y a responder al juicio con misericordia, a la calumnia con mansedumbre, a la herida con perdón. <strong>Amen.</strong></p>
+<div class="station-oracion-title">Oraciï¿½n</div>
+<p>Seï¿½or Jesï¿½s, Verdad juzgada y condenada, ensï¿½ï¿½ame a no temer los juicios humanos ni a vivir pendiente de la aprobaciï¿½n de nadie. Lï¿½brame de ser parte del "Sanedrï¿½n" que critica, etiqueta y condena al hermano sin mirar su corazï¿½n. Dame un alma silenciosa y fuerte, que sepa callar cuando el amor lo pide, hablar cuando la justicia lo exige y discernir, contigo, lo que mï¿½s conduce a la gloria de Dios y al bien de las almas.</p>
+<p>Jesï¿½s misericordioso, cuando me encuentre ante el tribunal de las habladurï¿½as, de las redes, de las sospechas y malentendidos, no permitas que yo condene tu rostro presente en mis prï¿½jimos. Que, mirï¿½ndote a Ti ante el Sanedrï¿½n, aprenda a ofrecer contigo la incomprensiï¿½n, y a responder al juicio con misericordia, a la calumnia con mansedumbre, a la herida con perdï¿½n. <strong>Amen.</strong></p>
 </div>
-<p class="misericordia">Jesús, en Ti confío. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
+<p class="misericordia">Jesï¿½s, en Ti confï¿½o. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
 </div>
 
-<!-- ESTACIÓN II -->
+<!-- ESTACIï¿½N II -->
 <div id="station2" class="station-content">
 <div class="station-header">
-<div class="station-num">II ESTACIÓN</div>
-<h2 class="station-title">JESÚS CARGA CON LA CRUZ</h2>
+<div class="station-num">II ESTACIï¿½N</div>
+<h2 class="station-title">JESï¿½S CARGA CON LA CRUZ</h2>
 </div>
-<div class="station-adore">«Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundo».</div>
+<div class="station-adore">ï¿½Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundoï¿½.</div>
 <div class="station-meditation">
-<p>Jesús toma la cruz: no se la arrebatan, la abraza. El madero es injusto, pesado, áspero, pero en sus manos se convierte en instrumento de salvación. Mientras la multitud mira un condenado que comienza su suplicio, el cielo contempla al Hijo que comienza, libremente, el camino del amor hasta el extremo.</p>
+<p>Jesï¿½s toma la cruz: no se la arrebatan, la abraza. El madero es injusto, pesado, ï¿½spero, pero en sus manos se convierte en instrumento de salvaciï¿½n. Mientras la multitud mira un condenado que comienza su suplicio, el cielo contempla al Hijo que comienza, libremente, el camino del amor hasta el extremo.</p>
 </div>
 <div class="station-quote">
-<p>En nuestro mundo, tan obsesionado con evitar cualquier incomodidad, la cruz de Cristo parece un escándalo o un fracaso; sin embargo, es la gran lógica de Dios: sólo se ama de verdad cuando se está dispuesto a perder comodidad, prestigio, tiempo, incluso la propia vida. Por eso Jesús susurra al corazón: «No tengas miedo de los sufrimientos: Yo estoy contigo; cuanto más ames el sacrificio, más puro será tu amor hacia Mí».</p>
+<p>En nuestro mundo, tan obsesionado con evitar cualquier incomodidad, la cruz de Cristo parece un escï¿½ndalo o un fracaso; sin embargo, es la gran lï¿½gica de Dios: sï¿½lo se ama de verdad cuando se estï¿½ dispuesto a perder comodidad, prestigio, tiempo, incluso la propia vida. Por eso Jesï¿½s susurra al corazï¿½n: ï¿½No tengas miedo de los sufrimientos: Yo estoy contigo; cuanto mï¿½s ames el sacrificio, mï¿½s puro serï¿½ tu amor hacia Mï¿½ï¿½.</p>
 </div>
 <div class="station-oracion">
-<div class="station-oracion-title">Oración</div>
-<p>Jesús cargando con la cruz, manso y decidido, enséñame a no tener miedo del sufrimiento cuando es fruto de la fidelidad y de la caridad. Dame tu gracia para no huir de las dificultades, de la enfermedad, del peso de la vida cotidiana, sino para recibirlos como ocasiones de unirme a Ti por amor.</p>
-<p>Señor, que sepa agradecer las contrariedades, las incomprensiones y las humillaciones; que la cruz de hoy no me endurezca, sino que me haga más compasivo con los que también caminan cargados. Haz que, llevado de tu mano, aprenda a decir en lo escondido: "Toma, Señor, y recibe todo lo que soy y todo lo que llevo", y que mi vida entera, con sus pesos y sus luces, se convierta en una respuesta sencilla y alegre a tu Amor crucificado. <strong>Amen.</strong></p>
+<div class="station-oracion-title">Oraciï¿½n</div>
+<p>Jesï¿½s cargando con la cruz, manso y decidido, ensï¿½ï¿½ame a no tener miedo del sufrimiento cuando es fruto de la fidelidad y de la caridad. Dame tu gracia para no huir de las dificultades, de la enfermedad, del peso de la vida cotidiana, sino para recibirlos como ocasiones de unirme a Ti por amor.</p>
+<p>Seï¿½or, que sepa agradecer las contrariedades, las incomprensiones y las humillaciones; que la cruz de hoy no me endurezca, sino que me haga mï¿½s compasivo con los que tambiï¿½n caminan cargados. Haz que, llevado de tu mano, aprenda a decir en lo escondido: "Toma, Seï¿½or, y recibe todo lo que soy y todo lo que llevo", y que mi vida entera, con sus pesos y sus luces, se convierta en una respuesta sencilla y alegre a tu Amor crucificado. <strong>Amen.</strong></p>
 </div>
-<p class="misericordia">Jesús, en Ti confío. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
+<p class="misericordia">Jesï¿½s, en Ti confï¿½o. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
 </div>
 
-<!-- ESTACIÓN III -->
+<!-- ESTACIï¿½N III -->
 <div id="station3" class="station-content">
 <div class="station-header">
-<div class="station-num">III ESTACIÓN</div>
-<h2 class="station-title">JESÚS CAE BAJO EL PESO DE LA CRUZ</h2>
+<div class="station-num">III ESTACIï¿½N</div>
+<h2 class="station-title">JESï¿½S CAE BAJO EL PESO DE LA CRUZ</h2>
 </div>
-<div class="station-adore">«Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundo».</div>
+<div class="station-adore">ï¿½Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundoï¿½.</div>
 <div class="station-meditation">
-<p>Jesús cae. El que sostiene el universo con su Palabra se desploma en el polvo del camino. No se trata de una caída teatral: es el cuerpo agotado, la fuerza que se acaba, la fragilidad que ya no se puede disimular. A los ojos del mundo, Dios parece tropezar; sin embargo, en esta caída se revela un misterio desconcertante: el Señor acepta experimentar, hasta el fondo, lo que viven los que no pueden más.</p>
+<p>Jesï¿½s cae. El que sostiene el universo con su Palabra se desploma en el polvo del camino. No se trata de una caï¿½da teatral: es el cuerpo agotado, la fuerza que se acaba, la fragilidad que ya no se puede disimular. A los ojos del mundo, Dios parece tropezar; sin embargo, en esta caï¿½da se revela un misterio desconcertante: el Seï¿½or acepta experimentar, hasta el fondo, lo que viven los que no pueden mï¿½s.</p>
 </div>
 <div class="station-quote">
-<p>Santa Faustina reconoce: «Soy tan propensa al mal que necesito vigilarme siempre; pero no me desanimo: confío en la gracia de Dios, que abunda donde la miseria es más grande». Esta es la sabiduría de la lucha espiritual: lucidez sobre la propia fragilidad, rechazo claro del mal voluntario y, al mismo tiempo, una confianza obstinada en que la misericordia de Dios es más grande que nuestras caídas.</p>
+<p>Santa Faustina reconoce: ï¿½Soy tan propensa al mal que necesito vigilarme siempre; pero no me desanimo: confï¿½o en la gracia de Dios, que abunda donde la miseria es mï¿½s grandeï¿½. Esta es la sabidurï¿½a de la lucha espiritual: lucidez sobre la propia fragilidad, rechazo claro del mal voluntario y, al mismo tiempo, una confianza obstinada en que la misericordia de Dios es mï¿½s grande que nuestras caï¿½das.</p>
 </div>
 <div class="station-oracion">
-<div class="station-oracion-title">Oración</div>
-<p>Jesús, que caes bajo el peso de la cruz y vuelves a levantarte, mírame cuando tropiezo en los mismos errores, cuando la rutina me apaga, cuando cedo a mis pequeñas infidelidades "consentidas". Guárdame, Señor misericordioso, de todo pecado voluntario, aunque me parezca insignificante.</p>
-<p>No permitas que mis caídas me llevar a la desesperanza ni a la excusa fácil. Dame la gracia de odiar el pecado sin odiarme a mí mismo, de vigilar mi corazón sin obsesionarme, de confiar más en tu Misericordia que en mis fuerzas. Que, sostenido por Ti, aprenda a levantarme siempre, a confesar mi culpa con humildad y a caminar de nuevo. <strong>Amen.</strong></p>
+<div class="station-oracion-title">Oraciï¿½n</div>
+<p>Jesï¿½s, que caes bajo el peso de la cruz y vuelves a levantarte, mï¿½rame cuando tropiezo en los mismos errores, cuando la rutina me apaga, cuando cedo a mis pequeï¿½as infidelidades "consentidas". Guï¿½rdame, Seï¿½or misericordioso, de todo pecado voluntario, aunque me parezca insignificante.</p>
+<p>No permitas que mis caï¿½das me llevar a la desesperanza ni a la excusa fï¿½cil. Dame la gracia de odiar el pecado sin odiarme a mï¿½ mismo, de vigilar mi corazï¿½n sin obsesionarme, de confiar mï¿½s en tu Misericordia que en mis fuerzas. Que, sostenido por Ti, aprenda a levantarme siempre, a confesar mi culpa con humildad y a caminar de nuevo. <strong>Amen.</strong></p>
 </div>
-<p class="misericordia">Jesús, en Ti confío. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
+<p class="misericordia">Jesï¿½s, en Ti confï¿½o. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
 </div>
 
-<!-- ESTACIÓN IV -->
+<!-- ESTACIï¿½N IV -->
 <div id="station4" class="station-content">
 <div class="station-header">
-<div class="station-num">IV ESTACIÓN</div>
-<h2 class="station-title">JESÚS ENCUENTRA A SU MADRE</h2>
+<div class="station-num">IV ESTACIï¿½N</div>
+<h2 class="station-title">JESï¿½S ENCUENTRA A SU MADRE</h2>
 </div>
-<div class="station-adore">«Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundo».</div>
+<div class="station-adore">ï¿½Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundoï¿½.</div>
 <div class="station-meditation">
-<p>En medio del ruido de los soldados, de los gritos de la gente y del polvo del camino, hay una mirada que no grita, no exige, no huye: la de María. Jesús, desfigurado por el cansancio y el dolor, se encuentra con el rostro más conocido de su vida, el único corazón que ha latido al compás del suyo desde Nazaret hasta el Calvario. No hacen falta palabras: en ese instante, Madre e Hijo comparten la misma misión y el mismo sufrimiento.</p>
+<p>En medio del ruido de los soldados, de los gritos de la gente y del polvo del camino, hay una mirada que no grita, no exige, no huye: la de Marï¿½a. Jesï¿½s, desfigurado por el cansancio y el dolor, se encuentra con el rostro mï¿½s conocido de su vida, el ï¿½nico corazï¿½n que ha latido al compï¿½s del suyo desde Nazaret hasta el Calvario. No hacen falta palabras: en ese instante, Madre e Hijo comparten la misma misiï¿½n y el mismo sufrimiento.</p>
 </div>
 <div class="station-quote">
-<p>La Virgen no intervening directamente, no detiene a los soldados, no clama justicia. Está ahí, presente, soportando con Jesús la plenitud del misterio. Su presencia silenciosa es más elocuente que mil discursos: es eliconos de la fe que no busca explicaciones, sino que acompaña. Y en ese encuentro de ojos, María comprende que su hijo camina hacia la gloria precisamente a través de la cruz, y Jesús comprende que su madre es el mayoresdon que podía recibir en el camino del Calvario.</p>
+<p>La Virgen no intervening directamente, no detiene a los soldados, no clama justicia. Estï¿½ ahï¿½, presente, soportando con Jesï¿½s la plenitud del misterio. Su presencia silenciosa es mï¿½s elocuente que mil discursos: es eliconos de la fe que no busca explicaciones, sino que acompaï¿½a. Y en ese encuentro de ojos, Marï¿½a comprende que su hijo camina hacia la gloria precisamente a travï¿½s de la cruz, y Jesï¿½s comprende que su madre es el mayoresdon que podï¿½a recibir en el camino del Calvario.</p>
 </div>
 <div class="station-oracion">
-<div class="station-oracion-title">Oración</div>
-<p>Virgen María, Madre de los que sufren y camino hacia Jesús, concédeme tu presencia silenciosa en medio de mis pruebas. No me apartes del camino de la cruz, sino dame la gracia de caminar junto a mi Hijo, como tú supiste hacer, sin comprender del todo, pero confiando siempre. Que mi cruz no me separe de ti, sino que me una más estrechamente a tu corazón y al de Jesús. <strong>Amen.</strong></p>
+<div class="station-oracion-title">Oraciï¿½n</div>
+<p>Virgen Marï¿½a, Madre de los que sufren y camino hacia Jesï¿½s, concï¿½deme tu presencia silenciosa en medio de mis pruebas. No me apartes del camino de la cruz, sino dame la gracia de caminar junto a mi Hijo, como tï¿½ supiste hacer, sin comprender del todo, pero confiando siempre. Que mi cruz no me separe de ti, sino que me una mï¿½s estrechamente a tu corazï¿½n y al de Jesï¿½s. <strong>Amen.</strong></p>
 </div>
-<p class="misericordia">Jesús, en Ti confío. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
+<p class="misericordia">Jesï¿½s, en Ti confï¿½o. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
 </div>
 
-<!-- ESTACIÓN V -->
+<!-- ESTACIï¿½N V -->
 <div id="station5" class="station-content">
 <div class="station-header">
-<div class="station-num">V ESTACIÓN</div>
-<h2 class="station-title">EL CIRINEO AYUDA A JESÚS A LLEVAR LA CRUZ</h2>
+<div class="station-num">V ESTACIï¿½N</div>
+<h2 class="station-title">EL CIRINEO AYUDA A JESï¿½S A LLEVAR LA CRUZ</h2>
 </div>
-<div class="station-adore">«Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundo».</div>
+<div class="station-adore">ï¿½Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundoï¿½.</div>
 <div class="station-meditation">
-<p>Un extranjero, un desconocido, un cirineo, es requerido por los soldados para ayudar a Jesús a llevar la cruz. Seguramente no sabía quién era aquel hombre marcados por el cansancio. Pero algo en la mirada de Cristo, tal vez, le ganó el corazón. Y desde entonces, su nombre —Simón— ha quedado grabado en la historia de la salvación como el del hombre que, sin saberlo del todo, cooperó con el misterio de la redención.</p>
+<p>Un extranjero, un desconocido, un cirineo, es requerido por los soldados para ayudar a Jesï¿½s a llevar la cruz. Seguramente no sabï¿½a quiï¿½n era aquel hombre marcados por el cansancio. Pero algo en la mirada de Cristo, tal vez, le ganï¿½ el corazï¿½n. Y desde entonces, su nombre ï¿½Simï¿½nï¿½ ha quedado grabado en la historia de la salvaciï¿½n como el del hombre que, sin saberlo del todo, cooperï¿½ con el misterio de la redenciï¿½n.</p>
 </div>
 <div class="station-quote">
-<p>La vida cristiana no siempre es heroica: a veces se reduce a hacer caso a quien nos pide ayuda, aunque no sepamos por qué. Levantar la cruz del otro —al que no elegimos, al que no conocemos— es, a veces, lo único que Dios nos pide. Y en ese gesto aparentemente pequeño, se juega nuestra eternidad.</p>
+<p>La vida cristiana no siempre es heroica: a veces se reduce a hacer caso a quien nos pide ayuda, aunque no sepamos por quï¿½. Levantar la cruz del otro ï¿½al que no elegimos, al que no conocemosï¿½ es, a veces, lo ï¿½nico que Dios nos pide. Y en ese gesto aparentemente pequeï¿½o, se juega nuestra eternidad.</p>
 </div>
 <div class="station-oracion">
-<div class="station-oracion-title">Oración</div>
-<p>Señor Jesús, que llamaste a un desconocido para que te ayudara a llevar la cruz, concédeme la gracia de estar disponible cuando alguien necesite mi ayuda, aunque sea un extraño, aunque no comprenda por qué. Dame un corazón abierto al que pasa por mi lado, willingness a cargar con el peso del otro, sin preguntar demasiado, sin calcular ventajas. Que yo también sea, algún día, ese Simón que, sin saberlo, cooperó con tu obra de salvación. <strong>Amen.</strong></p>
+<div class="station-oracion-title">Oraciï¿½n</div>
+<p>Seï¿½or Jesï¿½s, que llamaste a un desconocido para que te ayudara a llevar la cruz, concï¿½deme la gracia de estar disponible cuando alguien necesite mi ayuda, aunque sea un extraï¿½o, aunque no comprenda por quï¿½. Dame un corazï¿½n abierto al que pasa por mi lado, willingness a cargar con el peso del otro, sin preguntar demasiado, sin calcular ventajas. Que yo tambiï¿½n sea, algï¿½n dï¿½a, ese Simï¿½n que, sin saberlo, cooperï¿½ con tu obra de salvaciï¿½n. <strong>Amen.</strong></p>
 </div>
-<p class="misericordia">Jesús, en Ti confío. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
+<p class="misericordia">Jesï¿½s, en Ti confï¿½o. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
 </div>
 
-<!-- ESTACIÓN VI -->
+<!-- ESTACIï¿½N VI -->
 <div id="station6" class="station-content">
 <div class="station-header">
-<div class="station-num">VI ESTACIÓN</div>
-<h2 class="station-title">LA VERÓNICA LIMPIA EL ROSTRO DE JESÚS</h2>
+<div class="station-num">VI ESTACIï¿½N</div>
+<h2 class="station-title">LA VERï¿½NICA LIMPIA EL ROSTRO DE JESï¿½S</h2>
 </div>
-<div class="station-adore">«Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundo».</div>
+<div class="station-adore">ï¿½Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundoï¿½.</div>
 <div class="station-meditation">
-<p>Una mujer se abre paso entre la multitud, arriesgando su propia seguridad, y con un velo —o simplemente con sus manos— limpia el rostro ensangrentado de Jesús. No hay palabras registradas de este encuentro, pero la tradición ha guardado su nombre: Verónica. Etimológicamente, su nombre significa "imagen verdadera", y la tradición cuenta que quedó grabada en el pano la faz de Cristo.</p>
+<p>Una mujer se abre paso entre la multitud, arriesgando su propia seguridad, y con un velo ï¿½o simplemente con sus manosï¿½ limpia el rostro ensangrentado de Jesï¿½s. No hay palabras registradas de este encuentro, pero la tradiciï¿½n ha guardado su nombre: Verï¿½nica. Etimolï¿½gicamente, su nombre significa "imagen verdadera", y la tradiciï¿½n cuenta que quedï¿½ grabada en el pano la faz de Cristo.</p>
 </div>
 <div class="station-quote">
-<p>La auténtica devoción no busca el reconocimiento público ni la recompensa. Es un impulso del corazón que se adelanta cuando ve necesidad. No calcula riesgos ni ventajas: simplemente ama. Y en ese gesto —un acto aparentemente pequeño de ternura— recibe algo que ningún soldado, ningún espectador, ningún poderoso del mundo pudo jamás obtener: la imagen vera de Dios grabada en su alma.</p>
+<p>La autï¿½ntica devociï¿½n no busca el reconocimiento pï¿½blico ni la recompensa. Es un impulso del corazï¿½n que se adelanta cuando ve necesidad. No calcula riesgos ni ventajas: simplemente ama. Y en ese gesto ï¿½un acto aparentemente pequeï¿½o de ternuraï¿½ recibe algo que ningï¿½n soldado, ningï¿½n espectador, ningï¿½n poderoso del mundo pudo jamï¿½s obtener: la imagen vera de Dios grabada en su alma.</p>
 </div>
 <div class="station-oracion">
-<div class="station-oracion-title">Oración</div>
-<p>Jesús de rostro desfigurado pero lleno de luz, concédeme la gracia de buscarte en el rostro delsufrido, del rechazado, del que nadie quiere mirar. Que no me importe el qué dirán cuando me incline ante el hermano que otros desprecian. Que mi pañuelo —mis manos, mis palabras, mi tiempo— leaving your imagen grabada en mi corazón. Que yo también pueda decir, al final de mi vida: "En mi camino encontré al Señor y guardsu imagen". <strong>Amen.</strong></p>
+<div class="station-oracion-title">Oraciï¿½n</div>
+<p>Jesï¿½s de rostro desfigurado pero lleno de luz, concï¿½deme la gracia de buscarte en el rostro delsufrido, del rechazado, del que nadie quiere mirar. Que no me importe el quï¿½ dirï¿½n cuando me incline ante el hermano que otros desprecian. Que mi paï¿½uelo ï¿½mis manos, mis palabras, mi tiempoï¿½ leaving your imagen grabada en mi corazï¿½n. Que yo tambiï¿½n pueda decir, al final de mi vida: "En mi camino encontrï¿½ al Seï¿½or y guardsu imagen". <strong>Amen.</strong></p>
 </div>
-<p class="misericordia">Jesús, en Ti confío. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
+<p class="misericordia">Jesï¿½s, en Ti confï¿½o. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
 </div>
 
-<!-- ESTACIÓN VII -->
+<!-- ESTACIï¿½N VII -->
 <div id="station7" class="station-content">
 <div class="station-header">
-<div class="station-num">VII ESTACIÓN</div>
-<h2 class="station-title">JESÚS CAE POR SEGUNDA VEZ</h2>
+<div class="station-num">VII ESTACIï¿½N</div>
+<h2 class="station-title">JESï¿½S CAE POR SEGUNDA VEZ</h2>
 </div>
-<div class="station-adore">«Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundo».</div>
+<div class="station-adore">ï¿½Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundoï¿½.</div>
 <div class="station-meditation">
-<p>Jesús cae otra vez. El camino se hace más empinado, la cruz más pesada, las fuerzas más escasas. Es la segunda caída, y es también la imagen de lo que ocurre en nuestra vida espiritual cuando, tras un primer tropiezo, parecemos incapaces de recuperarnos del todo. La primera vez nos sorprendimos; la segunda vez, nos desanimamos.</p>
+<p>Jesï¿½s cae otra vez. El camino se hace mï¿½s empinado, la cruz mï¿½s pesada, las fuerzas mï¿½s escasas. Es la segunda caï¿½da, y es tambiï¿½n la imagen de lo que ocurre en nuestra vida espiritual cuando, tras un primer tropiezo, parecemos incapaces de recuperarnos del todo. La primera vez nos sorprendimos; la segunda vez, nos desanimamos.</p>
 </div>
 <div class="station-quote">
-<p>Pero la fe no se mide por cuántas veces caemos, sino por cuántas veces, con la gracia de Dios, conseguimos levantarnos. Y aquí es donde la pedagogía del Calvario nos revela un secreto: Jesús no se levanta solo. Load again, but the grace of God sustains him. Y cuando caemos por segunda vez, no es el final: es una invitación a confiar más, a humillarse más, a depender más de Aquel que puede levantarnos.</p>
+<p>Pero la fe no se mide por cuï¿½ntas veces caemos, sino por cuï¿½ntas veces, con la gracia de Dios, conseguimos levantarnos. Y aquï¿½ es donde la pedagogï¿½a del Calvario nos revela un secreto: Jesï¿½s no se levanta solo. Load again, but the grace of God sustains him. Y cuando caemos por segunda vez, no es el final: es una invitaciï¿½n a confiar mï¿½s, a humillarse mï¿½s, a depender mï¿½s de Aquel que puede levantarnos.</p>
 </div>
 <div class="station-oracion">
-<div class="station-oracion-title">Oración</div>
-<p>Jesús, que caes por segunda vez bajo el peso de mi cruz, mírame cuando me siento un fracaso, cuando me parece que no vale la pena seguir intentando. No me desanimes por mis recaídas, sino que cada caída me enseñe a apoyarme más en ti. Dame la gracia de levantarme siempre, aunque sea con pasos temblorosos, porque tú caminas a mi lado, aunque yo no te sienta. <strong>Amen.</strong></p>
+<div class="station-oracion-title">Oraciï¿½n</div>
+<p>Jesï¿½s, que caes por segunda vez bajo el peso de mi cruz, mï¿½rame cuando me siento un fracaso, cuando me parece que no vale la pena seguir intentando. No me desanimes por mis recaï¿½das, sino que cada caï¿½da me enseï¿½e a apoyarme mï¿½s en ti. Dame la gracia de levantarme siempre, aunque sea con pasos temblorosos, porque tï¿½ caminas a mi lado, aunque yo no te sienta. <strong>Amen.</strong></p>
 </div>
-<p class="misericordia">Jesús, en Ti confío. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
+<p class="misericordia">Jesï¿½s, en Ti confï¿½o. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
 </div>
 
-<!-- ESTACIÓN VIII -->
+<!-- ESTACIï¿½N VIII -->
 <div id="station8" class="station-content">
 <div class="station-header">
-<div class="station-num">VIII ESTACIÓN</div>
-<h2 class="station-title">JESÚS CONSUELA A LAS MUJERES DE JERUSALÉN</h2>
+<div class="station-num">VIII ESTACIï¿½N</div>
+<h2 class="station-title">JESï¿½S CONSUELA A LAS MUJERES DE JERUSALï¿½N</h2>
 </div>
-<div class="station-adore">«Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundo».</div>
+<div class="station-adore">ï¿½Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundoï¿½.</div>
 <div class="station-meditation">
-<p>Un grupo de mujeres sigue a Jesús, llorando y lamentándose por Él. Jesús, en medio de su propio sufrimiento, se detiene para consolarlas. No les dice "no lloréis por mí", sino que las invita a llorar por ellas mismas y por sus hijos. En medio del dolor más intenso, encuentra espacio para elothers.</p>
+<p>Un grupo de mujeres sigue a Jesï¿½s, llorando y lamentï¿½ndose por ï¿½l. Jesï¿½s, en medio de su propio sufrimiento, se detiene para consolarlas. No les dice "no llorï¿½is por mï¿½", sino que las invita a llorar por ellas mismas y por sus hijos. En medio del dolor mï¿½s intenso, encuentra espacio para elothers.</p>
 </div>
 <div class="station-quote">
-<p>Jesús nos enseña que la compasión no es debilidad: es la fuerza más grande del universo. Mientras todo el mundo mira hacia otro lado, el que sufre con los que sufren revela el corazón de Dios. Y al consolar a estas mujeres, Jesús también nos consuela a nosotros, porque nos dice que, incluso en el Calvario, hay lugar para la ternura.</p>
+<p>Jesï¿½s nos enseï¿½a que la compasiï¿½n no es debilidad: es la fuerza mï¿½s grande del universo. Mientras todo el mundo mira hacia otro lado, el que sufre con los que sufren revela el corazï¿½n de Dios. Y al consolar a estas mujeres, Jesï¿½s tambiï¿½n nos consuela a nosotros, porque nos dice que, incluso en el Calvario, hay lugar para la ternura.</p>
 </div>
 <div class="station-oracion">
-<div class="station-oracion-title">Oración</div>
-<p>Jesús, que en medio de tu pasión encontraste fuerzas para consolar a otros, enséñame a no encerrarme en mi propio sufrimiento. Dame un corazón que sepa mirar más allá de mis heridas, que sepa ver el dolor de quienes me rodean y ofrecerles una palabra de consuelo. Que mi sufrimiento, unido al tuyo, se convierta en fuente de esperanza para otros. <strong>Amen.</strong></p>
+<div class="station-oracion-title">Oraciï¿½n</div>
+<p>Jesï¿½s, que en medio de tu pasiï¿½n encontraste fuerzas para consolar a otros, ensï¿½ï¿½ame a no encerrarme en mi propio sufrimiento. Dame un corazï¿½n que sepa mirar mï¿½s allï¿½ de mis heridas, que sepa ver el dolor de quienes me rodean y ofrecerles una palabra de consuelo. Que mi sufrimiento, unido al tuyo, se convierta en fuente de esperanza para otros. <strong>Amen.</strong></p>
 </div>
-<p class="misericordia">Jesús, en Ti confío. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
+<p class="misericordia">Jesï¿½s, en Ti confï¿½o. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
 </div>
 
-<!-- ESTACIÓN IX -->
+<!-- ESTACIï¿½N IX -->
 <div id="station9" class="station-content">
 <div class="station-header">
-<div class="station-num">IX ESTACIÓN</div>
-<h2 class="station-title">JESÚS CAE POR TERCERA VEZ</h2>
+<div class="station-num">IX ESTACIï¿½N</div>
+<h2 class="station-title">JESï¿½S CAE POR TERCERA VEZ</h2>
 </div>
-<div class="station-adore">«Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundo».</div>
+<div class="station-adore">ï¿½Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundoï¿½.</div>
 <div class="station-meditation">
-<p>Jesús cae por tercera vez. El camino está cerca del final, pero las fuerzas se han agotado. Esta tercera caída es la más dura de todas, porque ya no queda casi nada. Es la imagen de esos momentos en los que hemos dado todo lo que teníamos y aun así sentimos que no es suficiente.</p>
+<p>Jesï¿½s cae por tercera vez. El camino estï¿½ cerca del final, pero las fuerzas se han agotado. Esta tercera caï¿½da es la mï¿½s dura de todas, porque ya no queda casi nada. Es la imagen de esos momentos en los que hemos dado todo lo que tenï¿½amos y aun asï¿½ sentimos que no es suficiente.</p>
 </div>
 <div class="station-quote">
-<p>Pero precisamente ahí, en el fondo del agotamiento, hay una gracia escondida: cuando ya no podemos hacer nada por nosotros mismos, entonces somos libres para dejarnos hacer por Dios. La tercera caída es un invitation a la dependencia total, a confiarle a Dios lo que ya no podemos controlar. Y en esa entrega completa está la victoria.</p>
+<p>Pero precisamente ahï¿½, en el fondo del agotamiento, hay una gracia escondida: cuando ya no podemos hacer nada por nosotros mismos, entonces somos libres para dejarnos hacer por Dios. La tercera caï¿½da es un invitation a la dependencia total, a confiarle a Dios lo que ya no podemos controlar. Y en esa entrega completa estï¿½ la victoria.</p>
 </div>
 <div class="station-oracion">
-<div class="station-oracion-title">Oración</div>
-<p>Jesús, que caes por tercera vez cuando ya no quedan fuerzas, mírame cuando siento que he llegado a mi límite, cuando todo lo que daba ya no basta. No me desanimes, sino que esta experiencia de pobreza espiritual me enseñe a confiar plenamente en ti. Que aprenda a decirte: "En tus manos encomiendo mi espíritu", aunque mis manos tiemblen y mi corazón esté agotado. <strong>Amen.</strong></p>
+<div class="station-oracion-title">Oraciï¿½n</div>
+<p>Jesï¿½s, que caes por tercera vez cuando ya no quedan fuerzas, mï¿½rame cuando siento que he llegado a mi lï¿½mite, cuando todo lo que daba ya no basta. No me desanimes, sino que esta experiencia de pobreza espiritual me enseï¿½e a confiar plenamente en ti. Que aprenda a decirte: "En tus manos encomiendo mi espï¿½ritu", aunque mis manos tiemblen y mi corazï¿½n estï¿½ agotado. <strong>Amen.</strong></p>
 </div>
-<p class="misericordia">Jesús, en Ti confío. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
+<p class="misericordia">Jesï¿½s, en Ti confï¿½o. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
 </div>
 
-<!-- ESTACIÓN X -->
+<!-- ESTACIï¿½N X -->
 <div id="station10" class="station-content">
 <div class="station-header">
-<div class="station-num">X ESTACIÓN</div>
-<h2 class="station-title">JESÚS ES DESNUDADO</h2>
+<div class="station-num">X ESTACIï¿½N</div>
+<h2 class="station-title">JESï¿½S ES DESNUDADO</h2>
 </div>
-<div class="station-adore">«Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundo».</div>
+<div class="station-adore">ï¿½Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundoï¿½.</div>
 <div class="station-meditation">
-<p>Llegan al Gólgota y los soldados despojan a Jesús de sus vestiduras. Es el momento de máxima vulnerabilidad: el hombre queda reducido a lo más esencial. La túnica es quitada —los Evangelios dicen que era sin costuras, tejida toda de una pieza— y los soldados la sortean.</p>
+<p>Llegan al Gï¿½lgota y los soldados despojan a Jesï¿½s de sus vestiduras. Es el momento de mï¿½xima vulnerabilidad: el hombre queda reducido a lo mï¿½s esencial. La tï¿½nica es quitada ï¿½los Evangelios dicen que era sin costuras, tejida toda de una piezaï¿½ y los soldados la sortean.</p>
 </div>
 <div class="station-quote">
-<p>La desnudez de Cristo es también la desnudez del alma que se ha vaciado de todo. No le queda nada: ni ropaje, ni dignidad humana, ni siquiera un lugar donde reclinar la cabeza. Y en esa emptiness total, precisamente ahí, se hace presente la gloria del Padre. Porque cuando ya no hay nada nuestro, lo único que queda es Dios.</p>
+<p>La desnudez de Cristo es tambiï¿½n la desnudez del alma que se ha vaciado de todo. No le queda nada: ni ropaje, ni dignidad humana, ni siquiera un lugar donde reclinar la cabeza. Y en esa emptiness total, precisamente ahï¿½, se hace presente la gloria del Padre. Porque cuando ya no hay nada nuestro, lo ï¿½nico que queda es Dios.</p>
 </div>
 <div class="station-oracion">
-<div class="station-oracion-title">Oración</div>
-<p>Jesús, despojado y vulnerable, enséñame el valor del vacío. No tenga miedo de perderlo todo cuando eso me permita encontrarte a ti. Que mi mayor riqueza sea la pobreza de espíritu, la capacidad de estar ante ti sin nada que me defienda, sin nada que me proteja, solo con mi verdad: la de un pobre que necesita tu misericordia. <strong>Amen.</strong></p>
+<div class="station-oracion-title">Oraciï¿½n</div>
+<p>Jesï¿½s, despojado y vulnerable, ensï¿½ï¿½ame el valor del vacï¿½o. No tenga miedo de perderlo todo cuando eso me permita encontrarte a ti. Que mi mayor riqueza sea la pobreza de espï¿½ritu, la capacidad de estar ante ti sin nada que me defienda, sin nada que me proteja, solo con mi verdad: la de un pobre que necesita tu misericordia. <strong>Amen.</strong></p>
 </div>
-<p class="misericordia">Jesús, en Ti confío. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
+<p class="misericordia">Jesï¿½s, en Ti confï¿½o. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
 </div>
 
-<!-- ESTACIÓN XI -->
+<!-- ESTACIï¿½N XI -->
 <div id="station11" class="station-content">
 <div class="station-header">
-<div class="station-num">XI ESTACIÓN</div>
-<h2 class="station-title">JESÚS ES CLAVADO EN LA CRUZ</h2>
+<div class="station-num">XI ESTACIï¿½N</div>
+<h2 class="station-title">JESï¿½S ES CLAVADO EN LA CRUZ</h2>
 </div>
-<div class="station-adore">«Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundo».</div>
+<div class="station-adore">ï¿½Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundoï¿½.</div>
 <div class="station-meditation">
-<p>Llegan al lugar llamado Gólgota y clavan a Jesús en la cruz. Es el momento central de toda la historia de la salvación: el momento en que el Hijo de Dios se convierte en sacrifice expiatorio. Los clavos traspasan sus manos y sus pies, y el cuerpo queda hangando entre el cielo y la tierra.</p>
+<p>Llegan al lugar llamado Gï¿½lgota y clavan a Jesï¿½s en la cruz. Es el momento central de toda la historia de la salvaciï¿½n: el momento en que el Hijo de Dios se convierte en sacrifice expiatorio. Los clavos traspasan sus manos y sus pies, y el cuerpo queda hangando entre el cielo y la tierra.</p>
 </div>
 <div class="station-quote">
-<p>Pero Jesús no clama venganza, no maldice, no insulta. Desde la cruz,oren: "Padre, perdónalos, porque no saben lo que hacen". Es la palabra más extraordinaria de toda la historia: el perdón en el momento del máximo dolor. Y es también el modelo de toda vida cristiana: ofrecer el mal con bien, la herida con oración, el odio con perdón.</p>
+<p>Pero Jesï¿½s no clama venganza, no maldice, no insulta. Desde la cruz,oren: "Padre, perdï¿½nalos, porque no saben lo que hacen". Es la palabra mï¿½s extraordinaria de toda la historia: el perdï¿½n en el momento del mï¿½ximo dolor. Y es tambiï¿½n el modelo de toda vida cristiana: ofrecer el mal con bien, la herida con oraciï¿½n, el odio con perdï¿½n.</p>
 </div>
 <div class="station-oracion">
-<div class="station-oracion-title">Oración</div>
-<p>Jesús clavado en la cruz, fuente de todo perdón, enséñame a perdonar como tú perdonas: sin condiciones, sin límites, sin esperar nada a cambio. Cuando alguien me hiriera, que pueda yo responder como tú: con oración, con mercy, con amor. Que mi vida sea una cruz de perdón offertecida cada día por quienes me ofenden. <strong>Amen.</strong></p>
+<div class="station-oracion-title">Oraciï¿½n</div>
+<p>Jesï¿½s clavado en la cruz, fuente de todo perdï¿½n, ensï¿½ï¿½ame a perdonar como tï¿½ perdonas: sin condiciones, sin lï¿½mites, sin esperar nada a cambio. Cuando alguien me hiriera, que pueda yo responder como tï¿½: con oraciï¿½n, con mercy, con amor. Que mi vida sea una cruz de perdï¿½n offertecida cada dï¿½a por quienes me ofenden. <strong>Amen.</strong></p>
 </div>
-<p class="misericordia">Jesús, en Ti confío. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
+<p class="misericordia">Jesï¿½s, en Ti confï¿½o. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
 </div>
 
-<!-- ESTACIÓN XII -->
+<!-- ESTACIï¿½N XII -->
 <div id="station12" class="station-content">
 <div class="station-header">
-<div class="station-num">XII ESTACIÓN</div>
-<h2 class="station-title">JESÚS MUERE EN LA CRUZ</h2>
+<div class="station-num">XII ESTACIï¿½N</div>
+<h2 class="station-title">JESï¿½S MUERE EN LA CRUZ</h2>
 </div>
-<div class="station-adore">«Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundo».</div>
+<div class="station-adore">ï¿½Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundoï¿½.</div>
 <div class="station-meditation">
-<p>Jesús died. Todo parece finish. El sol se oscurece, el velo del templo se rasga, la tierra tiembla. Los que habían venido a burlarse callan. María, Juan, las mujeres: todos esperan. Lo que parecía el final de todo es, en realidad, el beginning de una historia nueva.</p>
+<p>Jesï¿½s died. Todo parece finish. El sol se oscurece, el velo del templo se rasga, la tierra tiembla. Los que habï¿½an venido a burlarse callan. Marï¿½a, Juan, las mujeres: todos esperan. Lo que parecï¿½a el final de todo es, en realidad, el beginning de una historia nueva.</p>
 </div>
 <div class="station-quote">
-<p>El sacrificio ha llegado a su plenitud. El Cordero ha sido inmolado. Pero genauine fe sabe que la muerte no es el final: es el umbral de la resurrección. Y en ese preciso instante, cuando todo parece perdido, el Padre obra el mayor de los milagros: la victoria sobre la muerte.</p>
+<p>El sacrificio ha llegado a su plenitud. El Cordero ha sido inmolado. Pero genauine fe sabe que la muerte no es el final: es el umbral de la resurrecciï¿½n. Y en ese preciso instante, cuando todo parece perdido, el Padre obra el mayor de los milagros: la victoria sobre la muerte.</p>
 </div>
 <div class="station-oracion">
-<div class="station-oracion-title">Oración</div>
-<p>Jesús, que mueres por amor a mí, que das tu vida para que yo tenga vida eterna, gracias por tan gran amor. Que yo también sepa dar mi vida por los demás, sin calcular costos ni buscar recompensas. Que mi muerte —cuando llegue— sea un pasar de este mundo al Padre, sostenido por tu mano y accompanied de tu misericordia. <strong>Amen.</strong></p>
+<div class="station-oracion-title">Oraciï¿½n</div>
+<p>Jesï¿½s, que mueres por amor a mï¿½, que das tu vida para que yo tenga vida eterna, gracias por tan gran amor. Que yo tambiï¿½n sepa dar mi vida por los demï¿½s, sin calcular costos ni buscar recompensas. Que mi muerte ï¿½cuando llegueï¿½ sea un pasar de este mundo al Padre, sostenido por tu mano y accompanied de tu misericordia. <strong>Amen.</strong></p>
 </div>
-<p class="misericordia">Jesús, en Ti confío. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
+<p class="misericordia">Jesï¿½s, en Ti confï¿½o. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
 </div>
 
-<!-- ESTACIÓN XIII -->
+<!-- ESTACIï¿½N XIII -->
 <div id="station13" class="station-content">
 <div class="station-header">
-<div class="station-num">XIII ESTACIÓN</div>
-<h2 class="station-title">JESÚS ES BAJADO DE LA CRUZ Y ENTREGADO A SU MADRE</h2>
+<div class="station-num">XIII ESTACIï¿½N</div>
+<h2 class="station-title">JESï¿½S ES BAJADO DE LA CRUZ Y ENTREGADO A SU MADRE</h2>
 </div>
-<div class="station-adore">«Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundo».</div>
+<div class="station-adore">ï¿½Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundoï¿½.</div>
 <div class="station-meditation">
-<p>Un hombre rico, José de Arimatea, pide el cuerpo de Jesús. Lo baja de la cruz y lo pone en brazos de María. Es el momento del despedida, del último abrazo. El cuerpo sin vida del Hijo reposa en los brazos de la Madre, como una vez, siendo niño, reposó en el pesebre.</p>
+<p>Un hombre rico, Josï¿½ de Arimatea, pide el cuerpo de Jesï¿½s. Lo baja de la cruz y lo pone en brazos de Marï¿½a. Es el momento del despedida, del ï¿½ltimo abrazo. El cuerpo sin vida del Hijo reposa en los brazos de la Madre, como una vez, siendo niï¿½o, reposï¿½ en el pesebre.</p>
 </div>
 <div class="station-quote">
-<p>La soledad de María ahora es absolute. Ha perdido a su hijo de forma cruel e injusta. Pero también recibe un regalo: poder??lo hasta el final, besarlo por última vez, preparar su cuerpo para la sepultura. Y en ese abrazo final, hay una paz que sobrepasa todo entendimiento: la paz de quien ha cumplido la voluntad de Dios hasta el extremo.</p>
+<p>La soledad de Marï¿½a ahora es absolute. Ha perdido a su hijo de forma cruel e injusta. Pero tambiï¿½n recibe un regalo: poder??lo hasta el final, besarlo por ï¿½ltima vez, preparar su cuerpo para la sepultura. Y en ese abrazo final, hay una paz que sobrepasa todo entendimiento: la paz de quien ha cumplido la voluntad de Dios hasta el extremo.</p>
 </div>
 <div class="station-oracion">
-<div class="station-oracion-title">Oración</div>
-<p>Virgen María, que recibes el cuerpo sin vida de tu Hijo, enséñame a aceptar la voluntad de Dios incluso cuando no la comprendo. Que yo también sepa acompañar a los que sufren, sostener a los que lloran, estar presente en los momentos más difíciles. Que mi vida sea un abrazo de amor a la voluntad del Padre, aunque eso me cueste lágrimas y silencio. <strong>Amen.</strong></p>
+<div class="station-oracion-title">Oraciï¿½n</div>
+<p>Virgen Marï¿½a, que recibes el cuerpo sin vida de tu Hijo, ensï¿½ï¿½ame a aceptar la voluntad de Dios incluso cuando no la comprendo. Que yo tambiï¿½n sepa acompaï¿½ar a los que sufren, sostener a los que lloran, estar presente en los momentos mï¿½s difï¿½ciles. Que mi vida sea un abrazo de amor a la voluntad del Padre, aunque eso me cueste lï¿½grimas y silencio. <strong>Amen.</strong></p>
 </div>
-<p class="misericordia">Jesús, en Ti confío. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
+<p class="misericordia">Jesï¿½s, en Ti confï¿½o. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
 </div>
 
-<!-- ESTACIÓN XIV -->
+<!-- ESTACIï¿½N XIV -->
 <div id="station14" class="station-content">
 <div class="station-header">
-<div class="station-num">XIV ESTACIÓN</div>
-<h2 class="station-title">JESÚS ES SEPULTADO</h2>
+<div class="station-num">XIV ESTACIï¿½N</div>
+<h2 class="station-title">JESï¿½S ES SEPULTADO</h2>
 </div>
-<div class="station-adore">«Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundo».</div>
+<div class="station-adore">ï¿½Te adoramos, Cristo, y te bendecimos, porque por tu Santa Cruz has redimido al mundoï¿½.</div>
 <div class="station-meditation">
-<p>El cuerpo de Jesús es colocado en un sepulcro nuevo, excavado en la roca, donde nadie había sido puesto todavía. La piedra rolleda la entrada, y todo parece finish. Es el final del Vía Crucis, pero no es el final de la historia.</p>
+<p>El cuerpo de Jesï¿½s es colocado en un sepulcro nuevo, excavado en la roca, donde nadie habï¿½a sido puesto todavï¿½a. La piedra rolleda la entrada, y todo parece finish. Es el final del Vï¿½a Crucis, pero no es el final de la historia.</p>
 </div>
 <div class="station-quote">
-<p>La sepultura es un pause, no un final. El cuerpo descansa, pero el espíritu de Jesús desciende a predicar a los cautivos. Y el tercer día, la piedra se will mover, el sepulcro will vaciarse, y la vida will victoria sobre la muerte. El Vía Crucis lleva siempre al sepulcro, pero el sepulcro siempre lleva a la resurrección.</p>
+<p>La sepultura es un pause, no un final. El cuerpo descansa, pero el espï¿½ritu de Jesï¿½s desciende a predicar a los cautivos. Y el tercer dï¿½a, la piedra se will mover, el sepulcro will vaciarse, y la vida will victoria sobre la muerte. El Vï¿½a Crucis lleva siempre al sepulcro, pero el sepulcro siempre lleva a la resurrecciï¿½n.</p>
 </div>
 <div class="separator-wrap">
 <div class="separator-cruz">
@@ -902,11 +921,11 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
 </div>
 </div>
 <div class="station-oracion">
-<div class="station-oracion-title">Oración Final</div>
-<p>Jesús sepulto y resucitado, gracias por el camino que me has permitido caminar contigo. Que yo también sepa morir a mí mismo cada día, para resucitar contigo en la gloria eterna. Que mi cruz no sea nunca un callejón sin salida, sino el camino que conduce a la vida. Que la esperanza de la resurrección fill mi vida de alegría y de paz.</p>
-<p style="text-align:center; margin-top:20px; font-size:1.1rem; color:var(--gold-light);"><strong>¡Cristo ha resucitado! ¡Ha verdaderamenteresucitado!</strong></p>
+<div class="station-oracion-title">Oraciï¿½n Final</div>
+<p>Jesï¿½s sepulto y resucitado, gracias por el camino que me has permitido caminar contigo. Que yo tambiï¿½n sepa morir a mï¿½ mismo cada dï¿½a, para resucitar contigo en la gloria eterna. Que mi cruz no sea nunca un callejï¿½n sin salida, sino el camino que conduce a la vida. Que la esperanza de la resurrecciï¿½n fill mi vida de alegrï¿½a y de paz.</p>
+<p style="text-align:center; margin-top:20px; font-size:1.1rem; color:var(--gold-light);"><strong>ï¿½Cristo ha resucitado! ï¿½Ha verdaderamenteresucitado!</strong></p>
 </div>
-<p class="misericordia">Jesús, en Ti confío. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
+<p class="misericordia">Jesï¿½s, en Ti confï¿½o. Por tu santa Cruz, ten misericordia de nosotros y del mundo entero.</p>
 </div>
 
 </main>
@@ -925,36 +944,36 @@ footer .tagline { color: var(--gold); font-family: 'Cinzel', serif; font-size: 1
   <h3 class="footer-menu-title">Explora nuestra web</h3>
   <div class="footer-menu-links">
         <a href="oraciones.html">Oraciones</a>
-    <a href="via-crucis.html">Vía Crucis</a>
-    <a href="maria.html">María</a>
+    <a href="via-crucis.html">Vï¿½a Crucis</a>
+    <a href="maria.html">Marï¿½a</a>
     <a href="obras-de-misericordia.html">Obras de Misericordia</a>
-    <a href="consagracion.html">Consagración</a>
+    <a href="consagracion.html">Consagraciï¿½n</a>
     <a href="lugares-de-culto.html">Lugares de Culto</a>
     <a href="noticias.html">Noticias</a>
-    <a href="ss-leon-xiv.html">S.S. León XIV</a>
+    <a href="ss-leon-xiv.html">S.S. Leï¿½n XIV</a>
     <a href="ss-francisco.html">S.S. Francisco</a>
     <a href="ss-benedicto-xvi.html">S.S. Benedicto XVI</a>
     <a href="ss-juan-pablo-ii.html">S.S. Juan Pablo II</a>
     <a href="enlaces.html">Enlaces</a>
-    <a href="divino-nino-jesus.html">Divino Niño Jesús</a>
+    <a href="divino-nino-jesus.html">Divino Niï¿½o Jesï¿½s</a>
     <a href="san-judas-tadeo.html">San Judas Tadeo</a>
     <a href="san-cayetano.html">San Cayetano</a>
-    <a href="consagracion-sagrado-corazon.html">Sagrado Corazón</a>
-    <a href="maria-auxiliadora.html">María Auxiliadora</a>
-    <a href="san-sanson.html">Sansón</a>
+    <a href="consagracion-sagrado-corazon.html">Sagrado Corazï¿½n</a>
+    <a href="maria-auxiliadora.html">Marï¿½a Auxiliadora</a>
+    <a href="san-sanson.html">Sansï¿½n</a>
     <a href="san-benito.html">San Benito</a>
     <a href="oracion-santa-cruz.html">Santa Cruz</a>
     <a href="san-francisco.html">San Francisco</a>
-    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupé</a>
+    <a href="virgen-caacupe.html" class="caacupe-btn">Virgen Caacupï¿½</a>
         <a href="devociones-marianas.html" class="devociones-btn">Devociones Marianas</a>
         <a href="otras-devociones.html" class="nav-otras-devociones">Otras Devociones</a>
   </div>
 </div>
 
 <footer class="main-footer sacred-footer">
-  <a href="el-altar.html" class="cross-glow" title="Adorar al Santísimo">?</a>
-  <p class="tagline">Jesús, En Vos Confío</p>
-  <p>© 2026 — Portal de la Divina Misericordia</p>
+  <a href="el-altar.html" class="cross-glow" title="Adorar al Santï¿½simo">?</a>
+  <p class="tagline">Jesï¿½s, En Vos Confï¿½o</p>
+  <p>ï¿½ 2026 ï¿½ Portal de la Divina Misericordia</p>
 </footer>
 
 <!-- Golden Line Divine - Bella y Resplandeciente -->
@@ -1168,7 +1187,9 @@ document.addEventListener('mouseover', e => {
 <script src="js/audio-player.js"></script>
 <script src="js/audio-catalog.js"></script>
 <script src="js/universal-audio-adapter.js"></script>
-<!-- Sistema de Diseño Global -->
+<!-- Sistema de Diseï¿½o Global -->
 <script src="js/system-init.js"></script>
-</body>
+
+  <!-- Core Web Vitals -->
+  <script src="/assets/js/web-vitals.js"></script></body>
 </html>
